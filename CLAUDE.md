@@ -127,7 +127,7 @@ Each area has its own assembly definition, `TentacleVania.<Area>`, and the match
 
 | Area | Folder |
 | --- | --- |
-| Core | `Assets/Game/Core/` |
+| Core | `Assets/Game/Core/` (input, versioning, diagnostics) |
 
 Create other areas as their first task needs them, named after the Tasks `Area` values (`Creature`, `Combat`, `Weapons`, `Abilities`, `Enemies`, `Bosses`, `World`, `Progression`, `UI`, `Audio`, `VFX`).
 
@@ -174,6 +174,7 @@ unity command eval --caller plugin --skill unity-cli '<C# statements>; return <v
 - Never read `Library/`, `*.meta` files, scenes or terrain assets directly; get a GUID with `AssetDatabase.AssetPathToGUID`.
 - Save any scene you edit with `EditorSceneManager.SaveScene` so the changes can be staged.
 - `OpenScene` unloads unused assets, so a C# reference to an asset the same script created or loaded before opening the scene is dead afterwards and assigns as null without an error. Load assets with `AssetDatabase.LoadAssetAtPath` after `OpenScene`, and return the references you set (or grep the saved scene for `{fileID: 0}`) to confirm them.
+- Eval code has no `using` directives, so extension methods don't resolve as methods: call them statically (`InputActionSetupExtensions.AddAction(map, ...)`).
 - CLI command names change between CLI versions (for example `editor.playmode start`, `console get`). If a command isn't found, list the current names with `unity command --tag <tag>`.
 
 ### Shell pitfalls
