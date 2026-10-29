@@ -1,0 +1,19 @@
+{
+    "name": "Unity.ShaderGraphTool.Editor",
+    "rootNamespace": "TentacleVania.Editor.ShaderGraphTool",
+    "references": [
+        "Unity.ShaderGraph.Editor",
+        "Unity.ShaderGraph.Utilities"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
