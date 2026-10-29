@@ -114,10 +114,10 @@ Summarized from [Technical Design](https://app.notion.com/p/407c27b4a69a811f8a42
 - **Effects:** VFX Graph (`com.unity.visualeffectgraph`) for all effects, never the legacy `ParticleSystem`.
 - **Shaders:** Shader Graph. Write the logic in an HLSL file and generate the graph from a `Name.shadergraph.json` spec with `Tools/shadergraph-build.sh`, which wires `<Function>_float` custom function nodes to the outputs (property type `NormalMap` is a texture defaulting to a flat normal; `"transparent": true` adds an `OutAlpha` output and makes the target transparent; `"depthTest": "Always"` sets the ZTest, for effects that must stay visible over geometry; `"target": "Fullscreen"` builds a URP Fullscreen graph whose function gets only `UV0` and outputs colour and alpha, for `FullScreenPassRendererFeature` materials). Rebuild after changing the spec; the `.shadergraph` is overwritten in place.
 - **Post-processing:** add effects as new URP renderer features.
-- **Not installed yet:** FMOD for Unity (and the FMOD Studio project in `FMOD/`), PrimeTween, Odin Inspector and Steamworks.NET come from outside the Unity registry, so the developer installs them. Until then, block a task that needs one, after doing everything possible without it. Remove this line once they're in.
+- **Not installed yet:** Odin Inspector and Steamworks.NET come from outside the Unity registry, so the developer installs them. Until then, block a task that needs one, after doing everything possible without it. Remove this line once they're in.
 - **Packages:** add Unity registry packages the design calls for (such as Timeline) as needed, matching the versions of related installed packages. Any other package, or anything paid, blocks the task for the developer's approval.
 - **UI:** UI Toolkit for all runtime UI (see the UI area's CLAUDE.md).
-- **Audio:** FMOD. The Studio project is in `FMOD/`; its built banks in `FMOD/Build/` are committed.
+- **Audio:** FMOD (FMOD for Unity 2.03.14 in `Assets/Plugins/FMOD/`, FMOD Studio 2.03.02). The Studio project is in `FMOD/`; its built banks in `FMOD/Build/` are committed.
 
 ## Project layout
 
