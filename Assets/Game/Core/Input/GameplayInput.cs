@@ -1,0 +1,81 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+namespace TentacleVania.Core.Input
+{
+    public enum InputDeviceKind
+    {
+        Gamepad,
+        KeyboardMouse,
+    }
+
+    public readonly struct ButtonInput
+    {
+        private readonly InputAction _action;
+
+        public ButtonInput(InputAction action) => _action = action;
+
+        public bool Pressed => _action.WasPressedThisFrame();
+        public bool Held => _action.IsPressed();
+        public bool Released => _action.WasReleasedThisFrame();
+    }
+
+    public sealed class GameplayInput
+    {
+        public const string MapName = "Gameplay";
+
+        public static readonly string[] ActionNames = { "Move", "AimStick", "AimPointer", "Weapon1", "Weapon2", "Dash", "Grab", "Ability" };
+
+        private static GameplayInput _default;
+
+        private readonly InputActionMap _map;
+        private readonly InputAction _move;
+        private readonly InputAction _aimStick;
+        private readonly InputAction _aimPointer;
+
+        public GameplayInput(InputActionAsset asset)
+        {
+            _map = asset.FindActionMap(MapName, true);
+            _move = _map.FindAction("Move", true);
+            _aimStick = _map.FindAction("AimStick", true);
+            _aimPointer = _map.FindAction("AimPointer", true);
+            Weapon1 = new(_map.FindAction("Weapon1", true));
+            Weapon2 = new(_map.FindAction("Weapon2", true));
+            Dash = new(_map.FindAction("Dash", true));
+            Grab = new(_map.FindAction("Grab", true));
+            Ability = new(_map.FindAction("Ability", true));
+            _map.actionTriggered += OnActionTriggered;
+            _map.Enable();
+        }
+
+        public static GameplayInput Default => _default ??= new(InputSystem.actions);
+
+        public InputDeviceKind LastDevice { get; private set; } = InputDeviceKind.KeyboardMouse;
+
+        public Vector2 Move => Vector2.ClampMagnitude(_move.ReadValue<Vector2>(), 1f);
+        public Vector2 AimStick => _aimStick.ReadValue<Vector2>();
+        public Vector2 AimPointer => _aimPointer.ReadValue<Vector2>();
+        public ButtonInput Weapon1 { get; }
+        public ButtonInput Weapon2 { get; }
+        public ButtonInput Dash { get; }
+        public ButtonInput Grab { get; }
+        public ButtonInput Ability { get; }
+
+        public bool Enabled
+        {
+            get => _map.enabled;
+            set
+            {
+                if (value) _map.Enable();
+                else _map.Disable();
+            }
+        }
+
+        private void OnActionTriggered(InputAction.CallbackContext context)
+        {
+            var device = context.control?.device;
+            if (device is Gamepad) LastDevice = InputDeviceKind.Gamepad;
+            else if (device is Keyboard or Mouse) LastDevice = InputDeviceKind.KeyboardMouse;
+        }
+    }
+}
