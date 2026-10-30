@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 5849344440007730826}
   - component: {fileID: 2695203767483156552}
   - component: {fileID: 5758589282473034864}
+  - component: {fileID: 6654993801079667695}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -288,6 +289,14 @@ MonoBehaviour:
   _rootOffset: {x: 0.18, y: 0.5, z: 0.15}
   _rootWidth: 0.14
   _tipWidth: 0.03
+  _emergeTime: 0.08
+  _retractTime: 0.12
+  _spring:
+    PoseStiffness: 30
+    TipLooseness: 0.6
+    Damping: 0.15
+    Gravity: 2
+    Iterations: 3
 --- !u!114 &1734815825583834548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +352,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _tentacleMaterial: {fileID: 2100000, guid: a9bcfb79f0251af49b5eb4a0b9219e7c, type: 2}
+  _spring:
+    PoseStiffness: 24
+    TipLooseness: 0.6
+    Damping: 0.15
+    Gravity: 2
+    Iterations: 3
 --- !u!2083052967 &5849344440007730826
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -447,6 +462,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.ChainTexture
   _effect: {fileID: 5849344440007730826}
+--- !u!114 &6654993801079667695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7945d9816d46140aa5f3bba88e1e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.CreatureTentacles
+  _material: {fileID: 2100000, guid: a9bcfb79f0251af49b5eb4a0b9219e7c, type: 2}
 --- !u!1 &7952250992877002194
 GameObject:
   m_ObjectHideFlags: 0

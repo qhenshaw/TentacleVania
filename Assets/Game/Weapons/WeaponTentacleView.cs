@@ -12,6 +12,8 @@ namespace TentacleVania.Weapons
     public sealed class WeaponTentacleView : MonoBehaviour, IChainSource
     {
         private const int Joints = Chains.Joints;
+        private const float MinBone = 0.02f;
+        private const float Slack = 1.08f;
 
         [SerializeField] private Material _material;
         [SerializeField, Min(0.1f)] private float _length = 2.4f;
@@ -19,11 +21,30 @@ namespace TentacleVania.Weapons
         [SerializeField] private Vector3 _rootOffset = new(0.18f, 0.5f, 0.15f);
         [SerializeField, Min(0.001f)] private float _rootWidth = 0.14f;
         [SerializeField, Min(0.001f)] private float _tipWidth = 0.03f;
+        [Tooltip("Seconds of the wind-up the tentacle takes to grow out of the body.")]
+        [SerializeField, Min(0.01f)] private float _emergeTime = 0.08f;
+        [Tooltip("Seconds it takes to pull back into the body after the move ends.")]
+        [SerializeField, Min(0.01f)] private float _retractTime = 0.12f;
+        [SerializeField] private SpringChainSettings _spring = new()
+        {
+            PoseStiffness = 30f,
+            TipLooseness = 0.6f,
+            Damping = 0.15f,
+            Gravity = 2f,
+            Iterations = 3,
+        };
 
         private readonly LineRenderer[] _lines = new LineRenderer[WeaponController.Slots];
-        private readonly Vector3[][] _joints = new Vector3[WeaponController.Slots][];
+        private readonly SpringChain[] _chains = new SpringChain[WeaponController.Slots];
+        private readonly bool[] _shown = new bool[WeaponController.Slots];
+        private readonly float[] _retractStarted = new float[WeaponController.Slots];
+        private readonly Vector3[] _retractFrom = new Vector3[WeaponController.Slots];
+        private readonly Vector3[] _pose = new Vector3[Joints];
 
         private WeaponController _controller;
+
+        public bool IsShown(int slot) => _shown[slot];
+        public Vector3 TipPosition(int slot) => _chains[slot].Tip;
 
         private void Awake()
         {
@@ -31,7 +52,9 @@ namespace TentacleVania.Weapons
             var width = new AnimationCurve(new Keyframe(0f, _rootWidth), new Keyframe(1f, _tipWidth));
             for (var slot = 0; slot < WeaponController.Slots; slot++)
             {
-                _joints[slot] = new Vector3[Joints];
+                _chains[slot] = new SpringChain(Joints);
+                _chains[slot].Collapse(Root(slot));
+                _retractStarted[slot] = float.NegativeInfinity;
                 var line = new GameObject($"WeaponTentacle {slot + 1}").AddComponent<LineRenderer>();
                 line.transform.SetParent(transform, false);
                 line.useWorldSpace = true;
@@ -51,24 +74,63 @@ namespace TentacleVania.Weapons
 
         private void LateUpdate()
         {
+            var dt = Time.deltaTime;
+            var now = Time.time;
             for (var slot = 0; slot < WeaponController.Slots; slot++)
             {
-                var line = _lines[slot];
-                var active = IsActive(slot);
-                line.enabled = active && Chains.ShowPlaceholderLines;
-                if (!active)
-                    continue;
                 var root = Root(slot);
-                var move = _controller.ActiveMove;
-                var origin = transform.position + Vector3.up * move.Height;
-                var tip = MoveShapes.Tip(origin, _controller.ActiveForward, move, _controller.ActiveElapsed);
-                var joints = _joints[slot];
-                var bone = Mathf.Max(Vector3.Distance(root, tip), 0.2f) * 1.08f / (Joints - 1);
-                bone = Mathf.Min(bone, _length / (Joints - 1));
-                ChainSolver.SeedArch(joints, root, tip, Vector3.up, _archHeight);
-                ChainSolver.Solve(joints, bone, root, tip, Vector3.up, 4);
-                line.SetPositions(joints);
+                var chain = _chains[slot];
+                Vector3 tip;
+                if (IsActive(slot))
+                {
+                    if (!_shown[slot])
+                        chain.Collapse(root);
+                    _shown[slot] = true;
+                    _retractStarted[slot] = float.NegativeInfinity;
+                    tip = ActiveTip(root);
+                }
+                else if (_shown[slot])
+                {
+                    if (float.IsNegativeInfinity(_retractStarted[slot]))
+                    {
+                        _retractStarted[slot] = now;
+                        _retractFrom[slot] = chain.Tip;
+                    }
+                    var t = (now - _retractStarted[slot]) / _retractTime;
+                    if (t >= 1f)
+                    {
+                        _shown[slot] = false;
+                        chain.Collapse(root);
+                        _lines[slot].enabled = false;
+                        continue;
+                    }
+                    tip = Vector3.Lerp(_retractFrom[slot], root, t * t);
+                }
+                else
+                {
+                    _lines[slot].enabled = false;
+                    continue;
+                }
+
+                var bone = Mathf.Clamp(Vector3.Distance(root, tip) * Slack / (Joints - 1), MinBone, _length / (Joints - 1));
+                ChainSolver.SeedArch(_pose, root, tip, Vector3.up, _archHeight);
+                chain.Step(_spring, dt, _pose, bone, true);
+                _lines[slot].SetPositions(chain.Positions);
+                _lines[slot].enabled = Chains.ShowPlaceholderLines;
             }
+        }
+
+        private Vector3 ActiveTip(Vector3 root)
+        {
+            var move = _controller.ActiveMove;
+            var elapsed = _controller.ActiveElapsed;
+            var origin = transform.position + Vector3.up * move.Height;
+            var tip = MoveShapes.Tip(origin, _controller.ActiveForward, move, elapsed);
+            if (_controller.Phase != MovePhase.WindUp)
+                return tip;
+            var grow = Mathf.Clamp01(elapsed / Mathf.Min(_emergeTime, move.WindUp));
+            grow = grow * grow * (3f - 2f * grow);
+            return Vector3.Lerp(root, tip, grow);
         }
 
         public int ChainOrder => 10;
@@ -76,8 +138,8 @@ namespace TentacleVania.Weapons
 
         public void WriteChain(int chain, Span<Vector4> joints)
         {
-            if (IsActive(chain))
-                Chains.Write(joints, _joints[chain], _rootWidth, _tipWidth);
+            if (_shown[chain])
+                Chains.Write(joints, _chains[chain].Positions, _rootWidth, _tipWidth);
             else
                 Chains.Collapse(joints, Root(chain));
         }

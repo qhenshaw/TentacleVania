@@ -25,7 +25,7 @@ The creature's weapons (`TentacleVania.Weapons`), following Core Mechanics & Con
 - While attacking or charging the creature steers at 40% speed (developer decision: slowed, free steering, no lunges on normal moves). Dash is locked during wind-up and strike; a dash in recovery cancels the move without resetting the combo.
 - Soft-lock (developer decision): at attack start the move aims at the best enemy (distance × angle score) within 6 m and a 90° cone around the facing, or a 30° cone around active aim (mouse, or right stick past the deadzone). The creature snaps to that direction and keeps it for the move.
 - Each target is hit once per move. Hits go through the Combat pipeline with `Team.Creature`, the creature's `Health` as attacker, and `Finisher`, `Heavy` or `DashAttack` flags.
-- `WeaponTentacleView` draws a placeholder tentacle per weapon side following `MoveShapes.Tip` until the spring-chain tentacle task replaces it. Enemies flash white for 0.08 s when hit (`TelegraphGlow.Flash`).
+- `WeaponTentacleView` runs a `SpringChain` per weapon side: the tentacle grows out of the body over the first `_emergeTime` of the wind-up, its tip is pinned to `MoveShapes.Tip` (so the hit casts, which use the same shape, always match the CPU-side tip) while the middle springs behind for whip overlap, and it pulls back into the body over `_retractTime` after the move. Enemies flash white for 0.08 s when hit (`TelegraphGlow.Flash`).
 
 ## Testing in play
 
