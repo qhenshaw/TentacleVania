@@ -102,6 +102,9 @@ GameObject:
   - component: {fileID: 3654733349945265937}
   - component: {fileID: 8252016009454080188}
   - component: {fileID: 8169341575981907583}
+  - component: {fileID: 8914341881527922285}
+  - component: {fileID: 891536980734917587}
+  - component: {fileID: 6592408752216720721}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Untagged
@@ -179,6 +182,48 @@ MonoBehaviour:
   _settings: {fileID: 11400000, guid: 76bdb5de4f2888f488841931aa23382b, type: 2}
   _legMaterial: {fileID: 2100000, guid: a9bcfb79f0251af49b5eb4a0b9219e7c, type: 2}
   _motor: {fileID: 8252016009454080188}
+--- !u!114 &8914341881527922285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c8855cafabc494bbd85259c8f0ab7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Health
+  _team: 0
+  _maxHealth: 100
+  _maxArmor: 0
+--- !u!114 &891536980734917587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b7e3a9b8840da4eb1d4bf7add79b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Hurtbox
+  _collider: {fileID: 3654733349945265937}
+  _health: {fileID: 8914341881527922285}
+--- !u!114 &6592408752216720721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a40576f2707ddf44cb889c58d27f4ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.CreatureVitals
+  _restartDelay: 1.5
 --- !u!1 &7952250992877002194
 GameObject:
   m_ObjectHideFlags: 0
