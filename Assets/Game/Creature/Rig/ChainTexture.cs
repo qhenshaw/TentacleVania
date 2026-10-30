@@ -13,18 +13,26 @@ namespace TentacleVania.Creature.Rig
         private static readonly int ChainLength = Shader.PropertyToID("ChainLength");
 
         [SerializeField] private VisualEffect _effect;
+        [SerializeField] private MonoBehaviour[] _sources;
 
-        private readonly List<IChainSource> _sources = new(4);
+        private readonly List<IChainSource> _chainSources = new(4);
+        private readonly List<ChainTexture> _textures = new(2);
 
         private Texture2D _texture;
 
+        public VisualEffect Effect => _effect;
         public Texture2D Texture => _texture;
         public int Count { get; private set; }
 
+        private int Requested => Chains.CountChains(_chainSources);
+
         private void Awake()
         {
-            GetComponents(_sources);
-            _sources.Sort((a, b) => a.ChainOrder.CompareTo(b.ChainOrder));
+            foreach (var source in _sources)
+                if (source is IChainSource chainSource)
+                    _chainSources.Add(chainSource);
+            _chainSources.Sort((a, b) => a.ChainOrder.CompareTo(b.ChainOrder));
+            GetComponents(_textures);
             if (TryGetComponent<CharacterMaterials>(out var materials))
                 materials.Register(_effect);
         }
@@ -37,13 +45,25 @@ namespace TentacleVania.Creature.Rig
 
         private void LateUpdate()
         {
-            var count = Mathf.Min(Chains.CountChains(_sources), CreatureRigSettings.MaxChains);
+            var count = Mathf.Min(Requested, Budget());
             if (_texture == null || count != Count)
                 Rebuild(count);
             if (count == 0)
                 return;
-            Chains.Pack(_sources, _texture.GetPixelData<Vector4>(0).AsSpan(), count);
+            Chains.Pack(_chainSources, _texture.GetPixelData<Vector4>(0).AsSpan(), count);
             _texture.Apply(false);
+        }
+
+        private int Budget()
+        {
+            var budget = CreatureRigSettings.MaxChains;
+            foreach (var texture in _textures)
+            {
+                if (texture == this)
+                    break;
+                budget -= texture.Requested;
+            }
+            return Mathf.Max(0, budget);
         }
 
         private void Rebuild(int count)
