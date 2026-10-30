@@ -51,5 +51,12 @@ MonoBehaviour:
     Damping: 0.2
     Gravity: 3
     Iterations: 8
+  _dashStretch: 3
+  _dashRise: 0.04
+  _dashRecoverFrequency: 2.5
+  _dashRecoverDamping: 0.5
+  _dashThinning: 0.5
+  _dashFan: 5
+  _dashTrailHeight: 0.15
   _rootWidth: 0.1
   _tipWidth: 0.025
