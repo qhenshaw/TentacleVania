@@ -105,3 +105,6 @@ MonoBehaviour:
     SectorAngle: 360
     Height: 0.5
     LungeDistance: 3
+  _tipMesh: {fileID: 4125249595161415065, guid: 1a872e41093d54544b22a8b3ea6f9de9, type: 3}
+  _tipScale: 1.5
+  _tipOverlap: 0.1

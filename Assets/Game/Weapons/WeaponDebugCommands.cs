@@ -13,6 +13,7 @@ namespace TentacleVania.Weapons
         {
             DebugMenu.Value(Tab, "Weapon 1 (X / LMB)", () => WeaponName(0));
             DebugMenu.Value(Tab, "Weapon 2 (Y / RMB)", () => WeaponName(1));
+            DebugMenu.Toggle(Tab, "Weapon tip meshes", () => WeaponTentacleView.ShowTipMeshes, v => WeaponTentacleView.ShowTipMeshes = v);
             DebugMenu.Value(Tab, "Next combo step", () =>
             {
                 var weapons = Controller;
