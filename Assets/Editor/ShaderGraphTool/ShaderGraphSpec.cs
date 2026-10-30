@@ -15,6 +15,8 @@ namespace TentacleVania.Editor.ShaderGraphTool
         public string renderFace = "Front";
         public bool transparent;
         public string depthTest;
+        public bool vfx;
+        public bool normalTS;
         public List<string> keywords = new();
         public List<PropertySpec> properties = new();
 
