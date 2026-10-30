@@ -61,6 +61,78 @@ MonoBehaviour:
     Offset: {x: 0, y: 0.22, z: 0}
     Rotation: 90
     RandomYaw: 0
+  - Prefab: {fileID: 100000, guid: ea7e66e3b909bf441ad0316cfa8a871f, type: 3}
+    Zones: 1
+    Category: 1
+    Radius: 1.05
+    Weight: 0.7
+    Offset: {x: 0, y: 0.22, z: -0.7}
+    Rotation: 90
+    RandomYaw: 0
+  - Prefab: {fileID: 100000, guid: 4f1a4a05c015e98449990f69df6e3657, type: 3}
+    Zones: 1
+    Category: 0
+    Radius: 0.33
+    Weight: 0.5
+    Offset: {x: 0, y: 0.33, z: 0}
+    Rotation: 90
+    RandomYaw: 0
+  - Prefab: {fileID: 100000, guid: af793da024455e74f92ff686e742896c, type: 3}
+    Zones: 3
+    Category: 0
+    Radius: 0.31
+    Weight: 0.5
+    Offset: {x: 0, y: 0.22, z: 0}
+    Rotation: 0
+    RandomYaw: 0
+  - Prefab: {fileID: 100000, guid: 2a5feef78a43d004b9c83939448c437f, type: 3}
+    Zones: 4
+    Category: 0
+    Radius: 1
+    Weight: 0.7
+    Offset: {x: 0, y: 0.01, z: 0}
+    Rotation: 0
+    RandomYaw: 0
+  - Prefab: {fileID: 100000, guid: c432bf6cf79e2d84ab9ed6e6c682c31f, type: 3}
+    Zones: 4
+    Category: 0
+    Radius: 1
+    Weight: 0.7
+    Offset: {x: 0, y: 0.01, z: 0}
+    Rotation: 0
+    RandomYaw: 0
+  - Prefab: {fileID: 100000, guid: 889ca8c6757c75048811938aed6b6216, type: 3}
+    Zones: 9
+    Category: 0
+    Radius: 0.5
+    Weight: 0.6
+    Offset: {x: 0, y: 0.04, z: 0}
+    Rotation: 90
+    RandomYaw: 0
+  - Prefab: {fileID: 100000, guid: 7b14b4ecba972654da676f129cafe27f, type: 3}
+    Zones: 4
+    Category: 2
+    Radius: 1.1
+    Weight: 0.5
+    Offset: {x: 0, y: 0, z: 0}
+    Rotation: 0
+    RandomYaw: 1
+  - Prefab: {fileID: 100000, guid: ceae5735c1bbe96468aaa861ef0b1835, type: 3}
+    Zones: 1
+    Category: 0
+    Radius: 0.3
+    Weight: 0.6
+    Offset: {x: 0, y: 1.5, z: -0.4}
+    Rotation: 90
+    RandomYaw: 0
+  - Prefab: {fileID: 100000, guid: 1b8998aa46a1cb843bdf38c38036cedf, type: 3}
+    Zones: 4
+    Category: 2
+    Radius: 0.9
+    Weight: 0.4
+    Offset: {x: 0, y: 0, z: 0}
+    Rotation: 0
+    RandomYaw: 0
   _zones:
   - Zone: 1
     Density: 0.35

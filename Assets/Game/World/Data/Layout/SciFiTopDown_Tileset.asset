@@ -39,6 +39,42 @@ MonoBehaviour:
       Rotation: 0
       Scale: {x: 1, y: 1, z: 1}
       RandomQuarterTurns: 0
+    - Prefab: {fileID: 100000, guid: ab88d9e47c579ef4fb6e3e0e48506be5, type: 3}
+      Weight: 0.5
+      Offset: {x: 1.5, y: 0, z: -1.5}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
+    - Prefab: {fileID: 100000, guid: 0b60de7b985925e4b9d16aac8f2bbff2, type: 3}
+      Weight: 0.5
+      Offset: {x: 1.5, y: 0, z: -1.5}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
+    - Prefab: {fileID: 100000, guid: 01cfafe4c40e29249b9c21a45bf9eee0, type: 3}
+      Weight: 0.5
+      Offset: {x: 1.5, y: 0, z: -1.5}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
+    - Prefab: {fileID: 100000, guid: 96b3537687fb7e64a8a1211316f3e6b6, type: 3}
+      Weight: 0.5
+      Offset: {x: 1.5, y: 0, z: -1.5}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
+    - Prefab: {fileID: 100000, guid: 29074a125fc229f4985ae8fb660a7d08, type: 3}
+      Weight: 0.25
+      Offset: {x: -1.5, y: 0, z: 1.5}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
+    - Prefab: {fileID: 100000, guid: 537d6970fc681a34dae909f1725f86d6, type: 3}
+      Weight: 0.25
+      Offset: {x: -1.5, y: 0, z: 1.5}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
   _wallLayers:
   - Name: Walls
     Straight:
@@ -61,9 +97,99 @@ MonoBehaviour:
         Rotation: 90
         Scale: {x: 1, y: 1, z: 1}
         RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 222f2ccb827e4284dbe8f5fc06b6e513, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 2acb838ca2b95ca469319f70bfd33fea, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: e3ff16eea5481d34ea1ca4a5f47950cf, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 415d25955b4cea9479c910be5a5726a1, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 17da34096994ead48b3c3680fa6232e8, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 90aa1f2598a6da74f98b234e53d62575, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 8d5e473d8e2a7734bbef3171e08441d5, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 6523021f11cbc2847888905785180d25, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 4fe0c9770e6b8bb4e9a269d56a8bacbf, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 8ea77ab3cb7ec694cac1d948abb945ac, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: d5106b79c889ddf4fafdd8f5a1d6315f, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 6389f797b8d48264c8e2933799708d4f, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 20d95cbe96583224c90e68fe79b33364, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 048e05016a713bd40bc6e98c43500c43, type: 3}
+        Weight: 0.5
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
     Corner:
       Entries:
       - Prefab: {fileID: 100000, guid: 70af33a92cb9e664383b94ffad72a16c, type: 3}
+        Weight: 1
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: d60ff7f1b64192d4899eef3ad890880e, type: 3}
         Weight: 1
         Offset: {x: -1.5, y: 0, z: -1.5}
         Rotation: 90
@@ -89,6 +215,12 @@ MonoBehaviour:
         Rotation: 90
         Scale: {x: 1, y: 1, z: 1}
         RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: ff69176ccdf4bf24da3f8a2953b7ec36, type: 3}
+        Weight: 1
+        Offset: {x: 0, y: 0, z: 1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
     Corner:
       Entries: []
     ConvexPost:
@@ -109,14 +241,26 @@ MonoBehaviour:
         Rotation: 225
         Scale: {x: 1, y: 1, z: 1}
         RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 712854ead6bdf574c966d04212a74138, type: 3}
+        Weight: 1
+        Offset: {x: 1.07, y: 0, z: 1.07}
+        Rotation: 225
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
     ConcavePost:
       Entries: []
     Static: 1
   _door:
     Entries:
-    - Prefab: {fileID: 100000, guid: 06afbc7809b5c0c4c9335f17a94ce7ee, type: 3}
+    - Prefab: {fileID: 683564487231196685, guid: a92e766ae8bc50f4f83f32dea7474f7f, type: 3}
       Weight: 1
-      Offset: {x: -1.42, y: 0, z: 1}
+      Offset: {x: 0, y: 0, z: 1.07}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
+    - Prefab: {fileID: 7683423069527007708, guid: 59f5e06cd8a5d244a8e4113d2e65a381, type: 3}
+      Weight: 1
+      Offset: {x: 0, y: 0, z: 1.07}
       Rotation: 0
       Scale: {x: 1, y: 1, z: 1}
       RandomQuarterTurns: 0
