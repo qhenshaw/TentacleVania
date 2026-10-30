@@ -106,5 +106,5 @@ MonoBehaviour:
     Height: 0.5
     LungeDistance: 3.5
   _tipMesh: {fileID: 8630591676576657770, guid: f4b37c1e9112ddb4ba319cd9a9f14113, type: 3}
-  _tipScale: 1.5
-  _tipOverlap: 0.1
+  _tipScale: 1
+  _tipOverlap: 0.5
