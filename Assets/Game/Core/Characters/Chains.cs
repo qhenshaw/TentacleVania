@@ -15,10 +15,10 @@ namespace TentacleVania.Core.Characters
     {
         public const int Joints = 6;
 
-        public static bool ShowPlaceholderLines { get; set; } = true;
+        public static bool ShowPlaceholderLines { get; set; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetState() => ShowPlaceholderLines = true;
+        private static void ResetState() => ShowPlaceholderLines = false;
 
         public static int CountChains(IReadOnlyList<IChainSource> sources)
         {
