@@ -32,6 +32,7 @@ while (( $# )); do
     shift
 done
 [[ -z "$out" ]] && out="Temp/Captures/play-$(date +%Y%m%d-%H%M%S).png"
+mkdir -p Temp/Captures
 
 if [[ "$(eval_result 'return UnityEditor.EditorApplication.isPlaying;' 2>/dev/null)" == true ]]; then
     echo "Unity is already in play mode; stop it first."
@@ -56,7 +57,9 @@ while (( SECONDS - start < limit )); do
     fi
     while (( next < ${#steps[@]} )) && (( ${frame:--1} >= ${steps[next]} )); do
         file=${steps[next+1]}
-        result=$("${Unity[@]}" eval_file --file "$(cygpath -m "$file")" 2>&1)
+        wrapped="Temp/Captures/at-$(basename "$file")"
+        { echo 'try {'; cat "$file"; echo; echo '} catch (System.Exception e) { return "EXCEPTION " + e.GetType().Name + ": " + e.Message + " | " + e.StackTrace; }'; } > "$wrapped"
+        result=$("${Unity[@]}" eval_file --file "$(cygpath -m "$wrapped")" 2>&1)
         value="$(json_string result <<<"$result")$(json_number result <<<"$result")"
         [[ -z "$value" ]] && value="ERROR $(json_string message <<<"$result")"
         echo "Frame $frame $(basename "$file"): $value"
