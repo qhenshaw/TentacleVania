@@ -8,7 +8,9 @@ namespace TentacleVania.Enemies.Types
         [SerializeField, Min(0f)] private float _fleeDistance = 6f;
         [SerializeField, Min(0f)] private float _corneredDistance = 1.2f;
 
-        public bool IsCowering { get; private set; }
+        private bool _cowering;
+
+        public override bool IsCowering => _cowering;
 
         protected override Vector3 ChaseDestination(Vector3 targetPosition)
         {
@@ -17,7 +19,7 @@ namespace TentacleVania.Enemies.Types
             var distance = away.magnitude;
             if (distance > _panicRange)
             {
-                IsCowering = false;
+                _cowering = false;
                 return Position;
             }
 
@@ -29,11 +31,11 @@ namespace TentacleVania.Enemies.Types
                 if (TrySampleNavMesh(candidate, 1.5f, out var flee) && (flee - Position).sqrMagnitude > _corneredDistance * _corneredDistance
                     && (flee - targetPosition).sqrMagnitude > (Position - targetPosition).sqrMagnitude)
                 {
-                    IsCowering = false;
+                    _cowering = false;
                     return flee;
                 }
             }
-            IsCowering = true;
+            _cowering = true;
             return Position;
         }
 

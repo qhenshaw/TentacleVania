@@ -18,6 +18,7 @@ MonoBehaviour:
   _maxStagger: 50
   _staggerStun: 2
   _staggerDamageTaken: 1.5
+  _feedableDamageTaken: 0.5
   _moveSpeed: 4.8
   _turnSpeed: 540
   _spawnDelay: 0.5
@@ -26,6 +27,7 @@ MonoBehaviour:
   - Name: Heavy stun
     Kind: 0
     Telegraph: 1
+    Animation: 0
     WindUp: 1.1
     Active: 0.2
     Recovery: 0.9
@@ -49,6 +51,7 @@ MonoBehaviour:
   - Name: Shock poke
     Kind: 0
     Telegraph: 0
+    Animation: 1
     WindUp: 0.4
     Active: 0.12
     Recovery: 0.45

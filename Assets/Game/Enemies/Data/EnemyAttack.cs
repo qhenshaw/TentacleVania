@@ -17,6 +17,14 @@ namespace TentacleVania.Enemies.Data
         Undodgeable,
     }
 
+    public enum AttackAnimation
+    {
+        Swing,
+        Punch,
+        Kick,
+        Shoot,
+    }
+
     public enum AttackTokenKind
     {
         Melee,
@@ -29,6 +37,8 @@ namespace TentacleVania.Enemies.Data
         public string Name = "Attack";
         public AttackKind Kind;
         public Telegraph Telegraph;
+        [Tooltip("Body animation; its hit frame is timed to land when the attack goes active.")]
+        public AttackAnimation Animation;
 
         [Header("Timing (s)")]
         [Min(0f)] public float WindUp = 0.6f;
