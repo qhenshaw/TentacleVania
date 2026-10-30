@@ -127,12 +127,13 @@ Each area has its own assembly definition, `TentacleVania.<Area>`, and the match
 
 | Area | Folder |
 | --- | --- |
-| Core | `Assets/Game/Core/` (input, versioning, diagnostics) |
+| Core | `Assets/Game/Core/` (input, scene flow, versioning, diagnostics) |
 | Creature | `Assets/Game/Creature/` (player creature: movement, dash, procedural rig) |
 | Camera | `Assets/Game/Camera/` (Cinemachine gameplay camera, room bounds) |
 | Combat | `Assets/Game/Combat/` (health, typed damage pipeline, modifiers, hurtboxes) |
 | Enemies | `Assets/Game/Enemies/` (enemy state machine, attacks, telegraphs, NavMesh, tokens) |
-| UI | `Assets/Game/UI/` (UI Toolkit runtime UI, F5 debug menu) |
+| Localization | `Assets/Game/Localization/` (Localization settings, locales, string tables; no code) |
+| UI | `Assets/Game/UI/` (UI Toolkit runtime UI, main menu, F5 debug menu) |
 | Weapons | `Assets/Game/Weapons/` (weapon data, shared combo, charged heavy, dash attack, soft-lock) |
 | World | `Assets/Game/World/` (rooms, arena doors, lock-in encounters and waves) |
 
@@ -140,12 +141,12 @@ Create other areas as their first task needs them, named after the Tasks `Area` 
 
 ### Scenes
 
-A small `Bootstrap` scene is the entry point: it creates the persistent managers and additively loads the main menu (then the gameplay scenes). It's first in the build list. The game always launches from the main menu: the editor's Play button starts from `Bootstrap` whatever scene is open (`Assets/Editor/PlayFromMainMenu` sets `EditorSceneManager.playModeStartScene`). The play-check tools set `PlayFromMainMenu.Bypass` while they run, so they still play the open scene: to check gameplay, open `CombatArena` and use them; to check the full flow, open `Bootstrap`. Scenes live in `Assets/Game/Scenes/`. Add each scene to this table.
+A small `Bootstrap` scene is the entry point: it holds the persistent managers (the `GameBootstrap` prefab) and stays loaded while `Core.Scenes.SceneFlow` swaps the menu and gameplay scenes additively. Load and reload scenes through `SceneFlow.Load` / `Reload`, never `SceneManager.LoadScene`, which would unload `Bootstrap`; when `Bootstrap` isn't loaded (play-check tools on an open scene) it falls back to a single-scene load. It's first in the build list. The game always launches from the main menu: the editor's Play button starts from `Bootstrap` whatever scene is open (`Assets/Editor/PlayFromMainMenu` sets `EditorSceneManager.playModeStartScene`). The play-check tools set `PlayFromMainMenu.Bypass` while they run, so they still play the open scene: to check gameplay, open `CombatArena` and use them; to check the full flow, open `Bootstrap`. Scenes live in `Assets/Game/Scenes/`. Add each scene to this table.
 
 | Scene | Purpose |
 | --- | --- |
-| `Bootstrap` | Entry point; creates the persistent managers and additively loads `MainMenu` |
-| `MainMenu` | Title screen; in Build Settings |
+| `Bootstrap` | Entry point; `GameBootstrap` loads `MainMenu` additively |
+| `MainMenu` | Placeholder title screen (`UI/Menu`); Play loads `CombatArena` |
 | `CombatArena` | Greybox lock-in arena with four enemy waves (the Combat Prototype test scene; the creature starts in the south corridor and walking in starts it); the play-check tools open it |
 
 ## Code style
@@ -212,7 +213,7 @@ Use the scripts in `Tools/`, and add new ones for tasks that repeat often. Proje
 - `Tools/UnityCheck/unity-build-upload.sh <label> [--release] [--zip-only]` (run by `unity-build.sh` after every successful build unless it gets `--no-upload`) zips `Builds/<label>/` (without the DoNotShip folders and smoke files) into `Builds/TentacleVania-v0.<commits>[-release].zip`, named from the `version.txt` the build writes (`Assets/Editor/GameVersionBuild`, `Core/GameVersion`), and uploads it to the developer's My Drive `BUILD_UPLOAD_FOLDER` (`Tools/project.sh`): through Google Drive for Desktop when it has a drive mounted (`<letter>:/My Drive`, or `BUILD_DRIVE_DIR`), else `rclone` with a remote named `gdrive` (`BUILD_RCLONE_REMOTE`). Exit 2 means neither is set up; a failed upload doesn't fail the build. The claude.ai Google Drive connector can't carry a build: it takes file content inline as base64.
 - `Tools/UnityCheck/unity-build-benchmark.sh <label> [seconds]` runs a build with `-benchmark <seconds> <report>` (the runtime benchmark component isn't built yet: it should set up a repeatable worst-case scene, such as the creature at its largest size stage in `CombatArena` with a full enemy wave, then warm up for 15 s) and prints its report: frame-time average and percentiles, frames over 16.6 ms and, in development builds, GC allocations. Desktop numbers don't stand in for the Deck; the developer runs it there with the Steam launch options `-benchmark 60` (the report is `benchmark.txt` in the save folder). `unity-build.sh` takes `--release` anywhere in its arguments.
 - `Tools/UnityCheck/unity-gc-profile.sh [frames]` plays the open scene (`CombatArena`) under the worst-case load set up in `evals/gc-profile-start.cs` with the Profiler on and prints the GC.Alloc samples of ~120 frames grouped by calling markers; run it after gameplay changes to keep allocations at zero (the eval files live in `Tools/UnityCheck/evals/`).
-- `Tools/UnityCheck/unity-regression.sh [content|flow|all]` is the release-candidate sweep: `CombatArena` once per content asset (not configured yet: fill in the setup, report and content hooks in the script once there are weapon or enemy assets to sweep), then `Bootstrap` through the main menu into gameplay; PASS or FAIL per case with the console errors logged. `unity-play-capture.sh` waits up to frames/30 + 120 s, so long runs (use `Time.timeScale = 2` in the setup to halve them) don't time out. Don't edit C# while it runs: the recompile drops the editor connection and fails the remaining cases. Stopping its background task leaves the script's own bash loop running and re-entering play mode; kill it (`ps -ef | grep unity-regression`).
+- `Tools/UnityCheck/unity-regression.sh [content|flow|all]` is the release-candidate sweep: `CombatArena` once per content asset (not configured yet, so it skips that part: fill in the setup, report and content hooks in the script once there are weapon or enemy assets to sweep), then `Bootstrap` through the main menu into gameplay; PASS or FAIL per case with the console errors logged. `unity-play-capture.sh` waits up to frames/30 + 120 s, so long runs (use `Time.timeScale = 2` in the setup to halve them) don't time out. Don't edit C# while it runs: the recompile drops the editor connection and fails the remaining cases. Stopping its background task leaves the script's own bash loop running and re-entering play mode; kill it (`ps -ef | grep unity-regression`).
 - `Tools/UnityCheck/unity-asset-download.sh <productId>...` downloads purchased Asset Store packs through the open editor (the unity CLI has no download command) into its cache, `C:/Users/qhens/AppData/Roaming/Unity/Asset Store-5.x/<publisher>/...`. `python -I Tools/unitypackage-extract.py <package> --list|--strip <prefix> --dest <Assets/...>|--raw <dir> <regex>...` copies only the matching assets (with their .meta files, so GUIDs match) out of a .unitypackage: purchased packs are often several GB, so import just what the game uses into `Assets/ThirdParty/<Pack>/` and put downscaled texture copies in `Assets/Game/` rather than the 4K originals.
 - `Tools/UnityCheck/unity-window-capture.sh <WindowTypeName> [out.png]` saves an open editor window from its own backbuffer. Never capture with `ReadScreenPixel`: it reads the desktop, not the editor.
 - `Tools/worktree-add.sh <name>` creates the agent worktree `../TentacleVania-<name>` at the latest `origin/main` and opens it in its own Unity Editor (see [Parallel agents](#parallel-agents)).

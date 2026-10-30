@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="MainMenu.uss" />
+    <ui:VisualElement name="main-menu" class="main-menu">
+        <ui:Label name="title" class="main-menu__title" />
+        <ui:VisualElement class="main-menu__buttons">
+            <ui:Button name="play" class="main-menu__button" />
+            <ui:Button name="quit" class="main-menu__button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

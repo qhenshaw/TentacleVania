@@ -2,6 +2,11 @@
 
 Runtime UI (`TentacleVania.UI`), all UI Toolkit.
 
+## Main menu
+
+- `Menu/MainMenu.prefab` (in the `MainMenu` scene) is a `UIDocument` on `MainMenuPanelSettings` (1920×1080 scale-with-screen) with `MainMenuScreen`, which binds the UXML's named elements to `UI` string table keys (`menu.title`, `menu.play`, `menu.quit`) through `LocalizedString.StringChanged`, focuses Play for gamepad navigation, and loads `SceneFlow.FirstGameplay` on Play. From an eval: `TentacleVania.UI.Menu.MainMenuScreen.Instance.Play()`.
+- Player-facing text comes from string tables (`Assets/Game/Localization/`); set a key in UXML by name and bind it in code, never write the text in UXML or C#. Debug menu labels are exempt.
+
 ## Debug menu
 
 - F5 toggles it in the editor and development builds (`Debug.isDebugBuild`); release builds never create it. `DebugMenuHost` is created after the first scene loads (`DontDestroyOnLoad`) from `Debug/Resources/DebugMenu/` (`DebugPanelSettings`, `DebugTheme.tss`, `DebugMenu.uss`) and builds its tabs in code. While it's open, `GameplayInput` is disabled so clicks don't attack; the game keeps running (use the Game tab's time scale to slow or freeze it).
