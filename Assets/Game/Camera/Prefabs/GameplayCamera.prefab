@@ -110,10 +110,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3214965072083720520}
   - component: {fileID: 8617958167998596347}
-  - component: {fileID: 9126987330434848986}
+  - component: {fileID: 1686539189431566761}
+  - component: {fileID: 355160948446101892}
   - component: {fileID: 8805302993752586122}
-  - component: {fileID: 2900664777144954725}
   - component: {fileID: 8730364389170067104}
+  - component: {fileID: 2900664777144954725}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -129,7 +130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755327794200303747}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 13.856406, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -179,7 +180,7 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &9126987330434848986
+--- !u!114 &1686539189431566761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,16 +189,62 @@ MonoBehaviour:
   m_GameObject: {fileID: 1755327794200303747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b617507da6d07e749b7efdb34e1173e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
-  TrackerSettings:
-    BindingMode: 4
-    PositionDamping: {x: 0.15, y: 0.15, z: 0.15}
-    AngularDampingMode: 0
-    RotationDamping: {x: 1, y: 1, z: 1}
-    QuaternionDamping: 1
-  FollowOffset: {x: -0, y: 18, z: -10.5}
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePositionComposer
+  CameraDistance: 18
+  DeadZoneDepth: 0
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 0
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
+      Enabled: 0
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Damping: {x: 1, y: 1, z: 1}
+  Lookahead:
+    Enabled: 1
+    Time: 0.2
+    Smoothing: 4
+    IgnoreY: 1
+--- !u!114 &355160948446101892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755327794200303747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d54399b04b4fa48a73e121d4937dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePanTilt
+  ReferenceFrame: 0
+  RecenterTarget: 0
+  PanAxis:
+    Value: 0
+    Center: 0
+    Range: {x: -180, y: 180}
+    Wrap: 1
+    Recentering:
+      Enabled: 0
+      Wait: 1
+      Time: 2
+    Restrictions: 0
+  TiltAxis:
+    Value: 60
+    Center: 0
+    Range: {x: -70, y: 70}
+    Wrap: 0
+    Recentering:
+      Enabled: 0
+      Wait: 1
+      Time: 2
+    Restrictions: 0
 --- !u!114 &8805302993752586122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,18 +269,6 @@ MonoBehaviour:
     FrequencyGain: 1
     Duration: 1
     m_NoiseOffsets: {x: 429.59518, y: -981.5924, z: 343.35776}
---- !u!114 &2900664777144954725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755327794200303747}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81e49e09413cf2049a68fe3c75d6473e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TentacleVania.Camera::TentacleVania.Camera.ConfineToRoom
 --- !u!114 &8730364389170067104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +283,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Camera::TentacleVania.Camera.GameplayCameraRig
   _camera: {fileID: 8617958167998596347}
   _impulses: {fileID: 8805302993752586122}
+--- !u!114 &2900664777144954725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755327794200303747}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e49e09413cf2049a68fe3c75d6473e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Camera::TentacleVania.Camera.ConfineToRoom
 --- !u!1 &8077983173422987441
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,8 +306,8 @@ GameObject:
   - component: {fileID: 1019102793511058728}
   - component: {fileID: 8826582195755994739}
   - component: {fileID: 5510292760897627720}
-  - component: {fileID: 3841266992336018038}
   - component: {fileID: 5339145150068104404}
+  - component: {fileID: 8300268565601853471}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -276,7 +323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8077983173422987441}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
+  m_LocalRotation: {x: 0.57357645, y: -0, z: -0, w: 0.81915206}
   m_LocalPosition: {x: 0, y: 13.856406, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -378,14 +425,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0.3
   m_Version: 2
---- !u!81 &3841266992336018038
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8077983173422987441}
-  m_Enabled: 1
 --- !u!114 &5339145150068104404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,3 +457,17 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &8300268565601853471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077983173422987441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
