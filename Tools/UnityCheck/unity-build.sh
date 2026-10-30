@@ -32,6 +32,16 @@ timeout="${positional[1]:-1800}"
 output="Builds/$label/$PROJECT_NAME.exe"
 
 wait_idle 180 || exit 2
+# files the build regenerates (URP variant prefiltering, preloaded assets, FMOD banks and Addressables output): restore
+# the tracked ones that were clean and remove the untracked ones that didn't exist before, so the tree stays clean
+generated=(Assets/Settings/PC_RPAsset.asset Assets/Settings/Mobile_RPAsset.asset Assets/Settings/UniversalRenderPipelineGlobalSettings.asset ProjectSettings/GraphicsSettings.asset)
+clean=()
+for path in "${generated[@]}"; do git diff --quiet HEAD -- "$path" 2>/dev/null && clean+=("$path"); done
+created=(Assets/StreamingAssets Assets/StreamingAssets.meta Assets/AddressableAssetsData/link.xml Assets/AddressableAssetsData/link.xml.meta Assets/AddressableAssetsData/Windows Assets/AddressableAssetsData/Windows.meta Assets/AddressableAssetsData/ProfileDataSourceSettings.asset Assets/AddressableAssetsData/ProfileDataSourceSettings.asset.meta)
+absent=()
+for path in "${created[@]}"; do [[ -e "$path" ]] || absent+=("$path"); done
+# Addressables asks once per user, in a modal dialog, whether to turn on its build report; unanswered, it blocks the build
+eval_result 'var p = typeof(UnityEditor.AddressableAssets.Settings.ProjectConfigData).GetProperty("UserHasBeenInformedAboutBuildReportSettingPreBuild", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic); if (p != null) p.SetValue(null, true); return p != null;' >/dev/null || true
 mkdir -p "Builds/$label"
 queued=$("${Unity[@]}" build run --target StandaloneWindows64 --outputPath "$output" --options "$options" --confirm true 2>&1)
 if ! grep -q '"success": true\|queued\|building' <<<"$queued"; then
@@ -59,6 +69,8 @@ settings=ProjectSettings/ProjectSettings.asset
 if git diff --quiet HEAD -- "$settings" 2>/dev/null; then :; elif ! git diff -U0 HEAD -- "$settings" | grep '^[-+] ' | grep -qv 'preloadedAssets\|{fileID: .*guid: .*type: 3}'; then
     git checkout -q HEAD -- "$settings"
 fi
+(( ${#clean[@]} )) && git checkout -q HEAD -- "${clean[@]}" 2>/dev/null
+for path in "${absent[@]}"; do rm -rf "$path"; done
 errors=$(awk '/"errors": \[/,/\]/' <<<"$status" | sed -n 's/^ *"\(.*\)",\{0,1\}$/\1/p' | head -20)
 if [[ "$result" != Succeeded ]]; then
     [[ -n "$errors" ]] && { echo "Errors:"; sed 's/^/  /' <<<"$errors"; }
