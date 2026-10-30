@@ -94,7 +94,7 @@ VFXRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 6654993801079667695}
   - component: {fileID: 7740517839666765984}
   - component: {fileID: 2601210039349415623}
+  - component: {fileID: 447328166624792470}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -583,6 +584,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.ChainTexture
   _effect: {fileID: 5849344440007730826}
+  _sources:
+  - {fileID: 8169341575981907583}
+  - {fileID: 5879995599559319355}
+  - {fileID: 4734989538036461837}
 --- !u!114 &6654993801079667695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,6 +627,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.AbilityController
   _equipped: {fileID: 11400000, guid: 1fc211d948915244b912f2a92ade5640, type: 2}
+--- !u!114 &447328166624792470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1fa5d8213fcb04eb5446d533dcc6f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.ChainTexture
+  _effect: {fileID: 3981006696977802016}
+  _sources:
+  - {fileID: 6654993801079667695}
 --- !u!1 &7952250992877002194
 GameObject:
   m_ObjectHideFlags: 0

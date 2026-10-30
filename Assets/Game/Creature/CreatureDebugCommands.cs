@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Core;
@@ -63,10 +64,7 @@ namespace TentacleVania.Creature
             DebugMenu.Toggle(tab, "Free tentacles", () => CreatureTentacles.Visible, v => CreatureTentacles.Visible = v);
             DebugMenu.Toggle(tab, "Placeholder tentacle lines", () => Chains.ShowPlaceholderLines, v => Chains.ShowPlaceholderLines = v);
             DebugMenu.Toggle(tab, "Tentacle merge", () => GameSettings.TentacleMerge, v => GameSettings.TentacleMerge = v);
-            DebugMenu.Value(tab, "Chain texture", () =>
-                Spawned != null && Spawned.TryGetComponent<ChainTexture>(out var chains) && chains.Texture != null
-                    ? $"{chains.Texture.width} x {chains.Texture.height} ({chains.Count} chains)"
-                    : "-");
+            DebugMenu.Value(tab, "Chain textures", DescribeChainTextures);
             DebugMenu.Button(tab, "Fill charge", () =>
             {
                 var charge = Charge;
@@ -119,5 +117,16 @@ namespace TentacleVania.Creature
         private static CreatureVitals Vitals => Spawned != null ? Spawned.GetComponent<CreatureVitals>() : null;
 
         private static CreatureMotor Motor => Spawned != null ? Spawned.GetComponent<CreatureMotor>() : null;
+
+        private static string DescribeChainTextures()
+        {
+            if (Spawned == null)
+                return "-";
+            var parts = new List<string>();
+            foreach (var chains in Spawned.GetComponents<ChainTexture>())
+                if (chains.Effect != null)
+                    parts.Add($"{chains.Effect.name} {chains.Count}");
+            return parts.Count == 0 ? "-" : string.Join(", ", parts) + " chains";
+        }
     }
 }
