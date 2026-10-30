@@ -10,6 +10,7 @@ namespace TentacleVania.Creature.Movement
         private const float GroundStick = -2f;
 
         [SerializeField] private CreatureMotorSettings _settings;
+        [SerializeField] private LayerMask _dashPassLayers;
 
         private CharacterController _controller;
         private DashTimer _dash;
@@ -65,6 +66,7 @@ namespace TentacleVania.Creature.Movement
                 step = _velocity * dt;
             }
 
+            _controller.excludeLayers = IsDashing ? _dashPassLayers : 0;
             _fallSpeed = _controller.isGrounded ? GroundStick : _fallSpeed + Physics.gravity.y * dt;
             step.y = _fallSpeed * dt;
             _controller.Move(step);

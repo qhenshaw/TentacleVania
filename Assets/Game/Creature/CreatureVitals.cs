@@ -29,12 +29,14 @@ namespace TentacleVania.Creature
         {
             _health.Incoming.Add(_dashInvulnerability);
             _health.Died += OnDied;
+            CombatTargets.RegisterCreature(_health, GetComponent<CharacterController>().center.y);
         }
 
         private void OnDisable()
         {
             _health.Incoming.Remove(_dashInvulnerability);
             _health.Died -= OnDied;
+            CombatTargets.UnregisterCreature(_health);
         }
 
         private void OnDied(Health health)
@@ -59,7 +61,7 @@ namespace TentacleVania.Creature
 
             public void Modify(ref DamageContext context)
             {
-                if (_motor.IsInvulnerable)
+                if (_motor.IsInvulnerable && (context.Info.Flags & HitFlags.Undodgeable) == 0)
                     context.Cancelled = true;
             }
         }

@@ -1,0 +1,18 @@
+{
+    "name": "TentacleVania.Enemies",
+    "rootNamespace": "TentacleVania.Enemies",
+    "references": [
+        "TentacleVania.Core",
+        "TentacleVania.Combat",
+        "Unity.RenderPipelines.Universal.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

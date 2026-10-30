@@ -2,6 +2,7 @@
   "dependencies": {
     "com.kyrylokuzyk.primetween": "file:../Packages/com.kyrylokuzyk.primetween.tgz",
     "com.unity.addressables": "2.11.2",
+    "com.unity.ai.navigation": "2.0.15",
     "com.unity.cinemachine": "6.6.0",
     "com.unity.collab-proxy": "2.13.6",
     "com.unity.ide.rider": "3.0.40",

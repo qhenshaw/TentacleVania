@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1369746916563598972}
   - component: {fileID: 2111436511686241753}
   - component: {fileID: 961082029792045707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 8914341881527922285}
   - component: {fileID: 891536980734917587}
   - component: {fileID: 6592408752216720721}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,6 +167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Movement.CreatureMotor
   _settings: {fileID: 11400000, guid: d8ee186b64f2c1140870a07f81c65a51, type: 2}
+  _dashPassLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &8169341575981907583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +185,9 @@ MonoBehaviour:
   _settings: {fileID: 11400000, guid: 76bdb5de4f2888f488841931aa23382b, type: 2}
   _legMaterial: {fileID: 2100000, guid: a9bcfb79f0251af49b5eb4a0b9219e7c, type: 2}
   _motor: {fileID: 8252016009454080188}
+  _groundLayers:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &8914341881527922285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +241,7 @@ GameObject:
   - component: {fileID: 1539947257589534093}
   - component: {fileID: 2573243397324994133}
   - component: {fileID: 1800961333701193789}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Maw
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -26,6 +26,7 @@ namespace TentacleVania.Combat.Damage
         Finisher = 1 << 1,
         DashAttack = 1 << 2,
         Hazard = 1 << 3,
+        Undodgeable = 1 << 4,
     }
 
     public static class TeamRules
