@@ -58,5 +58,26 @@ MonoBehaviour:
   _dashThinning: 0.5
   _dashFan: 5
   _dashTrailHeight: 0.15
+  _mawCount: 8
+  _mawOffset: {x: 0, y: 0.45, z: 0.35}
+  _mawRootRadius: 0.25
+  _mawOpenMargin: 0.35
+  _mawOpenRadius: {x: 0.6, y: 1.4}
+  _mawOpenReach: 0.55
+  _mawPinch: 0.06
+  _mawWrap: 1.1
+  _mawLungeStop: 0.5
+  _mawRootWidth: 0.1
+  _mawTipWidth: 0.02
+  _mawOpenTime: 0.3
+  _mawCloseTime: 0.2
+  _mawSwallowTime: 0.4
+  _mawRetractTime: 0.2
+  _mawSpring:
+    PoseStiffness: 30
+    TipLooseness: 0.5
+    Damping: 0.15
+    Gravity: 1
+    Iterations: 3
   _rootWidth: 0.1
   _tipWidth: 0.025

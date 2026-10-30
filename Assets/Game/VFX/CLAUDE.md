@@ -1,6 +1,6 @@
 # VFX
 
-VFX Graph assets (no C#). `CreatureTentacles/CreatureTentacles.vfx` is the developer's: strips along the creature's chains, fed by `Creature/Rig/ChainTexture` (see the Creature CLAUDE.md). Don't edit it without the developer's go-ahead.
+VFX Graph assets (no C#). `CreatureTentacles/CreatureTentacles.vfx` is the developer's: strips along the creature's chains, fed by `Creature/Rig/ChainTexture` (see the Creature CLAUDE.md); four `VisualEffect`s use it (root legs, `WeaponTentacles`, `FreeTentacles`, `MawTentacles`, the last the developer configures for the consume maw). Don't edit it without the developer's go-ahead.
 
 ## Tentacle tube shader
 

@@ -4,7 +4,8 @@
     "references": [
         "TentacleVania.Core",
         "TentacleVania.Combat",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "FMODUnity"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
