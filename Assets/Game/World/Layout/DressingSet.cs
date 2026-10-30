@@ -44,11 +44,14 @@ namespace TentacleVania.World.Layout
         [SerializeField, Min(0)] private int _maxCoverPerSpace = 2;
         [Tooltip("Cells inside an opening kept clear of props, measured from the opening into the space.")]
         [SerializeField, Min(0f)] private float _doorClearance = 1.5f;
+        [Tooltip("Hallways only get Wall-zone props with a footprint radius up to this, placed against their walls.")]
+        [SerializeField, Min(0f)] private float _hallwayMaxRadius = 0.35f;
 
         public IReadOnlyList<Prop> Props => _props;
         public IReadOnlyList<ZoneRule> Zones => _zones;
         public int MaxCoverPerSpace => _maxCoverPerSpace;
         public float DoorClearance => _doorClearance;
+        public float HallwayMaxRadius => _hallwayMaxRadius;
 
         public ZoneRule RuleFor(DressingZone zone)
         {

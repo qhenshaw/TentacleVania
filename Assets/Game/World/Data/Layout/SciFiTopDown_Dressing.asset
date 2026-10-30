@@ -45,6 +45,22 @@ MonoBehaviour:
     Offset: {x: 0, y: 0, z: 0}
     Rotation: 0
     RandomYaw: 0
+  - Prefab: {fileID: 100000, guid: 44dfbea9ec413d6468c3f4a50fa48d62, type: 3}
+    Zones: 1
+    Category: 0
+    Radius: 0.2
+    Weight: 1
+    Offset: {x: 0, y: 1, z: 0}
+    Rotation: 0
+    RandomYaw: 0
+  - Prefab: {fileID: 100000, guid: f0ed5fff1bf17f44bac91b9865a52af8, type: 3}
+    Zones: 1
+    Category: 1
+    Radius: 0.35
+    Weight: 1
+    Offset: {x: 0, y: 0.22, z: 0}
+    Rotation: 90
+    RandomYaw: 0
   _zones:
   - Zone: 1
     Density: 0.35
@@ -60,3 +76,4 @@ MonoBehaviour:
     Spacing: 1
   _maxCoverPerSpace: 2
   _doorClearance: 1.5
+  _hallwayMaxRadius: 0.35

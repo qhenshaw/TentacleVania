@@ -50,7 +50,8 @@ namespace TentacleVania.World.Editor
                 if (!space.Dress)
                     continue;
 
-                var spots = Spots(layout, grid, s, space.Seed, inset, size);
+                var spots = Spots(layout, grid, s, space.Seed, inset, size, space.IsHallway);
+                var maxRadius = space.IsHallway ? set.HallwayMaxRadius : float.MaxValue;
                 var cover = 0;
                 var index = 0;
                 foreach (var spot in spots)
@@ -59,7 +60,7 @@ namespace TentacleVania.World.Editor
                     var rule = set.RuleFor(spot.Zone);
                     if (rule == null || LayoutRandom.Value(LayoutRandom.Hash(space.Seed, index, 7)) > rule.Density)
                         continue;
-                    var prop = Choose(set, spot.Zone, LayoutRandom.Hash(space.Seed, index, 11), cover);
+                    var prop = Choose(set, spot.Zone, LayoutRandom.Hash(space.Seed, index, 11), cover, maxRadius);
                     if (prop == null)
                         continue;
                     var position = spot.Position + spot.Push * prop.Radius;
@@ -85,13 +86,13 @@ namespace TentacleVania.World.Editor
             return null;
         }
 
-        private static List<Spot> Spots(LevelLayout layout, LayoutGrid grid, int space, int seed, float inset, float size)
+        private static List<Spot> Spots(LevelLayout layout, LayoutGrid grid, int space, int seed, float inset, float size, bool hallway)
         {
             var spots = new List<Spot>();
             var rotation = layout.transform.rotation;
             foreach (var cell in grid.Cells)
             {
-                if (grid.OwnerOf(cell) != space || Narrow(grid, cell))
+                if (grid.OwnerOf(cell) != space || (!hallway && Narrow(grid, cell)))
                     continue;
                 var center = layout.CellCenter(cell);
                 var touchesEdge = false;
@@ -103,17 +104,17 @@ namespace TentacleVania.World.Editor
                         touchesEdge = true;
                     if (state == EdgeState.Wall)
                     {
-                        var zone = NextToOpening(grid, cell, side) ? DressingZone.NearDoor : DressingZone.Wall;
+                        var zone = hallway || !NextToOpening(grid, cell, side) ? DressingZone.Wall : DressingZone.NearDoor;
                         Add(spots, zone, center + normal * (size * 0.5f - inset), -normal, -normal, seed, cell, (int)side);
                     }
-                    if (grid.IsConvexCorner(cell, side))
+                    if (!hallway && grid.IsConvexCorner(cell, side))
                     {
                         var other = rotation * Direction(Sides.Clockwise(side));
                         var push = -(normal + other).normalized;
                         Add(spots, DressingZone.Corner, center + (normal + other) * (size * 0.5f - inset), push, push, seed, cell, 10 + (int)side);
                     }
                 }
-                if (!touchesEdge && Surrounded(grid, cell, space))
+                if (!hallway && !touchesEdge && Surrounded(grid, cell, space))
                     Add(spots, DressingZone.Center, center, rotation * Vector3.forward, Vector3.zero, seed, cell, 20);
             }
             spots.Sort((a, b) => a.Order.CompareTo(b.Order));
@@ -179,11 +180,11 @@ namespace TentacleVania.World.Editor
             return false;
         }
 
-        private static DressingSet.Prop Choose(DressingSet set, DressingZone zone, uint hash, int cover)
+        private static DressingSet.Prop Choose(DressingSet set, DressingZone zone, uint hash, int cover, float maxRadius)
         {
             var total = 0f;
             foreach (var prop in set.Props)
-                if (Fits(set, prop, zone, cover))
+                if (Fits(set, prop, zone, cover, maxRadius))
                     total += prop.Weight;
             if (total <= 0f)
                 return null;
@@ -191,7 +192,7 @@ namespace TentacleVania.World.Editor
             DressingSet.Prop last = null;
             foreach (var prop in set.Props)
             {
-                if (!Fits(set, prop, zone, cover))
+                if (!Fits(set, prop, zone, cover, maxRadius))
                     continue;
                 last = prop;
                 roll -= prop.Weight;
@@ -201,8 +202,8 @@ namespace TentacleVania.World.Editor
             return last;
         }
 
-        private static bool Fits(DressingSet set, DressingSet.Prop prop, DressingZone zone, int cover) =>
-            prop.Prefab != null && prop.Weight > 0f && (prop.Zones & zone) != 0 &&
+        private static bool Fits(DressingSet set, DressingSet.Prop prop, DressingZone zone, int cover, float maxRadius) =>
+            prop.Prefab != null && prop.Weight > 0f && (prop.Zones & zone) != 0 && prop.Radius <= maxRadius &&
             (prop.Category != PropCategory.Cover || cover < set.MaxCoverPerSpace);
 
         private static void Categorize(GameObject instance, PropCategory category, int propsLayer)
