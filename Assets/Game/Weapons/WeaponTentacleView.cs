@@ -1,3 +1,4 @@
+using System;
 using TentacleVania.Core.Characters;
 using TentacleVania.Creature.Rig;
 using TentacleVania.Weapons.Combo;
@@ -8,9 +9,9 @@ namespace TentacleVania.Weapons
 {
     [DefaultExecutionOrder(110)]
     [RequireComponent(typeof(WeaponController))]
-    public sealed class WeaponTentacleView : MonoBehaviour
+    public sealed class WeaponTentacleView : MonoBehaviour, IChainSource
     {
-        private const int Joints = 7;
+        private const int Joints = Chains.Joints;
 
         [SerializeField] private Material _material;
         [SerializeField, Min(0.1f)] private float _length = 2.4f;
@@ -53,12 +54,11 @@ namespace TentacleVania.Weapons
             for (var slot = 0; slot < WeaponController.Slots; slot++)
             {
                 var line = _lines[slot];
-                var active = _controller.IsAttacking && _controller.ActiveSlot == slot;
-                line.enabled = active;
+                var active = IsActive(slot);
+                line.enabled = active && Chains.ShowPlaceholderLines;
                 if (!active)
                     continue;
-                var side = slot == 0 ? -1f : 1f;
-                var root = transform.TransformPoint(new Vector3(_rootOffset.x * side, _rootOffset.y, _rootOffset.z));
+                var root = Root(slot);
                 var move = _controller.ActiveMove;
                 var origin = transform.position + Vector3.up * move.Height;
                 var tip = MoveShapes.Tip(origin, _controller.ActiveForward, move, _controller.ActiveElapsed);
@@ -69,6 +69,25 @@ namespace TentacleVania.Weapons
                 ChainSolver.Solve(joints, bone, root, tip, Vector3.up, 4);
                 line.SetPositions(joints);
             }
+        }
+
+        public int ChainOrder => 10;
+        public int ChainCount => WeaponController.Slots;
+
+        public void WriteChain(int chain, Span<Vector4> joints)
+        {
+            if (IsActive(chain))
+                Chains.Write(joints, _joints[chain], _rootWidth, _tipWidth);
+            else
+                Chains.Collapse(joints, Root(chain));
+        }
+
+        private bool IsActive(int slot) => _controller.IsAttacking && _controller.ActiveSlot == slot;
+
+        private Vector3 Root(int slot)
+        {
+            var side = slot == 0 ? -1f : 1f;
+            return transform.TransformPoint(new Vector3(_rootOffset.x * side, _rootOffset.y, _rootOffset.z));
         }
     }
 }

@@ -134,6 +134,7 @@ Each area has its own assembly definition, `TentacleVania.<Area>`, and the match
 | Enemies | `Assets/Game/Enemies/` (enemy state machine, attacks, telegraphs, NavMesh, tokens) |
 | Localization | `Assets/Game/Localization/` (Localization settings, locales, string tables; no code) |
 | UI | `Assets/Game/UI/` (UI Toolkit runtime UI, main menu, combat HUD, F5 debug menu) |
+| VFX | `Assets/Game/VFX/` (VFX Graph assets, no code; the creature tentacle effect is fed by `Creature/Rig/ChainTexture`) |
 | Weapons | `Assets/Game/Weapons/` (weapon data, shared combo, charged heavy, dash attack, soft-lock) |
 | World | `Assets/Game/World/` (rooms, arena doors, lock-in encounters and waves) |
 

@@ -1,3 +1,4 @@
+using System;
 using TentacleVania.Core.Characters;
 using TentacleVania.Creature.Movement;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.Rendering;
 namespace TentacleVania.Creature.Rig
 {
     [DefaultExecutionOrder(100)]
-    public sealed class CreatureLegs : MonoBehaviour
+    public sealed class CreatureLegs : MonoBehaviour, IChainSource
     {
         private const float GroundProbeHeight = 1f;
         private const float GroundProbeDepth = 3f;
@@ -139,8 +140,15 @@ namespace TentacleVania.Creature.Rig
                 ChainSolver.SeedArch(joints, root, _feet[i], up, _settings.ArchHeight);
                 ChainSolver.Solve(joints, _settings.BoneLength, root, _feet[i], up, _settings.SolverIterations);
                 _lines[i].SetPositions(joints);
+                _lines[i].enabled = Chains.ShowPlaceholderLines;
             }
         }
+
+        public int ChainOrder => 0;
+        public int ChainCount => LegCount;
+
+        public void WriteChain(int chain, Span<Vector4> joints) =>
+            Chains.Write(joints, _joints[chain], _settings.RootWidth, _settings.TipWidth);
 
         private Vector3 RootLocal(int leg)
         {

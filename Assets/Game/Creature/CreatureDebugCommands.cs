@@ -1,5 +1,6 @@
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
+using TentacleVania.Core.Characters;
 using TentacleVania.Core.Debugging;
 using TentacleVania.Creature.Movement;
 using TentacleVania.Creature.Rig;
@@ -57,6 +58,11 @@ namespace TentacleVania.Creature
                 if (vitals != null)
                     vitals.Stun(1f);
             });
+            DebugMenu.Toggle(tab, "Placeholder tentacle lines", () => Chains.ShowPlaceholderLines, v => Chains.ShowPlaceholderLines = v);
+            DebugMenu.Value(tab, "Chain texture", () =>
+                Spawned != null && Spawned.TryGetComponent<ChainTexture>(out var chains) && chains.Texture != null
+                    ? $"{chains.Texture.width} x {chains.Texture.height} ({chains.Count} chains)"
+                    : "-");
             DebugMenu.Button(tab, "Fill charge", () =>
             {
                 var charge = Charge;

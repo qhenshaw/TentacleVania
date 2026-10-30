@@ -7,6 +7,10 @@ Shared code every area may reference (`TentacleVania.Core`). Keep it free of gam
 - `Shaders/CharacterMaster.shadergraph` (built from `CharacterMaster.shadergraph.json` + `.hlsl` with `Tools/shadergraph-build.sh`) is the Lit master for every character: `_BaseMap`, `_BaseColor`, `_Smoothness`, `_EmissionColor`, plus effect channels `_GlowColor`/`_GlowAmount` (telegraphs, rim-weighted), `_FlashColor`/`_FlashAmount` (hit flash) and `_StatusColor`/`_StatusAmount`/`_StatusPulse` (stun, charge full, status effects; pulses when `_StatusPulse` > 0).
 - `Characters/CharacterMaterials` sits on each character root, instances the materials of its listed renderers (and of runtime renderers passed to `Register`, e.g. leg and tentacle lines) and is the only thing that sets those properties: `SetGlow`, `Flash` (fades out over its duration, dimmed when `GameSettings.Flashes` is off), `SetStatus`. No `MaterialPropertyBlock`s.
 
+## Chains
+
+- `Characters/Chains`: `IChainSource` (`ChainOrder`, `ChainCount`, `WriteChain(chain, Span<Vector4>)`) is how a character's tentacle systems feed the VFX chain texture without the texture knowing their assemblies; `Chains.Write` fills a row with positions and a tapered width, `Collapse` hides one, `Pack` lays sources out as rows (unit tested). `Chains.ShowPlaceholderLines` gates the placeholder `LineRenderer`s.
+
 ## Scenes
 
 - `Scenes/SceneFlow` keeps `Bootstrap` loaded and swaps every other scene: `Load(name)` unloads the rest, loads the scene additively and makes it active (so lighting and runtime spawns land in it), `Reload()` reloads the active scene, `Loaded` fires after. `GameBootstrap` (prefab in the `Bootstrap` scene) calls `Load(MainMenu)` on start.
