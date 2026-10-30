@@ -12,6 +12,11 @@ Shared damage model (`TentacleVania.Combat`) used by the creature, enemies, haza
 - `TakeDamage` returns a `DamageResult` (`Applied`, `Ignored` by team or death, `Blocked` by a modifier) with the health, armor and stagger dealt. Stagger isn't stored here: the stagger system reads `StaggerDamage` from the `Damaged` event.
 - Events: `Health.Damaged`, `Healed`, `Died` per target, and the global `CombatEvents.HitLanded` for every applied hit (charge meter gain, hit feedback, lifesteal).
 
+## Hit feedback
+
+- `Feedback/HitFeedback` (on the creature prefab, settings `Data/HitFeedback.asset`) listens to `CombatEvents.HitLanded` and `CombatEvents.StaggerBroken` (raised by `Enemy` when a bar breaks) and, once per frame for the strongest event, requests hit-stop, screen shake and rumble from `Core.Feedback`. `HitFeedbackRules.Classify` (unit tested) maps a hit to Light, Heavy, Finisher, DashAttack (the player's hits, by flag), CreatureHurt (hits on the player) or None (hazards, enemy-on-enemy); StaggerBreak outranks everything.
+- Each `HitFeedbackLevel` also carries the enemy reaction: `Knockback` metres (over `KnockbackDuration`) and `Flinch` degrees (over `FlinchDuration`), read by `Enemy` through `HitFeedback.Settings`. The defaults are first-pass feel values, not from the design: tune them in the asset. Debug: Combat tab "Last hit feedback", "Hit-stop" and "Rumble" toggles.
+
 ## Hurtboxes
 
 `Hurtbox` maps a collider to its `Health`; weapon casts resolve hits with `Hurtbox.TryGet(collider, out hurtbox)` (a dictionary, no `GetComponent`). The creature's hurtbox is its `CharacterController`: one body hurtbox, never the tentacles.

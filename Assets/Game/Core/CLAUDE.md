@@ -11,6 +11,10 @@ Shared code every area may reference (`TentacleVania.Core`). Keep it free of gam
 
 - `Characters/Chains`: `IChainSource` (`ChainOrder`, `ChainCount`, `WriteChain(chain, Span<Vector4>)`) is how a character's tentacle systems feed the VFX chain texture without the texture knowing their assemblies; `Chains.Write` fills a row with positions and a tapered width, `Collapse` hides one, `Pack` lays sources out as rows (unit tested). `Chains.ShowPlaceholderLines` gates the placeholder `LineRenderer`s.
 
+## Feedback
+
+- `Feedback/FeedbackRunner.cs`: `HitStop.Request(seconds)` drops `Time.timeScale` to 2% of its value and restores it on unscaled time (overlapping requests take the longest; `HitStop.Enabled` is the debug toggle); `Rumble.Play(low, high, seconds)` drives `Gamepad.current` motors, gated by `GameSettings.Rumble` and stopped on focus loss; `ScreenShake.Request(origin, strength)` is an event the Camera area turns into impulses. One hidden-in-play `FeedbackRunner` object is created on first use.
+
 ## Scenes
 
 - `Scenes/SceneFlow` keeps `Bootstrap` loaded and swaps every other scene: `Load(name)` unloads the rest, loads the scene additively and makes it active (so lighting and runtime spawns land in it), `Reload()` reloads the active scene, `Loaded` fires after. `GameBootstrap` (prefab in the `Bootstrap` scene) calls `Load(MainMenu)` on start.

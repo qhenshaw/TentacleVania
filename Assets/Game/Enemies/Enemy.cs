@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
+using TentacleVania.Combat.Feedback;
 using TentacleVania.Enemies.AI;
 using TentacleVania.Enemies.Data;
 using TentacleVania.Enemies.Telegraphs;
@@ -54,6 +55,8 @@ namespace TentacleVania.Enemies
         private bool _staggerBroken;
         private Consumable _consumable;
         private EnemyAnimator _animator;
+        private Vector3 _knockbackVelocity;
+        private float _knockbackRemaining;
 
         public event Action<Enemy> StateChanged;
         public event Action<Enemy> Staggered;
@@ -98,6 +101,7 @@ namespace TentacleVania.Enemies
             if (_consumable != null)
                 _consumable.Grabbed += OnGrabbed;
             EnemyManager.Register(this);
+            _knockbackRemaining = 0f;
             SetState(EnemyState.Spawning);
         }
 
@@ -150,6 +154,38 @@ namespace TentacleVania.Enemies
                 _glow.SetFeedable(IsFeedable);
             if (_animator != null)
                 _animator.Tick(Time.deltaTime);
+            TickKnockback(Time.deltaTime);
+        }
+
+        private void TickKnockback(float dt)
+        {
+            if (_knockbackRemaining <= 0f)
+                return;
+            var step = Mathf.Min(dt, _knockbackRemaining);
+            _knockbackRemaining -= step;
+            if (_agent.enabled && _agent.isOnNavMesh)
+                _agent.Move(_knockbackVelocity * step);
+        }
+
+        private void React(in DamageInfo info)
+        {
+            var settings = HitFeedback.Settings;
+            if (settings == null || State == EnemyState.Dead || State == EnemyState.Consumed)
+                return;
+            var kind = HitFeedback.ClassifyForPlayer(info, _health);
+            if (kind == HitFeedbackKind.None || kind == HitFeedbackKind.CreatureHurt)
+                return;
+            var level = settings.Level(kind);
+            var direction = Flat(info.Direction);
+            if (direction.sqrMagnitude < 1e-4f && info.Attacker != null)
+                direction = Flat(transform.position - info.Attacker.transform.position);
+            if (direction.sqrMagnitude > 1e-4f && level.Knockback > 0f)
+            {
+                _knockbackRemaining = settings.KnockbackDuration;
+                _knockbackVelocity = direction.normalized * (level.Knockback * _definition.KnockbackScale / settings.KnockbackDuration);
+            }
+            if (_animator != null)
+                _animator.Flinch(direction, level.Flinch, settings.FlinchDuration);
         }
 
         private void UpdateProtection() =>
@@ -418,6 +454,8 @@ namespace TentacleVania.Enemies
         {
             if (_glow != null)
                 _glow.Flash(HitFlashDuration);
+            if (health.IsAlive)
+                React(info);
             if (health.IsAlive && State != EnemyState.Stunned && State != EnemyState.Dead && _stagger.Add(result.StaggerDamage))
                 BreakStagger();
             TickFeedback();
@@ -442,6 +480,7 @@ namespace TentacleVania.Enemies
             if (_glow != null)
                 _glow.ShowStunned();
             Staggered?.Invoke(this);
+            CombatEvents.RaiseStaggerBroken(_health);
         }
 
         private void EndStaggerBreak()
