@@ -48,8 +48,15 @@ namespace TentacleVania.Enemies
         private Vector3 _areaCenter;
         private float _lastSweepT;
         private bool _activeStarted;
+        private StaggerBar _stagger;
+        private ScaleModifier _staggerVulnerability;
+        private bool _staggerBroken;
 
         public event Action<Enemy> StateChanged;
+        public event Action<Enemy> Staggered;
+
+        public StaggerBar Stagger => _stagger;
+        public bool IsStaggerBroken => _staggerBroken;
 
         public EnemyDefinition Definition => _definition;
         public Health Health => _health;
@@ -69,6 +76,8 @@ namespace TentacleVania.Enemies
             _health.Configure(Team.Site, _definition.MaxHealth, _definition.MaxArmor);
             _agent.speed = _definition.MoveSpeed;
             _circleAngle = UnityEngine.Random.Range(0f, 360f);
+            _stagger = new(_definition.MaxStagger);
+            _staggerVulnerability = new() { HealthScale = _definition.StaggerDamageTaken };
         }
 
         protected virtual void OnEnable()
@@ -85,6 +94,7 @@ namespace TentacleVania.Enemies
             _health.Damaged -= OnDamaged;
             EnemyManager.Unregister(this);
             EndAttack(false);
+            EndStaggerBreak();
         }
 
         public void Tick(float now, float dt)
@@ -110,7 +120,10 @@ namespace TentacleVania.Enemies
                     break;
                 case EnemyState.Stunned:
                     if (now >= _stunUntil)
+                    {
+                        EndStaggerBreak();
                         SetState(EnemyState.Chase);
+                    }
                     break;
             }
         }
@@ -338,6 +351,7 @@ namespace TentacleVania.Enemies
 
         private void OnDied(Health health)
         {
+            EndStaggerBreak();
             EndAttack(false);
             Halt();
             _agent.enabled = false;
@@ -352,6 +366,28 @@ namespace TentacleVania.Enemies
         {
             if (_glow != null)
                 _glow.Flash(HitFlashDuration);
+            if (health.IsAlive && State != EnemyState.Stunned && State != EnemyState.Dead && _stagger.Add(result.StaggerDamage))
+                BreakStagger();
+        }
+
+        private void BreakStagger()
+        {
+            Stun(_definition.StaggerStun);
+            _staggerBroken = true;
+            _health.Incoming.Add(_staggerVulnerability);
+            if (_glow != null)
+                _glow.ShowStunned();
+            Staggered?.Invoke(this);
+        }
+
+        private void EndStaggerBreak()
+        {
+            if (!_staggerBroken)
+                return;
+            _staggerBroken = false;
+            _health.Incoming.Remove(_staggerVulnerability);
+            if (_glow != null)
+                _glow.Clear();
         }
 
         protected void Halt()

@@ -28,6 +28,7 @@ namespace TentacleVania.Enemies
                 var tokens = EnemyManager.Instance.Tokens;
                 return $"{tokens.MeleeHeld}/{tokens.MeleeCapacity}  {tokens.RangedHeld}/{tokens.RangedCapacity}";
             });
+            DebugMenu.Value(tab, "HP / stagger", DescribeEnemies);
             DebugMenu.Toggle(tab, "Freeze AI", () => EnemyManager.Instance.Paused, v => EnemyManager.Instance.Paused = v);
             DebugMenu.Button(tab, "Stun all (3 s)", () =>
             {
@@ -61,6 +62,24 @@ namespace TentacleVania.Enemies
             if (NavMesh.SamplePosition(position, out var hit, SpawnDistance, NavMesh.AllAreas))
                 position = hit.position;
             Object.Instantiate(prefab, position, Quaternion.LookRotation(-direction));
+        }
+
+        private static string DescribeEnemies()
+        {
+            var text = new System.Text.StringBuilder();
+            var shown = 0;
+            foreach (var enemy in EnemyManager.Instance.Enemies)
+            {
+                if (enemy.State == EnemyState.Dead || shown++ >= 4)
+                    continue;
+                if (text.Length > 0)
+                    text.Append('\n');
+                text.Append(enemy.Definition.DisplayName).Append(": ")
+                    .Append(enemy.Health.Current.ToString("F0")).Append(" HP, stagger ")
+                    .Append(enemy.Stagger.Current.ToString("F0")).Append('/').Append(enemy.Stagger.Max.ToString("F0"))
+                    .Append(enemy.IsStaggerBroken ? " BROKEN" : string.Empty);
+            }
+            return text.Length > 0 ? text.ToString() : "-";
         }
 
         private static int CountAlive()

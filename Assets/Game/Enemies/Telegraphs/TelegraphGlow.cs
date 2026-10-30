@@ -7,6 +7,7 @@ namespace TentacleVania.Enemies.Telegraphs
     public sealed class TelegraphGlow : MonoBehaviour
     {
         private const float MinimumGlow = 0.25f;
+        private const float StunnedMarker = -2f;
         private const string EmissionKeyword = "_EMISSION";
 
         private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
@@ -15,6 +16,7 @@ namespace TentacleVania.Enemies.Telegraphs
         [SerializeField, ColorUsage(false, true)] private Color _dodgeable = new(4f, 2.6f, 0.2f);
         [SerializeField, ColorUsage(false, true)] private Color _undodgeable = new(4.5f, 0.25f, 0.15f);
         [SerializeField, ColorUsage(false, true)] private Color _hitFlash = new(2.5f, 2.5f, 2.5f);
+        [SerializeField, ColorUsage(false, true)] private Color _stunned = new(0.45f, 0.8f, 1.3f);
 
         private Material[] _materials;
         private Color[] _baseEmission;
@@ -65,6 +67,12 @@ namespace TentacleVania.Enemies.Telegraphs
             _telegraph = telegraph;
             _current = intensity;
             SetGlow((telegraph == Telegraph.Undodgeable ? _undodgeable : _dodgeable) * intensity);
+        }
+
+        public void ShowStunned()
+        {
+            _current = StunnedMarker;
+            SetGlow(_stunned);
         }
 
         public void Clear()

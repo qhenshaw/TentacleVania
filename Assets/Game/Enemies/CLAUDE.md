@@ -12,6 +12,8 @@ Enemy framework (`TentacleVania.Enemies`). Real enemies (Scientist, Security Gua
 
 ## Rules (developer decisions)
 
+- Stagger: each enemy has a `StaggerBar` sized by `EnemyDefinition.MaxStagger` (defaults to its max health); it fills with each hit's `StaggerDamage` and never drains. Breaking it calls `Stun(StaggerStun)` (2.0 s, Balance Sheet) and adds a `StaggerDamageTaken` ×1.5 incoming modifier until the stun ends; the bar can't fill while stunned. The enemy glows pale blue while broken (placeholder for stagger-break poses) and raises `Staggered`. Bosses will set a larger bar and a 1.0 s stun in their definitions.
+
 - Attack tokens: at most 2 melee/area and 2 ranged attacks winding up or active at once (`EnemyManager.MeleeTokens` / `RangedTokens`). Enemies that want to attack without a token circle at `CircleRange`.
 - Telegraphs: the whole enemy glows yellow or red, ramping from 25% to full across the wind-up (`TelegraphGlow`, per-renderer material instances with `_EMISSION`). Area attacks also show a URP decal (`GroundIndicator`: ring at the exact hit radius plus a fill growing with the wind-up); the hit is an overlap cylinder at the same center and radius, locked when tracking ends. Red attacks set `HitFlags.Undodgeable`, which the creature's dash i-frames don't block.
 - Collision: enemies are solid to the walking creature (capsule on the `Enemy` layer); the creature's dash excludes the `Enemy` layer, so it passes through.
