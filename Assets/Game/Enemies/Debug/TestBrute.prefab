@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 599401968796207999}
   - component: {fileID: 6788712437705298512}
   - component: {fileID: 3971241299581338904}
+  - component: {fileID: 3497830913524387207}
   m_Layer: 9
   m_Name: TestBrute
   m_TagString: Untagged
@@ -258,6 +259,20 @@ MonoBehaviour:
   - {fileID: 6506997074491161457}
   - {fileID: 1008267927291332279}
   - {fileID: 628746109434414247}
+--- !u!114 &3497830913524387207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007750580816371646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113b0eecc9df23a4fb33d43d1aaee974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Consumable
+  _healFraction: 0.1
+  _biomass: 5
 --- !u!1 &5444209577690376318
 GameObject:
   m_ObjectHideFlags: 0

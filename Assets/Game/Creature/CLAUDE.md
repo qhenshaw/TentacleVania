@@ -18,6 +18,10 @@ The player creature (`TentacleVania.Creature`). The prefab `Prefabs/Creature.pre
 - Legs render as tapered `LineRenderer`s as a placeholder until the VFX Graph strips and tube shader replace them. The gameplay hurtbox stays the `CharacterController`, never the legs.
 - The solver is plain managed code over preallocated arrays (no per-frame allocations). Move it to a Burst job if chain counts at Apex make it show up in the profiler.
 
+## Grab & consume
+
+`CreatureConsume` (developer decisions): Grab (B / E) takes the nearest enemy with a `Combat.Consumable` under 25% HP within 2.2 m, preferring ones in front; with nothing grabbable the press does nothing. The creature roots for 0.4 s while two placeholder tentacles drag the victim into the maw (it shrinks, then `FinishConsume` kills it), then is free again while the heal flows: `Consumable.HealFraction` of the creature's max HP over 1.5 s, with a ×0.5 damage-taken modifier for the whole 1.5 s. Each consume adds `Consumable.Biomass` to `Biomass` and +20 charge. Grabbed enemies enter `EnemyState.Consumed` (no AI, colliders and agent off) so nothing else can hit them. Heal and biomass per enemy live in `EnemyDefinition` (Balance Sheet values).
+
 ## Charge meter
 
 `CreatureCharge` (on the prefab) wraps a `Combat.ChargeMeter`: max 100, +3 for every hit the creature lands (`CombatEvents.HitLanded` with the creature as attacker, hazards excluded), +20 from `AddConsume()` (for grab & consume). Abilities call `TrySpend(cost)` (35–60). `ChargeMeter.GainScale` is the hook for Cunning's +2% charge gain. When full, the creature pulses teal through `CharacterMaterials.SetStatus` (Art Direction's charge-full bioluminescence), body and tentacles alike.
