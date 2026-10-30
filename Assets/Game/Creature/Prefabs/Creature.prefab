@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 615621536349149212}
   - component: {fileID: 5879995599559319355}
   - component: {fileID: 1734815825583834548}
+  - component: {fileID: 7113805647117262672}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -292,6 +293,24 @@ MonoBehaviour:
   _renderers:
   - {fileID: 961082029792045707}
   - {fileID: 1800961333701193789}
+--- !u!114 &7113805647117262672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309aa6c999ccaf04dba48570ca48f4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.CreatureCharge
+  _max: 100
+  _perWeaponHit: 3
+  _perConsume: 20
+  _fullGlow: {r: 0.3, g: 1.4, b: 1.1, a: 1}
+  _fullGlowAmount: 0.8
+  _fullGlowPulse: 5
 --- !u!1 &7952250992877002194
 GameObject:
   m_ObjectHideFlags: 0

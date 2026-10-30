@@ -31,6 +31,23 @@ namespace TentacleVania.Creature
             });
             DebugMenu.Value(tab, "Legs stepping", () =>
                 Spawned != null && Spawned.TryGetComponent<CreatureLegs>(out var legs) ? $"{legs.SteppingCount} / {legs.LegCount}" : "-");
+            DebugMenu.Value(tab, "Charge", () =>
+            {
+                var charge = Charge;
+                return charge != null ? $"{charge.Current:F0} / {charge.Max:F0}{(charge.IsFull ? " FULL" : "")}" : "-";
+            });
+            DebugMenu.Button(tab, "Fill charge", () =>
+            {
+                var charge = Charge;
+                if (charge != null)
+                    charge.Set(charge.Max);
+            });
+            DebugMenu.Button(tab, "Empty charge", () =>
+            {
+                var charge = Charge;
+                if (charge != null)
+                    charge.Set(0f);
+            });
             DebugMenu.Toggle(tab, "God mode", () => CreatureVitals.GodMode, v => CreatureVitals.GodMode = v);
             DebugMenu.Button(tab, "Heal to full", () =>
             {
@@ -65,6 +82,8 @@ namespace TentacleVania.Creature
         private static GameObject Spawned => CreatureSpawner.Spawned;
 
         private static Health Health => Spawned != null ? Spawned.GetComponent<Health>() : null;
+
+        private static CreatureCharge Charge => Spawned != null ? Spawned.GetComponent<CreatureCharge>() : null;
 
         private static CreatureMotor Motor => Spawned != null ? Spawned.GetComponent<CreatureMotor>() : null;
     }
