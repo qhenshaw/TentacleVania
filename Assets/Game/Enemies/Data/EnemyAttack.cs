@@ -45,6 +45,8 @@ namespace TentacleVania.Enemies.Data
         [Min(0f)] public float Damage = 8f;
         [Min(0f)] public float Stagger;
         public DamageType Type;
+        [Tooltip("Seconds the creature loses control when this lands (Handler's heavy stun).")]
+        [Min(0f)] public float StunDuration;
 
         [Header("Melee sweep")]
         [Min(0.1f)] public float Reach = 1.8f;

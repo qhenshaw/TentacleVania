@@ -205,10 +205,33 @@ namespace TentacleVania.Enemies
 
             if (!_agent.isOnNavMesh)
                 return;
-            _agent.isStopped = false;
-            _agent.SetDestination(State == EnemyState.Circle ? CircleDestination(targetPosition, dt) : ChaseDestination(targetPosition));
-            var look = distance < _definition.CircleRange.y + 1f ? targetPosition - transform.position : _agent.velocity;
+            var destination = State == EnemyState.Circle ? CircleDestination(targetPosition, dt) : ChaseDestination(targetPosition);
+            if ((Flat(destination) - Flat(transform.position)).sqrMagnitude < 0.04f)
+            {
+                _agent.isStopped = true;
+            }
+            else
+            {
+                _agent.isStopped = false;
+                _agent.SetDestination(destination);
+            }
+            var look = FaceTarget(distance) ? targetPosition - transform.position : _agent.velocity;
             Face(look, dt);
+        }
+
+        protected virtual bool FaceTarget(float distance) => distance < _definition.CircleRange.y + 1f;
+
+        protected Vector3 Position => transform.position;
+
+        protected static bool TrySampleNavMesh(Vector3 position, float range, out Vector3 result)
+        {
+            if (NavMesh.SamplePosition(position, out var hit, range, NavMesh.AllAreas))
+            {
+                result = hit.position;
+                return true;
+            }
+            result = position;
+            return false;
         }
 
         private void BeginAttack(int index, Vector3 targetPosition)
