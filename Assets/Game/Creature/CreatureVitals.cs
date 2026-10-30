@@ -14,6 +14,7 @@ namespace TentacleVania.Creature
         [SerializeField, Min(0f)] private float _restartDelay = 1.5f;
         [SerializeField, ColorUsage(false, true)] private Color _stunGlow = new(0.4f, 0.7f, 2.2f);
         [SerializeField, Min(0f)] private float _stunGlowPulse = 14f;
+        [SerializeField, Min(0f)] private float _stunGrace = 3f;
 
         private Health _health;
         private CreatureMotor _motor;
@@ -21,12 +22,14 @@ namespace TentacleVania.Creature
         private CreatureCharge _charge;
         private DashInvulnerability _dashInvulnerability;
         private float _stunnedUntil = float.NegativeInfinity;
+        private float _stunImmuneUntil = float.NegativeInfinity;
         private bool _stunned;
 
         public static bool GodMode { get; set; }
 
         public Health Health => _health;
         public bool IsStunned => _stunned;
+        public float StunGraceRemaining => _stunned ? 0f : Mathf.Max(0f, _stunImmuneUntil - Time.time);
 
         private void Awake()
         {
@@ -62,11 +65,9 @@ namespace TentacleVania.Creature
 
         public void Stun(float duration)
         {
-            if (duration <= 0f || !_health.IsAlive)
+            if (duration <= 0f || !_health.IsAlive || _stunned || Time.time < _stunImmuneUntil)
                 return;
-            _stunnedUntil = Mathf.Max(_stunnedUntil, Time.time + duration);
-            if (_stunned)
-                return;
+            _stunnedUntil = Time.time + duration;
             _stunned = true;
             _motor.LockControl();
             if (_materials != null)
@@ -78,6 +79,7 @@ namespace TentacleVania.Creature
             if (!_stunned)
                 return;
             _stunned = false;
+            _stunImmuneUntil = Time.time + _stunGrace;
             _motor.UnlockControl();
             if (_materials != null)
                 _materials.ClearStatus();

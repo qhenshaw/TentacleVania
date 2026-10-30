@@ -20,7 +20,7 @@ The player creature (`TentacleVania.Creature`). The prefab `Prefabs/Creature.pre
 
 ## Control locks and stun
 
-`CreatureMotor.InputEnabled` is true while no system holds a lock: call `LockControl()` / `UnlockControl()` in pairs (death, the consume root and stuns each hold one), never set it directly. A hit whose `DamageInfo.StunDuration` > 0 stuns the creature through `CreatureVitals.Stun` (control locked, electric-blue status pulse, the charge glow restored afterwards); repeated stuns extend it.
+`CreatureMotor.InputEnabled` is true while no system holds a lock: call `LockControl()` / `UnlockControl()` in pairs (death, the consume root and stuns each hold one), never set it directly. A hit whose `DamageInfo.StunDuration` > 0 stuns the creature through `CreatureVitals.Stun` (control locked, electric-blue status pulse, the charge glow restored afterwards). Stuns don't stack or extend: while stunned and for 3 s after it ends (`_stunGrace`, developer decision) further stuns are ignored, though their damage still lands. Debug: Creature tab Stun state and "Stun 1 s".
 
 ## Grab & consume
 

@@ -44,6 +44,19 @@ namespace TentacleVania.Creature
                     return "-";
                 return consume.IsRooted ? "gulping" : consume.IsHealing ? "healing (armored)" : "ready";
             });
+            DebugMenu.Value(tab, "Stun", () =>
+            {
+                var vitals = Vitals;
+                if (vitals == null)
+                    return "-";
+                return vitals.IsStunned ? "stunned" : vitals.StunGraceRemaining > 0f ? $"grace {vitals.StunGraceRemaining:F1} s" : "stunnable";
+            });
+            DebugMenu.Button(tab, "Stun 1 s", () =>
+            {
+                var vitals = Vitals;
+                if (vitals != null)
+                    vitals.Stun(1f);
+            });
             DebugMenu.Button(tab, "Fill charge", () =>
             {
                 var charge = Charge;
@@ -92,6 +105,8 @@ namespace TentacleVania.Creature
         private static Health Health => Spawned != null ? Spawned.GetComponent<Health>() : null;
 
         private static CreatureCharge Charge => Spawned != null ? Spawned.GetComponent<CreatureCharge>() : null;
+
+        private static CreatureVitals Vitals => Spawned != null ? Spawned.GetComponent<CreatureVitals>() : null;
 
         private static CreatureMotor Motor => Spawned != null ? Spawned.GetComponent<CreatureMotor>() : null;
     }
