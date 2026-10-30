@@ -3,7 +3,7 @@
 
 void CharacterMaster_float(float4 UV0, float3 PositionWS, float3 NormalWS,
     UnityTexture2D BaseMap, float4 BaseColor, float Smoothness, float4 EmissionColor,
-    float4 GlowColor, float GlowAmount, float4 FlashColor, float FlashAmount,
+    float4 GlowColor, float GlowAmount, float GlowFresnel, float GlowFill, float4 FlashColor, float FlashAmount,
     float4 StatusColor, float StatusAmount, float StatusPulse, float StatusFresnel, float StatusFill,
     out float3 OutBaseColor, out float3 OutEmission, out float OutSmoothness)
 {
@@ -14,7 +14,7 @@ void CharacterMaster_float(float4 UV0, float3 PositionWS, float3 NormalWS,
     float fresnel = pow(rim, StatusFresnel > 0.0 ? StatusFresnel : 3.0);
     float flash = saturate(FlashAmount);
 
-    float3 glow = GlowColor.rgb * GlowAmount * (0.6 + 0.4 * rim);
+    float3 glow = GlowColor.rgb * GlowAmount * (pow(rim, GlowFresnel > 0.0 ? GlowFresnel : 3.0) + GlowFill);
     float3 status = StatusColor.rgb * StatusAmount * (fresnel * pulse + StatusFill);
 
     OutBaseColor = lerp(albedo.rgb, FlashColor.rgb, flash * 0.5);

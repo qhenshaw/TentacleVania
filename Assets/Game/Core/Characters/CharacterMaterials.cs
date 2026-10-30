@@ -8,6 +8,8 @@ namespace TentacleVania.Core.Characters
     {
         public static readonly int GlowColor = Shader.PropertyToID("_GlowColor");
         public static readonly int GlowAmount = Shader.PropertyToID("_GlowAmount");
+        public static readonly int GlowFresnel = Shader.PropertyToID("_GlowFresnel");
+        public static readonly int GlowFill = Shader.PropertyToID("_GlowFill");
         public static readonly int FlashColor = Shader.PropertyToID("_FlashColor");
         public static readonly int FlashAmount = Shader.PropertyToID("_FlashAmount");
         public static readonly int StatusColor = Shader.PropertyToID("_StatusColor");
@@ -76,10 +78,12 @@ namespace TentacleVania.Core.Characters
             _effects.Add(effect);
         }
 
-        public void SetGlow(Color color, float amount)
+        public void SetGlow(Color color, float amount, float fresnel = DefaultStatusFresnel, float fill = DefaultStatusFill)
         {
             SetColor(GlowColor, color);
             SetFloat(GlowAmount, amount);
+            SetFloat(GlowFresnel, fresnel);
+            SetFloat(GlowFill, fill);
         }
 
         public void ClearGlow() => SetFloat(GlowAmount, 0f);

@@ -115,6 +115,8 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _GlowAmount: 0
+    - _GlowFill: 0.15
+    - _GlowFresnel: 3
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -129,6 +131,8 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _StatusAmount: 0
+    - _StatusFill: 0.15
+    - _StatusFresnel: 3
     - _StatusPulse: 0
     - _Surface: 0
     - _WorkflowMode: 1
