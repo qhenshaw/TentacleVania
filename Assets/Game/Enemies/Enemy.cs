@@ -387,7 +387,7 @@ namespace TentacleVania.Enemies
             _staggerBroken = false;
             _health.Incoming.Remove(_staggerVulnerability);
             if (_glow != null)
-                _glow.Clear();
+                _glow.ClearStunned();
         }
 
         protected void Halt()

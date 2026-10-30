@@ -1,3 +1,4 @@
+using TentacleVania.Core.Characters;
 using TentacleVania.Creature.Rig;
 using TentacleVania.Weapons.Combo;
 using UnityEngine;
@@ -42,6 +43,8 @@ namespace TentacleVania.Weapons
                 line.generateLightingData = true;
                 line.enabled = false;
                 _lines[slot] = line;
+                if (TryGetComponent<CharacterMaterials>(out var materials))
+                    materials.Register(line);
             }
         }
 

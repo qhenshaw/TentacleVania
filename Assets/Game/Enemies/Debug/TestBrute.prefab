@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 8881902974170736832}
   - component: {fileID: 599401968796207999}
   - component: {fileID: 6788712437705298512}
+  - component: {fileID: 3971241299581338904}
   m_Layer: 9
   m_Name: TestBrute
   m_TagString: Untagged
@@ -220,12 +221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b3b2a2cf6504a498a9d97f01a9d40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Telegraphs.TelegraphGlow
-  _renderers:
-  - {fileID: 6506997074491161457}
-  - {fileID: 1008267927291332279}
-  - {fileID: 628746109434414247}
   _dodgeable: {r: 4, g: 2.6, b: 0.2, a: 1}
   _undodgeable: {r: 4.5, g: 0.25, b: 0.15, a: 1}
+  _hitFlash: {r: 2.5, g: 2.5, b: 2.5, a: 1}
+  _stunned: {r: 0.45, g: 0.8, b: 1.3, a: 1}
+  _stunnedPulse: 6
 --- !u!114 &6788712437705298512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +242,22 @@ MonoBehaviour:
   _glow: {fileID: 599401968796207999}
   _indicator: {fileID: 3443582176912317794}
   _muzzle: {fileID: 617350001284854599}
+--- !u!114 &3971241299581338904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007750580816371646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130f1d1cf95539c478819dc8f17d1ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Core::TentacleVania.Core.Characters.CharacterMaterials
+  _renderers:
+  - {fileID: 6506997074491161457}
+  - {fileID: 1008267927291332279}
+  - {fileID: 628746109434414247}
 --- !u!1 &5444209577690376318
 GameObject:
   m_ObjectHideFlags: 0

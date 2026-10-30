@@ -1,3 +1,4 @@
+using TentacleVania.Core.Characters;
 using TentacleVania.Creature.Movement;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -76,6 +77,8 @@ namespace TentacleVania.Creature.Rig
                 line.shadowCastingMode = ShadowCastingMode.On;
                 line.generateLightingData = true;
                 _lines[i] = line;
+                if (TryGetComponent<CharacterMaterials>(out var materials))
+                    materials.Register(line);
             }
             _lastPosition = transform.position;
             SteppingCount = 0;
