@@ -132,6 +132,7 @@ Each area has its own assembly definition, `TentacleVania.<Area>`, and the match
 | Camera | `Assets/Game/Camera/` (Cinemachine gameplay camera, room bounds) |
 | Combat | `Assets/Game/Combat/` (health, typed damage pipeline, modifiers, hurtboxes) |
 | Enemies | `Assets/Game/Enemies/` (enemy state machine, attacks, telegraphs, NavMesh, tokens) |
+| UI | `Assets/Game/UI/` (UI Toolkit runtime UI, F5 debug menu) |
 
 Create other areas as their first task needs them, named after the Tasks `Area` values (`Creature`, `Combat`, `Weapons`, `Abilities`, `Enemies`, `Bosses`, `World`, `Progression`, `UI`, `Audio`, `VFX`).
 
@@ -160,7 +161,7 @@ A small `Bootstrap` scene is the entry point: it creates the persistent managers
 - Build with prefabs and nested prefabs so work lands in separate files and scenes stay small, which avoids merge conflicts. Scenes should mostly hold prefab instances.
 - Never place players or characters in scenes. Spawn them at runtime.
 - Purchased art and audio packs go in `Assets/ThirdParty/<Pack>/` (create the folder with the first pack; Git can't track it empty) and are never edited, so they can be updated cleanly. Adapt them from `Assets/Game/` with prefab variants, material variants or copies. Code plugins such as FMOD and PrimeTween stay in `Assets/Plugins/`.
-- Every new feature gets debug commands in the in-game debug menu (not built yet: the first task that needs it builds it in the UI area, opening on backquote in editor and development builds, and documents it in `Assets/Game/UI/CLAUDE.md`): register buttons, toggles, values, dropdowns or checklists in the matching tab from the feature's own area, so it can be tested in play without evals.
+- Every new feature gets debug commands in the in-game debug menu (F5 in the editor and development builds; register commands from the feature's own area through `Core.Debugging.DebugMenu`, see `Assets/Game/UI/CLAUDE.md`): register buttons, toggles, values, dropdowns or checklists in the matching tab from the feature's own area, so it can be tested in play without evals.
 - Give new features placeholder art, SFX, VFX and animation where it makes sense, so they can be seen and heard in play:
   - **Art:** primitives or simple meshes with a placeholder material.
   - **SFX:** FMOD events, never `AudioSource`. Create them with `Tools/FMOD/fmod-placeholder.sh` (see [Tools](#tools)).

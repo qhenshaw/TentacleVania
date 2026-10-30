@@ -16,6 +16,8 @@ namespace TentacleVania.Creature
         private CreatureMotor _motor;
         private DashInvulnerability _dashInvulnerability;
 
+        public static bool GodMode { get; set; }
+
         public Health Health => _health;
 
         private void Awake()
@@ -61,7 +63,7 @@ namespace TentacleVania.Creature
 
             public void Modify(ref DamageContext context)
             {
-                if (_motor.IsInvulnerable && (context.Info.Flags & HitFlags.Undodgeable) == 0)
+                if (GodMode || (_motor.IsInvulnerable && (context.Info.Flags & HitFlags.Undodgeable) == 0))
                     context.Cancelled = true;
             }
         }

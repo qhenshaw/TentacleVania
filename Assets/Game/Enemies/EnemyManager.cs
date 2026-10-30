@@ -26,7 +26,20 @@ namespace TentacleVania.Enemies
             }
         }
 
+        private bool _paused;
+
         public AttackTokens Tokens { get; } = new(MeleeTokens, RangedTokens);
+
+        public bool Paused
+        {
+            get => _paused;
+            set
+            {
+                _paused = value;
+                foreach (var enemy in _enemies)
+                    enemy.SetFrozen(value);
+            }
+        }
         public IReadOnlyList<Enemy> Enemies => _enemies;
 
         public static void Register(Enemy enemy) => Instance._enemies.Add(enemy);
@@ -47,6 +60,8 @@ namespace TentacleVania.Enemies
 
         private void Update()
         {
+            if (_paused)
+                return;
             var now = Time.time;
             var dt = Time.deltaTime;
             for (var i = _enemies.Count - 1; i >= 0; i--)
