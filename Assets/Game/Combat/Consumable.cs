@@ -47,6 +47,7 @@ namespace TentacleVania.Combat
         public void FinishConsume()
         {
             Consumed?.Invoke(this);
+            CombatEvents.RaiseConsumed(this);
             _health.Kill();
         }
     }
