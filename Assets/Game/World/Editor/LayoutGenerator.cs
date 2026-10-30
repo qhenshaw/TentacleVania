@@ -48,6 +48,9 @@ namespace TentacleVania.World.Editor
             }
             if (layout.Dressing != null)
                 LayoutDressing.Place(layout, grid, spaces, openings, Child(root, "Props"));
+            foreach (Transform group in root)
+                if (group.name != "Props")
+                    SceneVisibilityManager.instance.DisablePicking(group.gameObject, true);
 
             if (!undo)
                 return;
