@@ -3,6 +3,7 @@
     "rootNamespace": "TentacleVania.Creature",
     "references": [
         "TentacleVania.Core",
+        "TentacleVania.Combat",
         "Unity.InputSystem"
     ],
     "includePlatforms": [],

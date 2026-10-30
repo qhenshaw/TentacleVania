@@ -1,0 +1,16 @@
+{
+    "name": "TentacleVania.Combat",
+    "rootNamespace": "TentacleVania.Combat",
+    "references": [
+        "TentacleVania.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

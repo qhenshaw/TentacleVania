@@ -1,0 +1,25 @@
+{
+    "name": "TentacleVania.Combat.Tests",
+    "rootNamespace": "TentacleVania.Combat.Tests",
+    "references": [
+        "TentacleVania.Combat",
+        "TentacleVania.Core",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
