@@ -14,4 +14,3 @@ Active abilities (`TentacleVania.Abilities`), on the ability input (RT / Q), pai
 - `ShieldAbsorb` (unit tested) is an `IDamageModifier` at order 900 in `Health.Incoming`: it eats the hit after earlier scaling and passes the rest through.
 - The burst is a `HitFlags.Heavy` overlap on `_hitLayers` (Enemy) from the creature, so hit feedback and knockback treat it as a heavy hit.
 - Placeholder presentation: an amber transparent sphere (`BioShieldShell.prefab`, URP Unlit) that swells as hits land and expands to the burst radius, the amber status glow on the creature, and FMOD placeholder events `event:/Abilities/BioShield/Activate`, `Absorb` and `Burst`.
-- Look FMOD events up in editor evals with `FMODUnity.EventManager.EventFromPath(path)` (then `new EventReference { Guid, Path }`); `RuntimeManager.PathToEventReference` only works in play mode and logs an error otherwise.
