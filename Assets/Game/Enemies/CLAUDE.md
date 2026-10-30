@@ -10,6 +10,16 @@ Enemy framework (`TentacleVania.Enemies`). Real enemies (Scientist, Security Gua
 - `EnemyManager` is created on first use in the active scene and ticks every enemy from one `Update` (never per-enemy `Update`). It owns the attack tokens and pools projectiles per prefab.
 - Movement is a `NavMeshAgent` (rotation driven by `Enemy`). Each room scene bakes its own NavMesh with a `NavMeshSurface` on a `Navigation` object (Default layer only, physics colliders); `CombatArena`'s data is `Scenes/CombatArena/NavMesh-CombatArena.asset` (LFS). Rebake after changing a room's floor or walls.
 
+## Enemy types (`Types/`, prefabs in `Prefabs/`, definitions in `Data/Enemies/`)
+
+Numbers are the developer-approved baselines (HP and damage from the Balance Sheet; stagger bar = HP).
+
+| Enemy | HP | Behaviour | Attacks |
+| --- | --- | --- | --- |
+| Scientist (`ScientistEnemy`) | 20, speed 4 | Flees to 6 m away whenever the creature is within 7 m (tries 0°, ±35°, ±70° off straight away on the NavMesh), stands still when farther, cowers when every escape is blocked; faces the creature only when cornered or within 2 m | Stun prod: yellow melee, 1.4 m, 60°, 4 dmg, only within 1.6 m (0.5 / 0.15 / 0.6, cooldown 1.5) |
+
+New enemy prefabs are built from the TestBrute layout by an eval (replace the `Enemy` component with the subclass, give it its own CharacterMaster material and definition) and added to `Debug/Resources/DebugEnemySpawnList`.
+
 ## Rules (developer decisions)
 
 - Stagger: each enemy has a `StaggerBar` sized by `EnemyDefinition.MaxStagger` (defaults to its max health); it fills with each hit's `StaggerDamage` and never drains. Breaking it calls `Stun(StaggerStun)` (2.0 s, Balance Sheet) and adds a `StaggerDamageTaken` ×1.5 incoming modifier until the stun ends; the bar can't fill while stunned. The enemy glows pale blue while broken (placeholder for stagger-break poses) and raises `Staggered`. Bosses will set a larger bar and a 1.0 s stun in their definitions.
