@@ -129,6 +129,7 @@ Each area has its own assembly definition, `TentacleVania.<Area>`, and the match
 | --- | --- |
 | Core | `Assets/Game/Core/` (input, versioning, diagnostics) |
 | Creature | `Assets/Game/Creature/` (player creature: movement, dash, procedural rig) |
+| Camera | `Assets/Game/Camera/` (Cinemachine gameplay camera, room bounds) |
 
 Create other areas as their first task needs them, named after the Tasks `Area` values (`Creature`, `Combat`, `Weapons`, `Abilities`, `Enemies`, `Bosses`, `World`, `Progression`, `UI`, `Audio`, `VFX`).
 
