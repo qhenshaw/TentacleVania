@@ -86,7 +86,7 @@ VFXRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518013486225837331}
   m_Enabled: 1
-  m_CastShadows: 0
+  m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 2601210039349415623}
   - component: {fileID: 3894992379214571265}
   - component: {fileID: 447328166624792470}
+  - component: {fileID: 5522881091801206148}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -541,7 +542,7 @@ VFXRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4487977787520540977}
   m_Enabled: 1
-  m_CastShadows: 0
+  m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -664,6 +665,19 @@ MonoBehaviour:
   _effect: {fileID: 3981006696977802016}
   _sources:
   - {fileID: 6654993801079667695}
+--- !u!114 &5522881091801206148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b32ff0ef4de0ff4885b615ef3740074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Feedback.HitEffects
+  _settings: {fileID: 11400000, guid: 74eaebdab05edf24293dd666f1b2dbab, type: 2}
 --- !u!1 &6618560833441987083
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,7 +767,7 @@ VFXRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6618560833441987083}
   m_Enabled: 1
-  m_CastShadows: 0
+  m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0

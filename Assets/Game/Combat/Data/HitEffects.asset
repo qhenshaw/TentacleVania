@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc87397cafe720b4d895cbc74b3bf1ff, type: 3}
+  m_Name: HitEffects
+  m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Feedback.HitEffectSettings
+  _creature:
+    Impact: {fileID: 175858013213697469, guid: 1709649c46c23464482aeba606cd95df, type: 3}
+    BloodSpray: {fileID: 6024645673855765509, guid: d04f769127a43cf4592c13f323798e7f, type: 3}
+    BloodDecal: {fileID: 1695634013207480301, guid: df52a3003948d7a4f852ee8465a49cd3, type: 3}
+    PoolSize: 8
+    DecalSize: {x: 0.8, y: 1.6}
+  _enemy:
+    Impact: {fileID: 5555839672399503525, guid: 4c1f785416dee5d4db205e030b749788, type: 3}
+    BloodSpray: {fileID: 3366321836657886622, guid: 50814bafe9aa9744fbd8f3dabf824c05, type: 3}
+    BloodDecal: {fileID: 3253151241989615436, guid: cd5396dfc736d7a4f8f99c3910ea5d70, type: 3}
+    PoolSize: 8
+    DecalSize: {x: 0.8, y: 1.6}
+  _creatureBigHit: 0.1
+  _lightIntensity: 0.5
+  _heavyIntensity: 1
+  _killIntensity: 1
+  _decalCap: 128
+  _decalOffset: 0.4
+  _recycleFade: 0.15
+  _groundLayers:
+    serializedVersion: 2
+    m_Bits: 1
