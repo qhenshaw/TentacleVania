@@ -36,20 +36,20 @@ MonoBehaviour:
   _bodyMaxOffset: 0.15
   _solverIterations: 6
   _freeCount: 6
-  _freeLength: 0.88
-  _freeRootHeight: 0.15
-  _freeSpread: 270
-  _freePitch: 45
-  _freeCurl: 0
-  _freeSway: 80
+  _freeLength: 0.92
+  _freeRootHeight: 0.27
+  _freeSpread: 300
+  _freePitch: 60
+  _freeCurl: 44
+  _freeSway: 40
   _freeSwaySpeed: 0.7
   _freeRootWidth: 0.07
   _freeTipWidth: 0.01
   _freeSpring:
-    PoseStiffness: 14
+    PoseStiffness: 4
     TipLooseness: 0.75
-    Damping: 0.1
+    Damping: 0.2
     Gravity: 3
-    Iterations: 1
+    Iterations: 8
   _rootWidth: 0.1
   _tipWidth: 0.025
