@@ -504,7 +504,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.CreatureVitals
   _restartDelay: 1.5
   _stunGlow: {r: 0.4, g: 0.7, b: 2.2, a: 1}
-  _stunGlowPulse: 14
+  _stunGlowPulse: 2.23
+  _stunGlowFresnel: 3
+  _stunGlowFill: 0.15
   _stunGrace: 3
 --- !u!114 &615621536349149212
 MonoBehaviour:
@@ -545,6 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.WeaponTentacleView
   _material: {fileID: 2100000, guid: a9bcfb79f0251af49b5eb4a0b9219e7c, type: 2}
+  _joints: 6
   _length: 2.4
   _archHeight: 0.25
   _rootOffset: {x: 0.18, y: 0.5, z: 0.15}
@@ -590,7 +593,9 @@ MonoBehaviour:
   _perConsume: 20
   _fullGlow: {r: 0.3, g: 1.4, b: 1.1, a: 1}
   _fullGlowAmount: 0.8
-  _fullGlowPulse: 5
+  _fullGlowPulse: 0.8
+  _fullGlowFresnel: 3
+  _fullGlowFill: 0.15
 --- !u!114 &4734989538036461837
 MonoBehaviour:
   m_ObjectHideFlags: 0

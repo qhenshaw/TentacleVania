@@ -14,7 +14,9 @@ namespace TentacleVania.Creature
         [SerializeField, Min(0f)] private float _perConsume = 20f;
         [SerializeField, ColorUsage(false, true)] private Color _fullGlow = new(0.3f, 1.4f, 1.1f);
         [SerializeField, Min(0f)] private float _fullGlowAmount = 0.8f;
-        [SerializeField, Min(0f)] private float _fullGlowPulse = 5f;
+        [SerializeField, Min(0f)] private float _fullGlowPulse = 0.8f;
+        [SerializeField, Min(0.01f)] private float _fullGlowFresnel = CharacterMaterials.DefaultStatusFresnel;
+        [SerializeField, Min(0f)] private float _fullGlowFill = CharacterMaterials.DefaultStatusFill;
 
         private Health _health;
         private CharacterMaterials _materials;
@@ -78,7 +80,7 @@ namespace TentacleVania.Creature
             {
                 _showingFull = Meter.IsFull;
                 if (_showingFull)
-                    _materials.SetStatus(_fullGlow, _fullGlowAmount, _fullGlowPulse);
+                    _materials.SetStatus(_fullGlow, _fullGlowAmount, _fullGlowPulse, _fullGlowFresnel, _fullGlowFill);
                 else
                     _materials.ClearStatus();
             }

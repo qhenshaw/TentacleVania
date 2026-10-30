@@ -1,5 +1,6 @@
 using FMODUnity;
 using TentacleVania.Combat.Damage;
+using TentacleVania.Core.Characters;
 using UnityEngine;
 
 namespace TentacleVania.Abilities.BioShield
@@ -25,6 +26,8 @@ namespace TentacleVania.Abilities.BioShield
         [SerializeField, Min(0.01f)] private float _burstVisualTime = 0.3f;
         [SerializeField] private Color _statusColor = new(1f, 0.62f, 0.15f, 1f);
         [SerializeField, Range(0f, 1f)] private float _statusAmount = 0.6f;
+        [SerializeField, Min(0.01f)] private float _statusFresnel = CharacterMaterials.DefaultStatusFresnel;
+        [SerializeField, Min(0f)] private float _statusFill = CharacterMaterials.DefaultStatusFill;
         [SerializeField] private EventReference _activateSound;
         [SerializeField] private EventReference _absorbSound;
         [SerializeField] private EventReference _burstSound;
@@ -41,6 +44,8 @@ namespace TentacleVania.Abilities.BioShield
         public float BurstVisualTime => _burstVisualTime;
         public Color StatusColor => _statusColor;
         public float StatusAmount => _statusAmount;
+        public float StatusFresnel => _statusFresnel;
+        public float StatusFill => _statusFill;
         public EventReference ActivateSound => _activateSound;
         public EventReference AbsorbSound => _absorbSound;
         public EventReference BurstSound => _burstSound;

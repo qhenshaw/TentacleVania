@@ -28,6 +28,8 @@ MonoBehaviour:
   _burstVisualTime: 0.3
   _statusColor: {r: 1, g: 0.62, b: 0.15, a: 1}
   _statusAmount: 0.6
+  _statusFresnel: 3
+  _statusFill: 0.15
   _activateSound:
     Guid:
       Data1: 324092620

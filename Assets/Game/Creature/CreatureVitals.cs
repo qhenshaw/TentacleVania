@@ -13,7 +13,9 @@ namespace TentacleVania.Creature
     {
         [SerializeField, Min(0f)] private float _restartDelay = 1.5f;
         [SerializeField, ColorUsage(false, true)] private Color _stunGlow = new(0.4f, 0.7f, 2.2f);
-        [SerializeField, Min(0f)] private float _stunGlowPulse = 14f;
+        [SerializeField, Min(0f)] private float _stunGlowPulse = 2.2f;
+        [SerializeField, Min(0.01f)] private float _stunGlowFresnel = CharacterMaterials.DefaultStatusFresnel;
+        [SerializeField, Min(0f)] private float _stunGlowFill = CharacterMaterials.DefaultStatusFill;
         [SerializeField, Min(0f)] private float _stunGrace = 3f;
 
         private Health _health;
@@ -71,7 +73,7 @@ namespace TentacleVania.Creature
             _stunned = true;
             _motor.LockControl();
             if (_materials != null)
-                _materials.SetStatus(_stunGlow, 1f, _stunGlowPulse);
+                _materials.SetStatus(_stunGlow, 1f, _stunGlowPulse, _stunGlowFresnel, _stunGlowFill);
         }
 
         private void EndStun()

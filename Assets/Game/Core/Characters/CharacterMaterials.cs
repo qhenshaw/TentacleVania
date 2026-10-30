@@ -13,9 +13,15 @@ namespace TentacleVania.Core.Characters
         public static readonly int StatusColor = Shader.PropertyToID("_StatusColor");
         public static readonly int StatusAmount = Shader.PropertyToID("_StatusAmount");
         public static readonly int StatusPulse = Shader.PropertyToID("_StatusPulse");
+        public static readonly int StatusFresnel = Shader.PropertyToID("_StatusFresnel");
+        public static readonly int StatusFill = Shader.PropertyToID("_StatusFill");
+        public const float DefaultStatusFresnel = 3f;
+        public const float DefaultStatusFill = 0.15f;
         private static readonly int EffectStatusColor = Shader.PropertyToID("StatusColor");
         private static readonly int EffectStatusAmount = Shader.PropertyToID("StatusAmount");
         private static readonly int EffectStatusPulse = Shader.PropertyToID("StatusPulse");
+        private static readonly int EffectStatusFresnel = Shader.PropertyToID("StatusFresnel");
+        private static readonly int EffectStatusFill = Shader.PropertyToID("StatusFill");
 
         [SerializeField] private Renderer[] _renderers;
 
@@ -89,16 +95,22 @@ namespace TentacleVania.Core.Characters
             SetFloat(FlashAmount, _flashStrength);
         }
 
-        public void SetStatus(Color color, float amount, float pulseSpeed = 0f)
+        public void SetStatus(Color color, float amount, float pulseHz = 0f, float fresnel = DefaultStatusFresnel, float fill = DefaultStatusFill)
         {
             SetColor(StatusColor, color);
             SetFloat(StatusAmount, amount);
-            SetFloat(StatusPulse, pulseSpeed);
+            SetFloat(StatusPulse, pulseHz);
+            SetFloat(StatusFresnel, fresnel);
+            SetFloat(StatusFill, fill);
             foreach (var effect in _effects)
             {
                 effect.SetVector4(EffectStatusColor, color);
                 effect.SetFloat(EffectStatusAmount, amount);
-                effect.SetFloat(EffectStatusPulse, pulseSpeed);
+                effect.SetFloat(EffectStatusPulse, pulseHz);
+                if (effect.HasFloat(EffectStatusFresnel))
+                    effect.SetFloat(EffectStatusFresnel, fresnel);
+                if (effect.HasFloat(EffectStatusFill))
+                    effect.SetFloat(EffectStatusFill, fill);
             }
         }
 
