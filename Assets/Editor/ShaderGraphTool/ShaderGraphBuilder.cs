@@ -122,6 +122,11 @@ namespace TentacleVania.Editor.ShaderGraphTool
             function.AddSlot(new Vector1MaterialSlot(outSmoothness, "OutSmoothness", "OutSmoothness", SlotType.Output, 0f, ShaderStageCapability.Fragment));
             ConnectBlock(graph, graph.fragmentContext, BlockFields.SurfaceDescription.Emission, function, outEmission);
             ConnectBlock(graph, graph.fragmentContext, BlockFields.SurfaceDescription.Smoothness, function, outSmoothness);
+            if (!spec.normalTS)
+                return;
+            var outNormal = slot++;
+            function.AddSlot(new Vector3MaterialSlot(outNormal, "OutNormalTS", "OutNormalTS", SlotType.Output, Vector3.forward, ShaderStageCapability.Fragment));
+            ConnectBlock(graph, graph.fragmentContext, BlockFields.SurfaceDescription.NormalTS, function, outNormal);
         }
 
         private static int AddPropertyInputs(GraphData graph, CustomFunctionNode function, List<PropertyNode> properties, ShaderGraphSpec spec, int slot, ShaderStageCapability stage)
@@ -250,6 +255,8 @@ namespace TentacleVania.Editor.ShaderGraphTool
                 var zTest = targetType.GetProperty("zTestMode", flags);
                 zTest.SetValue(target, Enum.Parse(zTest.PropertyType, spec.depthTest, true));
             }
+            if (spec.vfx)
+                targetType.GetField("m_SupportVFX", flags).SetValue(target, true);
             return target;
         }
     }
