@@ -9,14 +9,14 @@ namespace TentacleVania.Creature.Rig
     [RequireComponent(typeof(CreatureLegs))]
     public sealed class CreatureTentacles : MonoBehaviour, IChainSource
     {
-        private const int Joints = Chains.Joints;
         private const float RootRadius = 0.08f;
         private const int PhaseSeed = 3301;
         private const float TrailPitch = 12f;
 
         [SerializeField] private Material _material;
 
-        private readonly Vector3[] _pose = new Vector3[Joints];
+        private Vector3[] _pose = Array.Empty<Vector3>();
+        private int _joints;
 
         private CreatureLegs _legs;
         private CreatureRigSettings _settings;
@@ -48,6 +48,8 @@ namespace TentacleVania.Creature.Rig
             _root.SetParent(transform, false);
 
             var count = settings.FreeCount;
+            _joints = settings.FreeJoints;
+            _pose = new Vector3[_joints];
             _chains = new SpringChain[count];
             _lines = new LineRenderer[count];
             _phase = new float[count];
@@ -56,14 +58,14 @@ namespace TentacleVania.Creature.Rig
             for (var i = 0; i < count; i++)
             {
                 _phase[i] = (float)random.NextDouble() * 100f;
-                _chains[i] = new SpringChain(Joints);
+                _chains[i] = new SpringChain(_joints);
                 BuildPose(i, Time.time);
                 _chains[i].Reset(_pose);
 
                 var line = new GameObject($"FreeTentacle {i + 1}").AddComponent<LineRenderer>();
                 line.transform.SetParent(_root, false);
                 line.useWorldSpace = true;
-                line.positionCount = Joints;
+                line.positionCount = _joints;
                 line.widthCurve = width;
                 line.numCornerVertices = 3;
                 line.numCapVertices = 3;
@@ -79,7 +81,7 @@ namespace TentacleVania.Creature.Rig
         private void LateUpdate()
         {
             var dt = Time.deltaTime;
-            var bone = SpringChain.BoneLengthFor(Joints, _settings.FreeLength * _legs.Trail.LengthScale(_settings.DashStretch));
+            var bone = SpringChain.BoneLengthFor(_joints, _settings.FreeLength * _legs.Trail.LengthScale(_settings.DashStretch));
             var spring = _settings.FreeSpring;
             for (var i = 0; i < _chains.Length; i++)
             {
@@ -92,6 +94,7 @@ namespace TentacleVania.Creature.Rig
 
         public int ChainOrder => 5;
         public int ChainCount => _chains.Length;
+        public int ChainJoints => _joints;
 
         public void WriteChain(int chain, Span<Vector4> joints)
         {
@@ -112,16 +115,16 @@ namespace TentacleVania.Creature.Rig
             var offset = _legs != null ? _legs.BodyOffset : Vector3.zero;
             _pose[0] = transform.TransformPoint(rootLocal) + offset;
 
-            var bone = SpringChain.BoneLengthFor(Joints, _settings.FreeLength * _legs.Trail.LengthScale(_settings.DashStretch));
+            var bone = SpringChain.BoneLengthFor(_joints, _settings.FreeLength * _legs.Trail.LengthScale(_settings.DashStretch));
             var rotation = transform.rotation;
             var weight = _legs.Trail.Weight;
             var trail = Quaternion.AngleAxis(spread / Mathf.Max(1f, _settings.FreeSpread) * 2f * _settings.DashFan, Vector3.up)
                 * Quaternion.AngleAxis(-TrailPitch, Vector3.Cross(Vector3.up, -_legs.TrailDirection)) * -_legs.TrailDirection;
             var phase = _phase[index];
             var swayTime = time * _settings.FreeSwaySpeed;
-            for (var j = 1; j < Joints; j++)
+            for (var j = 1; j < _joints; j++)
             {
-                var along = (float)(j - 1) / (Joints - 2);
+                var along = (float)(j - 1) / (_joints - 2);
                 var wave = swayTime + phase - along * 0.8f;
                 var swayYaw = (Mathf.PerlinNoise(wave, phase) * 2f - 1f) * _settings.FreeSway;
                 var swayPitch = (Mathf.PerlinNoise(phase, wave) * 2f - 1f) * _settings.FreeSway;

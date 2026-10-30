@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HatchlingRig
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.CreatureRigSettings
   _legCount: 6
+  _legJoints: 6
   _legLength: 1.2
   _rootRadius: 0
   _rootHeight: 0.15
@@ -36,6 +37,7 @@ MonoBehaviour:
   _bodyMaxOffset: 0.15
   _solverIterations: 6
   _freeCount: 6
+  _freeJoints: 6
   _freeLength: 0.92
   _freeRootHeight: 0.27
   _freeSpread: 300
@@ -59,12 +61,12 @@ MonoBehaviour:
   _dashFan: 5
   _dashTrailHeight: 0.15
   _mawCount: 20
+  _mawJoints: 12
   _mawOffset: {x: 0, y: 0.45, z: 0.35}
   _mawRootRadius: 0.25
   _mawOpenMargin: 0.35
   _mawOpenRadius: {x: 0.6, y: 1.4}
   _mawOpenReach: 0.55
-  _mawPinch: 0.05
   _mawWrap: 1
   _mawLungeStop: 0.5
   _mawRootWidth: 0.1
@@ -87,7 +89,6 @@ MonoBehaviour:
     Iterations: 2
   _mawLeaders: {x: 2, y: 3}
   _mawLeaderStrike: 0.6
-  _mawLeaderHug: 0.9
   _mawAnticipation: 0.06
   _mawRearBack: 0.15
   _mawAngleJitter: 20
@@ -100,5 +101,13 @@ MonoBehaviour:
   _mawSeekLean: 0.2
   _mawWrithe: 0.06
   _mawWritheSpeed: 5
+  _mawCoilAngle: 150
+  _mawCoilAngleJitter: 40
+  _mawCoilPitch: 0.15
+  _mawCoilHeightSpread: 0.8
+  _mawCoilStartSpread: 50
+  _mawCoilClearance: 0.05
+  _mawCoilStrike: 0.4
+  _mawCoilWrithe: 0.4
   _rootWidth: 0.1
   _tipWidth: 0.025

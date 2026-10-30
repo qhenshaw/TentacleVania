@@ -11,6 +11,7 @@ namespace TentacleVania.Creature.Rig
 
         [Header("Legs")]
         [SerializeField, Range(2, MaxChains)] private int _legCount = 6;
+        [SerializeField, Range(Chains.MinJoints, Chains.MaxJoints)] private int _legJoints = Chains.DefaultJoints;
         [SerializeField, Min(0.1f)] private float _legLength = 0.9f;
         [SerializeField, Min(0f)] private float _rootRadius = 0.22f;
         [SerializeField, Min(0f)] private float _rootHeight = 0.42f;
@@ -42,6 +43,7 @@ namespace TentacleVania.Creature.Rig
 
         [Header("Free tentacles")]
         [SerializeField, Range(0, MaxChains)] private int _freeCount = 3;
+        [SerializeField, Range(Chains.MinJoints, Chains.MaxJoints)] private int _freeJoints = Chains.DefaultJoints;
         [SerializeField, Min(0.1f)] private float _freeLength = 0.9f;
         [SerializeField, Min(0f)] private float _freeRootHeight = 0.38f;
         [SerializeField, Range(0f, 360f)] private float _freeSpread = 110f;
@@ -71,12 +73,12 @@ namespace TentacleVania.Creature.Rig
 
         [Header("Maw")]
         [SerializeField, Range(0, MaxMawChains)] private int _mawCount = 8;
+        [SerializeField, Range(Chains.MinJoints, Chains.MaxJoints)] private int _mawJoints = 12;
         [SerializeField] private Vector3 _mawOffset = new(0f, 0.45f, 0.35f);
         [SerializeField, Min(0f)] private float _mawRootRadius = 0.25f;
         [SerializeField, Min(0f)] private float _mawOpenMargin = 0.35f;
         [SerializeField] private Vector2 _mawOpenRadius = new(0.6f, 1.4f);
         [SerializeField, Range(0f, 1f)] private float _mawOpenReach = 0.55f;
-        [SerializeField, Min(0f)] private float _mawPinch = 0.06f;
         [SerializeField, Min(0f)] private float _mawWrap = 1.1f;
         [SerializeField, Min(0f)] private float _mawLungeStop = 0.5f;
         [SerializeField, Min(0.001f)] private float _mawRootWidth = 0.1f;
@@ -105,7 +107,6 @@ namespace TentacleVania.Creature.Rig
         [Header("Maw organic motion")]
         [SerializeField] private Vector2Int _mawLeaders = new(2, 3);
         [SerializeField, Range(0.1f, 1f)] private float _mawLeaderStrike = 0.6f;
-        [SerializeField, Range(0f, 2f)] private float _mawLeaderHug = 0.9f;
         [SerializeField, Min(0f)] private float _mawAnticipation = 0.06f;
         [SerializeField, Min(0f)] private float _mawRearBack = 0.15f;
         [SerializeField, Range(0f, 90f)] private float _mawAngleJitter = 20f;
@@ -119,13 +120,23 @@ namespace TentacleVania.Creature.Rig
         [SerializeField, Min(0f)] private float _mawWrithe = 0.1f;
         [SerializeField, Min(0f)] private float _mawWritheSpeed = 5f;
 
+        [Header("Maw coils")]
+        [SerializeField, Range(0f, 360f)] private float _mawCoilAngle = 150f;
+        [SerializeField, Range(0f, 180f)] private float _mawCoilAngleJitter = 40f;
+        [SerializeField, Range(0f, 1f)] private float _mawCoilPitch = 0.15f;
+        [SerializeField, Range(0f, 1f)] private float _mawCoilHeightSpread = 0.8f;
+        [SerializeField, Range(0f, 90f)] private float _mawCoilStartSpread = 50f;
+        [SerializeField, Min(0f)] private float _mawCoilClearance = 0.05f;
+        [SerializeField, Range(0.05f, 0.95f)] private float _mawCoilStrike = 0.4f;
+        [SerializeField, Range(0f, 1f)] private float _mawCoilWrithe = 0.4f;
+
         [Header("Placeholder rendering")]
         [SerializeField, Min(0.001f)] private float _rootWidth = 0.1f;
         [SerializeField, Min(0.001f)] private float _tipWidth = 0.025f;
 
         public int LegCount => _legCount;
-        public int BonesPerLeg => Chains.Joints - 1;
-        public int JointsPerLeg => Chains.Joints;
+        public int BonesPerLeg => _legJoints - 1;
+        public int JointsPerLeg => _legJoints;
         public float LegLength => _legLength;
         public float BoneLength => _legLength / BonesPerLeg;
         public float RootRadius => _rootRadius;
@@ -150,6 +161,7 @@ namespace TentacleVania.Creature.Rig
         public float BodyMaxOffset => _bodyMaxOffset;
         public int SolverIterations => _solverIterations;
         public int FreeCount => _freeCount;
+        public int FreeJoints => _freeJoints;
         public float FreeLength => _freeLength;
         public float FreeRootHeight => _freeRootHeight;
         public float FreeSpread => _freeSpread;
@@ -168,12 +180,12 @@ namespace TentacleVania.Creature.Rig
         public float DashFan => _dashFan;
         public float DashTrailHeight => _dashTrailHeight;
         public int MawCount => _mawCount;
+        public int MawJoints => _mawJoints;
         public Vector3 MawOffset => _mawOffset;
         public float MawRootRadius => _mawRootRadius;
         public float MawOpenMargin => _mawOpenMargin;
         public Vector2 MawOpenRadius => _mawOpenRadius;
         public float MawOpenReach => _mawOpenReach;
-        public float MawPinch => _mawPinch;
         public float MawWrap => _mawWrap;
         public float MawLungeStop => _mawLungeStop;
         public float MawRootWidth => _mawRootWidth;
@@ -183,7 +195,6 @@ namespace TentacleVania.Creature.Rig
         public SpringChainSettings MawWhipSpring => _mawWhipSpring;
         public Vector2Int MawLeaders => _mawLeaders;
         public float MawLeaderStrike => _mawLeaderStrike;
-        public float MawLeaderHug => _mawLeaderHug;
         public float MawAnticipation => _mawAnticipation;
         public float MawRearBack => _mawRearBack;
         public float MawAngleJitter => _mawAngleJitter;
@@ -196,6 +207,14 @@ namespace TentacleVania.Creature.Rig
         public float MawSeekLean => _mawSeekLean;
         public float MawWrithe => _mawWrithe;
         public float MawWritheSpeed => _mawWritheSpeed;
+        public float MawCoilAngle => _mawCoilAngle;
+        public float MawCoilAngleJitter => _mawCoilAngleJitter;
+        public float MawCoilPitch => _mawCoilPitch;
+        public float MawCoilHeightSpread => _mawCoilHeightSpread;
+        public float MawCoilStartSpread => _mawCoilStartSpread;
+        public float MawCoilClearance => _mawCoilClearance;
+        public float MawCoilStrike => _mawCoilStrike;
+        public float MawCoilWrithe => _mawCoilWrithe;
         public float RootWidth => _rootWidth;
         public float TipWidth => _tipWidth;
 

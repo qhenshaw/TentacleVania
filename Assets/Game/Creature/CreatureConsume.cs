@@ -38,6 +38,7 @@ namespace TentacleVania.Creature
         private Vector3 _victimScale;
         private Vector3 _victimCentre;
         private float _victimRadius;
+        private float _victimHalfHeight;
         private bool _bitten;
         private float _healRemaining;
         private float _healRate;
@@ -113,12 +114,14 @@ namespace TentacleVania.Creature
             {
                 var bounds = body.bounds;
                 _victimCentre = bounds.center;
-                _victimRadius = Mathf.Max(bounds.extents.x, Mathf.Max(bounds.extents.y, bounds.extents.z));
+                _victimRadius = Mathf.Max(bounds.extents.x, bounds.extents.z);
+                _victimHalfHeight = bounds.extents.y;
             }
             else
             {
                 _victimCentre = _victimStart + Vector3.up * FallbackHeight;
-                _victimRadius = FallbackHeight * 0.5f;
+                _victimRadius = FallbackHeight * 0.3f;
+                _victimHalfHeight = FallbackHeight;
             }
             target.BeginConsume();
             _motor.LockControl();
@@ -127,7 +130,7 @@ namespace TentacleVania.Creature
             _motor.FaceImmediately(toVictim);
             var stop = _maw.Settings.MawLungeStop + Mathf.Min(_victimRadius, 0.5f);
             _motor.Lunge(toVictim, Mathf.Max(0f, toVictim.magnitude - stop), _maw.OpenTime / Mathf.Max(0.01f, CreatureMaw.TimeScale));
-            _maw.Engulf(_victimCentre, _victimRadius);
+            _maw.Engulf(_victimCentre, _victimRadius, _victimHalfHeight);
             Play(_openSound);
 
             _healRate = _health.Max * target.HealFraction / _healDuration;
@@ -170,7 +173,7 @@ namespace TentacleVania.Creature
             {
                 case MawPhase.Open:
                 case MawPhase.Close:
-                    _maw.SetTarget(_victimCentre, _victimRadius);
+                    _maw.SetTarget(_victimCentre, _victimRadius, _victimHalfHeight);
                     break;
                 case MawPhase.Swallow:
                 {
@@ -187,7 +190,7 @@ namespace TentacleVania.Creature
                     var victim = _victim.transform;
                     victim.position = position;
                     victim.localScale = _victimScale * scale;
-                    _maw.SetTarget(position + (_victimCentre - _victimStart) * scale, _victimRadius * scale);
+                    _maw.SetTarget(position + (_victimCentre - _victimStart) * scale, _victimRadius * scale, _victimHalfHeight * scale);
                     break;
                 }
                 default:

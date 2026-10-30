@@ -249,6 +249,7 @@ namespace TentacleVania.Creature.Rig
 
         public int ChainOrder => 0;
         public int ChainCount => LegCount;
+        public int ChainJoints => _settings.JointsPerLeg;
 
         public void WriteChain(int chain, Span<Vector4> joints)
         {
