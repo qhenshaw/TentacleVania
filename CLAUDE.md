@@ -131,6 +131,7 @@ Each area has its own assembly definition, `TentacleVania.<Area>`, and the match
 | Creature | `Assets/Game/Creature/` (player creature: movement, dash, procedural rig) |
 | Camera | `Assets/Game/Camera/` (Cinemachine gameplay camera, room bounds) |
 | Combat | `Assets/Game/Combat/` (health, typed damage pipeline, modifiers, hurtboxes) |
+| Enemies | `Assets/Game/Enemies/` (enemy state machine, attacks, telegraphs, NavMesh, tokens) |
 
 Create other areas as their first task needs them, named after the Tasks `Area` values (`Creature`, `Combat`, `Weapons`, `Abilities`, `Enemies`, `Bosses`, `World`, `Progression`, `UI`, `Audio`, `VFX`).
 
@@ -178,6 +179,7 @@ unity command eval --caller plugin --skill unity-cli '<C# statements>; return <v
 - Save any scene you edit with `EditorSceneManager.SaveScene` so the changes can be staged.
 - `OpenScene` unloads unused assets, so a C# reference to an asset the same script created or loaded before opening the scene is dead afterwards and assigns as null without an error. Load assets with `AssetDatabase.LoadAssetAtPath` after `OpenScene`, and return the references you set (or grep the saved scene for `{fileID: 0}`) to confirm them.
 - Eval code has no `using` directives, so extension methods don't resolve as methods: call them statically (`InputActionSetupExtensions.AddAction(map, ...)`).
+- Don't name a MonoBehaviour method after a Unity message (`Reset`, `Awake`, `OnValidate`...) unless it is that message: a `static Reset()` used for `[RuntimeInitializeOnLoadMethod]` logs "Failed to call static function Reset" whenever the component is added.
 - Never use `??` or `?.` on Unity objects (`GetComponent<T>() ?? AddComponent<T>()`): a missing component is a fake null that `??` treats as present. Compare with `== null`.
 - CLI command names change between CLI versions (for example `editor.playmode start`, `console get`). If a command isn't found, list the current names with `unity command --tag <tag>`.
 

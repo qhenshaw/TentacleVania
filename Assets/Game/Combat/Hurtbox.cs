@@ -28,6 +28,6 @@ namespace TentacleVania.Combat
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void Reset() => Registry.Clear();
+        private static void ClearRegistry() => Registry.Clear();
     }
 }

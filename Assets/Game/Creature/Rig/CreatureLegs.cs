@@ -13,6 +13,7 @@ namespace TentacleVania.Creature.Rig
         [SerializeField] private CreatureRigSettings _settings;
         [SerializeField] private Material _legMaterial;
         [SerializeField] private CreatureMotor _motor;
+        [SerializeField] private LayerMask _groundLayers = 1;
 
         private readonly RaycastHit[] _hits = new RaycastHit[8];
 
@@ -160,7 +161,7 @@ namespace TentacleVania.Creature.Rig
         private Vector3 Ground(Vector3 point)
         {
             var origin = point + Vector3.up * GroundProbeHeight;
-            var hitCount = Physics.RaycastNonAlloc(origin, Vector3.down, _hits, GroundProbeHeight + GroundProbeDepth, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+            var hitCount = Physics.RaycastNonAlloc(origin, Vector3.down, _hits, GroundProbeHeight + GroundProbeDepth, _groundLayers, QueryTriggerInteraction.Ignore);
             var best = -1;
             for (var i = 0; i < hitCount; i++)
             {
