@@ -28,6 +28,7 @@ namespace TentacleVania.Core.Input
 
         private static GameplayInput _default;
 
+        private readonly InputActionAsset _asset;
         private readonly InputActionMap _map;
         private readonly InputAction _move;
         private readonly InputAction _aimStick;
@@ -35,6 +36,7 @@ namespace TentacleVania.Core.Input
 
         public GameplayInput(InputActionAsset asset)
         {
+            _asset = asset;
             _map = asset.FindActionMap(MapName, true);
             _move = _map.FindAction("Move", true);
             _aimStick = _map.FindAction("AimStick", true);
@@ -48,7 +50,33 @@ namespace TentacleVania.Core.Input
             _map.Enable();
         }
 
-        public static GameplayInput Default => _default ??= new(InputSystem.actions);
+        public static GameplayInput Default
+        {
+            get
+            {
+                var actions = InputSystem.actions;
+                if (_default == null || _default._asset != actions)
+                {
+                    _default?.Release();
+                    _default = new(actions);
+                }
+                return _default;
+            }
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetDefault()
+        {
+            _default?.Release();
+            _default = null;
+        }
+
+        private void Release()
+        {
+            _map.actionTriggered -= OnActionTriggered;
+            if (_asset != null)
+                _map.Disable();
+        }
 
         public InputDeviceKind LastDevice { get; private set; } = InputDeviceKind.KeyboardMouse;
 
