@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d90965046ac25d4c9c956b1d454c8b8, type: 3}
+  m_Name: SciFiTopDown_Dressing
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Layout.DressingSet
+  _props:
+  - Prefab: {fileID: 100000, guid: db3d06801bb64b441aeadb3920853698, type: 3}
+    Zones: 1
+    Category: 2
+    Radius: 0.8
+    Weight: 1
+    Offset: {x: 0, y: 0, z: 0}
+    Rotation: 90
+    RandomYaw: 0
+  - Prefab: {fileID: 100000, guid: 1c42cb2d314ec2740bccd470153244e9, type: 3}
+    Zones: 11
+    Category: 1
+    Radius: 0.6
+    Weight: 2
+    Offset: {x: 0, y: 0, z: 0}
+    Rotation: 0
+    RandomYaw: 1
+  - Prefab: {fileID: 100000, guid: 13110da8c26df744fa22cff45de53d09, type: 3}
+    Zones: 14
+    Category: 1
+    Radius: 0.6
+    Weight: 2
+    Offset: {x: 0, y: 0, z: 0}
+    Rotation: 0
+    RandomYaw: 1
+  - Prefab: {fileID: 100000, guid: b2149df7b87df3d438c961a118dc49c3, type: 3}
+    Zones: 4
+    Category: 2
+    Radius: 1.7
+    Weight: 1
+    Offset: {x: 0, y: 0, z: 0}
+    Rotation: 0
+    RandomYaw: 0
+  _zones:
+  - Zone: 1
+    Density: 0.35
+    Spacing: 1.2
+  - Zone: 2
+    Density: 0.6
+    Spacing: 1
+  - Zone: 4
+    Density: 0.08
+    Spacing: 3
+  - Zone: 8
+    Density: 0.3
+    Spacing: 1
+  _maxCoverPerSpace: 2
+  _doorClearance: 1.5

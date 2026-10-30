@@ -1,0 +1,20 @@
+{
+    "name": "TentacleVania.World.Editor",
+    "rootNamespace": "TentacleVania.World.Editor",
+    "references": [
+        "TentacleVania.World",
+        "Unity.AI.Navigation",
+        "Unity.AI.Navigation.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

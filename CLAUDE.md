@@ -137,7 +137,7 @@ Each area has its own assembly definition, `TentacleVania.<Area>`, and the match
 | UI | `Assets/Game/UI/` (UI Toolkit runtime UI, main menu, combat HUD, F5 debug menu) |
 | VFX | `Assets/Game/VFX/` (VFX Graph assets and their Shader Graphs, no C#; the creature tentacle effect is fed by `Creature/Rig/ChainTexture`; tentacle tube shader) |
 | Weapons | `Assets/Game/Weapons/` (weapon data, shared combo, charged heavy, dash attack, soft-lock) |
-| World | `Assets/Game/World/` (rooms, arena doors, lock-in encounters and waves) |
+| World | `Assets/Game/World/` (rooms, arena doors, lock-in encounters and waves, the editor-only level layout tool) |
 
 Create other areas as their first task needs them, named after the Tasks `Area` values (`Creature`, `Combat`, `Weapons`, `Abilities`, `Enemies`, `Bosses`, `World`, `Progression`, `UI`, `Audio`, `VFX`).
 
@@ -149,6 +149,7 @@ A small `Bootstrap` scene is the entry point: it holds the persistent managers (
 | --- | --- |
 | `Bootstrap` | Entry point; `GameBootstrap` loads `MainMenu` additively |
 | `MainMenu` | Placeholder title screen (`UI/Menu`); Play loads `CombatArena` |
+| `LayoutSandbox` | Level layout tool test room built from `SciFiTopDown` (`World/CLAUDE.md`); not in the build |
 | `CombatArena` | Greybox lock-in arena with four enemy waves (the Combat Prototype test scene; the creature starts in the south corridor and walking in starts it); the play-check tools open it |
 
 ## Code style
