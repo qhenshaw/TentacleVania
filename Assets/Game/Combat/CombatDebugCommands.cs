@@ -27,6 +27,9 @@ namespace TentacleVania.Combat
             });
             DebugMenu.Value(DebugMenu.Combat, "Hits landed", () => _hits.ToString());
             DebugMenu.Value(DebugMenu.Combat, "Last hit", FormatLastHit);
+            DebugMenu.Value(DebugMenu.Combat, "Last hit feedback", () => Feedback.HitFeedback.LastKind.ToString());
+            DebugMenu.Toggle(DebugMenu.Combat, "Hit-stop", () => Core.Feedback.HitStop.Enabled, v => Core.Feedback.HitStop.Enabled = v);
+            DebugMenu.Toggle(DebugMenu.Combat, "Rumble", () => GameSettings.Rumble, v => GameSettings.Rumble = v);
         }
 
         private static void OnHit(Health target, in DamageInfo info, in DamageResult result)

@@ -18,6 +18,7 @@ namespace TentacleVania.Enemies
         private const float SpeedDamping = 0.1f;
         private const float MinActionSpeed = 0.25f;
         private const float MaxActionSpeed = 4f;
+        private const float FlinchAttack = 0.2f;
 
         private static readonly int Locomotion = Animator.StringToHash(LocomotionState);
         private static readonly int Stun = Animator.StringToHash(StunState);
@@ -40,6 +41,12 @@ namespace TentacleVania.Enemies
         private Enemy _enemy;
         private int _current;
         private float _attackStartedAt = -1f;
+        private Transform _model;
+        private Quaternion _modelRest;
+        private Vector3 _flinchAxis;
+        private float _flinchDegrees;
+        private float _flinchDuration;
+        private float _flinchElapsed;
 
         public Animator Animator => _animator;
         public int CurrentState => _current;
@@ -65,16 +72,52 @@ namespace TentacleVania.Enemies
         {
             _enemy = GetComponent<Enemy>();
             _animator.applyRootMotion = false;
+            _model = _animator.transform;
+            _modelRest = _model.localRotation;
         }
 
         private void OnEnable()
         {
             _current = Locomotion;
             _attackStartedAt = -1f;
+            _flinchDuration = 0f;
+            if (_model != null)
+                _model.localRotation = _modelRest;
+        }
+
+        public void Flinch(Vector3 hitDirection, float degrees, float duration)
+        {
+            if (degrees <= 0f || duration <= 0f)
+                return;
+            hitDirection.y = 0f;
+            if (hitDirection.sqrMagnitude < 1e-4f)
+                hitDirection = -transform.forward;
+            _flinchAxis = transform.InverseTransformDirection(Vector3.Cross(Vector3.up, hitDirection.normalized));
+            _flinchDegrees = degrees;
+            _flinchDuration = duration;
+            _flinchElapsed = 0f;
+        }
+
+        private void TickFlinch(float dt)
+        {
+            if (_flinchDuration <= 0f)
+                return;
+            _flinchElapsed += dt;
+            var t = _flinchElapsed / _flinchDuration;
+            if (t >= 1f)
+            {
+                _flinchDuration = 0f;
+                _model.localRotation = _modelRest;
+                return;
+            }
+            var amount = t < FlinchAttack ? t / FlinchAttack : 1f - (t - FlinchAttack) / (1f - FlinchAttack);
+            amount *= amount;
+            _model.localRotation = Quaternion.AngleAxis(_flinchDegrees * amount, _flinchAxis) * _modelRest;
         }
 
         public void Tick(float dt)
         {
+            TickFlinch(dt);
             _animator.SetFloat(Speed, _enemy.Velocity.magnitude, SpeedDamping, dt);
 
             switch (_enemy.State)

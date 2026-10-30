@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 2695203767483156552}
   - component: {fileID: 5758589282473034864}
   - component: {fileID: 6654993801079667695}
+  - component: {fileID: 7740517839666765984}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -475,6 +476,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.CreatureTentacles
   _material: {fileID: 2100000, guid: a9bcfb79f0251af49b5eb4a0b9219e7c, type: 2}
+--- !u!114 &7740517839666765984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2fd291c941b720439965a0dfb00b25d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Feedback.HitFeedback
+  _settings: {fileID: 11400000, guid: 4dbcad4c82ee883499ce10522d9ad5fe, type: 2}
 --- !u!1 &7952250992877002194
 GameObject:
   m_ObjectHideFlags: 0

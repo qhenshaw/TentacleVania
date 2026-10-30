@@ -25,6 +25,8 @@ namespace TentacleVania.Enemies.Data
         [SerializeField, Min(0f)] private float _turnSpeed = 540f;
         [SerializeField, Min(0f)] private float _spawnDelay = 0.5f;
         [SerializeField] private Vector2 _circleRange = new(3.5f, 5.5f);
+        [Tooltip("Multiplies the hit feedback knockback (0 = immovable).")]
+        [SerializeField, Min(0f)] private float _knockbackScale = 1f;
 
         [Header("Attacks")]
         [SerializeField] private List<EnemyAttack> _attacks = new();
@@ -47,6 +49,7 @@ namespace TentacleVania.Enemies.Data
         public float TurnSpeed => _turnSpeed;
         public float SpawnDelay => _spawnDelay;
         public Vector2 CircleRange => _circleRange;
+        public float KnockbackScale => _knockbackScale;
         public IReadOnlyList<EnemyAttack> Attacks => _attacks;
         public float DespawnDelay => _despawnDelay;
         public float ConsumeHeal => _consumeHeal;
