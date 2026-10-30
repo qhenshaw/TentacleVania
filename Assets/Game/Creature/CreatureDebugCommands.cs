@@ -1,5 +1,6 @@
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
+using TentacleVania.Core;
 using TentacleVania.Core.Characters;
 using TentacleVania.Core.Debugging;
 using TentacleVania.Creature.Movement;
@@ -61,6 +62,7 @@ namespace TentacleVania.Creature
             DebugMenu.Toggle(tab, "Organic gait", () => CreatureLegs.Organic, v => CreatureLegs.Organic = v);
             DebugMenu.Toggle(tab, "Free tentacles", () => CreatureTentacles.Visible, v => CreatureTentacles.Visible = v);
             DebugMenu.Toggle(tab, "Placeholder tentacle lines", () => Chains.ShowPlaceholderLines, v => Chains.ShowPlaceholderLines = v);
+            DebugMenu.Toggle(tab, "Tentacle merge", () => GameSettings.TentacleMerge, v => GameSettings.TentacleMerge = v);
             DebugMenu.Value(tab, "Chain texture", () =>
                 Spawned != null && Spawned.TryGetComponent<ChainTexture>(out var chains) && chains.Texture != null
                     ? $"{chains.Texture.width} x {chains.Texture.height} ({chains.Count} chains)"

@@ -1,0 +1,12 @@
+{
+    "target": "Fullscreen",
+    "hlsl": "Assets/Game/Core/Rendering/TentacleMerge.hlsl",
+    "fragmentFunction": "TentacleMerge",
+    "properties": [
+        { "name": "_Source", "type": "Texture2D" },
+        { "name": "_Depth", "type": "Texture2D" },
+        { "name": "_Blurred", "type": "Texture2D" },
+        { "name": "_MergePass", "type": "Float", "value": 0 },
+        { "name": "_Params", "type": "Vector", "vector": { "x": 0, "y": 0.08, "z": 0.15, "w": 0.85 } }
+    ]
+}

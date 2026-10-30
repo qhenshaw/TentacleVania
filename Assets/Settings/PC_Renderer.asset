@@ -21,6 +21,26 @@ MonoBehaviour:
       surfaceData: 2
     screenSpaceSettings:
       normalBlend: 0
+--- !u!114 &-1896571002380943784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89979ae5c1cb41b4d901049b3b7d8c7d, type: 3}
+  m_Name: TentacleMerge
+  m_EditorClassIdentifier: TentacleVania.Core::TentacleVania.Core.Rendering.TentacleMergeFeature
+  m_Active: 1
+  _shader: {fileID: -6465566751694194690, guid: 9c8c895a97a9ae64f97b19e697c1dada, type: 3}
+  _layers:
+    serializedVersion: 0
+    m_Bits: 256
+  _radius: 0.08
+  _depthFalloff: 0.15
+  _strength: 0.85
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,9 +66,10 @@ MonoBehaviour:
     probeSamplingDebugTexture: {fileID: 2800000, guid: 24ec0e140fb444a44ab96ee80844e18e, type: 3}
     probeVolumeBlendStatesCS: {fileID: 7200000, guid: b9a23f869c4fd45f19c5ada54dd82176, type: 3}
   m_RendererFeatures:
+  - {fileID: -1896571002380943784}
   - {fileID: 7833122117494664109}
   - {fileID: -6938910425696642514}
-  m_RendererFeatureMap: ad6b866f10d7b46c2eda1854bb09b49fl
+  m_RendererFeatureMap: 58fec6c7b806aee5ad6b866f10d7b46c2eda1854bb09b49fl
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   m_AssetVersion: 3

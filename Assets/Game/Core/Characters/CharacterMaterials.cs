@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace TentacleVania.Core.Characters
 {
@@ -12,10 +13,14 @@ namespace TentacleVania.Core.Characters
         public static readonly int StatusColor = Shader.PropertyToID("_StatusColor");
         public static readonly int StatusAmount = Shader.PropertyToID("_StatusAmount");
         public static readonly int StatusPulse = Shader.PropertyToID("_StatusPulse");
+        private static readonly int EffectStatusColor = Shader.PropertyToID("StatusColor");
+        private static readonly int EffectStatusAmount = Shader.PropertyToID("StatusAmount");
+        private static readonly int EffectStatusPulse = Shader.PropertyToID("StatusPulse");
 
         [SerializeField] private Renderer[] _renderers;
 
         private readonly List<Material> _materials = new(8);
+        private readonly List<VisualEffect> _effects = new(2);
         private float _flashStarted;
         private float _flashDuration;
         private float _flashStrength;
@@ -58,6 +63,13 @@ namespace TentacleVania.Core.Characters
                 _materials.Add(material);
         }
 
+        public void Register(VisualEffect effect)
+        {
+            if (effect == null || _effects.Contains(effect) || !effect.HasFloat(EffectStatusAmount))
+                return;
+            _effects.Add(effect);
+        }
+
         public void SetGlow(Color color, float amount)
         {
             SetColor(GlowColor, color);
@@ -82,9 +94,20 @@ namespace TentacleVania.Core.Characters
             SetColor(StatusColor, color);
             SetFloat(StatusAmount, amount);
             SetFloat(StatusPulse, pulseSpeed);
+            foreach (var effect in _effects)
+            {
+                effect.SetVector4(EffectStatusColor, color);
+                effect.SetFloat(EffectStatusAmount, amount);
+                effect.SetFloat(EffectStatusPulse, pulseSpeed);
+            }
         }
 
-        public void ClearStatus() => SetFloat(StatusAmount, 0f);
+        public void ClearStatus()
+        {
+            SetFloat(StatusAmount, 0f);
+            foreach (var effect in _effects)
+                effect.SetFloat(EffectStatusAmount, 0f);
+        }
 
         private void SetColor(int id, Color color)
         {
