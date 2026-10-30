@@ -129,6 +129,7 @@ Each area has its own assembly definition, `TentacleVania.<Area>`, and the match
 | --- | --- |
 | Core | `Assets/Game/Core/` (input, scene flow, versioning, diagnostics) |
 | Creature | `Assets/Game/Creature/` (player creature: movement, dash, procedural rig) |
+| Abilities | `Assets/Game/Abilities/` (active ability slot, charge cost, Bio-Shield) |
 | Camera | `Assets/Game/Camera/` (Cinemachine gameplay camera, room bounds) |
 | Combat | `Assets/Game/Combat/` (health, typed damage pipeline, modifiers, hurtboxes) |
 | Enemies | `Assets/Game/Enemies/` (enemy state machine, attacks, telegraphs, NavMesh, tokens) |

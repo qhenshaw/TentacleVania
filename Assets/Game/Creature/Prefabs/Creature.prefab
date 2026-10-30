@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 5758589282473034864}
   - component: {fileID: 6654993801079667695}
   - component: {fileID: 7740517839666765984}
+  - component: {fileID: 2601210039349415623}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -489,6 +490,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Feedback.HitFeedback
   _settings: {fileID: 11400000, guid: 4dbcad4c82ee883499ce10522d9ad5fe, type: 2}
+--- !u!114 &2601210039349415623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d4237d919e1bf4194e46216b4d2698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.AbilityController
+  _equipped: {fileID: 11400000, guid: 1fc211d948915244b912f2a92ade5640, type: 2}
 --- !u!1 &7952250992877002194
 GameObject:
   m_ObjectHideFlags: 0

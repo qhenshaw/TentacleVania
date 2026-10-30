@@ -1,0 +1,19 @@
+{
+    "name": "TentacleVania.Abilities",
+    "rootNamespace": "TentacleVania.Abilities",
+    "references": [
+        "TentacleVania.Core",
+        "TentacleVania.Combat",
+        "TentacleVania.Creature",
+        "FMODUnity"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
