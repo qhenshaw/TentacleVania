@@ -183,7 +183,15 @@ namespace TentacleVania.Combat.Feedback
         {
             if (!Enabled || _settings == null || !GameSettings.Gore)
                 return;
-            PlaceDecal(_settings.Enemy, consumable.transform.position, Vector3.zero, _settings.KillIntensity);
+            var point = consumable.transform.position;
+            var direction = CombatTargets.Creature != null ? point - CombatTargets.Creature.transform.position : Vector3.zero;
+            direction.y = 0f;
+            if (direction.sqrMagnitude < 1e-6f)
+                direction = consumable.transform.forward;
+            direction.Normalize();
+            var centre = consumable.TryGetComponent<Collider>(out var body) ? body.bounds.center : point + Vector3.up;
+            _enemySpray.Play(centre, direction, _settings.KillIntensity);
+            PlaceDecal(_settings.Enemy, point, Vector3.zero, _settings.KillIntensity);
         }
 
         private void PlaceDecal(HitEffectSettings.Side side, Vector3 point, Vector3 direction, float intensity)
