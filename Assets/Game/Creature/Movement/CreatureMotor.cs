@@ -45,6 +45,7 @@ namespace TentacleVania.Creature.Movement
         public bool IsInvulnerable => Time.time < _invulnerableUntil;
         public int DashChainCount => _dash.ChainCount;
         public Vector3 Velocity => _velocity;
+        public Vector3 DashDirection => _dashDirection;
         public Vector3 MoveInput { get; private set; }
 
         private void Awake()

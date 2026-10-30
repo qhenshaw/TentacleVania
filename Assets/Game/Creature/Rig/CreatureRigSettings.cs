@@ -59,6 +59,15 @@ namespace TentacleVania.Creature.Rig
             Iterations = 1,
         };
 
+        [Header("Dash stretch")]
+        [SerializeField, Min(1f)] private float _dashStretch = 2f;
+        [SerializeField, Min(0.001f)] private float _dashRise = 0.04f;
+        [SerializeField, Min(0.1f)] private float _dashRecoverFrequency = 2.5f;
+        [SerializeField, Range(0.05f, 1f)] private float _dashRecoverDamping = 0.5f;
+        [SerializeField, Range(0.1f, 1f)] private float _dashThinning = 0.5f;
+        [SerializeField, Range(0f, 90f)] private float _dashFan = 30f;
+        [SerializeField, Min(0f)] private float _dashTrailHeight = 0.15f;
+
         [Header("Placeholder rendering")]
         [SerializeField, Min(0.001f)] private float _rootWidth = 0.1f;
         [SerializeField, Min(0.001f)] private float _tipWidth = 0.025f;
@@ -100,6 +109,13 @@ namespace TentacleVania.Creature.Rig
         public float FreeRootWidth => _freeRootWidth;
         public float FreeTipWidth => _freeTipWidth;
         public SpringChainSettings FreeSpring => _freeSpring;
+        public float DashStretch => _dashStretch;
+        public float DashRise => _dashRise;
+        public float DashRecoverFrequency => _dashRecoverFrequency;
+        public float DashRecoverDamping => _dashRecoverDamping;
+        public float DashThinning => _dashThinning;
+        public float DashFan => _dashFan;
+        public float DashTrailHeight => _dashTrailHeight;
         public float RootWidth => _rootWidth;
         public float TipWidth => _tipWidth;
 

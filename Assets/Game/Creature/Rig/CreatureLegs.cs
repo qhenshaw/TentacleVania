@@ -24,6 +24,7 @@ namespace TentacleVania.Creature.Rig
         [SerializeField] private Transform[] _bodyParts;
 
         private readonly RaycastHit[] _hits = new RaycastHit[8];
+        private readonly DashTrail _trail = new();
 
         private Collider _self;
         private Transform _legRoot;
@@ -51,19 +52,27 @@ namespace TentacleVania.Creature.Rig
         private Vector3 _lastPosition;
         private Vector3 _lastVelocity;
         private System.Random _random;
+        private Vector3 _trailDirection = Vector3.back;
 
         public static bool Organic { get; set; } = true;
+        public static bool DashStretch { get; set; } = true;
 
         public CreatureRigSettings Settings => _settings;
         public int LegCount => _feet?.Length ?? 0;
         public int SteppingCount { get; private set; }
         public Vector3 BodyOffset => _bodyOffset;
+        public DashTrail Trail => _trail;
+        public Vector3 TrailDirection => _trailDirection;
 
         public Vector3 Foot(int leg) => _feet[leg];
         public bool IsStepping(int leg) => _stepping[leg];
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetStatics() => Organic = true;
+        private static void ResetStatics()
+        {
+            Organic = true;
+            DashStretch = true;
+        }
 
         private void Awake()
         {
@@ -137,6 +146,7 @@ namespace TentacleVania.Creature.Rig
             _bodyOffset = Vector3.zero;
             _bodyVelocity = Vector3.zero;
             _bob = 0f;
+            _trail.Reset();
             SteppingCount = 0;
         }
 
@@ -212,16 +222,26 @@ namespace TentacleVania.Creature.Rig
 
             UpdateBody(sway / count, acceleration, up, dt);
 
+            var dashing = DashStretch && _motor != null && _motor.IsDashing;
+            if (dashing)
+                _trailDirection = _motor.DashDirection;
+            _trail.Update(dashing, dt, _settings.DashRise, _settings.DashRecoverFrequency, _settings.DashRecoverDamping);
+            var weight = _trail.Weight;
+            var lengthScale = _trail.LengthScale(_settings.DashStretch);
+            var bone = _settings.BoneLength * lengthScale;
+            var arch = _settings.ArchHeight * (1f - weight * 0.8f);
+
             var time = Time.time * _settings.WritheSpeed;
             var writhe = Organic ? _settings.WritheAmplitude : 0f;
             for (var i = 0; i < count; i++)
             {
                 var root = transform.TransformPoint(RootLocal(i)) + _bodyOffset;
                 var joints = _joints[i];
-                ChainSolver.SeedArch(joints, root, _feet[i], up, _settings.ArchHeight);
-                ChainSolver.Solve(joints, _settings.BoneLength, root, _feet[i], up, _settings.SolverIterations);
+                var foot = weight > 0f ? Vector3.Lerp(_feet[i], TrailPoint(i, root, up, lengthScale), weight) : _feet[i];
+                ChainSolver.SeedArch(joints, root, foot, up, arch);
+                ChainSolver.Solve(joints, bone, root, foot, up, _settings.SolverIterations);
                 if (writhe > 0f)
-                    Writhe(joints, root, _feet[i], up, time, _phase[i], writhe * (0.6f + _lift[i]));
+                    Writhe(joints, root, foot, up, time, _phase[i], writhe * (0.6f + _lift[i] + weight));
                 _lines[i].SetPositions(joints);
                 _lines[i].enabled = Chains.ShowPlaceholderLines;
             }
@@ -230,8 +250,11 @@ namespace TentacleVania.Creature.Rig
         public int ChainOrder => 0;
         public int ChainCount => LegCount;
 
-        public void WriteChain(int chain, Span<Vector4> joints) =>
-            Chains.Write(joints, _joints[chain], _settings.RootWidth, _settings.TipWidth);
+        public void WriteChain(int chain, Span<Vector4> joints)
+        {
+            var thin = _trail.WidthScale(_settings.DashThinning);
+            Chains.Write(joints, _joints[chain], _settings.RootWidth * thin, _settings.TipWidth * thin);
+        }
 
         private float Variation => Organic ? _settings.Variation : 0f;
 
@@ -306,6 +329,15 @@ namespace TentacleVania.Creature.Rig
         {
             var direction = Quaternion.Euler(0f, Angle(leg), 0f) * Vector3.forward;
             return direction * _settings.RootRadius + Vector3.up * _settings.RootHeight;
+        }
+
+        private Vector3 TrailPoint(int leg, Vector3 root, Vector3 up, float lengthScale)
+        {
+            var back = -_trailDirection;
+            var side = Vector3.Dot(LegDirection(leg), Vector3.Cross(up, back));
+            var direction = Quaternion.AngleAxis(side * _settings.DashFan, up) * back;
+            var point = root + direction * (_settings.LegLength * lengthScale * 0.95f);
+            return point + up * (Vector3.Dot(transform.position - point, up) + _settings.DashTrailHeight);
         }
 
         private Vector3 RestPoint(int leg)
