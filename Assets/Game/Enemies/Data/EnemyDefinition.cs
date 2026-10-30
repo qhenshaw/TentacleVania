@@ -12,6 +12,11 @@ namespace TentacleVania.Enemies.Data
         [SerializeField, Min(1f)] private float _maxHealth = 40f;
         [SerializeField, Min(0f)] private float _maxArmor;
 
+        [Header("Stagger (bar defaults to Max Health when 0)")]
+        [SerializeField, Min(0f)] private float _maxStagger;
+        [SerializeField, Min(0f)] private float _staggerStun = 2f;
+        [SerializeField, Min(0f)] private float _staggerDamageTaken = 1.5f;
+
         [Header("Movement")]
         [SerializeField, Min(0f)] private float _moveSpeed = 4.5f;
         [SerializeField, Min(0f)] private float _turnSpeed = 540f;
@@ -27,6 +32,9 @@ namespace TentacleVania.Enemies.Data
         public string DisplayName => _displayName;
         public float MaxHealth => _maxHealth;
         public float MaxArmor => _maxArmor;
+        public float MaxStagger => _maxStagger > 0f ? _maxStagger : _maxHealth;
+        public float StaggerStun => _staggerStun;
+        public float StaggerDamageTaken => _staggerDamageTaken;
         public float MoveSpeed => _moveSpeed;
         public float TurnSpeed => _turnSpeed;
         public float SpawnDelay => _spawnDelay;
