@@ -29,7 +29,13 @@ namespace TentacleVania.Creature.Movement
         public event Action Dashed;
 
         public CreatureMotorSettings Settings => _settings;
-        public bool InputEnabled { get; set; } = true;
+        private int _controlLocks;
+
+        public bool InputEnabled => _controlLocks == 0;
+
+        public void LockControl() => _controlLocks++;
+
+        public void UnlockControl() => _controlLocks = Mathf.Max(0, _controlLocks - 1);
         public float SpeedMultiplier { get; set; } = 1f;
         public bool DashLocked { get; set; }
         public bool FacingLocked { get; set; }

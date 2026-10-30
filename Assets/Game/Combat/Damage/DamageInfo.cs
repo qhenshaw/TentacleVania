@@ -10,6 +10,7 @@ namespace TentacleVania.Combat.Damage
         public DamageType Type;
         public Team SourceTeam;
         public HitFlags Flags;
+        public float StunDuration;
         public Health Attacker;
         public Vector3 Point;
         public Vector3 Direction;
