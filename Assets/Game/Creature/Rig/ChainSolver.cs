@@ -5,18 +5,20 @@ namespace TentacleVania.Creature.Rig
 {
     public static class ChainSolver
     {
-        private const float KneeAlong = 0.35f;
+        private const float KneeAlong = 0.3f;
+        private const float KneeJointAlong = 0.4f;
 
         public static void SeedArch(Span<Vector3> joints, Vector3 root, Vector3 target, Vector3 up, float archHeight)
         {
-            var control = Vector3.Lerp(root, target, KneeAlong);
-            control += up * (Mathf.Max(0f, Vector3.Dot(root - control, up)) + archHeight);
+            var knee = Vector3.Lerp(root, target, KneeAlong);
+            knee += up * (Mathf.Max(0f, Vector3.Dot(root - knee, up)) + archHeight);
             var last = joints.Length - 1;
+            var kneeJoint = Mathf.Clamp(Mathf.RoundToInt(last * KneeJointAlong), 1, last - 1);
             for (var i = 0; i <= last; i++)
             {
-                var t = (float)i / last;
-                var u = 1f - t;
-                joints[i] = u * u * root + 2f * u * t * control + t * t * target;
+                joints[i] = i <= kneeJoint
+                    ? Vector3.Lerp(root, knee, (float)i / kneeJoint)
+                    : Vector3.Lerp(knee, target, (float)(i - kneeJoint) / (last - kneeJoint));
             }
         }
 

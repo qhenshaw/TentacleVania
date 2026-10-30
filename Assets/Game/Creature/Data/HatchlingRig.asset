@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.CreatureRigSettings
   _legCount: 6
   _bonesPerLeg: 5
-  _legLength: 0.9
-  _rootRadius: 0.22
+  _legLength: 1.1
+  _rootRadius: 0.12
   _rootHeight: 0.42
-  _restRadius: 0.62
-  _archHeight: 0.3
+  _restRadius: 0.66
+  _archHeight: 0.5
   _stepThreshold: 0.28
   _emergencyDistance: 0.6
   _stepDuration: 0.11
   _stepHeight: 0.18
   _predictTime: 0.12
   _solverIterations: 6
-  _rootWidth: 0.1
-  _tipWidth: 0.025
+  _rootWidth: 0.07
+  _tipWidth: 0.015
