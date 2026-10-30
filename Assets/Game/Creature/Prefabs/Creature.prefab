@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 6592408752216720721}
   - component: {fileID: 615621536349149212}
   - component: {fileID: 5879995599559319355}
+  - component: {fileID: 1734815825583834548}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -276,6 +277,21 @@ MonoBehaviour:
   _rootOffset: {x: 0.18, y: 0.5, z: 0.15}
   _rootWidth: 0.14
   _tipWidth: 0.03
+--- !u!114 &1734815825583834548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130f1d1cf95539c478819dc8f17d1ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Core::TentacleVania.Core.Characters.CharacterMaterials
+  _renderers:
+  - {fileID: 961082029792045707}
+  - {fileID: 1800961333701193789}
 --- !u!1 &7952250992877002194
 GameObject:
   m_ObjectHideFlags: 0
