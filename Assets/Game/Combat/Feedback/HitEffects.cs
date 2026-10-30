@@ -109,11 +109,13 @@ namespace TentacleVania.Combat.Feedback
         {
             Instance = this;
             CombatEvents.HitLanded += OnHit;
+            CombatEvents.Consumed += OnConsumed;
         }
 
         private void OnDisable()
         {
             CombatEvents.HitLanded -= OnHit;
+            CombatEvents.Consumed -= OnConsumed;
             if (Instance == this)
                 Instance = null;
         }
@@ -175,6 +177,13 @@ namespace TentacleVania.Combat.Feedback
                 (isCreature ? _creatureSpray : _enemySpray).Play(point, direction, intensity);
             if ((effects & HitEffect.Decal) != 0)
                 PlaceDecal(isCreature ? _settings.Creature : _settings.Enemy, point, direction, intensity);
+        }
+
+        private void OnConsumed(Consumable consumable)
+        {
+            if (!Enabled || _settings == null || !GameSettings.Gore)
+                return;
+            PlaceDecal(_settings.Enemy, consumable.transform.position, Vector3.zero, _settings.KillIntensity);
         }
 
         private void PlaceDecal(HitEffectSettings.Side side, Vector3 point, Vector3 direction, float intensity)
