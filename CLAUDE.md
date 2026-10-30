@@ -133,7 +133,7 @@ Each area has its own assembly definition, `TentacleVania.<Area>`, and the match
 | Combat | `Assets/Game/Combat/` (health, typed damage pipeline, modifiers, hurtboxes) |
 | Enemies | `Assets/Game/Enemies/` (enemy state machine, attacks, telegraphs, NavMesh, tokens) |
 | Localization | `Assets/Game/Localization/` (Localization settings, locales, string tables; no code) |
-| UI | `Assets/Game/UI/` (UI Toolkit runtime UI, main menu, F5 debug menu) |
+| UI | `Assets/Game/UI/` (UI Toolkit runtime UI, main menu, combat HUD, F5 debug menu) |
 | Weapons | `Assets/Game/Weapons/` (weapon data, shared combo, charged heavy, dash attack, soft-lock) |
 | World | `Assets/Game/World/` (rooms, arena doors, lock-in encounters and waves) |
 

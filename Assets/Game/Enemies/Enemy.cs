@@ -59,6 +59,7 @@ namespace TentacleVania.Enemies
 
         public StaggerBar Stagger => _stagger;
         public bool IsStaggerBroken => _staggerBroken;
+        public bool IsFeedable => _consumable != null && _consumable.IsGrabbable;
 
         public EnemyDefinition Definition => _definition;
         public Health Health => _health;
@@ -134,6 +135,12 @@ namespace TentacleVania.Enemies
                     }
                     break;
             }
+        }
+
+        public void TickFeedback()
+        {
+            if (_glow != null)
+                _glow.SetFeedable(IsFeedable);
         }
 
         public void Stun(float duration)

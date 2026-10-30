@@ -77,6 +77,8 @@ namespace TentacleVania.Creature
             }
         }
 
+        private void OnEnable() => Consumable.GrabThreshold = _grabThreshold;
+
         private void OnDisable()
         {
             ReleaseVictim(false);

@@ -1,0 +1,155 @@
+.hud {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.hud__layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.hud__player {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    width: 560px;
+    translate: -50% 0;
+    padding: 5px;
+    background-color: rgba(6, 8, 6, 0.55);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-color: rgb(255, 176, 0);
+}
+
+.hud-bar {
+    overflow: hidden;
+    background-color: rgba(10, 12, 10, 0.9);
+    border-width: 1px;
+    border-color: rgb(110, 84, 24);
+}
+
+.hud-bar--health {
+    height: 18px;
+}
+
+.hud-bar--charge {
+    height: 8px;
+    margin-top: 4px;
+}
+
+.hud-bar__layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+}
+
+.hud-bar__trail {
+    background-color: rgb(235, 205, 170);
+}
+
+.hud-bar__heal {
+    background-color: rgb(120, 230, 70);
+}
+
+.hud-bar--health .hud-bar__fill {
+    background-color: rgb(185, 28, 48);
+}
+
+.hud-bar--charge .hud-bar__fill {
+    background-color: rgb(30, 160, 145);
+}
+
+.hud-bar--charge-full .hud-bar__fill {
+    background-color: rgb(80, 255, 225);
+}
+
+.hud-bar__glow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(220, 255, 250);
+    opacity: 0;
+}
+
+.hud-bar__ticks {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.hud-bar__tick {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.enemy-bar {
+    position: absolute;
+    width: 96px;
+    margin-left: -48px;
+    margin-top: -16px;
+}
+
+.enemy-bar__health {
+    height: 8px;
+    overflow: hidden;
+    background-color: rgba(10, 12, 10, 0.85);
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.9);
+}
+
+.enemy-bar__trail,
+.enemy-bar__fill,
+.enemy-bar__armor,
+.enemy-bar__stagger-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+}
+
+.enemy-bar__trail {
+    background-color: rgb(235, 205, 170);
+}
+
+.enemy-bar__fill {
+    background-color: rgb(200, 40, 40);
+}
+
+.enemy-bar--feedable .enemy-bar__fill {
+    background-color: rgb(140, 255, 60);
+}
+
+.enemy-bar__armor {
+    bottom: auto;
+    height: 2px;
+    background-color: rgb(190, 195, 200);
+}
+
+.enemy-bar__stagger {
+    height: 5px;
+    margin-top: 1px;
+    overflow: hidden;
+    background-color: rgba(10, 12, 10, 0.85);
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.9);
+}
+
+.enemy-bar__stagger-fill {
+    background-color: rgb(255, 176, 0);
+}

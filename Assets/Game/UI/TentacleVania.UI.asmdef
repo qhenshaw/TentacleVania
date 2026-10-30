@@ -3,6 +3,9 @@
     "rootNamespace": "TentacleVania.UI",
     "references": [
         "TentacleVania.Core",
+        "TentacleVania.Combat",
+        "TentacleVania.Creature",
+        "TentacleVania.Enemies",
         "Unity.InputSystem",
         "Unity.Localization"
     ],
