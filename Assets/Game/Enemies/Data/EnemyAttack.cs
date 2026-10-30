@@ -25,6 +25,13 @@ namespace TentacleVania.Enemies.Data
         Shoot,
     }
 
+    public enum IndicatorMode
+    {
+        Auto,
+        On,
+        Off,
+    }
+
     public enum AttackTokenKind
     {
         Melee,
@@ -39,6 +46,8 @@ namespace TentacleVania.Enemies.Data
         public Telegraph Telegraph;
         [Tooltip("Body animation; its hit frame is timed to land when the attack goes active.")]
         public AttackAnimation Animation;
+        [Tooltip("Ground telegraph: Auto shows one for area, projectile and red (undodgeable) attacks.")]
+        public IndicatorMode GroundIndicator;
 
         [Header("Timing (s)")]
         [Min(0f)] public float WindUp = 0.6f;
@@ -72,10 +81,19 @@ namespace TentacleVania.Enemies.Data
         public EnemyProjectile Projectile;
         [Min(0.1f)] public float ProjectileSpeed = 14f;
         [Min(0.1f)] public float ProjectileLifetime = 3f;
+        [Tooltip("Width of the ground lane telegraphing the shot.")]
+        [Min(0.05f)] public float LaneWidth = 0.4f;
 
         public AttackTokenKind TokenKind => Kind == AttackKind.Projectile ? AttackTokenKind.Ranged : AttackTokenKind.Melee;
         public float Duration => WindUp + Active + Recovery;
         public HitFlags Flags => Telegraph == Telegraph.Undodgeable ? HitFlags.Undodgeable : HitFlags.None;
         public bool InRange(float distance) => distance >= MinRange && distance <= MaxRange;
+
+        public bool ShowsGroundIndicator(bool forceAll) => GroundIndicator switch
+        {
+            IndicatorMode.On => true,
+            IndicatorMode.Off => forceAll,
+            _ => forceAll || Kind != AttackKind.Melee || Telegraph == Telegraph.Undodgeable,
+        };
     }
 }

@@ -1,0 +1,17 @@
+{
+    "target": "Decal",
+    "hlsl": "Assets/Game/Enemies/Telegraphs/TelegraphDecal.hlsl",
+    "fragmentFunction": "TelegraphDecal",
+    "properties": [
+        { "name": "_Color", "type": "Color", "color": { "r": 2, "g": 1.3, "b": 0.1, "a": 1 } },
+        { "name": "_Shape", "type": "Float", "value": 0 },
+        { "name": "_Arc", "type": "Float", "value": 90 },
+        { "name": "_Progress", "type": "Float", "value": 0 },
+        { "name": "_Size", "type": "Vector", "vector": { "x": 2, "y": 2, "z": 0, "w": 0 } },
+        { "name": "_OutlineWidth", "type": "Float", "value": 0.07 },
+        { "name": "_OutlineAlpha", "type": "Float", "value": 0.85 },
+        { "name": "_FillAlpha", "type": "Float", "value": 0.35 },
+        { "name": "_Glow", "type": "Float", "value": 1 },
+        { "name": "_Lock", "type": "Float", "value": 0 }
+    ]
+}

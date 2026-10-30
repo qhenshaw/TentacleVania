@@ -30,6 +30,7 @@ namespace TentacleVania.Enemies
 
         private static readonly RaycastHit[] SweepHits = new RaycastHit[16];
         private static readonly Collider[] OverlapHits = new Collider[16];
+        private const float LaneOvershoot = 1f;
 
         [SerializeField] private EnemyDefinition _definition;
         [SerializeField] private TelegraphGlow _glow;
@@ -319,8 +320,7 @@ namespace TentacleVania.Enemies
                     Face(_attackForward, dt);
                     if (_glow != null)
                         _glow.Show(attack.Telegraph, progress);
-                    if (attack.Kind == AttackKind.Area && _indicator != null)
-                        _indicator.Show(_areaCenter, attack.AreaRadius, attack.Telegraph, progress);
+                    ShowIndicator(attack, progress, target);
                     break;
                 case AttackPhase.Active:
                     if (!_activeStarted)
@@ -389,14 +389,41 @@ namespace TentacleVania.Enemies
             }
         }
 
+        private void ShowIndicator(EnemyAttack attack, float progress, Health target)
+        {
+            if (_indicator == null || !attack.ShowsGroundIndicator(GroundIndicator.ForceAll))
+                return;
+            var locked = AttackMath.IsLocked(attack, progress);
+            switch (attack.Kind)
+            {
+                case AttackKind.Area:
+                    _indicator.ShowCircle(_areaCenter, attack.AreaRadius, attack.Telegraph, progress, locked);
+                    break;
+                case AttackKind.Melee:
+                    _indicator.ShowSector(transform.position, _attackForward, attack.Reach + attack.SweepRadius, attack.Arc, attack.Telegraph, progress, locked);
+                    break;
+                case AttackKind.Projectile:
+                {
+                    var origin = MuzzleOrigin(attack);
+                    var ground = new Vector3(origin.x, transform.position.y, origin.z);
+                    var wall = Physics.Raycast(origin, _attackForward, out var hit, attack.MaxRange, EnemyLayers.WallMask, QueryTriggerInteraction.Ignore) ? hit.distance : attack.MaxRange;
+                    var toTarget = target != null ? Flat(target.transform.position - ground).magnitude : attack.MaxRange;
+                    var length = AttackMath.LaneLength(attack.MaxRange, wall, toTarget, LaneOvershoot);
+                    _indicator.ShowLane(ground, _attackForward, attack.LaneWidth, length, attack.Telegraph, progress, locked);
+                    break;
+                }
+            }
+        }
+
+        private Vector3 MuzzleOrigin(EnemyAttack attack) =>
+            _muzzle != null ? _muzzle.position : transform.position + Vector3.up * attack.Height;
+
         private void Fire(EnemyAttack attack)
         {
             if (attack.Projectile == null)
                 return;
-            var origin = _muzzle != null ? _muzzle.position : transform.position + Vector3.up * attack.Height;
-            var aim = CombatTargets.Creature != null ? (CombatTargets.CreatureAimPoint - origin).normalized : _attackForward;
-            if (aim.sqrMagnitude < 1e-4f)
-                aim = _attackForward;
+            var origin = MuzzleOrigin(attack);
+            var aim = CombatTargets.Creature != null ? AttackMath.LockedAim(_attackForward, origin, CombatTargets.CreatureAimPoint) : _attackForward;
             var info = Damage(attack, origin, aim);
             EnemyManager.FireProjectile(attack.Projectile, origin, aim * attack.ProjectileSpeed, info, attack.ProjectileLifetime);
         }

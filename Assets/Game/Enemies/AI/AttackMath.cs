@@ -40,5 +40,19 @@ namespace TentacleVania.Enemies.AI
             offset.y = 0f;
             return offset.sqrMagnitude <= radius * radius;
         }
+
+        public static bool IsLocked(EnemyAttack attack, float windUpProgress) => windUpProgress > attack.TrackDuringWindUp;
+
+        public static float LaneLength(float maxRange, float wallDistance, float targetDistance, float overshoot) =>
+            Mathf.Max(0f, Mathf.Min(maxRange, Mathf.Min(wallDistance, targetDistance + overshoot)));
+
+        public static Vector3 LockedAim(Vector3 forward, Vector3 origin, Vector3 aimPoint)
+        {
+            var flat = aimPoint - origin;
+            var height = flat.y;
+            flat.y = 0f;
+            var distance = Mathf.Max(flat.magnitude, 0.5f);
+            return (forward * distance + Vector3.up * height).normalized;
+        }
     }
 }
