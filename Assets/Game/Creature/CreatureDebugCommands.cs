@@ -36,6 +36,14 @@ namespace TentacleVania.Creature
                 var charge = Charge;
                 return charge != null ? $"{charge.Current:F0} / {charge.Max:F0}{(charge.IsFull ? " FULL" : "")}" : "-";
             });
+            DebugMenu.Value(tab, "Biomass carried", () =>
+                Spawned != null && Spawned.TryGetComponent<CreatureConsume>(out var consume) ? consume.Biomass.ToString() : "-");
+            DebugMenu.Value(tab, "Consume", () =>
+            {
+                if (Spawned == null || !Spawned.TryGetComponent<CreatureConsume>(out var consume))
+                    return "-";
+                return consume.IsRooted ? "gulping" : consume.IsHealing ? "healing (armored)" : "ready";
+            });
             DebugMenu.Button(tab, "Fill charge", () =>
             {
                 var charge = Charge;

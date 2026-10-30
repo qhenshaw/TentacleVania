@@ -17,6 +17,7 @@ namespace TentacleVania.Enemies
         Circle,
         Attacking,
         Stunned,
+        Consumed,
         Dead,
     }
 
@@ -51,6 +52,7 @@ namespace TentacleVania.Enemies
         private StaggerBar _stagger;
         private ScaleModifier _staggerVulnerability;
         private bool _staggerBroken;
+        private Consumable _consumable;
 
         public event Action<Enemy> StateChanged;
         public event Action<Enemy> Staggered;
@@ -78,12 +80,16 @@ namespace TentacleVania.Enemies
             _circleAngle = UnityEngine.Random.Range(0f, 360f);
             _stagger = new(_definition.MaxStagger);
             _staggerVulnerability = new() { HealthScale = _definition.StaggerDamageTaken };
+            if (TryGetComponent(out _consumable))
+                _consumable.Configure(_definition.ConsumeHeal, _definition.Biomass);
         }
 
         protected virtual void OnEnable()
         {
             _health.Died += OnDied;
             _health.Damaged += OnDamaged;
+            if (_consumable != null)
+                _consumable.Grabbed += OnGrabbed;
             EnemyManager.Register(this);
             SetState(EnemyState.Spawning);
         }
@@ -92,6 +98,8 @@ namespace TentacleVania.Enemies
         {
             _health.Died -= OnDied;
             _health.Damaged -= OnDamaged;
+            if (_consumable != null)
+                _consumable.Grabbed -= OnGrabbed;
             EnemyManager.Unregister(this);
             EndAttack(false);
             EndStaggerBreak();
@@ -353,7 +361,8 @@ namespace TentacleVania.Enemies
         {
             EndStaggerBreak();
             EndAttack(false);
-            Halt();
+            if (_agent.enabled)
+                Halt();
             _agent.enabled = false;
             SetState(EnemyState.Dead);
             OnDeath();
@@ -368,6 +377,17 @@ namespace TentacleVania.Enemies
                 _glow.Flash(HitFlashDuration);
             if (health.IsAlive && State != EnemyState.Stunned && State != EnemyState.Dead && _stagger.Add(result.StaggerDamage))
                 BreakStagger();
+        }
+
+        private void OnGrabbed(Consumable consumable)
+        {
+            EndAttack(false);
+            EndStaggerBreak();
+            Halt();
+            _agent.enabled = false;
+            foreach (var collider in GetComponentsInChildren<Collider>())
+                collider.enabled = false;
+            SetState(EnemyState.Consumed);
         }
 
         private void BreakStagger()

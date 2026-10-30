@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 5879995599559319355}
   - component: {fileID: 1734815825583834548}
   - component: {fileID: 7113805647117262672}
+  - component: {fileID: 4734989538036461837}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -311,6 +312,28 @@ MonoBehaviour:
   _fullGlow: {r: 0.3, g: 1.4, b: 1.1, a: 1}
   _fullGlowAmount: 0.8
   _fullGlowPulse: 5
+--- !u!114 &4734989538036461837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee3b15c24b6aec48ae0cfab9eb3d1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.CreatureConsume
+  _reach: 2.2
+  _grabThreshold: 0.25
+  _rootDuration: 0.4
+  _healDuration: 1.5
+  _damageTakenWhileConsuming: 0.5
+  _mawOffset: {x: 0, y: 0.45, z: 0.35}
+  _grabLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  _tentacleMaterial: {fileID: 2100000, guid: a9bcfb79f0251af49b5eb4a0b9219e7c, type: 2}
 --- !u!1 &7952250992877002194
 GameObject:
   m_ObjectHideFlags: 0

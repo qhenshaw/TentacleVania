@@ -26,6 +26,10 @@ namespace TentacleVania.Enemies.Data
         [Header("Attacks")]
         [SerializeField] private List<EnemyAttack> _attacks = new();
 
+        [Header("Consume (Balance Sheet: heal % of the creature's max HP, biomass)")]
+        [SerializeField, Range(0f, 1f)] private float _consumeHeal = 0.12f;
+        [SerializeField, Min(0)] private int _biomass = 10;
+
         [Header("Death")]
         [SerializeField, Min(0f)] private float _despawnDelay = 2f;
 
@@ -41,5 +45,7 @@ namespace TentacleVania.Enemies.Data
         public Vector2 CircleRange => _circleRange;
         public IReadOnlyList<EnemyAttack> Attacks => _attacks;
         public float DespawnDelay => _despawnDelay;
+        public float ConsumeHeal => _consumeHeal;
+        public int Biomass => _biomass;
     }
 }
