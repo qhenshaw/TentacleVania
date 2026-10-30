@@ -16,6 +16,7 @@ Numbers are the developer-approved baselines (HP and damage from the Balance She
 
 | Enemy | HP | Behaviour | Attacks |
 | --- | --- | --- | --- |
+| Handler (base `Enemy`) | 50, speed 4.8 | Walks the creature down (default chase and circling) | Heavy stun: RED melee 140° at 2.6 m, 20 dmg + `StunDuration` 1.0 s, within 2.4 m (1.1 / 0.2 / 0.9, cooldown 5), listed first so it's preferred; interrupt it by breaking its stagger bar (an interrupted attack starts no cooldown, so it tries again). Shock poke: yellow electric thrust 2.2 m, 10 dmg (0.4 / 0.12 / 0.45, cooldown 1) |
 | Security Guard (`GuardEnemy`) | 40, speed 4.5 | Holds 5–8 m from the creature: closes in when farther, backs off to 6.5 m (trying ±30°/±60° on the NavMesh) when nearer; faces the creature within 12 m | Baton: yellow melee 1.8 m, 90°, 8 dmg, within 1.8 m (0.45 / 0.15 / 0.5, cooldown 1.2). Pistol: yellow projectile 18 m/s, 8 dmg, 4–11 m (0.45 / 0.05 / 0.4, cooldown 1.4) |
 | Scientist (`ScientistEnemy`) | 20, speed 4 | Flees to 6 m away whenever the creature is within 7 m (tries 0°, ±35°, ±70° off straight away on the NavMesh), stands still when farther, cowers when every escape is blocked; faces the creature only when cornered or within 2 m | Stun prod: yellow melee, 1.4 m, 60°, 4 dmg, only within 1.6 m (0.5 / 0.15 / 0.6, cooldown 1.5) |
 

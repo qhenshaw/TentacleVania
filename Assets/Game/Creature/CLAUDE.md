@@ -18,6 +18,10 @@ The player creature (`TentacleVania.Creature`). The prefab `Prefabs/Creature.pre
 - Legs render as tapered `LineRenderer`s as a placeholder until the VFX Graph strips and tube shader replace them. The gameplay hurtbox stays the `CharacterController`, never the legs.
 - The solver is plain managed code over preallocated arrays (no per-frame allocations). Move it to a Burst job if chain counts at Apex make it show up in the profiler.
 
+## Control locks and stun
+
+`CreatureMotor.InputEnabled` is true while no system holds a lock: call `LockControl()` / `UnlockControl()` in pairs (death, the consume root and stuns each hold one), never set it directly. A hit whose `DamageInfo.StunDuration` > 0 stuns the creature through `CreatureVitals.Stun` (control locked, electric-blue status pulse, the charge glow restored afterwards); repeated stuns extend it.
+
 ## Grab & consume
 
 `CreatureConsume` (developer decisions): Grab (B / E) takes the nearest enemy with a `Combat.Consumable` under 25% HP within 2.2 m, preferring ones in front; with nothing grabbable the press does nothing. The creature roots for 0.4 s while two placeholder tentacles drag the victim into the maw (it shrinks, then `FinishConsume` kills it), then is free again while the heal flows: `Consumable.HealFraction` of the creature's max HP over 1.5 s, with a ×0.5 damage-taken modifier for the whole 1.5 s. Each consume adds `Consumable.Biomass` to `Biomass` and +20 charge. Grabbed enemies enter `EnemyState.Consumed` (no AI, colliders and agent off) so nothing else can hit them. Heal and biomass per enemy live in `EnemyDefinition` (Balance Sheet values).

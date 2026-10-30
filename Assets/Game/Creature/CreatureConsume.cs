@@ -111,7 +111,7 @@ namespace TentacleVania.Creature
             _victimStart = target.transform.position;
             _victimScale = target.transform.localScale;
             target.BeginConsume();
-            _motor.InputEnabled = false;
+            _motor.LockControl();
             _motor.FaceImmediately(target.transform.position - transform.position);
             _healRate = _health.Max * target.HealFraction / _healDuration;
             _healRemaining += _health.Max * target.HealFraction;
@@ -180,7 +180,7 @@ namespace TentacleVania.Creature
                 return;
             var victim = _victim;
             _victim = null;
-            _motor.InputEnabled = _health.IsAlive;
+            _motor.UnlockControl();
             if (consumed)
             {
                 victim.transform.localScale = Vector3.zero;

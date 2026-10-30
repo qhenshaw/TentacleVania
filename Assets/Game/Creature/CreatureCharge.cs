@@ -66,6 +66,12 @@ namespace TentacleVania.Creature
                 Add(_perWeaponHit);
         }
 
+        public void RefreshGlow()
+        {
+            _showingFull = !Meter.IsFull;
+            Refresh();
+        }
+
         private void Refresh()
         {
             if (_materials != null && Meter.IsFull != _showingFull)

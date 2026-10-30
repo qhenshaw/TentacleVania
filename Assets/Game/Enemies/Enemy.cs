@@ -359,6 +359,7 @@ namespace TentacleVania.Enemies
         {
             var info = DamageInfo.Create(attack.Damage, Team.Site, attack.Type, attack.Stagger);
             info.Flags = attack.Flags;
+            info.StunDuration = attack.StunDuration;
             info.Attacker = _health;
             info.Point = point;
             info.Direction = direction;
