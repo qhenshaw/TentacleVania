@@ -1,3 +1,4 @@
+using TentacleVania.Core.Scenes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,7 +23,7 @@ namespace TentacleVania.Core.Debugging
             DebugMenu.Button(DebugMenu.Game, "Restart scene", () =>
             {
                 Time.timeScale = 1f;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneFlow.Reload();
             });
         }
     }

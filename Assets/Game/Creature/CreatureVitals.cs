@@ -2,9 +2,9 @@ using System.Collections;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Core.Characters;
+using TentacleVania.Core.Scenes;
 using TentacleVania.Creature.Movement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace TentacleVania.Creature
 {
@@ -101,7 +101,7 @@ namespace TentacleVania.Creature
         private IEnumerator RestartArena()
         {
             yield return new WaitForSeconds(_restartDelay);
-            SceneManager.LoadScene(gameObject.scene.name);
+            SceneFlow.Load(gameObject.scene.name);
         }
 
         private sealed class DashInvulnerability : IDamageModifier

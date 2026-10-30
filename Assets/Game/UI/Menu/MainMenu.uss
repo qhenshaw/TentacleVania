@@ -1,0 +1,39 @@
+.main-menu {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(10, 6, 12);
+}
+
+.main-menu__title {
+    font-size: 72px;
+    -unity-font-style: bold;
+    letter-spacing: 8px;
+    color: rgb(170, 40, 90);
+    margin-bottom: 64px;
+}
+
+.main-menu__buttons {
+    width: 320px;
+}
+
+.main-menu__button {
+    height: 56px;
+    margin: 6px 0;
+    font-size: 26px;
+    color: rgb(220, 200, 210);
+    background-color: rgb(32, 18, 30);
+    border-width: 2px;
+    border-color: rgb(80, 30, 60);
+    border-radius: 4px;
+}
+
+.main-menu__button:hover,
+.main-menu__button:focus {
+    background-color: rgb(70, 20, 50);
+    border-color: rgb(200, 50, 110);
+}
+
+.main-menu__button:disabled {
+    opacity: 0.5;
+}
