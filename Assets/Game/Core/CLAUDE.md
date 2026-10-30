@@ -5,7 +5,13 @@ Shared code every area may reference (`TentacleVania.Core`). Keep it free of gam
 ## Character master shader
 
 - `Shaders/CharacterMaster.shadergraph` (built from `CharacterMaster.shadergraph.json` + `.hlsl` with `Tools/shadergraph-build.sh`) is the Lit master for every character: `_BaseMap`, `_BaseColor`, `_Smoothness`, `_EmissionColor`, plus effect channels `_GlowColor`/`_GlowAmount` (telegraphs, rim-weighted), `_FlashColor`/`_FlashAmount` (hit flash) and `_StatusColor`/`_StatusAmount`/`_StatusPulse` (stun, charge full, status effects; pulses when `_StatusPulse` > 0).
-- `Characters/CharacterMaterials` sits on each character root, instances the materials of its listed renderers (and of runtime renderers passed to `Register`, e.g. leg and tentacle lines) and is the only thing that sets those properties: `SetGlow`, `Flash` (fades out over its duration, dimmed when `GameSettings.Flashes` is off), `SetStatus`. No `MaterialPropertyBlock`s.
+- `Characters/CharacterMaterials` sits on each character root, instances the materials of its listed renderers (and of runtime renderers passed to `Register`, e.g. leg and tentacle lines) and is the only thing that sets those properties: `SetGlow`, `Flash` (fades out over its duration, dimmed when `GameSettings.Flashes` is off), `SetStatus`. No `MaterialPropertyBlock`s. `Register(VisualEffect)` forwards `SetStatus`/`ClearStatus` to an effect's exposed `StatusColor`/`StatusAmount`/`StatusPulse` (the creature's tentacle strips); glow and flash don't reach effects.
+
+## Tentacle merge (rendering)
+
+- `Rendering/TentacleMergeFeature` (first renderer feature on `PC_Renderer`, before SSAO) smooths deferred normals where creature surfaces overlap so the mass shades as one surface: after the GBuffer it copies `_GBuffer2`, blurs the normals of pixels on the `TentacleMerge` rendering layer at half resolution (depth-aware, `_radius` in metres, `_depthFalloff`, `_strength`) and writes them back before lighting. Shading only: silhouettes and shadows don't merge.
+- Creature pixels come from the rendering-layer GBuffer target (`R16_UInt`, written because the RP asset has Use Rendering Layers on), not from re-drawing the renderers: re-drawing the dense VFX strips cost ~1 ms at 1080p. Put a renderer in the merge by adding the `TentacleMerge` rendering layer (the creature's body, maw and VFX renderer have it). It needs the deferred path; in forward it does nothing.
+- `Rendering/TentacleMerge.shadergraph` is a Fullscreen graph whose `_MergePass` picks downsample, horizontal blur, vertical blur or composite; the pass keeps one material per stage because a material's values are read when the command buffer runs. The uint rendering-layer texture is a plain HLSL global (`_TentacleMergeLayers`), since graph texture properties are float. `GameSettings.TentacleMerge` turns it off (F5 Creature tab).
 
 ## Chains
 

@@ -2,7 +2,9 @@
     "name": "TentacleVania.Core",
     "rootNamespace": "TentacleVania.Core",
     "references": [
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -25,6 +25,8 @@ namespace TentacleVania.Creature.Rig
         {
             GetComponents(_sources);
             _sources.Sort((a, b) => a.ChainOrder.CompareTo(b.ChainOrder));
+            if (TryGetComponent<CharacterMaterials>(out var materials))
+                materials.Register(_effect);
         }
 
         private void OnDestroy()
