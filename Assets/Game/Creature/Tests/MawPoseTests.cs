@@ -18,7 +18,7 @@ namespace TentacleVania.Creature.Tests
             var facing = Quaternion.identity;
             for (var i = 0; i < Count; i++)
             {
-                var root = MawPose.Root(i, Count, Mouth, facing, 0.25f);
+                var root = MawPose.Root(MawPose.Angle(i, Count) + 13f, Mouth, facing, 0.25f);
                 Assert.That(Vector3.Distance(root, Mouth), Is.EqualTo(0.25f).Within(Tolerance));
                 Assert.That(root.z, Is.EqualTo(Mouth.z).Within(Tolerance));
             }
@@ -31,7 +31,7 @@ namespace TentacleVania.Creature.Tests
             var centre = Mouth + (Target - Mouth) * 0.5f;
             for (var i = 0; i < Count; i++)
             {
-                var tip = MawPose.OpenTip(i, Count, Mouth, Target, 1.2f, 0.5f);
+                var tip = MawPose.OpenTip(MawPose.Angle(i, Count), Mouth, Target, 1.2f, 0.5f);
                 var offset = tip - centre;
                 Assert.That(Vector3.Dot(offset, axis), Is.EqualTo(0f).Within(Tolerance));
                 Assert.That(offset.magnitude, Is.EqualTo(1.2f).Within(Tolerance));
@@ -45,9 +45,39 @@ namespace TentacleVania.Creature.Tests
             var closePoint = Target + axis * 0.4f;
             for (var i = 0; i < Count; i++)
             {
-                var tip = MawPose.CloseTip(i, Count, Mouth, Target, 0.4f, 0.05f);
+                var tip = MawPose.CloseTip(MawPose.Angle(i, Count), Mouth, Target, 0.4f, 0.05f);
                 Assert.That(Vector3.Distance(tip, closePoint), Is.EqualTo(0.05f).Within(Tolerance));
             }
+        }
+
+        [Test]
+        public void PinTipsHugTheTargetSide()
+        {
+            var axis = (Target - Mouth).normalized;
+            for (var i = 0; i < Count; i++)
+            {
+                var offset = MawPose.PinTip(MawPose.Angle(i, Count), Mouth, Target, 0.4f, 0.9f) - Target;
+                Assert.That(offset.magnitude, Is.EqualTo(0.36f).Within(Tolerance));
+                Assert.That(Vector3.Dot(offset, axis), Is.EqualTo(0f).Within(Tolerance));
+            }
+        }
+
+        [Test]
+        public void EaseOutBackStartsAndEndsOnTargetAndOvershoots()
+        {
+            Assert.That(MawPose.EaseOutBack(0f, 1.7f), Is.EqualTo(0f).Within(Tolerance));
+            Assert.That(MawPose.EaseOutBack(1f, 1.7f), Is.EqualTo(1f).Within(Tolerance));
+            Assert.That(MawPose.EaseOutBack(0.7f, 1.7f), Is.GreaterThan(1f));
+            Assert.That(MawPose.EaseOutBack(0.7f, 0f), Is.LessThanOrEqualTo(1f));
+        }
+
+        [Test]
+        public void StaggerWaitsForItsDelayThenStillFinishesOnTime()
+        {
+            Assert.That(MawPose.Stagger(0.2f, 0.4f), Is.EqualTo(0f));
+            Assert.That(MawPose.Stagger(0.7f, 0.4f), Is.EqualTo(0.5f).Within(Tolerance));
+            Assert.That(MawPose.Stagger(1f, 0.4f), Is.EqualTo(1f));
+            Assert.That(MawPose.Stagger(0.5f, 0f), Is.EqualTo(0.5f).Within(Tolerance));
         }
 
         [Test]

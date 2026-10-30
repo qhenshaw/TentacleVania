@@ -93,6 +93,31 @@ namespace TentacleVania.Creature.Rig
             Gravity = 1f,
             Iterations = 3,
         };
+        [SerializeField] private SpringChainSettings _mawWhipSpring = new()
+        {
+            PoseStiffness = 14f,
+            TipLooseness = 0.85f,
+            Damping = 0.04f,
+            Gravity = 1f,
+            Iterations = 2,
+        };
+
+        [Header("Maw organic motion")]
+        [SerializeField] private Vector2Int _mawLeaders = new(2, 3);
+        [SerializeField, Range(0.1f, 1f)] private float _mawLeaderStrike = 0.6f;
+        [SerializeField, Range(0f, 2f)] private float _mawLeaderHug = 0.9f;
+        [SerializeField, Min(0f)] private float _mawAnticipation = 0.06f;
+        [SerializeField, Min(0f)] private float _mawRearBack = 0.15f;
+        [SerializeField, Range(0f, 90f)] private float _mawAngleJitter = 20f;
+        [SerializeField, Range(0f, 1f)] private float _mawRootJitter = 0.3f;
+        [SerializeField, Range(0f, 1f)] private float _mawLengthJitter = 0.25f;
+        [SerializeField, Range(0f, 1f)] private float _mawWidthJitter = 0.3f;
+        [SerializeField, Range(0f, 0.9f)] private float _mawTimingJitter = 0.4f;
+        [SerializeField, Min(0f)] private float _mawOvershoot = 1.7f;
+        [SerializeField, Min(0f)] private float _mawSeekWrithe = 0.12f;
+        [SerializeField, Range(0f, 1f)] private float _mawSeekLean = 0.2f;
+        [SerializeField, Min(0f)] private float _mawWrithe = 0.1f;
+        [SerializeField, Min(0f)] private float _mawWritheSpeed = 5f;
 
         [Header("Placeholder rendering")]
         [SerializeField, Min(0.001f)] private float _rootWidth = 0.1f;
@@ -155,6 +180,22 @@ namespace TentacleVania.Creature.Rig
         public float MawTipWidth => _mawTipWidth;
         public MawTimeline MawTimeline => new(_mawOpenTime, _mawCloseTime, _mawSwallowTime, _mawRetractTime);
         public SpringChainSettings MawSpring => _mawSpring;
+        public SpringChainSettings MawWhipSpring => _mawWhipSpring;
+        public Vector2Int MawLeaders => _mawLeaders;
+        public float MawLeaderStrike => _mawLeaderStrike;
+        public float MawLeaderHug => _mawLeaderHug;
+        public float MawAnticipation => _mawAnticipation;
+        public float MawRearBack => _mawRearBack;
+        public float MawAngleJitter => _mawAngleJitter;
+        public float MawRootJitter => _mawRootJitter;
+        public float MawLengthJitter => _mawLengthJitter;
+        public float MawWidthJitter => _mawWidthJitter;
+        public float MawTimingJitter => _mawTimingJitter;
+        public float MawOvershoot => _mawOvershoot;
+        public float MawSeekWrithe => _mawSeekWrithe;
+        public float MawSeekLean => _mawSeekLean;
+        public float MawWrithe => _mawWrithe;
+        public float MawWritheSpeed => _mawWritheSpeed;
         public float RootWidth => _rootWidth;
         public float TipWidth => _tipWidth;
 
