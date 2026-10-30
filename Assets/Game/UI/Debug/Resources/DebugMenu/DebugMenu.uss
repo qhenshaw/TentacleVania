@@ -1,0 +1,99 @@
+.debug-menu {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    width: 460px;
+    max-height: 85%;
+    padding: 10px;
+    background-color: rgba(8, 14, 10, 0.92);
+    border-width: 1px;
+    border-color: rgb(255, 176, 0);
+}
+
+.debug-menu__title {
+    color: rgb(255, 176, 0);
+    -unity-font-style: bold;
+    margin-bottom: 6px;
+    letter-spacing: 2px;
+}
+
+.debug-menu__tabs {
+    flex-grow: 1;
+}
+
+.debug-menu .unity-tab-view__header-container {
+    background-color: rgb(18, 28, 20);
+    border-bottom-width: 1px;
+    border-color: rgb(90, 70, 20);
+}
+
+.debug-menu .unity-tab__header {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 4px 8px;
+}
+
+.debug-menu .unity-tab__header-label {
+    color: rgb(150, 180, 150);
+}
+
+.debug-menu .unity-tab__header:hover .unity-tab__header-label {
+    color: rgb(220, 240, 220);
+}
+
+.debug-menu .unity-tab__header:checked {
+    background-color: rgb(40, 34, 14);
+}
+
+.debug-menu .unity-tab__header:checked .unity-tab__header-label {
+    color: rgb(255, 176, 0);
+    -unity-font-style: bold;
+}
+
+.debug-menu__page {
+    max-height: 520px;
+}
+
+.debug-menu__row {
+    margin: 2px 0;
+}
+
+.debug-menu Label,
+.debug-menu .unity-base-field__label {
+    color: rgb(200, 225, 200);
+}
+
+.debug-menu Button {
+    color: rgb(255, 210, 120);
+    background-color: rgba(60, 50, 20, 0.8);
+    border-color: rgb(140, 100, 20);
+}
+
+.debug-menu__value {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.debug-menu__value-text {
+    color: rgb(255, 176, 0);
+    -unity-text-align: middle-right;
+}
+
+.debug-menu__choice {
+    flex-direction: row;
+}
+
+.debug-menu__choice > DropdownField {
+    flex-grow: 1;
+}
+
+.debug-menu .unity-base-popup-field__input,
+.debug-menu .unity-base-text-field__input,
+.debug-menu .unity-toggle__checkmark {
+    background-color: rgb(28, 38, 30);
+    border-color: rgb(90, 110, 90);
+    color: rgb(220, 235, 220);
+}
+
+.debug-menu .unity-base-popup-field__text {
+    color: rgb(220, 235, 220);
+}

@@ -122,6 +122,17 @@ namespace TentacleVania.Enemies
             SetState(EnemyState.Stunned);
         }
 
+        public void SetFrozen(bool frozen)
+        {
+            if (frozen)
+            {
+                EndAttack(false);
+                Halt();
+                if (State == EnemyState.Attacking)
+                    SetState(EnemyState.Chase);
+            }
+        }
+
         protected virtual bool TrySelectAttack(float distance, float now, out int index)
         {
             var attacks = _definition.Attacks;
