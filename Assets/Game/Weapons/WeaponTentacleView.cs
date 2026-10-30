@@ -13,7 +13,6 @@ namespace TentacleVania.Weapons
     [RequireComponent(typeof(WeaponController))]
     public sealed class WeaponTentacleView : MonoBehaviour, IChainSource
     {
-        private const int Joints = Chains.Joints;
         private const float MinBone = 0.02f;
         private const float Slack = 1.08f;
         private const float MinTipReach = 0.15f;
@@ -21,6 +20,7 @@ namespace TentacleVania.Weapons
         private const float RollMinSpeed = 0.5f;
 
         [SerializeField] private Material _material;
+        [SerializeField, Range(Chains.MinJoints, Chains.MaxJoints)] private int _joints = Chains.DefaultJoints;
         [SerializeField, Min(0.1f)] private float _length = 2.4f;
         [SerializeField, Min(0f)] private float _archHeight = 0.25f;
         [SerializeField] private Vector3 _rootOffset = new(0.18f, 0.5f, 0.15f);
@@ -44,7 +44,7 @@ namespace TentacleVania.Weapons
         private readonly bool[] _shown = new bool[WeaponController.Slots];
         private readonly float[] _retractStarted = new float[WeaponController.Slots];
         private readonly Vector3[] _retractFrom = new Vector3[WeaponController.Slots];
-        private readonly Vector3[] _pose = new Vector3[Joints];
+        private Vector3[] _pose;
         private readonly List<TipMesh>[] _tipMeshes = { new(2), new(2) };
         private readonly TipMesh[] _activeMesh = new TipMesh[WeaponController.Slots];
         private readonly float[] _grow = new float[WeaponController.Slots];
@@ -74,16 +74,17 @@ namespace TentacleVania.Weapons
         {
             _controller = GetComponent<WeaponController>();
             _materials = GetComponent<CharacterMaterials>();
+            _pose = new Vector3[_joints];
             var width = new AnimationCurve(new Keyframe(0f, _rootWidth), new Keyframe(1f, _tipWidth));
             for (var slot = 0; slot < WeaponController.Slots; slot++)
             {
-                _chains[slot] = new SpringChain(Joints);
+                _chains[slot] = new SpringChain(_joints);
                 _chains[slot].Collapse(Root(slot));
                 _retractStarted[slot] = float.NegativeInfinity;
                 var line = new GameObject($"WeaponTentacle {slot + 1}").AddComponent<LineRenderer>();
                 line.transform.SetParent(transform, false);
                 line.useWorldSpace = true;
-                line.positionCount = Joints;
+                line.positionCount = _joints;
                 line.widthCurve = width;
                 line.numCornerVertices = 3;
                 line.numCapVertices = 3;
@@ -151,7 +152,7 @@ namespace TentacleVania.Weapons
                     continue;
                 }
 
-                var bone = Mathf.Clamp(Vector3.Distance(root, tip) * Slack / (Joints - 1), MinBone, _length / (Joints - 1));
+                var bone = Mathf.Clamp(Vector3.Distance(root, tip) * Slack / (_joints - 1), MinBone, _length / (_joints - 1));
                 ChainSolver.SeedArch(_pose, root, tip, Vector3.up, _archHeight);
                 chain.Step(_spring, dt, _pose, bone, true);
                 _lines[slot].SetPositions(chain.Positions);
@@ -270,6 +271,7 @@ namespace TentacleVania.Weapons
 
         public int ChainOrder => 10;
         public int ChainCount => WeaponController.Slots;
+        public int ChainJoints => _joints;
 
         public void WriteChain(int chain, Span<Vector4> joints)
         {

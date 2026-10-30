@@ -39,27 +39,37 @@ namespace TentacleVania.Creature.Tests
         }
 
         [Test]
-        public void CloseTipsConvergeBeyondTheTarget()
+        public void CoilStartsAtTheRootAndWrapsAroundTheTargetAtItsRadius()
         {
-            var axis = (Target - Mouth).normalized;
-            var closePoint = Target + axis * 0.4f;
-            for (var i = 0; i < Count; i++)
+            var pose = new Vector3[12];
+            var root = new Vector3(0f, 0.45f, 0.35f);
+            var centre = new Vector3(0f, 0.9f, 1.6f);
+            var start = Vector3.back;
+            Assert.That(MawPose.Coil(pose, root, centre, start, 0.35f, 0.2f, 150f, -1f, 0.001f, Vector3.up, 0.1f), Is.GreaterThan(0f));
+            Assert.That(Vector3.Distance(pose[0], root), Is.EqualTo(0f).Within(Tolerance));
+            var coiled = 0;
+            for (var i = 1; i < pose.Length; i++)
             {
-                var tip = MawPose.CloseTip(MawPose.Angle(i, Count), Mouth, Target, 0.4f, 0.05f);
-                Assert.That(Vector3.Distance(tip, closePoint), Is.EqualTo(0.05f).Within(Tolerance));
+                var flat = pose[i] - centre;
+                flat.y = 0f;
+                if (Mathf.Abs(flat.magnitude - 0.35f) < Tolerance)
+                    coiled++;
             }
+            Assert.That(coiled, Is.GreaterThanOrEqualTo(4));
+            var end = pose[^1] - centre;
+            Assert.That(end.y, Is.EqualTo(0.2f + 0.15f).Within(Tolerance));
+            end.y = 0f;
+            Assert.That(Vector3.Angle(start, end), Is.EqualTo(150f).Within(0.1f));
         }
 
         [Test]
-        public void PinTipsHugTheTargetSide()
+        public void UnwoundCoilEndsAtTheStartPoint()
         {
-            var axis = (Target - Mouth).normalized;
-            for (var i = 0; i < Count; i++)
-            {
-                var offset = MawPose.PinTip(MawPose.Angle(i, Count), Mouth, Target, 0.4f, 0.9f) - Target;
-                Assert.That(offset.magnitude, Is.EqualTo(0.36f).Within(Tolerance));
-                Assert.That(Vector3.Dot(offset, axis), Is.EqualTo(0f).Within(Tolerance));
-            }
+            var pose = new Vector3[12];
+            var centre = new Vector3(0f, 0.9f, 1.6f);
+            MawPose.Coil(pose, Vector3.zero, centre, Vector3.back, 0.35f, -0.3f, 0f, 1f, 0.001f, Vector3.up, 0f);
+            var expected = MawPose.CoilPoint(centre, Vector3.back, 0.35f, -0.3f, 0f);
+            Assert.That(Vector3.Distance(pose[^1], expected), Is.EqualTo(0f).Within(Tolerance));
         }
 
         [Test]

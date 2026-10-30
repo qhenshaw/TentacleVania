@@ -111,16 +111,32 @@ namespace TentacleVania.Creature.Rig
             return mouth + toTarget * reach + Radial(angle, Frame(toTarget, Vector3.up)) * openRadius;
         }
 
-        public static Vector3 CloseTip(float angle, Vector3 mouth, Vector3 target, float targetRadius, float pinch)
-        {
-            var frame = Frame(target - mouth, Vector3.up);
-            return target + frame * Vector3.forward * targetRadius + Radial(angle, frame) * pinch;
-        }
+        public static Vector3 CoilPoint(Vector3 centre, Vector3 startDirection, float radius, float height, float angle) =>
+            centre + Vector3.up * height + Quaternion.AngleAxis(angle, Vector3.up) * startDirection * radius;
 
-        public static Vector3 PinTip(float angle, Vector3 mouth, Vector3 target, float targetRadius, float hug)
+        public static float Coil(System.Span<Vector3> pose, Vector3 root, Vector3 centre, Vector3 startDirection, float radius, float height,
+            float wrap, float spin, float risePerDegree, Vector3 archUp, float arch)
         {
-            var frame = Frame(target - mouth, Vector3.up);
-            return target + Radial(angle, frame) * (targetRadius * hug);
+            var last = pose.Length - 1;
+            var start = CoilPoint(centre, startDirection, radius, height, 0f);
+            var approach = Vector3.Distance(root, start);
+            var arc = radius * wrap * Mathf.Deg2Rad;
+            var coilSegments = arc + approach > 1e-5f ? Mathf.Clamp(Mathf.RoundToInt(last * arc / (arc + approach)), 0, last - 1) : 0;
+            var approachSegments = last - coilSegments;
+            for (var i = 0; i <= approachSegments; i++)
+            {
+                var t = (float)i / approachSegments;
+                pose[i] = Vector3.Lerp(root, start, t) + archUp * (arch * Mathf.Sin(t * Mathf.PI));
+            }
+            for (var m = 1; m <= coilSegments; m++)
+            {
+                var angle = wrap * m / coilSegments;
+                pose[approachSegments + m] = CoilPoint(centre, startDirection, radius, height + risePerDegree * angle, spin * angle);
+            }
+            var length = 0f;
+            for (var i = 1; i <= last; i++)
+                length += Vector3.Distance(pose[i - 1], pose[i]);
+            return length;
         }
 
         public static float ArcLength(float span, float archHeight) =>

@@ -25,6 +25,7 @@ namespace TentacleVania.Creature.Rig
         public VisualEffect Effect => _effect;
         public Texture2D Texture => _texture;
         public int Count { get; private set; }
+        public int Width { get; private set; }
 
         private int Requested => Chains.CountChains(_chainSources);
 
@@ -48,11 +49,12 @@ namespace TentacleVania.Creature.Rig
         private void LateUpdate()
         {
             var count = Mathf.Min(Requested, Budget());
-            if (_texture == null || count != Count)
-                Rebuild(count);
+            var width = Chains.Width(_chainSources);
+            if (_texture == null || count != Count || width != Width)
+                Rebuild(count, width);
             if (count == 0)
                 return;
-            Chains.Pack(_chainSources, _texture.GetPixelData<Vector4>(0).AsSpan(), count);
+            Chains.Pack(_chainSources, _texture.GetPixelData<Vector4>(0).AsSpan(), count, width);
             _texture.Apply(false);
         }
 
@@ -71,12 +73,13 @@ namespace TentacleVania.Creature.Rig
             return Mathf.Max(0, budget);
         }
 
-        private void Rebuild(int count)
+        private void Rebuild(int count, int width)
         {
             if (_texture != null)
                 Destroy(_texture);
             Count = count;
-            _texture = new(Chains.Joints, Mathf.Max(1, count), TextureFormat.RGBAFloat, false, true)
+            Width = width;
+            _texture = new(width, Mathf.Max(1, count), TextureFormat.RGBAFloat, false, true)
             {
                 name = "ChainPositions",
                 filterMode = FilterMode.Trilinear,
@@ -86,7 +89,7 @@ namespace TentacleVania.Creature.Rig
                 return;
             _effect.SetTexture(ChainPositions, _texture);
             _effect.SetInt(ChainCount, count);
-            _effect.SetInt(ChainLength, Chains.Joints);
+            _effect.SetInt(ChainLength, width);
         }
     }
 }
