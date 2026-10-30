@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd73efceef87ef4ba09f2fc4356f4bc, type: 3}
+  m_Name: BioShield
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.BioShield.BioShieldDefinition
+  _displayName: Bio-Shield
+  _cost: 50
+  _absorb: 40
+  _duration: 3
+  _burstDamage: 25
+  _burstRadius: 4
+  _burstStagger: 45
+  _burstType: 0
+  _hitLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  _shellPrefab: {fileID: 2977200962809328862, guid: 66ac7221e7e48a44eb5dbca0884fd740, type: 3}
+  _shellRadius: 0.75
+  _burstVisualTime: 0.3
+  _statusColor: {r: 1, g: 0.62, b: 0.15, a: 1}
+  _statusAmount: 0.6
+  _activateSound:
+    Guid:
+      Data1: 324092620
+      Data2: 1225018460
+      Data3: 689314227
+      Data4: 1520117522
+    Path: event:/Abilities/BioShield/Activate
+  _absorbSound:
+    Guid:
+      Data1: -1258758761
+      Data2: 1187644551
+      Data3: 1231925679
+      Data4: 1838615105
+    Path: event:/Abilities/BioShield/Absorb
+  _burstSound:
+    Guid:
+      Data1: 225710671
+      Data2: 1293112518
+      Data3: 1078347450
+      Data4: 1825802003
+    Path: event:/Abilities/BioShield/Burst

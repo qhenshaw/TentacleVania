@@ -37,8 +37,9 @@ namespace TentacleVania.Core.Debugging
         public const string Combat = "Combat";
         public const string Enemies = "Enemies";
         public const string Camera = "Camera";
+        public const string Abilities = "Abilities";
 
-        private static readonly string[] PreferredOrder = { Game, Creature, Combat, Enemies, Camera };
+        private static readonly string[] PreferredOrder = { Game, Creature, Combat, Abilities, Enemies, Camera };
         private static readonly List<string> TabList = new();
         private static readonly Dictionary<string, List<DebugEntry>> Entries = new();
 
