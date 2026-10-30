@@ -16,6 +16,12 @@ namespace TentacleVania.Creature
         private const int Joints = Chains.Joints;
         private const float RootWidth = 0.12f;
         private const float TipWidth = 0.04f;
+        private const int TentacleCount = 3;
+        private const float ReachShare = 0.3f;
+        private const float WrapRadius = 0.32f;
+        private const float WrapTurns = 0.75f;
+        private const float WrapHeight = 0.3f;
+        private const float MawArch = 0.35f;
 
         private static readonly Collider[] Candidates = new Collider[16];
 
@@ -28,8 +34,18 @@ namespace TentacleVania.Creature
         [SerializeField] private LayerMask _grabLayers;
         [SerializeField] private Material _tentacleMaterial;
 
-        private readonly LineRenderer[] _lines = new LineRenderer[2];
-        private readonly Vector3[][] _joints = { new Vector3[Joints], new Vector3[Joints] };
+        [SerializeField] private SpringChainSettings _spring = new()
+        {
+            PoseStiffness = 24f,
+            TipLooseness = 0.6f,
+            Damping = 0.15f,
+            Gravity = 2f,
+            Iterations = 3,
+        };
+
+        private readonly LineRenderer[] _lines = new LineRenderer[TentacleCount];
+        private readonly SpringChain[] _chains = new SpringChain[TentacleCount];
+        private readonly Vector3[] _pose = new Vector3[Joints];
 
         private Health _health;
         private CreatureMotor _motor;
@@ -62,6 +78,7 @@ namespace TentacleVania.Creature
             var width = new AnimationCurve(new Keyframe(0f, RootWidth), new Keyframe(1f, TipWidth));
             for (var i = 0; i < _lines.Length; i++)
             {
+                _chains[i] = new SpringChain(Joints);
                 var line = new GameObject($"ConsumeTentacle {i + 1}").AddComponent<LineRenderer>();
                 line.transform.SetParent(transform, false);
                 line.useWorldSpace = true;
@@ -106,12 +123,12 @@ namespace TentacleVania.Creature
         }
 
         public int ChainOrder => 20;
-        public int ChainCount => _joints.Length;
+        public int ChainCount => _chains.Length;
 
         public void WriteChain(int chain, Span<Vector4> joints)
         {
             if (IsRooted)
-                Chains.Write(joints, _joints[chain], RootWidth, TipWidth);
+                Chains.Write(joints, _chains[chain].Positions, RootWidth, TipWidth);
             else
                 Chains.Collapse(joints, transform.TransformPoint(_mawOffset));
         }
@@ -125,6 +142,9 @@ namespace TentacleVania.Creature
             _grabbedAt = Time.time;
             _victimStart = target.transform.position;
             _victimScale = target.transform.localScale;
+            var maw = transform.TransformPoint(_mawOffset);
+            foreach (var chain in _chains)
+                chain.Collapse(maw);
             target.BeginConsume();
             _motor.LockControl();
             _motor.FaceImmediately(target.transform.position - transform.position);
@@ -169,20 +189,29 @@ namespace TentacleVania.Creature
             var eased = t * t;
             _victim.transform.position = Vector3.Lerp(_victimStart, maw - Vector3.up * 0.4f, eased);
             _victim.transform.localScale = _victimScale * Mathf.Lerp(1f, 0.15f, eased);
-            DrawTentacles(maw, _victim.transform.position + Vector3.up * 0.9f * (1f - eased));
+            DrawTentacles(maw, _victim.transform.position + Vector3.up * 0.9f * (1f - eased), t, 1f - eased);
             if (t >= 1f)
                 ReleaseVictim(true);
         }
 
-        private void DrawTentacles(Vector3 maw, Vector3 victim)
+        private void DrawTentacles(Vector3 maw, Vector3 victim, float t, float size)
         {
-            for (var i = 0; i < _lines.Length; i++)
+            var reach = Mathf.Clamp01(t / ReachShare);
+            reach = reach * reach * (3f - 2f * reach);
+            var spin = t * WrapTurns * 360f;
+            for (var i = 0; i < _chains.Length; i++)
             {
-                var side = i == 0 ? -1f : 1f;
-                var root = maw + transform.right * (0.15f * side);
-                var tip = victim + transform.right * (0.25f * side);
-                ChainSolver.SeedArch(_joints[i], root, tip, Vector3.up, 0.35f);
-                _lines[i].SetPositions(_joints[i]);
+                var side = (i - (_chains.Length - 1) * 0.5f) * 0.15f;
+                var root = maw + transform.right * side;
+                var angle = 360f / _chains.Length * i + spin;
+                var around = Quaternion.AngleAxis(angle, Vector3.up) * transform.forward * (WrapRadius * Mathf.Max(size, 0.2f));
+                var height = (i - (_chains.Length - 1) * 0.5f) * WrapHeight * size;
+                var wrap = victim + around + Vector3.up * height;
+                var tip = Vector3.Lerp(root, wrap, reach);
+                var bone = Mathf.Max(Vector3.Distance(root, tip) * 1.1f / (Joints - 1), 0.02f);
+                ChainSolver.SeedArch(_pose, root, tip, Vector3.up, MawArch);
+                _chains[i].Step(_spring, Time.deltaTime, _pose, bone, true);
+                _lines[i].SetPositions(_chains[i].Positions);
                 _lines[i].enabled = Chains.ShowPlaceholderLines;
             }
         }

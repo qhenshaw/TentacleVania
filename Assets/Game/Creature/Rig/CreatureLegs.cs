@@ -57,6 +57,7 @@ namespace TentacleVania.Creature.Rig
         public CreatureRigSettings Settings => _settings;
         public int LegCount => _feet?.Length ?? 0;
         public int SteppingCount { get; private set; }
+        public Vector3 BodyOffset => _bodyOffset;
 
         public Vector3 Foot(int leg) => _feet[leg];
         public bool IsStepping(int leg) => _stepping[leg];

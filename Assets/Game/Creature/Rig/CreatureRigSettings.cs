@@ -39,6 +39,26 @@ namespace TentacleVania.Creature.Rig
         [Header("Solver")]
         [SerializeField, Range(1, 20)] private int _solverIterations = 6;
 
+        [Header("Free tentacles")]
+        [SerializeField, Range(0, MaxChains)] private int _freeCount = 3;
+        [SerializeField, Min(0.1f)] private float _freeLength = 0.9f;
+        [SerializeField, Min(0f)] private float _freeRootHeight = 0.38f;
+        [SerializeField, Range(0f, 360f)] private float _freeSpread = 110f;
+        [SerializeField, Range(-90f, 90f)] private float _freePitch = 40f;
+        [SerializeField, Range(-180f, 180f)] private float _freeCurl = 70f;
+        [SerializeField, Min(0f)] private float _freeSway = 14f;
+        [SerializeField, Min(0f)] private float _freeSwaySpeed = 0.7f;
+        [SerializeField, Min(0.001f)] private float _freeRootWidth = 0.07f;
+        [SerializeField, Min(0.001f)] private float _freeTipWidth = 0.01f;
+        [SerializeField] private SpringChainSettings _freeSpring = new()
+        {
+            PoseStiffness = 14f,
+            TipLooseness = 0.75f,
+            Damping = 0.1f,
+            Gravity = 3f,
+            Iterations = 1,
+        };
+
         [Header("Placeholder rendering")]
         [SerializeField, Min(0.001f)] private float _rootWidth = 0.1f;
         [SerializeField, Min(0.001f)] private float _tipWidth = 0.025f;
@@ -69,6 +89,17 @@ namespace TentacleVania.Creature.Rig
         public float BodyInertia => _bodyInertia;
         public float BodyMaxOffset => _bodyMaxOffset;
         public int SolverIterations => _solverIterations;
+        public int FreeCount => _freeCount;
+        public float FreeLength => _freeLength;
+        public float FreeRootHeight => _freeRootHeight;
+        public float FreeSpread => _freeSpread;
+        public float FreePitch => _freePitch;
+        public float FreeCurl => _freeCurl;
+        public float FreeSway => _freeSway;
+        public float FreeSwaySpeed => _freeSwaySpeed;
+        public float FreeRootWidth => _freeRootWidth;
+        public float FreeTipWidth => _freeTipWidth;
+        public SpringChainSettings FreeSpring => _freeSpring;
         public float RootWidth => _rootWidth;
         public float TipWidth => _tipWidth;
 
