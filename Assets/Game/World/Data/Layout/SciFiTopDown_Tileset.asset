@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 832088ccad3b9f14e81c8c3279fad070, type: 3}
+  m_Name: SciFiTopDown_Tileset
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Layout.Tileset
+  _cellSize: 3
+  _floor:
+    Entries:
+    - Prefab: {fileID: 100000, guid: 9da0b2f5e121a6c47a3a7c01421a8267, type: 3}
+      Weight: 4
+      Offset: {x: -1.5, y: 0, z: 1.5}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
+    - Prefab: {fileID: 100000, guid: d6b7d351cae9b4042bcc8bd9f14ce8fb, type: 3}
+      Weight: 2
+      Offset: {x: -1.5, y: 0, z: 1.5}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
+    - Prefab: {fileID: 100000, guid: d1411ab4b43636d4dbfc01b7e52d67cb, type: 3}
+      Weight: 1
+      Offset: {x: -1.5, y: 0, z: 1.5}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
+    - Prefab: {fileID: 100000, guid: e79aefab366fe764f902e334f7091e2d, type: 3}
+      Weight: 1
+      Offset: {x: -1.5, y: 0, z: 1.5}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
+  _wallLayers:
+  - Name: Walls
+    Straight:
+      Entries:
+      - Prefab: {fileID: 100000, guid: 44b7134ca69e480468489a15f0f6c45c, type: 3}
+        Weight: 3
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 0d9124177c76c8747aeac4721f7b9d6b, type: 3}
+        Weight: 1
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+      - Prefab: {fileID: 100000, guid: 6fbe99b6cf87c054b8f1593ce92dbbf0, type: 3}
+        Weight: 1
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+    Corner:
+      Entries:
+      - Prefab: {fileID: 100000, guid: 70af33a92cb9e664383b94ffad72a16c, type: 3}
+        Weight: 1
+        Offset: {x: -1.5, y: 0, z: -1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+    ConvexPost:
+      Entries: []
+    ConcavePost:
+      Entries:
+      - Prefab: {fileID: 100000, guid: 28104176ba8767941a96c0fe8e044a60, type: 3}
+        Weight: 1
+        Offset: {x: 3.63, y: 0, z: -1.5}
+        Rotation: 0
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+    Static: 1
+  - Name: Wall Tops
+    Straight:
+      Entries:
+      - Prefab: {fileID: 100000, guid: 5e17032da76ce4647a0b52ef964c7a96, type: 3}
+        Weight: 1
+        Offset: {x: 0, y: 0, z: 1.5}
+        Rotation: 90
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+    Corner:
+      Entries: []
+    ConvexPost:
+      Entries: []
+    ConcavePost:
+      Entries: []
+    Static: 1
+  - Name: Columns
+    Straight:
+      Entries: []
+    Corner:
+      Entries: []
+    ConvexPost:
+      Entries:
+      - Prefab: {fileID: 100000, guid: b0ecbf6bafe9272448ca333ee97bbcd4, type: 3}
+        Weight: 1
+        Offset: {x: 1.07, y: 0, z: 1.07}
+        Rotation: 225
+        Scale: {x: 1, y: 1, z: 1}
+        RandomQuarterTurns: 0
+    ConcavePost:
+      Entries: []
+    Static: 1
+  _door:
+    Entries:
+    - Prefab: {fileID: 100000, guid: 06afbc7809b5c0c4c9335f17a94ce7ee, type: 3}
+      Weight: 1
+      Offset: {x: -1.42, y: 0, z: 1}
+      Rotation: 0
+      Scale: {x: 1, y: 1, z: 1}
+      RandomQuarterTurns: 0
+  _wallInset: 1
