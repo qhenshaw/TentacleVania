@@ -45,8 +45,18 @@ namespace TentacleVania.Creature
             {
                 if (Spawned == null || !Spawned.TryGetComponent<CreatureConsume>(out var consume))
                     return "-";
-                return consume.IsRooted ? "gulping" : consume.IsHealing ? "healing (armored)" : "ready";
+                var maw = consume.GetComponent<CreatureMaw>();
+                return consume.IsRooted ? $"maw {maw.Phase} {maw.PhaseT:P0}" : consume.IsHealing ? "healing (armored)" : "ready";
             });
+            DebugMenu.Button(tab, "Consume nearest", () =>
+            {
+                if (Spawned != null && Spawned.TryGetComponent<CreatureConsume>(out var consume))
+                    consume.ForceGrab();
+            });
+            var speeds = new[] { 1f, 0.5f, 0.25f, 0.1f };
+            DebugMenu.Choice(tab, "Consume speed", new[] { "1x", "0.5x", "0.25x", "0.1x" }, i => CreatureMaw.TimeScale = speeds[i]);
+            DebugMenu.Toggle(tab, "Hold maw pose", () => CreatureMaw.Preview, v => CreatureMaw.Preview = v);
+            DebugMenu.Slider(tab, "Maw progress", 0f, 1f, () => CreatureMaw.PreviewProgress, v => CreatureMaw.PreviewProgress = v);
             DebugMenu.Value(tab, "Stun", () =>
             {
                 var vitals = Vitals;

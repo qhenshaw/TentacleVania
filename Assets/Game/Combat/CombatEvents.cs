@@ -7,11 +7,14 @@ namespace TentacleVania.Combat
     {
         public static event DamageHandler HitLanded;
         public static event System.Action<Health> StaggerBroken;
+        public static event System.Action<Consumable> ConsumeBitten;
         public static event System.Action<Consumable> Consumed;
 
         internal static void RaiseHit(Health target, in DamageInfo info, in DamageResult result) => HitLanded?.Invoke(target, info, result);
 
         public static void RaiseStaggerBroken(Health target) => StaggerBroken?.Invoke(target);
+
+        internal static void RaiseConsumeBitten(Consumable consumable) => ConsumeBitten?.Invoke(consumable);
 
         internal static void RaiseConsumed(Consumable consumable) => Consumed?.Invoke(consumable);
 
@@ -20,6 +23,7 @@ namespace TentacleVania.Combat
         {
             HitLanded = null;
             StaggerBroken = null;
+            ConsumeBitten = null;
             Consumed = null;
         }
     }

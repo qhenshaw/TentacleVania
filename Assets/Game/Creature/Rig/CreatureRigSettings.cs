@@ -7,6 +7,7 @@ namespace TentacleVania.Creature.Rig
     public sealed class CreatureRigSettings : ScriptableObject
     {
         public const int MaxChains = 20;
+        public const int MaxMawChains = 20;
 
         [Header("Legs")]
         [SerializeField, Range(2, MaxChains)] private int _legCount = 6;
@@ -68,6 +69,31 @@ namespace TentacleVania.Creature.Rig
         [SerializeField, Range(0f, 90f)] private float _dashFan = 30f;
         [SerializeField, Min(0f)] private float _dashTrailHeight = 0.15f;
 
+        [Header("Maw")]
+        [SerializeField, Range(0, MaxMawChains)] private int _mawCount = 8;
+        [SerializeField] private Vector3 _mawOffset = new(0f, 0.45f, 0.35f);
+        [SerializeField, Min(0f)] private float _mawRootRadius = 0.25f;
+        [SerializeField, Min(0f)] private float _mawOpenMargin = 0.35f;
+        [SerializeField] private Vector2 _mawOpenRadius = new(0.6f, 1.4f);
+        [SerializeField, Range(0f, 1f)] private float _mawOpenReach = 0.55f;
+        [SerializeField, Min(0f)] private float _mawPinch = 0.06f;
+        [SerializeField, Min(0f)] private float _mawWrap = 1.1f;
+        [SerializeField, Min(0f)] private float _mawLungeStop = 0.5f;
+        [SerializeField, Min(0.001f)] private float _mawRootWidth = 0.1f;
+        [SerializeField, Min(0.001f)] private float _mawTipWidth = 0.02f;
+        [SerializeField, Min(0.01f)] private float _mawOpenTime = 0.3f;
+        [SerializeField, Min(0.01f)] private float _mawCloseTime = 0.2f;
+        [SerializeField, Min(0.01f)] private float _mawSwallowTime = 0.4f;
+        [SerializeField, Min(0.01f)] private float _mawRetractTime = 0.2f;
+        [SerializeField] private SpringChainSettings _mawSpring = new()
+        {
+            PoseStiffness = 30f,
+            TipLooseness = 0.5f,
+            Damping = 0.15f,
+            Gravity = 1f,
+            Iterations = 3,
+        };
+
         [Header("Placeholder rendering")]
         [SerializeField, Min(0.001f)] private float _rootWidth = 0.1f;
         [SerializeField, Min(0.001f)] private float _tipWidth = 0.025f;
@@ -116,6 +142,19 @@ namespace TentacleVania.Creature.Rig
         public float DashThinning => _dashThinning;
         public float DashFan => _dashFan;
         public float DashTrailHeight => _dashTrailHeight;
+        public int MawCount => _mawCount;
+        public Vector3 MawOffset => _mawOffset;
+        public float MawRootRadius => _mawRootRadius;
+        public float MawOpenMargin => _mawOpenMargin;
+        public Vector2 MawOpenRadius => _mawOpenRadius;
+        public float MawOpenReach => _mawOpenReach;
+        public float MawPinch => _mawPinch;
+        public float MawWrap => _mawWrap;
+        public float MawLungeStop => _mawLungeStop;
+        public float MawRootWidth => _mawRootWidth;
+        public float MawTipWidth => _mawTipWidth;
+        public MawTimeline MawTimeline => new(_mawOpenTime, _mawCloseTime, _mawSwallowTime, _mawRetractTime);
+        public SpringChainSettings MawSpring => _mawSpring;
         public float RootWidth => _rootWidth;
         public float TipWidth => _tipWidth;
 

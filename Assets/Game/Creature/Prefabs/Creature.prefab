@@ -214,6 +214,130 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4396793473042370508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3202389613678942631}
+  - component: {fileID: 7117056243747644233}
+  - component: {fileID: 160662795785428727}
+  m_Layer: 8
+  m_Name: MawTentacles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3202389613678942631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396793473042370508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 271964687670368571}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!2083052967 &7117056243747644233
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396793473042370508}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: 18f4a75086bd0234d817fb15b2c849f1, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
+  m_ReleaseInstanceOnDisable: 0
+  m_PropertySheet:
+    m_Float:
+      m_Array: []
+    m_Vector2f:
+      m_Array: []
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 0.5, y: 0.5, z: 0}
+        m_Name: ThicknessWeights
+        m_Overridden: 1
+    m_Vector4f:
+      m_Array: []
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array:
+      - m_Value: 3
+        m_Name: StripsPerChain
+        m_Overridden: 1
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array: []
+    m_NamedObject:
+      m_Array: []
+    m_Bool:
+      m_Array: []
+--- !u!73398921 &160662795785428727
+VFXRenderer:
+  serializedVersion: 1
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396793473042370508}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
 --- !u!1 &4487977787520540977
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +367,8 @@ GameObject:
   - component: {fileID: 3894992379214571265}
   - component: {fileID: 447328166624792470}
   - component: {fileID: 5522881091801206148}
+  - component: {fileID: 3229476483880945898}
+  - component: {fileID: 5419547591085182262}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -266,6 +392,7 @@ Transform:
   - {fileID: 1369746916563598972}
   - {fileID: 1539947257589534093}
   - {fileID: 3390933696069265706}
+  - {fileID: 3202389613678942631}
   - {fileID: 8789153125492141156}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -475,20 +602,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.CreatureConsume
   _reach: 2.2
   _grabThreshold: 0.25
-  _rootDuration: 0.4
   _healDuration: 1.5
   _damageTakenWhileConsuming: 0.5
-  _mawOffset: {x: 0, y: 0.45, z: 0.35}
   _grabLayers:
     serializedVersion: 2
     m_Bits: 512
-  _tentacleMaterial: {fileID: 2100000, guid: a9bcfb79f0251af49b5eb4a0b9219e7c, type: 2}
-  _spring:
-    PoseStiffness: 24
-    TipLooseness: 0.6
-    Damping: 0.15
-    Gravity: 2
-    Iterations: 3
+  _openSound:
+    Guid:
+      Data1: -772041170
+      Data2: 1149824366
+      Data3: -390343746
+      Data4: -811941922
+    Path: event:/Creature/MawOpen
+  _chompSound:
+    Guid:
+      Data1: -1720961257
+      Data2: 1310725496
+      Data3: -2055400567
+      Data4: -1538299262
+    Path: event:/Creature/MawChomp
+  _swallowSound:
+    Guid:
+      Data1: -16550885
+      Data2: 1107794100
+      Data3: 1960972956
+      Data4: -68992735
+    Path: event:/Creature/MawSwallow
 --- !u!2083052967 &5849344440007730826
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -595,7 +734,8 @@ MonoBehaviour:
   _effect: {fileID: 5849344440007730826}
   _sources:
   - {fileID: 8169341575981907583}
-  - {fileID: 4734989538036461837}
+  _ownBudget: 0
+  _maxChains: 20
 --- !u!114 &6654993801079667695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,6 +790,8 @@ MonoBehaviour:
   _effect: {fileID: 8423388833717456950}
   _sources:
   - {fileID: 5879995599559319355}
+  _ownBudget: 0
+  _maxChains: 20
 --- !u!114 &447328166624792470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +807,8 @@ MonoBehaviour:
   _effect: {fileID: 3981006696977802016}
   _sources:
   - {fileID: 6654993801079667695}
+  _ownBudget: 0
+  _maxChains: 20
 --- !u!114 &5522881091801206148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,6 +822,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Feedback.HitEffects
   _settings: {fileID: 11400000, guid: 74eaebdab05edf24293dd666f1b2dbab, type: 2}
+--- !u!114 &3229476483880945898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100c309efbe09fd489f50a589d394c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.CreatureMaw
+  _material: {fileID: 2100000, guid: a9bcfb79f0251af49b5eb4a0b9219e7c, type: 2}
+--- !u!114 &5419547591085182262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1fa5d8213fcb04eb5446d533dcc6f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.ChainTexture
+  _effect: {fileID: 7117056243747644233}
+  _sources:
+  - {fileID: 3229476483880945898}
+  _ownBudget: 1
+  _maxChains: 20
 --- !u!1 &6618560833441987083
 GameObject:
   m_ObjectHideFlags: 0
