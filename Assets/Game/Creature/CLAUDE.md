@@ -18,6 +18,10 @@ The player creature (`TentacleVania.Creature`). The prefab `Prefabs/Creature.pre
 - Legs render as tapered `LineRenderer`s as a placeholder until the VFX Graph strips and tube shader replace them. The gameplay hurtbox stays the `CharacterController`, never the legs.
 - The solver is plain managed code over preallocated arrays (no per-frame allocations). Move it to a Burst job if chain counts at Apex make it show up in the profiler.
 
+## Charge meter
+
+`CreatureCharge` (on the prefab) wraps a `Combat.ChargeMeter`: max 100, +3 for every hit the creature lands (`CombatEvents.HitLanded` with the creature as attacker, hazards excluded), +20 from `AddConsume()` (for grab & consume). Abilities call `TrySpend(cost)` (35–60). `ChargeMeter.GainScale` is the hook for Cunning's +2% charge gain. When full, the creature pulses teal through `CharacterMaterials.SetStatus` (Art Direction's charge-full bioluminescence), body and tentacles alike.
+
 ## Testing in play
 
 `unity-play-capture.sh` with `TestGamepad.Set(move, aim, buttons...)` drives it; read `CreatureSpawner.Spawned` and its `CreatureMotor` (`Velocity`, `IsDashing`, `DashChainCount`) from `--at` files. Keep values across `--at` files with `UnityEditor.SessionState`. Virtual gamepad input only survives while Player Settings' Run In Background is on.
