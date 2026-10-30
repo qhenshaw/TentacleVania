@@ -39,7 +39,19 @@ namespace TentacleVania.Combat
             ResetToFull();
         }
 
-        public void ResetToFull() => _pool = new(_maxHealth, _maxArmor);
+        public void ResetToFull()
+        {
+            var below = _pool.ProtectedBelow;
+            var scale = _pool.ProtectedScale;
+            _pool = new(_maxHealth, _maxArmor);
+            SetProtection(below, scale);
+        }
+
+        public void SetProtection(float below, float scale)
+        {
+            _pool.ProtectedBelow = below;
+            _pool.ProtectedScale = scale;
+        }
 
         public DamageResult TakeDamage(in DamageInfo info)
         {

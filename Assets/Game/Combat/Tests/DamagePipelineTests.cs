@@ -38,6 +38,31 @@ namespace TentacleVania.Combat.Tests
         }
 
         [Test]
+        public void ProtectionScalesTheHitThatCrossesTheThreshold()
+        {
+            var pool = new HealthPool(100f) { Health = 40f, ProtectedBelow = 0.25f, ProtectedScale = 0.5f };
+            var result = Hit(ref pool, DamageInfo.Create(20f, Team.Creature));
+            Assert.AreEqual(10f, result.HealthDamage, Tolerance);
+            Assert.AreEqual(30f, pool.Health, Tolerance);
+        }
+
+        [Test]
+        public void ProtectionScalesHitsBelowTheThreshold()
+        {
+            var pool = new HealthPool(100f) { Health = 20f, ProtectedBelow = 0.25f, ProtectedScale = 0.5f };
+            var result = Hit(ref pool, DamageInfo.Create(10f, Team.Creature));
+            Assert.AreEqual(5f, result.HealthDamage, Tolerance);
+        }
+
+        [Test]
+        public void ProtectionIgnoresHitsThatStayAbove()
+        {
+            var pool = new HealthPool(100f) { Health = 50f, ProtectedBelow = 0.25f, ProtectedScale = 0.5f };
+            var result = Hit(ref pool, DamageInfo.Create(25f, Team.Creature));
+            Assert.AreEqual(25f, result.HealthDamage, Tolerance);
+        }
+
+        [Test]
         public void FullArmorCutsHealthDamageBy30Percent()
         {
             var pool = new HealthPool(100f, 50f);

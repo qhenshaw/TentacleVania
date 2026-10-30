@@ -52,8 +52,6 @@ namespace TentacleVania.Enemies
         private StaggerBar _stagger;
         private ScaleModifier _staggerVulnerability;
         private bool _staggerBroken;
-        private ScaleModifier _feedableProtection;
-        private bool _protected;
         private Consumable _consumable;
 
         public event Action<Enemy> StateChanged;
@@ -83,9 +81,9 @@ namespace TentacleVania.Enemies
             _circleAngle = UnityEngine.Random.Range(0f, 360f);
             _stagger = new(_definition.MaxStagger);
             _staggerVulnerability = new() { HealthScale = _definition.StaggerDamageTaken };
-            _feedableProtection = new() { HealthScale = _definition.FeedableDamageTaken };
             if (TryGetComponent(out _consumable))
                 _consumable.Configure(_definition.ConsumeHeal, _definition.Biomass);
+            UpdateProtection();
         }
 
         protected virtual void OnEnable()
@@ -107,7 +105,6 @@ namespace TentacleVania.Enemies
             EnemyManager.Unregister(this);
             EndAttack(false);
             EndStaggerBreak();
-            SetProtected(false);
         }
 
         public void Tick(float now, float dt)
@@ -143,22 +140,13 @@ namespace TentacleVania.Enemies
 
         public void TickFeedback()
         {
-            var feedable = IsFeedable;
-            SetProtected(feedable);
+            UpdateProtection();
             if (_glow != null)
-                _glow.SetFeedable(feedable);
+                _glow.SetFeedable(IsFeedable);
         }
 
-        private void SetProtected(bool value)
-        {
-            if (_protected == value)
-                return;
-            _protected = value;
-            if (value)
-                _health.Incoming.Add(_feedableProtection);
-            else
-                _health.Incoming.Remove(_feedableProtection);
-        }
+        private void UpdateProtection() =>
+            _health.SetProtection(_consumable != null ? Consumable.GrabThreshold : 0f, _definition.FeedableDamageTaken);
 
         public void Stun(float duration)
         {

@@ -8,11 +8,15 @@ namespace TentacleVania.Combat.Damage
         public float MaxHealth;
         public float Armor;
         public float MaxArmor;
+        public float ProtectedBelow;
+        public float ProtectedScale;
 
         public HealthPool(float maxHealth, float maxArmor = 0f)
         {
             Health = MaxHealth = maxHealth;
             Armor = MaxArmor = maxArmor;
+            ProtectedBelow = 0f;
+            ProtectedScale = 1f;
         }
 
         public bool IsAlive => Health > 0f;
@@ -50,6 +54,9 @@ namespace TentacleVania.Combat.Damage
                 armorDamage = Mathf.Min(pool.Armor, Mathf.Max(0f, info.Amount * info.ArmorDamageScale * context.ArmorScale * global));
                 pool.Armor -= armorDamage;
             }
+
+            if (pool.ProtectedBelow > 0f && pool.Health - amount < pool.MaxHealth * pool.ProtectedBelow)
+                amount *= pool.ProtectedScale;
 
             var healthDamage = Mathf.Min(pool.Health, amount);
             pool.Health -= healthDamage;
