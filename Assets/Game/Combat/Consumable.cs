@@ -16,10 +16,16 @@ namespace TentacleVania.Combat
         public event Action<Consumable> Grabbed;
         public event Action<Consumable> Consumed;
 
+        public static float GrabThreshold { get; set; } = DefaultGrabThreshold;
+
         public Health Health => _health;
         public float HealFraction => _healFraction;
         public int Biomass => _biomass;
         public bool IsBeingConsumed { get; private set; }
+        public bool IsGrabbable => CanBeGrabbed(GrabThreshold);
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetThreshold() => GrabThreshold = DefaultGrabThreshold;
 
         private void Awake() => _health = GetComponent<Health>();
 

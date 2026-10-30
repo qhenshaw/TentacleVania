@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="CombatHud.uss" />
+    <ui:VisualElement name="hud" class="hud" picking-mode="Ignore">
+        <ui:VisualElement name="enemy-layer" class="hud__layer" picking-mode="Ignore" />
+        <ui:VisualElement name="player" class="hud__player" picking-mode="Ignore">
+            <ui:VisualElement name="health" class="hud-bar hud-bar--health" picking-mode="Ignore">
+                <ui:VisualElement name="health-trail" class="hud-bar__layer hud-bar__trail" picking-mode="Ignore" />
+                <ui:VisualElement name="health-heal" class="hud-bar__layer hud-bar__heal" picking-mode="Ignore" />
+                <ui:VisualElement name="health-fill" class="hud-bar__layer hud-bar__fill" picking-mode="Ignore" />
+                <ui:VisualElement name="health-ticks" class="hud-bar__ticks" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="charge" class="hud-bar hud-bar--charge" picking-mode="Ignore">
+                <ui:VisualElement name="charge-fill" class="hud-bar__layer hud-bar__fill" picking-mode="Ignore" />
+                <ui:VisualElement name="charge-glow" class="hud-bar__glow" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

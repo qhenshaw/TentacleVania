@@ -28,6 +28,8 @@ namespace TentacleVania.Enemies
 
         private bool _paused;
 
+        public static EnemyManager Current => _instance;
+
         public AttackTokens Tokens { get; } = new(MeleeTokens, RangedTokens);
 
         public bool Paused
@@ -60,6 +62,8 @@ namespace TentacleVania.Enemies
 
         private void Update()
         {
+            for (var i = 0; i < _enemies.Count; i++)
+                _enemies[i].TickFeedback();
             if (_paused)
                 return;
             var now = Time.time;
