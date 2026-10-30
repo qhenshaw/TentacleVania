@@ -11,9 +11,11 @@ using UnityEngine.Rendering;
 namespace TentacleVania.Creature
 {
     [RequireComponent(typeof(Health), typeof(CreatureMotor))]
-    public sealed class CreatureConsume : MonoBehaviour
+    public sealed class CreatureConsume : MonoBehaviour, IChainSource
     {
-        private const int Joints = 6;
+        private const int Joints = Chains.Joints;
+        private const float RootWidth = 0.12f;
+        private const float TipWidth = 0.04f;
 
         private static readonly Collider[] Candidates = new Collider[16];
 
@@ -27,7 +29,7 @@ namespace TentacleVania.Creature
         [SerializeField] private Material _tentacleMaterial;
 
         private readonly LineRenderer[] _lines = new LineRenderer[2];
-        private readonly Vector3[] _joints = new Vector3[Joints];
+        private readonly Vector3[][] _joints = { new Vector3[Joints], new Vector3[Joints] };
 
         private Health _health;
         private CreatureMotor _motor;
@@ -57,7 +59,7 @@ namespace TentacleVania.Creature
             _motor = GetComponent<CreatureMotor>();
             _charge = GetComponent<CreatureCharge>();
             _armored = new ScaleModifier(100) { HealthScale = _damageTakenWhileConsuming };
-            var width = new AnimationCurve(new Keyframe(0f, 0.12f), new Keyframe(1f, 0.04f));
+            var width = new AnimationCurve(new Keyframe(0f, RootWidth), new Keyframe(1f, TipWidth));
             for (var i = 0; i < _lines.Length; i++)
             {
                 var line = new GameObject($"ConsumeTentacle {i + 1}").AddComponent<LineRenderer>();
@@ -101,6 +103,17 @@ namespace TentacleVania.Creature
                 _health.Heal(amount);
             }
             SetArmored(now < _armoredUntil && _health.IsAlive);
+        }
+
+        public int ChainOrder => 20;
+        public int ChainCount => _joints.Length;
+
+        public void WriteChain(int chain, Span<Vector4> joints)
+        {
+            if (IsRooted)
+                Chains.Write(joints, _joints[chain], RootWidth, TipWidth);
+            else
+                Chains.Collapse(joints, transform.TransformPoint(_mawOffset));
         }
 
         public bool TryGrab()
@@ -168,9 +181,9 @@ namespace TentacleVania.Creature
                 var side = i == 0 ? -1f : 1f;
                 var root = maw + transform.right * (0.15f * side);
                 var tip = victim + transform.right * (0.25f * side);
-                ChainSolver.SeedArch(_joints, root, tip, Vector3.up, 0.35f);
-                _lines[i].SetPositions(_joints);
-                _lines[i].enabled = true;
+                ChainSolver.SeedArch(_joints[i], root, tip, Vector3.up, 0.35f);
+                _lines[i].SetPositions(_joints[i]);
+                _lines[i].enabled = Chains.ShowPlaceholderLines;
             }
         }
 

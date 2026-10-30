@@ -1,3 +1,4 @@
+using TentacleVania.Core.Characters;
 using UnityEngine;
 
 namespace TentacleVania.Creature.Rig
@@ -9,7 +10,6 @@ namespace TentacleVania.Creature.Rig
 
         [Header("Legs")]
         [SerializeField, Range(2, MaxChains)] private int _legCount = 6;
-        [SerializeField, Range(4, 6)] private int _bonesPerLeg = 5;
         [SerializeField, Min(0.1f)] private float _legLength = 0.9f;
         [SerializeField, Min(0f)] private float _rootRadius = 0.22f;
         [SerializeField, Min(0f)] private float _rootHeight = 0.42f;
@@ -31,10 +31,10 @@ namespace TentacleVania.Creature.Rig
         [SerializeField, Min(0.001f)] private float _tipWidth = 0.025f;
 
         public int LegCount => _legCount;
-        public int BonesPerLeg => _bonesPerLeg;
-        public int JointsPerLeg => _bonesPerLeg + 1;
+        public int BonesPerLeg => Chains.Joints - 1;
+        public int JointsPerLeg => Chains.Joints;
         public float LegLength => _legLength;
-        public float BoneLength => _legLength / _bonesPerLeg;
+        public float BoneLength => _legLength / BonesPerLeg;
         public float RootRadius => _rootRadius;
         public float RootHeight => _rootHeight;
         public float RestRadius => _restRadius;
