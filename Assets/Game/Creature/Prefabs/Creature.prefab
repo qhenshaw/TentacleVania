@@ -589,8 +589,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.CreatureCharge
   _max: 100
-  _perWeaponHit: 3
-  _perConsume: 20
+  _perWeaponHit: 2
+  _perConsume: 10
   _fullGlow: {r: 0.3, g: 1.4, b: 1.1, a: 1}
   _fullGlowAmount: 0.8
   _fullGlowPulse: 0.8
