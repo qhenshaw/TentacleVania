@@ -72,10 +72,25 @@ namespace TentacleVania.Creature.Rig
             return t * t * (3f - 2f * t);
         }
 
-        public static Vector3 Radial(int index, int count, Quaternion frame)
+        public static float EaseOutBack(float t, float overshoot)
         {
-            var angle = (360f / Mathf.Max(1, count) * index + 90f) * Mathf.Deg2Rad;
-            return frame * new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f);
+            t = Mathf.Clamp01(t) - 1f;
+            return 1f + (overshoot + 1f) * t * t * t + overshoot * t * t;
+        }
+
+        public static float Stagger(float t, float delay)
+        {
+            if (delay >= 1f)
+                return t >= 1f ? 1f : 0f;
+            return Mathf.Clamp01((t - delay) / (1f - delay));
+        }
+
+        public static float Angle(int index, int count) => 360f / Mathf.Max(1, count) * index + 90f;
+
+        public static Vector3 Radial(float angle, Quaternion frame)
+        {
+            var radians = angle * Mathf.Deg2Rad;
+            return frame * new Vector3(Mathf.Cos(radians), Mathf.Sin(radians), 0f);
         }
 
         public static Quaternion Frame(Vector3 axis, Vector3 up)
@@ -87,22 +102,25 @@ namespace TentacleVania.Creature.Rig
             return Quaternion.LookRotation(axis, up);
         }
 
-        public static Vector3 Root(int index, int count, Vector3 mouth, Quaternion facing, float rootRadius) =>
-            mouth + Radial(index, count, facing) * rootRadius;
+        public static Vector3 Root(float angle, Vector3 mouth, Quaternion facing, float rootRadius) =>
+            mouth + Radial(angle, facing) * rootRadius;
 
-        public static Vector3 OpenTip(int index, int count, Vector3 mouth, Vector3 target, float openRadius, float reach)
+        public static Vector3 OpenTip(float angle, Vector3 mouth, Vector3 target, float openRadius, float reach)
         {
             var toTarget = target - mouth;
-            var frame = Frame(toTarget, Vector3.up);
-            return mouth + toTarget * reach + Radial(index, count, frame) * openRadius;
+            return mouth + toTarget * reach + Radial(angle, Frame(toTarget, Vector3.up)) * openRadius;
         }
 
-        public static Vector3 CloseTip(int index, int count, Vector3 mouth, Vector3 target, float targetRadius, float pinch)
+        public static Vector3 CloseTip(float angle, Vector3 mouth, Vector3 target, float targetRadius, float pinch)
         {
-            var toTarget = target - mouth;
-            var frame = Frame(toTarget, Vector3.up);
-            var axis = frame * Vector3.forward;
-            return target + axis * targetRadius + Radial(index, count, frame) * pinch;
+            var frame = Frame(target - mouth, Vector3.up);
+            return target + frame * Vector3.forward * targetRadius + Radial(angle, frame) * pinch;
+        }
+
+        public static Vector3 PinTip(float angle, Vector3 mouth, Vector3 target, float targetRadius, float hug)
+        {
+            var frame = Frame(target - mouth, Vector3.up);
+            return target + Radial(angle, frame) * (targetRadius * hug);
         }
 
         public static float ArcLength(float span, float archHeight) =>

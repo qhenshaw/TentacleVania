@@ -79,5 +79,26 @@ MonoBehaviour:
     Damping: 0.15
     Gravity: 1
     Iterations: 3
+  _mawWhipSpring:
+    PoseStiffness: 14
+    TipLooseness: 0.85
+    Damping: 0.04
+    Gravity: 1
+    Iterations: 2
+  _mawLeaders: {x: 2, y: 3}
+  _mawLeaderStrike: 0.6
+  _mawLeaderHug: 0.9
+  _mawAnticipation: 0.06
+  _mawRearBack: 0.15
+  _mawAngleJitter: 20
+  _mawRootJitter: 0.3
+  _mawLengthJitter: 0.25
+  _mawWidthJitter: 0.3
+  _mawTimingJitter: 0.4
+  _mawOvershoot: 1.7
+  _mawSeekWrithe: 0.12
+  _mawSeekLean: 0.2
+  _mawWrithe: 0.06
+  _mawWritheSpeed: 5
   _rootWidth: 0.1
   _tipWidth: 0.025
