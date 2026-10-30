@@ -18,6 +18,7 @@ MonoBehaviour:
   _maxStagger: 20
   _staggerStun: 2
   _staggerDamageTaken: 1.5
+  _feedableDamageTaken: 0.5
   _moveSpeed: 4
   _turnSpeed: 540
   _spawnDelay: 0.5
@@ -26,6 +27,7 @@ MonoBehaviour:
   - Name: Stun prod
     Kind: 0
     Telegraph: 0
+    Animation: 1
     WindUp: 0.5
     Active: 0.15
     Recovery: 0.6

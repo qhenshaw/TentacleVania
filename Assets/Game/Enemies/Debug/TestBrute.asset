@@ -15,6 +15,10 @@ MonoBehaviour:
   _displayName: Test Brute
   _maxHealth: 60
   _maxArmor: 0
+  _maxStagger: 0
+  _staggerStun: 2
+  _staggerDamageTaken: 1.5
+  _feedableDamageTaken: 0.5
   _moveSpeed: 4.5
   _turnSpeed: 540
   _spawnDelay: 0.5
@@ -23,6 +27,7 @@ MonoBehaviour:
   - Name: Swipe
     Kind: 0
     Telegraph: 0
+    Animation: 0
     WindUp: 0.6
     Active: 0.15
     Recovery: 0.5
@@ -33,6 +38,7 @@ MonoBehaviour:
     Damage: 8
     Stagger: 0
     Type: 0
+    StunDuration: 0
     Reach: 2
     Arc: 120
     SweepRadius: 0.3
@@ -45,6 +51,7 @@ MonoBehaviour:
   - Name: Slam
     Kind: 1
     Telegraph: 1
+    Animation: 2
     WindUp: 1
     Active: 0.1
     Recovery: 0.8
@@ -55,6 +62,7 @@ MonoBehaviour:
     Damage: 14
     Stagger: 0
     Type: 0
+    StunDuration: 0
     Reach: 2
     Arc: 120
     SweepRadius: 0.3
@@ -67,6 +75,7 @@ MonoBehaviour:
   - Name: Shot
     Kind: 2
     Telegraph: 0
+    Animation: 3
     WindUp: 0.5
     Active: 0.05
     Recovery: 0.4
@@ -77,6 +86,7 @@ MonoBehaviour:
     Damage: 6
     Stagger: 0
     Type: 0
+    StunDuration: 0
     Reach: 2
     Arc: 120
     SweepRadius: 0.3
@@ -86,4 +96,6 @@ MonoBehaviour:
     Projectile: {fileID: 7832528784957437939, guid: afd49bb3e78f7c74fb296654755ced65, type: 3}
     ProjectileSpeed: 14
     ProjectileLifetime: 3
+  _consumeHeal: 0.12
+  _biomass: 10
   _despawnDelay: 2

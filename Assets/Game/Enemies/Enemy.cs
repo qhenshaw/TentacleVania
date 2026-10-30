@@ -53,6 +53,7 @@ namespace TentacleVania.Enemies
         private ScaleModifier _staggerVulnerability;
         private bool _staggerBroken;
         private Consumable _consumable;
+        private EnemyAnimator _animator;
 
         public event Action<Enemy> StateChanged;
         public event Action<Enemy> Staggered;
@@ -65,6 +66,9 @@ namespace TentacleVania.Enemies
         public Health Health => _health;
         public EnemyState State { get; private set; }
         public EnemyAttack CurrentAttack => _attackIndex >= 0 ? _definition.Attacks[_attackIndex] : null;
+        public float AttackStartedAt => _attackStarted;
+        public Vector3 Velocity => _agent.enabled ? _agent.velocity : Vector3.zero;
+        public virtual bool IsCowering => false;
         public AttackPhase CurrentPhase => CurrentAttack == null ? AttackPhase.Done : AttackMath.Phase(CurrentAttack, Time.time - _attackStarted);
         protected NavMeshAgent Agent => _agent;
         protected float StateTime => Time.time - _stateStarted;
@@ -83,6 +87,7 @@ namespace TentacleVania.Enemies
             _staggerVulnerability = new() { HealthScale = _definition.StaggerDamageTaken };
             if (TryGetComponent(out _consumable))
                 _consumable.Configure(_definition.ConsumeHeal, _definition.Biomass);
+            TryGetComponent(out _animator);
             UpdateProtection();
         }
 
@@ -143,6 +148,8 @@ namespace TentacleVania.Enemies
             UpdateProtection();
             if (_glow != null)
                 _glow.SetFeedable(IsFeedable);
+            if (_animator != null)
+                _animator.Tick(Time.deltaTime);
         }
 
         private void UpdateProtection() =>

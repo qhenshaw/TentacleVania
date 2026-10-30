@@ -18,6 +18,7 @@ MonoBehaviour:
   _maxStagger: 40
   _staggerStun: 2
   _staggerDamageTaken: 1.5
+  _feedableDamageTaken: 0.5
   _moveSpeed: 4.5
   _turnSpeed: 540
   _spawnDelay: 0.5
@@ -26,6 +27,7 @@ MonoBehaviour:
   - Name: Baton
     Kind: 0
     Telegraph: 0
+    Animation: 0
     WindUp: 0.45
     Active: 0.15
     Recovery: 0.5
@@ -49,6 +51,7 @@ MonoBehaviour:
   - Name: Pistol
     Kind: 2
     Telegraph: 0
+    Animation: 3
     WindUp: 0.45
     Active: 0.05
     Recovery: 0.4

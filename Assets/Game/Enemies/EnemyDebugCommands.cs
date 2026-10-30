@@ -28,7 +28,7 @@ namespace TentacleVania.Enemies
                 var tokens = EnemyManager.Instance.Tokens;
                 return $"{tokens.MeleeHeld}/{tokens.MeleeCapacity}  {tokens.RangedHeld}/{tokens.RangedCapacity}";
             });
-            DebugMenu.Value(tab, "HP / stagger", DescribeEnemies);
+            DebugMenu.Value(tab, "HP / stagger / animation", DescribeEnemies);
             DebugMenu.Toggle(tab, "Freeze AI", () => EnemyManager.Instance.Paused, v => EnemyManager.Instance.Paused = v);
             DebugMenu.Button(tab, "Stun all (3 s)", () =>
             {
@@ -78,6 +78,8 @@ namespace TentacleVania.Enemies
                     .Append(enemy.Health.Current.ToString("F0")).Append(" HP, stagger ")
                     .Append(enemy.Stagger.Current.ToString("F0")).Append('/').Append(enemy.Stagger.Max.ToString("F0"))
                     .Append(enemy.IsStaggerBroken ? " BROKEN" : string.Empty);
+                if (enemy.TryGetComponent<EnemyAnimator>(out var animator))
+                    text.Append(", anim ").Append(animator.CurrentStateName);
             }
             return text.Length > 0 ? text.ToString() : "-";
         }
