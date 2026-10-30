@@ -22,6 +22,7 @@ namespace TentacleVania.Editor.ShaderGraphTool
 
         public bool IsLit => string.Equals(target, "Lit", StringComparison.OrdinalIgnoreCase);
         public bool IsFullscreen => string.Equals(target, "Fullscreen", StringComparison.OrdinalIgnoreCase);
+        public bool IsDecal => string.Equals(target, "Decal", StringComparison.OrdinalIgnoreCase);
     }
 
     [Serializable]

@@ -107,13 +107,20 @@ namespace TentacleVania.Editor.ShaderGraphTool
             function.AddSlot(new Vector3MaterialSlot(outColor, "OutBaseColor", "OutBaseColor", SlotType.Output, Vector3.zero, ShaderStageCapability.Fragment));
             ConnectBlock(graph, graph.fragmentContext, BlockFields.SurfaceDescription.BaseColor, function, outColor);
 
-            if (spec.transparent || spec.IsFullscreen)
+            if (spec.transparent || spec.IsFullscreen || spec.IsDecal)
             {
                 var outAlpha = slot++;
                 function.AddSlot(new Vector1MaterialSlot(outAlpha, "OutAlpha", "OutAlpha", SlotType.Output, 1f, ShaderStageCapability.Fragment));
                 ConnectBlock(graph, graph.fragmentContext, BlockFields.SurfaceDescription.Alpha, function, outAlpha);
             }
 
+            if (spec.IsDecal)
+            {
+                var outDecalEmission = slot++;
+                function.AddSlot(new Vector3MaterialSlot(outDecalEmission, "OutEmission", "OutEmission", SlotType.Output, Vector3.zero, ShaderStageCapability.Fragment));
+                ConnectBlock(graph, graph.fragmentContext, BlockFields.SurfaceDescription.Emission, function, outDecalEmission);
+                return;
+            }
             if (!spec.IsLit)
                 return;
             var outEmission = slot++;
@@ -220,6 +227,12 @@ namespace TentacleVania.Editor.ShaderGraphTool
             yield return BlockFields.VertexDescription.Normal;
             yield return BlockFields.VertexDescription.Tangent;
             yield return BlockFields.SurfaceDescription.BaseColor;
+            if (spec.IsDecal)
+            {
+                yield return BlockFields.SurfaceDescription.Alpha;
+                yield return BlockFields.SurfaceDescription.Emission;
+                yield break;
+            }
             if (spec.transparent)
                 yield return BlockFields.SurfaceDescription.Alpha;
             if (!spec.IsLit)
@@ -235,7 +248,7 @@ namespace TentacleVania.Editor.ShaderGraphTool
         {
             var assembly = AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == UrpEditorAssembly);
             var targetType = assembly.GetType(UrpNamespace + "UniversalTarget", true);
-            var subTargetType = assembly.GetType(UrpNamespace + (spec.IsLit ? "UniversalLitSubTarget" : spec.IsFullscreen ? "UniversalFullscreenSubTarget" : "UniversalUnlitSubTarget"), true);
+            var subTargetType = assembly.GetType(UrpNamespace + (spec.IsLit ? "UniversalLitSubTarget" : spec.IsFullscreen ? "UniversalFullscreenSubTarget" : spec.IsDecal ? "UniversalDecalSubTarget" : "UniversalUnlitSubTarget"), true);
             var target = (Target)Activator.CreateInstance(targetType, true);
             const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
             if (!(bool)targetType.GetMethod("TrySetActiveSubTarget", flags).Invoke(target, new object[] { subTargetType }))
@@ -257,7 +270,23 @@ namespace TentacleVania.Editor.ShaderGraphTool
             }
             if (spec.vfx)
                 targetType.GetField("m_SupportVFX", flags).SetValue(target, true);
+            if (spec.IsDecal)
+                SetDecalAffects(targetType.GetProperty("activeSubTarget", flags).GetValue(target), flags);
             return target;
+        }
+
+        private static void SetDecalAffects(object subTarget, BindingFlags flags)
+        {
+            var property = subTarget.GetType().GetProperty("decalData", flags);
+            var data = property.GetValue(subTarget);
+            var type = data.GetType();
+            type.GetField("affectsAlbedo", flags).SetValue(data, true);
+            type.GetField("affectsEmission", flags).SetValue(data, true);
+            type.GetField("affectsNormal", flags).SetValue(data, false);
+            type.GetField("affectsNormalBlend", flags).SetValue(data, false);
+            type.GetField("affectsMAOS", flags).SetValue(data, false);
+            if (property.CanWrite)
+                property.SetValue(subTarget, data);
         }
     }
 }

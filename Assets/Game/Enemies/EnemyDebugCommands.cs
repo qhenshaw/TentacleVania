@@ -1,6 +1,7 @@
 using TentacleVania.Combat;
 using TentacleVania.Core.Debugging;
 using TentacleVania.Enemies.Data;
+using TentacleVania.Enemies.Telegraphs;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -30,6 +31,7 @@ namespace TentacleVania.Enemies
             });
             DebugMenu.Value(tab, "HP / stagger / animation", DescribeEnemies);
             DebugMenu.Toggle(tab, "Freeze AI", () => EnemyManager.Instance.Paused, v => EnemyManager.Instance.Paused = v);
+            DebugMenu.Toggle(tab, "Force ground indicators", () => GroundIndicator.ForceAll, v => GroundIndicator.ForceAll = v);
             DebugMenu.Button(tab, "Stun all (3 s)", () =>
             {
                 foreach (var enemy in EnemyManager.Instance.Enemies)
