@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 271964687670368571}
   - component: {fileID: 3654733349945265937}
   - component: {fileID: 8252016009454080188}
+  - component: {fileID: 8169341575981907583}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Untagged
@@ -163,6 +164,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Movement.CreatureMotor
   _settings: {fileID: 11400000, guid: d8ee186b64f2c1140870a07f81c65a51, type: 2}
+--- !u!114 &8169341575981907583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6816f0a04add1c24781e67eb1231d3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.CreatureLegs
+  _settings: {fileID: 11400000, guid: 76bdb5de4f2888f488841931aa23382b, type: 2}
+  _legMaterial: {fileID: 2100000, guid: a9bcfb79f0251af49b5eb4a0b9219e7c, type: 2}
+  _motor: {fileID: 8252016009454080188}
 --- !u!1 &7952250992877002194
 GameObject:
   m_ObjectHideFlags: 0
