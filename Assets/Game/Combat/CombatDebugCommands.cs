@@ -30,6 +30,15 @@ namespace TentacleVania.Combat
             DebugMenu.Value(DebugMenu.Combat, "Last hit feedback", () => Feedback.HitFeedback.LastKind.ToString());
             DebugMenu.Toggle(DebugMenu.Combat, "Hit-stop", () => Core.Feedback.HitStop.Enabled, v => Core.Feedback.HitStop.Enabled = v);
             DebugMenu.Toggle(DebugMenu.Combat, "Rumble", () => GameSettings.Rumble, v => GameSettings.Rumble = v);
+            DebugMenu.Toggle(DebugMenu.Combat, "Gore", () => GameSettings.Gore, v => GameSettings.Gore = v);
+            DebugMenu.Toggle(DebugMenu.Combat, "Hit effects", () => Feedback.HitEffects.Enabled, v => Feedback.HitEffects.Enabled = v);
+            DebugMenu.Value(DebugMenu.Combat, "Blood decals", () =>
+                Feedback.HitEffects.Instance != null ? $"{Feedback.HitEffects.Instance.ActiveDecals} / {Feedback.HitEffects.Instance.DecalCapacity}" : "-");
+            DebugMenu.Button(DebugMenu.Combat, "Clear blood decals", () =>
+            {
+                if (Feedback.HitEffects.Instance != null)
+                    Feedback.HitEffects.Instance.ClearDecals();
+            });
         }
 
         private static void OnHit(Health target, in DamageInfo info, in DamageResult result)

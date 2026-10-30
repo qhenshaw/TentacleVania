@@ -2,7 +2,8 @@
     "name": "TentacleVania.Combat",
     "rootNamespace": "TentacleVania.Combat",
     "references": [
-        "TentacleVania.Core"
+        "TentacleVania.Core",
+        "Unity.RenderPipelines.Universal.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
