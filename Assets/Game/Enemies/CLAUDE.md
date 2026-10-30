@@ -16,6 +16,7 @@ Numbers are the developer-approved baselines (HP and damage from the Balance She
 
 | Enemy | HP | Behaviour | Attacks |
 | --- | --- | --- | --- |
+| Security Guard (`GuardEnemy`) | 40, speed 4.5 | Holds 5–8 m from the creature: closes in when farther, backs off to 6.5 m (trying ±30°/±60° on the NavMesh) when nearer; faces the creature within 12 m | Baton: yellow melee 1.8 m, 90°, 8 dmg, within 1.8 m (0.45 / 0.15 / 0.5, cooldown 1.2). Pistol: yellow projectile 18 m/s, 8 dmg, 4–11 m (0.45 / 0.05 / 0.4, cooldown 1.4) |
 | Scientist (`ScientistEnemy`) | 20, speed 4 | Flees to 6 m away whenever the creature is within 7 m (tries 0°, ±35°, ±70° off straight away on the NavMesh), stands still when farther, cowers when every escape is blocked; faces the creature only when cornered or within 2 m | Stun prod: yellow melee, 1.4 m, 60°, 4 dmg, only within 1.6 m (0.5 / 0.15 / 0.6, cooldown 1.5) |
 
 New enemy prefabs are built from the TestBrute layout by an eval (replace the `Enemy` component with the subclass, give it its own CharacterMaster material and definition) and added to `Debug/Resources/DebugEnemySpawnList`.
