@@ -52,7 +52,7 @@ namespace TentacleVania.Creature.Rig
             _texture = new(Chains.Joints, Mathf.Max(1, count), TextureFormat.RGBAFloat, false, true)
             {
                 name = "ChainPositions",
-                filterMode = FilterMode.Point,
+                filterMode = FilterMode.Trilinear,
                 wrapMode = TextureWrapMode.Clamp,
             };
             if (_effect == null)

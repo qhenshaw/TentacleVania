@@ -13,17 +13,27 @@ MonoBehaviour:
   m_Name: HatchlingRig
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.CreatureRigSettings
   _legCount: 6
-  _bonesPerLeg: 5
-  _legLength: 1.1
-  _rootRadius: 0.12
-  _rootHeight: 0.42
-  _restRadius: 0.66
-  _archHeight: 0.5
+  _legLength: 1.2
+  _rootRadius: 0
+  _rootHeight: 0.15
+  _restRadius: 0.6
+  _archHeight: 4
   _stepThreshold: 0.28
   _emergencyDistance: 0.6
-  _stepDuration: 0.11
-  _stepHeight: 0.18
-  _predictTime: 0.12
+  _stepDuration: 0.3
+  _stepHeight: 0.2
+  _predictTime: 0.05
+  _variation: 0.25
+  _liftCurve: 0.55
+  _swingOutward: 0.12
+  _writheAmplitude: 0.05
+  _writheSpeed: 1
+  _bodyBob: 0.1
+  _bodySway: 0.5
+  _bodySpringFrequency: 1
+  _bodySpringDamping: 0.3
+  _bodyInertia: 0.5
+  _bodyMaxOffset: 0.15
   _solverIterations: 6
-  _rootWidth: 0.07
-  _tipWidth: 0.015
+  _rootWidth: 0.1
+  _tipWidth: 0.025

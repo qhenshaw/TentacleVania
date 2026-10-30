@@ -58,6 +58,7 @@ namespace TentacleVania.Creature
                 if (vitals != null)
                     vitals.Stun(1f);
             });
+            DebugMenu.Toggle(tab, "Organic gait", () => CreatureLegs.Organic, v => CreatureLegs.Organic = v);
             DebugMenu.Toggle(tab, "Placeholder tentacle lines", () => Chains.ShowPlaceholderLines, v => Chains.ShowPlaceholderLines = v);
             DebugMenu.Value(tab, "Chain texture", () =>
                 Spawned != null && Spawned.TryGetComponent<ChainTexture>(out var chains) && chains.Texture != null

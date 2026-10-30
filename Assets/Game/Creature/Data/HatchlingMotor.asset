@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a65146ba17de5346b1de3859e2a5ab2, type: 3}
   m_Name: HatchlingMotor
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Movement.CreatureMotorSettings
-  _moveSpeed: 7
-  _acceleration: 120
+  _moveSpeed: 6
+  _acceleration: 60
   _turnSpeed: 1440
   _aimDeadzone: 0.25
   _dashDistance: 4

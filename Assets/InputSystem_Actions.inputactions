@@ -80,7 +80,7 @@
                     "name": "Ability",
                     "type": "Button",
                     "id": "1d148891-3304-4992-8046-952618a8f3a1",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false,
