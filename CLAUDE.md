@@ -134,6 +134,7 @@ Each area has its own assembly definition, `TentacleVania.<Area>`, and the match
 | Enemies | `Assets/Game/Enemies/` (enemy state machine, attacks, telegraphs, NavMesh, tokens) |
 | UI | `Assets/Game/UI/` (UI Toolkit runtime UI, F5 debug menu) |
 | Weapons | `Assets/Game/Weapons/` (weapon data, shared combo, charged heavy, dash attack, soft-lock) |
+| World | `Assets/Game/World/` (rooms, arena doors, lock-in encounters and waves) |
 
 Create other areas as their first task needs them, named after the Tasks `Area` values (`Creature`, `Combat`, `Weapons`, `Abilities`, `Enemies`, `Bosses`, `World`, `Progression`, `UI`, `Audio`, `VFX`).
 
@@ -145,7 +146,7 @@ A small `Bootstrap` scene is the entry point: it creates the persistent managers
 | --- | --- |
 | `Bootstrap` | Entry point; creates the persistent managers and additively loads `MainMenu` |
 | `MainMenu` | Title screen; in Build Settings |
-| `CombatArena` | Greybox lock-in arena with enemy waves (the Combat Prototype test scene); the play-check tools open it |
+| `CombatArena` | Greybox lock-in arena with four enemy waves (the Combat Prototype test scene; the creature starts in the south corridor and walking in starts it); the play-check tools open it |
 
 ## Code style
 
