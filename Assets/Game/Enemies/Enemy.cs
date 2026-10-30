@@ -24,6 +24,7 @@ namespace TentacleVania.Enemies
     public class Enemy : MonoBehaviour
     {
         private const float CircleStepDegrees = 35f;
+        private const float HitFlashDuration = 0.08f;
 
         private static readonly RaycastHit[] SweepHits = new RaycastHit[16];
         private static readonly Collider[] OverlapHits = new Collider[16];
@@ -73,6 +74,7 @@ namespace TentacleVania.Enemies
         protected virtual void OnEnable()
         {
             _health.Died += OnDied;
+            _health.Damaged += OnDamaged;
             EnemyManager.Register(this);
             SetState(EnemyState.Spawning);
         }
@@ -80,6 +82,7 @@ namespace TentacleVania.Enemies
         protected virtual void OnDisable()
         {
             _health.Died -= OnDied;
+            _health.Damaged -= OnDamaged;
             EnemyManager.Unregister(this);
             EndAttack(false);
         }
@@ -344,6 +347,12 @@ namespace TentacleVania.Enemies
         }
 
         protected virtual void OnDeath() { }
+
+        private void OnDamaged(Health health, in DamageInfo info, in DamageResult result)
+        {
+            if (_glow != null)
+                _glow.Flash(HitFlashDuration);
+        }
 
         protected void Halt()
         {

@@ -1,0 +1,18 @@
+{
+    "name": "TentacleVania.Weapons",
+    "rootNamespace": "TentacleVania.Weapons",
+    "references": [
+        "TentacleVania.Core",
+        "TentacleVania.Combat",
+        "TentacleVania.Creature"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

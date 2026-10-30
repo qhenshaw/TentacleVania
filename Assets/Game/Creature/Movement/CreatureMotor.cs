@@ -22,11 +22,20 @@ namespace TentacleVania.Creature.Movement
         private float _dashBufferedUntil = float.NegativeInfinity;
         private float _invulnerableUntil = float.NegativeInfinity;
 
+        private Vector3 _lungeDirection;
+        private float _lungeRemaining;
+        private float _lungeSpeed;
+
         public event Action Dashed;
 
         public CreatureMotorSettings Settings => _settings;
         public bool InputEnabled { get; set; } = true;
+        public float SpeedMultiplier { get; set; } = 1f;
+        public bool DashLocked { get; set; }
+        public bool FacingLocked { get; set; }
+        public float LastDashEndTime { get; private set; } = float.NegativeInfinity;
         public bool IsDashing => _dashRemaining > 0f;
+        public bool IsLunging => _lungeRemaining > 0f;
         public bool IsInvulnerable => Time.time < _invulnerableUntil;
         public int DashChainCount => _dash.ChainCount;
         public Vector3 Velocity => _velocity;
@@ -52,34 +61,45 @@ namespace TentacleVania.Creature.Movement
             if (now <= _dashBufferedUntil && TryDash(MoveInput))
                 _dashBufferedUntil = float.NegativeInfinity;
 
+            var walkSpeed = _settings.MoveSpeed * SpeedMultiplier;
             Vector3 step;
-            if (IsDashing)
+            if (IsLunging)
+            {
+                var distance = Mathf.Min(_lungeSpeed * dt, _lungeRemaining);
+                _lungeRemaining -= distance;
+                _velocity = IsLunging ? _lungeDirection * _lungeSpeed : MoveInput * walkSpeed;
+                step = _lungeDirection * distance;
+            }
+            else if (IsDashing)
             {
                 var distance = Mathf.Min(_settings.DashSpeed * dt, _dashRemaining);
                 _dashRemaining -= distance;
-                _velocity = IsDashing ? _dashDirection * _settings.DashSpeed : MoveInput * _settings.MoveSpeed;
+                _velocity = IsDashing ? _dashDirection * _settings.DashSpeed : MoveInput * walkSpeed;
                 step = _dashDirection * distance;
+                if (!IsDashing)
+                    LastDashEndTime = now;
             }
             else
             {
-                _velocity = Vector3.MoveTowards(_velocity, MoveInput * _settings.MoveSpeed, _settings.Acceleration * dt);
+                _velocity = Vector3.MoveTowards(_velocity, MoveInput * walkSpeed, _settings.Acceleration * dt);
                 step = _velocity * dt;
             }
 
-            _controller.excludeLayers = IsDashing ? _dashPassLayers : 0;
+            _controller.excludeLayers = IsDashing || IsLunging ? _dashPassLayers : 0;
             _fallSpeed = _controller.isGrounded ? GroundStick : _fallSpeed + Physics.gravity.y * dt;
             step.y = _fallSpeed * dt;
             _controller.Move(step);
 
-            if (InputEnabled && TryGetFacing(input, out var facing))
+            if (InputEnabled && !FacingLocked && TryGetFacing(input, out var facing))
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(facing), _settings.TurnSpeed * dt);
         }
 
         public bool TryDash(Vector3 direction)
         {
             var now = Time.time;
-            if (!_dash.TryStart(now))
+            if (DashLocked || !_dash.TryStart(now))
                 return false;
+            _lungeRemaining = 0f;
             direction.y = 0f;
             _dashDirection = direction.sqrMagnitude > 1e-4f ? direction.normalized : transform.forward;
             _dashRemaining = _settings.DashDistance;
@@ -88,24 +108,49 @@ namespace TentacleVania.Creature.Movement
             return true;
         }
 
+        public void Lunge(Vector3 direction, float distance, float duration)
+        {
+            direction.y = 0f;
+            if (distance <= 0f || duration <= 0f || direction.sqrMagnitude < 1e-4f)
+                return;
+            if (IsDashing)
+            {
+                _dashRemaining = 0f;
+                LastDashEndTime = Time.time;
+            }
+            _lungeDirection = direction.normalized;
+            _lungeRemaining = distance;
+            _lungeSpeed = distance / duration;
+        }
+
+        public void FaceImmediately(Vector3 direction)
+        {
+            direction.y = 0f;
+            if (direction.sqrMagnitude > 1e-4f)
+                transform.rotation = Quaternion.LookRotation(direction);
+        }
+
+        public bool TryGetAimDirection(out Vector3 direction)
+        {
+            var input = GameplayInput.Default;
+            if (input.LastDevice == InputDeviceKind.KeyboardMouse && _camera != null)
+                return PlanarInput.TryPointerDirection(_camera.ScreenPointToRay(input.AimPointer), transform.position, out direction);
+            var aim = input.AimStick;
+            if (aim.sqrMagnitude >= _settings.AimDeadzone * _settings.AimDeadzone)
+            {
+                direction = PlanarInput.ToWorld(aim, CameraForward).normalized;
+                return true;
+            }
+            direction = default;
+            return false;
+        }
+
         private Vector3 CameraForward => _camera != null ? _camera.transform.forward : Vector3.forward;
 
         private bool TryGetFacing(GameplayInput input, out Vector3 facing)
         {
-            if (input.LastDevice == InputDeviceKind.KeyboardMouse && _camera != null)
-            {
-                if (PlanarInput.TryPointerDirection(_camera.ScreenPointToRay(input.AimPointer), transform.position, out facing))
-                    return true;
-            }
-            else
-            {
-                var aim = input.AimStick;
-                if (aim.sqrMagnitude >= _settings.AimDeadzone * _settings.AimDeadzone)
-                {
-                    facing = PlanarInput.ToWorld(aim, CameraForward).normalized;
-                    return true;
-                }
-            }
+            if (TryGetAimDirection(out facing))
+                return true;
             facing = MoveInput.normalized;
             return MoveInput.sqrMagnitude > 1e-4f;
         }

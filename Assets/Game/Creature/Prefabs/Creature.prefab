@@ -105,6 +105,8 @@ GameObject:
   - component: {fileID: 8914341881527922285}
   - component: {fileID: 891536980734917587}
   - component: {fileID: 6592408752216720721}
+  - component: {fileID: 615621536349149212}
+  - component: {fileID: 5879995599559319355}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -230,6 +232,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.CreatureVitals
   _restartDelay: 1.5
+--- !u!114 &615621536349149212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a00c37c374bbb49ac6de1b4719701d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.WeaponController
+  _weapon1: {fileID: 11400000, guid: f115e7384f9f44145b4993a18db6fd2c, type: 2}
+  _weapon2: {fileID: 0}
+  _hitLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  _heavyThreshold: 0.35
+  _maxHold: 1.5
+  _inputBuffer: 0.15
+  _comboReset: 0.6
+  _dashAttackWindow: 0.12
+  _attackMoveSpeed: 0.4
+  _softLockRange: 6
+  _softLockCone: 90
+  _aimLockCone: 30
+--- !u!114 &5879995599559319355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c97a2c53c70cc4688a9ed2c74d9840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.WeaponTentacleView
+  _material: {fileID: 2100000, guid: a9bcfb79f0251af49b5eb4a0b9219e7c, type: 2}
+  _length: 2.4
+  _archHeight: 0.25
+  _rootOffset: {x: 0.18, y: 0.5, z: 0.15}
+  _rootWidth: 0.14
+  _tipWidth: 0.03
 --- !u!1 &7952250992877002194
 GameObject:
   m_ObjectHideFlags: 0
