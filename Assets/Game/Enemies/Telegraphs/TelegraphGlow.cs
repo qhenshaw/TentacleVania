@@ -1,3 +1,4 @@
+using TentacleVania.Core;
 using TentacleVania.Enemies.Data;
 using UnityEngine;
 
@@ -13,11 +14,18 @@ namespace TentacleVania.Enemies.Telegraphs
         [SerializeField] private Renderer[] _renderers;
         [SerializeField, ColorUsage(false, true)] private Color _dodgeable = new(4f, 2.6f, 0.2f);
         [SerializeField, ColorUsage(false, true)] private Color _undodgeable = new(4.5f, 0.25f, 0.15f);
+        [SerializeField, ColorUsage(false, true)] private Color _hitFlash = new(2.5f, 2.5f, 2.5f);
 
         private Material[] _materials;
         private Color[] _baseEmission;
         private float _current = -1f;
         private Telegraph _telegraph;
+        private Color _glow;
+        private float _flashUntil;
+        private bool _flashing;
+
+        public float Intensity => Mathf.Max(0f, _current);
+        public bool IsFlashing => _flashing;
 
         private void Awake()
         {
@@ -40,7 +48,14 @@ namespace TentacleVania.Enemies.Telegraphs
                 Destroy(material);
         }
 
-        public float Intensity => Mathf.Max(0f, _current);
+        private void LateUpdate()
+        {
+            if (_flashing && Time.time >= _flashUntil)
+            {
+                _flashing = false;
+                Apply(_glow);
+            }
+        }
 
         public void Show(Telegraph telegraph, float progress)
         {
@@ -49,9 +64,7 @@ namespace TentacleVania.Enemies.Telegraphs
                 return;
             _telegraph = telegraph;
             _current = intensity;
-            var color = (telegraph == Telegraph.Undodgeable ? _undodgeable : _dodgeable) * intensity;
-            for (var i = 0; i < _materials.Length; i++)
-                _materials[i].SetColor(EmissionColor, _baseEmission[i] + color);
+            SetGlow((telegraph == Telegraph.Undodgeable ? _undodgeable : _dodgeable) * intensity);
         }
 
         public void Clear()
@@ -59,8 +72,27 @@ namespace TentacleVania.Enemies.Telegraphs
             if (_current == 0f)
                 return;
             _current = 0f;
+            SetGlow(Color.black);
+        }
+
+        public void Flash(float duration)
+        {
+            _flashing = true;
+            _flashUntil = Time.time + duration;
+            Apply(GameSettings.Flashes ? _hitFlash : _hitFlash * 0.4f);
+        }
+
+        private void SetGlow(Color color)
+        {
+            _glow = color;
+            if (!_flashing)
+                Apply(color);
+        }
+
+        private void Apply(Color color)
+        {
             for (var i = 0; i < _materials.Length; i++)
-                _materials[i].SetColor(EmissionColor, _baseEmission[i]);
+                _materials[i].SetColor(EmissionColor, _baseEmission[i] + color);
         }
     }
 }
