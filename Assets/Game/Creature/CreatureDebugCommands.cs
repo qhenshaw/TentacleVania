@@ -62,6 +62,7 @@ namespace TentacleVania.Creature
             });
             DebugMenu.Toggle(tab, "Organic gait", () => CreatureLegs.Organic, v => CreatureLegs.Organic = v);
             DebugMenu.Toggle(tab, "Free tentacles", () => CreatureTentacles.Visible, v => CreatureTentacles.Visible = v);
+            DebugMenu.Toggle(tab, "Dash stretch", () => CreatureLegs.DashStretch, v => CreatureLegs.DashStretch = v);
             DebugMenu.Toggle(tab, "Placeholder tentacle lines", () => Chains.ShowPlaceholderLines, v => Chains.ShowPlaceholderLines = v);
             DebugMenu.Toggle(tab, "Tentacle merge", () => GameSettings.TentacleMerge, v => GameSettings.TentacleMerge = v);
             DebugMenu.Value(tab, "Chain textures", DescribeChainTextures);
