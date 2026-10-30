@@ -10,7 +10,11 @@ namespace TentacleVania.Enemies.Telegraphs
         private const float MinimumGlow = 0.25f;
 
         [SerializeField, ColorUsage(false, true)] private Color _dodgeable = new(4f, 2.6f, 0.2f);
+        [SerializeField, Min(0.01f)] private float _dodgeableFresnel = CharacterMaterials.DefaultStatusFresnel;
+        [SerializeField, Min(0f)] private float _dodgeableFill = CharacterMaterials.DefaultStatusFill;
         [SerializeField, ColorUsage(false, true)] private Color _undodgeable = new(4.5f, 0.25f, 0.15f);
+        [SerializeField, Min(0.01f)] private float _undodgeableFresnel = CharacterMaterials.DefaultStatusFresnel;
+        [SerializeField, Min(0f)] private float _undodgeableFill = CharacterMaterials.DefaultStatusFill;
         [SerializeField, ColorUsage(false, true)] private Color _hitFlash = new(2.5f, 2.5f, 2.5f);
         [SerializeField, ColorUsage(false, true)] private Color _stunned = new(0.45f, 0.8f, 1.3f);
         [SerializeField, Min(0f)] private float _stunnedPulse = 0.95f;
@@ -44,7 +48,10 @@ namespace TentacleVania.Enemies.Telegraphs
                 return;
             _telegraph = telegraph;
             _current = intensity;
-            _materials.SetGlow(telegraph == Telegraph.Undodgeable ? _undodgeable : _dodgeable, intensity);
+            if (telegraph == Telegraph.Undodgeable)
+                _materials.SetGlow(_undodgeable, intensity, _undodgeableFresnel, _undodgeableFill);
+            else
+                _materials.SetGlow(_dodgeable, intensity, _dodgeableFresnel, _dodgeableFill);
         }
 
         public void Clear()

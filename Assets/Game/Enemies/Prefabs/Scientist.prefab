@@ -130,7 +130,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Telegraphs.TelegraphGlow
   _dodgeable: {r: 4, g: 2.6, b: 0.2, a: 1}
+  _dodgeableFresnel: 5
+  _dodgeableFill: 0.05
   _undodgeable: {r: 4.5, g: 0.25, b: 0.15, a: 1}
+  _undodgeableFresnel: 5
+  _undodgeableFill: 0.05
   _hitFlash: {r: 2.5, g: 2.5, b: 2.5, a: 1}
   _stunned: {r: 0.45, g: 0.8, b: 1.3, a: 1}
   _stunnedPulse: 0.95

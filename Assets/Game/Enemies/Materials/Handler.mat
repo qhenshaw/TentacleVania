@@ -57,10 +57,14 @@ Material:
     m_Floats:
     - _FlashAmount: 0
     - _GlowAmount: 0
+    - _GlowFill: 0.15
+    - _GlowFresnel: 3
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0.3
     - _StatusAmount: 0
+    - _StatusFill: 0.15
+    - _StatusFresnel: 3
     - _StatusPulse: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
