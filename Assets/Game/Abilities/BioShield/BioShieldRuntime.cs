@@ -61,7 +61,7 @@ namespace TentacleVania.Abilities.BioShield
             _pulse = 1f;
             _burstElapsed = -1f;
             if (_context.Materials != null)
-                _context.Materials.SetStatus(_definition.StatusColor, _definition.StatusAmount);
+                _context.Materials.SetStatus(_definition.StatusColor, _definition.StatusAmount, 0f, _definition.StatusFresnel, _definition.StatusFill);
             Play(_definition.ActivateSound);
             if (_shell != null)
                 _shell.gameObject.SetActive(true);
