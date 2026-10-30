@@ -1,3 +1,4 @@
+using TentacleVania.Core;
 using UnityEngine;
 
 namespace TentacleVania.Creature
@@ -8,7 +9,11 @@ namespace TentacleVania.Creature
 
         public static GameObject Spawned { get; private set; }
 
-        private void Start() => Spawned = Instantiate(_prefab, transform.position, transform.rotation);
+        private void Start()
+        {
+            Spawned = Instantiate(_prefab, transform.position, transform.rotation);
+            CameraFocus.Target = Spawned.transform;
+        }
 
         private void OnDestroy()
         {
