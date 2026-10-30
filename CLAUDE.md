@@ -176,6 +176,7 @@ unity command eval --caller plugin --skill unity-cli '<C# statements>; return <v
 - Save any scene you edit with `EditorSceneManager.SaveScene` so the changes can be staged.
 - `OpenScene` unloads unused assets, so a C# reference to an asset the same script created or loaded before opening the scene is dead afterwards and assigns as null without an error. Load assets with `AssetDatabase.LoadAssetAtPath` after `OpenScene`, and return the references you set (or grep the saved scene for `{fileID: 0}`) to confirm them.
 - Eval code has no `using` directives, so extension methods don't resolve as methods: call them statically (`InputActionSetupExtensions.AddAction(map, ...)`).
+- Never use `??` or `?.` on Unity objects (`GetComponent<T>() ?? AddComponent<T>()`): a missing component is a fake null that `??` treats as present. Compare with `== null`.
 - CLI command names change between CLI versions (for example `editor.playmode start`, `console get`). If a command isn't found, list the current names with `unity command --tag <tag>`.
 
 ### Shell pitfalls
