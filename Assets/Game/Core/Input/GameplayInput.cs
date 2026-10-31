@@ -24,7 +24,7 @@ namespace TentacleVania.Core.Input
     {
         public const string MapName = "Gameplay";
 
-        public static readonly string[] ActionNames = { "Move", "AimStick", "AimPointer", "Weapon1", "Weapon2", "Dash", "Grab", "Ability", "Traverse", "Pause", "Map" };
+        public static readonly string[] ActionNames = { "Move", "AimStick", "AimPointer", "Weapon1", "Weapon2", "Dash", "Grab", "Ability", "Traverse", "Pause", "Map", "MapOverlay" };
 
         private static GameplayInput _default;
 
@@ -52,6 +52,8 @@ namespace TentacleVania.Core.Input
             Pause = pause != null ? new(pause) : default;
             var map = _map.FindAction("Map");
             Map = map != null ? new(map) : default;
+            var overlay = _map.FindAction("MapOverlay");
+            MapOverlay = overlay != null ? new(overlay) : default;
             _map.actionTriggered += OnActionTriggered;
             _map.Enable();
         }
@@ -97,6 +99,7 @@ namespace TentacleVania.Core.Input
         public ButtonInput Traverse { get; }
         public ButtonInput Pause { get; }
         public ButtonInput Map { get; }
+        public ButtonInput MapOverlay { get; }
 
         public bool Enabled
         {

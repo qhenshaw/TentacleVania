@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements">
     <Style src="Map.uss" />
     <ui:VisualElement name="map" class="map" picking-mode="Ignore">
-        <ui:VisualElement name="minimap" class="map__minimap" picking-mode="Ignore" />
+        <ui:VisualElement name="overlay" class="map__overlay" picking-mode="Ignore" />
         <ui:VisualElement name="full" class="map__full">
             <ui:Label name="title" class="map__title" />
             <ui:Label name="info" class="map__info" />

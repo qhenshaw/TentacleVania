@@ -15,24 +15,22 @@ namespace TentacleVania.UI.Map
     [RequireComponent(typeof(UIDocument))]
     public sealed class MapScreen : MonoBehaviour
     {
-        public const float HoldTime = 0.3f;
         public const int RelaysRequired = 3;
         private const string Table = "UI";
         private const string SectorTable = "Dialogue";
 
         private VisualElement _full;
-        private VisualElement _minimapFrame;
+        private VisualElement _overlayFrame;
         private Label _title;
         private Label _info;
         private MapView _fullView;
-        private MapView _minimap;
-        private float _pressedAt = -1f;
-        private bool _holding;
+        private MapView _overlay;
+        private bool _overlayWanted;
 
         public static MapScreen Instance { get; private set; }
 
         public bool FullOpen { get; private set; }
-        public bool MinimapShown { get; private set; }
+        public bool OverlayShown { get; private set; }
         public MapView FullView => _fullView;
 
         private void OnEnable()
@@ -42,16 +40,16 @@ namespace TentacleVania.UI.Map
             root.StretchToParentSize();
             root.pickingMode = PickingMode.Ignore;
             _full = root.Q("full");
-            _minimapFrame = root.Q("minimap");
+            _overlayFrame = root.Q("overlay");
             _title = root.Q<Label>("title");
             _info = root.Q<Label>("info");
             root.Q<Label>("legend").text = T("map.legend");
             _fullView = new MapView(false);
             root.Q("frame").Add(_fullView);
             _fullView.style.flexGrow = 1f;
-            _minimap = new MapView(true, 4f);
-            _minimap.style.flexGrow = 1f;
-            _minimapFrame.Add(_minimap);
+            _overlay = new MapView(true, 6f);
+            _overlay.style.flexGrow = 1f;
+            _overlayFrame.Add(_overlay);
             _full.RegisterCallback<NavigationCancelEvent>(_ => CloseFull());
             MapProgress.Explored += OnExplored;
         }
@@ -68,30 +66,18 @@ namespace TentacleVania.UI.Map
             var input = GameplayInput.Default;
             if (Blocked())
             {
-                _pressedAt = -1f;
-                SetMinimap(false);
+                ShowOverlay(false);
                 return;
             }
-            var map = input.Map;
-            if (map.Pressed)
-                _pressedAt = Time.unscaledTime;
-            if (_pressedAt >= 0f && map.Held && Time.unscaledTime - _pressedAt >= HoldTime && !FullOpen)
-            {
-                _holding = true;
-                SetMinimap(true);
-            }
-            if (map.Released && _pressedAt >= 0f)
-            {
-                if (!_holding)
-                    ToggleFull();
-                _pressedAt = -1f;
-                _holding = false;
-                SetMinimap(false);
-            }
+            if (input.Map.Pressed)
+                ToggleFull();
+            if (input.MapOverlay.Pressed && !FullOpen)
+                _overlayWanted = !_overlayWanted;
+            ShowOverlay(_overlayWanted && !FullOpen);
             if (FullOpen)
                 _fullView.Tick();
-            if (MinimapShown)
-                _minimap.Tick();
+            if (OverlayShown)
+                _overlay.Tick();
         }
 
         public void ToggleFull()
@@ -117,14 +103,16 @@ namespace TentacleVania.UI.Map
             _full.RemoveFromClassList("map__full--open");
         }
 
-        public void SetMinimap(bool shown)
+        public void SetOverlay(bool wanted) => _overlayWanted = wanted;
+
+        private void ShowOverlay(bool shown)
         {
-            if (shown == MinimapShown)
+            if (shown == OverlayShown)
                 return;
-            MinimapShown = shown;
-            _minimapFrame.EnableInClassList("map__minimap--shown", shown);
+            OverlayShown = shown;
+            _overlayFrame.EnableInClassList("map__overlay--shown", shown);
             if (shown)
-                _minimap.SetRegistry(CurrentRegistry());
+                _overlay.SetRegistry(CurrentRegistry());
         }
 
         public static RoomRegistry CurrentRegistry()
@@ -162,8 +150,8 @@ namespace TentacleVania.UI.Map
         {
             if (FullOpen)
                 _fullView.Rebuild();
-            if (MinimapShown)
-                _minimap.Rebuild();
+            if (OverlayShown)
+                _overlay.Rebuild();
         }
 
         private static bool Blocked()
