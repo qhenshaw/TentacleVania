@@ -2,6 +2,7 @@
     <Style src="CombatHud.uss" />
     <ui:VisualElement name="hud" class="hud" picking-mode="Ignore">
         <ui:VisualElement name="enemy-layer" class="hud__layer" picking-mode="Ignore" />
+        <ui:Label name="prompt" class="hud__prompt hud__prompt--hidden" picking-mode="Ignore" />
         <ui:VisualElement name="player" class="hud__player" picking-mode="Ignore">
             <ui:VisualElement name="health" class="hud-bar hud-bar--health" picking-mode="Ignore">
                 <ui:VisualElement name="health-trail" class="hud-bar__layer hud-bar__trail" picking-mode="Ignore" />

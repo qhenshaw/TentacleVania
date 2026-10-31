@@ -1,4 +1,5 @@
 using TentacleVania.Core;
+using TentacleVania.Core.Progression;
 using UnityEngine;
 
 namespace TentacleVania.Creature
@@ -11,7 +12,14 @@ namespace TentacleVania.Creature
 
         private void Start()
         {
-            Spawned = Instantiate(_prefab, transform.position, transform.rotation);
+            var position = transform.position;
+            var rotation = transform.rotation;
+            if (Nests.TryGetRespawn(gameObject.scene.name, out var nestPosition, out var yaw))
+            {
+                position = nestPosition;
+                rotation = Quaternion.Euler(0f, yaw, 0f);
+            }
+            Spawned = Instantiate(_prefab, position, rotation);
             CameraFocus.Target = Spawned.transform;
         }
 

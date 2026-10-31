@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using TentacleVania.Combat;
+using TentacleVania.Core.Progression;
+using TentacleVania.Core.Saves;
 using TentacleVania.Enemies;
 using UnityEngine;
 using UnityEngine.AI;
@@ -23,6 +25,10 @@ namespace TentacleVania.World.Arenas
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Vector3 _triggerCenter;
         [SerializeField] private Vector3 _triggerSize = new(18f, 4f, 16f);
+        [Tooltip("Boss arenas stay empty and open for good once cleared (saved); other arenas refill when the creature rests.")]
+        [SerializeField] private bool _bossArena;
+        [Tooltip("Unique save id; when empty, the scene name and object name are used.")]
+        [SerializeField] private string _id;
 
         private readonly List<Enemy> _alive = new(16);
         private readonly List<Enemy> _queue = new(16);
@@ -41,13 +47,50 @@ namespace TentacleVania.World.Arenas
         public int AliveCount => _alive.Count;
         public float StartedAt { get; private set; }
         public float ClearedAt { get; private set; }
+        public bool IsBossArena => _bossArena;
+        public string SaveId => string.IsNullOrEmpty(_id) ? gameObject.scene.name + "/" + name : _id;
 
-        private void OnEnable() => Active = this;
+        private void OnEnable()
+        {
+            Active = this;
+            Nests.Rested += OnRested;
+        }
 
         private void OnDisable()
         {
+            Nests.Rested -= OnRested;
             if (Active == this)
                 Active = null;
+        }
+
+        private void Start()
+        {
+            if (!Nests.StaysCleared(_bossArena) || !SaveSystem.Data.World.Has(WorldFlag.ClearedArena, SaveId))
+                return;
+            foreach (var door in _doors)
+                door.Open();
+            SetState(ArenaState.Cleared);
+        }
+
+        public void ResetForRest()
+        {
+            if (Nests.StaysCleared(_bossArena) && State == ArenaState.Cleared)
+                return;
+            foreach (var enemy in _alive)
+                if (enemy != null)
+                    Destroy(enemy.gameObject);
+            _alive.Clear();
+            _queue.Clear();
+            _waveIndex = -1;
+            foreach (var door in _doors)
+                door.ResetToStart();
+            SetState(ArenaState.Waiting);
+        }
+
+        private void OnRested(string nest)
+        {
+            if (State != ArenaState.Waiting)
+                ResetForRest();
         }
 
         private void Update()
@@ -145,6 +188,8 @@ namespace TentacleVania.World.Arenas
             if (_waveIndex + 1 >= _waves.Waves.Count)
             {
                 ClearedAt = now;
+                if (Nests.StaysCleared(_bossArena))
+                    SaveSystem.Data.World.Set(WorldFlag.ClearedArena, SaveId);
                 foreach (var door in _doors)
                     door.Open();
                 SetState(ArenaState.Cleared);

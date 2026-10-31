@@ -27,6 +27,14 @@ MonoBehaviour:
     m_Key: menu.quit
     m_Metadata:
       m_Items: []
+  - m_Id: 371090607849472
+    m_Key: prompt.nest.grow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371090653986816
+    m_Key: prompt.nest.rest
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
