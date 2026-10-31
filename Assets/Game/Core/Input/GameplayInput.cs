@@ -15,16 +15,16 @@ namespace TentacleVania.Core.Input
 
         public ButtonInput(InputAction action) => _action = action;
 
-        public bool Pressed => _action.WasPressedThisFrame();
-        public bool Held => _action.IsPressed();
-        public bool Released => _action.WasReleasedThisFrame();
+        public bool Pressed => _action != null && _action.WasPressedThisFrame();
+        public bool Held => _action != null && _action.IsPressed();
+        public bool Released => _action != null && _action.WasReleasedThisFrame();
     }
 
     public sealed class GameplayInput
     {
         public const string MapName = "Gameplay";
 
-        public static readonly string[] ActionNames = { "Move", "AimStick", "AimPointer", "Weapon1", "Weapon2", "Dash", "Grab", "Ability" };
+        public static readonly string[] ActionNames = { "Move", "AimStick", "AimPointer", "Weapon1", "Weapon2", "Dash", "Grab", "Ability", "Traverse" };
 
         private static GameplayInput _default;
 
@@ -46,6 +46,8 @@ namespace TentacleVania.Core.Input
             Dash = new(_map.FindAction("Dash", true));
             Grab = new(_map.FindAction("Grab", true));
             Ability = new(_map.FindAction("Ability", true));
+            var traverse = _map.FindAction("Traverse");
+            Traverse = traverse != null ? new(traverse) : default;
             _map.actionTriggered += OnActionTriggered;
             _map.Enable();
         }
@@ -88,6 +90,7 @@ namespace TentacleVania.Core.Input
         public ButtonInput Dash { get; }
         public ButtonInput Grab { get; }
         public ButtonInput Ability { get; }
+        public ButtonInput Traverse { get; }
 
         public bool Enabled
         {

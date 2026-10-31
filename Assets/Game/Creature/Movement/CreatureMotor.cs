@@ -41,6 +41,7 @@ namespace TentacleVania.Creature.Movement
         public float SpeedMultiplier { get; set; } = 1f;
         public bool DashLocked { get; set; }
         public bool FacingLocked { get; set; }
+        public bool Suspended { get; set; }
         public float LastDashEndTime { get; private set; } = float.NegativeInfinity;
         public bool IsDashing => _dashRemaining > 0f;
         public bool IsLunging => _lungeRemaining > 0f;
@@ -63,6 +64,12 @@ namespace TentacleVania.Creature.Movement
             var now = Time.time;
             var dt = Time.deltaTime;
             _camera = _camera != null ? _camera : Camera.main;
+            if (Suspended)
+            {
+                _velocity = Vector3.zero;
+                _fallSpeed = GroundStick;
+                return;
+            }
 
             MoveInput = InputEnabled ? PlanarInput.ToWorld(input.Move, CameraForward) : Vector3.zero;
 
@@ -132,6 +139,8 @@ namespace TentacleVania.Creature.Movement
             _lungeRemaining = distance;
             _lungeSpeed = distance / duration;
         }
+
+        public void GrantInvulnerability(float seconds) => _invulnerableUntil = Mathf.Max(_invulnerableUntil, Time.time + seconds);
 
         public void FaceImmediately(Vector3 direction)
         {

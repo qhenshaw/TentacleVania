@@ -15,3 +15,13 @@ Active abilities (`TentacleVania.Abilities`), on the ability input (RT / Q), pai
 - `ShieldAbsorb` (unit tested) is an `IDamageModifier` at order 900 in `Health.Incoming`: it eats the hit after earlier scaling and passes the rest through.
 - The burst is a `HitFlags.Heavy` overlap on `_hitLayers` (Enemy) from the creature, so hit feedback and knockback treat it as a heavy hit.
 - Placeholder presentation: an amber transparent sphere (`BioShieldShell.prefab`, URP Unlit) that swells as hits land and expands to the burst radius, the amber status glow on the creature, and FMOD placeholder events `event:/Abilities/BioShield/Activate`, `Absorb` and `Burst`.
+
+## Tentacle Grapple (`Grapple/`, `TentacleGrapple.asset`; design: Tentacle Grapple page, Changelog Grilling sessions 3 and 5)
+
+- A traversal ability on its own input, the `Traverse` action (LT / F). It isn't in the ability slot: `GrappleDefinition.SlotAbility` is false, so `AbilityController` never equips it. It's unlocked like a boss reward, by the id `TentacleGrapple` in `Build.Abilities` (the Surgical Automaton's `RewardAbility`), and it's in the `ContentCatalog`.
+- `TentacleGrapple` on the creature prefab:
+  - **Targeting:** it picks the `GrappleAnchor` or enemy (a `Hurtbox` on `_enemyLayers`) within 10 m whose direction is closest to the aim, or to the facing with no aim input, up to 70° off (`GrappleRules`, unit tested). Bosses count.
+  - **Shot and zip:** it shoots a placeholder `LineRenderer` tentacle (0.12 s), then zips along an arc in 0.2–0.4 s (28 m/s). Control is locked, `CreatureMotor.Suspended` is set, the `CharacterController` is off, and i-frames come from `GrantInvulnerability`.
+  - **Landing:** on an anchor's `Landing` point, or 1.6 m short of the enemy, which is tracked while it moves. 2 s cooldown, no charge cost. FMOD `event:/Abilities/Grapple/Shoot`, `Zip`, `Latch`.
+- **Chasms:** the `Chasm.prefab` has invisible `ChasmEdge` walls that the creature can't walk through and the zip ignores. An enemy zip whose path crosses a `ChasmEdge` (a ray at knee height on `_blockerLayers`) is refused, so only anchors cross chasms. Put `ChasmEdge` on hazard volumes too. `GrappleAnchor.prefab` is a hazard-striped post (stripes are reserved for anchors).
+- **Debug:** `Grapple/Debug/Resources/DebugGrappleRig.prefab` (floor, 6 m chasm, anchor, far floor). F5 Abilities tab: Grapple state, Grapple unlocked (debug), Spawn grapple rig. `TestGamepad` can't press triggers, so drive it with `TryGrapple()` in evals.
