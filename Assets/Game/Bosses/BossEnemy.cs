@@ -30,6 +30,7 @@ namespace TentacleVania.Bosses
         private bool _introDone;
         private Vector3 _essenceHome;
         private bool _finishing;
+        private int _pendingStartAdds;
 
         public static BossEnemy Active { get; private set; }
         public static event Action<BossEnemy> IntroStarted;
@@ -163,6 +164,7 @@ namespace TentacleVania.Bosses
             var data = _boss.Phases[phase];
             BaseSpeed = Definition.MoveSpeed * data.MoveSpeedScale;
             _nextAdd = now + data.AddInterval;
+            _pendingStartAdds = data.AddsOnStart;
             if (!changed)
                 return;
             Play(data.Sting);
@@ -178,6 +180,12 @@ namespace TentacleVania.Bosses
                     _adds.RemoveAt(i);
             }
             var data = _boss.Phases[_phase];
+            while (_pendingStartAdds > 0 && data.AddPrefab != null && _adds.Count < data.MaxAdds)
+            {
+                _pendingStartAdds--;
+                SpawnAdd(data.AddPrefab);
+            }
+            _pendingStartAdds = 0;
             if (data.AddPrefab == null || _adds.Count >= data.MaxAdds || now < _nextAdd)
                 return;
             _nextAdd = now + data.AddInterval;

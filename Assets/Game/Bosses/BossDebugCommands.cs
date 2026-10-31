@@ -27,6 +27,12 @@ namespace TentacleVania.Bosses
                     names[i] = bosses.Prefabs[i].name;
                 DebugMenu.Choice(Tab, "Spawn boss", names, index => SpawnBoss(bosses.Prefabs[index]));
             }
+            DebugMenu.Button(Tab, "Spawn Automaton theatre rig (at origin)", () =>
+            {
+                var rig = Resources.Load<GameObject>("AutomatonTheatreRig");
+                if (rig != null)
+                    Object.Instantiate(rig, Vector3.zero, Quaternion.identity);
+            });
             DebugMenu.Button(Tab, "HP to next phase", ToNextPhase);
             DebugMenu.Button(Tab, "Spawn add", () =>
             {

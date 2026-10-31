@@ -299,6 +299,10 @@ MonoBehaviour:
     m_Key: boss.warden
     m_Metadata:
       m_Items: []
+  - m_Id: 433056097517568
+    m_Key: boss.automaton
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -7,7 +7,7 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - `BossEnemy : Enemy` takes its vitals, attacks, stagger and timings from its `EnemyDefinition` like any enemy. Bosses set a large stagger bar and `StaggerStun` 1.0 s there, have no `Consumable` (adds are the sustain), and use a `DespawnDelay` longer than the death pause plus the absorb flight. The enemy definition's `SpawnDelay` is the intro: the boss is idle and the `IntroCamera` child (a `CinemachineCamera` at priority 50, otherwise -10) frames it for that long.
 - `BossDefinition` (ScriptableObject) holds the boss-only data:
   - the save `Id` and the `UI` table `NameKey` for the boss bar;
-  - `Phases`, each with `StartsBelow` (health fraction), an `AttackMask` (bit per enemy-definition attack index, 0 for all), `MoveSpeedScale`, an `AddPrefab` with `MaxAdds` and `AddInterval`, and a phase-change `Sting`;
+  - `Phases`, each with `StartsBelow` (health fraction), an `AttackMask` (bit per enemy-definition attack index, 0 for all), `MoveSpeedScale`, an `AddPrefab` with `MaxAdds`, `AddInterval` and `AddsOnStart`, and a phase-change `Sting`;
   - the `RewardAbility`, its `Music` (empty uses the shared boss theme, see `Audio/CLAUDE.md`) and the intro, death and absorb FMOD events.
   `Core.Progression.BossProgress.PhaseFor` (unit tested) picks the phase.
 - **Adds:** they spawn `AddSpawnDistance` from the boss on the NavMesh once the intro ends, and die with the boss.
@@ -30,6 +30,20 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - **Wall Beams (red, undodgeable):** every 15 s (×0.75 at low HP), 2 beams, or 3 at ≤40%. The beams cross the `WardenHall` (put one in the boss room, x along the long walls; otherwise 24×18 around the spawn, facing its yaw). They show as floor lanes for 1.2 s, then fire for 0.3 s, dealing 25 damage to a creature inside the 1.6 m width. `WardenRules` (unit tested) spaces the lanes evenly with a random shift, then moves the nearest lane onto the creature, so it must move to a safe lane. The visuals are three `LineRenderer`s on `TurretLaser.mat`. FMOD: `event:/Bosses/Warden/BeamWarn`, `BeamFire`, `ProdWindUp`, `SweepWindUp`, `ShockHit`.
 - **Adds:** each stagger break summons 2 Security Guards near the boss (max 4 alive).
 - **Finish:** the shared finishing consume. The PA plays `sh.warden` (lines 4–5, then Crane's first address).
+
+## Surgical Automaton (`Automaton/`; design: Surgical Automaton page and Changelog "Surgical Automaton fight")
+
+- **Assets:** `SurgicalAutomaton.prefab` (`SurgicalAutomaton : BossEnemy`; the test boss's Handler body ×1.6 in steel as placeholder), enemy data `SurgicalAutomaton.asset` and boss data `AutomatonBoss.asset` (id `BL/SurgicalAutomaton`, matching the PA script; the shared boss theme; reward `TentacleGrapple`, which unlocks Grapple without taking the slot).
+- **Numbers:** 1,600 HP, stagger 200 with a 2.5 s window, takes damage normally, 4.5 m/s, machine, consume 50% / 300 biomass.
+- **Attacks (yellow):**
+  - Clamp Lunge: 1.0 s wind-up, 20 damage, used at 4–12 m. It picks the wall clamp anchor (8 around the theatre) best aligned with its facing (`AutomatonRules.AnchorAlong`, unit tested), shows a steel cable `LineRenderer`, and lunges up to 12 m toward it during the 0.45 s active window, sweeping a 140° arc.
+  - Scalpel Flurry: within 3 m, 4 × 5 damage (`EnemyAttack.Hits` = 4).
+  - Bone Saw Spin (phase 2 only, attack mask 0b111): area 3.5 m, 18 damage per hit, 4 hits over a 2 s spin.
+- **Phase 2 (≤50%):** two opposite 45° blade sectors (two extra `GroundIndicator`s drawn as undodgeable sectors) warn for 1.5 s, then open and rotate at 10°/s around the table. A creature inside, between the table and wall radii (`AutomatonRules.InBlade`), takes 15/s as `HitFlags.Hazard` ticks every 0.25 s.
+- **Adds:** Surgeons, 2 at each phase start (`BossPhase.AddsOnStart`, spawned once the intro ends) and one every 25 s, max 3.
+- **Theatre:** put an `AutomatonTheatre` (wall radius, table radius) at the table centre. Without one, the fight centres on the spawn point (radius 11, table 2.5). The table needs a carving `NavMeshObstacle`.
+- **Finish:** the shared finishing consume unlocks Grapple. The PA plays `bl.automaton` (lines 13–15, then Crane's second address).
+- **Debug:** `Automaton/Debug/Resources/AutomatonTheatreRig.prefab` (table plus 8 anchor posts, radius 9.5). F5 Bosses: Spawn Automaton theatre rig, Spawn boss.
 
 ## Debug
 

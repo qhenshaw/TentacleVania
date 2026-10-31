@@ -52,6 +52,7 @@ namespace TentacleVania.Enemies
         private Vector3 _attackForward;
         private Vector3 _areaCenter;
         private float _lastSweepT;
+        private int _hitIndex;
         private bool _activeStarted;
         private StaggerBar _stagger;
         private ScaleModifier _staggerVulnerability;
@@ -349,11 +350,23 @@ namespace TentacleVania.Enemies
                     {
                         _activeStarted = true;
                         _lastSweepT = 0f;
+                        _hitIndex = 0;
                         PlaySound(attack.StrikeSound);
                         OnActiveStart(attack);
                     }
+                    var activeProgress = AttackMath.ActiveProgress(attack, elapsed);
+                    var hits = Mathf.Max(1, attack.Hits);
+                    var hitIndex = Mathf.Min(hits - 1, (int)(activeProgress * hits));
+                    if (hitIndex > _hitIndex)
+                    {
+                        _hitIndex = hitIndex;
+                        _hitThisAttack.Clear();
+                        _lastSweepT = 0f;
+                        if (attack.Kind == AttackKind.Area)
+                            AreaHit(attack);
+                    }
                     if (attack.Kind == AttackKind.Melee)
-                        Sweep(attack, AttackMath.ActiveProgress(attack, elapsed));
+                        Sweep(attack, hits == 1 ? activeProgress : Mathf.Clamp01(activeProgress * hits - hitIndex));
                     break;
                 case AttackPhase.Recovery:
                     if (_glow != null)

@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b85bd2c05a7b44eb5f2bd57fd36cb8, type: 3}
+  m_Name: AutomatonBoss
+  m_EditorClassIdentifier: TentacleVania.Bosses::TentacleVania.Bosses.BossDefinition
+  _id: BL/SurgicalAutomaton
+  _nameKey: boss.automaton
+  _phases:
+  - StartsBelow: 1
+    AttackMask: 3
+    MoveSpeedScale: 1
+    AddPrefab: {fileID: 9103680660835376707, guid: 8b97e1d6304feba409ea3bd500e454ad, type: 3}
+    MaxAdds: 3
+    AddInterval: 25
+    AddsOnStart: 2
+    Sting:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+  - StartsBelow: 0.5
+    AttackMask: 7
+    MoveSpeedScale: 1.1
+    AddPrefab: {fileID: 9103680660835376707, guid: 8b97e1d6304feba409ea3bd500e454ad, type: 3}
+    MaxAdds: 3
+    AddInterval: 25
+    AddsOnStart: 2
+    Sting:
+      Guid:
+        Data1: 103690710
+        Data2: 1311809998
+        Data3: -686154573
+        Data4: -849588612
+      Path: event:/Bosses/PhaseChange
+  _rewardAbility: {fileID: 11400000, guid: 0116b36c44e9e8743adf400dfd34e02b, type: 2}
+  _music:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _introSound:
+    Guid:
+      Data1: -260886296
+      Data2: 1279275843
+      Data3: 651708849
+      Data4: 1852414849
+    Path: event:/Bosses/Intro
+  _deathSound:
+    Guid:
+      Data1: -2021240580
+      Data2: 1257359075
+      Data3: -190757444
+      Data4: 1309315025
+    Path: event:/Bosses/Death
+  _absorbSound:
+    Guid:
+      Data1: 1042673627
+      Data2: 1305721161
+      Data3: 1686460563
+      Data4: 741906883
+    Path: event:/Bosses/Absorb
+  _deathPause: 0.6
+  _absorbDuration: 1.4
+  _addSpawnDistance: 4

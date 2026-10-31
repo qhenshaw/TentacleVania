@@ -19,6 +19,8 @@ namespace TentacleVania.Bosses
         public Enemy AddPrefab;
         [Min(0)] public int MaxAdds = 2;
         [Min(0.1f)] public float AddInterval = 8f;
+        [Tooltip("Adds summoned as the phase starts (after the intro for the first phase), within MaxAdds.")]
+        [Min(0)] public int AddsOnStart;
         public EventReference Sting;
     }
 
