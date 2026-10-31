@@ -47,7 +47,15 @@ mkdir -p "Builds/$label"
 # development-only scenes (the CombatArena test room) stay out of release builds: untick them for the build only
 dev_only='"Assets/Game/Scenes/CombatArena.unity"'
 release=0; [[ "$options" != *Development* ]] && release=1
-set_dev_scenes() { eval_result "var keep = $1; var list = UnityEditor.EditorBuildSettings.scenes; foreach (var s in list) if (s.path == $dev_only) s.enabled = keep; UnityEditor.EditorBuildSettings.scenes = list; return keep;" >/dev/null || true; }
+set_dev_scenes() {
+    local attempt
+    for attempt in 1 2 3 4 5; do
+        wait_idle 120 >/dev/null 2>&1
+        eval_result "var keep = $1; var list = UnityEditor.EditorBuildSettings.scenes; foreach (var s in list) if (s.path == $dev_only) s.enabled = keep; UnityEditor.EditorBuildSettings.scenes = list; UnityEditor.AssetDatabase.SaveAssets(); return keep;" >/dev/null 2>&1 && return 0
+        sleep 5
+    done
+    echo "Could not set the development-only scenes back to $1 in Build Settings; fix them by hand." >&2
+}
 (( release )) && set_dev_scenes false
 queued=$("${Unity[@]}" build run --target StandaloneWindows64 --outputPath "$output" --options "$options" --confirm true 2>&1)
 if ! grep -q '"success": true\|queued\|building' <<<"$queued"; then
