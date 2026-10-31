@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{ddaee5ed-b54a-42f9-a92f-cf57c4fe1423}">
+		<property name="assetPath">
+			<value>Placeholder/Enemies_MedDrone_Hover.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{10c33526-16cd-470d-8044-1734468966d9}</destination>
+		</relationship>
+	</object>
+</objects>
