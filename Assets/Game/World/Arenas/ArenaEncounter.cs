@@ -53,9 +53,20 @@ namespace TentacleVania.World.Arenas
         public bool IsBossArena => _bossArena;
         public string SaveId => string.IsNullOrEmpty(_id) ? gameObject.scene.name + "/" + name : _id;
 
+        private void Awake()
+        {
+            if (_doors != null && _doors.Length > 0)
+                return;
+            var found = new List<ArenaDoor>();
+            foreach (var root in gameObject.scene.GetRootGameObjects())
+                found.AddRange(root.GetComponentsInChildren<ArenaDoor>(true));
+            _doors = found.ToArray();
+        }
+
         private void OnEnable()
         {
-            Active = this;
+            if (Active == null)
+                Active = this;
             Nests.Rested += OnRested;
         }
 
@@ -217,6 +228,8 @@ namespace TentacleVania.World.Arenas
         private void SetState(ArenaState state)
         {
             State = state;
+            if (state is ArenaState.Spawning or ArenaState.Fighting or ArenaState.BetweenWaves)
+                Active = this;
             StateChanged?.Invoke(this);
         }
 

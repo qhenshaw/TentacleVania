@@ -12,6 +12,8 @@ namespace TentacleVania.World.Streaming
         public Vector3 Center;
         public Vector3 Size;
         public List<string> Neighbours = new();
+        [Tooltip("Floor outline for the map (world XZ rects: layout rooms and hallway cells), baked by RoomRegistryTools.")]
+        public List<Rect> MapShapes = new();
     }
 
     public enum MapMarkerKind

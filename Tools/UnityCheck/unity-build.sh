@@ -3,7 +3,8 @@
 # finish, and prints the result, duration, size and any errors from the BuildReport. Uses the scenes in Build Settings.
 # Afterwards it restores ProjectSettings.asset when the build only added preloadedAssets entries (Input System actions, Localization settings).
 #
-# Builds are Development builds (profiler, debug log) for testing; pass --release for a non-development player.
+# Builds are Development builds (profiler, debug log) for testing; pass --release for a non-development player, which
+# also leaves out the development-only CombatArena test scene.
 #
 # After a successful build it zips the build and uploads it to Google Drive with unity-build-upload.sh (--no-upload skips that).
 #
@@ -43,6 +44,11 @@ for path in "${created[@]}"; do [[ -e "$path" ]] || absent+=("$path"); done
 # Addressables asks once per user, in a modal dialog, whether to turn on its build report; unanswered, it blocks the build
 eval_result 'var p = typeof(UnityEditor.AddressableAssets.Settings.ProjectConfigData).GetProperty("UserHasBeenInformedAboutBuildReportSettingPreBuild", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic); if (p != null) p.SetValue(null, true); return p != null;' >/dev/null || true
 mkdir -p "Builds/$label"
+# development-only scenes (the CombatArena test room) stay out of release builds: untick them for the build only
+dev_only='"Assets/Game/Scenes/CombatArena.unity"'
+release=0; [[ "$options" != *Development* ]] && release=1
+set_dev_scenes() { eval_result "var keep = $1; var list = UnityEditor.EditorBuildSettings.scenes; foreach (var s in list) if (s.path == $dev_only) s.enabled = keep; UnityEditor.EditorBuildSettings.scenes = list; return keep;" >/dev/null || true; }
+(( release )) && set_dev_scenes false
 queued=$("${Unity[@]}" build run --target StandaloneWindows64 --outputPath "$output" --options "$options" --confirm true 2>&1)
 if ! grep -q '"success": true\|queued\|building' <<<"$queued"; then
     echo "Could not start the build:"
@@ -63,6 +69,7 @@ done
 
 result=$(json_string result <<<"$status")
 [[ -z "$result" ]] && result=$(sed -n 's/^ *"result": "\{0,1\}\([A-Za-z]*\)"\{0,1\},\{0,1\}$/\1/p' <<<"$status" | head -1)
+(( release )) && set_dev_scenes true
 size=$(du -sh "Builds/$label" 2>/dev/null | cut -f1)
 echo "Build $result in $(( SECONDS - start ))s: $output ($size)"
 settings=ProjectSettings/ProjectSettings.asset

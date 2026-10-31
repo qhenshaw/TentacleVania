@@ -17,7 +17,7 @@ namespace TentacleVania.World.Transit
                 var elevator = Nearest();
                 return elevator == null ? "none" : $"to {elevator.DestinationScene}, {(elevator.Powered ? "powered" : "no power")}";
             });
-            DebugMenu.Button(Tab, "Power elevators (defeat Warden)", () => BossProgress.Defeat("Warden", ""));
+            DebugMenu.Button(Tab, "Power elevators (defeat Warden)", () => BossProgress.Defeat("SH/WardenDrone", ""));
             DebugMenu.Button(Tab, "Ride nearest elevator", () =>
             {
                 var elevator = Nearest();

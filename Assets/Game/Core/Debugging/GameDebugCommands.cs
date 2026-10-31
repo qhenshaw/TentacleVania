@@ -20,6 +20,11 @@ namespace TentacleVania.Core.Debugging
             DebugMenu.Value(DebugMenu.Game, "Scene", () => SceneManager.GetActiveScene().name);
             DebugMenu.Slider(DebugMenu.Game, "Time scale", 0.05f, 2f, () => Time.timeScale, v => Time.timeScale = v);
             DebugMenu.Button(DebugMenu.Game, "Normal speed", () => Time.timeScale = 1f);
+            DebugMenu.Button(DebugMenu.Game, "Load CombatArena (test)", () =>
+            {
+                Time.timeScale = 1f;
+                SceneFlow.Load(SceneFlow.TestArena);
+            });
             DebugMenu.Button(DebugMenu.Game, "Restart scene", () =>
             {
                 Time.timeScale = 1f;

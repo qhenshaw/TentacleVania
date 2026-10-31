@@ -3,6 +3,8 @@
     "rootNamespace": "TentacleVania.World.Editor",
     "references": [
         "TentacleVania.World",
+        "TentacleVania.Core",
+        "TentacleVania.Enemies",
         "Unity.AI.Navigation",
         "Unity.AI.Navigation.Editor",
         "Unity.Addressables",

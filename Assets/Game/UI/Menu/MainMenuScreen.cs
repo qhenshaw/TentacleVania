@@ -15,8 +15,9 @@ namespace TentacleVania.UI.Menu
         private const string Table = "UI";
         private const string SectorTable = "Dialogue";
         private const string HiddenClass = "main-menu--hidden";
+        private const string NewGameArgument = "-newGame";
 
-        [SerializeField] private string _gameplayScene = SceneFlow.FirstGameplay;
+        private static bool _commandLineHandled;
 
         private readonly List<(LocalizedString text, LocalizedString.ChangeHandler handler)> _bindings = new();
         private readonly List<Button> _slotButtons = new();
@@ -64,6 +65,17 @@ namespace TentacleVania.UI.Menu
             root.Q("main-menu").RegisterCallback<NavigationCancelEvent>(_ => Back());
             Refresh();
             FocusMain();
+        }
+
+        private void Update()
+        {
+            if (_commandLineHandled || SceneFlow.IsLoading)
+                return;
+            _commandLineHandled = true;
+            if (Array.IndexOf(Environment.GetCommandLineArgs(), NewGameArgument) < 0)
+                return;
+            SaveSystem.Storage = new LocalFileStorage(System.IO.Path.Combine(Application.persistentDataPath, "CommandLineSaves"));
+            StartNew(0);
         }
 
         private void OnDisable()
@@ -197,7 +209,7 @@ namespace TentacleVania.UI.Menu
             if (_starting || !SaveSystem.Load(slot))
                 return;
             _starting = true;
-            SceneFlow.Load(SaveSystem.ContinueScene(_gameplayScene));
+            SceneFlow.Load(SaveSystem.ContinueScene(SceneFlow.FirstGameplay));
         }
 
         private void StartNew(int slot)
@@ -207,7 +219,7 @@ namespace TentacleVania.UI.Menu
             _starting = true;
             SaveSystem.NewGame(slot);
             SaveSystem.Save();
-            SceneFlow.Load(_gameplayScene);
+            SceneFlow.Load(SceneFlow.FirstGameplay);
         }
 
         private VisualElement SlotRow(SaveSummary summary)
