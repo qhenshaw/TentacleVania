@@ -87,10 +87,13 @@ namespace TentacleVania.UI.Map
                 if (!MapProgress.IsExplored(room.Scene))
                     continue;
                 ExploredShown++;
-                var element = Next("map-room");
-                element.style.backgroundColor = new Color(color.r, color.g, color.b, 0.35f);
-                element.style.borderTopColor = element.style.borderBottomColor = element.style.borderLeftColor = element.style.borderRightColor = color;
-                Place(element, room.Center.x - room.Size.x * 0.5f, room.Center.z + room.Size.z * 0.5f, room.Size.x * _scale, room.Size.z * _scale);
+                if (room.MapShapes.Count == 0)
+                {
+                    Shape(color, true, room.Center.x - room.Size.x * 0.5f, room.Center.z + room.Size.z * 0.5f, room.Size.x, room.Size.z);
+                    continue;
+                }
+                foreach (var shape in room.MapShapes)
+                    Shape(color, shape.width * shape.height > 10f, shape.xMin, shape.yMax, shape.width, shape.height);
             }
             foreach (var marker in _registry.Markers)
             {
@@ -123,6 +126,15 @@ namespace TentacleVania.UI.Map
                 _content.style.left = resolvedStyle.width * 0.5f - x;
                 _content.style.top = resolvedStyle.height * 0.5f - y;
             }
+        }
+
+        private void Shape(Color color, bool bordered, float left, float top, float width, float height)
+        {
+            var element = Next("map-room");
+            element.style.backgroundColor = new Color(color.r, color.g, color.b, 0.45f);
+            element.EnableInClassList("map-room--cell", !bordered);
+            element.style.borderTopColor = element.style.borderBottomColor = element.style.borderLeftColor = element.style.borderRightColor = color;
+            Place(element, left, top, width * _scale, height * _scale);
         }
 
         private static string MarkerClass(MapMarker marker) => marker.Kind switch

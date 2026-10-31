@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Smoke-tests a Windows player built by unity-build.sh: runs Builds/<label>/<ProjectName>.exe windowed at 1280x800
-# with -logFile, has it save a screenshot after the given number of seconds and quit (CommandLineCapture), then lists
+# with -logFile and -newGame (the main menu starts a New Game at once, saving to a scratch CommandLineSaves folder), has it save a screenshot after the given number of seconds and quit (CommandLineCapture), then lists
 # exceptions and errors from the player log and prints the screenshot path. Read the PNG to check how the build looks.
 #
 # Usage: Tools/UnityCheck/unity-build-smoke.sh <label> [seconds]   (default 15 s)
@@ -24,7 +24,7 @@ fi
 rm -f "$log" "$shot"
 
 "$exe" -screen-fullscreen 0 -screen-width 1280 -screen-height 800 -logFile "$(cygpath -aw "$log")" \
-    -captureAfter "$seconds" "$(cygpath -aw "$shot")" >/dev/null 2>&1 &
+    -newGame -captureAfter "$seconds" "$(cygpath -aw "$shot")" >/dev/null 2>&1 &
 pid=$!
 limit=$((seconds + 30))
 start=$SECONDS

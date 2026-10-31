@@ -8,7 +8,8 @@ namespace TentacleVania.Core.Scenes
     {
         public const string Bootstrap = "Bootstrap";
         public const string MainMenu = "MainMenu";
-        public const string FirstGameplay = "CombatArena";
+        public const string FirstGameplay = "SpecimenHolding";
+        public const string TestArena = "CombatArena";
 
         private static int _pending;
 

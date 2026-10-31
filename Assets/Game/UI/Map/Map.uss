@@ -71,6 +71,10 @@
     border-width: 2px;
 }
 
+.map-room--cell {
+    border-width: 0;
+}
+
 .map-marker {
     width: 14px;
     height: 14px;

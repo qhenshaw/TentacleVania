@@ -12,7 +12,7 @@ namespace TentacleVania.World.Transit
         public const string LockedPromptKey = "prompt.elevator.locked";
 
         [Tooltip("Boss id whose defeat powers the elevator (Warden); empty = always powered.")]
-        [SerializeField] private string _requiredBoss = "Warden";
+        [SerializeField] private string _requiredBoss = "SH/WardenDrone";
         [Tooltip("Root scene of the destination sector.")]
         [SerializeField] private string _destinationScene;
         [Tooltip("Where the creature arrives in the destination scene (the paired elevator's platform).")]

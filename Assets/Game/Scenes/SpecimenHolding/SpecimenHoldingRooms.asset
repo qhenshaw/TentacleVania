@@ -1,0 +1,1294 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b65e2e6534cdb24a8636dc27ebb5a11, type: 3}
+  m_Name: SpecimenHoldingRooms
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Streaming.RoomRegistry
+  _loadRadius: 18
+  _unloadRadius: 28
+  _rooms:
+  - Scene: SH_PodChamber
+    Center: {x: 11.999999, y: 1.4155036, z: 108}
+    Size: {x: 18.760612, y: 3.6310077, z: 31.158691}
+    Neighbours:
+    - SH_A1
+    - SH_T1North
+    MapShapes:
+    - serializedVersion: 2
+      x: 3
+      y: 108
+      width: 18
+      height: 15
+    - serializedVersion: 2
+      x: 9
+      y: 105
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 102
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 99
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 96
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 93
+      width: 3
+      height: 3
+  - Scene: SH_A1
+    Center: {x: 19.599524, y: 1.4155036, z: 73.59952}
+    Size: {x: 39.959663, y: 3.6310077, z: 39.959656}
+    Neighbours:
+    - SH_PodChamber
+    - SH_A2
+    - SH_A4
+    - SH_A5
+    - SH_T2
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 72
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 21
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 24
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 27
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 30
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 33
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 36
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 69
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 66
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 60
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 57
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 54
+      width: 3
+      height: 3
+  - Scene: SH_A2
+    Center: {x: 55.599525, y: 1.4155036, z: 91.59952}
+    Size: {x: 33.959656, y: 3.6310077, z: 33.959656}
+    Neighbours:
+    - SH_A1
+    - SH_A3
+    - SH_R1
+    MapShapes:
+    - serializedVersion: 2
+      x: 39
+      y: 75
+      width: 15
+      height: 15
+    - serializedVersion: 2
+      x: 54
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 57
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 60
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 63
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 66
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 69
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 90
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 93
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 96
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 99
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 102
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 105
+      width: 3
+      height: 3
+  - Scene: SH_A3
+    Center: {x: 82.5, y: 1.4655038, z: 74.90048}
+    Size: {x: 21.76062, y: 3.5310075, z: 36.959656}
+    Neighbours:
+    - SH_A2
+    - SH_A5
+    - SH_A6
+    - SH_T2
+    MapShapes:
+    - serializedVersion: 2
+      x: 72
+      y: 72
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 81
+      y: 69
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 66
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 60
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 57
+      width: 3
+      height: 3
+  - Scene: SH_A4
+    Center: {x: 10.599523, y: 1.4655038, z: 37.599525}
+    Size: {x: 51.95966, y: 3.5310075, z: 33.959656}
+    Neighbours:
+    - SH_A1
+    - SH_A5
+    - SH_A7
+    - SH_A8
+    - SH_GrappleRoom
+    MapShapes:
+    - serializedVersion: 2
+      x: 3
+      y: 39
+      width: 15
+      height: 15
+    - serializedVersion: 2
+      x: 18
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 21
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 24
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 27
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 30
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 33
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 36
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 33
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 30
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 27
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 24
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 21
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 0
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -3
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -6
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -9
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -12
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -15
+      y: 45
+      width: 3
+      height: 3
+  - Scene: SH_A5
+    Center: {x: 54, y: 1.4655038, z: 38.90048}
+    Size: {x: 36.76062, y: 3.5310075, z: 36.959656}
+    Neighbours:
+    - SH_A1
+    - SH_A3
+    - SH_A4
+    - SH_A6
+    - SH_A7
+    - SH_A8
+    - SH_T2
+    MapShapes:
+    - serializedVersion: 2
+      x: 36
+      y: 36
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 57
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 60
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 63
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 66
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 69
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 33
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 30
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 27
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 24
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 21
+      width: 3
+      height: 3
+  - Scene: SH_A6
+    Center: {x: 90.09952, y: 1.4655038, z: 46.400475}
+    Size: {x: 36.959656, y: 3.5310075, z: 21.959656}
+    Neighbours:
+    - SH_A3
+    - SH_A5
+    - SH_R2
+    - SH_T2
+    MapShapes:
+    - serializedVersion: 2
+      x: 72
+      y: 36
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 93
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 96
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 99
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 102
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 105
+      y: 45
+      width: 3
+      height: 3
+  - Scene: SH_A7
+    Center: {x: 18.000002, y: 1.4155036, z: 10.499999}
+    Size: {x: 37.158707, y: 3.6310077, z: 22.158703}
+    Neighbours:
+    - SH_A4
+    - SH_A5
+    - SH_A8
+    - SH_T1South
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 21
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 24
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 27
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 30
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 33
+      y: 9
+      width: 3
+      height: 3
+  - Scene: SH_A8
+    Center: {x: 54, y: 1.4655038, z: 10.599523}
+    Size: {x: 37.158707, y: 3.5310075, z: 21.95966}
+    Neighbours:
+    - SH_A4
+    - SH_A5
+    - SH_A7
+    - SH_PreBossNest
+    - SH_T1South
+    MapShapes:
+    - serializedVersion: 2
+      x: 36
+      y: 0
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 57
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 60
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 63
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 66
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 69
+      y: 9
+      width: 3
+      height: 3
+  - Scene: SH_PreBossNest
+    Center: {x: 88.5, y: 1.6999999, z: 10.499999}
+    Size: {x: 34.15869, y: 4.2000003, z: 16.158705}
+    Neighbours:
+    - SH_A8
+    - SH_WardenArena
+    - SH_T1South
+    MapShapes:
+    - serializedVersion: 2
+      x: 72
+      y: 3
+      width: 15
+      height: 15
+    - serializedVersion: 2
+      x: 87
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 90
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 93
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 96
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 99
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 102
+      y: 9
+      width: 3
+      height: 3
+  - Scene: SH_WardenArena
+    Center: {x: 116.900475, y: 1.5655037, z: 8.999999}
+    Size: {x: 24.959671, y: 3.3310075, z: 18.760612}
+    Neighbours:
+    - SH_PreBossNest
+    MapShapes:
+    - serializedVersion: 2
+      x: 105
+      y: 0
+      width: 24
+      height: 18
+  - Scene: SH_R1
+    Center: {x: 46.59952, y: 1.5655037, z: 114}
+    Size: {x: 15.959663, y: 3.3310075, z: 13.158691}
+    Neighbours:
+    - SH_A2
+    MapShapes:
+    - serializedVersion: 2
+      x: 39
+      y: 108
+      width: 15
+      height: 12
+  - Scene: SH_R2
+    Center: {x: 115.5, y: 1.5655037, z: 46.400475}
+    Size: {x: 15.76062, y: 3.3310075, z: 15.959656}
+    Neighbours:
+    - SH_A6
+    MapShapes:
+    - serializedVersion: 2
+      x: 108
+      y: 39
+      width: 15
+      height: 15
+  - Scene: SH_GrappleRoom
+    Center: {x: -22.400478, y: 1.4155036, z: 46.5}
+    Size: {x: 15.959656, y: 3.6310077, z: 16.158707}
+    Neighbours:
+    - SH_A4
+    MapShapes:
+    - serializedVersion: 2
+      x: -30
+      y: 39
+      width: 15
+      height: 15
+  - Scene: SH_T2
+    Center: {x: 48.099525, y: 1.4655038, z: 64.5}
+    Size: {x: 60.959656, y: 3.5310075, z: 15.76062}
+    Neighbours:
+    - SH_A1
+    - SH_A3
+    - SH_A5
+    - SH_A6
+    MapShapes:
+    - serializedVersion: 2
+      x: 18
+      y: 69
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 18
+      y: 66
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 18
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 21
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 24
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 27
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 30
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 33
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 36
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 39
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 42
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 48
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 51
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 54
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 57
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 60
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 63
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 66
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 69
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 72
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 75
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 75
+      y: 60
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 75
+      y: 57
+      width: 3
+      height: 3
+  - Scene: SH_T1South
+    Center: {x: 21.099522, y: 1.4155036, z: -3.0995216}
+    Size: {x: 120.959656, y: 3.6310077, z: 12.95966}
+    Neighbours:
+    - SH_A7
+    - SH_A8
+    - SH_PreBossNest
+    - SH_T1West
+    MapShapes:
+    - serializedVersion: 2
+      x: 78
+      y: 0
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 78
+      y: -3
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 78
+      y: -6
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 78
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 75
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 72
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 69
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 66
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 63
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 60
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 57
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 54
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 51
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 48
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 42
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 39
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 36
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 33
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 30
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 27
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 24
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 21
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 18
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 15
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 12
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 6
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 3
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 0
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -3
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -6
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -9
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -12
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -15
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -18
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -21
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -24
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -27
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -30
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -33
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -36
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: -9
+      width: 3
+      height: 3
+  - Scene: SH_T1West
+    Center: {x: -37.5, y: 1.3500061, z: 54}
+    Size: {x: 4.1587067, y: 3.300012, z: 121.15871}
+    Neighbours:
+    - SH_T1South
+    - SH_T1North
+    MapShapes:
+    - serializedVersion: 2
+      x: -39
+      y: -6
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: -3
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 0
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 3
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 6
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 12
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 15
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 18
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 21
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 24
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 27
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 30
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 33
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 36
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 39
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 42
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 48
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 51
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 54
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 57
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 60
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 66
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 69
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 72
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 75
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 78
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 84
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 87
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 90
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 93
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 96
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 99
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 102
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 105
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 108
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -39
+      y: 111
+      width: 3
+      height: 3
+  - Scene: SH_T1North
+    Center: {x: -17.900476, y: 1.5655037, z: 115.40048}
+    Size: {x: 42.95966, y: 3.3310075, z: 3.9596558}
+    Neighbours:
+    - SH_PodChamber
+    - SH_T1West
+    MapShapes:
+    - serializedVersion: 2
+      x: -39
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -36
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -33
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -30
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -27
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -24
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -21
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -18
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -15
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -12
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -9
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -6
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -3
+      y: 114
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 0
+      y: 114
+      width: 3
+      height: 3
+  _sector: SH
+  _rootScene: SpecimenHolding
+  _color: {r: 0.55, g: 0.75, b: 0.95, a: 1}
+  _markers:
+  - Kind: 0
+    Id: SH/PodNest
+    Room: SH_PodChamber
+    Position: {x: 16.5, y: 0, z: 116.7}
+    Yaw: 180
+  - Kind: 1
+    Id: SH/A3
+    Room: SH_A3
+    Position: {x: 90, y: 0, z: 90}
+    Yaw: 0
+  - Kind: 3
+    Id: MapGate
+    Room: SH_A4
+    Position: {x: -4.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 1
+    Id: SH/A5
+    Room: SH_A5
+    Position: {x: 54, y: 0, z: 54}
+    Yaw: 0
+  - Kind: 1
+    Id: SH/A7
+    Room: SH_A7
+    Position: {x: 4.5, y: 0, z: 4.5}
+    Yaw: 0
+  - Kind: 0
+    Id: SH/PreBossNest
+    Room: SH_PreBossNest
+    Position: {x: 79.5, y: 0, z: 11.7}
+    Yaw: 180
+  - Kind: 2
+    Id: SH
+    Room: SH_PreBossNest
+    Position: {x: 94.5, y: 0, z: 10.5}
+    Yaw: 0

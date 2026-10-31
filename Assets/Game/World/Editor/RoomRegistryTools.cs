@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TentacleVania.World.BioNests;
 using TentacleVania.World.Hoarder;
+using TentacleVania.World.Layout;
 using TentacleVania.World.Map;
 using TentacleVania.World.Security;
 using TentacleVania.World.Streaming;
@@ -51,6 +52,7 @@ namespace TentacleVania.World.Editor
                     room.Size = bounds.size;
                 }
                 CollectMarkers(scene, room.Scene, registry.Markers);
+                CollectShapes(scene, room.MapShapes);
                 if (opened)
                     EditorSceneManager.CloseScene(scene, true);
                 Register(path, room.Scene, group, includeInBuild);
@@ -68,6 +70,30 @@ namespace TentacleVania.World.Editor
             EditorUtility.SetDirty(registry);
             AssetDatabase.SaveAssets();
             return report.ToString();
+        }
+
+        private static void CollectShapes(Scene scene, List<Rect> shapes)
+        {
+            shapes.Clear();
+            var cells = new Dictionary<Vector2Int, AxisMask>();
+            foreach (var root in scene.GetRootGameObjects())
+            {
+                foreach (var layout in root.GetComponentsInChildren<LevelLayout>(true))
+                {
+                    var size = layout.CellSize;
+                    var origin = layout.transform.position;
+                    foreach (var room in layout.GetComponentsInChildren<LayoutRoom>(true))
+                        foreach (var rect in room.Rects)
+                            shapes.Add(new Rect(origin.x + rect.xMin * size, origin.z + rect.yMin * size, rect.width * size, rect.height * size));
+                    foreach (var hallway in layout.GetComponentsInChildren<LayoutHallway>(true))
+                    {
+                        cells.Clear();
+                        hallway.CollectCells(cells);
+                        foreach (var cell in cells.Keys)
+                            shapes.Add(new Rect(origin.x + cell.x * size, origin.z + cell.y * size, size, size));
+                    }
+                }
+            }
         }
 
         private static void CollectMarkers(Scene scene, string room, List<MapMarker> markers)

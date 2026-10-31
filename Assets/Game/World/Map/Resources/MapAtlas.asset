@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Map.MapAtlas
   _sectors:
   - {fileID: 11400000, guid: 3ab3714faaa85d44886c808570cf45de, type: 2}
+  - {fileID: 11400000, guid: 8c0335218e26679418d4e7ab39159623, type: 2}
