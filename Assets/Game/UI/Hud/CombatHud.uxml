@@ -19,6 +19,26 @@
         <ui:VisualElement name="status-icons" class="hud__status" picking-mode="Ignore">
             <ui:VisualElement name="status-slow" class="hud__status-icon hud__status-icon--slow" picking-mode="Ignore" />
             <ui:VisualElement name="status-root" class="hud__status-icon hud__status-icon--root" picking-mode="Ignore" />
+            <ui:VisualElement name="status-stun" class="hud__status-icon hud__status-icon--stun" picking-mode="Ignore" />
+        </ui:VisualElement>
+        <ui:VisualElement name="loadout" class="hud__loadout" picking-mode="Ignore">
+            <ui:VisualElement name="slot-weapon1" class="hud__slot hud__slot--weapon" picking-mode="Ignore">
+                <ui:Label name="slot-weapon1-label" class="hud__slot-label" picking-mode="Ignore" />
+                <ui:Label text="X" class="hud__slot-key" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="slot-weapon2" class="hud__slot hud__slot--weapon" picking-mode="Ignore">
+                <ui:Label name="slot-weapon2-label" class="hud__slot-label" picking-mode="Ignore" />
+                <ui:Label text="Y" class="hud__slot-key" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="slot-ability" class="hud__slot hud__slot--ability" picking-mode="Ignore">
+                <ui:Label name="slot-ability-label" class="hud__slot-label" picking-mode="Ignore" />
+                <ui:Label text="RT" class="hud__slot-key" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="biomass" class="hud__biomass" picking-mode="Ignore">
+            <ui:VisualElement class="hud__biomass-icon" picking-mode="Ignore" />
+            <ui:Label name="biomass-count" class="hud__biomass-count" picking-mode="Ignore" />
+            <ui:Label name="biomass-delta" class="hud__biomass-delta" picking-mode="Ignore" />
         </ui:VisualElement>
         <ui:VisualElement name="player" class="hud__player" picking-mode="Ignore">
             <ui:VisualElement name="health" class="hud-bar hud-bar--health" picking-mode="Ignore">

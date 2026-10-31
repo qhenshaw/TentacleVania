@@ -1,6 +1,7 @@
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Combat.Status;
+using TentacleVania.Creature;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,6 +14,9 @@ namespace TentacleVania.UI.Hud
 
         private VisualElement _slow;
         private VisualElement _root;
+        private VisualElement _stun;
+        private CreatureVitals _vitals;
+        private bool _stunShown;
         private Health _creature;
         private StatusEffects _status;
         private bool _slowShown;
@@ -23,6 +27,8 @@ namespace TentacleVania.UI.Hud
             var root = GetComponent<UIDocument>().rootVisualElement;
             _slow = root.Q<VisualElement>("status-slow");
             _root = root.Q<VisualElement>("status-root");
+            _stun = root.Q<VisualElement>("status-stun");
+            _stunShown = false;
             _slowShown = false;
             _rootShown = false;
         }
@@ -36,9 +42,12 @@ namespace TentacleVania.UI.Hud
             {
                 _creature = creature;
                 _status = creature != null ? creature.GetComponent<StatusEffects>() : null;
+                _vitals = creature != null ? creature.GetComponent<CreatureVitals>() : null;
             }
             Set(_slow, ref _slowShown, _status != null && _status.IsActive(StatusKind.Slow));
             Set(_root, ref _rootShown, _status != null && _status.IsActive(StatusKind.Root));
+            if (_stun != null)
+                Set(_stun, ref _stunShown, _vitals != null && _vitals.IsStunned);
         }
 
         private static void Set(VisualElement icon, ref bool shown, bool active)
