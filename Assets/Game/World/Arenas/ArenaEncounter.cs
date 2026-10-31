@@ -23,6 +23,8 @@ namespace TentacleVania.World.Arenas
         [SerializeField] private ArenaWaveSet _waves;
         [SerializeField] private ArenaDoor[] _doors;
         [SerializeField] private Transform[] _spawnPoints;
+        [Tooltip("Spawn points for enemies whose definition spawns on walls (turrets).")]
+        [SerializeField] private Transform[] _wallMounts = System.Array.Empty<Transform>();
         [SerializeField] private Vector3 _triggerCenter;
         [SerializeField] private Vector3 _triggerSize = new(18f, 4f, 16f);
         [Tooltip("Boss arenas stay empty and open for good once cleared (saved); other arenas refill when the creature rests.")]
@@ -36,6 +38,7 @@ namespace TentacleVania.World.Arenas
         private int _waveIndex = -1;
         private float _nextAction;
         private int _spawnCursor;
+        private int _wallCursor;
 
         public event Action<ArenaEncounter> StateChanged;
 
@@ -175,7 +178,8 @@ namespace TentacleVania.World.Arenas
 
         private void Spawn(Enemy prefab)
         {
-            var point = _spawnPoints[_spawnCursor++ % _spawnPoints.Length];
+            var onWall = prefab.Definition != null && prefab.Definition.SpawnOnWall && _wallMounts.Length > 0;
+            var point = onWall ? _wallMounts[_wallCursor++ % _wallMounts.Length] : _spawnPoints[_spawnCursor++ % _spawnPoints.Length];
             var position = point.position;
             if (NavMesh.SamplePosition(position, out var hit, 2f, NavMesh.AllAreas))
                 position = hit.position;
