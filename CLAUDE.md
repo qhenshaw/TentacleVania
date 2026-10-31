@@ -152,6 +152,7 @@ A small `Bootstrap` scene is the entry point: it holds the persistent managers (
 | `Bootstrap` | Entry point; `GameBootstrap` loads `MainMenu` additively |
 | `MainMenu` | Placeholder title screen (`UI/Menu`); Play loads `CombatArena` |
 | `LayoutSandbox` | Level layout tool test room built from `SciFiTopDown` (`World/CLAUDE.md`); not in the build |
+| `StreamingTest` (+ `StreamingTest_Room1`–`5`) | Room streaming test chain: a root scene that streams five room scenes through Addressables (`World/CLAUDE.md`); not in the build |
 | `CombatArena` | Greybox lock-in arena with four enemy waves (the Combat Prototype test scene; the creature starts in the south corridor and walking in starts it); the play-check tools open it |
 
 ## Code style

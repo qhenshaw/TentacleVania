@@ -4,6 +4,7 @@ using TentacleVania.Core.Progression;
 using TentacleVania.World.Arenas;
 using TentacleVania.World.BioNests;
 using TentacleVania.World.Security;
+using TentacleVania.World.Streaming;
 using UnityEngine;
 
 namespace TentacleVania.World
@@ -73,6 +74,31 @@ namespace TentacleVania.World
                     relay.DestroyRelay();
             });
             DebugMenu.Button(Tab, "Reset relays", ResetRelays);
+            DebugMenu.Value(Tab, "Rooms", DescribeRooms);
+            DebugMenu.Toggle(Tab, "Pause room streaming", () => RoomStreamer.Paused, v => RoomStreamer.Paused = v);
+            DebugMenu.Button(Tab, "Load all rooms", () =>
+            {
+                if (RoomStreamer.Active != null)
+                    RoomStreamer.Active.LoadAll();
+            });
+            DebugMenu.Button(Tab, "Unload distant rooms", () =>
+            {
+                if (RoomStreamer.Active != null)
+                    RoomStreamer.Active.UnloadDistant();
+            });
+        }
+
+        private static string DescribeRooms()
+        {
+            var streamer = RoomStreamer.Active;
+            if (streamer == null)
+                return "no room streamer";
+            var rooms = streamer.Registry.Rooms;
+            var text = new System.Text.StringBuilder();
+            text.Append("in ").Append(RoomStreamer.CurrentScene ?? "none").Append(", in flight ").Append(streamer.InFlight);
+            for (var i = 0; i < rooms.Count; i++)
+                text.Append('\n').Append(rooms[i].Scene).Append(": ").Append(streamer.State(i));
+            return text.ToString();
         }
 
         public const string SecurityRigResource = "DebugSecurityRig";
