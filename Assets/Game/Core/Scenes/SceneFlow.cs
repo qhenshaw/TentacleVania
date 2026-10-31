@@ -17,18 +17,21 @@ namespace TentacleVania.Core.Scenes
         public static bool HasBootstrap => SceneManager.GetSceneByName(Bootstrap).isLoaded;
 
         public static event Action<Scene> Loaded;
+        public static event Action<string> Loading;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetState()
         {
             _pending = 0;
             Loaded = null;
+            Loading = null;
         }
 
         public static void Load(string sceneName)
         {
             if (IsLoading)
                 return;
+            Loading?.Invoke(sceneName);
             if (!HasBootstrap)
             {
                 SceneManager.LoadScene(sceneName);
