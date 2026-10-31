@@ -15,6 +15,8 @@ namespace TentacleVania.Core.Saves
             DebugMenu.Value(DebugMenu.Game, "Active save", () => SaveSystem.Active
                 ? $"slot {SaveSystem.Slot + 1}, {SaveSystem.Data.PlaytimeSeconds / 60.0:F1} min, saved {SaveSystem.Data.SavedAtUtc}"
                 : "none");
+            DebugMenu.Toggle(DebugMenu.Game, "Autosave", () => Autosave.Enabled, v => Autosave.Enabled = v);
+            DebugMenu.Value(DebugMenu.Game, "Autosaves", () => Autosave.Count == 0 ? "none" : $"{Autosave.Count}, last: {Autosave.LastReason}");
             DebugMenu.Button(DebugMenu.Game, "Save", () =>
             {
                 if (!SaveSystem.Active || SaveSystem.Slot != _slot)

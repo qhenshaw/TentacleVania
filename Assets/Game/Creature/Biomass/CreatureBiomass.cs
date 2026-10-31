@@ -1,4 +1,5 @@
 using TentacleVania.Combat;
+using TentacleVania.Core.Saves;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -59,6 +60,7 @@ namespace TentacleVania.Creature.Biomass
         {
             var position = Ground(transform.position);
             Core.Progression.Biomass.Die(gameObject.scene.name, position);
+            Autosave.Request(AutosaveReason.Death);
             if (_drop == null)
                 return;
             if (Core.Progression.Biomass.HasDrop)

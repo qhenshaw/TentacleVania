@@ -40,6 +40,7 @@ namespace TentacleVania.Creature.Biomass
             _collected = true;
             SaveSystem.Data.World.Set(WorldFlag.CollectedPickup, _saveId);
             Core.Progression.Biomass.Add(_amount);
+            Autosave.Request(AutosaveReason.Pickup);
             _visual.SetActive(false);
             if (!_pickupSound.IsNull)
                 RuntimeManager.PlayOneShot(_pickupSound, transform.position);

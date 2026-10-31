@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5667884633899010893}
   - component: {fileID: 2468092011683127548}
   - component: {fileID: 4429990449138818979}
+  - component: {fileID: 2607055574703499865}
   m_Layer: 0
   m_Name: CombatHud
   m_TagString: Untagged
@@ -88,3 +89,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e93602b3f328ab4eaca26c32ae7fca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.InteractionPromptView
+--- !u!114 &2607055574703499865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703636293144204845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b35b1351b058574bb172a2b3ca35b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.SaveIndicatorView
+  _showSeconds: 1.2

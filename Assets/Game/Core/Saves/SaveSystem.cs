@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
+using TentacleVania.Core.Scenes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +12,11 @@ namespace TentacleVania.Core.Saves
     {
         public const int SlotCount = 5;
 
+        private const string BootstrapScene = SceneFlow.Bootstrap;
+
         private static readonly List<ISaveParticipant> Participants = new(16);
+        private static readonly object WriteLock = new();
+        private static Task _pendingWrite = Task.CompletedTask;
         private static ISaveStorage _storage;
         private static double _playtimeAnchor;
 
@@ -59,6 +65,32 @@ namespace TentacleVania.Core.Saves
 
         public static void Save()
         {
+            var json = Capture();
+            Flush();
+            Storage.Write(Slot, json);
+            Saved?.Invoke(Data);
+        }
+
+        public static void SaveAsync()
+        {
+            var json = Capture();
+            var slot = Slot;
+            var storage = Storage;
+            lock (WriteLock)
+                _pendingWrite = _pendingWrite.ContinueWith(_ => Write(storage, slot, json), TaskScheduler.Default);
+            Saved?.Invoke(Data);
+        }
+
+        public static void Flush()
+        {
+            Task pending;
+            lock (WriteLock)
+                pending = _pendingWrite;
+            pending.Wait();
+        }
+
+        private static string Capture()
+        {
             if (!Active)
                 NewGame(Slot);
             foreach (var participant in Participants)
@@ -68,15 +100,27 @@ namespace TentacleVania.Core.Saves
             _playtimeAnchor = now;
             Data.SavedAtUtc = DateTime.UtcNow.ToString("o");
             var scene = SceneManager.GetActiveScene().name;
-            if (!string.IsNullOrEmpty(scene))
+            if (!string.IsNullOrEmpty(scene) && scene != BootstrapScene)
                 Data.Progress.Scene = scene;
-            Storage.Write(Slot, SaveSerializer.ToJson(Data));
-            Saved?.Invoke(Data);
+            return SaveSerializer.ToJson(Data);
+        }
+
+        private static void Write(ISaveStorage storage, int slot, string json)
+        {
+            try
+            {
+                storage.Write(slot, json);
+            }
+            catch (Exception exception)
+            {
+                Debug.LogException(exception);
+            }
         }
 
         public static bool Load(int slot)
         {
             slot = ClampSlot(slot);
+            Flush();
             if (!Storage.TryRead(slot, out var json))
                 return false;
             Data = SaveSerializer.FromJson(json);
@@ -92,14 +136,30 @@ namespace TentacleVania.Core.Saves
         public static void Delete(int slot)
         {
             slot = ClampSlot(slot);
+            Flush();
             Storage.Delete(slot);
             if (slot == Slot)
                 Active = false;
         }
 
+        public static bool Exists(int slot)
+        {
+            Flush();
+            return Storage.Exists(ClampSlot(slot));
+        }
+
+        public static string ContinueScene(string fallback)
+        {
+            var progress = Data.Progress;
+            if (!string.IsNullOrEmpty(progress.LastNestScene))
+                return progress.LastNestScene;
+            return string.IsNullOrEmpty(progress.Scene) ? fallback : progress.Scene;
+        }
+
         public static SaveSummary Summary(int slot)
         {
             slot = ClampSlot(slot);
+            Flush();
             var summary = new SaveSummary { Slot = slot };
             if (!Storage.TryRead(slot, out var json))
                 return summary;

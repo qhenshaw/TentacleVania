@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TentacleVania.Core.Saves;
 using TentacleVania.Core.Scenes;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -44,6 +45,13 @@ namespace TentacleVania.UI.Menu
         public void Play()
         {
             _play.SetEnabled(false);
+            const int slot = 0;
+            if (SaveSystem.Exists(slot) && SaveSystem.Load(slot))
+            {
+                SceneFlow.Load(SaveSystem.ContinueScene(_gameplayScene));
+                return;
+            }
+            SaveSystem.NewGame(slot);
             SceneFlow.Load(_gameplayScene);
         }
 
