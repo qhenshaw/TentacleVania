@@ -118,6 +118,10 @@ MonoBehaviour:
     m_Localized: 'Absorbed: {0}'
     m_Metadata:
       m_Items: []
+  - m_Id: 408353203044352
+    m_Localized: Open shortcut
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

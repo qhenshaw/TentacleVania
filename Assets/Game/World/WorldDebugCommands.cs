@@ -4,6 +4,8 @@ using TentacleVania.Core.Progression;
 using TentacleVania.World.Arenas;
 using TentacleVania.World.BioNests;
 using TentacleVania.World.Security;
+using TentacleVania.World.Shortcuts;
+using TentacleVania.Core.Saves;
 using TentacleVania.World.Streaming;
 using UnityEngine;
 
@@ -74,6 +76,19 @@ namespace TentacleVania.World
                     relay.DestroyRelay();
             });
             DebugMenu.Button(Tab, "Reset relays", ResetRelays);
+            DebugMenu.Value(Tab, "Shortcuts open", () => SaveSystem.Data.World.OpenedShortcuts.Count.ToString());
+            DebugMenu.Button(Tab, "Open all shortcuts", () =>
+            {
+                foreach (var shortcut in Object.FindObjectsByType<Shortcut>())
+                    shortcut.Open();
+            });
+            DebugMenu.Button(Tab, "Close all shortcuts", () =>
+            {
+                ShortcutProgress.CloseAll();
+                foreach (var shortcut in Object.FindObjectsByType<Shortcut>())
+                    shortcut.ResetClosed();
+            });
+            DebugMenu.Button(Tab, "Spawn shortcut test rig", () => SpawnRig(ShortcutRigResource));
             DebugMenu.Value(Tab, "Rooms", DescribeRooms);
             DebugMenu.Toggle(Tab, "Pause room streaming", () => RoomStreamer.Paused, v => RoomStreamer.Paused = v);
             DebugMenu.Button(Tab, "Load all rooms", () =>
@@ -103,9 +118,13 @@ namespace TentacleVania.World
 
         public const string SecurityRigResource = "DebugSecurityRig";
 
-        public static void SpawnSecurityRig()
+        public const string ShortcutRigResource = "DebugShortcutRig";
+
+        public static void SpawnSecurityRig() => SpawnRig(SecurityRigResource);
+
+        public static void SpawnRig(string resource)
         {
-            var prefab = Resources.Load<GameObject>(SecurityRigResource);
+            var prefab = Resources.Load<GameObject>(resource);
             var creature = CombatTargets.Creature;
             if (prefab == null || creature == null)
                 return;

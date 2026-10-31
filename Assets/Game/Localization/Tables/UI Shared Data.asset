@@ -115,6 +115,10 @@ MonoBehaviour:
     m_Key: boss.reward
     m_Metadata:
       m_Items: []
+  - m_Id: 408353203044352
+    m_Key: prompt.shortcut.open
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
