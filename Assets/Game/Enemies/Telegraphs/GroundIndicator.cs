@@ -21,10 +21,7 @@ namespace TentacleVania.Enemies.Telegraphs
 
         [SerializeField] private DecalProjector _decal;
         [SerializeField] private Material _material;
-        [SerializeField, ColorUsage(false, true)] private Color _dodgeable = new(2f, 1.3f, 0.1f);
-        [SerializeField, ColorUsage(false, true)] private Color _undodgeable = new(2.4f, 0.2f, 0.1f);
-        [SerializeField, Min(0.01f)] private float _lockFlashTime = 0.25f;
-        [SerializeField, Range(0f, 1f)] private float _lockedLevel = 0.35f;
+        [SerializeField] private TelegraphStyle _style;
 
         private Material _instance;
         private bool _locked;
@@ -89,8 +86,8 @@ namespace TentacleVania.Enemies.Telegraphs
             if (locked && !_locked)
                 _lockedAt = Time.time;
             _locked = locked;
-            var flash = locked ? Mathf.Max(_lockedLevel, 1f - (Time.time - _lockedAt) / _lockFlashTime) : 0f;
-            _instance.SetColor(ColorId, telegraph == Telegraph.Undodgeable ? _undodgeable : _dodgeable);
+            var flash = locked ? Mathf.Max(_style.LockedLevel, 1f - (Time.time - _lockedAt) / _style.LockFlashTime) : 0f;
+            _instance.SetColor(ColorId, telegraph == Telegraph.Undodgeable ? _style.IndicatorUndodgeable : _style.IndicatorDodgeable);
             _instance.SetFloat(ShapeId, shape);
             _instance.SetFloat(ArcId, arc);
             _instance.SetFloat(ProgressId, Mathf.Clamp01(progress));

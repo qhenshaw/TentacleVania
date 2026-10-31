@@ -9,14 +9,7 @@ namespace TentacleVania.Creature
     [RequireComponent(typeof(Health))]
     public sealed class CreatureCharge : MonoBehaviour
     {
-        [SerializeField, Min(1f)] private float _max = 100f;
-        [SerializeField, Min(0f)] private float _perWeaponHit = 3f;
-        [SerializeField, Min(0f)] private float _perConsume = 20f;
-        [SerializeField, ColorUsage(false, true)] private Color _fullGlow = new(0.3f, 1.4f, 1.1f);
-        [SerializeField, Min(0f)] private float _fullGlowAmount = 0.8f;
-        [SerializeField, Min(0f)] private float _fullGlowPulse = 0.8f;
-        [SerializeField, Min(0.01f)] private float _fullGlowFresnel = CharacterMaterials.DefaultStatusFresnel;
-        [SerializeField, Min(0f)] private float _fullGlowFill = CharacterMaterials.DefaultStatusFill;
+        [SerializeField] private CreatureChargeSettings _settings;
 
         private Health _health;
         private CharacterMaterials _materials;
@@ -33,14 +26,14 @@ namespace TentacleVania.Creature
         {
             _health = GetComponent<Health>();
             _materials = GetComponent<CharacterMaterials>();
-            Meter = new(_max);
+            Meter = new(_settings.Max);
         }
 
         private void OnEnable() => CombatEvents.HitLanded += OnHitLanded;
 
         private void OnDisable() => CombatEvents.HitLanded -= OnHitLanded;
 
-        public void AddConsume() => Add(_perConsume);
+        public void AddConsume() => Add(_settings.PerConsume);
 
         public void Add(float amount)
         {
@@ -65,7 +58,7 @@ namespace TentacleVania.Creature
         private void OnHitLanded(Health target, in DamageInfo info, in DamageResult result)
         {
             if (info.Attacker == _health && target != _health && (info.Flags & HitFlags.Hazard) == 0)
-                Add(_perWeaponHit);
+                Add(_settings.PerWeaponHit);
         }
 
         public void RefreshGlow()
@@ -80,7 +73,7 @@ namespace TentacleVania.Creature
             {
                 _showingFull = Meter.IsFull;
                 if (_showingFull)
-                    _materials.SetStatus(_fullGlow, _fullGlowAmount, _fullGlowPulse, _fullGlowFresnel, _fullGlowFill);
+                    _materials.SetStatus(_settings.FullGlow, _settings.FullGlowAmount, _settings.FullGlowPulse, _settings.FullGlowFresnel, _settings.FullGlowFill);
                 else
                     _materials.ClearStatus();
             }

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e37735be63d9ff40b8278f6d74f8c74, type: 3}
+  m_Name: HatchlingConsume
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.CreatureConsumeSettings
+  _reach: 2.2
+  _grabThreshold: 0.25
+  _healDuration: 1.5
+  _damageTakenWhileConsuming: 0.5
+  _openSound:
+    Guid:
+      Data1: -772041170
+      Data2: 1149824366
+      Data3: -390343746
+      Data4: -811941922
+    Path: event:/Creature/MawOpen
+  _chompSound:
+    Guid:
+      Data1: -1720961257
+      Data2: 1310725496
+      Data3: -2055400567
+      Data4: -1538299262
+    Path: event:/Creature/MawChomp
+  _swallowSound:
+    Guid:
+      Data1: -16550885
+      Data2: 1107794100
+      Data3: 1960972956
+      Data4: -68992735
+    Path: event:/Creature/MawSwallow

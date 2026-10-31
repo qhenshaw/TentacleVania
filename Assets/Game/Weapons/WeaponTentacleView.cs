@@ -20,24 +20,7 @@ namespace TentacleVania.Weapons
         private const float RollMinSpeed = 0.5f;
 
         [SerializeField] private Material _material;
-        [SerializeField, Range(Chains.MinJoints, Chains.MaxJoints)] private int _joints = Chains.DefaultJoints;
-        [SerializeField, Min(0.1f)] private float _length = 2.4f;
-        [SerializeField, Min(0f)] private float _archHeight = 0.25f;
-        [SerializeField] private Vector3 _rootOffset = new(0.18f, 0.5f, 0.15f);
-        [SerializeField, Min(0.001f)] private float _rootWidth = 0.14f;
-        [SerializeField, Min(0.001f)] private float _tipWidth = 0.03f;
-        [Tooltip("Seconds of the wind-up the tentacle takes to grow out of the body.")]
-        [SerializeField, Min(0.01f)] private float _emergeTime = 0.08f;
-        [Tooltip("Seconds it takes to pull back into the body after the move ends.")]
-        [SerializeField, Min(0.01f)] private float _retractTime = 0.12f;
-        [SerializeField] private SpringChainSettings _spring = new()
-        {
-            PoseStiffness = 30f,
-            TipLooseness = 0.6f,
-            Damping = 0.15f,
-            Gravity = 2f,
-            Iterations = 3,
-        };
+        [SerializeField] private WeaponTentacleSettings _settings;
 
         private readonly LineRenderer[] _lines = new LineRenderer[WeaponController.Slots];
         private readonly SpringChain[] _chains = new SpringChain[WeaponController.Slots];
@@ -74,17 +57,17 @@ namespace TentacleVania.Weapons
         {
             _controller = GetComponent<WeaponController>();
             _materials = GetComponent<CharacterMaterials>();
-            _pose = new Vector3[_joints];
-            var width = new AnimationCurve(new Keyframe(0f, _rootWidth), new Keyframe(1f, _tipWidth));
+            _pose = new Vector3[_settings.Joints];
+            var width = new AnimationCurve(new Keyframe(0f, _settings.RootWidth), new Keyframe(1f, _settings.TipWidth));
             for (var slot = 0; slot < WeaponController.Slots; slot++)
             {
-                _chains[slot] = new SpringChain(_joints);
+                _chains[slot] = new SpringChain(_settings.Joints);
                 _chains[slot].Collapse(Root(slot));
                 _retractStarted[slot] = float.NegativeInfinity;
                 var line = new GameObject($"WeaponTentacle {slot + 1}").AddComponent<LineRenderer>();
                 line.transform.SetParent(transform, false);
                 line.useWorldSpace = true;
-                line.positionCount = _joints;
+                line.positionCount = _settings.Joints;
                 line.widthCurve = width;
                 line.numCornerVertices = 3;
                 line.numCapVertices = 3;
@@ -133,7 +116,7 @@ namespace TentacleVania.Weapons
                         _retractStarted[slot] = now;
                         _retractFrom[slot] = chain.Tip;
                     }
-                    var t = (now - _retractStarted[slot]) / _retractTime;
+                    var t = (now - _retractStarted[slot]) / _settings.RetractTime;
                     if (t >= 1f)
                     {
                         _shown[slot] = false;
@@ -152,9 +135,9 @@ namespace TentacleVania.Weapons
                     continue;
                 }
 
-                var bone = Mathf.Clamp(Vector3.Distance(root, tip) * Slack / (_joints - 1), MinBone, _length / (_joints - 1));
-                ChainSolver.SeedArch(_pose, root, tip, Vector3.up, _archHeight);
-                chain.Step(_spring, dt, _pose, bone, true);
+                var bone = Mathf.Clamp(Vector3.Distance(root, tip) * Slack / (_settings.Joints - 1), MinBone, _settings.Length / (_settings.Joints - 1));
+                ChainSolver.SeedArch(_pose, root, tip, Vector3.up, _settings.ArchHeight);
+                chain.Step(_settings.Spring, dt, _pose, bone, true);
                 _lines[slot].SetPositions(chain.Positions);
                 _lines[slot].enabled = Chains.ShowPlaceholderLines;
                 PlaceTipMesh(slot, chain.Positions, dt);
@@ -170,7 +153,7 @@ namespace TentacleVania.Weapons
             grow = 1f;
             if (_controller.Phase != MovePhase.WindUp)
                 return tip;
-            grow = Mathf.Clamp01(elapsed / Mathf.Min(_emergeTime, move.WindUp));
+            grow = Mathf.Clamp01(elapsed / Mathf.Min(_settings.EmergeTime, move.WindUp));
             grow = grow * grow * (3f - 2f * grow);
             return Vector3.Lerp(root, tip, grow);
         }
@@ -271,12 +254,12 @@ namespace TentacleVania.Weapons
 
         public int ChainOrder => 10;
         public int ChainCount => WeaponController.Slots;
-        public int ChainJoints => _joints;
+        public int ChainJoints => _settings.Joints;
 
         public void WriteChain(int chain, Span<Vector4> joints)
         {
             if (_shown[chain])
-                Chains.Write(joints, _chains[chain].Positions, _rootWidth, _tipWidth);
+                Chains.Write(joints, _chains[chain].Positions, _settings.RootWidth, _settings.TipWidth);
             else
                 Chains.Collapse(joints, Root(chain));
         }
@@ -286,7 +269,7 @@ namespace TentacleVania.Weapons
         private Vector3 Root(int slot)
         {
             var side = slot == 0 ? -1f : 1f;
-            return transform.TransformPoint(new Vector3(_rootOffset.x * side, _rootOffset.y, _rootOffset.z));
+            return transform.TransformPoint(new Vector3(_settings.RootOffset.x * side, _settings.RootOffset.y, _settings.RootOffset.z));
         }
     }
 }

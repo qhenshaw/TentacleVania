@@ -9,14 +9,9 @@ using UnityEngine;
 namespace TentacleVania.Creature
 {
     [RequireComponent(typeof(Health), typeof(CreatureMotor))]
-    public sealed class CreatureVitals : MonoBehaviour
+    public sealed class CreatureVitals : MonoBehaviour, IStatsSource
     {
-        [SerializeField, Min(0f)] private float _restartDelay = 1.5f;
-        [SerializeField, ColorUsage(false, true)] private Color _stunGlow = new(0.4f, 0.7f, 2.2f);
-        [SerializeField, Min(0f)] private float _stunGlowPulse = 2.2f;
-        [SerializeField, Min(0.01f)] private float _stunGlowFresnel = CharacterMaterials.DefaultStatusFresnel;
-        [SerializeField, Min(0f)] private float _stunGlowFill = CharacterMaterials.DefaultStatusFill;
-        [SerializeField, Min(0f)] private float _stunGrace = 3f;
+        [SerializeField] private CreatureVitalsSettings _settings;
 
         private Health _health;
         private CreatureMotor _motor;
@@ -30,6 +25,7 @@ namespace TentacleVania.Creature
         public static bool GodMode { get; set; }
 
         public Health Health => _health;
+        public Object StatsAsset => _settings;
         public bool IsStunned => _stunned;
         public float StunGraceRemaining => _stunned ? 0f : Mathf.Max(0f, _stunImmuneUntil - Time.time);
 
@@ -40,6 +36,7 @@ namespace TentacleVania.Creature
             _materials = GetComponent<CharacterMaterials>();
             _charge = GetComponent<CreatureCharge>();
             _dashInvulnerability = new(_motor);
+            _health.Configure(Team.Creature, _settings.MaxHealth, _settings.MaxArmor);
         }
 
         private void OnEnable()
@@ -73,7 +70,7 @@ namespace TentacleVania.Creature
             _stunned = true;
             _motor.LockControl();
             if (_materials != null)
-                _materials.SetStatus(_stunGlow, 1f, _stunGlowPulse, _stunGlowFresnel, _stunGlowFill);
+                _materials.SetStatus(_settings.StunGlow, 1f, _settings.StunGlowPulse, _settings.StunGlowFresnel, _settings.StunGlowFill);
         }
 
         private void EndStun()
@@ -81,7 +78,7 @@ namespace TentacleVania.Creature
             if (!_stunned)
                 return;
             _stunned = false;
-            _stunImmuneUntil = Time.time + _stunGrace;
+            _stunImmuneUntil = Time.time + _settings.StunGrace;
             _motor.UnlockControl();
             if (_materials != null)
                 _materials.ClearStatus();
@@ -104,7 +101,7 @@ namespace TentacleVania.Creature
 
         private IEnumerator RestartArena()
         {
-            yield return new WaitForSeconds(_restartDelay);
+            yield return new WaitForSeconds(_settings.RestartDelay);
             SceneFlow.Load(gameObject.scene.name);
         }
 

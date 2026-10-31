@@ -5,6 +5,7 @@ The player creature (`TentacleVania.Creature`). The prefab `Prefabs/Creature.pre
 ## Movement (`Movement/`)
 
 - `CreatureMotor` drives a `CharacterController` from `GameplayInput`; all tuning lives in a `CreatureMotorSettings` asset (`Data/HatchlingMotor.asset`, Balance Sheet baselines: 7 m/s, 4 m dash, 0.3 s cooldown chained twice then 0.8 s lockout, 0.2 s i-frames).
+- All creature tuning is in per-system assets in `Data/` (developer decision), never on the prefab, whose components keep only references, layer masks and wiring: `HatchlingMotor`, `HatchlingRig`, `HatchlingVitals` (`CreatureVitalsSettings`: max health and armor, which `CreatureVitals` applies to `Health` in `Awake`, restart delay, stun glow and grace), `HatchlingCharge` (`CreatureChargeSettings`) and `HatchlingConsume` (`CreatureConsumeSettings`, including the maw FMOD events); weapon handling and the weapon tentacle look are in `Weapons/Data`. A new size stage is a new set of assets.
 - Snappy acceleration (120 m/s²). Movement is camera-relative. The maw faces the aim (mouse pointer on the creature's plane, or the right stick past the deadzone, by `GameplayInput.LastDevice`), otherwise the move direction.
 - A dash covers exactly `DashDistance` over `DashDuration` (0.15 s, not in the design), in the move direction or the facing when there is no move input, then drops straight to walking speed. Presses up to 0.1 s early are buffered. The cooldown counts from the end of the dash; `DashTimer` holds the chain and lockout rules and is unit tested.
 - Hooks for later systems: `TryDash(direction)` for attack dash-cancels, `IsInvulnerable` for the damage pipeline, `InputEnabled` to lock control (consume, stuns), and the `Dashed` event.
@@ -33,7 +34,7 @@ The player creature (`TentacleVania.Creature`). The prefab `Prefabs/Creature.pre
 
 ## Charge meter
 
-`CreatureCharge` (on the prefab) wraps a `Combat.ChargeMeter`: max 100, +3 for every hit the creature lands (`CombatEvents.HitLanded` with the creature as attacker, hazards excluded), +20 from `AddConsume()` (for grab & consume). Abilities call `TrySpend(cost)` (35–60). `ChargeMeter.GainScale` is the hook for Cunning's +2% charge gain. When full, the creature pulses teal through `CharacterMaterials.SetStatus` (Art Direction's charge-full bioluminescence), body and tentacles alike.
+`CreatureCharge` (on the prefab) wraps a `Combat.ChargeMeter` (values in `HatchlingCharge`): a gain for every hit the creature lands (`CombatEvents.HitLanded` with the creature as attacker, hazards excluded) and per `AddConsume()` (for grab & consume). Abilities call `TrySpend(cost)` (35–60). `ChargeMeter.GainScale` is the hook for Cunning's +2% charge gain. When full, the creature pulses teal through `CharacterMaterials.SetStatus` (Art Direction's charge-full bioluminescence), body and tentacles alike.
 
 ## Testing in play
 

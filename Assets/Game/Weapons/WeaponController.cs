@@ -28,19 +28,7 @@ namespace TentacleVania.Weapons
         [SerializeField] private WeaponDefinition _weapon1;
         [SerializeField] private WeaponDefinition _weapon2;
         [SerializeField] private LayerMask _hitLayers;
-
-        [Header("Feel")]
-        [SerializeField, Min(0f)] private float _heavyThreshold = 0.35f;
-        [SerializeField, Min(0f)] private float _maxHold = 1.5f;
-        [SerializeField, Min(0f)] private float _inputBuffer = 0.15f;
-        [SerializeField, Min(0f)] private float _comboReset = 0.6f;
-        [SerializeField, Min(0f)] private float _dashAttackWindow = 0.12f;
-        [SerializeField, Range(0f, 1f)] private float _attackMoveSpeed = 0.4f;
-
-        [Header("Soft-lock")]
-        [SerializeField, Min(0f)] private float _softLockRange = 6f;
-        [SerializeField, Range(0f, 360f)] private float _softLockCone = 90f;
-        [SerializeField, Range(0f, 360f)] private float _aimLockCone = 30f;
+        [SerializeField] private WeaponHandlingSettings _settings;
 
         private readonly List<Health> _hitThisMove = new(8);
         private readonly ChargeButton[] _buttons = new ChargeButton[Slots];
@@ -84,9 +72,9 @@ namespace TentacleVania.Weapons
         {
             _motor = GetComponent<CreatureMotor>();
             _health = GetComponent<Health>();
-            _combo = new(WeaponDefinition.ComboSteps, _comboReset);
+            _combo = new(WeaponDefinition.ComboSteps, _settings.ComboReset);
             for (var i = 0; i < Slots; i++)
-                _buttons[i] = new(_heavyThreshold, _maxHold);
+                _buttons[i] = new(_settings.HeavyThreshold, _settings.MaxHold);
             Equip(0, _weapon1);
             Equip(1, _weapon2);
         }
@@ -122,7 +110,7 @@ namespace TentacleVania.Weapons
             if (_move != null)
                 TickMove(now);
 
-            if (_hasRequest && now - _requestTime > _inputBuffer && _move != null)
+            if (_hasRequest && now - _requestTime > _settings.InputBuffer && _move != null)
                 _hasRequest = false;
             if (_hasRequest && _move == null)
             {
@@ -137,7 +125,7 @@ namespace TentacleVania.Weapons
         {
             if (_weapons[slot] == null)
                 return;
-            if (button.Pressed && (_motor.IsDashing || now - _motor.LastDashEndTime <= _dashAttackWindow))
+            if (button.Pressed && (_motor.IsDashing || now - _motor.LastDashEndTime <= _settings.DashAttackWindow))
             {
                 _buttons[slot].Cancel();
                 Request(slot, AttackKind.DashAttack, now);
@@ -201,8 +189,8 @@ namespace TentacleVania.Weapons
             var origin = transform.position;
             var aiming = _motor.TryGetAimDirection(out var aim);
             var forward = aiming ? aim : (_motor.MoveInput.sqrMagnitude > 1e-4f ? _motor.MoveInput.normalized : transform.forward);
-            var cone = aiming ? _aimLockCone : _softLockCone;
-            if (SoftLock.TryPick(origin, forward, _softLockRange, cone, _hitLayers, _health, out var locked))
+            var cone = aiming ? _settings.AimLockCone : _settings.SoftLockCone;
+            if (SoftLock.TryPick(origin, forward, _settings.SoftLockRange, cone, _hitLayers, _health, out var locked))
                 return locked;
             forward.y = 0f;
             return forward.sqrMagnitude > 1e-4f ? forward.normalized : transform.forward;
@@ -315,7 +303,7 @@ namespace TentacleVania.Weapons
             var charging = _buttons[0].IsCharging(now) || _buttons[1].IsCharging(now);
             _motor.DashLocked = phase is MovePhase.WindUp or MovePhase.Strike;
             _motor.FacingLocked = _move != null;
-            _motor.SpeedMultiplier = _move != null || charging ? _attackMoveSpeed : 1f;
+            _motor.SpeedMultiplier = _move != null || charging ? _settings.AttackMoveSpeed : 1f;
         }
     }
 }

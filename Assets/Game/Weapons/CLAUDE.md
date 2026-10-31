@@ -19,6 +19,7 @@ The creature's weapons (`TentacleVania.Weapons`), following Core Mechanics & Con
 | Crusher Mass (`CrusherMass.asset`) | Weapon 2 | 30 dmg, 90 stagger, armor ×2 (placeholder; the design's bonus is TBD) | Slam ×2, 1.2 m circle 1.4 m ahead (0.25/0.10/0.40); Quake 3 m circle ×1.5 (0.35/0.15/0.55); Armor breaker heavy ×2.5, armor ×3 (0/0.15/0.60); Battering ram dash attack, 3.5 m lunge (0.05/0.20/0.35) |
 
 ## WeaponController (on the creature)
+- Tuning is in assets, not on the prefab: `Data/HatchlingWeaponHandling` (`WeaponHandlingSettings`: heavy threshold, max hold, input buffer, combo reset, dash-attack window, attack move speed, soft-lock range and cones) for `WeaponController`, and `Data/HatchlingWeaponTentacles` (`WeaponTentacleSettings`: joints, length, arch, root offset, widths, emerge and retract times, spring) for `WeaponTentacleView`. The numbers below are their current values.
 
 - Both weapon buttons share one `ComboCounter` (3 steps, crossover, reset after 0.6 s without attacking, after a finisher, after a heavy; dash attacks don't touch it). `ChargeButton` resolves a tap on release; holding past 0.35 s charges the heavy, which fires on release or at 1.5 s. Presses up to 0.15 s before the current move ends are buffered.
 - A press during a dash or within 0.12 s after it is a dash attack (immediate, no tap wait).

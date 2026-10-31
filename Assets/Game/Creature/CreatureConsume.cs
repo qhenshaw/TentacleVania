@@ -18,14 +18,8 @@ namespace TentacleVania.Creature
 
         private static readonly Collider[] Candidates = new Collider[16];
 
-        [SerializeField, Min(0f)] private float _reach = 2.2f;
-        [SerializeField, Range(0f, 1f)] private float _grabThreshold = Consumable.DefaultGrabThreshold;
-        [SerializeField, Min(0.01f)] private float _healDuration = 1.5f;
-        [SerializeField, Range(0f, 1f)] private float _damageTakenWhileConsuming = 0.5f;
+        [SerializeField] private CreatureConsumeSettings _settings;
         [SerializeField] private LayerMask _grabLayers;
-        [SerializeField] private EventReference _openSound;
-        [SerializeField] private EventReference _chompSound;
-        [SerializeField] private EventReference _swallowSound;
 
         private Health _health;
         private CreatureMotor _motor;
@@ -51,8 +45,8 @@ namespace TentacleVania.Creature
         public bool IsRooted => _victim != null;
         public bool IsHealing => _healRemaining > 0f;
         public bool IsArmored => _armorApplied;
-        public float GrabThreshold => _grabThreshold;
-        public float Reach => _reach;
+        public float GrabThreshold => _settings.GrabThreshold;
+        public float Reach => _settings.Reach;
 
         private void Awake()
         {
@@ -60,10 +54,10 @@ namespace TentacleVania.Creature
             _motor = GetComponent<CreatureMotor>();
             _charge = GetComponent<CreatureCharge>();
             _maw = GetComponent<CreatureMaw>();
-            _armored = new ScaleModifier(100) { HealthScale = _damageTakenWhileConsuming };
+            _armored = new ScaleModifier(100) { HealthScale = _settings.DamageTakenWhileConsuming };
         }
 
-        private void OnEnable() => Consumable.GrabThreshold = _grabThreshold;
+        private void OnEnable() => Consumable.GrabThreshold = _settings.GrabThreshold;
 
         private void OnDisable()
         {
@@ -91,7 +85,7 @@ namespace TentacleVania.Creature
 
         public bool TryGrab()
         {
-            var target = FindTarget(_grabThreshold);
+            var target = FindTarget(_settings.GrabThreshold);
             return target != null && Grab(target);
         }
 
@@ -131,11 +125,11 @@ namespace TentacleVania.Creature
             var stop = _maw.Settings.MawLungeStop + Mathf.Min(_victimRadius, 0.5f);
             _motor.Lunge(toVictim, Mathf.Max(0f, toVictim.magnitude - stop), _maw.OpenTime / Mathf.Max(0.01f, CreatureMaw.TimeScale));
             _maw.Engulf(_victimCentre, _victimRadius, _victimHalfHeight);
-            Play(_openSound);
+            Play(_settings.OpenSound);
 
-            _healRate = _health.Max * target.HealFraction / _healDuration;
+            _healRate = _health.Max * target.HealFraction / _settings.HealDuration;
             _healRemaining += _health.Max * target.HealFraction;
-            _armoredUntil = Time.time + _healDuration;
+            _armoredUntil = Time.time + _settings.HealDuration;
             Biomass += target.Biomass;
             if (_charge != null)
                 _charge.AddConsume();
@@ -146,7 +140,7 @@ namespace TentacleVania.Creature
         private Consumable FindTarget(float threshold)
         {
             var origin = transform.position;
-            var count = Physics.OverlapSphereNonAlloc(origin, _reach, Candidates, _grabLayers, QueryTriggerInteraction.Collide);
+            var count = Physics.OverlapSphereNonAlloc(origin, _settings.Reach, Candidates, _grabLayers, QueryTriggerInteraction.Collide);
             Consumable best = null;
             var bestScore = float.MaxValue;
             for (var i = 0; i < count; i++)
@@ -180,7 +174,7 @@ namespace TentacleVania.Creature
                     if (!_bitten)
                     {
                         _bitten = true;
-                        Play(_chompSound);
+                        Play(_settings.ChompSound);
                         _victim.Bite();
                     }
                     var eased = _maw.PhaseT * _maw.PhaseT;
@@ -194,7 +188,7 @@ namespace TentacleVania.Creature
                     break;
                 }
                 default:
-                    Play(_swallowSound);
+                    Play(_settings.SwallowSound);
                     ReleaseVictim(true);
                     break;
             }
