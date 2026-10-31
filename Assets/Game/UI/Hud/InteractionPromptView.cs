@@ -24,7 +24,11 @@ namespace TentacleVania.UI.Hud
             public string Value = "";
         }
 
-        private VisualElement _holdBar;
+        private const float RingSize = 22f;
+
+        private HoldRing _holdRing;
+        private bool _ringShown;
+        private string _measuredText;
         private float _shownProgress = -1f;
 
         private void OnEnable()
@@ -34,14 +38,13 @@ namespace TentacleVania.UI.Hud
             if (_label != null)
             {
                 _label.AddToClassList(HiddenClass);
-                _holdBar = new VisualElement { name = "prompt-hold", pickingMode = PickingMode.Ignore };
-                _holdBar.style.position = Position.Absolute;
-                _holdBar.style.left = 0f;
-                _holdBar.style.bottom = -6f;
-                _holdBar.style.height = 4f;
-                _holdBar.style.backgroundColor = new Color(0.55f, 1f, 0.7f, 0.9f);
-                _holdBar.style.width = Length.Percent(0f);
-                _label.Add(_holdBar);
+                _holdRing = new HoldRing(RingSize) { name = "prompt-hold" };
+                _holdRing.style.position = Position.Absolute;
+                _holdRing.style.left = Length.Percent(50f);
+                _holdRing.style.top = Length.Percent(50f);
+                _holdRing.style.marginTop = -RingSize * 0.5f;
+                _holdRing.style.display = DisplayStyle.None;
+                _label.Add(_holdRing);
             }
         }
 
@@ -60,11 +63,23 @@ namespace TentacleVania.UI.Hud
             if (!Mathf.Approximately(progress, _shownProgress))
             {
                 _shownProgress = progress;
-                _holdBar.style.width = Length.Percent(progress * 100f);
+                _holdRing.Progress = progress;
             }
             var menu = Nest.NestMenuScreen.Instance;
             var current = menu != null && menu.IsOpen ? null : Interactions.Current;
             var key = current != null ? current.PromptKey : null;
+            var hold = current is IHoldInteractable;
+            if (hold != _ringShown)
+            {
+                _ringShown = hold;
+                _holdRing.style.display = hold ? DisplayStyle.Flex : DisplayStyle.None;
+            }
+            if (_ringShown && _label.text != _measuredText)
+            {
+                _measuredText = _label.text;
+                var width = _label.MeasureTextSize(_measuredText, 0f, VisualElement.MeasureMode.Undefined, 0f, VisualElement.MeasureMode.Undefined).x;
+                _holdRing.style.marginLeft = width * 0.5f + 12f;
+            }
             if (key == _shownKey)
             {
                 if (key != null && _bindings.TryGetValue(key, out var live) && _label.text != live.Value)

@@ -91,6 +91,12 @@ namespace TentacleVania.Combat
             return healed;
         }
 
+        public void SetFraction(float fraction)
+        {
+            if (IsAlive)
+                _pool.Health = Mathf.Clamp(fraction, 0.01f, 1f) * _pool.MaxHealth;
+        }
+
         public void Kill()
         {
             if (!IsAlive)
