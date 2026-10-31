@@ -611,6 +611,66 @@ MonoBehaviour:
     m_Key: pause.modifier
     m_Metadata:
       m_Items: []
+  - m_Id: 544427711676416
+    m_Key: prompt.lore.read
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842240
+    m_Key: lore.close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842241
+    m_Key: lore.header.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842242
+    m_Key: lore.header.audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842243
+    m_Key: pickup.biomass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842244
+    m_Key: pickup.mutagen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842245
+    m_Key: pickup.notch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842246
+    m_Key: pickup.weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842247
+    m_Key: pickup.mutation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842248
+    m_Key: pickup.trinket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842249
+    m_Key: pickup.log
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842250
+    m_Key: weapon.LashWhips.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842251
+    m_Key: weapon.CrusherMass.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842252
+    m_Key: trinket.SpecimenTag.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842253
+    m_Key: trinket.LabBadge.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

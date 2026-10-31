@@ -10,9 +10,11 @@ using TentacleVania.Core.Saves;
 using TentacleVania.Core.Scenes;
 using TentacleVania.Creature;
 using TentacleVania.Creature.Movement;
+using TentacleVania.UI.Lore;
 using TentacleVania.UI.Nest;
 using TentacleVania.Weapons;
 using TentacleVania.World.Arenas;
+using TentacleVania.World.Lore;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UIElements;
@@ -183,7 +185,7 @@ namespace TentacleVania.UI.Pause
                     FillMutations();
                     break;
                 case "logs":
-                    Note("pause.logs.empty");
+                    FillLogs();
                     break;
             }
         }
@@ -240,6 +242,32 @@ namespace TentacleVania.UI.Pause
 #else
             Application.Quit();
 #endif
+        }
+
+        private void FillLogs()
+        {
+            var library = LoreLibrary.Instance;
+            var shown = 0;
+            if (library != null)
+            {
+                foreach (var log in library.Logs)
+                {
+                    if (log == null || !LoreLogs.Has(log.Id))
+                        continue;
+                    var id = log.Id;
+                    var button = new Button(() => LoreLogs.Read(id))
+                    {
+                        text = LocalizationSettings.StringDatabase.GetLocalizedString(LoreLog.Table, log.TitleKey),
+                        name = "log-" + id,
+                    };
+                    button.AddToClassList("pause__button");
+                    button.AddToClassList("pause__log");
+                    _content.Add(button);
+                    shown++;
+                }
+            }
+            if (shown == 0)
+                Note("pause.logs.empty");
         }
 
         private void FillAbilities()
@@ -367,7 +395,8 @@ namespace TentacleVania.UI.Pause
         {
             var settings = Settings.SettingsScreen.Instance;
             var nest = NestMenuScreen.Instance;
-            return (settings != null && settings.IsOpen) || (nest != null && nest.IsOpen) || !GameplayInput.Default.Enabled;
+            var reader = LoreReaderScreen.Instance;
+            return (settings != null && settings.IsOpen) || (nest != null && nest.IsOpen) || (reader != null && reader.IsOpen) || !GameplayInput.Default.Enabled;
         }
 
         private static Button Button(VisualElement root, string name, string key, Action onClick)

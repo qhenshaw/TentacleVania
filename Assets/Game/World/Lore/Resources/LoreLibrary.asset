@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef84c57b440f2a542bb01179edc266c0, type: 3}
+  m_Name: LoreLibrary
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Lore.LoreLibrary
+  _logs:
+  - {fileID: 11400000, guid: 3a2550987c793f14a86c240602dc9f65, type: 2}
+  - {fileID: 11400000, guid: 500700852dbaba54d943f5325792df8d, type: 2}
+  - {fileID: 11400000, guid: 2e239f52e69467f43a95fb6739f6e6a4, type: 2}
+  - {fileID: 11400000, guid: da356cb4ab53da64e89e4ff96d6abb30, type: 2}
+  - {fileID: 11400000, guid: a9d903963f637da44a34e7bf4c1161c7, type: 2}
+  - {fileID: 11400000, guid: ec5dd0aaad1ab86489646e3d9ba989e4, type: 2}
+  - {fileID: 11400000, guid: b71b35f371f97f642b0511480af9e5e9, type: 2}
+  - {fileID: 11400000, guid: bcb949dc86c599f4c82da3c39a6164c3, type: 2}

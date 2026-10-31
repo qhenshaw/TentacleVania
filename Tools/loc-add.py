@@ -3,7 +3,7 @@
 # Temp/loc-add.cs and runs it with Tools/UnityCheck/unity-long-eval.sh, which saves the table and its shared data.
 #
 # Usage: python -I Tools/loc-add.py <table> <entries.tsv>      (table: UI, Dialogue, ...)
-# Prints "added N, updated M" from the editor. Existing keys get the new value.
+# A literal backslash-n in a value becomes a line break. Prints "added N, updated M" from the editor. Existing keys get the new value.
 import os
 import subprocess
 import sys
@@ -21,7 +21,7 @@ def main():
             if not line.strip() or line.startswith("#"):
                 continue
             key, _, value = line.partition("\t")
-            entries.append((key.strip(), value))
+            entries.append((key.strip(), value.replace("\\n", "\n")))
     if not entries:
         print("No entries")
         return 1

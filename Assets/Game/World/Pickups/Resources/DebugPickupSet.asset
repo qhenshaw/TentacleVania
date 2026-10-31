@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f75197ebac1be749ab16eeb05349a0c, type: 3}
+  m_Name: DebugPickupSet
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Pickups.PickupDebugSet
+  _pickups:
+  - {fileID: 8949330606305283938, guid: f3047a3f507fce84e8a3d9b9b60de158, type: 3}
+  - {fileID: 4199530963461756516, guid: 861f031aa4cf53d479a7d071d9dec408, type: 3}
+  - {fileID: 2665662389699270018, guid: f4da090a943a7b24da142e6523f8751e, type: 3}
+  - {fileID: 1512730819505866724, guid: d39d672f07d8756499b569b03014bc4a, type: 3}
+  - {fileID: 2829879338147912438, guid: 3b9801f7500e7fb4a82d4cdb6c0f9a8d, type: 3}
+  - {fileID: 1346630882455421745, guid: 8c840c3585c577d4284be3912f5fb536, type: 3}
+  _loreTerminal: {fileID: 404740832450269233, guid: 2821417ecd2ad0a4b809be1824cc8267, type: 3}
