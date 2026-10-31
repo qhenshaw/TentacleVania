@@ -27,6 +27,10 @@ namespace TentacleVania.Enemies.Telegraphs
         private bool _locked;
         private float _lockedAt;
 
+        private static readonly Vector3 Parked = new(0f, -1000f, 0f);
+
+        private float _fade = 1f;
+
         public static bool ForceAll { get; set; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -37,6 +41,8 @@ namespace TentacleVania.Enemies.Telegraphs
             _instance = new Material(_material);
             _decal.material = _instance;
             _decal.pivot = Vector3.forward * (ProjectionDepth * 0.5f);
+            _fade = _decal.fadeFactor > 0f ? _decal.fadeFactor : 1f;
+            _decal.enabled = true;
             Hide();
         }
 
@@ -69,7 +75,8 @@ namespace TentacleVania.Enemies.Telegraphs
 
         public void Hide()
         {
-            _decal.enabled = false;
+            _decal.fadeFactor = 0f;
+            transform.position = Parked;
             _locked = false;
         }
 
@@ -93,7 +100,7 @@ namespace TentacleVania.Enemies.Telegraphs
             _instance.SetFloat(ProgressId, Mathf.Clamp01(progress));
             _instance.SetVector(SizeId, new Vector4(size.x, size.y, 0f, 0f));
             _instance.SetFloat(LockId, flash);
-            _decal.enabled = true;
+            _decal.fadeFactor = _fade;
         }
     }
 }

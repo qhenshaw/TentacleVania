@@ -41,6 +41,7 @@ namespace TentacleVania.UI.Hud
         private bool _weapon2Pending;
         private InputDeviceKind _device;
         private bool _dirty;
+        private readonly System.Collections.Generic.Dictionary<(string, InputDeviceKind), (string Text, Texture2D Icon)> _rendered = new();
 
         public string Active => _active;
         public string Text => _label != null ? _label.text : "";
@@ -160,8 +161,22 @@ namespace TentacleVania.UI.Hud
                 _box.RemoveFromClassList(ShownClass);
                 return;
             }
-            var format = LocalizationSettings.StringDatabase.GetLocalizedString(Table, "tutorial." + _active);
-            var actionName = _active switch
+            if (!_rendered.TryGetValue((_active, _device), out var cached))
+            {
+                cached = Build(_active);
+                _rendered[(_active, _device)] = cached;
+            }
+            CurrentIcon = cached.Icon;
+            _icon.style.display = cached.Icon != null ? DisplayStyle.Flex : DisplayStyle.None;
+            _icon.style.backgroundImage = cached.Icon;
+            _label.text = cached.Text;
+            _box.AddToClassList(ShownClass);
+        }
+
+        private (string Text, Texture2D Icon) Build(string active)
+        {
+            var format = LocalizationSettings.StringDatabase.GetLocalizedString(Table, "tutorial." + active);
+            var actionName = active switch
             {
                 Tutorials.Attack => "Weapon1",
                 Tutorials.Dash => "Dash",
@@ -171,11 +186,7 @@ namespace TentacleVania.UI.Hud
                 _ => null,
             };
             var icon = actionName != null ? Icon(actionName) : null;
-            CurrentIcon = icon;
-            _icon.style.display = icon != null ? DisplayStyle.Flex : DisplayStyle.None;
-            _icon.style.backgroundImage = icon;
-            _label.text = actionName == null ? format : string.Format(format, icon != null ? "" : Glyph(actionName)).Trim();
-            _box.AddToClassList(ShownClass);
+            return (actionName == null ? format : string.Format(format, icon != null ? "" : Glyph(actionName)).Trim(), icon);
         }
 
         public Texture2D CurrentIcon { get; private set; }
@@ -291,7 +302,11 @@ namespace TentacleVania.UI.Hud
 
         private void OnNestGrown(string id) => Tutorials.Complete(Tutorials.Nest);
 
-        private void OnSettingsApplied(SettingsData data) => _dirty = true;
+        private void OnSettingsApplied(SettingsData data)
+        {
+            _rendered.Clear();
+            _dirty = true;
+        }
 
         private void OnCompleted(string id) => _dirty = true;
     }

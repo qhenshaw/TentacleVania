@@ -30,6 +30,7 @@ namespace TentacleVania.Audio
         private ArenaEncounter _lastArena;
         private Vector3 _restPosition;
         private bool _restActive;
+        private bool _menuScene;
         private bool _globalIntensity = true;
 
         public static MusicDirector Instance { get; private set; }
@@ -59,11 +60,19 @@ namespace TentacleVania.Audio
 
         private void Awake() => Instance = this;
 
-        private void OnEnable() => Nests.Rested += OnRested;
+        private void OnEnable()
+        {
+            Nests.Rested += OnRested;
+            SceneManager.activeSceneChanged += OnActiveSceneChanged;
+            _menuScene = SceneManager.GetActiveScene().name == SceneFlow.MainMenu;
+        }
+
+        private void OnActiveSceneChanged(Scene previous, Scene next) => _menuScene = next.name == SceneFlow.MainMenu;
 
         private void OnDisable()
         {
             Nests.Rested -= OnRested;
+            SceneManager.activeSceneChanged -= OnActiveSceneChanged;
             Release(_arena);
             Release(_boss);
             Release(_rest);
@@ -93,7 +102,7 @@ namespace TentacleVania.Audio
             var bossFighting = boss != null && boss.Health.IsAlive && boss.State != EnemyState.Dead;
             if (_restActive && (creature == null || (creature.transform.position - _restPosition).sqrMagnitude > _settings.RestLeaveDistance * _settings.RestLeaveDistance))
                 _restActive = false;
-            var inMenu = SceneManager.GetActiveScene().name == SceneFlow.MainMenu && !Muted;
+            var inMenu = _menuScene && !Muted;
             State = inMenu ? MusicState.Menu : alive ? MusicRules.Pick(bossFighting, arenaFighting, _restActive) : MusicState.Silent;
 
             var targetIntensity = State switch
