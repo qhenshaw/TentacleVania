@@ -39,6 +39,8 @@ namespace TentacleVania.World.Opening
         [SerializeField, Min(0.1f)] private float _skipHold = 1f;
         [SerializeField, Range(0.05f, 0.25f)] private float _feedableHealth = 0.15f;
         [SerializeField, Min(0f)] private float _startRadius = 4f;
+        [Tooltip("The creature starts the game at this fraction of its health, so the first consume visibly heals.")]
+        [SerializeField, Range(0.1f, 1f)] private float _creatureStartHealth = 0.8f;
 
         private readonly List<Enemy> _scientists = new(4);
 
@@ -147,6 +149,7 @@ namespace TentacleVania.World.Opening
                 transit.BeginTransit();
             if (_pod != null)
                 creature.transform.SetPositionAndRotation(_pod.position, _pod.rotation);
+            creature.SetFraction(_creatureStartHealth);
             var manager = EnemyManager.Instance;
             _pausedBefore = manager.Paused;
             manager.Paused = true;
