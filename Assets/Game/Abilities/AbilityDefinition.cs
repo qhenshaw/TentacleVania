@@ -33,9 +33,14 @@ namespace TentacleVania.Abilities
     {
         [SerializeField] private string _displayName = "Ability";
         [SerializeField, Min(0f)] private float _cost = 50f;
+        [Tooltip("Biomass to reach tier 2, 3... at a nest (Balance Sheet: 800, 2,500). The tier count is this length + 1.")]
+        [SerializeField] private int[] _tierCosts = System.Array.Empty<int>();
 
         public string DisplayName => _displayName;
         public float Cost => _cost;
+        public int MaxTier => 1 + _tierCosts.Length;
+
+        public int TierCost(int currentTier) => currentTier >= 1 && currentTier <= _tierCosts.Length ? _tierCosts[currentTier - 1] : 0;
         public virtual bool SlotAbility => true;
 
         public abstract AbilityRuntime CreateRuntime(AbilityContext context);

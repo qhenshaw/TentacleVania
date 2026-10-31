@@ -5,6 +5,7 @@ using TentacleVania.Combat.Damage;
 using TentacleVania.Core.Input;
 using TentacleVania.Core.Progression;
 using TentacleVania.Core.Saves;
+using TentacleVania.Creature;
 using TentacleVania.Creature.Movement;
 using TentacleVania.Weapons.Combo;
 using TentacleVania.Weapons.Data;
@@ -26,6 +27,7 @@ namespace TentacleVania.Weapons
 
         private static readonly RaycastHit[] SweepHits = new RaycastHit[16];
         private static readonly Collider[] OverlapHits = new Collider[16];
+        private const int MaxShattered = 8;
 
         [SerializeField] private WeaponDefinition _weapon1;
         [SerializeField] private WeaponDefinition _weapon2;
@@ -36,10 +38,16 @@ namespace TentacleVania.Weapons
         private readonly List<Health> _hitThisMove = new(8);
         private readonly ChargeButton[] _buttons = new ChargeButton[Slots];
         private readonly WeaponDefinition[] _weapons = new WeaponDefinition[Slots];
+        private readonly WeaponModifier[] _modifiers = new WeaponModifier[Slots];
+        private readonly Health[] _shatteredTargets = new Health[MaxShattered];
+        private readonly ScaleModifier[] _shatteredScales = new ScaleModifier[MaxShattered];
+        private readonly float[] _shatteredUntil = new float[MaxShattered];
 
         private CreatureMotor _motor;
         private Health _health;
         private ComboCounter _combo;
+        private CreatureCharge _charge;
+        private float _durationScale = 1f;
 
         private WeaponMove _move;
         private float _moveStarted;
@@ -60,12 +68,14 @@ namespace TentacleVania.Weapons
         public int ActiveStep { get; private set; } = -1;
         public WeaponMove ActiveMove => _move;
         public Vector3 ActiveForward => _moveForward;
-        public float ActiveElapsed => (Time.time - _moveStarted) * Stats.AttackSpeed;
+        public float ActiveElapsed => Elapsed(Time.time);
         public bool IsAttacking => _move != null;
         public MovePhase Phase => _move != null ? MoveShapes.Phase(_move, ActiveElapsed) : MovePhase.Done;
         public int NextComboStep => _combo.Peek(Time.time);
 
         public WeaponDefinition Weapon(int slot) => _weapons[slot];
+
+        public WeaponModifier Modifier(int slot) => _modifiers[slot];
 
         public bool IsCharging(int slot) => _buttons[slot].IsCharging(Time.time);
 
@@ -75,6 +85,9 @@ namespace TentacleVania.Weapons
         {
             _motor = GetComponent<CreatureMotor>();
             _health = GetComponent<Health>();
+            _charge = GetComponent<CreatureCharge>();
+            for (var i = 0; i < MaxShattered; i++)
+                _shatteredScales[i] = new(50);
             _combo = new(WeaponDefinition.ComboSteps, _settings.ComboReset);
             for (var i = 0; i < Slots; i++)
                 _buttons[i] = new(_settings.HeavyThreshold, _settings.MaxHold);
@@ -85,14 +98,19 @@ namespace TentacleVania.Weapons
         private void OnEnable()
         {
             _motor.Dashed += OnDashed;
+            Upgrades.Changed += RefreshModifiers;
             SaveSystem.Register(this);
+            RefreshModifiers();
         }
 
         private void OnDisable()
         {
             _motor.Dashed -= OnDashed;
+            Upgrades.Changed -= RefreshModifiers;
             SaveSystem.Unregister(this);
             EndMove(Time.time);
+            for (var i = 0; i < MaxShattered; i++)
+                EndShatter(i);
         }
 
         public void Capture(SaveData data)
@@ -117,11 +135,39 @@ namespace TentacleVania.Weapons
         {
             _weapons[slot] = weapon;
             _buttons[slot].Cancel();
+            RefreshModifier(slot);
         }
+
+        public void RefreshModifiers()
+        {
+            for (var slot = 0; slot < Slots; slot++)
+                RefreshModifier(slot);
+        }
+
+        private void RefreshModifier(int slot)
+        {
+            _modifiers[slot] = EquippedModifier(_weapons[slot]);
+        }
+
+        public static WeaponModifier EquippedModifier(WeaponDefinition weapon)
+        {
+            if (weapon == null)
+                return null;
+            var id = Upgrades.EquippedModifier(ContentCatalog.IdOf(weapon));
+            if (string.IsNullOrEmpty(id))
+                return null;
+            foreach (var modifier in weapon.Modifiers)
+                if (modifier != null && modifier.name == id)
+                    return modifier;
+            return null;
+        }
+
+        private float Elapsed(float now) => (now - _moveStarted) * Stats.AttackSpeed / _durationScale;
 
         private void Update()
         {
             var now = Time.time;
+            TickShattered(now);
             if (!_health.IsAlive || !_motor.InputEnabled)
             {
                 EndMove(now);
@@ -199,6 +245,8 @@ namespace TentacleVania.Weapons
 
             ActiveSlot = slot;
             ActiveKind = kind;
+            var modifier = _modifiers[slot];
+            _durationScale = _finisher && modifier != null && modifier.Kind == ModifierKind.Maelstrom ? Mathf.Max(0.1f, modifier.Value) : 1f;
             _moveStarted = now;
             _moveForward = ChooseDirection();
             _motor.FaceImmediately(_moveForward);
@@ -224,7 +272,7 @@ namespace TentacleVania.Weapons
 
         private void TickMove(float now)
         {
-            var elapsed = (now - _moveStarted) * Stats.AttackSpeed;
+            var elapsed = Elapsed(now);
             switch (MoveShapes.Phase(_move, elapsed))
             {
                 case MovePhase.Strike:
@@ -293,8 +341,91 @@ namespace TentacleVania.Weapons
             info.Point = collider.ClosestPoint(transform.position + Vector3.up * _move.Height);
             direction.y = 0f;
             info.Direction = direction.sqrMagnitude > 1e-4f ? direction.normalized : _moveForward;
-            if (target.TakeDamage(info).Outcome != DamageOutcome.Ignored)
-                _hitThisMove.Add(target);
+            var modifier = _modifiers[ActiveSlot];
+            if (modifier != null && modifier.Kind == ModifierKind.Maelstrom && _finisher)
+            {
+                var inward = transform.position - target.transform.position;
+                inward.y = 0f;
+                if (inward.magnitude > modifier.MinDistance)
+                    info.Direction = inward.normalized;
+            }
+            var hadArmor = target.Armor > 0f;
+            var staggered = target.IsStaggered;
+            var result = target.TakeDamage(info);
+            if (result.Outcome == DamageOutcome.Ignored)
+                return;
+            _hitThisMove.Add(target);
+            if (modifier != null)
+                ApplyModifier(modifier, target, hadArmor, staggered);
+        }
+
+        private void ApplyModifier(WeaponModifier modifier, Health target, bool hadArmor, bool staggered)
+        {
+            switch (modifier.Kind)
+            {
+                case ModifierKind.ChargedCyclone:
+                    if (_finisher && _charge != null)
+                        _charge.Add(modifier.Value);
+                    break;
+                case ModifierKind.Shatter:
+                    if (ActiveKind == AttackKind.Heavy && hadArmor && target.MaxArmor > 0f && target.Armor <= 0f && target.IsAlive)
+                        Shatter(target, modifier.Value, Time.time + modifier.Duration);
+                    break;
+                case ModifierKind.BoneBreaker:
+                    if (staggered && target.IsAlive && target.TryGetComponent(out Consumable consumable))
+                        consumable.RaiseThreshold(modifier.Value, modifier.Duration);
+                    break;
+            }
+        }
+
+        private void Shatter(Health target, float scale, float until)
+        {
+            var free = -1;
+            for (var i = 0; i < MaxShattered; i++)
+            {
+                if (_shatteredTargets[i] == target)
+                {
+                    _shatteredUntil[i] = until;
+                    return;
+                }
+                if (free < 0 && ReferenceEquals(_shatteredTargets[i], null))
+                    free = i;
+            }
+            if (free < 0)
+                return;
+            _shatteredTargets[free] = target;
+            _shatteredUntil[free] = until;
+            _shatteredScales[free].HealthScale = scale;
+            target.Incoming.Add(_shatteredScales[free]);
+        }
+
+        private void TickShattered(float now)
+        {
+            for (var i = 0; i < MaxShattered; i++)
+            {
+                var target = _shatteredTargets[i];
+                if (!ReferenceEquals(target, null) && (now >= _shatteredUntil[i] || target == null || !target.IsAlive))
+                    EndShatter(i);
+            }
+        }
+
+        private void EndShatter(int index)
+        {
+            var target = _shatteredTargets[index];
+            if (ReferenceEquals(target, null))
+                return;
+            target.Incoming.Remove(_shatteredScales[index]);
+            _shatteredTargets[index] = null;
+        }
+
+        public bool IsShattered(Health target)
+        {
+            if (target == null)
+                return false;
+            for (var i = 0; i < MaxShattered; i++)
+                if (_shatteredTargets[i] == target)
+                    return true;
+            return false;
         }
 
         private HitFlags KindFlags() => ActiveKind switch
@@ -313,6 +444,7 @@ namespace TentacleVania.Weapons
             if (_finisher)
                 _combo.Reset();
             _move = null;
+            _durationScale = 1f;
             ActiveSlot = -1;
             ActiveStep = -1;
         }

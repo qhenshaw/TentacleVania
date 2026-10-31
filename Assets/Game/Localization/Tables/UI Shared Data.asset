@@ -527,6 +527,90 @@ MonoBehaviour:
     m_Key: pause.quit.fight
     m_Metadata:
       m_Items: []
+  - m_Id: 539652765007872
+    m_Key: nest.tab.upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652819533824
+    m_Key: nest.upgrades.currency
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652819533825
+    m_Key: nest.upgrades.abilities
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652819533826
+    m_Key: nest.upgrades.none
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728128
+    m_Key: nest.upgrades.tier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728129
+    m_Key: nest.upgrades.maxed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728130
+    m_Key: nest.upgrades.buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728131
+    m_Key: nest.upgrades.unlock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728132
+    m_Key: nest.upgrades.equipped
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728133
+    m_Key: nest.upgrades.owned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728134
+    m_Key: nest.upgrades.locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728135
+    m_Key: upgrade.BioShield.tier2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728136
+    m_Key: modifier.maelstrom.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728137
+    m_Key: modifier.maelstrom.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728138
+    m_Key: modifier.chargedCyclone.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728139
+    m_Key: modifier.chargedCyclone.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728140
+    m_Key: modifier.shatter.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728141
+    m_Key: modifier.shatter.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728142
+    m_Key: modifier.boneBreaker.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728143
+    m_Key: modifier.boneBreaker.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728144
+    m_Key: pause.modifier
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -3,6 +3,7 @@ using TentacleVania.Abilities;
 using TentacleVania.Abilities.Mutations;
 using TentacleVania.Core.Saves;
 using TentacleVania.Weapons;
+using TentacleVania.Weapons.Data;
 using TentacleVania.Core.Input;
 using TentacleVania.Core.Progression;
 using TentacleVania.Creature;
@@ -49,6 +50,8 @@ namespace TentacleVania.UI.Nest
         private bool _respecMode;
         private bool _waitForRelease;
         private bool _mutationMode;
+        private bool _upgradesMode;
+        private Button _tabUpgrades;
         private Button _tabStats;
         private Button _tabMutations;
         private VisualElement _statRows;
@@ -67,10 +70,13 @@ namespace TentacleVania.UI.Nest
             _menu = root.Q<VisualElement>("nest-menu");
             _tabStats = root.Q<Button>("tab-stats");
             _tabMutations = root.Q<Button>("tab-mutations");
+            _tabUpgrades = root.Q<Button>("tab-upgrades");
             Bind(_tabStats, "nest.tab.stats");
             Bind(_tabMutations, "nest.tab.mutations");
-            _tabStats.clicked += () => ShowTab(false);
-            _tabMutations.clicked += () => ShowTab(true);
+            Bind(_tabUpgrades, "nest.tab.upgrades");
+            _tabStats.clicked += () => ShowTab(0);
+            _tabMutations.clicked += () => ShowTab(1);
+            _tabUpgrades.clicked += () => ShowTab(2);
             _statRows = root.Q<VisualElement>("rows");
             _mutationRows = root.Q<VisualElement>("mutation-rows");
             _notches = root.Q<Label>("notches");
@@ -101,6 +107,7 @@ namespace TentacleVania.UI.Nest
             Nests.MenuRequested += OnMenuRequested;
             Stats.Changed += RefreshIfOpen;
             Biomass.Changed += OnBiomassChanged;
+            Upgrades.Changed += RefreshIfOpen;
         }
 
         private void OnDisable()
@@ -108,6 +115,7 @@ namespace TentacleVania.UI.Nest
             Nests.MenuRequested -= OnMenuRequested;
             Stats.Changed -= RefreshIfOpen;
             Biomass.Changed -= OnBiomassChanged;
+            Upgrades.Changed -= RefreshIfOpen;
             foreach (var (text, handler) in _bindings)
                 text.StringChanged -= handler;
             _bindings.Clear();
@@ -134,6 +142,8 @@ namespace TentacleVania.UI.Nest
             IsOpen = true;
             _respecMode = false;
             _mutationMode = false;
+            _upgradesMode = false;
+            SetTabClasses(0);
             _menu.AddToClassList(OpenClass);
             _menu.schedule.Execute(() => _menu.AddToClassList(ShownClass));
             var spawned = CreatureSpawner.Spawned;
@@ -157,14 +167,64 @@ namespace TentacleVania.UI.Nest
             _waitForRelease = true;
         }
 
-        public void ShowTab(bool mutations)
+        public void ShowTab(bool mutations) => ShowTab(mutations ? 1 : 0);
+
+        public void ShowTab(int tab)
         {
             if (_respecMode)
                 CancelRespec();
-            _mutationMode = mutations;
-            _tabStats.EnableInClassList(ActiveTabClass, !mutations);
-            _tabMutations.EnableInClassList(ActiveTabClass, mutations);
+            _mutationMode = tab != 0;
+            _upgradesMode = tab == 2;
+            SetTabClasses(tab);
             Refresh();
+        }
+
+        private void SetTabClasses(int tab)
+        {
+            _tabStats.EnableInClassList(ActiveTabClass, tab == 0);
+            _tabMutations.EnableInClassList(ActiveTabClass, tab == 1);
+            _tabUpgrades.EnableInClassList(ActiveTabClass, tab == 2);
+        }
+
+        public void UpgradeAbility(string id)
+        {
+            var creature = CreatureSpawner.Spawned;
+            var ability = creature != null ? creature.GetComponent<AbilityController>() : null;
+            var definition = ability != null ? ability.Find(id) : null;
+            if (definition != null)
+                Upgrades.TryUpgradeAbility(id, definition.TierCost(Upgrades.AbilityTier(id)), definition.MaxTier);
+            Refresh();
+        }
+
+        public void ToggleModifier(string modifierId)
+        {
+            var creature = CreatureSpawner.Spawned;
+            var weapons = creature != null ? creature.GetComponent<WeaponController>() : null;
+            if (weapons == null)
+                return;
+            for (var slot = 0; slot < WeaponController.Slots; slot++)
+            {
+                var weapon = weapons.Weapon(slot);
+                if (weapon == null)
+                    continue;
+                foreach (var modifier in weapon.Modifiers)
+                {
+                    if (modifier == null || modifier.name != modifierId)
+                        continue;
+                    var weaponId = ContentCatalog.IdOf(weapon);
+                    if (!Upgrades.OwnsModifier(modifierId))
+                    {
+                        if (Upgrades.TryUnlockModifier(modifierId, modifier.BiomassCost, modifier.MutagenCost) && Upgrades.EquippedModifier(weaponId) == "")
+                            Upgrades.EquipModifier(weaponId, modifierId);
+                    }
+                    else
+                    {
+                        Upgrades.EquipModifier(weaponId, Upgrades.EquippedModifier(weaponId) == modifierId ? null : modifierId);
+                    }
+                    Refresh();
+                    return;
+                }
+            }
         }
 
         public void ToggleMutation(string id)
@@ -252,14 +312,19 @@ namespace TentacleVania.UI.Nest
             _statRows.EnableInClassList(HiddenClass, _mutationMode);
             _mutationRows.EnableInClassList(HiddenClass, !_mutationMode);
             _notches.EnableInClassList(HiddenClass, !_mutationMode);
+            _biomass.text = Biomass.Carried.ToString("N0");
+            _next.text = Stats.NextLevelCost.ToString("N0");
+            _level.text = Stats.TotalLevel.ToString();
+            if (_upgradesMode)
+            {
+                RefreshUpgrades();
+                return;
+            }
             if (_mutationMode)
             {
                 RefreshMutations();
                 return;
             }
-            _biomass.text = Biomass.Carried.ToString("N0");
-            _next.text = Stats.NextLevelCost.ToString("N0");
-            _level.text = Stats.TotalLevel.ToString();
             var canAfford = Biomass.Carried >= Stats.NextLevelCost;
             for (var i = 0; i < Kinds.Length; i++)
             {
@@ -325,6 +390,106 @@ namespace TentacleVania.UI.Nest
                 row.Add(button);
                 _mutationRows.Add(row);
             }
+        }
+
+        private void RefreshUpgrades()
+        {
+            _points.AddToClassList(HiddenClass);
+            _respec.AddToClassList(HiddenClass);
+            _confirm.AddToClassList(HiddenClass);
+            _cancel.AddToClassList(HiddenClass);
+            _leave.RemoveFromClassList(HiddenClass);
+            _mutationRows.Clear();
+            _notches.text = string.Format(Text("nest.upgrades.currency"), Upgrades.Mutagen);
+            var creature = CreatureSpawner.Spawned;
+            var ability = creature != null ? creature.GetComponent<AbilityController>() : null;
+            var weapons = creature != null ? creature.GetComponent<WeaponController>() : null;
+            UpgradeHeading(Text("nest.upgrades.abilities"));
+            var any = false;
+            if (ability != null)
+            {
+                foreach (var id in SaveSystem.Data.Build.Abilities)
+                {
+                    var definition = ability.Find(id);
+                    if (definition == null || definition.MaxTier <= 1)
+                        continue;
+                    any = true;
+                    var tier = Upgrades.AbilityTier(id);
+                    var maxed = tier >= definition.MaxTier;
+                    var cost = definition.TierCost(tier);
+                    var abilityId = id;
+                    UpgradeRow(definition.DisplayName, string.Format(Text("nest.upgrades.tier"), tier, definition.MaxTier),
+                        Text(maxed ? "nest.upgrades.maxed" : "upgrade." + id + ".tier" + (tier + 1)),
+                        maxed ? null : string.Format(Text("nest.upgrades.buy"), cost.ToString("N0")),
+                        Biomass.Carried >= cost, "upgrade-" + id, () => UpgradeAbility(abilityId));
+                }
+            }
+            if (!any)
+                UpgradeNote(Text("nest.upgrades.none"));
+            if (weapons == null)
+                return;
+            for (var slot = 0; slot < WeaponController.Slots; slot++)
+            {
+                var weapon = weapons.Weapon(slot);
+                if (weapon == null || weapon.Modifiers.Length == 0)
+                    continue;
+                UpgradeHeading(weapon.DisplayName);
+                var equippedId = Upgrades.EquippedModifier(ContentCatalog.IdOf(weapon));
+                foreach (var modifier in weapon.Modifiers)
+                {
+                    if (modifier == null)
+                        continue;
+                    var id = modifier.name;
+                    var owned = Upgrades.OwnsModifier(id);
+                    var equipped = owned && equippedId == id;
+                    var action = owned
+                        ? Text(equipped ? "nest.unequip" : "nest.equip")
+                        : string.Format(Text("nest.upgrades.unlock"), modifier.BiomassCost.ToString("N0"), modifier.MutagenCost);
+                    var enabled = owned || Upgrades.CanUnlock(id, modifier.BiomassCost, modifier.MutagenCost);
+                    UpgradeRow(Text(modifier.TextKey + ".name"), Text(equipped ? "nest.upgrades.equipped" : owned ? "nest.upgrades.owned" : "nest.upgrades.locked"),
+                        Text(modifier.TextKey + ".effect"), action, enabled, "modifier-" + id, () => ToggleModifier(id));
+                }
+            }
+        }
+
+        private void UpgradeHeading(string text)
+        {
+            var heading = new Label(text);
+            heading.AddToClassList("nest__stat");
+            _mutationRows.Add(heading);
+        }
+
+        private void UpgradeNote(string text)
+        {
+            var note = new Label(text);
+            note.AddToClassList("nest__effect");
+            _mutationRows.Add(note);
+        }
+
+        private void UpgradeRow(string name, string state, string effect, string action, bool enabled, string buttonName, System.Action onClick)
+        {
+            var block = new VisualElement();
+            block.AddToClassList("nest__upgrade");
+            var row = new VisualElement();
+            row.AddToClassList("nest__upgrade-head");
+            var nameLabel = new Label(name);
+            nameLabel.AddToClassList("nest__upgrade-name");
+            var stateLabel = new Label(state);
+            stateLabel.AddToClassList("nest__upgrade-state");
+            var effectLabel = new Label(effect);
+            effectLabel.AddToClassList("nest__effect");
+            row.Add(nameLabel);
+            row.Add(stateLabel);
+            block.Add(row);
+            block.Add(effectLabel);
+            if (action != null)
+            {
+                var button = new Button(onClick) { text = action, name = buttonName };
+                button.AddToClassList("nest__action");
+                button.SetEnabled(enabled);
+                row.Add(button);
+            }
+            _mutationRows.Add(block);
         }
 
         private void AddLoadoutRows()

@@ -38,6 +38,9 @@ namespace TentacleVania.Abilities
                 if (controller != null)
                     controller.Equip(null);
             });
+            DebugMenu.Value(tab, "Bio-Shield tier", () => Core.Progression.Upgrades.AbilityTier("BioShield").ToString());
+            DebugMenu.Button(tab, "Toggle Bio-Shield tier 1/2", () =>
+                Core.Progression.Upgrades.SetAbilityTier("BioShield", Core.Progression.Upgrades.AbilityTier("BioShield") >= 2 ? 1 : 2));
             DebugMenu.Value(tab, "Grapple", () =>
             {
                 var grapple = CreatureSpawner.Spawned != null ? CreatureSpawner.Spawned.GetComponent<Grapple.TentacleGrapple>() : null;

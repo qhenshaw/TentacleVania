@@ -559,6 +559,7 @@ namespace TentacleVania.Enemies
         {
             Stun(_definition.StaggerStun);
             _staggerBroken = true;
+            _health.IsStaggered = true;
             _health.Incoming.Add(_staggerVulnerability);
             if (_glow != null)
                 _glow.ShowStunned();
@@ -571,6 +572,7 @@ namespace TentacleVania.Enemies
             if (!_staggerBroken)
                 return;
             _staggerBroken = false;
+            _health.IsStaggered = false;
             _health.Incoming.Remove(_staggerVulnerability);
             if (_glow != null)
                 _glow.ClearStunned();

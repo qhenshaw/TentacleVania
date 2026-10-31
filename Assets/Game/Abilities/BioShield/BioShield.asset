@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.BioShield.BioShieldDefinition
   _displayName: Bio-Shield
   _cost: 50
+  _tierCosts: 20030000i
   _absorb: 40
   _duration: 3
   _burstDamage: 25
@@ -23,6 +24,8 @@ MonoBehaviour:
   _hitLayers:
     serializedVersion: 2
     m_Bits: 512
+  _tier2Absorb: 60
+  _tier2BurstDamage: 35
   _shellPrefab: {fileID: 2977200962809328862, guid: 66ac7221e7e48a44eb5dbca0884fd740, type: 3}
   _shellRadius: 0.75
   _burstVisualTime: 0.3

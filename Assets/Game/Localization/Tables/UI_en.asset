@@ -530,6 +530,90 @@ MonoBehaviour:
     m_Localized: You're in a fight. If you quit now, you'll resume at your last nest and this fight's progress is lost.
     m_Metadata:
       m_Items: []
+  - m_Id: 539652765007872
+    m_Localized: Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652819533824
+    m_Localized: 'Mutagen: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652819533825
+    m_Localized: Abilities
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652819533826
+    m_Localized: No abilities to evolve yet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728128
+    m_Localized: Tier {0}/{1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728129
+    m_Localized: Fully evolved.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728130
+    m_Localized: Evolve ({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728131
+    m_Localized: Unlock ({0} + {1} Mutagen)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728132
+    m_Localized: Equipped
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728133
+    m_Localized: Owned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728134
+    m_Localized: Locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728135
+    m_Localized: Absorbs up to 60 damage, then bursts for 35.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728136
+    m_Localized: Maelstrom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728137
+    m_Localized: The Whirlwind finisher pulls enemies inward and lasts longer.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728138
+    m_Localized: Charged Cyclone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728139
+    m_Localized: The Whirlwind finisher fills the ability charge meter faster.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728140
+    m_Localized: Shatter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728141
+    m_Localized: Enemies whose armor is broken by Armor Breaker take more damage from all sources.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728142
+    m_Localized: Bone Breaker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728143
+    m_Localized: Staggered enemies hit by Crusher Mass can be grabbed at higher health.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 539652823728144
+    m_Localized: 'Modifier: {0}'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

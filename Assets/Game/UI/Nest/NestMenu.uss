@@ -166,6 +166,35 @@
     border-color: rgb(210, 60, 130);
 }
 
+.nest__upgrade {
+    flex-shrink: 0;
+    padding: 4px 0;
+    border-bottom-width: 1px;
+    border-color: rgba(120, 60, 100, 0.4);
+}
+
+.nest__upgrade .nest__effect {
+    flex-basis: auto;
+    flex-grow: 0;
+}
+
+.nest__upgrade-head {
+    flex-direction: row;
+    align-items: center;
+}
+
+.nest__upgrade-name {
+    flex-grow: 1;
+    font-size: 22px;
+    color: rgb(235, 215, 228);
+}
+
+.nest__upgrade-state {
+    font-size: 17px;
+    margin-right: 6px;
+    color: rgb(240, 200, 120);
+}
+
 .nest__cost {
     width: 70px;
     flex-shrink: 0;

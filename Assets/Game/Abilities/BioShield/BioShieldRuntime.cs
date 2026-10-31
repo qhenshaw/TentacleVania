@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using FMODUnity;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
+using TentacleVania.Core.Progression;
+using TentacleVania.Core.Saves;
 using UnityEngine;
 
 namespace TentacleVania.Abilities.BioShield
@@ -16,6 +18,7 @@ namespace TentacleVania.Abilities.BioShield
         private static readonly int BaseColor = Shader.PropertyToID("_BaseColor");
 
         private readonly BioShieldDefinition _definition;
+        private int _tier = Upgrades.BaseTier;
         private readonly AbilityContext _context;
         private readonly ShieldAbsorb _absorb = new();
         private readonly List<Health> _struck = new(16);
@@ -54,7 +57,8 @@ namespace TentacleVania.Abilities.BioShield
 
         public override void Activate()
         {
-            _absorb.Fill(_definition.Absorb);
+            _tier = Upgrades.AbilityTier(ContentCatalog.IdOf(_definition));
+            _absorb.Fill(_definition.AbsorbAt(_tier));
             _context.Health.Incoming.Add(_absorb);
             _active = true;
             _elapsed = 0f;
@@ -147,7 +151,7 @@ namespace TentacleVania.Abilities.BioShield
                 var target = hurtbox.Health;
                 var direction = target.transform.position - center;
                 direction.y = 0f;
-                var info = DamageInfo.Create(_definition.BurstDamage, Team.Creature, _definition.BurstType, _definition.BurstStagger);
+                var info = DamageInfo.Create(_definition.BurstDamageAt(_tier), Team.Creature, _definition.BurstType, _definition.BurstStagger);
                 info.Flags = HitFlags.Heavy | HitFlags.Ability;
                 info.Attacker = _context.Health;
                 info.Point = Hits[i].ClosestPoint(origin);
