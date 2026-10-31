@@ -25,3 +25,14 @@ Active abilities (`TentacleVania.Abilities`), on the ability input (RT / Q), pai
   - **Landing:** on an anchor's `Landing` point, or 1.6 m short of the enemy, which is tracked while it moves. 2 s cooldown, no charge cost. FMOD `event:/Abilities/Grapple/Shoot`, `Zip`, `Latch`.
 - **Chasms:** the `Chasm.prefab` has invisible `ChasmEdge` walls that the creature can't walk through and the zip ignores. An enemy zip whose path crosses a `ChasmEdge` (a ray at knee height on `_blockerLayers`) is refused, so only anchors cross chasms. Put `ChasmEdge` on hazard volumes too. `GrappleAnchor.prefab` is a hazard-striped post (stripes are reserved for anchors).
 - **Debug:** `Grapple/Debug/Resources/DebugGrappleRig.prefab` (floor, 6 m chasm, anchor, far floor). F5 Abilities tab: Grapple state, Grapple unlocked (debug), Spawn grapple rig. `TestGamepad` can't press triggers, so drive it with `TryGrapple()` in evals.
+
+## Mutations (`Mutations/`; design: Progression & Economy, Mutations, and TV-31's slice choices)
+
+- `MutationDefinition` (ScriptableObject): `TextKey` (UI table `<key>.name` / `<key>.effect`), `Notches` 1–3, and `CreateEffect()`, which returns a plain `MutationEffect` (`Enable`/`Disable`/`Tick` against a `MutationHost` holding the creature's motor, consume and grapple). Each mutation class needs its own file named after it, or Unity can't save its assets (four classes in one file left three assets missing).
+- **Slice mutations** (`Mutations/Data/`, in the `ContentCatalog`; values proposed in TV-31, pending review):
+  - `WideDodge` (1 notch): `CreatureMotor.MinDashInvulnerability` 0.3 s.
+  - `Gluttony` (1): after a consume starts, the next consume within 6 s gets `CreatureConsume.NextConsumeSpeed` ×1.3 (via `CreatureMaw.SpeedMultiplier`) and `NextHealScale` ×1.5.
+  - `RapidDigestion` (1): `HealDurationScale` 0.5.
+  - `LungingMaw` (2): `TentacleGrapple.GrabOnArrival`, so an enemy zip ends in `CreatureConsume.GrabTarget` when the target is grabbable.
+- **Runtime:** `MutationController` (creature prefab) rebuilds the effects from `Core.Progression.MutationLoadout.Equipped` on `Changed` and on load. `Equip(id)` checks the notch fit, and `UsedNotches()` sums the equipped costs. Equipping happens in the nest menu's Mutations tab.
+- **Debug:** F5 Abilities tab: Mutations readout, Grant mutation, Equip mutation (ignores nests), Clear mutations.

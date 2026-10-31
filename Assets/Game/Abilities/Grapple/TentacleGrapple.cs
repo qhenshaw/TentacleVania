@@ -40,6 +40,7 @@ namespace TentacleVania.Abilities.Grapple
         private Health _enemy;
 
         public static bool ForceUnlocked { get; set; }
+        public bool GrabOnArrival { get; set; }
         public bool IsUnlocked => ForceUnlocked || (_definition != null && BossProgress.IsAbilityUnlocked(ContentCatalog.IdOf(_definition)));
         public bool IsBusy => _phase != Phase.Idle;
         public float CooldownRemaining => Mathf.Max(0f, _readyAt - Time.time);
@@ -207,6 +208,7 @@ namespace TentacleVania.Abilities.Grapple
 
         private void End(bool latched)
         {
+            var arrivedAt = latched && _phase == Phase.Zipping ? _enemy : null;
             if (_phase == Phase.Zipping)
             {
                 if (_controller != null)
@@ -223,6 +225,8 @@ namespace TentacleVania.Abilities.Grapple
             _readyAt = Time.time + _definition.Cooldown;
             _anchor = null;
             _enemy = null;
+            if (GrabOnArrival && arrivedAt != null && arrivedAt.TryGetComponent<Consumable>(out var victim) && TryGetComponent<Creature.CreatureConsume>(out var consume))
+                consume.GrabTarget(victim);
         }
 
         private void Play(EventReference sound)

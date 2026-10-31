@@ -48,6 +48,9 @@ namespace TentacleVania.Creature
         public bool IsArmored => _armorApplied;
         public float GrabThreshold => _settings.GrabThreshold;
         public float Reach => _settings.Reach;
+        public float HealDurationScale { get; set; } = 1f;
+        public float NextConsumeSpeed { get; set; } = 1f;
+        public float NextHealScale { get; set; } = 1f;
 
         private void Awake()
         {
@@ -101,6 +104,15 @@ namespace TentacleVania.Creature
             return target != null && Grab(target);
         }
 
+        public bool GrabTarget(Consumable target)
+        {
+            if (target == null || !target.CanBeGrabbed(_settings.GrabThreshold))
+                return false;
+            var offset = target.transform.position - transform.position;
+            offset.y = 0f;
+            return offset.magnitude <= _settings.Reach && Grab(target);
+        }
+
         public bool ForceGrab()
         {
             var target = FindTarget(1.01f);
@@ -135,13 +147,19 @@ namespace TentacleVania.Creature
             toVictim.y = 0f;
             _motor.FaceImmediately(toVictim);
             var stop = _maw.Settings.MawLungeStop + Mathf.Min(_victimRadius, 0.5f);
-            _motor.Lunge(toVictim, Mathf.Max(0f, toVictim.magnitude - stop), _maw.OpenTime / Mathf.Max(0.01f, CreatureMaw.TimeScale));
+            var speed = Mathf.Max(0.1f, NextConsumeSpeed);
+            _maw.SpeedMultiplier = speed;
+            _motor.Lunge(toVictim, Mathf.Max(0f, toVictim.magnitude - stop), _maw.OpenTime / Mathf.Max(0.01f, CreatureMaw.TimeScale * speed));
             _maw.Engulf(_victimCentre, _victimRadius, _victimHalfHeight);
             Play(_settings.OpenSound);
 
-            _healRate = _health.Max * target.HealFraction / _settings.HealDuration;
-            _healRemaining += _health.Max * target.HealFraction;
-            _armoredUntil = Time.time + _settings.HealDuration;
+            var healDuration = _settings.HealDuration * Mathf.Max(0.05f, HealDurationScale);
+            var heal = _health.Max * target.HealFraction * NextHealScale;
+            _healRate = heal / healDuration;
+            _healRemaining += heal;
+            _armoredUntil = Time.time + healDuration;
+            NextConsumeSpeed = 1f;
+            NextHealScale = 1f;
             Biomass += target.Biomass;
             if (_charge != null)
                 _charge.AddConsume();
@@ -212,6 +230,7 @@ namespace TentacleVania.Creature
                 return;
             var victim = _victim;
             _victim = null;
+            _maw.SpeedMultiplier = 1f;
             _motor.UnlockControl();
             if (consumed)
             {

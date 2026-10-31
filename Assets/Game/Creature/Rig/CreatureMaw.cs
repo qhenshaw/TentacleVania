@@ -60,6 +60,7 @@ namespace TentacleVania.Creature.Rig
         private float _openRadius;
 
         public static float TimeScale { get; set; } = 1f;
+        public float SpeedMultiplier { get; set; } = 1f;
         public static bool Preview { get; set; }
         public static float PreviewProgress { get; set; }
 
@@ -184,7 +185,7 @@ namespace TentacleVania.Creature.Rig
 
         private void Update()
         {
-            var dt = Time.deltaTime * TimeScale;
+            var dt = Time.deltaTime * TimeScale * SpeedMultiplier;
             _clock += dt;
             if (Preview && !_active)
             {
@@ -235,7 +236,7 @@ namespace TentacleVania.Creature.Rig
             _shown = true;
             _drawnPhase = _phase;
 
-            var dt = Time.deltaTime * TimeScale;
+            var dt = Time.deltaTime * TimeScale * SpeedMultiplier;
             var frame = MawPose.Frame(_target - mouth, Vector3.up);
             var axis = frame * Vector3.forward;
             var near = mouth - _target;
