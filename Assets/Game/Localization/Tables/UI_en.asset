@@ -750,6 +750,38 @@ MonoBehaviour:
     m_Localized: NEST LINK
     m_Metadata:
       m_Items: []
+  - m_Id: 555412325416960
+    m_Localized: '{0} Move'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555412384137216
+    m_Localized: '{0} Attack. Hold to charge a heavy attack.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555412384137217
+    m_Localized: '{0} Dash through attacks'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555412384137218
+    m_Localized: '{0} Grab weakened prey'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555412384137219
+    m_Localized: Consuming heals you and fills your charge.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555412384137220
+    m_Localized: '{0} Grow a nest: rest, evolve and return here when you die'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555412384137221
+    m_Localized: '{0} Attack with your new weapon'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555412384137222
+    m_Localized: '{0} Ability ready'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

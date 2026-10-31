@@ -12,6 +12,9 @@ namespace TentacleVania.UI.Hud
         {
             DebugMenu.Toggle(Tab, "Show HUD", () => CombatHud.Visible, v => CombatHud.Visible = v);
             DebugMenu.Toggle(Tab, "Always show enemy bars", () => CombatHud.AlwaysShowEnemyBars, v => CombatHud.AlwaysShowEnemyBars = v);
+            DebugMenu.Toggle(Tab, "Tutorial prompts", () => Core.Progression.Tutorials.Enabled, v => Core.Progression.Tutorials.Enabled = v);
+            DebugMenu.Value(Tab, "Tutorials seen", () => string.Join(", ", Core.Saves.SaveSystem.Data.World.SeenTutorials));
+            DebugMenu.Button(Tab, "Reset tutorials", Core.Progression.Tutorials.ResetAll);
             DebugMenu.Button(Tab, "Open settings", () =>
             {
                 if (Settings.SettingsScreen.Instance != null)
