@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3363294445806193996}
   - component: {fileID: 8442239213181155655}
   - component: {fileID: 3659465807322408389}
+  - component: {fileID: 6122486412129040769}
   m_Layer: 9
   m_Name: DebugTestBoss
   m_TagString: Untagged
@@ -179,6 +180,20 @@ MonoBehaviour:
   _introCamera: {fileID: 9128862392408476389}
   _essence: {fileID: 4694502864562268824}
   _absorbEffect: {fileID: 4706080890579137519}
+--- !u!114 &6122486412129040769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113b0eecc9df23a4fb33d43d1aaee974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Consumable
+  _healFraction: 0.1
+  _biomass: 5
 --- !u!1 &2084454782579348627
 GameObject:
   m_ObjectHideFlags: 0

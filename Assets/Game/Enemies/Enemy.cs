@@ -77,6 +77,8 @@ namespace TentacleVania.Enemies
         public Vector3 Velocity => _agent.enabled ? _agent.velocity : Vector3.zero;
         public virtual bool IsCowering => false;
         public virtual bool IsBoss => false;
+        protected virtual bool FeedProtection => true;
+        protected Consumable ConsumeTarget => _consumable;
         public AttackPhase CurrentPhase => CurrentAttack == null ? AttackPhase.Done : AttackMath.Phase(CurrentAttack, Time.time - _attackStarted);
         protected NavMeshAgent Agent => _agent;
         protected float BaseSpeed { get; set; }
@@ -201,7 +203,7 @@ namespace TentacleVania.Enemies
         }
 
         private void UpdateProtection() =>
-            _health.SetProtection(_consumable != null ? Consumable.GrabThreshold : 0f, _definition.FeedableDamageTaken);
+            _health.SetProtection(_consumable != null && FeedProtection ? Consumable.GrabThreshold : 0f, _definition.FeedableDamageTaken);
 
         public void Stun(float duration)
         {

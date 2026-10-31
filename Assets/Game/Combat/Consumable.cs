@@ -22,6 +22,7 @@ namespace TentacleVania.Combat
         public float HealFraction => _healFraction;
         public int Biomass => _biomass;
         public bool IsBeingConsumed { get; private set; }
+        public bool Locked { get; set; }
         public bool IsGrabbable => CanBeGrabbed(GrabThreshold);
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -36,7 +37,7 @@ namespace TentacleVania.Combat
         }
 
         public bool CanBeGrabbed(float threshold) =>
-            !IsBeingConsumed && _health.IsAlive && _health.Normalized < threshold;
+            !Locked && !IsBeingConsumed && _health.IsAlive && _health.Normalized < threshold;
 
         public void BeginConsume()
         {
