@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Builds the Windows player from the open Unity Editor into Builds/<label>/ (ignored by Git), waits for the build to
 # finish, and prints the result, duration, size and any errors from the BuildReport. Uses the scenes in Build Settings.
-# Afterwards it restores ProjectSettings.asset when the build only left the Input System actions in preloadedAssets.
+# Afterwards it restores ProjectSettings.asset when the build only added preloadedAssets entries (Input System actions, Localization settings).
 #
 # Builds are Development builds (profiler, debug log) for testing; pass --release for a non-development player.
 #
@@ -66,7 +66,7 @@ result=$(json_string result <<<"$status")
 size=$(du -sh "Builds/$label" 2>/dev/null | cut -f1)
 echo "Build $result in $(( SECONDS - start ))s: $output ($size)"
 settings=ProjectSettings/ProjectSettings.asset
-if git diff --quiet HEAD -- "$settings" 2>/dev/null; then :; elif ! git diff -U0 HEAD -- "$settings" | grep '^[-+] ' | grep -qv 'preloadedAssets\|{fileID: .*guid: .*type: 3}'; then
+if git diff --quiet HEAD -- "$settings" 2>/dev/null; then :; elif ! git diff -U0 HEAD -- "$settings" | grep '^[-+] ' | grep -qv 'preloadedAssets\|{fileID: .*guid: .*type: [23]}'; then
     git checkout -q HEAD -- "$settings"
 fi
 (( ${#clean[@]} )) && git checkout -q HEAD -- "${clean[@]}" 2>/dev/null
