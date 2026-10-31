@@ -13,6 +13,9 @@ namespace TentacleVania.Audio
         [SerializeField] private EventReference _bossTheme;
         [SerializeField] private EventReference _roomClearSting;
         [SerializeField] private EventReference _nestRest;
+        [Tooltip("Plays while the main menu is the active scene.")]
+        [SerializeField] private EventReference _menu;
+        [SerializeField, Range(0f, 1f)] private float _menuIntensity = 0.5f;
         [SerializeField] private string _intensityParameter = "Intensity";
         [SerializeField, Min(0.05f)] private float _fadeIn = 1.5f;
         [SerializeField, Min(0.05f)] private float _fadeOut = 4f;
@@ -24,6 +27,8 @@ namespace TentacleVania.Audio
         public EventReference BossTheme => _bossTheme;
         public EventReference RoomClearSting => _roomClearSting;
         public EventReference NestRest => _nestRest;
+        public EventReference Menu => _menu;
+        public float MenuIntensity => _menuIntensity;
         public string IntensityParameter => _intensityParameter;
         public float FadeIn => _fadeIn;
         public float FadeOut => _fadeOut;
