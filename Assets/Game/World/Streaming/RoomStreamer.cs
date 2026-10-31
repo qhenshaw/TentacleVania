@@ -126,6 +126,8 @@ namespace TentacleVania.World.Streaming
             {
                 _current = current;
                 CurrentScene = current >= 0 ? rooms[current].Scene : null;
+                if (CurrentScene != null)
+                    MapProgress.Explore(CurrentScene);
                 CurrentRoomChanged?.Invoke(CurrentScene);
             }
             if (Paused)

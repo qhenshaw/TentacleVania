@@ -6,6 +6,7 @@
                 <ui:Button name="tab-stats" class="nest__tab nest__tab--active" />
                 <ui:Button name="tab-mutations" class="nest__tab" />
                 <ui:Button name="tab-upgrades" class="nest__tab" />
+                <ui:Button name="tab-travel" class="nest__tab" />
             </ui:VisualElement>
             <ui:VisualElement class="nest__summary">
                 <ui:VisualElement class="nest__summary-item">

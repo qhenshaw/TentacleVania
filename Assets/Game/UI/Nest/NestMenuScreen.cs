@@ -52,6 +52,8 @@ namespace TentacleVania.UI.Nest
         private bool _mutationMode;
         private bool _upgradesMode;
         private Button _tabUpgrades;
+        private Button _tabTravel;
+        private bool _travelMode;
         private Button _tabStats;
         private Button _tabMutations;
         private VisualElement _statRows;
@@ -71,6 +73,9 @@ namespace TentacleVania.UI.Nest
             _tabStats = root.Q<Button>("tab-stats");
             _tabMutations = root.Q<Button>("tab-mutations");
             _tabUpgrades = root.Q<Button>("tab-upgrades");
+            _tabTravel = root.Q<Button>("tab-travel");
+            Bind(_tabTravel, "nest.tab.travel");
+            _tabTravel.clicked += () => ShowTab(3);
             Bind(_tabStats, "nest.tab.stats");
             Bind(_tabMutations, "nest.tab.mutations");
             Bind(_tabUpgrades, "nest.tab.upgrades");
@@ -143,6 +148,7 @@ namespace TentacleVania.UI.Nest
             _respecMode = false;
             _mutationMode = false;
             _upgradesMode = false;
+            _travelMode = false;
             SetTabClasses(0);
             _menu.AddToClassList(OpenClass);
             _menu.schedule.Execute(() => _menu.AddToClassList(ShownClass));
@@ -175,6 +181,7 @@ namespace TentacleVania.UI.Nest
                 CancelRespec();
             _mutationMode = tab != 0;
             _upgradesMode = tab == 2;
+            _travelMode = tab == 3;
             SetTabClasses(tab);
             Refresh();
         }
@@ -184,6 +191,7 @@ namespace TentacleVania.UI.Nest
             _tabStats.EnableInClassList(ActiveTabClass, tab == 0);
             _tabMutations.EnableInClassList(ActiveTabClass, tab == 1);
             _tabUpgrades.EnableInClassList(ActiveTabClass, tab == 2);
+            _tabTravel.EnableInClassList(ActiveTabClass, tab == 3);
         }
 
         public void UpgradeAbility(string id)
@@ -315,6 +323,11 @@ namespace TentacleVania.UI.Nest
             _biomass.text = Biomass.Carried.ToString("N0");
             _next.text = Stats.NextLevelCost.ToString("N0");
             _level.text = Stats.TotalLevel.ToString();
+            if (_travelMode)
+            {
+                RefreshTravel();
+                return;
+            }
             if (_upgradesMode)
             {
                 RefreshUpgrades();
@@ -450,6 +463,51 @@ namespace TentacleVania.UI.Nest
                         Text(modifier.TextKey + ".effect"), action, enabled, "modifier-" + id, () => ToggleModifier(id));
                 }
             }
+        }
+
+        private void RefreshTravel()
+        {
+            _points.AddToClassList(HiddenClass);
+            _respec.AddToClassList(HiddenClass);
+            _confirm.AddToClassList(HiddenClass);
+            _cancel.AddToClassList(HiddenClass);
+            _leave.RemoveFromClassList(HiddenClass);
+            _mutationRows.Clear();
+            _notches.text = Text("nest.travel.hint");
+            var atlas = World.Map.MapAtlas.Instance;
+            var any = false;
+            if (atlas != null)
+            {
+                foreach (var registry in atlas.Sectors)
+                {
+                    if (registry == null)
+                        continue;
+                    var number = 0;
+                    foreach (var marker in registry.Markers)
+                    {
+                        if (marker.Kind != World.Streaming.MapMarkerKind.Nest)
+                            continue;
+                        number++;
+                        if (!Nests.IsGrown(marker.Id))
+                            continue;
+                        any = true;
+                        var id = marker.Id;
+                        var here = Nests.LastNest == id;
+                        UpgradeRow(string.Format(Text("nest.travel.name"), Map.MapScreen.SectorName(registry.Sector), number), here ? Text("nest.travel.here") : "",
+                            "", here ? null : Text("nest.travel.go"), World.Map.FastTravel.CanTravelTo(id), "travel-" + number + "-" + registry.Sector, () => TravelTo(id));
+                    }
+                }
+            }
+            if (!any)
+                UpgradeNote(Text("nest.travel.none"));
+        }
+
+        public bool TravelTo(string nestId)
+        {
+            if (!World.Map.FastTravel.Travel(nestId))
+                return false;
+            Close();
+            return true;
         }
 
         private void UpgradeHeading(string text)

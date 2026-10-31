@@ -31,6 +31,8 @@ namespace TentacleVania.UI.Pause
         private const string ActiveTabClass = "pause__tab--active";
         private static readonly string[] Tabs = { "map", "abilities", "mutations", "logs" };
 
+        [SerializeField] private StyleSheet _mapStyle;
+
         private readonly List<Button> _tabButtons = new();
         private VisualElement _pause;
         private ScrollView _content;
@@ -71,6 +73,8 @@ namespace TentacleVania.UI.Pause
             var root = GetComponent<UIDocument>().rootVisualElement;
             root.StretchToParentSize();
             root.pickingMode = PickingMode.Ignore;
+            if (_mapStyle != null && !root.styleSheets.Contains(_mapStyle))
+                root.styleSheets.Add(_mapStyle);
             _pause = root.Q("pause");
             _content = root.Q<ScrollView>("content");
             _confirm = root.Q("confirm");
@@ -179,7 +183,7 @@ namespace TentacleVania.UI.Pause
             switch (Tabs[_tab])
             {
                 case "map":
-                    Note("pause.map.empty");
+                    FillMap();
                     break;
                 case "abilities":
                     FillAbilities();
@@ -245,6 +249,24 @@ namespace TentacleVania.UI.Pause
 #else
             Application.Quit();
 #endif
+        }
+
+        private void FillMap()
+        {
+            var title = new Label();
+            title.AddToClassList("map__title");
+            var info = new Label();
+            info.AddToClassList("map__info");
+            var registry = Map.MapScreen.CurrentRegistry();
+            Map.MapScreen.FillHeader(title, info, registry);
+            _content.Add(title);
+            _content.Add(info);
+            if (registry == null)
+                return;
+            var view = new Map.MapView(false);
+            view.style.height = 470f;
+            _content.Add(view);
+            view.SetRegistry(registry);
         }
 
         private void FillLogs()

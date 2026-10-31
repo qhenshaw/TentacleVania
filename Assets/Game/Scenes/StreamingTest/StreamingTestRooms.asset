@@ -43,3 +43,22 @@ MonoBehaviour:
     Size: {x: 20.8, y: 3.2, z: 20.399994}
     Neighbours:
     - StreamingTest_Room4
+  _sector: Debug
+  _rootScene: StreamingTest
+  _color: {r: 0.3, g: 0.7, b: 0.9, a: 1}
+  _markers:
+  - Kind: 0
+    Id: StreamingTest_Room1/BioNest
+    Room: StreamingTest_Room1
+    Position: {x: 3, y: 0, z: 1.8}
+    Yaw: 0
+  - Kind: 3
+    Id: MapGate
+    Room: StreamingTest_Room3
+    Position: {x: 0, y: 0, z: 44.159996}
+    Yaw: 0
+  - Kind: 0
+    Id: StreamingTest_Room5/BioNest
+    Room: StreamingTest_Room5
+    Position: {x: 3, y: 0, z: 73.8}
+    Yaw: 0

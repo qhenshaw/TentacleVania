@@ -1,5 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using TentacleVania.World.BioNests;
+using TentacleVania.World.Hoarder;
+using TentacleVania.World.Map;
+using TentacleVania.World.Security;
 using TentacleVania.World.Streaming;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
@@ -28,6 +32,7 @@ namespace TentacleVania.World.Editor
         {
             var rooms = registry.Rooms;
             var report = new System.Text.StringBuilder();
+            registry.Markers.Clear();
             foreach (var room in rooms)
             {
                 var path = ScenePath(room.Scene);
@@ -45,6 +50,7 @@ namespace TentacleVania.World.Editor
                     room.Center = bounds.center;
                     room.Size = bounds.size;
                 }
+                CollectMarkers(scene, room.Scene, registry.Markers);
                 if (opened)
                     EditorSceneManager.CloseScene(scene, true);
                 Register(path, room.Scene, group, includeInBuild);
@@ -58,9 +64,30 @@ namespace TentacleVania.World.Editor
                         room.Neighbours.Add(other.Scene);
                 report.AppendLine($"{room.Scene} neighbours: {string.Join(", ", room.Neighbours)}");
             }
+            report.AppendLine($"markers: {registry.Markers.Count}");
             EditorUtility.SetDirty(registry);
             AssetDatabase.SaveAssets();
             return report.ToString();
+        }
+
+        private static void CollectMarkers(Scene scene, string room, List<MapMarker> markers)
+        {
+            foreach (var root in scene.GetRootGameObjects())
+            {
+                foreach (var nest in root.GetComponentsInChildren<BioNest>(true))
+                {
+                    var respawn = nest.RespawnPoint;
+                    markers.Add(new MapMarker { Kind = MapMarkerKind.Nest, Id = nest.SaveId, Room = room, Position = respawn.position, Yaw = respawn.eulerAngles.y });
+                }
+                foreach (var relay in root.GetComponentsInChildren<SecurityRelay>(true))
+                    markers.Add(new MapMarker { Kind = MapMarkerKind.Relay, Id = relay.System + "/" + relay.Id, Room = room, Position = relay.transform.position });
+                foreach (var door in root.GetComponentsInChildren<SecurityDoor>(true))
+                    markers.Add(new MapMarker { Kind = MapMarkerKind.SecurityDoor, Id = door.System, Room = room, Position = door.transform.position });
+                foreach (var gate in root.GetComponentsInChildren<MapGate>(true))
+                    markers.Add(new MapMarker { Kind = MapMarkerKind.Gate, Id = gate.Id, Room = room, Position = gate.transform.position });
+                foreach (var hoarder in root.GetComponentsInChildren<HoarderMerchant>(true))
+                    markers.Add(new MapMarker { Kind = MapMarkerKind.Hoarder, Id = "Hoarder", Room = room, Position = hoarder.transform.position });
+            }
         }
 
         private static bool TryMeasure(Scene scene, out Bounds bounds)

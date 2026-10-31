@@ -703,6 +703,50 @@ MonoBehaviour:
     m_Key: trinket.TaggedLockerKey.name
     m_Metadata:
       m_Items: []
+  - m_Id: 552799102058496
+    m_Key: map.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584448
+    m_Key: map.noData
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584449
+    m_Key: map.relays
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584450
+    m_Key: map.legend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584451
+    m_Key: nest.tab.travel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584452
+    m_Key: nest.travel.hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584453
+    m_Key: nest.travel.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584454
+    m_Key: nest.travel.here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584455
+    m_Key: nest.travel.go
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584456
+    m_Key: nest.travel.none
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584457
+    m_Key: nest.travel.transit
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
