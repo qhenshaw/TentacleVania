@@ -171,6 +171,18 @@ namespace TentacleVania.UI.Nest
             _menu.RemoveFromClassList(ShownClass);
             _menu.RemoveFromClassList(OpenClass);
             _waitForRelease = true;
+            DrainChargeWithoutAbility();
+        }
+
+        private static void DrainChargeWithoutAbility()
+        {
+            var creature = CreatureSpawner.Spawned;
+            if (creature == null)
+                return;
+            var ability = creature.GetComponent<AbilityController>();
+            var charge = creature.GetComponent<CreatureCharge>();
+            if (ability != null && ability.Equipped == null && charge != null)
+                charge.Set(0f);
         }
 
         public void ShowTab(bool mutations) => ShowTab(mutations ? 1 : 0);
