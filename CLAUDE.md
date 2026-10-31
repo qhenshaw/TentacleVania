@@ -157,6 +157,7 @@ A small `Bootstrap` scene is the entry point: it holds the persistent managers (
 ## Code style
 
 - No comments in C# or shaders. Scripts in `Tools/` keep a header comment saying what they do and how to call them.
+- Never name a type after an area or folder namespace (`Bosses`, `Nests`): inside `TentacleVania.*` the name resolves to the namespace `TentacleVania.Bosses` and fails with CS0234 (hence `Core.Progression.BossProgress` and `World.BioNests`).
 - `_camelCase` private fields, `[SerializeField] private` for inspector fields, `PascalCase` constants.
 - Use target-typed `new()` and expression-bodied members for one-liners.
 - Containers passed to a scheduled job need `Allocator.TempJob` or `Persistent`, also in tests; `Allocator.Temp` throws when the job is scheduled.
