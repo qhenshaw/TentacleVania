@@ -23,6 +23,19 @@ namespace TentacleVania.World.Map
 
         private void OnDisable() => FastTravel.PhaseChanged -= OnPhaseChanged;
 
+        private static void Teleport(Vector3 position, float yaw)
+        {
+            var creature = Combat.CombatTargets.Creature;
+            if (creature == null)
+                return;
+            var controller = creature.GetComponent<CharacterController>();
+            if (controller != null)
+                controller.enabled = false;
+            creature.transform.SetPositionAndRotation(position, Quaternion.Euler(0f, yaw, 0f));
+            if (controller != null)
+                controller.enabled = true;
+        }
+
         private void OnPhaseChanged(TravelPhase phase) => _phaseStarted = Time.unscaledTime;
 
         private void Update()
@@ -35,14 +48,24 @@ namespace TentacleVania.World.Map
                     if (elapsed >= FastTravel.CoverTime)
                     {
                         Time.timeScale = 1f;
-                        SceneFlow.Load(FastTravel.PendingScene);
+                        if (FastTravel.Kind == TravelKind.Crawl)
+                            Streaming.RoomStreamer.FocusOverride = FastTravel.CrawlTarget;
+                        else
+                            SceneFlow.Load(FastTravel.PendingScene);
                         FastTravel.SetPhase(TravelPhase.Loading);
                     }
                     break;
                 case TravelPhase.Loading:
                     FastTravel.Cover = 1f;
-                    if (elapsed > 0.2f && !SceneFlow.IsLoading && LoadGate.IsOpen)
+                    if (elapsed > 0.6f && !SceneFlow.IsLoading && LoadGate.IsOpen && (Streaming.RoomStreamer.Active == null || Streaming.RoomStreamer.Active.InFlight == 0))
+                    {
+                        if (FastTravel.Kind == TravelKind.Crawl)
+                        {
+                            Teleport(FastTravel.CrawlTarget, FastTravel.CrawlYaw);
+                            Streaming.RoomStreamer.FocusOverride = null;
+                        }
                         FastTravel.SetPhase(TravelPhase.Revealing);
+                    }
                     break;
                 case TravelPhase.Revealing:
                     FastTravel.Cover = 1f - Mathf.Clamp01(elapsed / FastTravel.RevealTime);

@@ -6,6 +6,8 @@ namespace TentacleVania.World.Editor
 {
     public static class SpecimenHoldingPlan
     {
+        public const string RootScene = "SpecimenHolding";
+        public static readonly Vector3 ElevatorPosition = RoomContext.CellCenter(41.5f, 4f);
         private const string Pickups = "Assets/Game/World/Pickups/";
         private const string Logs = "Assets/Game/World/Lore/Data/";
 
@@ -120,8 +122,8 @@ namespace TentacleVania.World.Editor
                     var center = RoomContext.Cell(39f, 3f);
                     var hall = c.AddByName(c.Empty("WardenHall", center, 0f), "TentacleVania.Bosses.Warden.WardenHall");
                     RoomContext.Set(hall, "_size", new Vector2(24f, 18f));
-                    var elevator = c.Spawn("Assets/Game/World/Transit/FreightElevator.prefab", RoomContext.CellCenter(41.5f, 4f), 270f, "FreightElevator");
-                    RoomContext.Set(elevator.GetComponent<Transit.SectorElevator>(), "_requiredBoss", "SH/WardenDrone");
+                    var elevator = c.Spawn("Assets/Game/World/Transit/FreightElevator.prefab", ElevatorPosition, 270f, "FreightElevator");
+                    BioLabsPlan.Elevator(elevator.GetComponent<Transit.SectorElevator>(), BioLabsPlan.RootScene, BioLabsPlan.ElevatorPosition + Vector3.right * 1.5f, 90f, "SH/WardenDrone");
                 },
             }.Door(35, 3, Side.West, true).Wave(E("WardenDrone", 1)));
 

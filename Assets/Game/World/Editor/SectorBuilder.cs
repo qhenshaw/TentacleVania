@@ -120,6 +120,7 @@ namespace TentacleVania.World.Editor
             { "MedDrone", "Assets/Game/Enemies/Prefabs/MedDrone.prefab" },
             { "Hazmat", "Assets/Game/Enemies/Prefabs/Hazmat.prefab" },
             { "WardenDrone", "Assets/Game/Bosses/Warden/WardenDrone.prefab" },
+            { "SurgicalAutomaton", "Assets/Game/Bosses/Automaton/SurgicalAutomaton.prefab" },
         };
 
         public static string Build(SectorPlan plan, string onlyScene = null)

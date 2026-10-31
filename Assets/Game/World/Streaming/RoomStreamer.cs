@@ -37,6 +37,7 @@ namespace TentacleVania.World.Streaming
         public static RoomStreamer Active { get; private set; }
         public static string CurrentScene { get; private set; }
         public static bool Paused { get; set; }
+        public static Vector3? FocusOverride { get; set; }
         public static event Action<string> CurrentRoomChanged;
 
         public RoomRegistry Registry => _registry;
@@ -49,6 +50,7 @@ namespace TentacleVania.World.Streaming
             Active = null;
             CurrentScene = null;
             Paused = false;
+            FocusOverride = null;
             CurrentRoomChanged = null;
         }
 
@@ -136,13 +138,15 @@ namespace TentacleVania.World.Streaming
             {
                 if (_slots[i] == Slot.Unloaded && RoomStreamingRules.Wanted(focus, rooms, i, current, _registry.LoadRadius))
                     Load(i);
-                else if (_slots[i] == Slot.Loaded && RoomStreamingRules.Unwanted(focus, rooms, i, current, _registry.UnloadRadius))
+                else if (_slots[i] == Slot.Loaded && !FocusOverride.HasValue && RoomStreamingRules.Unwanted(focus, rooms, i, current, _registry.UnloadRadius))
                     Unload(i);
             }
         }
 
         private Vector3 Focus()
         {
+            if (FocusOverride.HasValue)
+                return FocusOverride.Value;
             var target = CameraFocus.Target;
             if (target != null)
                 return target.position;

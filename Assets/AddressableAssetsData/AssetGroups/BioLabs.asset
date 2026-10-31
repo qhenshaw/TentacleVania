@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: BioLabs
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: BioLabs
+  m_GUID: 449c9e34e6bd2724ea1730dc934f4414
+  m_SerializeEntries:
+  - m_GUID: 01bcab3487f23d549bc75ee373183531
+    m_Address: BL_A7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13e4bdf3e6648084ca87c10746ef0d79
+    m_Address: BL_A2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2485856bb7c815142a1e6a9f95448d49
+    m_Address: BL_R3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b04ab6736641114aa8c4b2bcad8f817
+    m_Address: BL_A5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7003db2519061bd4b9e7fdfc3e8ace63
+    m_Address: BL_A4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77d9317c0eef6da458788a1f12501ee6
+    m_Address: BL_A6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8388a6ef43d990541b515bbb63e9cf21
+    m_Address: BL_VentRoom
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b650273c5b8bb042adafbf8487fee17
+    m_Address: BL_A8
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3940e45ee564d347b5e977d0c4a5e29
+    m_Address: BL_PreBossNest
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6aa931884578f84394511928f9b44fd
+    m_Address: BL_R1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cfba2dc10cbe24d49898e023f0804e72
+    m_Address: BL_AutomatonTheatre
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4ecd2fab19eb80479ab2b1410934bc2
+    m_Address: BL_EntryNest
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9da1ccca8fa7f8448a2c73cf7363f68
+    m_Address: BL_R2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da32d2ee3d4550d438ade7098572c0a0
+    m_Address: BL_A3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd617aca5416a264783dbc71d30ac175
+    m_Address: BL_A1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3cffb4e42189a54da809084025a5237
+    m_Address: BL_A9
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4d6b5f8d559a1c24f8fe26a96bc15c60, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c6c6dec43b2fa6a4c8828ad7456a36e6, type: 2}
+    - {fileID: 11400000, guid: 268391768ae49c84e8821792a58da4ed, type: 2}

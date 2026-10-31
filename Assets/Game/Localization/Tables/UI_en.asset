@@ -794,6 +794,14 @@ MonoBehaviour:
     m_Localized: FREIGHT ELEVATOR
     m_Metadata:
       m_Items: []
+  - m_Id: 581293861257216
+    m_Localized: CRAWLSPACE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 581293907394560
+    m_Localized: Crawl through
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
