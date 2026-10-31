@@ -193,6 +193,7 @@ unity command eval --caller plugin --skill unity-cli '<C# statements>; return <v
 
 - Never read `Library/`, `*.meta` files, scenes or terrain assets directly; get a GUID with `AssetDatabase.AssetPathToGUID`.
 - Save any scene you edit with `EditorSceneManager.SaveScene` so the changes can be staged.
+- After changing `EditorBuildSettings.scenes` from an eval, call `AssetDatabase.SaveAssets()`: otherwise `ProjectSettings/EditorBuildSettings.asset` may not be written and the change never reaches Git (BioLabs was missing from a commit this way).
 - `OpenScene` unloads unused assets, so a C# reference to an asset the same script created or loaded before opening the scene is dead afterwards and assigns as null without an error. Load assets with `AssetDatabase.LoadAssetAtPath` after `OpenScene`, and return the references you set (or grep the saved scene for `{fileID: 0}`) to confirm them.
 - For input with exact timing (taps, holds, combos), script it from an eval with a closure on `UnityEditor.EditorApplication.update` that calls `TestGamepad.Set` / `Release` at elapsed `Time.time` marks, and store results with `SessionState`. Separate `--at` files land up to seconds apart, and events queued from `InputSystem.onAfterUpdate` never reach the game.
 - In this Unity version `FindFirstObjectByType` and the `FindObjectsByType(FindObjectsSortMode)` overloads are obsolete (game code only warns, evals fail to compile): use `FindAnyObjectByType<T>()` and `FindObjectsByType<T>()`.
