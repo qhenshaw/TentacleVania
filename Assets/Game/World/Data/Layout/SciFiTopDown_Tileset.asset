@@ -250,18 +250,4 @@ MonoBehaviour:
     ConcavePost:
       Entries: []
     Static: 1
-  _door:
-    Entries:
-    - Prefab: {fileID: 683564487231196685, guid: a92e766ae8bc50f4f83f32dea7474f7f, type: 3}
-      Weight: 1
-      Offset: {x: 0, y: 0, z: 1.07}
-      Rotation: 0
-      Scale: {x: 1, y: 1, z: 1}
-      RandomQuarterTurns: 0
-    - Prefab: {fileID: 7683423069527007708, guid: 59f5e06cd8a5d244a8e4113d2e65a381, type: 3}
-      Weight: 1
-      Offset: {x: 0, y: 0, z: 1.07}
-      Rotation: 0
-      Scale: {x: 1, y: 1, z: 1}
-      RandomQuarterTurns: 0
   _wallInset: 1

@@ -11,7 +11,6 @@ namespace TentacleVania.World.Editor
     public static class LayoutGenerator
     {
         private const int FloorLayer = -1;
-        private const int DoorLayer = -2;
         private const StaticEditorFlags StaticFlags = StaticEditorFlags.BatchingStatic | StaticEditorFlags.OccluderStatic |
             StaticEditorFlags.OccludeeStatic | StaticEditorFlags.ContributeGI | StaticEditorFlags.ReflectionProbeStatic;
 
@@ -174,7 +173,7 @@ namespace TentacleVania.World.Editor
                 for (var i = 0; i < openings.Count; i++)
                 {
                     var opening = openings[i];
-                    if (opening.Kind == OpeningKind.Doorway)
+                    if (opening.Kind != OpeningKind.Prefab || opening.Prefab == null)
                         continue;
                     var spec = opening.Spec;
                     var center = Vector3.zero;
@@ -183,19 +182,9 @@ namespace TentacleVania.World.Editor
                     center /= spec.Width;
                     if (parent == null)
                         parent = Child(_root, "Doors");
-                    var yaw = Sides.Yaw(spec.Side);
-                    if (opening.Kind == OpeningKind.Prefab)
-                    {
-                        if (opening.Prefab == null)
-                            continue;
-                        var rotation = _layout.transform.rotation * Quaternion.Euler(0f, yaw, 0f);
-                        var edge = center + rotation * Vector3.forward * (_layout.CellSize * 0.5f);
-                        Spawn(opening.Prefab, parent, edge, rotation, Vector3.one);
-                        continue;
-                    }
-                    var index = LayoutRandom.Pick(_tileset.Door, LayoutRandom.Hash(i, spec.Cell.x, spec.Cell.y, DoorLayer));
-                    if (index >= 0)
-                        Place(_tileset.Door.Entries[index], parent, center, yaw, false);
+                    var rotation = _layout.transform.rotation * Quaternion.Euler(0f, Sides.Yaw(spec.Side), 0f);
+                    var edge = center + rotation * Vector3.forward * (_layout.CellSize * 0.5f);
+                    Spawn(opening.Prefab, parent, edge, rotation, Vector3.one);
                 }
             }
 
