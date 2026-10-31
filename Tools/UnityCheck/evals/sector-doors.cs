@@ -1,11 +1,13 @@
-TentacleVania.World.Streaming.RoomStreamer.Active.LoadAll();
-var plan = TentacleVania.World.Editor.SpecimenHoldingPlan.Create();
+TentacleVania.World.Streaming.RoomStreamer.Paused = true; TentacleVania.World.Streaming.RoomStreamer.Active.LoadAll();
+var plan = TentacleVania.World.Streaming.RoomStreamer.Active.Registry.Sector == "BL" ? TentacleVania.World.Editor.BioLabsPlan.Create() : TentacleVania.World.Editor.SpecimenHoldingPlan.Create();
 var t0 = UnityEngine.Time.realtimeSinceStartup;
 UnityEditor.EditorApplication.CallbackFunction tick = null;
 tick = () =>
 {
     if (UnityEngine.Time.realtimeSinceStartup - t0 < 6f) return;
     UnityEditor.EditorApplication.update -= tick;
+    var loadedRooms = 0;
+    for (var s = 0; s < UnityEngine.SceneManagement.SceneManager.sceneCount; s++) if (UnityEngine.SceneManagement.SceneManager.GetSceneAt(s).name.Contains("_")) loadedRooms++;
     var log = "";
     var checkedCount = 0;
     foreach (var room in plan.Rooms)
@@ -25,7 +27,8 @@ tick = () =>
             }
         }
     }
-    UnityEditor.SessionState.SetString("doorsLog", "checked " + checkedCount + " doors; " + (log.Length == 0 ? "all clear" : log));
+    TentacleVania.World.Streaming.RoomStreamer.Paused = false;
+    UnityEditor.SessionState.SetString("doorsLog", "checked " + checkedCount + " doors with " + loadedRooms + " rooms loaded; " + (log.Length == 0 ? "all clear" : log));
 };
 UnityEditor.EditorApplication.update += tick;
 return "loading";

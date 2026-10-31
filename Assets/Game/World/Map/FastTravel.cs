@@ -18,6 +18,7 @@ namespace TentacleVania.World.Map
     {
         Nest,
         Elevator,
+        Crawl,
     }
 
     public static class FastTravel
@@ -33,6 +34,8 @@ namespace TentacleVania.World.Map
         public static TravelKind Kind { get; private set; }
 
         internal static string PendingScene { get; private set; }
+        internal static Vector3 CrawlTarget { get; private set; }
+        internal static float CrawlYaw { get; private set; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
@@ -66,6 +69,17 @@ namespace TentacleVania.World.Map
             SpawnOverride.Set(scene, arrival, yaw);
             Destination = scene;
             Begin(TravelKind.Elevator, scene);
+            return true;
+        }
+
+        public static bool Crawl(Vector3 target, float yaw)
+        {
+            if (Phase != TravelPhase.Idle || SceneFlow.IsLoading)
+                return false;
+            CrawlTarget = target;
+            CrawlYaw = yaw;
+            Destination = null;
+            Begin(TravelKind.Crawl, null);
             return true;
         }
 

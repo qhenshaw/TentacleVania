@@ -67,7 +67,7 @@ namespace TentacleVania.UI.Map
             if (FastTravel.Kind != _kind)
             {
                 _kind = FastTravel.Kind;
-                _label.text = LocalizationSettings.StringDatabase.GetLocalizedString("UI", _kind == TravelKind.Elevator ? "transit.elevator" : "nest.travel.transit");
+                _label.text = LocalizationSettings.StringDatabase.GetLocalizedString("UI", _kind == TravelKind.Elevator ? "transit.elevator" : _kind == TravelKind.Crawl ? "transit.crawl" : "nest.travel.transit");
             }
             var cover = FastTravel.Cover;
             var pulse = 0.5f + 0.5f * Mathf.Sin(Time.unscaledTime * PulseRate * Mathf.PI * 2f);

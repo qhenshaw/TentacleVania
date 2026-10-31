@@ -791,6 +791,14 @@ MonoBehaviour:
     m_Key: transit.elevator
     m_Metadata:
       m_Items: []
+  - m_Id: 581293861257216
+    m_Key: transit.crawl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 581293907394560
+    m_Key: prompt.crawlspace.enter
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
