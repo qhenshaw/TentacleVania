@@ -19,6 +19,7 @@ namespace TentacleVania.World.Map
         Nest,
         Elevator,
         Crawl,
+        Tunnel,
     }
 
     public static class FastTravel
@@ -36,6 +37,9 @@ namespace TentacleVania.World.Map
         internal static string PendingScene { get; private set; }
         internal static Vector3 CrawlTarget { get; private set; }
         internal static float CrawlYaw { get; private set; }
+        internal static readonly System.Collections.Generic.List<Vector3> TunnelPath = new(16);
+        public const float TunnelSpeed = 40f;
+        public const float TunnelDepth = -3f;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
@@ -80,6 +84,21 @@ namespace TentacleVania.World.Map
             CrawlYaw = yaw;
             Destination = null;
             Begin(TravelKind.Crawl, null);
+            return true;
+        }
+
+        public static bool Tunnel(System.Collections.Generic.IReadOnlyList<Vector3> path, Vector3 exit, float yaw)
+        {
+            if (Phase != TravelPhase.Idle || SceneFlow.IsLoading || path == null || path.Count == 0)
+                return false;
+            TunnelPath.Clear();
+            for (var i = 0; i < path.Count; i++)
+                TunnelPath.Add(new Vector3(path[i].x, TunnelDepth, path[i].z));
+            TunnelPath.Add(new Vector3(exit.x, TunnelDepth, exit.z));
+            CrawlTarget = exit;
+            CrawlYaw = yaw;
+            Destination = null;
+            Begin(TravelKind.Tunnel, null);
             return true;
         }
 

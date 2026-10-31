@@ -15,6 +15,7 @@ namespace TentacleVania.UI.Map
 
         private VisualElement _overlay;
         private Label _label;
+        private Texture2D _vignette;
         private TravelKind _kind = (TravelKind)(-1);
 
         public static float ShownOpacity => _instance != null && _instance._overlay != null ? _instance._overlay.resolvedStyle.opacity : 0f;
@@ -73,8 +74,39 @@ namespace TentacleVania.UI.Map
             var pulse = 0.5f + 0.5f * Mathf.Sin(Time.unscaledTime * PulseRate * Mathf.PI * 2f);
             _overlay.style.opacity = cover;
             _overlay.style.display = cover > 0.001f ? DisplayStyle.Flex : DisplayStyle.None;
+            if (FastTravel.Kind == TravelKind.Tunnel)
+            {
+                if (_vignette == null)
+                    _vignette = Vignette();
+                _overlay.style.backgroundImage = _vignette;
+                _overlay.style.backgroundColor = Color.clear;
+                _label.style.display = DisplayStyle.None;
+                return;
+            }
+            _overlay.style.backgroundImage = StyleKeyword.None;
+            _label.style.display = DisplayStyle.Flex;
             _overlay.style.backgroundColor = Color.Lerp(new Color(0.07f, 0.01f, 0.05f), new Color(0.22f, 0.03f, 0.15f), pulse);
             _label.style.opacity = 0.6f + 0.4f * pulse;
+        }
+
+        private static Texture2D Vignette()
+        {
+            const int size = 128;
+            var texture = new Texture2D(size, size, TextureFormat.RGBA32, false) { wrapMode = TextureWrapMode.Clamp };
+            var pixels = new Color32[size * size];
+            for (var y = 0; y < size; y++)
+            {
+                for (var x = 0; x < size; x++)
+                {
+                    var dx = (x + 0.5f) / size * 2f - 1f;
+                    var dy = (y + 0.5f) / size * 2f - 1f;
+                    var alpha = Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(0.25f, 1.05f, Mathf.Sqrt(dx * dx + dy * dy)));
+                    pixels[y * size + x] = new Color32(4, 0, 6, (byte)(Mathf.Clamp01(0.35f + alpha * 0.65f) * 255f));
+                }
+            }
+            texture.SetPixels32(pixels);
+            texture.Apply();
+            return texture;
         }
     }
 }

@@ -15,6 +15,8 @@ namespace TentacleVania.World.Shortcuts
         [SerializeField] private string _id;
         [Tooltip("This end can open the crawlspace (the far side); the other end waits until it is open.")]
         [SerializeField] private bool _opensHere;
+        [Tooltip("Optional: the crawlspace opens when this nest is grown (Specimen Holding T1: SH/PreBossNest).")]
+        [SerializeField] private string _openOnNestGrown;
         [Tooltip("Where the creature comes out: the other end's exit point.")]
         [SerializeField] private Vector3 _exitPosition;
         [SerializeField] private float _exitYaw;
@@ -22,6 +24,8 @@ namespace TentacleVania.World.Shortcuts
         [SerializeField] private Transform _grate;
         [SerializeField] private Vector3 _grateOpenOffset = new(0f, 0.9f, 0f);
         [SerializeField] private EventReference _openSound;
+
+        private static readonly System.Collections.Generic.List<Vector3> Route = new(16);
 
         private Vector3 _grateClosed;
 
@@ -36,6 +40,9 @@ namespace TentacleVania.World.Shortcuts
         {
             Interactions.Register(this);
             ShortcutProgress.Opened += OnOpened;
+            Nests.Grown += OnNestGrown;
+            if (!string.IsNullOrEmpty(_openOnNestGrown) && Nests.IsGrown(_openOnNestGrown))
+                ShortcutProgress.Open(_id);
             if (_grate != null)
                 _grateClosed = _grate.localPosition;
             RefreshGrate();
@@ -45,6 +52,7 @@ namespace TentacleVania.World.Shortcuts
         {
             Interactions.Unregister(this);
             ShortcutProgress.Opened -= OnOpened;
+            Nests.Grown -= OnNestGrown;
         }
 
         public void Configure(string id, bool opensHere, Vector3 exitPosition, float exitYaw)
@@ -65,7 +73,20 @@ namespace TentacleVania.World.Shortcuts
                     RuntimeManager.PlayOneShot(_openSound, transform.position);
                 return;
             }
-            FastTravel.Crawl(_exitPosition, _exitYaw);
+            var streamer = Streaming.RoomStreamer.Active;
+            if (streamer == null)
+            {
+                FastTravel.Crawl(_exitPosition, _exitYaw);
+                return;
+            }
+            TunnelRoute.Build(streamer.Registry.Rooms, transform.position, _exitPosition, Route);
+            FastTravel.Tunnel(Route, _exitPosition, _exitYaw);
+        }
+
+        private void OnNestGrown(string nest)
+        {
+            if (nest == _openOnNestGrown)
+                ShortcutProgress.Open(_id);
         }
 
         private void OnOpened(string id)
