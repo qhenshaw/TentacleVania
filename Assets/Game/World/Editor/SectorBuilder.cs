@@ -143,6 +143,7 @@ namespace TentacleVania.World.Editor
             }
             var registry = BuildRegistry(plan);
             report.Append(RoomRegistryTools.Update(registry, plan.AddressablesGroup, true));
+            report.Append(AutoTunnels.Place(plan, registry));
             BuildRoot(plan, registry);
             AddToAtlas(registry);
             AssetDatabase.SaveAssets();
