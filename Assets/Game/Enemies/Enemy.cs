@@ -88,6 +88,7 @@ namespace TentacleVania.Enemies
             _agent.autoBraking = true;
             _readyAt = new float[_definition.Attacks.Count];
             _health.Configure(Team.Site, _definition.MaxHealth, _definition.MaxArmor);
+            _health.Bleeds = !_definition.Machine;
             _agent.speed = _definition.MoveSpeed;
             _circleAngle = UnityEngine.Random.Range(0f, 360f);
             _stagger = new(_definition.MaxStagger);

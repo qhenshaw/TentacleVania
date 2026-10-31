@@ -3,6 +3,7 @@ using TentacleVania.Core.Debugging;
 using TentacleVania.Core.Progression;
 using TentacleVania.World.Arenas;
 using TentacleVania.World.BioNests;
+using TentacleVania.World.Security;
 using UnityEngine;
 
 namespace TentacleVania.World
@@ -63,6 +64,67 @@ namespace TentacleVania.World
                 if (arena != null)
                     arena.SkipWave();
             });
+            DebugMenu.Value(Tab, "Security", DescribeSecurity);
+            DebugMenu.Button(Tab, "Spawn security test rig", SpawnSecurityRig);
+            DebugMenu.Button(Tab, "Destroy nearest relay", () =>
+            {
+                var relay = NearestRelay();
+                if (relay != null)
+                    relay.DestroyRelay();
+            });
+            DebugMenu.Button(Tab, "Reset relays", ResetRelays);
+        }
+
+        public const string SecurityRigResource = "DebugSecurityRig";
+
+        public static void SpawnSecurityRig()
+        {
+            var prefab = Resources.Load<GameObject>(SecurityRigResource);
+            var creature = CombatTargets.Creature;
+            if (prefab == null || creature == null)
+                return;
+            var forward = creature.transform.forward;
+            forward.y = 0f;
+            Object.Instantiate(prefab, creature.transform.position + forward.normalized * 4f, Quaternion.LookRotation(forward.normalized));
+        }
+
+        public static void ResetRelays()
+        {
+            foreach (var door in Object.FindObjectsByType<SecurityDoor>())
+                SecurityRelays.Reset(door.System);
+            foreach (var relay in SecurityRelay.All)
+            {
+                SecurityRelays.Reset(relay.System);
+                relay.Restore();
+            }
+            foreach (var door in Object.FindObjectsByType<SecurityDoor>())
+                door.Refresh(false);
+        }
+
+        private static string DescribeSecurity()
+        {
+            var text = "";
+            foreach (var door in Object.FindObjectsByType<SecurityDoor>())
+                text += (text.Length > 0 ? "\n" : "") + $"{door.System}: {SecurityRelays.Count(door.System)}/{door.Required} relays, {door.Power}";
+            return text.Length > 0 ? text : "no security door";
+        }
+
+        private static SecurityRelay NearestRelay()
+        {
+            var creature = CombatTargets.Creature;
+            var origin = creature != null ? creature.transform.position : Vector3.zero;
+            SecurityRelay best = null;
+            var bestDistance = float.MaxValue;
+            foreach (var relay in SecurityRelay.All)
+            {
+                var distance = (relay.transform.position - origin).sqrMagnitude;
+                if (!relay.IsDestroyed && distance < bestDistance)
+                {
+                    best = relay;
+                    bestDistance = distance;
+                }
+            }
+            return best;
         }
 
         private static BioNest NearestNest()

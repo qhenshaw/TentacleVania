@@ -157,7 +157,7 @@ namespace TentacleVania.Combat.Feedback
                 return;
             var isCreature = CombatTargets.Creature != null && target == CombatTargets.Creature;
             var kind = HitFeedback.ClassifyForPlayer(info, target);
-            var effects = HitEffectRules.Select(isCreature, kind, result.HealthDamage, target.Max, result.Killed, GameSettings.Gore, _settings.CreatureBigHit);
+            var effects = HitEffectRules.Select(isCreature, kind, result.HealthDamage, target.Max, result.Killed, GameSettings.Gore && target.Bleeds, _settings.CreatureBigHit);
             var big = HitEffectRules.IsBigHit(isCreature, kind, result.HealthDamage, target.Max, _settings.CreatureBigHit);
             var intensity = result.Killed ? _settings.KillIntensity : big ? _settings.HeavyIntensity : _settings.LightIntensity;
 

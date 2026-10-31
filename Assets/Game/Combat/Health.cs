@@ -28,6 +28,7 @@ namespace TentacleVania.Combat
         public float MaxArmor => _pool.MaxArmor;
         public float Normalized => _pool.MaxHealth > 0f ? _pool.Health / _pool.MaxHealth : 0f;
         public bool IsAlive => _pool.IsAlive;
+        public bool Bleeds { get; set; } = true;
 
         private void Awake() => ResetToFull();
 
