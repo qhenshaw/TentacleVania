@@ -351,6 +351,34 @@ MonoBehaviour:
     m_Key: nest.mutations.none
     m_Metadata:
       m_Items: []
+  - m_Id: 437349894602752
+    m_Key: nest.weapon1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545792
+    m_Key: nest.weapon2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545793
+    m_Key: nest.ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545794
+    m_Key: nest.swap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545795
+    m_Key: nest.change
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545796
+    m_Key: nest.empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545797
+    m_Key: nest.mutations
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

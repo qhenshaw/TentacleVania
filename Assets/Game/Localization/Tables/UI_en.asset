@@ -39,11 +39,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 386986982260736
-    m_Localized: Stats
+    m_Localized: Evolve
     m_Metadata:
       m_Items: []
   - m_Id: 386987024203776
-    m_Localized: Mutations
+    m_Localized: Loadout
     m_Metadata:
       m_Items: []
   - m_Id: 386987024203777
@@ -352,6 +352,34 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 435372171214858
     m_Localized: No mutations yet. Find them in the facility or trade with the Hoarder.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349894602752
+    m_Localized: Weapon 1 (X)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545792
+    m_Localized: Weapon 2 (Y)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545793
+    m_Localized: Ability (RT)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545794
+    m_Localized: Swap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545795
+    m_Localized: Change
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545796
+    m_Localized: Empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437349936545797
+    m_Localized: Mutations
     m_Metadata:
       m_Items: []
   references:

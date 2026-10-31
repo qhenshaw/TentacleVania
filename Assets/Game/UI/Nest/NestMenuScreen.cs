@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using TentacleVania.Abilities;
 using TentacleVania.Abilities.Mutations;
+using TentacleVania.Core.Saves;
+using TentacleVania.Weapons;
 using TentacleVania.Core.Input;
 using TentacleVania.Core.Progression;
 using TentacleVania.Creature;
@@ -285,6 +288,10 @@ namespace TentacleVania.UI.Nest
             _cancel.AddToClassList(HiddenClass);
             _leave.RemoveFromClassList(HiddenClass);
             _mutationRows.Clear();
+            AddLoadoutRows();
+            var heading = new Label(Text("nest.mutations"));
+            heading.AddToClassList("nest__stat");
+            _mutationRows.Add(heading);
             var controller = Mutations;
             var used = controller != null ? controller.UsedNotches() : 0;
             _notches.text = string.Format(Text("nest.notches"), used, MutationLoadout.NotchPool);
@@ -318,6 +325,79 @@ namespace TentacleVania.UI.Nest
                 row.Add(button);
                 _mutationRows.Add(row);
             }
+        }
+
+        private void AddLoadoutRows()
+        {
+            var creature = CreatureSpawner.Spawned;
+            var weapons = creature != null ? creature.GetComponent<WeaponController>() : null;
+            var ability = creature != null ? creature.GetComponent<AbilityController>() : null;
+            if (weapons != null)
+            {
+                for (var slot = 0; slot < WeaponController.Slots; slot++)
+                {
+                    var weapon = weapons.Weapon(slot);
+                    LoadoutRow(slot == 0 ? "nest.weapon1" : "nest.weapon2", weapon != null ? weapon.DisplayName : Text("nest.empty"),
+                        slot == 0 ? "nest.swap" : null, SwapWeapons);
+                }
+            }
+            if (ability != null)
+                LoadoutRow("nest.ability", ability.Equipped != null ? ability.Equipped.DisplayName : Text("nest.empty"), "nest.change", CycleAbility);
+        }
+
+        private void LoadoutRow(string labelKey, string value, string buttonKey, System.Action action)
+        {
+            var row = new VisualElement();
+            row.AddToClassList("nest__row");
+            var label = new Label(Text(labelKey));
+            label.AddToClassList("nest__stat");
+            var text = new Label(value);
+            text.AddToClassList("nest__effect");
+            row.Add(label);
+            row.Add(text);
+            if (buttonKey != null)
+            {
+                var button = new Button(() =>
+                {
+                    action();
+                    Refresh();
+                }) { text = Text(buttonKey), name = buttonKey };
+                button.AddToClassList("nest__action");
+                row.Add(button);
+            }
+            _mutationRows.Add(row);
+        }
+
+        public void SwapWeapons()
+        {
+            var creature = CreatureSpawner.Spawned;
+            var weapons = creature != null ? creature.GetComponent<WeaponController>() : null;
+            if (weapons == null)
+                return;
+            var first = weapons.Weapon(0);
+            var second = weapons.Weapon(1);
+            weapons.Equip(0, second);
+            weapons.Equip(1, first);
+        }
+
+        public void CycleAbility()
+        {
+            var creature = CreatureSpawner.Spawned;
+            var ability = creature != null ? creature.GetComponent<AbilityController>() : null;
+            if (ability == null)
+                return;
+            var unlocked = SaveSystem.Data.Build.Abilities;
+            var current = ability.Equipped != null ? ContentCatalog.IdOf(ability.Equipped) : "";
+            var start = unlocked.IndexOf(current);
+            for (var step = 1; step <= unlocked.Count; step++)
+            {
+                var index = start + step;
+                if (index >= unlocked.Count)
+                    break;
+                if (ability.EquipById(unlocked[index]))
+                    return;
+            }
+            ability.Equip(null);
         }
 
         private static string Text(string key) => LocalizationSettings.StringDatabase.GetLocalizedString(Table, key);
