@@ -36,12 +36,16 @@ MonoBehaviour:
     Recovery: 0.5
     Cooldown: 1.2
     TrackDuringWindUp: 0.6
+    Hits: 1
     MinRange: 0
     MaxRange: 1.8
     Damage: 8
     Stagger: 0
     Type: 0
     StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
     Reach: 1.8
     Arc: 90
     SweepRadius: 0.3
@@ -52,6 +56,29 @@ MonoBehaviour:
     ProjectileSpeed: 14
     ProjectileLifetime: 3
     LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
+    WindUpSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
   - Name: Pistol
     Kind: 2
     Telegraph: 0
@@ -63,12 +90,16 @@ MonoBehaviour:
     Recovery: 0.4
     Cooldown: 1.4
     TrackDuringWindUp: 0.7
+    Hits: 1
     MinRange: 4
     MaxRange: 11
     Damage: 8
     Stagger: 0
     Type: 0
     StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
     Reach: 1
     Arc: 0
     SweepRadius: 0.2
@@ -79,10 +110,39 @@ MonoBehaviour:
     ProjectileSpeed: 18
     ProjectileLifetime: 2
     LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
+    WindUpSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
   _consumeHeal: 0.12
   _biomass: 10
+  _spawnOnWall: 0
   _despawnDelay: 2
   _panicRange: 7
   _fleeDistance: 6
   _corneredDistance: 1.2
   _preferredRange: {x: 5, y: 8}
+  _voice: {fileID: 11400000, guid: df0a8b0c6ac80984c89e4f403b09c67d, type: 2}
+  _machine: 0
+  _healPerSecond: 8
+  _healRange: 6
+  _keepAwayRange: 7

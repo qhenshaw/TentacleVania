@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: HumanVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1159129242
+      Data2: 1191276152
+      Data3: 1538322347
+      Data4: -2078888376
+    Path: 
+  _pain:
+    Guid:
+      Data1: -508424221
+      Data2: 1253162508
+      Data3: -1247217253
+      Data4: 1372861687
+    Path: 
+  _death:
+    Guid:
+      Data1: 544873890
+      Data2: 1294855239
+      Data3: 1333317561
+      Data4: -1691288342
+    Path: 
+  _grabbed:
+    Guid:
+      Data1: -1128328939
+      Data2: 1091098814
+      Data3: 1960364464
+      Data4: 343030756
+    Path: 
+  _painCooldown: 1.2

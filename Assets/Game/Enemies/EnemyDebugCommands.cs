@@ -31,6 +31,8 @@ namespace TentacleVania.Enemies
             });
             DebugMenu.Value(tab, "HP / stagger / animation", DescribeEnemies);
             DebugMenu.Toggle(tab, "Freeze AI", () => EnemyManager.Instance.Paused, v => EnemyManager.Instance.Paused = v);
+            DebugMenu.Toggle(tab, "Enemy voices", () => EnemyVoices.Enabled, v => EnemyVoices.Enabled = v);
+            DebugMenu.Value(tab, "Voices played / dropped", () => $"{EnemyVoices.Played} / {EnemyVoices.Dropped}");
             DebugMenu.Toggle(tab, "Force ground indicators", () => GroundIndicator.ForceAll, v => GroundIndicator.ForceAll = v);
             DebugMenu.Button(tab, "Stun all (3 s)", () =>
             {

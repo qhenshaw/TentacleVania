@@ -43,6 +43,7 @@ namespace TentacleVania.Enemies
 
         private NavMeshAgent _agent;
         private Health _health;
+        private float _nextPain;
         private float[] _readyAt;
         private float _stateStarted;
         private float _stunUntil;
@@ -521,6 +522,8 @@ namespace TentacleVania.Enemies
 
         private void OnDied(Health health)
         {
+            if (_definition.Voice != null && State != EnemyState.Consumed)
+                EnemyVoices.Play(_definition.Voice.Death, transform.position, true);
             EndStaggerBreak();
             EndAttack(false);
             if (_agent.enabled)
@@ -539,6 +542,12 @@ namespace TentacleVania.Enemies
                 _glow.Flash(HitFlashDuration);
             if (health.IsAlive)
                 React(info);
+            var voice = _definition.Voice;
+            if (voice != null && health.IsAlive && result.HealthDamage > 0f && Time.time >= _nextPain)
+            {
+                _nextPain = Time.time + voice.PainCooldown;
+                EnemyVoices.Play(voice.Pain, transform.position);
+            }
             if (health.IsAlive && State != EnemyState.Stunned && State != EnemyState.Dead && _stagger.Add(result.StaggerDamage))
                 BreakStagger();
             TickFeedback();
@@ -546,6 +555,8 @@ namespace TentacleVania.Enemies
 
         private void OnGrabbed(Consumable consumable)
         {
+            if (_definition.Voice != null)
+                EnemyVoices.Play(_definition.Voice.Grabbed, transform.position, true);
             EndAttack(false);
             EndStaggerBreak();
             Halt();
@@ -599,6 +610,8 @@ namespace TentacleVania.Enemies
         {
             if (State == state && state != EnemyState.Spawning)
                 return;
+            if (State == EnemyState.Spawning && state is EnemyState.Chase or EnemyState.Circle or EnemyState.Attacking && _definition.Voice != null)
+                EnemyVoices.Play(_definition.Voice.Alert, transform.position);
             State = state;
             _stateStarted = Time.time;
             StateChanged?.Invoke(this);
