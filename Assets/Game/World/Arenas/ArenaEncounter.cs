@@ -92,7 +92,8 @@ namespace TentacleVania.World.Arenas
 
         private void Start()
         {
-            if (!Nests.StaysCleared(_bossArena || _oneTime) || !SaveSystem.Data.World.Has(WorldFlag.ClearedArena, SaveId))
+            var saved = Nests.StaysCleared(_bossArena || _oneTime) && SaveSystem.Data.World.Has(WorldFlag.ClearedArena, SaveId);
+            if (!saved && !ArenaSession.IsCleared(SaveId))
                 return;
             foreach (var door in _doors)
                 door.Open();
@@ -241,6 +242,7 @@ namespace TentacleVania.World.Arenas
                 ClearedAt = now;
                 if (Nests.StaysCleared(_bossArena || _oneTime))
                     SaveSystem.Data.World.Set(WorldFlag.ClearedArena, SaveId);
+                ArenaSession.MarkCleared(SaveId);
                 foreach (var door in _doors)
                     door.Open();
                 SetState(ArenaState.Cleared);
