@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c0807a573dfc940919b65ccbf387e5, type: 3}
+  m_Name: ContentCatalog
+  m_EditorClassIdentifier: TentacleVania.Core::TentacleVania.Core.Saves.ContentCatalog
+  _entries:
+  - {fileID: 11400000, guid: 8aa5518917427d14999b11732f057efe, type: 2}
+  - {fileID: 11400000, guid: f115e7384f9f44145b4993a18db6fd2c, type: 2}
+  - {fileID: 11400000, guid: 1fc211d948915244b912f2a92ade5640, type: 2}

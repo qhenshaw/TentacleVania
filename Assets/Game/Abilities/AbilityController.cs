@@ -2,6 +2,7 @@ using System;
 using TentacleVania.Combat;
 using TentacleVania.Core.Characters;
 using TentacleVania.Core.Input;
+using TentacleVania.Core.Saves;
 using TentacleVania.Creature;
 using TentacleVania.Creature.Movement;
 using UnityEngine;
@@ -9,9 +10,10 @@ using UnityEngine;
 namespace TentacleVania.Abilities
 {
     [RequireComponent(typeof(Health))]
-    public sealed class AbilityController : MonoBehaviour
+    public sealed class AbilityController : MonoBehaviour, ISaveParticipant
     {
         [SerializeField] private AbilityDefinition _equipped;
+        [SerializeField] private ContentCatalog _catalog;
 
         private Health _health;
         private CreatureCharge _charge;
@@ -39,10 +41,24 @@ namespace TentacleVania.Abilities
             Equip(_equipped);
         }
 
+        private void OnEnable() => SaveSystem.Register(this);
+
         private void OnDisable()
         {
+            SaveSystem.Unregister(this);
             if (Runtime != null)
                 Runtime.Cancel();
+        }
+
+        public void Capture(SaveData data) => data.Build.Ability = ContentCatalog.IdOf(_equipped);
+
+        public void Restore(SaveData data)
+        {
+            if (_catalog == null)
+                return;
+            var ability = _catalog.Find<AbilityDefinition>(data.Build.Ability);
+            if (ability != null && ability != _equipped)
+                Equip(ability);
         }
 
         private void OnDestroy()

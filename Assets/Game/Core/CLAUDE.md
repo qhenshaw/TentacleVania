@@ -25,6 +25,13 @@ Shared code every area may reference (`TentacleVania.Core`). Keep it free of gam
 
 - `Scenes/SceneFlow` keeps `Bootstrap` loaded and swaps every other scene: `Load(name)` unloads the rest, loads the scene additively and makes it active (so lighting and runtime spawns land in it), `Reload()` reloads the active scene, `Loaded` fires after. `GameBootstrap` (prefab in the `Bootstrap` scene) calls `Load(MainMenu)` on start.
 
+## Saves
+
+- `Saves/SaveSystem` (static): `SlotCount` 5, `NewGame(slot)`, `Save()`, `Load(slot)`, `Delete(slot)`, `Summary(slot)` (for slot menus), `Data` (the live `SaveData`) and `Active` (false until a game is started or loaded, so editor play sessions keep prefab defaults). `Save()` asks every registered `ISaveParticipant` to `Capture` into `Data`, adds playtime and the active scene, and writes JSON through `Storage`; `Load` parses (running migrations) and calls `Restore` on every participant. A participant registered while a save is active is restored immediately, so components register in `OnEnable` and unregister in `OnDisable` (`WeaponController` and `AbilityController` save the equipped weapons and ability).
+- `SaveData` holds `Progress` (sector, scene, last nest), `Build` (level, the four stats, weapons, ability, mutations), `World` (string-id lists per `WorldFlag`: grown nests, destroyed relays, opened shortcuts, defeated bosses, collected pickups, explored rooms, cleared arenas; `Has`/`Set`/`Clear`) and `Biomass` (carried, plus the dropped amount, scene and position). New systems write their state there and use stable string ids (the scene object's id or name), never instance ids.
+- `SaveSerializer.CurrentVersion` is the save format version: bump it when `SaveData` changes shape and register a step with `RegisterMigration(fromVersion, data => ...)`; saves from a newer build are rejected. `ISaveStorage` is the platform seam: `LocalFileStorage` writes `persistentDataPath/Saves/slotN.json` through a temp file and keeps a `.bak`; Steam Cloud plugs in as another implementation.
+- Assets referenced from saves are stored by name and resolved through `Data/ContentCatalog.asset` (`ContentCatalog.Find<T>(id)`): add new weapons, abilities and mutations to it, with unique names. F5 Game tab: slot choice, Save, Load, Wipe slot, Open save folder.
+
 ## Input
 
 - `Assets/InputSystem_Actions.inputactions` is the project-wide actions asset (Project Settings > Input System). Its `Gameplay` map follows the Controls table on Core Mechanics & Controls: `Move`, `AimStick` (gamepad), `AimPointer` (mouse position), `Weapon1`, `Weapon2`, `Dash`, `Grab`, `Ability`. The `UI` map drives UI Toolkit navigation.
