@@ -126,6 +126,102 @@ MonoBehaviour:
     m_Localized: DR. CRANE
     m_Metadata:
       m_Items: []
+  - m_Id: 125748712849408
+    m_Localized: 'Intake memo: Subject [REDACTED]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763968
+    m_Localized: Dr. Elias Crane, Chief Scientist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763969
+    m_Localized: "SITE BETA \xB7 CONTAINMENT DIRECTIVE 14-C\r\nTo: Specimen Holding, all shifts\r\nFrom: Dr. Elias Crane, Chief Scientist\r\nRe: Subject \u2588\u2588\u2588, revised containment protocol\r\n\r\nEffective immediately, Subject \u2588\u2588\u2588 moves to Pod Row 3 under continuous sedation. Field strength is not to drop below 92% for any reason, including scheduled maintenance. Handlers carry shock poles at all times inside the row.\r\n\r\nThis subject has outlived every previous specimen in its line. That makes it valuable, not safe. If its readings spike, you call me before you call security.\r\n\r\nApproved: E. Crane"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763970
+    m_Localized: Pod history
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763971
+    m_Localized: J. Pike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763972
+    m_Localized: "POD MAINTENANCE RECORD \xB7 ROW 3, UNIT 12\r\n\r\nOccupant history:\r\n\r\n- Subject \u2588\u2588\u2588: terminated, failed neural response\r\n- Subject \u2588\u2588\u2588: terminated, attempted containment breach\r\n- Subject \u2588\u2588\u2588: transferred to Bio-Labs (dissection)\r\n- Subject \u2588\u2588\u2588: terminated, unstable growth\r\n- Subject \u2588\u2588\u2588: transferred to Cold Storage\r\n- Subject \u2588\u2588\u2588: CURRENT\r\n\r\nMaintenance note: Pod seals replaced after every occupant. Residue in the drainage channel doesn't respond to standard solvents. Burn it out.\r\n\r\nUnit sign-off: J. Pike"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763973
+    m_Localized: 'Pod label: Progenitor-derived'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763974
+    m_Localized: Night Technician R. Osei
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763975
+    m_Localized: "SPECIMEN TAG \xB7 POD ROW 3, UNIT 12\r\nOrigin: Progenitor-derived (direct offspring)\r\nSedation: Continuous. Do not interrupt.\r\nFeeding: Biomass ration B, every 6 hours. Use the tongs.\r\n\r\nNotes: Responds to Progenitor stimulus. When samples from the Vault come within twenty meters, motor activity triples and the subject turns toward the floor. Every time, it points down, toward the lower levels. Cause unknown. Recommend routing samples around Holding until we understand why.\r\n\r\nTag updated by Night Technician R. Osei"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763976
+    m_Localized: Night shift chat log
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763977
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763978
+    m_Localized: "[INTERNAL CHAT \xB7 HOLDING NIGHT SHIFT]\r\n\r\nPIKE: row 3 is twitching again\r\nDIAZ: hit it with the pole, it settles\r\nPIKE: did. twice. it looked at me\r\nDIAZ: they don't look at you, they don't have eyes\r\nPIKE: then what was that\r\nDIAZ: overtime is what that was. want to swap to Admin, swap to Admin\r\nPIKE: and lose hazard pay? no thanks\r\nDIAZ: then hit it a third time and log it as routine\r\nPIKE: logged\r\nDIAZ: see. easy money"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763979
+    m_Localized: Sibling termination report
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763980
+    m_Localized: Dr. T. Tran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763981
+    m_Localized: "TERMINATION REPORT \xB7 BIO-LABS THEATRE 1\r\nSubject: \u2588\u2588\u2588 (offspring line, first generation)\r\nCause: Scheduled termination after failed obedience trial\r\nMethod: Neural severance under full sedation\r\nTime to death: 11 minutes (exceeds projection)\r\n\r\nObservations: Subject stayed responsive throughout. Before death it reached a tendril toward the floor drain and held it there. Same orientation as previous subjects: down, toward the Vault. Remains sent to tissue storage. Neural tissue sent to Dr. Crane's private lab on request.\r\n\r\nFiled by: Dr. T. Tran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763982
+    m_Localized: Tissue sample source
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763983
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763984
+    m_Localized: "SAMPLE REQUISITION \xB7 BIO-LABS / VAULT\r\nRequested: 40 g Progenitor tissue (dorsal mass)\r\nPurpose: Brood stimulation, Theatre 1\r\nApproved: E. Crane\r\n\r\nVault technician's note, attached:\r\nExtraction took four hours. She didn't fight it this time. Her vitals dropped again during the procedure and took longer to come back. I've asked twice whether we should slow the harvest schedule. The answer is always the same: she heals, so keep cutting. If she stops healing, who signs that off?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763985
+    m_Localized: Surgeons' betting pool
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763986
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763987
+    m_Localized: "THEATRE 1 POOL \xB7 WEEK 31\r\nHow long does the new one last on the table?\r\n\r\n- Okoye: 40 min ($20)\r\n- Halvorsen: under 30 ($20)\r\n- Tran: won't make it to the second incision ($50)\r\n- Mbeki: an hour, it's a tough one ($10)\r\n\r\nLast week's winner: Tran (again). Pot carries over if it lasts past 2 hours.\r\n\r\nReminder: no betting on Dr. Crane's personal cases. He doesn't find it funny."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763988
+    m_Localized: Dissection schedule
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763989
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125748775763990
+    m_Localized: "BIO-LABS \xB7 WEEKLY THEATRE SCHEDULE\r\n\r\n- Mon: Subject \u2588\u2588\u2588, full dissection (neural mapping)\r\n- Tue: Subject \u2588\u2588\u2588, partial (limb regrowth study)\r\n- Wed: Theatre 2 cleaning. Do not skip the drains.\r\n- Thu: Subject \u2588\u2588\u2588, termination and dissection. Obedience trial failed.\r\n- Fri: Open\r\n\r\nNote from Dr. Crane: Any subject that fails two obedience trials goes on Thursday's list. I don't want them housed, fed or studied any further. We are not running a zoo. We are building something that listens. Fill Friday."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

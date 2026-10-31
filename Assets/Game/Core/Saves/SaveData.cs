@@ -47,6 +47,8 @@ namespace TentacleVania.Core.Saves
         public List<string> AbilityTiers = new();
         public List<string> OwnedModifiers = new();
         public List<string> EquippedModifiers = new();
+        public List<string> OwnedWeapons = new();
+        public List<string> Trinkets = new();
     }
 
     public enum WorldFlag
@@ -59,6 +61,7 @@ namespace TentacleVania.Core.Saves
         ExploredRoom,
         ClearedArena,
         PlayedLine,
+        CollectedLog,
     }
 
     [Serializable]
@@ -72,6 +75,7 @@ namespace TentacleVania.Core.Saves
         public List<string> ExploredRooms = new();
         public List<string> ClearedArenas = new();
         public List<string> PlayedLines = new();
+        public List<string> CollectedLogs = new();
 
         public List<string> List(WorldFlag flag) => flag switch
         {
@@ -82,6 +86,7 @@ namespace TentacleVania.Core.Saves
             WorldFlag.CollectedPickup => CollectedPickups,
             WorldFlag.ExploredRoom => ExploredRooms,
             WorldFlag.PlayedLine => PlayedLines,
+            WorldFlag.CollectedLog => CollectedLogs,
             _ => ClearedArenas,
         };
 

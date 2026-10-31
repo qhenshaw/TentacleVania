@@ -614,6 +614,66 @@ MonoBehaviour:
     m_Localized: 'Modifier: {0}'
     m_Metadata:
       m_Items: []
+  - m_Id: 544427711676416
+    m_Localized: Read
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842240
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842241
+    m_Localized: SITE BETA // RECOVERED DOCUMENT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842242
+    m_Localized: SITE BETA // AUDIO RECORDING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842243
+    m_Localized: +{0} biomass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842244
+    m_Localized: +{0} Mutagen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842245
+    m_Localized: Mutation notch absorbed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842246
+    m_Localized: 'New weapon: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842247
+    m_Localized: 'New mutation: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842248
+    m_Localized: 'Trinket found: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842249
+    m_Localized: Log recovered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842250
+    m_Localized: Lash Whips
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842251
+    m_Localized: Crusher Mass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842252
+    m_Localized: Specimen Tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544427736842253
+    m_Localized: Lab Badge
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -99,6 +99,7 @@ namespace TentacleVania.Weapons
         {
             _motor.Dashed += OnDashed;
             Upgrades.Changed += RefreshModifiers;
+            Collectibles.WeaponFound += OnWeaponFound;
             SaveSystem.Register(this);
             RefreshModifiers();
         }
@@ -107,6 +108,7 @@ namespace TentacleVania.Weapons
         {
             _motor.Dashed -= OnDashed;
             Upgrades.Changed -= RefreshModifiers;
+            Collectibles.WeaponFound -= OnWeaponFound;
             SaveSystem.Unregister(this);
             EndMove(Time.time);
             for (var i = 0; i < MaxShattered; i++)
@@ -136,6 +138,20 @@ namespace TentacleVania.Weapons
             _weapons[slot] = weapon;
             _buttons[slot].Cancel();
             RefreshModifier(slot);
+        }
+
+        private void OnWeaponFound(string id)
+        {
+            var weapon = _catalog != null ? _catalog.Find<WeaponDefinition>(id) : null;
+            if (weapon == null || _weapons[0] == weapon || _weapons[1] == weapon)
+                return;
+            for (var slot = 0; slot < Slots; slot++)
+            {
+                if (_weapons[slot] != null)
+                    continue;
+                Equip(slot, weapon);
+                return;
+            }
         }
 
         public void RefreshModifiers()

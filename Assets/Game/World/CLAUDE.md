@@ -25,6 +25,12 @@ Rooms and encounters (`TentacleVania.World`).
   - **Debug:** `Security/Debug/Resources/DebugSecurityRig.prefab` (door plus relays A, B, C of system `Debug`). World tab: security readout, Spawn security test rig, Destroy nearest relay, Reset relays.
 - Enemies are instantiated per wave; pool them when a room's spawn counts make it show up in the profiler.
 
+## Pickups and lore
+
+- `Pickups/Pickup` collects when the creature walks within `_radius` (no physics): `Core.Progression.Collectibles.Collect(saveId, kind, itemId, amount)` saves `WorldFlag.CollectedPickup` once (id `_id` or `<scene>/<object name>`, read in `OnEnable`, which hides a collected one), grants the item and autosaves. Kinds: Biomass (cache, 150 placeholder until TV-32's economy table), Mutagen, Trinket (`Build.Trinkets`, for the Hoarder), Weapon (`Build.OwnedWeapons`; `WeaponController` equips it into an empty slot), Mutation (`MutationLoadout.Grant`), Notch (`Build.BonusNotches`). Prefabs in `Pickups/` (spinning unlit primitives, `event:/World/Pickup/Collect`): `BiomassCache`, `MutagenPickup`, `TrinketPickup`, `CrusherMassPickup`, `MutationPickup` (Wide Dodge), `NotchPickup`. Mutagen beyond the 16 modifiers isn't converted to biomass yet.
+- `Lore/LoreLog` assets (`Lore/Data/`, id = asset name; text in the `Dialogue` table as `lore.<id>.title`, `.from`, `.body`; Text or Audio with an FMOD `_audio` event, played by `LoreAudio`) are listed in order in `Lore/Resources/LoreLibrary`. `Lore/LoreTerminal.prefab` (an `IInteractable`, Grab: `prompt.lore.read`) collects its log (`Core.Progression.LoreLogs`, `WorldFlag.CollectedLog`) and raises `LoreLogs.Read`, which opens the UI reader; its green screen shows until the log is read. The 8 slice logs are all Text and not yet placed (the room plans don't say which room holds which).
+- F5 World: Lore logs, Weapons / trinkets, Spawn pickup row, Spawn lore terminal (per log), Collect all lore logs (`Pickups/Resources/DebugPickupSet`). A pickup spawned from an eval gets its save id in `OnEnable`, inside `Instantiate`: rename it, then disable and enable it.
+
 ## Room streaming
 
 - A streamed sector is a root scene (light, `CreatureSpawn`, `GameplayCamera`, `CombatHud`, volume, `RoomStreamer`) plus one scene per arena or corridor, loaded additively through Addressables (address = scene name). Room scenes are not in Build Settings.
