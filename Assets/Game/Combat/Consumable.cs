@@ -42,6 +42,7 @@ namespace TentacleVania.Combat
         {
             IsBeingConsumed = true;
             Grabbed?.Invoke(this);
+            CombatEvents.RaiseConsumeStarted(this);
         }
 
         public void Bite() => CombatEvents.RaiseConsumeBitten(this);
