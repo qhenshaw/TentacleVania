@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using TentacleVania.Combat.Damage;
 using UnityEngine;
 
@@ -85,6 +86,11 @@ namespace TentacleVania.Enemies.Data
         [Min(0.1f)] public float ProjectileLifetime = 3f;
         [Tooltip("Width of the ground lane telegraphing the shot.")]
         [Min(0.05f)] public float LaneWidth = 0.4f;
+
+        [Header("Sounds (optional)")]
+        public EventReference WindUpSound;
+        public EventReference StrikeSound;
+        public EventReference HitSound;
 
         public AttackTokenKind TokenKind => Kind == AttackKind.Projectile ? AttackTokenKind.Ranged : AttackTokenKind.Melee;
         public float Duration => WindUp + Active + Recovery;
