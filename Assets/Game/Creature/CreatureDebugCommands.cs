@@ -43,6 +43,12 @@ namespace TentacleVania.Creature
                 ? $"{Core.Progression.Biomass.Carried} carried, {Core.Progression.Biomass.DropAmount} dropped in {Core.Progression.Biomass.DropScene}"
                 : $"{Core.Progression.Biomass.Carried} carried");
             DebugMenu.Button(tab, "Add 100 biomass", () => Core.Progression.Biomass.Add(100));
+            DebugMenu.Toggle(tab, "Kill biomass orbs", () => Biomass.BiomassOrbs.Enabled, v => Biomass.BiomassOrbs.Enabled = v);
+            DebugMenu.Value(tab, "Kill orbs", () =>
+            {
+                var orbs = Health != null ? Health.GetComponent<Biomass.BiomassOrbs>() : null;
+                return orbs != null ? $"{orbs.Flying} flying, {orbs.Credited} credited" : "-";
+            });
             DebugMenu.Toggle(tab, "Keep biomass on death", () => GameSettings.KeepBiomassOnDeath, v => GameSettings.KeepBiomassOnDeath = v);
             DebugMenu.Button(tab, "Kill creature", () =>
             {

@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 9191924850288195891}
   - component: {fileID: 4779626605629041017}
   - component: {fileID: 3324256350451842991}
+  - component: {fileID: 8365291854207342177}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -889,6 +890,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29b984cf9a2c3f4ca1282a02094205a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.WeaponVfx
+--- !u!114 &8365291854207342177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2402157ab1890341a0ae0d4341e713f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Biomass.BiomassOrbs
+  _orbPrefab: {fileID: 6263650303443264933, guid: abd64003a30bcbd459edc0d56ecb7c6a, type: 3}
+  _poolSize: 12
+  _popTime: 0.25
+  _flyTime: 0.45
+  _popSpeed: 4
 --- !u!1 &4860062330439387882
 GameObject:
   m_ObjectHideFlags: 0
