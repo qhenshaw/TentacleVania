@@ -58,6 +58,8 @@ namespace TentacleVania.Bosses
         protected override void Awake()
         {
             base.Awake();
+            if (TryGetComponent<Combat.Consumable>(out var consumable))
+                consumable.CoreBleeds = true;
             if (_essence != null)
             {
                 _essenceHome = _essence.localPosition;

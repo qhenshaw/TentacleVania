@@ -29,6 +29,7 @@ namespace TentacleVania.Combat
         public float Normalized => _pool.MaxHealth > 0f ? _pool.Health / _pool.MaxHealth : 0f;
         public bool IsAlive => _pool.IsAlive;
         public bool Bleeds { get; set; } = true;
+        public bool BurstsOnDeath { get; set; }
         public bool IsStaggered { get; set; }
         public float Floor { get; set; }
         public bool AtFloor => Floor > 0f && _pool.IsAlive && _pool.Health <= Floor;
@@ -75,7 +76,7 @@ namespace TentacleVania.Combat
             Damaged?.Invoke(this, info, result);
             CombatEvents.RaiseHit(this, info, result);
             if (result.Killed)
-                Died?.Invoke(this);
+                Die();
             return result;
         }
 
@@ -98,7 +99,13 @@ namespace TentacleVania.Combat
             _pool.Health = 0f;
             var result = new DamageResult(DamageOutcome.Applied, info.Amount, 0f, 0f, true);
             Damaged?.Invoke(this, info, result);
+            Die();
+        }
+
+        private void Die()
+        {
             Died?.Invoke(this);
+            CombatEvents.RaiseDied(this);
         }
     }
 }

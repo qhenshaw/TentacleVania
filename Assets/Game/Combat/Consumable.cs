@@ -25,6 +25,7 @@ namespace TentacleVania.Combat
         public int Biomass => _biomass;
         public bool IsBeingConsumed { get; private set; }
         public bool Locked { get; set; }
+        public bool CoreBleeds { get; set; }
         public bool IsGrabbable => CanBeGrabbed(GrabThreshold);
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
