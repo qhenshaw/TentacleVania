@@ -16,6 +16,13 @@ namespace TentacleVania.Weapons
             DebugMenu.Value(Tab, "Weapon 1 (X / LMB)", () => WeaponName(0));
             DebugMenu.Value(Tab, "Weapon 2 (Y / RMB)", () => WeaponName(1));
             DebugMenu.Value(Tab, "Modifiers", () => $"{ModifierName(0)} / {ModifierName(1)}");
+            DebugMenu.Toggle(Tab, "Weapon VFX", () => WeaponVfx.Enabled, v => WeaponVfx.Enabled = v);
+            DebugMenu.Value(Tab, "Weapon VFX played", () =>
+            {
+                var creature = Combat.CombatTargets.Creature;
+                var vfx = creature != null ? creature.GetComponent<WeaponVfx>() : null;
+                return vfx != null ? vfx.Played.ToString() : "-";
+            });
             DebugMenu.Value(Tab, "Mutagen", () => Upgrades.Mutagen.ToString());
             DebugMenu.Button(Tab, "+1 Mutagen", () => Upgrades.AddMutagen(1));
             DebugMenu.Button(Tab, "Give Crusher Mass", () => Collectibles.Grant(PickupKind.Weapon, "CrusherMass", 1));

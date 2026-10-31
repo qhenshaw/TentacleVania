@@ -62,6 +62,7 @@ namespace TentacleVania.Weapons
         private float _requestTime;
 
         public event Action<WeaponController> AttackStarted;
+        public event Action<int, WeaponDefinition> Equipped;
 
         public int ActiveSlot { get; private set; } = -1;
         public AttackKind ActiveKind { get; private set; }
@@ -140,6 +141,7 @@ namespace TentacleVania.Weapons
             _weapons[slot] = weapon;
             _buttons[slot].Cancel();
             RefreshModifier(slot);
+            Equipped?.Invoke(slot, weapon);
         }
 
         private void OnWeaponFound(string id)
