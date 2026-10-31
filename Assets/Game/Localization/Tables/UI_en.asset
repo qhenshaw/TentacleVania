@@ -706,6 +706,50 @@ MonoBehaviour:
     m_Localized: Tagged Locker Key
     m_Metadata:
       m_Items: []
+  - m_Id: 552799102058496
+    m_Localized: Site Beta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584448
+    m_Localized: No map data for this area.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584449
+    m_Localized: 'Security relays: {0}/{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584450
+    m_Localized: "\u25CF Nest   \u25CB Nest site   \u25C6 Security relay   \u25AC Security door   \u25A2 Blocked   \u25CF Hoarder   \u25CE Dropped biomass   \u25CB You"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584451
+    m_Localized: Travel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584452
+    m_Localized: Travel to any grown nest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584453
+    m_Localized: "{0} \xB7 Nest {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584454
+    m_Localized: You are here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584455
+    m_Localized: Travel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584456
+    m_Localized: No grown nests to travel to yet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 552799156584457
+    m_Localized: NEST LINK
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

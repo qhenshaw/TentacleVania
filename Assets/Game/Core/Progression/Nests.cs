@@ -33,15 +33,22 @@ namespace TentacleVania.Core.Progression
 
         public static void Rest(string id, string scene, Vector3 respawnPosition, float respawnYaw)
         {
-            if (!IsGrown(id))
+            if (!SetRespawn(id, scene, respawnPosition, respawnYaw))
                 return;
+            Rested?.Invoke(id);
+            MenuRequested?.Invoke(id);
+        }
+
+        public static bool SetRespawn(string id, string scene, Vector3 respawnPosition, float respawnYaw)
+        {
+            if (!IsGrown(id))
+                return false;
             var progress = SaveSystem.Data.Progress;
             progress.LastNest = id;
             progress.LastNestScene = scene;
             progress.RespawnPosition = respawnPosition;
             progress.RespawnYaw = respawnYaw;
-            Rested?.Invoke(id);
-            MenuRequested?.Invoke(id);
+            return true;
         }
 
         public static bool TryGetRespawn(string scene, out Vector3 position, out float yaw)
