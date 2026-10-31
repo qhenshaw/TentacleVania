@@ -55,29 +55,52 @@ namespace TentacleVania.Weapons.Tests
         [Test]
         public void TapUnderTheThresholdIsALightAttack()
         {
-            var button = new ChargeButton(0.35f, 1.5f);
+            var button = new ChargeButton(0.35f, 0.5f);
             button.Update(true, true, 0f);
             Assert.AreEqual(ChargeEvent.None, button.Update(false, true, 0.1f));
             Assert.AreEqual(ChargeEvent.Tap, button.Update(false, false, 0.2f));
         }
 
         [Test]
-        public void HoldPastTheThresholdFiresTheHeavyOnRelease()
+        public void ReleaseAfterTheWindUpFiresTheHeavy()
         {
-            var button = new ChargeButton(0.35f, 1.5f);
+            var button = new ChargeButton(0.35f, 0.5f);
             button.Update(true, true, 0f);
             Assert.AreEqual(ChargeEvent.None, button.Update(false, true, 0.4f));
             Assert.IsTrue(button.IsCharging(0.4f));
-            Assert.AreEqual(ChargeEvent.Heavy, button.Update(false, false, 0.6f));
+            Assert.AreEqual(ChargeEvent.Heavy, button.Update(false, false, 0.9f));
         }
 
         [Test]
-        public void HoldingPastTheMaximumFiresTheHeavyAutomatically()
+        public void HoldingNeverFiresByItself()
         {
-            var button = new ChargeButton(0.35f, 1.5f);
+            var button = new ChargeButton(0.35f, 0.5f);
             button.Update(true, true, 0f);
-            Assert.AreEqual(ChargeEvent.Heavy, button.Update(false, true, 1.5f));
-            Assert.IsFalse(button.IsDown);
+            Assert.AreEqual(ChargeEvent.None, button.Update(false, true, 10f));
+            Assert.IsTrue(button.IsCharging(10f));
+            Assert.AreEqual(1f, button.WindUp(10f));
+        }
+
+        [Test]
+        public void EarlyReleaseFiresWhenTheWindUpCompletes()
+        {
+            var button = new ChargeButton(0.35f, 0.5f);
+            button.Update(true, true, 0f);
+            Assert.AreEqual(ChargeEvent.None, button.Update(false, false, 0.5f));
+            Assert.IsTrue(button.IsCharging(0.6f));
+            Assert.AreEqual(ChargeEvent.None, button.Update(false, false, 0.7f));
+            Assert.AreEqual(ChargeEvent.Heavy, button.Update(false, false, 0.86f));
+            Assert.IsFalse(button.IsCharging(0.9f));
+        }
+
+        [Test]
+        public void CancelDropsAQueuedHeavy()
+        {
+            var button = new ChargeButton(0.35f, 0.5f);
+            button.Update(true, true, 0f);
+            button.Update(false, false, 0.5f);
+            button.Cancel();
+            Assert.AreEqual(ChargeEvent.None, button.Update(false, false, 1f));
         }
 
         [Test]

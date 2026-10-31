@@ -7,7 +7,8 @@ namespace TentacleVania.Weapons.Data
     {
         [Header("Feel")]
         [SerializeField, Min(0f)] private float _heavyThreshold = 0.35f;
-        [SerializeField, Min(0f)] private float _maxHold = 1.5f;
+        [Tooltip("Seconds the weapon takes to pull back into the heavy pose once charging starts; a release before then fires when it completes. Holding never fires by itself.")]
+        [SerializeField, Min(0f)] private float _heavyWindUp = 0.5f;
         [SerializeField, Min(0f)] private float _inputBuffer = 0.15f;
         [SerializeField, Min(0f)] private float _comboReset = 0.6f;
         [SerializeField, Min(0f)] private float _dashAttackWindow = 0.12f;
@@ -19,7 +20,7 @@ namespace TentacleVania.Weapons.Data
         [SerializeField, Range(0f, 360f)] private float _aimLockCone = 30f;
 
         public float HeavyThreshold => _heavyThreshold;
-        public float MaxHold => _maxHold;
+        public float HeavyWindUp => _heavyWindUp;
         public float InputBuffer => _inputBuffer;
         public float ComboReset => _comboReset;
         public float DashAttackWindow => _dashAttackWindow;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HatchlingWeaponHandling
   m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.Data.WeaponHandlingSettings
   _heavyThreshold: 0.35
-  _maxHold: 1.5
+  _heavyWindUp: 0.5
   _inputBuffer: 0.15
   _comboReset: 0.6
   _dashAttackWindow: 0.12

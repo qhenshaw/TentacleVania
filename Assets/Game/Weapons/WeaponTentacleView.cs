@@ -17,6 +17,8 @@ namespace TentacleVania.Weapons
         private const float Slack = 1.08f;
         private const float MinTipReach = 0.15f;
         private const float RollSharpness = 20f;
+        private const float ChargeTremble = 0.04f;
+        private static readonly Color ReadyFlash = new(1f, 0.85f, 0.4f);
         private const float RollMinSpeed = 0.5f;
 
         [SerializeField] private Material _material;
@@ -36,6 +38,7 @@ namespace TentacleVania.Weapons
 
         private WeaponController _controller;
         private CharacterMaterials _materials;
+        private readonly bool[] _readyPulsed = new bool[WeaponController.Slots];
 
         private sealed class TipMesh
         {
@@ -96,7 +99,10 @@ namespace TentacleVania.Weapons
                 var root = Root(slot);
                 var chain = _chains[slot];
                 Vector3 tip;
-                if (IsActive(slot))
+                var charging = !IsActive(slot) && IsCharging(slot);
+                if (!charging)
+                    _readyPulsed[slot] = false;
+                if (IsActive(slot) || charging)
                 {
                     if (!_shown[slot])
                     {
@@ -105,7 +111,8 @@ namespace TentacleVania.Weapons
                     }
                     _shown[slot] = true;
                     _retractStarted[slot] = float.NegativeInfinity;
-                    tip = ActiveTip(root, out var grow);
+                    var grow = 1f;
+                    tip = charging ? ChargeTip(slot, root, now, out grow) : ActiveTip(root, out grow);
                     _grow[slot] = grow;
                     tip = PullIn(root, tip, _activeMesh[slot], grow);
                 }
@@ -142,6 +149,28 @@ namespace TentacleVania.Weapons
                 _lines[slot].enabled = Chains.ShowPlaceholderLines;
                 PlaceTipMesh(slot, chain.Positions, dt);
             }
+        }
+
+        private bool IsCharging(int slot) => _controller.Weapon(slot) != null && _controller.IsCharging(slot);
+
+        private Vector3 ChargeTip(int slot, Vector3 root, float now, out float grow)
+        {
+            var move = _controller.Weapon(slot).Heavy;
+            var windUp = _controller.HeavyWindUp(slot);
+            var origin = transform.position + Vector3.up * move.Height;
+            var tip = MoveShapes.ChargeTip(origin, transform.forward, move, windUp);
+            if (windUp >= 1f && !_readyPulsed[slot])
+            {
+                _readyPulsed[slot] = true;
+                if (_materials != null)
+                    _materials.Flash(ReadyFlash, 0.12f, 0.6f);
+                Core.Feedback.Rumble.Play(0.1f, 0.25f, 0.1f);
+            }
+            if (windUp >= 1f)
+                tip += new Vector3(Mathf.Sin(now * 47f), Mathf.Sin(now * 53f + 1f), Mathf.Sin(now * 41f + 2f)) * ChargeTremble;
+            grow = Mathf.Clamp01(windUp * 2f);
+            grow = grow * grow * (3f - 2f * grow);
+            return Vector3.Lerp(root, tip, grow);
         }
 
         private Vector3 ActiveTip(Vector3 root, out float grow)
