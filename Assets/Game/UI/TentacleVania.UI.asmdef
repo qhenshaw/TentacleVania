@@ -6,6 +6,8 @@
         "TentacleVania.Combat",
         "TentacleVania.Creature",
         "TentacleVania.Enemies",
+        "TentacleVania.Bosses",
+        "TentacleVania.Abilities",
         "Unity.InputSystem",
         "Unity.Localization"
     ],

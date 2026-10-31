@@ -75,6 +75,7 @@ namespace TentacleVania.Enemies
         public float AttackStartedAt => _attackStarted;
         public Vector3 Velocity => _agent.enabled ? _agent.velocity : Vector3.zero;
         public virtual bool IsCowering => false;
+        public virtual bool IsBoss => false;
         public AttackPhase CurrentPhase => CurrentAttack == null ? AttackPhase.Done : AttackMath.Phase(CurrentAttack, Time.time - _attackStarted);
         protected NavMeshAgent Agent => _agent;
         protected float StateTime => Time.time - _stateStarted;
@@ -223,7 +224,7 @@ namespace TentacleVania.Enemies
             var attacks = _definition.Attacks;
             for (var i = 0; i < attacks.Count; i++)
             {
-                if (now >= _readyAt[i] && attacks[i].InRange(distance))
+                if (now >= _readyAt[i] && attacks[i].InRange(distance) && AttackAllowed(i))
                 {
                     index = i;
                     return true;
@@ -232,6 +233,8 @@ namespace TentacleVania.Enemies
             index = -1;
             return false;
         }
+
+        protected virtual bool AttackAllowed(int index) => true;
 
         protected virtual Vector3 ChaseDestination(Vector3 targetPosition) => targetPosition;
 

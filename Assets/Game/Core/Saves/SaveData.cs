@@ -39,6 +39,7 @@ namespace TentacleVania.Core.Saves
         public string Weapon1 = "";
         public string Weapon2 = "";
         public string Ability = "";
+        public List<string> Abilities = new();
         public List<string> Mutations = new();
     }
 

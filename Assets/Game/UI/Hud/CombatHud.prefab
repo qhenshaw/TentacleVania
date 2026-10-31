@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 4429990449138818979}
   - component: {fileID: 2607055574703499865}
   - component: {fileID: 667417292918851181}
+  - component: {fileID: 6451338741358025683}
   m_Layer: 0
   m_Name: CombatHud
   m_TagString: Untagged
@@ -184,3 +185,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9cf3f37f5e1ed408e7647174ecf29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.StatusIconsView
+--- !u!114 &6451338741358025683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703636293144204845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e794634e09ac0f94aad7f2d5fb38146a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.BossBarView
+  _drainDelay: 0.5
+  _drainSpeed: 0.4
+  _rewardSeconds: 3.5

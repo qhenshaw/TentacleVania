@@ -6,6 +6,7 @@ Active abilities (`TentacleVania.Abilities`), on the ability input (RT / Q), pai
 
 - `AbilityDefinition` (ScriptableObject): display name, charge `Cost`, and `CreateRuntime(AbilityContext)`, which builds the ability's plain C# `AbilityRuntime` (`Activate`, `Tick`, `Cancel`, `Dispose`) once at equip, so activations allocate nothing.
 - `AbilityController` (on the creature prefab) holds the one equipped ability (`Equip(definition)` swaps it), ticks the runtime, and on `Ability.Pressed` spends the cost with `CreatureCharge.TrySpend` and activates. Nothing fires while control is locked (stun, consume) or the creature is dead; death or disabling cancels without effects. `AbilityContext.RefreshStatus` hands the status glow back to the charge meter (`CreatureCharge.RefreshGlow`) when an ability ends.
+- `Core.Progression.BossProgress.AbilityUnlocked` (a boss reward) equips the unlocked ability through the `ContentCatalog`, replacing the current one.
 - Debug: Abilities tab (equipped, state, "Free abilities (no charge)", "Activate").
 
 ## Bio-Shield (`BioShield/`, `BioShield.asset`)

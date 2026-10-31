@@ -222,3 +222,73 @@
     background-color: rgba(255, 200, 60, 0.35);
     rotate: 45deg;
 }
+
+.hud__boss {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: 900px;
+    translate: -50% 0;
+    transition-property: opacity;
+    transition-duration: 0.4s;
+}
+
+.hud__boss--hidden {
+    opacity: 0;
+}
+
+.hud__boss-name {
+    font-size: 24px;
+    color: rgb(235, 220, 200);
+    -unity-font-style: bold;
+    margin-bottom: 4px;
+    padding: 0;
+}
+
+.hud-bar--boss {
+    height: 16px;
+}
+
+.hud-bar--boss .hud-bar__fill {
+    background-color: rgb(185, 28, 48);
+}
+
+.hud-bar--boss-stagger {
+    height: 6px;
+    margin-top: 3px;
+}
+
+.hud-bar--boss-stagger .hud-bar__fill {
+    background-color: rgb(235, 190, 60);
+}
+
+.hud__boss--stunned .hud-bar--boss-stagger .hud-bar__fill {
+    background-color: rgb(150, 210, 255);
+}
+
+.hud__boss-tick {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: rgba(255, 240, 220, 0.8);
+}
+
+.hud__reward {
+    position: absolute;
+    top: 30%;
+    align-self: center;
+    padding: 10px 28px;
+    font-size: 34px;
+    color: rgb(255, 235, 180);
+    -unity-font-style: bold;
+    background-color: rgba(20, 8, 4, 0.75);
+    border-radius: 4px;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+}
+
+.hud__reward--shown {
+    opacity: 1;
+}

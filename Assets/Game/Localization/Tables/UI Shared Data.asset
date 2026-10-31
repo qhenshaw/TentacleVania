@@ -107,6 +107,14 @@ MonoBehaviour:
     m_Key: nest.leave
     m_Metadata:
       m_Items: []
+  - m_Id: 392915807125504
+    m_Key: boss.test
+    m_Metadata:
+      m_Items: []
+  - m_Id: 392915857457152
+    m_Key: boss.reward
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

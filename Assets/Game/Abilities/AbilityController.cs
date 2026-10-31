@@ -2,6 +2,7 @@ using System;
 using TentacleVania.Combat;
 using TentacleVania.Core.Characters;
 using TentacleVania.Core.Input;
+using TentacleVania.Core.Progression;
 using TentacleVania.Core.Saves;
 using TentacleVania.Creature;
 using TentacleVania.Creature.Movement;
@@ -41,11 +42,16 @@ namespace TentacleVania.Abilities
             Equip(_equipped);
         }
 
-        private void OnEnable() => SaveSystem.Register(this);
+        private void OnEnable()
+        {
+            SaveSystem.Register(this);
+            BossProgress.AbilityUnlocked += OnAbilityUnlocked;
+        }
 
         private void OnDisable()
         {
             SaveSystem.Unregister(this);
+            BossProgress.AbilityUnlocked -= OnAbilityUnlocked;
             if (Runtime != null)
                 Runtime.Cancel();
         }
@@ -57,6 +63,13 @@ namespace TentacleVania.Abilities
             if (_catalog == null)
                 return;
             var ability = _catalog.Find<AbilityDefinition>(data.Build.Ability);
+            if (ability != null && ability != _equipped)
+                Equip(ability);
+        }
+
+        private void OnAbilityUnlocked(string id)
+        {
+            var ability = _catalog != null ? _catalog.Find<AbilityDefinition>(id) : null;
             if (ability != null && ability != _equipped)
                 Equip(ability);
         }
