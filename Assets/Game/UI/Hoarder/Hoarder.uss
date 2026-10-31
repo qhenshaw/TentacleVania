@@ -1,0 +1,119 @@
+.hoarder {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    align-items: flex-end;
+    justify-content: center;
+    padding-right: 80px;
+    display: none;
+}
+
+.hoarder--open {
+    display: flex;
+}
+
+.hoarder__panel {
+    width: 760px;
+    height: 820px;
+    padding: 24px 30px;
+    background-color: rgba(4, 14, 8, 0.94);
+    border-width: 2px;
+    border-color: rgb(60, 200, 110);
+}
+
+.hoarder__title {
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: rgb(60, 200, 110);
+    border-bottom-width: 2px;
+    border-color: rgba(60, 200, 110, 0.4);
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+}
+
+.hoarder__speaker {
+    font-size: 18px;
+    color: rgb(90, 190, 120);
+}
+
+.hoarder__line {
+    font-size: 24px;
+    color: rgb(170, 240, 190);
+    white-space: normal;
+    -unity-font-style: italic;
+    margin-bottom: 14px;
+}
+
+.hoarder__biomass {
+    font-size: 22px;
+    color: rgb(240, 200, 120);
+    margin-bottom: 10px;
+}
+
+.hoarder__rows {
+    flex-grow: 1;
+}
+
+.hoarder__row {
+    flex-shrink: 0;
+    padding: 8px 0;
+    border-bottom-width: 1px;
+    border-color: rgba(60, 200, 110, 0.3);
+}
+
+.hoarder__row-head {
+    flex-direction: row;
+    align-items: center;
+}
+
+.hoarder__name {
+    flex-grow: 1;
+    font-size: 24px;
+    color: rgb(190, 255, 210);
+}
+
+.hoarder__cost {
+    font-size: 18px;
+    margin-right: 10px;
+    color: rgb(60, 200, 110);
+}
+
+.hoarder__effect {
+    font-size: 18px;
+    color: rgb(140, 210, 160);
+    white-space: normal;
+}
+
+.hoarder__note {
+    font-size: 20px;
+    color: rgb(120, 190, 140);
+    white-space: normal;
+}
+
+.hoarder__button {
+    height: 46px;
+    padding: 0 16px;
+    font-size: 20px;
+    color: rgb(170, 240, 190);
+    background-color: rgb(10, 30, 18);
+    border-width: 2px;
+    border-color: rgb(40, 120, 70);
+}
+
+.hoarder__button:hover,
+.hoarder__button:focus {
+    background-color: rgb(20, 60, 34);
+    border-color: rgb(60, 200, 110);
+}
+
+.hoarder__button:disabled {
+    opacity: 0.35;
+}
+
+.hoarder__leave {
+    align-self: flex-end;
+    width: 200px;
+    margin-top: 12px;
+}

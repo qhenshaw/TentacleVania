@@ -27,6 +27,20 @@ namespace TentacleVania.World.Pickups
             for (var i = 0; i < ids.Length; i++)
                 ids[i] = library.Logs[i] != null ? library.Logs[i].Id : "-";
             DebugMenu.Choice(Tab, "Spawn lore terminal", ids, i => SpawnTerminal(library.Logs[i]));
+            DebugMenu.Button(Tab, "Spawn Hoarder", () =>
+            {
+                var set = Set;
+                var creature = CombatTargets.Creature;
+                if (set == null || set.Hoarder == null || creature == null)
+                    return;
+                var forward = creature.transform.forward;
+                Object.Instantiate(set.Hoarder, creature.transform.position + forward * 2.5f, Quaternion.LookRotation(forward));
+            });
+            DebugMenu.Button(Tab, "Give slice trinkets", () =>
+            {
+                Collectibles.Grant(PickupKind.Trinket, "PodReleaseKey", 1);
+                Collectibles.Grant(PickupKind.Trinket, "TaggedLockerKey", 1);
+            });
             DebugMenu.Button(Tab, "Collect all lore logs", () =>
             {
                 foreach (var id in ids)

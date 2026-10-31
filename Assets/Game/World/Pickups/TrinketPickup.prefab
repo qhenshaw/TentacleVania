@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Pickups.Pickup
   _id: 
   _kind: 2
-  _itemId: SpecimenTag
+  _itemId: PodReleaseKey
   _amount: 1
   _radius: 1.2
   _visual: {fileID: 694409393620607505}

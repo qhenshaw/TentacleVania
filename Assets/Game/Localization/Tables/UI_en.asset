@@ -674,6 +674,38 @@ MonoBehaviour:
     m_Localized: Lab Badge
     m_Metadata:
       m_Items: []
+  - m_Id: 550532185604096
+    m_Localized: Trade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130048
+    m_Localized: SPECIMEN 41 // TRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130049
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130050
+    m_Localized: Buy ({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130051
+    m_Localized: 'Biomass: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130052
+    m_Localized: Nothing on offer. Trinkets found in Site Beta add to the Hoarder's stock.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130053
+    m_Localized: Pod Release Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130054
+    m_Localized: Tagged Locker Key
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
