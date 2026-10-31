@@ -214,7 +214,10 @@ namespace TentacleVania.World.Editor
                 BuildArena(plan, room, root, dataFolder);
             room.Place?.Invoke(context);
 
-            LayoutGenerator.BakeNavMesh(layout);
+            surface.BuildNavMesh();
+            var navMeshPath = $"{plan.Folder}/NavMesh-{room.Scene}.asset";
+            AssetDatabase.DeleteAsset(navMeshPath);
+            AssetDatabase.CreateAsset(surface.navMeshData, navMeshPath);
             EditorSceneManager.SaveScene(scene, path);
             EditorSceneManager.CloseScene(scene, true);
             return $"{room.Scene}: built at {path}";
@@ -265,10 +268,13 @@ namespace TentacleVania.World.Editor
                 }
             }
 
-            var waves = ScriptableObject.CreateInstance<ArenaWaveSet>();
             var wavesPath = $"{dataFolder}/{room.Scene}_Waves.asset";
-            AssetDatabase.DeleteAsset(wavesPath);
-            AssetDatabase.CreateAsset(waves, wavesPath);
+            var waves = AssetDatabase.LoadAssetAtPath<ArenaWaveSet>(wavesPath);
+            if (waves == null)
+            {
+                waves = ScriptableObject.CreateInstance<ArenaWaveSet>();
+                AssetDatabase.CreateAsset(waves, wavesPath);
+            }
             var waveSo = new SerializedObject(waves);
             var list = waveSo.FindProperty("_waves");
             list.arraySize = room.Waves.Count;
@@ -285,6 +291,8 @@ namespace TentacleVania.World.Editor
                 }
             }
             waveSo.ApplyModifiedPropertiesWithoutUndo();
+            EditorUtility.SetDirty(waves);
+            AssetDatabase.SaveAssetIfDirty(waves);
 
             var encounter = root.AddComponent<ArenaEncounter>();
             var so = new SerializedObject(encounter);
