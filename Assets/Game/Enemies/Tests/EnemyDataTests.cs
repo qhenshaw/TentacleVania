@@ -61,5 +61,22 @@ namespace TentacleVania.Enemies.Tests
             var position = center + new Vector3(distance * 0.6f, 1.5f, distance * 0.8f);
             Assert.That(ContainmentTrap.Contains(center, radius, position), Is.EqualTo(caught));
         }
+
+        [Test]
+        public void TurretIsAStationaryWallMachine()
+        {
+            var turret = Load("Turret");
+            Assert.That(turret.MaxHealth, Is.EqualTo(60f));
+            Assert.That(turret.MaxStagger, Is.EqualTo(40f));
+            Assert.That(turret.MoveSpeed, Is.EqualTo(0f));
+            Assert.That(turret.KnockbackScale, Is.EqualTo(0f));
+            Assert.That(turret.SpawnOnWall, Is.True);
+            Assert.That(turret.ConsumeHeal, Is.EqualTo(0.08f).Within(1e-4f));
+            Assert.That(turret.Biomass, Is.EqualTo(15));
+            Assert.That(turret.Attacks.Count, Is.EqualTo(1));
+            Assert.That(turret.Attacks[0].Kind, Is.EqualTo(AttackKind.Projectile));
+            Assert.That(turret.Attacks[0].Damage, Is.EqualTo(10f));
+            Assert.That(turret.Attacks[0].Telegraph, Is.EqualTo(Telegraph.Dodgeable));
+        }
     }
 }

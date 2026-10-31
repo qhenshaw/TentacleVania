@@ -35,6 +35,10 @@ namespace TentacleVania.Enemies.Data
         [SerializeField, Range(0f, 1f)] private float _consumeHeal = 0.12f;
         [SerializeField, Min(0)] private int _biomass = 10;
 
+        [Header("Spawning")]
+        [Tooltip("Spawns at the arena's wall mounts instead of its hatches (turrets).")]
+        [SerializeField] private bool _spawnOnWall;
+
         [Header("Death")]
         [SerializeField, Min(0f)] private float _despawnDelay = 2f;
 
@@ -60,6 +64,7 @@ namespace TentacleVania.Enemies.Data
         public float KnockbackScale => _knockbackScale;
         public IReadOnlyList<EnemyAttack> Attacks => _attacks;
         public float DespawnDelay => _despawnDelay;
+        public bool SpawnOnWall => _spawnOnWall;
         public float ConsumeHeal => _consumeHeal;
         public int Biomass => _biomass;
         public float PanicRange => _panicRange;
