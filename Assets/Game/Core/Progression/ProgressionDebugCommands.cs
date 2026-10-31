@@ -13,7 +13,7 @@ namespace TentacleVania.Core.Progression
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Register()
         {
-            DebugMenu.Value(Tab, "Stats", () => $"B{Stats.Brutality} F{Stats.Ferocity} T{Stats.Tenacity} C{Stats.Cunning}, level {Stats.TotalLevel}, next {Stats.NextLevelCost}");
+            DebugMenu.Value(Tab, "Stats", () => $"B{Stats.Brutality} F{Stats.Ferocity} T{Stats.Tenacity} C{Stats.Cunning}, level {Stats.Level}, next {Stats.NextLevelCost}");
             DebugMenu.Value(Tab, "Multipliers", () =>
                 $"dmg x{Stats.WeaponDamage:F2}, speed x{Stats.AttackSpeed:F2}, dash rec x{Stats.DashRecovery:F2}, +{Stats.MaxHealthBonus:F0} HP, taken x{Stats.DamageTaken:F3}, charge x{Stats.ChargeGain:F2}, ability x{Stats.AbilityDamage:F2}");
             DebugMenu.Value(Tab, "Biomass spent", () => $"{Stats.BiomassSpent} (size stage {Stats.SizeStage + 1})");

@@ -29,7 +29,9 @@ namespace TentacleVania.Core.Progression
         private const float MinDashRecovery = 0.25f;
         private const float MinDamageTaken = 0.5f;
 
-        public static int LevelCost(int totalLevel) => Mathf.RoundToInt(60f + 12f * Mathf.Pow(Mathf.Max(0, totalLevel), 1.4f));
+        public static int DisplayLevel(int totalLevel) => Mathf.Max(1, totalLevel - StartTotal + 1);
+
+        public static int LevelCost(int level) => Mathf.RoundToInt(60f + 12f * Mathf.Pow(Mathf.Max(0, level), 1.4f));
 
         public static float EffectivePoints(int value)
         {

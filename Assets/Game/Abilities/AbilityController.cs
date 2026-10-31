@@ -97,6 +97,8 @@ namespace TentacleVania.Abilities
                 Runtime.Dispose();
             _equipped = ability;
             Runtime = ability != null ? ability.CreateRuntime(_context) : null;
+            if (_charge != null)
+                _charge.GainEnabled = ability != null;
         }
 
         public bool TryActivate()

@@ -13,7 +13,8 @@ namespace TentacleVania.Core.Progression
         public static int Tenacity => Mathf.Max(StatRules.StartValue, Build.Tenacity);
         public static int Cunning => Mathf.Max(StatRules.StartValue, Build.Cunning);
         public static int TotalLevel => Brutality + Ferocity + Tenacity + Cunning;
-        public static int NextLevelCost => StatRules.LevelCost(TotalLevel);
+        public static int Level => StatRules.DisplayLevel(TotalLevel);
+        public static int NextLevelCost => StatRules.LevelCost(Level);
         public static int BiomassSpent => Build.BiomassSpent;
         public static int SizeStage => StatRules.SizeStage(Build.BiomassSpent);
 
@@ -84,7 +85,7 @@ namespace TentacleVania.Core.Progression
 
         private static void Commit()
         {
-            Build.Level = TotalLevel;
+            Build.Level = Level;
             Changed?.Invoke();
         }
     }

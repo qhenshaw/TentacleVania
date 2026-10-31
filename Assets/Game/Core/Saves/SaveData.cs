@@ -30,7 +30,7 @@ namespace TentacleVania.Core.Saves
     [Serializable]
     public sealed class BuildState
     {
-        public int Level = 4;
+        public int Level = 1;
         public int Brutality = 1;
         public int Ferocity = 1;
         public int Tenacity = 1;

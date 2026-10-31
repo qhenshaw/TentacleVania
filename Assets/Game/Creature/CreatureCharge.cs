@@ -58,8 +58,12 @@ namespace TentacleVania.Creature
 
         public void AddConsume() => Add(_settings.PerConsume);
 
+        public bool GainEnabled { get; set; } = true;
+
         public void Add(float amount)
         {
+            if (!GainEnabled)
+                return;
             if (Meter.Add(amount) > 0f)
                 Refresh();
         }
