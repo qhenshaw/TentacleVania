@@ -1,0 +1,16 @@
+{
+    "target": "Lit",
+    "hlsl": "Assets/Game/Core/Shaders/EnvironmentMaster.hlsl",
+    "fragmentFunction": "EnvironmentMaster",
+    "castShadows": true,
+    "alphaClip": true,
+    "normalTS": true,
+    "properties": [
+        { "name": "_BaseMap", "type": "Texture2D" },
+        { "name": "_BaseColor", "type": "Color", "color": { "r": 1, "g": 1, "b": 1, "a": 1 } },
+        { "name": "_NormalMap", "type": "NormalMap" },
+        { "name": "_Smoothness", "type": "Float", "value": 0.3 },
+        { "name": "_EmissionColor", "type": "Color", "color": { "r": 0, "g": 0, "b": 0, "a": 1 } },
+        { "name": "_Fade", "type": "Float", "value": 0 }
+    ]
+}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9099581169602399216}
   - component: {fileID: 8141307351057073656}
   - component: {fileID: 6555243741808381193}
+  - component: {fileID: 6146006082019185651}
   m_Layer: 0
   m_Name: GameplayCamera
   m_TagString: Untagged
@@ -100,6 +101,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6128df7b081e6534a90318636b019ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Camera::TentacleVania.Camera.CameraShake
+--- !u!114 &6146006082019185651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700718421418619533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ec7759ffe42c74c92befe5acb58965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Core::TentacleVania.Core.Rendering.OcclusionFader
+  _occluders:
+    serializedVersion: 2
+    m_Bits: 1
+  _maxFade: 0.85
+  _fadeSpeed: 4
+  _holeRadius: 0.16
+  _margin: 0.4
 --- !u!1 &1755327794200303747
 GameObject:
   m_ObjectHideFlags: 0

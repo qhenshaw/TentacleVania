@@ -11,6 +11,12 @@ namespace TentacleVania.Camera
         {
             DebugMenu.Toggle(DebugMenu.Camera, "Screen shake", () => GameSettings.ScreenShake, v => GameSettings.ScreenShake = v);
             DebugMenu.Toggle(DebugMenu.Camera, "Flashes", () => GameSettings.Flashes, v => GameSettings.Flashes = v);
+            DebugMenu.Toggle(DebugMenu.Camera, "Wall fade", () => Core.Rendering.OcclusionFader.Enabled, v => Core.Rendering.OcclusionFader.Enabled = v);
+            DebugMenu.Value(DebugMenu.Camera, "Faded walls", () =>
+            {
+                var fader = Object.FindAnyObjectByType<Core.Rendering.OcclusionFader>();
+                return fader != null ? fader.FadedCount.ToString() : "no fader";
+            });
             DebugMenu.Value(DebugMenu.Camera, "Room bounds", () =>
             {
                 var bounds = CameraBounds.Active;
