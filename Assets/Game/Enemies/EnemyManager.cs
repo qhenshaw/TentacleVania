@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Enemies.AI;
+using TentacleVania.Enemies.Traps;
 using UnityEngine;
 
 namespace TentacleVania.Enemies
@@ -15,6 +16,7 @@ namespace TentacleVania.Enemies
 
         private readonly List<Enemy> _enemies = new(64);
         private readonly Dictionary<EnemyProjectile, Stack<EnemyProjectile>> _projectilePools = new();
+        private readonly Dictionary<ContainmentTrap, Stack<ContainmentTrap>> _trapPools = new();
 
         public static EnemyManager Instance
         {
@@ -100,6 +102,33 @@ namespace TentacleVania.Enemies
             if (!_instance._projectilePools.TryGetValue(projectile.Prefab, out var pool))
                 _instance._projectilePools[projectile.Prefab] = pool = new Stack<EnemyProjectile>(8);
             pool.Push(projectile);
+        }
+
+        public static void PlaceTrap(ContainmentTrap prefab, Vector3 position, float radius, StatusKind status, float magnitude, float duration, float lifetime)
+        {
+            var manager = Instance;
+            if (!manager._trapPools.TryGetValue(prefab, out var pool))
+                manager._trapPools[prefab] = pool = new Stack<ContainmentTrap>(4);
+            var trap = pool.Count > 0 ? pool.Pop() : null;
+            if (trap == null)
+            {
+                trap = Instantiate(prefab, manager.transform);
+                trap.Prefab = prefab;
+            }
+            trap.Arm(position, radius, status, magnitude, duration, lifetime);
+        }
+
+        public static void ReturnTrap(ContainmentTrap trap)
+        {
+            trap.gameObject.SetActive(false);
+            if (_instance == null || trap.Prefab == null)
+            {
+                Destroy(trap.gameObject);
+                return;
+            }
+            if (!_instance._trapPools.TryGetValue(trap.Prefab, out var pool))
+                _instance._trapPools[trap.Prefab] = pool = new Stack<ContainmentTrap>(4);
+            pool.Push(trap);
         }
 
         private void OnDestroy()

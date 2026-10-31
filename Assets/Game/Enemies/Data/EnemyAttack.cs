@@ -1,6 +1,7 @@
 using System;
 using FMODUnity;
 using TentacleVania.Combat.Damage;
+using TentacleVania.Enemies.Traps;
 using UnityEngine;
 
 namespace TentacleVania.Enemies.Data
@@ -10,6 +11,7 @@ namespace TentacleVania.Enemies.Data
         Melee,
         Area,
         Projectile,
+        Trap,
     }
 
     public enum Telegraph
@@ -90,6 +92,10 @@ namespace TentacleVania.Enemies.Data
         [Min(0.1f)] public float ProjectileLifetime = 3f;
         [Tooltip("Width of the ground lane telegraphing the shot.")]
         [Min(0.05f)] public float LaneWidth = 0.4f;
+
+        [Header("Trap (thrown at the target's position; snaps when the creature is inside AreaRadius)")]
+        public ContainmentTrap TrapPrefab;
+        [Min(0.1f)] public float TrapLifetime = 6f;
 
         [Header("Sounds (optional)")]
         public EventReference WindUpSound;

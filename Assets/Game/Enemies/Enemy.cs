@@ -368,6 +368,10 @@ namespace TentacleVania.Enemies
                 case AttackKind.Projectile:
                     Fire(attack);
                     break;
+                case AttackKind.Trap:
+                    if (attack.TrapPrefab != null)
+                        EnemyManager.PlaceTrap(attack.TrapPrefab, _areaCenter, attack.AreaRadius, attack.Status, attack.StatusMagnitude, attack.StatusDuration, attack.TrapLifetime);
+                    break;
             }
         }
 
@@ -407,6 +411,7 @@ namespace TentacleVania.Enemies
             switch (attack.Kind)
             {
                 case AttackKind.Area:
+                case AttackKind.Trap:
                     _indicator.ShowCircle(_areaCenter, attack.AreaRadius, attack.Telegraph, progress, locked);
                     break;
                 case AttackKind.Melee:
@@ -475,8 +480,18 @@ namespace TentacleVania.Enemies
             EnemyManager.ReleaseTokens(this);
         }
 
-        private void UpdateAreaCenter() =>
-            _areaCenter = transform.position + _attackForward * (CurrentAttack?.AreaForwardOffset ?? 0f);
+        private void UpdateAreaCenter()
+        {
+            var attack = CurrentAttack;
+            var creature = CombatTargets.Creature;
+            if (attack != null && attack.Kind == AttackKind.Trap && creature != null)
+            {
+                var offset = Flat(creature.transform.position - transform.position);
+                _areaCenter = transform.position + Vector3.ClampMagnitude(offset, attack.MaxRange);
+                return;
+            }
+            _areaCenter = transform.position + _attackForward * (attack?.AreaForwardOffset ?? 0f);
+        }
 
         private void OnDied(Health health)
         {
