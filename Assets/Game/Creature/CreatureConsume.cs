@@ -159,14 +159,20 @@ namespace TentacleVania.Creature
             Play(_settings.OpenSound);
 
             var healDuration = _settings.HealDuration * Mathf.Max(0.05f, HealDurationScale);
-            var heal = _health.Max * target.HealFraction * NextHealScale;
-            _healRate = heal / healDuration;
-            _healRemaining += heal;
+            var machine = !target.Health.Bleeds && !target.CoreBleeds;
+            if (!machine)
+            {
+                var heal = _health.Max * target.HealFraction * NextHealScale;
+                _healRate = heal / healDuration;
+                _healRemaining += heal;
+            }
             _armoredUntil = Time.time + healDuration;
             NextConsumeSpeed = 1f;
             NextHealScale = 1f;
             Biomass += target.Biomass;
-            if (_charge != null)
+            if (_charge != null && machine)
+                _charge.Add(_charge.Max * _settings.MachineCharge);
+            else if (_charge != null)
                 _charge.AddConsume();
             Consuming?.Invoke(this, target);
             return true;
