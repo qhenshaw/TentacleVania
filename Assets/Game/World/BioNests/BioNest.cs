@@ -6,10 +6,11 @@ using UnityEngine.VFX;
 
 namespace TentacleVania.World.BioNests
 {
-    public sealed class BioNest : MonoBehaviour, IInteractable
+    public sealed class BioNest : MonoBehaviour, IHoldInteractable
     {
         public const string GrowPromptKey = "prompt.nest.grow";
         public const string RestPromptKey = "prompt.nest.rest";
+        public const float RestHoldDuration = 0.6f;
 
         [Tooltip("Unique save id; when empty, the scene name and object name are used.")]
         [SerializeField] private string _id;
@@ -29,6 +30,7 @@ namespace TentacleVania.World.BioNests
         public Vector3 Position => transform.position;
         public float Radius => _radius;
         public string PromptKey => IsGrown ? RestPromptKey : GrowPromptKey;
+        public float HoldDuration => RestHoldDuration;
         public bool CanInteract => isActiveAndEnabled;
         public Transform RespawnPoint => _respawnPoint != null ? _respawnPoint : transform;
 
@@ -42,7 +44,25 @@ namespace TentacleVania.World.BioNests
         {
             if (!IsGrown)
                 Grow();
+            SetCheckpoint();
+        }
+
+        public void InteractHold()
+        {
+            if (!IsGrown)
+                Grow();
             Rest();
+        }
+
+        public void SetCheckpoint()
+        {
+            if (!IsGrown)
+                return;
+            var respawn = RespawnPoint;
+            if (!Nests.SetRespawn(SaveId, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, respawn.position, respawn.eulerAngles.y))
+                return;
+            Core.Saves.Autosave.Request(Core.Saves.AutosaveReason.NestRest);
+            Play(_restBurst, default);
         }
 
         public void Grow()

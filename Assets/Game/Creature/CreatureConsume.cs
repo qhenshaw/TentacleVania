@@ -84,7 +84,8 @@ namespace TentacleVania.Creature
             {
                 Interactions.Refresh(transform.position);
                 if (!_motor.IsDashing && GameplayInput.Default.Grab.Pressed && !TryGrab())
-                    Interactions.TryInteract();
+                    Interactions.Press(now);
+                Interactions.TickHold(GameplayInput.Default.Grab.Held, now);
             }
             else
             {

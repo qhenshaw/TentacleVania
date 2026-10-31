@@ -7,13 +7,20 @@ namespace TentacleVania.Core.Interaction
     {
         private static readonly List<IInteractable> Registered = new(16);
 
+        private static IHoldInteractable _holding;
+        private static float _holdStarted;
+
         public static IInteractable Current { get; private set; }
+        public static float HoldProgress { get; private set; }
+        public static bool IsHolding => _holding != null;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
         {
             Registered.Clear();
             Current = null;
+            _holding = null;
+            HoldProgress = 0f;
         }
 
         public static void Register(IInteractable interactable)
@@ -35,7 +42,56 @@ namespace TentacleVania.Core.Interaction
             return Current;
         }
 
-        public static void Clear() => Current = null;
+        public static void Clear()
+        {
+            Current = null;
+            CancelHold();
+        }
+
+        public static bool Press(float now)
+        {
+            if (Current == null || !Current.CanInteract)
+                return false;
+            if (Current is IHoldInteractable holdable && holdable.HoldDuration > 0f)
+            {
+                _holding = holdable;
+                _holdStarted = now;
+                HoldProgress = 0f;
+                return true;
+            }
+            Current.Interact();
+            return true;
+        }
+
+        public static void TickHold(bool held, float now)
+        {
+            if (_holding == null)
+                return;
+            if (Current != _holding || !_holding.CanInteract)
+            {
+                CancelHold();
+                return;
+            }
+            var target = _holding;
+            HoldProgress = HoldRules.Progress(now - _holdStarted, target.HoldDuration);
+            switch (HoldRules.Resolve(held, now - _holdStarted, target.HoldDuration))
+            {
+                case HoldResult.Tap:
+                    CancelHold();
+                    target.Interact();
+                    break;
+                case HoldResult.Hold:
+                    CancelHold();
+                    target.InteractHold();
+                    break;
+            }
+        }
+
+        public static void CancelHold()
+        {
+            _holding = null;
+            HoldProgress = 0f;
+        }
 
         public static bool TryInteract()
         {
