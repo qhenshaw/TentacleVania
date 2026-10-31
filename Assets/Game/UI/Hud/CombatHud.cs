@@ -131,7 +131,7 @@ namespace TentacleVania.UI.Hud
                 for (var i = 0; i < enemies.Count; i++)
                 {
                     var enemy = enemies[i];
-                    if (enemy.State == EnemyState.Dead || enemy.State == EnemyState.Consumed)
+                    if (enemy.State == EnemyState.Dead || enemy.State == EnemyState.Consumed || enemy.IsBoss)
                         continue;
                     var bar = Find(enemy) ?? Acquire(enemy);
                     if (bar == null)

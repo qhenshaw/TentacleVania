@@ -1,0 +1,212 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using FMODUnity;
+using TentacleVania.Combat;
+using TentacleVania.Core.Progression;
+using TentacleVania.Core.Saves;
+using TentacleVania.Enemies;
+using Unity.Cinemachine;
+using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.VFX;
+
+namespace TentacleVania.Bosses
+{
+    public class BossEnemy : Enemy
+    {
+        private const int IntroPriority = 50;
+        private const int IdlePriority = -10;
+
+        [SerializeField] private BossDefinition _boss;
+        [SerializeField] private CinemachineCamera _introCamera;
+        [SerializeField] private Transform _essence;
+        [SerializeField] private VisualEffect _absorbEffect;
+
+        private readonly List<Enemy> _adds = new(8);
+        private int _phase = -1;
+        private float _nextAdd;
+        private bool _introDone;
+        private Vector3 _essenceHome;
+
+        public static BossEnemy Active { get; private set; }
+        public static event Action<BossEnemy> IntroStarted;
+        public static event Action<BossEnemy> PhaseChanged;
+        public static event Action<BossEnemy> Absorbed;
+
+        public BossDefinition Boss => _boss;
+        public int Phase => _phase;
+        public override bool IsBoss => true;
+        public IReadOnlyList<Enemy> Adds => _adds;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics()
+        {
+            Active = null;
+            IntroStarted = null;
+            PhaseChanged = null;
+            Absorbed = null;
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            if (_essence != null)
+            {
+                _essenceHome = _essence.localPosition;
+                _essence.gameObject.SetActive(false);
+            }
+            SetIntroCamera(false);
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            if (BossProgress.IsDefeated(_boss.Id))
+            {
+                Destroy(gameObject);
+                return;
+            }
+            Active = this;
+            _phase = -1;
+            _introDone = false;
+            _adds.Clear();
+            EnterPhase(0, Time.time);
+            SetIntroCamera(true);
+            Play(_boss.IntroSound);
+            IntroStarted?.Invoke(this);
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            SetIntroCamera(false);
+            if (Active == this)
+                Active = null;
+        }
+
+        protected override bool AttackAllowed(int index)
+        {
+            var mask = _boss.Phases[Mathf.Max(0, _phase)].AttackMask;
+            return mask == 0 || (mask & (1 << index)) != 0;
+        }
+
+        protected override void OnTick(float now, float dt)
+        {
+            if (!_introDone && State != EnemyState.Spawning)
+            {
+                _introDone = true;
+                SetIntroCamera(false);
+            }
+            if (!Health.IsAlive || State == EnemyState.Dead || State == EnemyState.Consumed)
+                return;
+            var phase = BossProgress.PhaseFor(Health.Normalized, _boss.Thresholds);
+            if (phase != _phase)
+                EnterPhase(phase, now);
+            if (_introDone)
+                TickAdds(now);
+        }
+
+        protected override void OnDeath()
+        {
+            for (var i = _adds.Count - 1; i >= 0; i--)
+                if (_adds[i] != null && _adds[i].Health.IsAlive)
+                    _adds[i].Health.Kill();
+            _adds.Clear();
+            BossProgress.Defeat(_boss.Id, ContentCatalog.IdOf(_boss.RewardAbility));
+            Play(_boss.DeathSound);
+            StartCoroutine(AbsorbRoutine());
+        }
+
+        private void EnterPhase(int phase, float now)
+        {
+            var changed = _phase >= 0;
+            _phase = phase;
+            var data = _boss.Phases[phase];
+            Agent.speed = Definition.MoveSpeed * data.MoveSpeedScale;
+            _nextAdd = now + data.AddInterval;
+            if (!changed)
+                return;
+            Play(data.Sting);
+            PhaseChanged?.Invoke(this);
+        }
+
+        private void TickAdds(float now)
+        {
+            for (var i = _adds.Count - 1; i >= 0; i--)
+            {
+                var add = _adds[i];
+                if (add == null || !add.Health.IsAlive || add.State == EnemyState.Consumed)
+                    _adds.RemoveAt(i);
+            }
+            var data = _boss.Phases[_phase];
+            if (data.AddPrefab == null || _adds.Count >= data.MaxAdds || now < _nextAdd)
+                return;
+            _nextAdd = now + data.AddInterval;
+            SpawnAdd(data.AddPrefab);
+        }
+
+        public Enemy SpawnAdd(Enemy prefab)
+        {
+            var direction = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f) * Vector3.forward;
+            var position = transform.position + direction * _boss.AddSpawnDistance;
+            if (NavMesh.SamplePosition(position, out var hit, _boss.AddSpawnDistance, NavMesh.AllAreas))
+                position = hit.position;
+            var add = Instantiate(prefab, position, Quaternion.LookRotation(direction));
+            _adds.Add(add);
+            return add;
+        }
+
+        private IEnumerator AbsorbRoutine()
+        {
+            yield return new WaitForSeconds(_boss.DeathPause);
+            var creature = CombatTargets.Creature;
+            if (_essence != null && creature != null)
+            {
+                _essence.SetParent(null, true);
+                _essence.gameObject.SetActive(true);
+                var start = _essence.position;
+                var elapsed = 0f;
+                while (elapsed < _boss.AbsorbDuration && creature != null)
+                {
+                    elapsed += Time.deltaTime;
+                    var t = Mathf.Clamp01(elapsed / _boss.AbsorbDuration);
+                    var eased = t * t * (3f - 2f * t);
+                    var end = creature.transform.position + Vector3.up;
+                    _essence.position = Vector3.Lerp(start, end, eased) + Vector3.up * (Mathf.Sin(t * Mathf.PI) * 2.5f);
+                    yield return null;
+                }
+                _essence.gameObject.SetActive(false);
+                _essence.SetParent(transform, false);
+                _essence.localPosition = _essenceHome;
+            }
+            if (_absorbEffect != null && creature != null)
+            {
+                _absorbEffect.transform.SetParent(null, true);
+                _absorbEffect.transform.position = creature.transform.position + Vector3.up;
+                _absorbEffect.Reinit();
+                _absorbEffect.Play();
+                Destroy(_absorbEffect.gameObject, 3f);
+            }
+            if (creature != null)
+                Play(_boss.AbsorbSound, creature.transform.position);
+            Absorbed?.Invoke(this);
+            if (Active == this)
+                Active = null;
+        }
+
+        private void SetIntroCamera(bool on)
+        {
+            if (_introCamera != null)
+                _introCamera.Priority = on ? IntroPriority : IdlePriority;
+        }
+
+        private void Play(EventReference sound) => Play(sound, transform.position);
+
+        private static void Play(EventReference sound, Vector3 position)
+        {
+            if (!sound.IsNull)
+                RuntimeManager.PlayOneShot(sound, position);
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "name": "TentacleVania.Bosses",
+    "rootNamespace": "TentacleVania.Bosses",
+    "references": [
+        "TentacleVania.Core",
+        "TentacleVania.Combat",
+        "TentacleVania.Enemies",
+        "TentacleVania.Abilities",
+        "Unity.Cinemachine",
+        "FMODUnity"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

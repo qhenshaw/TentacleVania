@@ -3,6 +3,18 @@
     <ui:VisualElement name="hud" class="hud" picking-mode="Ignore">
         <ui:VisualElement name="enemy-layer" class="hud__layer" picking-mode="Ignore" />
         <ui:VisualElement name="saving" class="hud__saving" picking-mode="Ignore" />
+        <ui:VisualElement name="boss" class="hud__boss hud__boss--hidden" picking-mode="Ignore">
+            <ui:Label name="boss-name" class="hud__boss-name" picking-mode="Ignore" />
+            <ui:VisualElement name="boss-health" class="hud-bar hud-bar--boss" picking-mode="Ignore">
+                <ui:VisualElement name="boss-trail" class="hud-bar__layer hud-bar__trail" picking-mode="Ignore" />
+                <ui:VisualElement name="boss-fill" class="hud-bar__layer hud-bar__fill" picking-mode="Ignore" />
+                <ui:VisualElement name="boss-ticks" class="hud-bar__ticks" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="boss-stagger" class="hud-bar hud-bar--boss-stagger" picking-mode="Ignore">
+                <ui:VisualElement name="boss-stagger-fill" class="hud-bar__layer hud-bar__fill" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label name="reward" class="hud__reward" picking-mode="Ignore" />
         <ui:Label name="prompt" class="hud__prompt hud__prompt--hidden" picking-mode="Ignore" />
         <ui:VisualElement name="status-icons" class="hud__status" picking-mode="Ignore">
             <ui:VisualElement name="status-slow" class="hud__status-icon hud__status-icon--slow" picking-mode="Ignore" />
