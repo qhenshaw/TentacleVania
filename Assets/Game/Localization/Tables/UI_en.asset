@@ -298,6 +298,10 @@ MonoBehaviour:
     m_Localized: Ability
     m_Metadata:
       m_Items: []
+  - m_Id: 430659937779712
+    m_Localized: Warden Drone
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
