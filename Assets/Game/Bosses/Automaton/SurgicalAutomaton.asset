@@ -1,0 +1,201 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30eac26dc7a577547b9a6a8bde088ab6, type: 3}
+  m_Name: SurgicalAutomaton
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
+  _displayName: Surgical Automaton
+  _maxHealth: 1600
+  _maxArmor: 0
+  _maxStagger: 200
+  _staggerStun: 2.5
+  _staggerDamageTaken: 1.5
+  _feedableDamageTaken: 0.5
+  _moveSpeed: 4.5
+  _turnSpeed: 540
+  _spawnDelay: 3
+  _circleRange: {x: 3.5, y: 5.5}
+  _knockbackScale: 0
+  _attacks:
+  - Name: Clamp Lunge
+    Kind: 0
+    Telegraph: 0
+    Animation: 1
+    AnimationHitTime: 0
+    GroundIndicator: 1
+    WindUp: 1
+    Active: 0.45
+    Recovery: 0.7
+    Cooldown: 3.5
+    TrackDuringWindUp: 0.75
+    Hits: 1
+    MinRange: 4
+    MaxRange: 12
+    Damage: 20
+    Stagger: 0
+    Type: 0
+    StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
+    Reach: 1.6
+    Arc: 140
+    SweepRadius: 0.6
+    Height: 1
+    AreaRadius: 2
+    AreaForwardOffset: 0
+    Projectile: {fileID: 0}
+    ProjectileSpeed: 0
+    ProjectileLifetime: 0
+    LaneWidth: 0
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 0
+    WindUpSound:
+      Guid:
+        Data1: 1603963829
+        Data2: 1273197808
+        Data3: 1815461798
+        Data4: -593033753
+      Path: event:/Bosses/Automaton/ClampFire
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 71046255
+        Data2: 1306373867
+        Data3: 1867868324
+        Data4: -463508119
+      Path: event:/Bosses/Automaton/Hit
+  - Name: Scalpel Flurry
+    Kind: 0
+    Telegraph: 0
+    Animation: 0
+    AnimationHitTime: 0
+    GroundIndicator: 1
+    WindUp: 0.5
+    Active: 0.6
+    Recovery: 0.5
+    Cooldown: 1.6
+    TrackDuringWindUp: 0.75
+    Hits: 4
+    MinRange: 0
+    MaxRange: 3
+    Damage: 5
+    Stagger: 0
+    Type: 0
+    StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
+    Reach: 2.2
+    Arc: 100
+    SweepRadius: 0.4
+    Height: 1
+    AreaRadius: 2
+    AreaForwardOffset: 0
+    Projectile: {fileID: 0}
+    ProjectileSpeed: 0
+    ProjectileLifetime: 0
+    LaneWidth: 0
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 0
+    WindUpSound:
+      Guid:
+        Data1: -2009367395
+        Data2: 1340228312
+        Data3: -1048437093
+        Data4: 452244326
+      Path: event:/Bosses/Automaton/Flurry
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 71046255
+        Data2: 1306373867
+        Data3: 1867868324
+        Data4: -463508119
+      Path: event:/Bosses/Automaton/Hit
+  - Name: Bone Saw Spin
+    Kind: 1
+    Telegraph: 0
+    Animation: 0
+    AnimationHitTime: 0
+    GroundIndicator: 1
+    WindUp: 0.8
+    Active: 2
+    Recovery: 0.6
+    Cooldown: 6
+    TrackDuringWindUp: 0.75
+    Hits: 4
+    MinRange: 0
+    MaxRange: 3.5
+    Damage: 18
+    Stagger: 0
+    Type: 0
+    StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
+    Reach: 1.8
+    Arc: 120
+    SweepRadius: 0.3
+    Height: 1
+    AreaRadius: 3.5
+    AreaForwardOffset: 0
+    Projectile: {fileID: 0}
+    ProjectileSpeed: 0
+    ProjectileLifetime: 0
+    LaneWidth: 0
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 0
+    WindUpSound:
+      Guid:
+        Data1: 670057761
+        Data2: 1241222103
+        Data3: -1302508394
+        Data4: -789264623
+      Path: event:/Bosses/Automaton/SawSpin
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 71046255
+        Data2: 1306373867
+        Data3: 1867868324
+        Data4: -463508119
+      Path: event:/Bosses/Automaton/Hit
+  _consumeHeal: 0.5
+  _biomass: 300
+  _spawnOnWall: 0
+  _despawnDelay: 6
+  _panicRange: 7
+  _fleeDistance: 6
+  _corneredDistance: 1.2
+  _preferredRange: {x: 5, y: 8}
+  _machine: 1
+  _healPerSecond: 8
+  _healRange: 6
+  _keepAwayRange: 7

@@ -60,6 +60,8 @@ namespace TentacleVania.Enemies.Data
         [Min(0f)] public float Recovery = 0.5f;
         [Min(0f)] public float Cooldown = 1.5f;
         [Range(0f, 1f)] public float TrackDuringWindUp = 0.6f;
+        [Tooltip("Times a target can be hit, evenly spread over the active window (Scalpel Flurry, Bone Saw Spin).")]
+        [Min(1)] public int Hits = 1;
 
         [Header("Use when the target is within (m)")]
         [Min(0f)] public float MinRange;

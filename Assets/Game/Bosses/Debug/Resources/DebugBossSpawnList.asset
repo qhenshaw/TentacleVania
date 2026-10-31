@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemySpawnList
   _prefabs:
   - {fileID: 8430641573402103998, guid: 8ca1aafc4a7a1e24688f290c75340826, type: 3}
+  - {fileID: 7255005341266722966, guid: 79a468ea45b088f4db7c05c1debd9257, type: 3}
   - {fileID: 3659465807322408389, guid: dce1e06194e4f6441bccc0857b8f7806, type: 3}
