@@ -1,8 +1,22 @@
+using System;
+using TentacleVania.Core;
 using TentacleVania.Core.Characters;
+using TentacleVania.Core.Settings;
 using UnityEngine;
 
 namespace TentacleVania.Enemies.Telegraphs
 {
+    [Serializable]
+    public sealed class TelegraphPalette
+    {
+        public ColorblindMode Mode;
+        [ColorUsage(false, true)] public Color Dodgeable;
+        [ColorUsage(false, true)] public Color Undodgeable;
+        [ColorUsage(false, true)] public Color Feedable;
+        [ColorUsage(false, true)] public Color IndicatorDodgeable;
+        [ColorUsage(false, true)] public Color IndicatorUndodgeable;
+    }
+
     [CreateAssetMenu(menuName = "TentacleVania/Enemies/Telegraph Style")]
     public sealed class TelegraphStyle : ScriptableObject
     {
@@ -34,10 +48,32 @@ namespace TentacleVania.Enemies.Telegraphs
         [SerializeField, Min(0.01f)] private float _lockFlashTime = 0.25f;
         [SerializeField, Range(0f, 1f)] private float _lockedLevel = 0.35f;
 
-        public Color Dodgeable => _dodgeable;
+        [Header("Colour-blind palettes (GameSettings.Colorblind)")]
+        [SerializeField] private TelegraphPalette[] _palettes =
+        {
+            new() { Mode = ColorblindMode.Protanopia, Dodgeable = new(4f, 3.3f, 0.3f), Undodgeable = new(1.4f, 0.6f, 5f), Feedable = new(0.3f, 2.2f, 2.6f), IndicatorDodgeable = new(2f, 1.7f, 0.15f), IndicatorUndodgeable = new(0.7f, 0.3f, 2.6f) },
+            new() { Mode = ColorblindMode.Deuteranopia, Dodgeable = new(4f, 3.3f, 0.3f), Undodgeable = new(1.4f, 0.6f, 5f), Feedable = new(0.3f, 2.2f, 2.6f), IndicatorDodgeable = new(2f, 1.7f, 0.15f), IndicatorUndodgeable = new(0.7f, 0.3f, 2.6f) },
+            new() { Mode = ColorblindMode.Tritanopia, Dodgeable = new(4f, 1.2f, 2.4f), Undodgeable = new(4.5f, 0.25f, 0.15f), Feedable = new(0.6f, 2.6f, 0.4f), IndicatorDodgeable = new(2f, 0.6f, 1.2f), IndicatorUndodgeable = new(2.4f, 0.2f, 0.1f) },
+        };
+
+        private TelegraphPalette Palette
+        {
+            get
+            {
+                var mode = GameSettings.Colorblind;
+                if (mode == ColorblindMode.Off)
+                    return null;
+                foreach (var palette in _palettes)
+                    if (palette.Mode == mode)
+                        return palette;
+                return null;
+            }
+        }
+
+        public Color Dodgeable => Palette?.Dodgeable ?? _dodgeable;
         public float DodgeableFresnel => _dodgeableFresnel;
         public float DodgeableFill => _dodgeableFill;
-        public Color Undodgeable => _undodgeable;
+        public Color Undodgeable => Palette?.Undodgeable ?? _undodgeable;
         public float UndodgeableFresnel => _undodgeableFresnel;
         public float UndodgeableFill => _undodgeableFill;
         public Color HitFlash => _hitFlash;
@@ -45,13 +81,13 @@ namespace TentacleVania.Enemies.Telegraphs
         public float StunnedPulse => _stunnedPulse;
         public float StunnedFresnel => _stunnedFresnel;
         public float StunnedFill => _stunnedFill;
-        public Color Feedable => _feedable;
+        public Color Feedable => Palette?.Feedable ?? _feedable;
         public float FeedableAmount => _feedableAmount;
         public float FeedablePulse => _feedablePulse;
         public float FeedableFresnel => _feedableFresnel;
         public float FeedableFill => _feedableFill;
-        public Color IndicatorDodgeable => _indicatorDodgeable;
-        public Color IndicatorUndodgeable => _indicatorUndodgeable;
+        public Color IndicatorDodgeable => Palette?.IndicatorDodgeable ?? _indicatorDodgeable;
+        public Color IndicatorUndodgeable => Palette?.IndicatorUndodgeable ?? _indicatorUndodgeable;
         public float LockFlashTime => _lockFlashTime;
         public float LockedLevel => _lockedLevel;
     }

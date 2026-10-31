@@ -16,7 +16,7 @@ Music and PA/radio voice (`TentacleVania.Audio`). Design: Audio Direction (ambie
   - `event:/Music/NestRest`: a loop.
   Swap in licensed stems with `fmod-swap-sound.sh --track n`.
 - `MusicDirector.Muted` silences it (tests).
-- `AudioMix` sets the FMOD bus volumes as user volume × duck factor for `bus:/`, `bus:/Music`, `bus:/SFX` and `bus:/VO`. The settings menu should call `SetUserVolume`, never `Bus.setVolume`, or ducking and settings overwrite each other.
+- `AudioMix` sets the FMOD bus volumes as user volume × duck factor for `bus:/`, `bus:/Music`, `bus:/SFX` and `bus:/VO`. User volumes follow `Core.Settings.SettingsStore.Applied`. Never call `Bus.setVolume` directly, or ducking and settings overwrite each other.
 
 ## PA and radio (design: Vertical Slice: Script & Audio)
 

@@ -119,6 +119,182 @@ MonoBehaviour:
     m_Key: prompt.shortcut.open
     m_Metadata:
       m_Items: []
+  - m_Id: 421825294909440
+    m_Key: menu.settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046784
+    m_Key: settings.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046785
+    m_Key: settings.tab.audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046786
+    m_Key: settings.tab.gameplay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046787
+    m_Key: settings.tab.accessibility
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046788
+    m_Key: settings.tab.controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046789
+    m_Key: settings.tab.display
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046790
+    m_Key: settings.tab.language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046791
+    m_Key: settings.back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046792
+    m_Key: settings.reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046793
+    m_Key: settings.master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046794
+    m_Key: settings.music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046795
+    m_Key: settings.sfx
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046796
+    m_Key: settings.voice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046797
+    m_Key: settings.damageTaken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046798
+    m_Key: settings.damageDealt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046799
+    m_Key: settings.enemySpeed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046800
+    m_Key: settings.keepBiomass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046801
+    m_Key: settings.shake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046802
+    m_Key: settings.flashes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046803
+    m_Key: settings.gore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046804
+    m_Key: settings.rumble
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046805
+    m_Key: settings.subtitles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046806
+    m_Key: settings.colorblind
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046807
+    m_Key: settings.colorblind.off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046808
+    m_Key: settings.colorblind.protanopia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046809
+    m_Key: settings.colorblind.deuteranopia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046810
+    m_Key: settings.colorblind.tritanopia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046811
+    m_Key: settings.displayMode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046812
+    m_Key: settings.mode.borderless
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046813
+    m_Key: settings.mode.exclusive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046814
+    m_Key: settings.mode.windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046815
+    m_Key: settings.resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046816
+    m_Key: settings.resolution.native
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046817
+    m_Key: settings.vsync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046818
+    m_Key: settings.frameCap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046819
+    m_Key: settings.cap.unlimited
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046820
+    m_Key: settings.language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046821
+    m_Key: settings.rebind.prompt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046822
+    m_Key: action.Weapon1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046823
+    m_Key: action.Weapon2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046824
+    m_Key: action.Dash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046825
+    m_Key: action.Grab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046826
+    m_Key: action.Ability
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

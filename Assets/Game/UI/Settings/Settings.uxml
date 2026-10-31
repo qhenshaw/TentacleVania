@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="Settings.uss" />
+    <ui:VisualElement name="settings" class="settings">
+        <ui:VisualElement name="panel" class="settings__panel">
+            <ui:Label name="title" class="settings__title" />
+            <ui:VisualElement name="tabs" class="settings__tabs" />
+            <ui:ScrollView name="content" class="settings__content" />
+            <ui:VisualElement class="settings__actions">
+                <ui:Button name="reset" class="settings__action" />
+                <ui:Button name="back" class="settings__action" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

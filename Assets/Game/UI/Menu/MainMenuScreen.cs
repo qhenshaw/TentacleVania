@@ -27,6 +27,9 @@ namespace TentacleVania.UI.Menu
             _play = root.Q<Button>("play");
             Bind(_play, "menu.play");
             _play.clicked += Play;
+            var settings = root.Q<Button>("settings");
+            Bind(settings, "menu.settings");
+            settings.clicked += OpenSettings;
             var quit = root.Q<Button>("quit");
             Bind(quit, "menu.quit");
             quit.clicked += Quit;
@@ -62,6 +65,13 @@ namespace TentacleVania.UI.Menu
 #else
             Application.Quit();
 #endif
+        }
+
+        public void OpenSettings()
+        {
+            var screen = Settings.SettingsScreen.Instance;
+            if (screen != null)
+                screen.Open(() => _play.Focus());
         }
 
         private void Bind(TextElement element, string key)

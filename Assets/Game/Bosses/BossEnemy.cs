@@ -123,7 +123,7 @@ namespace TentacleVania.Bosses
             var changed = _phase >= 0;
             _phase = phase;
             var data = _boss.Phases[phase];
-            Agent.speed = Definition.MoveSpeed * data.MoveSpeedScale;
+            BaseSpeed = Definition.MoveSpeed * data.MoveSpeedScale;
             _nextAdd = now + data.AddInterval;
             if (!changed)
                 return;

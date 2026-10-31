@@ -26,6 +26,9 @@ Shared code every area may reference (`TentacleVania.Core`). Keep it free of gam
 
 ## Scenes
 
+- `Settings/SettingsStore` keeps the player's options per profile, not per save slot: `persistentDataPath/settings.json`, loaded before the first scene. `SettingsData` (unit tested; `Clamp` keeps assist ranges: damage taken 0.25–2, dealt 0.5–3, enemy speed 0.5–1) holds the volumes, assists, accessibility toggles, `ColorblindMode`, language code, display (mode, resolution, v-sync, frame cap) and the Input System binding overrides (`InputSystem.actions`).
+  - `Apply()` copies it into `GameSettings` (including `EnemySpeedScale` and `Colorblind`), applies bindings and display only when they changed (display not in the editor), sets the locale, and raises `Applied`. `Audio.AudioMix` turns that into bus volumes.
+  - `Save()` writes via a temp file and stores the current binding overrides. No toggle-vs-hold option (developer decision).
 - `Scenes/SceneFlow` keeps `Bootstrap` loaded and swaps every other scene: `Load(name)` unloads the rest, loads the scene additively and makes it active (so lighting and runtime spawns land in it), `Reload()` reloads the active scene, `Loaded` fires after. `GameBootstrap` (prefab in the `Bootstrap` scene) calls `Load(MainMenu)` on start. `Scenes/LoadGate` (`Hold(owner)` / `Release(owner)`, `IsOpen`) lets loaders (the room streamer) hold back `CreatureSpawner` until the ground has loaded.
 
 ## Saves
