@@ -339,7 +339,7 @@ Light:
   serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 2
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -419,6 +419,22 @@ PrefabInstance:
     - target: {fileID: 700718421418619533, guid: 1b87c14466663024a98f0e6e4e73f6d0, type: 3}
       propertyPath: m_Name
       value: GameplayCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019102793511058728, guid: 1b87c14466663024a98f0e6e4e73f6d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8660254
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019102793511058728, guid: 1b87c14466663024a98f0e6e4e73f6d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019102793511058728, guid: 1b87c14466663024a98f0e6e4e73f6d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019102793511058728, guid: 1b87c14466663024a98f0e6e4e73f6d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9099581169602399216, guid: 1b87c14466663024a98f0e6e4e73f6d0, type: 3}
       propertyPath: m_LocalPosition.x
