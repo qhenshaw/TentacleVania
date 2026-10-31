@@ -80,6 +80,8 @@ namespace TentacleVania.Abilities
                 Runtime.Dispose();
         }
 
+        public AbilityDefinition Find(string id) => _catalog != null ? _catalog.Find<AbilityDefinition>(id) : null;
+
         public bool EquipById(string id)
         {
             var ability = _catalog != null ? _catalog.Find<AbilityDefinition>(id) : null;

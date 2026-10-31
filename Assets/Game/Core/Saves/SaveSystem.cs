@@ -100,7 +100,7 @@ namespace TentacleVania.Core.Saves
             _playtimeAnchor = now;
             Data.SavedAtUtc = DateTime.UtcNow.ToString("o");
             var scene = SceneManager.GetActiveScene().name;
-            if (!string.IsNullOrEmpty(scene) && scene != BootstrapScene)
+            if (!string.IsNullOrEmpty(scene) && scene != BootstrapScene && scene != SceneFlow.MainMenu)
                 Data.Progress.Scene = scene;
             return SaveSerializer.ToJson(Data);
         }

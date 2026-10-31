@@ -379,6 +379,154 @@ MonoBehaviour:
     m_Key: nest.mutations
     m_Metadata:
       m_Items: []
+  - m_Id: 536615975665664
+    m_Key: menu.continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414400
+    m_Key: menu.newGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414401
+    m_Key: menu.loadGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414402
+    m_Key: slot.title.new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414403
+    m_Key: slot.title.load
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414404
+    m_Key: slot.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414405
+    m_Key: slot.details
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414406
+    m_Key: slot.empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414407
+    m_Key: slot.delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414408
+    m_Key: slot.back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414409
+    m_Key: slot.sector.unknown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414410
+    m_Key: confirm.yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414411
+    m_Key: confirm.no
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414412
+    m_Key: confirm.delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414413
+    m_Key: confirm.overwrite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414414
+    m_Key: pause.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414415
+    m_Key: pause.resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414416
+    m_Key: pause.settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414417
+    m_Key: pause.quitMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414418
+    m_Key: pause.quitGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414419
+    m_Key: pause.tab.map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414420
+    m_Key: pause.tab.abilities
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414421
+    m_Key: pause.tab.mutations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414422
+    m_Key: pause.tab.logs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414423
+    m_Key: pause.map.empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414424
+    m_Key: pause.logs.empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414425
+    m_Key: pause.loadout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414426
+    m_Key: pause.abilities
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414427
+    m_Key: pause.ability.active
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414428
+    m_Key: pause.ability.traversal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414429
+    m_Key: pause.abilities.none
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414430
+    m_Key: pause.mutations.equipped
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414431
+    m_Key: pause.mutations.owned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414432
+    m_Key: pause.mutations.none
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414433
+    m_Key: pause.quit.confirmMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414434
+    m_Key: pause.quit.confirmGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 536616013414435
+    m_Key: pause.quit.fight
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

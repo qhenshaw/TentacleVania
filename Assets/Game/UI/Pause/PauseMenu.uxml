@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="PauseMenu.uss" />
+    <ui:VisualElement name="pause" class="pause">
+        <ui:VisualElement class="pause__panel">
+            <ui:Label name="title" class="pause__title" />
+            <ui:VisualElement class="pause__body">
+                <ui:VisualElement class="pause__buttons">
+                    <ui:Button name="resume" class="pause__button" />
+                    <ui:Button name="settings" class="pause__button" />
+                    <ui:Button name="quit-menu" class="pause__button" />
+                    <ui:Button name="quit-game" class="pause__button" />
+                </ui:VisualElement>
+                <ui:VisualElement class="pause__main">
+                    <ui:VisualElement name="tabs" class="pause__tabs" />
+                    <ui:ScrollView name="content" class="pause__content" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="confirm" class="pause__confirm pause--hidden">
+            <ui:VisualElement class="pause__dialog">
+                <ui:Label name="confirm-text" class="pause__confirm-text" />
+                <ui:VisualElement class="pause__dialog-buttons">
+                    <ui:Button name="confirm-yes" class="pause__button pause__dialog-button" />
+                    <ui:Button name="confirm-no" class="pause__button pause__dialog-button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
