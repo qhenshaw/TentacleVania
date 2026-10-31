@@ -199,6 +199,7 @@ unity command eval --caller plugin --skill unity-cli '<C# statements>; return <v
 - In this Unity version `FindFirstObjectByType` and the `FindObjectsByType(FindObjectsSortMode)` overloads are obsolete (game code only warns, evals fail to compile): use `FindAnyObjectByType<T>()` and `FindObjectsByType<T>()`.
 - Eval code has no `using` directives, so extension methods don't resolve as methods: call them statically (`InputActionSetupExtensions.AddAction(map, ...)`).
 - Don't name a MonoBehaviour method after a Unity message (`Reset`, `Awake`, `OnValidate`...) unless it is that message: a `static Reset()` used for `[RuntimeInitializeOnLoadMethod]` logs "Failed to call static function Reset" whenever the component is added.
+- `AssetDatabase.CopyAsset` onto an existing path replaces the asset with a new GUID, so references to it (a prefab's material) go null; edit the existing asset instead.
 - Never use `??` or `?.` on Unity objects (`GetComponent<T>() ?? AddComponent<T>()`): a missing component is a fake null that `??` treats as present. Compare with `== null`.
 - Removing or renaming a serialized field leaves its old value in every prefab and asset YAML until that file is saved again: after moving fields, re-save the affected prefabs (`LoadPrefabContents` + `SaveAsPrefabAsset`) so the stale values are dropped, and diff them.
 - CLI command names change between CLI versions (for example `editor.playmode start`, `console get`). If a command isn't found, list the current names with `unity command --tag <tag>`.
