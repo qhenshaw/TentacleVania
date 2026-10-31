@@ -13,6 +13,7 @@ Runtime UI (`TentacleVania.UI`), all UI Toolkit.
 - **Tabs:** Audio, Gameplay (assists, keep biomass), Accessibility (shake, flashes, gore, rumble, subtitles, colour-blind mode), Controls, Display and Language. Rows are built in code from `UI` table keys (`settings.*`, `action.*`).
 - **Behaviour:** every change writes `Core.Settings.SettingsStore.Data` and calls `Apply`; closing (Back, or cancel) saves. Reset tab restores one tab's defaults. While it's open, creature control is locked.
 - **Rebinding:** Controls lists Weapon 1/2, Dash, Grab and Ability with one button for the Gamepad binding and one for Keyboard&Mouse. Pressing one starts `PerformInteractiveRebinding` (Esc cancels; mouse movement excluded) and saves when done.
+- **Pitfall:** an eval that opens the screen or calls `SettingsStore.Save` overwrites the developer's real `settings.json` (closing saves, and so does play exit while it's open). Back the file up and restore it, or delete it, before play ends.
 - **Pitfall:** the UIDocument root must `StretchToParentSize()`, or the full-screen backdrop and panel collapse to zero height.
 
 ## Combat HUD
