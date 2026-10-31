@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TentacleVania.Abilities;
 using TentacleVania.Abilities.Mutations;
+using TentacleVania.Audio;
 using TentacleVania.Bosses;
 using TentacleVania.Core.Feedback;
 using TentacleVania.Core.Input;
@@ -126,6 +127,7 @@ namespace TentacleVania.UI.Pause
             Rumble.Stop();
             _timeScale = Time.timeScale;
             Time.timeScale = 0f;
+            AudioMix.SetPaused(AudioMix.Sfx, true);
             var spawned = CreatureSpawner.Spawned;
             if (_lockedMotor == null && spawned != null && spawned.TryGetComponent(out CreatureMotor motor))
             {
@@ -147,6 +149,7 @@ namespace TentacleVania.UI.Pause
             HideConfirm();
             _pause.RemoveFromClassList(OpenClass);
             Time.timeScale = _timeScale;
+            AudioMix.SetPaused(AudioMix.Sfx, false);
             if (_lockedMotor != null)
                 _lockedMotor.UnlockControl();
             _lockedMotor = null;

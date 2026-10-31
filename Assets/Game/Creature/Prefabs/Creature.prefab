@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.WeaponController
   _weapon1: {fileID: 11400000, guid: f115e7384f9f44145b4993a18db6fd2c, type: 2}
-  _weapon2: {fileID: 11400000, guid: 8aa5518917427d14999b11732f057efe, type: 2}
+  _weapon2: {fileID: 0}
   _hitLayers:
     serializedVersion: 2
     m_Bits: 512
