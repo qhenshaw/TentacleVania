@@ -43,7 +43,8 @@ namespace TentacleVania.UI.Hud
         {
             if (_label == null)
                 return;
-            var current = Interactions.Current;
+            var menu = Nest.NestMenuScreen.Instance;
+            var current = menu != null && menu.IsOpen ? null : Interactions.Current;
             var key = current != null ? current.PromptKey : null;
             if (key == _shownKey)
             {
