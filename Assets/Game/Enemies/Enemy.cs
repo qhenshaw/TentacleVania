@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FMODUnity;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Combat.Feedback;
@@ -303,6 +304,13 @@ namespace TentacleVania.Enemies
                 _attackForward = transform.forward;
             UpdateAreaCenter();
             SetState(EnemyState.Attacking);
+            PlaySound(_definition.Attacks[index].WindUpSound);
+        }
+
+        private void PlaySound(EventReference sound)
+        {
+            if (!sound.IsNull)
+                RuntimeManager.PlayOneShot(sound, transform.position);
         }
 
         private void TickAttack(Health target, float now, float dt)
@@ -328,6 +336,7 @@ namespace TentacleVania.Enemies
                     {
                         _activeStarted = true;
                         _lastSweepT = 0f;
+                        PlaySound(attack.StrikeSound);
                         OnActiveStart(attack);
                     }
                     if (attack.Kind == AttackKind.Melee)
@@ -434,8 +443,10 @@ namespace TentacleVania.Enemies
             if (!Hurtbox.TryGet(collider, out var hurtbox) || hurtbox.Health == _health || _hitThisAttack.Contains(hurtbox.Health))
                 return;
             var result = hurtbox.Health.TakeDamage(Damage(attack, point, direction));
-            if (result.Outcome != DamageOutcome.Ignored)
-                _hitThisAttack.Add(hurtbox.Health);
+            if (result.Outcome == DamageOutcome.Ignored)
+                return;
+            _hitThisAttack.Add(hurtbox.Health);
+            PlaySound(attack.HitSound);
         }
 
         private DamageInfo Damage(EnemyAttack attack, Vector3 point, Vector3 direction)

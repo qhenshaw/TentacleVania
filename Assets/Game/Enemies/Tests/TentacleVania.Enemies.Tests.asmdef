@@ -2,6 +2,7 @@
     "name": "TentacleVania.Enemies.Tests",
     "rootNamespace": "TentacleVania.Enemies.Tests",
     "references": [
+        "FMODUnity",
         "TentacleVania.Enemies",
         "TentacleVania.Combat",
         "UnityEngine.TestRunner",

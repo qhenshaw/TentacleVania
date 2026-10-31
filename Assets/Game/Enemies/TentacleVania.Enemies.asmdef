@@ -4,7 +4,8 @@
     "references": [
         "TentacleVania.Core",
         "TentacleVania.Combat",
-        "Unity.RenderPipelines.Universal.Runtime"
+        "Unity.RenderPipelines.Universal.Runtime",
+        "FMODUnity"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
