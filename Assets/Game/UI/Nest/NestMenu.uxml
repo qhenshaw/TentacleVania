@@ -1,0 +1,33 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="NestMenu.uss" />
+    <ui:VisualElement name="nest-menu" class="nest" picking-mode="Ignore">
+        <ui:VisualElement name="panel" class="nest__panel">
+            <ui:VisualElement class="nest__tabs">
+                <ui:Label name="tab-stats" class="nest__tab nest__tab--active" />
+                <ui:Label name="tab-mutations" class="nest__tab nest__tab--locked" />
+            </ui:VisualElement>
+            <ui:VisualElement class="nest__summary">
+                <ui:VisualElement class="nest__summary-item">
+                    <ui:Label name="biomass-label" class="nest__caption" />
+                    <ui:Label name="biomass-value" class="nest__number" />
+                </ui:VisualElement>
+                <ui:VisualElement class="nest__summary-item">
+                    <ui:Label name="next-label" class="nest__caption" />
+                    <ui:Label name="next-value" class="nest__number" />
+                </ui:VisualElement>
+                <ui:VisualElement class="nest__summary-item">
+                    <ui:Label name="level-label" class="nest__caption" />
+                    <ui:Label name="level-value" class="nest__number" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label name="points" class="nest__points nest__hidden" />
+            <ui:VisualElement name="rows" class="nest__rows" />
+            <ui:VisualElement class="nest__actions">
+                <ui:Button name="respec" class="nest__action" />
+                <ui:Button name="confirm" class="nest__action nest__hidden" />
+                <ui:Button name="cancel" class="nest__action nest__hidden" />
+                <ui:Button name="leave" class="nest__action" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

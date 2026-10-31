@@ -38,6 +38,78 @@ MonoBehaviour:
     m_Localized: Rest at nest
     m_Metadata:
       m_Items: []
+  - m_Id: 386986982260736
+    m_Localized: Stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203776
+    m_Localized: Mutations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203777
+    m_Localized: Biomass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203778
+    m_Localized: Next level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203779
+    m_Localized: Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203780
+    m_Localized: 'Points to assign: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203781
+    m_Localized: Brutality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203782
+    m_Localized: Ferocity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203783
+    m_Localized: Tenacity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203784
+    m_Localized: Cunning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203785
+    m_Localized: "Damage and stagger \xD7{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203786
+    m_Localized: "Attack speed \xD7{0}, dash recovery \xD7{1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203787
+    m_Localized: "+{0} HP, damage taken \xD7{1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203788
+    m_Localized: "Charge gain \xD7{0}, ability damage \xD7{1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203789
+    m_Localized: Respec
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203790
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203791
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203792
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

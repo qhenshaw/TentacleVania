@@ -35,6 +35,78 @@ MonoBehaviour:
     m_Key: prompt.nest.rest
     m_Metadata:
       m_Items: []
+  - m_Id: 386986982260736
+    m_Key: nest.tab.stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203776
+    m_Key: nest.tab.mutations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203777
+    m_Key: nest.biomass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203778
+    m_Key: nest.next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203779
+    m_Key: nest.level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203780
+    m_Key: nest.points
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203781
+    m_Key: nest.stat.brutality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203782
+    m_Key: nest.stat.ferocity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203783
+    m_Key: nest.stat.tenacity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203784
+    m_Key: nest.stat.cunning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203785
+    m_Key: nest.effect.brutality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203786
+    m_Key: nest.effect.ferocity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203787
+    m_Key: nest.effect.tenacity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203788
+    m_Key: nest.effect.cunning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203789
+    m_Key: nest.respec
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203790
+    m_Key: nest.confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203791
+    m_Key: nest.cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386987024203792
+    m_Key: nest.leave
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
