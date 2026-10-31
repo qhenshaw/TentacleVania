@@ -40,6 +40,8 @@ namespace TentacleVania.World.Editor
                 Place = c =>
                 {
                     Nest(c, "SH/PodNest", RoomContext.CellCenter(5f, 39f), 180f);
+                    var door = c.Spawn("Assets/Game/World/BioNests/NestDoor.prefab", RoomContext.Cell(3.5f, 36f), 0f, "PodExitDoor");
+                    RoomContext.Set(door.GetComponent<BioNests.NestDoor>(), "_nestId", "SH/PodNest");
                     Terminal(c, "PodHistory", RoomContext.CellCenter(1.2f, 40f), 0f);
                     Terminal(c, "PodLabel", RoomContext.CellCenter(1.2f, 37f), 0f);
                     var zone = c.AddByName(c.Empty("PaZone", RoomContext.CellCenter(3.5f, 38.5f), 0f), "TentacleVania.Audio.PaZone");
