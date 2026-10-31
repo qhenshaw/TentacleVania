@@ -8,7 +8,7 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - `BossDefinition` (ScriptableObject) holds the boss-only data:
   - the save `Id` and the `UI` table `NameKey` for the boss bar;
   - `Phases`, each with `StartsBelow` (health fraction), an `AttackMask` (bit per enemy-definition attack index, 0 for all), `MoveSpeedScale`, an `AddPrefab` with `MaxAdds` and `AddInterval`, and a phase-change `Sting`;
-  - the `RewardAbility` and the intro, death and absorb FMOD events.
+  - the `RewardAbility`, its `Music` (empty uses the shared boss theme, see `Audio/CLAUDE.md`) and the intro, death and absorb FMOD events.
   `Core.Progression.BossProgress.PhaseFor` (unit tested) picks the phase.
 - **Adds:** they spawn `AddSpawnDistance` from the boss on the NavMesh once the intro ends, and die with the boss.
 - **Death:** `BossProgress.Defeat(id, ability)` saves `WorldFlag.DefeatedBoss`, adds the ability to `Build.Abilities` (raising `AbilityUnlocked`, which `AbilityController` equips) and requests an autosave, all at the moment of death so quitting during the absorb can't lose the reward.

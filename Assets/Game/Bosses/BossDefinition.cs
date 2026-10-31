@@ -31,6 +31,8 @@ namespace TentacleVania.Bosses
         [SerializeField] private string _nameKey = "boss.test";
         [SerializeField] private List<BossPhase> _phases = new() { new() };
         [SerializeField] private AbilityDefinition _rewardAbility;
+        [Tooltip("Boss music; empty uses the shared boss theme (Audio/Resources/MusicSettings).")]
+        [SerializeField] private EventReference _music;
 
         [Header("Beats (the intro lasts the enemy definition's spawn delay)")]
         [SerializeField] private EventReference _introSound;
@@ -46,6 +48,7 @@ namespace TentacleVania.Bosses
         public string NameKey => _nameKey;
         public IReadOnlyList<BossPhase> Phases => _phases;
         public AbilityDefinition RewardAbility => _rewardAbility;
+        public EventReference Music => _music;
         public EventReference IntroSound => _introSound;
         public EventReference DeathSound => _deathSound;
         public EventReference AbsorbSound => _absorbSound;

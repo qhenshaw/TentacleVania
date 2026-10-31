@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2559552e61e520245a881ff1ec135d79, type: 3}
+  m_Name: MusicSettings
+  m_EditorClassIdentifier: TentacleVania.Audio::TentacleVania.Audio.MusicSettings
+  _arena:
+    Guid:
+      Data1: -1126206589
+      Data2: 1148588526
+      Data3: -940186745
+      Data4: 1987396403
+    Path: event:/Music/Arena
+  _bossTheme:
+    Guid:
+      Data1: 1854804662
+      Data2: 1316719037
+      Data3: 808438172
+      Data4: 2041798013
+    Path: event:/Music/BossTheme
+  _roomClearSting:
+    Guid:
+      Data1: 1924290209
+      Data2: 1249060923
+      Data3: -175363708
+      Data4: -1044297076
+    Path: event:/Music/Stings/RoomClear
+  _nestRest:
+    Guid:
+      Data1: -887050450
+      Data2: 1076230923
+      Data3: 835879348
+      Data4: -1758613794
+    Path: event:/Music/NestRest
+  _intensityParameter: Intensity
+  _fadeIn: 1.5
+  _fadeOut: 4
+  _intensitySpeed: 0.35
+  _restLeaveDistance: 3
