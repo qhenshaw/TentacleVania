@@ -1,3 +1,4 @@
+using TentacleVania.Core.Saves;
 using UnityEngine;
 
 namespace TentacleVania.World.Streaming
@@ -6,6 +7,8 @@ namespace TentacleVania.World.Streaming
     {
         [Tooltip("The room's CameraBounds; enabled again when the creature enters, so it becomes the active bounds.")]
         [SerializeField] private Behaviour _cameraBounds;
+        [Tooltip("Sector id (SH, BL...); saved as the current sector when the creature enters, for the save slot list.")]
+        [SerializeField] private string _sector;
 
         private void OnEnable()
         {
@@ -17,11 +20,12 @@ namespace TentacleVania.World.Streaming
 
         private void Apply(string scene)
         {
+            var current = RoomStreamer.Active == null || scene == gameObject.scene.name;
+            if (current && !string.IsNullOrEmpty(_sector))
+                SaveSystem.Data.Progress.Sector = _sector;
             if (_cameraBounds == null || RoomStreamer.Active == null)
                 return;
-            _cameraBounds.enabled = false;
-            if (scene == gameObject.scene.name)
-                _cameraBounds.enabled = true;
+            _cameraBounds.enabled = current;
         }
     }
 }

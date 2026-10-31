@@ -18,6 +18,12 @@ namespace TentacleVania.Core.Feedback
             FeedbackRunner.Ensure().BeginStop(duration);
         }
 
+        public static void Cancel()
+        {
+            if (FeedbackRunner.Instance != null)
+                FeedbackRunner.Instance.CancelStop();
+        }
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics() => Enabled = true;
     }
@@ -127,6 +133,12 @@ namespace TentacleVania.Core.Feedback
                 if (_rumbleRemaining <= 0f || !GameSettings.Rumble)
                     EndRumble();
             }
+        }
+
+        public void CancelStop()
+        {
+            if (_stopRemaining > 0f)
+                EndStop();
         }
 
         private void EndStop()

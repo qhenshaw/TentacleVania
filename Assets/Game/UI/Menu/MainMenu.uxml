@@ -2,10 +2,26 @@
     <Style src="MainMenu.uss" />
     <ui:VisualElement name="main-menu" class="main-menu">
         <ui:Label name="title" class="main-menu__title" />
-        <ui:VisualElement class="main-menu__buttons">
-            <ui:Button name="play" class="main-menu__button" />
+        <ui:VisualElement name="buttons" class="main-menu__buttons">
+            <ui:Button name="continue" class="main-menu__button" />
+            <ui:Button name="new-game" class="main-menu__button" />
+            <ui:Button name="load-game" class="main-menu__button" />
             <ui:Button name="settings" class="main-menu__button" />
             <ui:Button name="quit" class="main-menu__button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="slots" class="main-menu__slots main-menu--hidden">
+            <ui:Label name="slots-title" class="main-menu__slots-title" />
+            <ui:VisualElement name="slot-list" class="main-menu__slot-list" />
+            <ui:Button name="slots-back" class="main-menu__button main-menu__back" />
+        </ui:VisualElement>
+        <ui:VisualElement name="confirm" class="main-menu__confirm main-menu--hidden">
+            <ui:VisualElement class="main-menu__dialog">
+                <ui:Label name="confirm-text" class="main-menu__confirm-text" />
+                <ui:VisualElement class="main-menu__dialog-buttons">
+                    <ui:Button name="confirm-yes" class="main-menu__button main-menu__dialog-button" />
+                    <ui:Button name="confirm-no" class="main-menu__button main-menu__dialog-button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
