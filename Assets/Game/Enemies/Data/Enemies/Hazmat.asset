@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Hazmat
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
   _displayName: Hazmat Containment Security
-  _maxHealth: 55
+  _maxHealth: 110
   _maxArmor: 20
-  _maxStagger: 35
+  _maxStagger: 70
   _staggerStun: 2
   _staggerDamageTaken: 1.5
   _feedableDamageTaken: 0.5

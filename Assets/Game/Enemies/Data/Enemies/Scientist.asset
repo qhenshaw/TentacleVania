@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Scientist
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
   _displayName: Scientist
-  _maxHealth: 20
+  _maxHealth: 40
   _maxArmor: 0
-  _maxStagger: 20
+  _maxStagger: 40
   _staggerStun: 2
   _staggerDamageTaken: 1.5
   _feedableDamageTaken: 0.5

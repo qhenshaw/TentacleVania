@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: LabSecurity
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
   _displayName: Lab Security
-  _maxHealth: 45
+  _maxHealth: 90
   _maxArmor: 20
-  _maxStagger: 25
+  _maxStagger: 50
   _staggerStun: 2
   _staggerDamageTaken: 1.5
   _feedableDamageTaken: 0.5
