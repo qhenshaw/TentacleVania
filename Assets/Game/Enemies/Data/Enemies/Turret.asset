@@ -86,3 +86,7 @@ MonoBehaviour:
   _fleeDistance: 6
   _corneredDistance: 1.2
   _preferredRange: {x: 5, y: 8}
+  _machine: 1
+  _healPerSecond: 8
+  _healRange: 6
+  _keepAwayRange: 7

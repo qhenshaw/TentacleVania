@@ -148,7 +148,10 @@ namespace TentacleVania.Enemies
                     }
                     break;
             }
+            OnTick(now, dt);
         }
+
+        protected virtual void OnTick(float now, float dt) { }
 
         public void TickFeedback()
         {

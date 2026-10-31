@@ -50,6 +50,15 @@ namespace TentacleVania.Enemies.Data
         [Header("Guard behaviour")]
         [SerializeField] private Vector2 _preferredRange = new(5f, 8f);
 
+        [Header("Kind")]
+        [Tooltip("Machines are never healed by Med-Drones.")]
+        [SerializeField] private bool _machine;
+
+        [Header("Med-Drone behaviour")]
+        [SerializeField, Min(0f)] private float _healPerSecond = 8f;
+        [SerializeField, Min(0f)] private float _healRange = 6f;
+        [SerializeField, Min(0f)] private float _keepAwayRange = 7f;
+
         public string DisplayName => _displayName;
         public float MaxHealth => _maxHealth;
         public float MaxArmor => _maxArmor;
@@ -71,5 +80,9 @@ namespace TentacleVania.Enemies.Data
         public float FleeDistance => _fleeDistance;
         public float CorneredDistance => _corneredDistance;
         public Vector2 PreferredRange => _preferredRange;
+        public bool Machine => _machine;
+        public float HealPerSecond => _healPerSecond;
+        public float HealRange => _healRange;
+        public float KeepAwayRange => _keepAwayRange;
     }
 }

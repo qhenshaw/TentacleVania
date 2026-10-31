@@ -77,6 +77,29 @@ namespace TentacleVania.Enemies.Tests
             Assert.That(turret.Attacks[0].Kind, Is.EqualTo(AttackKind.Projectile));
             Assert.That(turret.Attacks[0].Damage, Is.EqualTo(10f));
             Assert.That(turret.Attacks[0].Telegraph, Is.EqualTo(Telegraph.Dodgeable));
+            Assert.That(turret.Machine, Is.True);
+        }
+
+        [Test]
+        public void MedDroneIsAHealingMachineWithoutAttacks()
+        {
+            var drone = Load("MedDrone");
+            Assert.That(drone.MaxHealth, Is.EqualTo(30f));
+            Assert.That(drone.MaxStagger, Is.EqualTo(15f));
+            Assert.That(drone.ConsumeHeal, Is.EqualTo(0.08f).Within(1e-4f));
+            Assert.That(drone.Biomass, Is.EqualTo(15));
+            Assert.That(drone.Machine, Is.True);
+            Assert.That(drone.HealPerSecond, Is.EqualTo(8f));
+            Assert.That(drone.HealRange, Is.EqualTo(6f));
+            Assert.That(drone.Attacks.Count, Is.EqualTo(0));
+            Assert.That(drone.SpawnOnWall, Is.False);
+        }
+
+        [Test]
+        public void HumansAreHealable()
+        {
+            foreach (var name in new[] { "Scientist", "SecurityGuard", "Handler", "Surgeon", "LabSecurity", "Hazmat" })
+                Assert.That(Load(name).Machine, Is.False, name);
         }
     }
 }
