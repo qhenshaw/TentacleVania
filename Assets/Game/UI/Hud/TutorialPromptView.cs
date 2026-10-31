@@ -27,7 +27,10 @@ namespace TentacleVania.UI.Hud
         private const float GrabTriggerRange = 8f;
 
         private VisualElement _box;
+        [SerializeField] private InputGlyphLibrary _glyphs;
+
         private Label _label;
+        private VisualElement _icon;
         private GameObject _creature;
         private WeaponController _weapons;
         private CreatureMotor _motor;
@@ -51,6 +54,7 @@ namespace TentacleVania.UI.Hud
             root.pickingMode = PickingMode.Ignore;
             _box = root.Q("tutorial");
             _label = root.Q<Label>("tutorial-text");
+            _icon = root.Q("tutorial-icon");
             CombatEvents.ConsumeStarted += OnConsumeStarted;
             Collectibles.WeaponFound += OnWeaponFound;
             Nests.Grown += OnNestGrown;
@@ -167,18 +171,46 @@ namespace TentacleVania.UI.Hud
                 return;
             }
             var format = LocalizationSettings.StringDatabase.GetLocalizedString(Table, "tutorial." + _active);
-            _label.text = _active switch
+            var actionName = _active switch
             {
-                Tutorials.Move => string.Format(format, Glyph("Move")),
-                Tutorials.Attack => string.Format(format, Glyph("Weapon1")),
-                Tutorials.Dash => string.Format(format, Glyph("Dash")),
-                Tutorials.Grab => string.Format(format, Glyph("Grab")),
-                Tutorials.Nest => string.Format(format, Glyph("Grab")),
-                Tutorials.Weapon2 => string.Format(format, Glyph("Weapon2")),
-                Tutorials.Ability => string.Format(format, Glyph("Ability")),
-                _ => format,
+                Tutorials.Move => "Move",
+                Tutorials.Attack => "Weapon1",
+                Tutorials.Dash => "Dash",
+                Tutorials.Grab or Tutorials.Nest => "Grab",
+                Tutorials.Weapon2 => "Weapon2",
+                Tutorials.Ability => "Ability",
+                _ => null,
             };
+            var icon = actionName != null ? Icon(actionName) : null;
+            CurrentIcon = icon;
+            _icon.style.display = icon != null ? DisplayStyle.Flex : DisplayStyle.None;
+            _icon.style.backgroundImage = icon;
+            _label.text = actionName == null ? format : string.Format(format, icon != null ? "" : Glyph(actionName)).Trim();
             _box.AddToClassList(ShownClass);
+        }
+
+        public Texture2D CurrentIcon { get; private set; }
+
+        public Texture2D Icon(string actionName)
+        {
+            if (_glyphs == null || InputSystem.actions == null)
+                return null;
+            var action = InputSystem.actions.FindAction(GameplayInput.MapName + "/" + actionName);
+            if (action == null)
+                return null;
+            var gamepad = GameplayInput.Default.LastDevice == InputDeviceKind.Gamepad;
+            var group = gamepad ? "Gamepad" : "Keyboard&Mouse";
+            var pad = Gamepad.current;
+            var family = !gamepad ? GlyphFamily.Keyboard : pad != null ? GlyphRules.FamilyFor(pad.layout, pad.description.product) : GlyphFamily.Xbox;
+            foreach (var binding in action.bindings)
+            {
+                if (binding.isComposite || binding.isPartOfComposite || binding.groups == null || !binding.groups.Contains(group))
+                    continue;
+                var texture = _glyphs.Find(GlyphRules.IconName(family, binding.effectivePath));
+                if (texture != null)
+                    return texture;
+            }
+            return null;
         }
 
         public static string Glyph(string actionName)

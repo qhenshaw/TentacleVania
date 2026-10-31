@@ -470,6 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6279f07918a25be4691194ae08ce35e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.TutorialPromptView
+  _glyphs: {fileID: 11400000, guid: 2f4af73fd6373b0489ba7832db4178af, type: 2}
 --- !u!1 &4683094421683990272
 GameObject:
   m_ObjectHideFlags: 0
