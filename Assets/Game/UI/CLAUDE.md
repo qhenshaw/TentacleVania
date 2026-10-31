@@ -14,6 +14,7 @@ Runtime UI (`TentacleVania.UI`), all UI Toolkit.
 - Enemy bars (HP with a grey armour strip, amber stagger under it) follow `EnemyManager.Current` enemies at agent height + 0.5 m, appear on any HP, armour or stagger change and fade 4 s later. An enemy under the grab threshold (`Enemy.IsFeedable`) keeps its bar shown with a pulsing green fill.
 - Shared runtime theme: `RuntimeTheme.tss`; both the menu and HUD panel settings use it.
 - `Hud/InteractionPromptView` (on `CombatHud.prefab`) shows `Core.Interaction.Interactions.Current`'s `PromptKey` from the `UI` table in the `prompt` label above the player bars, hidden (`hud__prompt--hidden`) when there is none; keys so far: `prompt.nest.grow`, `prompt.nest.rest`.
+- `Hud/SaveIndicatorView` (on `CombatHud.prefab`) fades in the `saving` ring (bottom right, icon only) for 1.2 s after each autosave. `MainMenuScreen.Play` continues slot 1 when it holds a save (load it, then `SceneFlow.Load(SaveSystem.ContinueScene(...))`), else starts a new game in slot 1; the full slot menu is TV-83.
 
 ## Debug menu
 

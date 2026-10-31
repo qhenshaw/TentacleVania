@@ -169,3 +169,24 @@
 .hud__prompt--hidden {
     display: none;
 }
+
+.hud__saving {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+    border-width: 4px;
+    border-color: rgb(80, 220, 180);
+    background-color: rgba(80, 220, 180, 0.25);
+    opacity: 0;
+    scale: 0.6 0.6;
+    transition-property: opacity, scale;
+    transition-duration: 0.25s, 0.25s;
+}
+
+.hud__saving--visible {
+    opacity: 1;
+    scale: 1 1;
+}

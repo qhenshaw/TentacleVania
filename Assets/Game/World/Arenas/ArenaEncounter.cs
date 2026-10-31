@@ -193,6 +193,7 @@ namespace TentacleVania.World.Arenas
                 foreach (var door in _doors)
                     door.Open();
                 SetState(ArenaState.Cleared);
+                Autosave.Request(AutosaveReason.RoomCleared);
                 return;
             }
             _nextAction = now + _waves.DelayBetweenWaves;

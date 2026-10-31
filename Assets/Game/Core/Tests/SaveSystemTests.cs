@@ -117,6 +117,31 @@ namespace TentacleVania.Core.Tests
         }
 
         [Test]
+        public void AsyncSavesLandAfterFlushInOrder()
+        {
+            SaveSystem.NewGame(3);
+            SaveSystem.Data.Build.Level = 7;
+            SaveSystem.SaveAsync();
+            SaveSystem.Data.Build.Level = 9;
+            SaveSystem.SaveAsync();
+            SaveSystem.Flush();
+            Assert.That(_storage.TryRead(3, out var json), Is.True);
+            Assert.That(SaveSerializer.FromJson(json).Build.Level, Is.EqualTo(9));
+        }
+
+        [Test]
+        public void ContinueGoesToTheLastNestScene()
+        {
+            SaveSystem.NewGame(0);
+            SaveSystem.Data.Progress.Scene = "SH_A3";
+            Assert.That(SaveSystem.ContinueScene("Fallback"), Is.EqualTo("SH_A3"));
+            SaveSystem.Data.Progress.LastNestScene = "SH_PodChamber";
+            Assert.That(SaveSystem.ContinueScene("Fallback"), Is.EqualTo("SH_PodChamber"));
+            SaveSystem.NewGame(0);
+            Assert.That(SaveSystem.ContinueScene("Fallback"), Is.EqualTo("Fallback"));
+        }
+
+        [Test]
         public void SaveAndLoadGoThroughParticipants()
         {
             var participant = new FakeParticipant();
