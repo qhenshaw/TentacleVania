@@ -23,11 +23,14 @@ MonoBehaviour:
   _turnSpeed: 540
   _spawnDelay: 0.5
   _circleRange: {x: 5, y: 8}
+  _knockbackScale: 1
   _attacks:
   - Name: Baton
     Kind: 0
     Telegraph: 0
     Animation: 0
+    AnimationHitTime: 0.48
+    GroundIndicator: 0
     WindUp: 0.45
     Active: 0.15
     Recovery: 0.5
@@ -48,10 +51,13 @@ MonoBehaviour:
     Projectile: {fileID: 0}
     ProjectileSpeed: 14
     ProjectileLifetime: 3
+    LaneWidth: 0.4
   - Name: Pistol
     Kind: 2
     Telegraph: 0
     Animation: 3
+    AnimationHitTime: 0.67
+    GroundIndicator: 0
     WindUp: 0.45
     Active: 0.05
     Recovery: 0.4
@@ -72,6 +78,11 @@ MonoBehaviour:
     Projectile: {fileID: 7832528784957437939, guid: afd49bb3e78f7c74fb296654755ced65, type: 3}
     ProjectileSpeed: 18
     ProjectileLifetime: 2
+    LaneWidth: 0.4
   _consumeHeal: 0.12
   _biomass: 10
   _despawnDelay: 2
+  _panicRange: 7
+  _fleeDistance: 6
+  _corneredDistance: 1.2
+  _preferredRange: {x: 5, y: 8}

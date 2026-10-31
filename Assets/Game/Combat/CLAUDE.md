@@ -11,6 +11,7 @@ Shared damage model (`TentacleVania.Combat`) used by the creature, enemies, haza
 - Modifiers implement `IDamageModifier` (`Order`, `Modify(ref DamageContext)`): scale `HealthScale`, `ArmorScale`, `StaggerScale`, or set `Cancelled` (i-frames). Add them to `Health.Incoming` or `Health.Outgoing` and remove them when the effect ends; `ScaleModifier` covers plain multipliers (consume armor −50%, stagger window +50%, typed resistances via `FilterByType`).
 - `TakeDamage` returns a `DamageResult` (`Applied`, `Ignored` by team or death, `Blocked` by a modifier) with the health, armor and stagger dealt. Stagger isn't stored here: the stagger system reads `StaggerDamage` from the `Damaged` event.
 - Events: `Health.Damaged`, `Healed`, `Died` per target, and the global `CombatEvents.HitLanded` for every applied hit (charge meter gain, hit feedback, lifesteal).
+- `IStatsSource` marks a component that sets its object's `Health` (and `Consumable`) at runtime (`Enemy` from its `EnemyDefinition`, `CreatureVitals` from `HatchlingVitals`); `Editor/DrivenStatsEditor` then shows those fields read-only with a note naming the asset, so nobody tunes the prefab copy.
 
 ## Hit feedback
 

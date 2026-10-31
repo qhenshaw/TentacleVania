@@ -9,22 +9,7 @@ namespace TentacleVania.Enemies.Telegraphs
     {
         private const float MinimumGlow = 0.25f;
 
-        [SerializeField, ColorUsage(false, true)] private Color _dodgeable = new(4f, 2.6f, 0.2f);
-        [SerializeField, Min(0.01f)] private float _dodgeableFresnel = CharacterMaterials.DefaultStatusFresnel;
-        [SerializeField, Min(0f)] private float _dodgeableFill = CharacterMaterials.DefaultStatusFill;
-        [SerializeField, ColorUsage(false, true)] private Color _undodgeable = new(4.5f, 0.25f, 0.15f);
-        [SerializeField, Min(0.01f)] private float _undodgeableFresnel = CharacterMaterials.DefaultStatusFresnel;
-        [SerializeField, Min(0f)] private float _undodgeableFill = CharacterMaterials.DefaultStatusFill;
-        [SerializeField, ColorUsage(false, true)] private Color _hitFlash = new(2.5f, 2.5f, 2.5f);
-        [SerializeField, ColorUsage(false, true)] private Color _stunned = new(0.45f, 0.8f, 1.3f);
-        [SerializeField, Min(0f)] private float _stunnedPulse = 0.95f;
-        [SerializeField, Min(0.01f)] private float _stunnedFresnel = CharacterMaterials.DefaultStatusFresnel;
-        [SerializeField, Min(0f)] private float _stunnedFill = CharacterMaterials.DefaultStatusFill;
-        [SerializeField, ColorUsage(false, true)] private Color _feedable = new(0.9f, 2.2f, 0.25f);
-        [SerializeField, Min(0f)] private float _feedableAmount = 0.8f;
-        [SerializeField, Min(0f)] private float _feedablePulse = 0.65f;
-        [SerializeField, Min(0.01f)] private float _feedableFresnel = CharacterMaterials.DefaultStatusFresnel;
-        [SerializeField, Min(0f)] private float _feedableFill = CharacterMaterials.DefaultStatusFill;
+        [SerializeField] private TelegraphStyle _style;
 
         private CharacterMaterials _materials;
         private bool _isStunned;
@@ -49,9 +34,9 @@ namespace TentacleVania.Enemies.Telegraphs
             _telegraph = telegraph;
             _current = intensity;
             if (telegraph == Telegraph.Undodgeable)
-                _materials.SetGlow(_undodgeable, intensity, _undodgeableFresnel, _undodgeableFill);
+                _materials.SetGlow(_style.Undodgeable, intensity, _style.UndodgeableFresnel, _style.UndodgeableFill);
             else
-                _materials.SetGlow(_dodgeable, intensity, _dodgeableFresnel, _dodgeableFill);
+                _materials.SetGlow(_style.Dodgeable, intensity, _style.DodgeableFresnel, _style.DodgeableFill);
         }
 
         public void Clear()
@@ -62,7 +47,7 @@ namespace TentacleVania.Enemies.Telegraphs
             _materials.ClearGlow();
         }
 
-        public void Flash(float duration) => _materials.Flash(_hitFlash, duration);
+        public void Flash(float duration) => _materials.Flash(_style.HitFlash, duration);
 
         public void ShowStunned()
         {
@@ -87,9 +72,9 @@ namespace TentacleVania.Enemies.Telegraphs
         private void ApplyStatus()
         {
             if (_isStunned)
-                _materials.SetStatus(_stunned, 1f, _stunnedPulse, _stunnedFresnel, _stunnedFill);
+                _materials.SetStatus(_style.Stunned, 1f, _style.StunnedPulse, _style.StunnedFresnel, _style.StunnedFill);
             else if (_isFeedable)
-                _materials.SetStatus(_feedable, _feedableAmount, _feedablePulse, _feedableFresnel, _feedableFill);
+                _materials.SetStatus(_style.Feedable, _style.FeedableAmount, _style.FeedablePulse, _style.FeedableFresnel, _style.FeedableFill);
             else
                 _materials.ClearStatus();
         }

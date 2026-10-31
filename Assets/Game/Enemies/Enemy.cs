@@ -23,7 +23,7 @@ namespace TentacleVania.Enemies
     }
 
     [RequireComponent(typeof(NavMeshAgent), typeof(Health))]
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, IStatsSource
     {
         private const float CircleStepDegrees = 35f;
         private const float HitFlashDuration = 0.08f;
@@ -67,6 +67,7 @@ namespace TentacleVania.Enemies
         public bool IsFeedable => _consumable != null && _consumable.IsGrabbable;
 
         public EnemyDefinition Definition => _definition;
+        public UnityEngine.Object StatsAsset => _definition;
         public Health Health => _health;
         public EnemyState State { get; private set; }
         public EnemyAttack CurrentAttack => _attackIndex >= 0 ? _definition.Attacks[_attackIndex] : null;

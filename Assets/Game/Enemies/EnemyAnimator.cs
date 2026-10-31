@@ -35,8 +35,6 @@ namespace TentacleVania.Enemies
         };
 
         [SerializeField] private Animator _animator;
-        [Tooltip("Seconds into each attack clip (Swing, Punch, Kick, Shoot) where the blow lands.")]
-        [SerializeField] private float[] _hitTimes = { 0.48f, 0.43f, 0.45f, 0.67f };
 
         private Enemy _enemy;
         private int _current;
@@ -144,7 +142,7 @@ namespace TentacleVania.Enemies
                 return;
             _attackStartedAt = _enemy.AttackStartedAt;
             var index = (int)attack.Animation;
-            var speed = attack.WindUp > 0f ? _hitTimes[index] / attack.WindUp : MaxActionSpeed;
+            var speed = attack.WindUp > 0f ? attack.AnimationHitTime / attack.WindUp : MaxActionSpeed;
             _animator.SetFloat(ActionSpeed, Mathf.Clamp(speed, MinActionSpeed, MaxActionSpeed));
             _current = Attacks[index];
             _animator.CrossFadeInFixedTime(_current, AttackCrossFade, 0, 0f);

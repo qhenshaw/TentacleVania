@@ -23,11 +23,14 @@ MonoBehaviour:
   _turnSpeed: 540
   _spawnDelay: 0.5
   _circleRange: {x: 3.5, y: 5.5}
+  _knockbackScale: 1
   _attacks:
   - Name: Heavy stun
     Kind: 0
     Telegraph: 1
     Animation: 0
+    AnimationHitTime: 0.48
+    GroundIndicator: 0
     WindUp: 1.1
     Active: 0.2
     Recovery: 0.9
@@ -48,10 +51,13 @@ MonoBehaviour:
     Projectile: {fileID: 0}
     ProjectileSpeed: 14
     ProjectileLifetime: 3
+    LaneWidth: 0.4
   - Name: Shock poke
     Kind: 0
     Telegraph: 0
     Animation: 1
+    AnimationHitTime: 0.43
+    GroundIndicator: 0
     WindUp: 0.4
     Active: 0.12
     Recovery: 0.45
@@ -72,6 +78,11 @@ MonoBehaviour:
     Projectile: {fileID: 0}
     ProjectileSpeed: 14
     ProjectileLifetime: 3
+    LaneWidth: 0.4
   _consumeHeal: 0.12
   _biomass: 10
   _despawnDelay: 2
+  _panicRange: 7
+  _fleeDistance: 6
+  _corneredDistance: 1.2
+  _preferredRange: {x: 5, y: 8}

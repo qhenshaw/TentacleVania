@@ -4,9 +4,6 @@ namespace TentacleVania.Enemies.Types
 {
     public sealed class ScientistEnemy : Enemy
     {
-        [SerializeField, Min(0f)] private float _panicRange = 7f;
-        [SerializeField, Min(0f)] private float _fleeDistance = 6f;
-        [SerializeField, Min(0f)] private float _corneredDistance = 1.2f;
 
         private bool _cowering;
 
@@ -17,7 +14,7 @@ namespace TentacleVania.Enemies.Types
             var away = Position - targetPosition;
             away.y = 0f;
             var distance = away.magnitude;
-            if (distance > _panicRange)
+            if (distance > Definition.PanicRange)
             {
                 _cowering = false;
                 return Position;
@@ -27,8 +24,8 @@ namespace TentacleVania.Enemies.Types
             for (var turn = 0; turn < 5; turn++)
             {
                 var angle = (turn + 1) / 2 * 35f * (turn % 2 == 0 ? 1f : -1f);
-                var candidate = Position + Quaternion.Euler(0f, angle, 0f) * direction * _fleeDistance;
-                if (TrySampleNavMesh(candidate, 1.5f, out var flee) && (flee - Position).sqrMagnitude > _corneredDistance * _corneredDistance
+                var candidate = Position + Quaternion.Euler(0f, angle, 0f) * direction * Definition.FleeDistance;
+                if (TrySampleNavMesh(candidate, 1.5f, out var flee) && (flee - Position).sqrMagnitude > Definition.CorneredDistance * Definition.CorneredDistance
                     && (flee - targetPosition).sqrMagnitude > (Position - targetPosition).sqrMagnitude)
                 {
                     _cowering = false;

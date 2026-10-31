@@ -46,6 +46,8 @@ namespace TentacleVania.Enemies.Data
         public Telegraph Telegraph;
         [Tooltip("Body animation; its hit frame is timed to land when the attack goes active.")]
         public AttackAnimation Animation;
+        [Tooltip("Seconds into the body animation where its hit lands; the clip is sped up so that moment meets the end of the wind-up.")]
+        [Min(0.01f)] public float AnimationHitTime = 0.48f;
         [Tooltip("Ground telegraph: Auto shows one for area, projectile and red (undodgeable) attacks.")]
         public IndicatorMode GroundIndicator;
 

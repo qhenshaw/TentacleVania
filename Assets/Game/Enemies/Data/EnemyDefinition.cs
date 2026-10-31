@@ -38,6 +38,14 @@ namespace TentacleVania.Enemies.Data
         [Header("Death")]
         [SerializeField, Min(0f)] private float _despawnDelay = 2f;
 
+        [Header("Scientist behaviour")]
+        [SerializeField, Min(0f)] private float _panicRange = 7f;
+        [SerializeField, Min(0f)] private float _fleeDistance = 6f;
+        [SerializeField, Min(0f)] private float _corneredDistance = 1.2f;
+
+        [Header("Guard behaviour")]
+        [SerializeField] private Vector2 _preferredRange = new(5f, 8f);
+
         public string DisplayName => _displayName;
         public float MaxHealth => _maxHealth;
         public float MaxArmor => _maxArmor;
@@ -54,5 +62,9 @@ namespace TentacleVania.Enemies.Data
         public float DespawnDelay => _despawnDelay;
         public float ConsumeHeal => _consumeHeal;
         public int Biomass => _biomass;
+        public float PanicRange => _panicRange;
+        public float FleeDistance => _fleeDistance;
+        public float CorneredDistance => _corneredDistance;
+        public Vector2 PreferredRange => _preferredRange;
     }
 }

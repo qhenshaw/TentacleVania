@@ -1,0 +1,18 @@
+{
+    "name": "TentacleVania.Combat.Editor",
+    "rootNamespace": "TentacleVania.Combat.Editor",
+    "references": [
+        "TentacleVania.Combat"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

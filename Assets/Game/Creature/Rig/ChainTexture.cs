@@ -15,7 +15,6 @@ namespace TentacleVania.Creature.Rig
         [SerializeField] private VisualEffect _effect;
         [SerializeField] private MonoBehaviour[] _sources;
         [SerializeField] private bool _ownBudget;
-        [SerializeField, Min(0)] private int _maxChains = CreatureRigSettings.MaxChains;
 
         private readonly List<IChainSource> _chainSources = new(4);
         private readonly List<ChainTexture> _textures = new(2);
@@ -61,7 +60,7 @@ namespace TentacleVania.Creature.Rig
         private int Budget()
         {
             if (_ownBudget)
-                return _maxChains;
+                return CreatureRigSettings.MaxMawChains;
             var budget = CreatureRigSettings.MaxChains;
             foreach (var texture in _textures)
             {
