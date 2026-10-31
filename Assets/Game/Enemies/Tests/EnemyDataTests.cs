@@ -1,5 +1,8 @@
 using NUnit.Framework;
+using TentacleVania.Combat.Damage;
 using TentacleVania.Enemies.Data;
+using TentacleVania.Enemies.Traps;
+using UnityEngine;
 using UnityEditor;
 
 namespace TentacleVania.Enemies.Tests
@@ -26,6 +29,37 @@ namespace TentacleVania.Enemies.Tests
                 Assert.That(attack.Damage, Is.EqualTo(10f));
                 Assert.That(attack.WindUpSound.IsNull, Is.False);
             }
+        }
+
+        [Test]
+        public void HazmatThrowsARootTrap()
+        {
+            var hazmat = Load("Hazmat");
+            Assert.That(hazmat.MaxHealth, Is.EqualTo(55f));
+            Assert.That(hazmat.MaxStagger, Is.EqualTo(35f));
+            var found = false;
+            foreach (var attack in hazmat.Attacks)
+            {
+                if (attack.Kind != AttackKind.Trap)
+                    continue;
+                found = true;
+                Assert.That(attack.TrapPrefab, Is.Not.Null);
+                Assert.That(attack.Status, Is.EqualTo(StatusKind.Root));
+                Assert.That(attack.StatusDuration, Is.EqualTo(1.5f));
+                Assert.That(attack.Telegraph, Is.EqualTo(Telegraph.Dodgeable));
+            }
+            Assert.That(found, Is.True);
+        }
+
+        [TestCase(1.2f, 0f, true)]
+        [TestCase(1.2f, 1.19f, true)]
+        [TestCase(1.2f, 1.2f, true)]
+        [TestCase(1.2f, 1.21f, false)]
+        public void TrapCatchesExactlyInsideItsRadius(float radius, float distance, bool caught)
+        {
+            var center = new Vector3(3f, 0f, -2f);
+            var position = center + new Vector3(distance * 0.6f, 1.5f, distance * 0.8f);
+            Assert.That(ContainmentTrap.Contains(center, radius, position), Is.EqualTo(caught));
         }
     }
 }
