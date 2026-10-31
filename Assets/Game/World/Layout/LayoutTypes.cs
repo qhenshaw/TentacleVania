@@ -14,9 +14,8 @@ namespace TentacleVania.World.Layout
 
     public enum OpeningKind
     {
-        Doorway,
-        Door,
-        Prefab,
+        Doorway = 0,
+        Prefab = 2,
     }
 
     [Flags]

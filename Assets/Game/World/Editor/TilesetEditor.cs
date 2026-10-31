@@ -51,12 +51,9 @@ namespace TentacleVania.World.Editor
             var roomB = Create("Room B", root.transform).AddComponent<LayoutRoom>();
             roomB.Rects.Clear();
             roomB.Rects.Add(new RectInt(6, 5, 3, 3));
-            var door = Create("Door", root.transform).AddComponent<LayoutOpening>();
+            var door = Create("Doorway", root.transform).AddComponent<LayoutOpening>();
             door.Cell = new Vector2Int(0, 4);
             door.Side = Side.West;
-            var so = new SerializedObject(door);
-            so.FindProperty("_kind").enumValueIndex = (int)OpeningKind.Door;
-            so.ApplyModifiedPropertiesWithoutUndo();
 
             LayoutGenerator.Generate(layout, false, false);
             if (frame && SceneView.lastActiveSceneView != null)
