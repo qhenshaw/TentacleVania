@@ -81,6 +81,8 @@ namespace TentacleVania.Weapons
 
         public float Charge(int slot) => _buttons[slot].Charge(Time.time);
 
+        public float HeavyWindUp(int slot) => _buttons[slot].WindUp(Time.time);
+
         private void Awake()
         {
             _motor = GetComponent<CreatureMotor>();
@@ -90,7 +92,7 @@ namespace TentacleVania.Weapons
                 _shatteredScales[i] = new(50);
             _combo = new(WeaponDefinition.ComboSteps, _settings.ComboReset);
             for (var i = 0; i < Slots; i++)
-                _buttons[i] = new(_settings.HeavyThreshold, _settings.MaxHold);
+                _buttons[i] = new(_settings.HeavyThreshold, _settings.HeavyWindUp);
             Equip(0, _weapon1);
             Equip(1, _weapon2);
         }

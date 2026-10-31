@@ -61,6 +61,28 @@ namespace TentacleVania.Weapons.Combo
             }
         }
 
+        public static Vector3 ChargeTip(Vector3 origin, Vector3 forward, WeaponMove move, float t)
+        {
+            var rest = origin + forward * RestReach;
+            Vector3 pose;
+            switch (move.Shape)
+            {
+                case MoveShape.Area:
+                    pose = origin - forward * 0.5f + Vector3.up * (RaisedHeight + 0.6f);
+                    break;
+                case MoveShape.Body:
+                    pose = origin + Quaternion.AngleAxis(-150f, Vector3.up) * forward * Mathf.Max(0.6f, move.Radius * 0.6f) + Vector3.up * 0.4f;
+                    break;
+                default:
+                    var back = move.EndAngle >= move.StartAngle ? -45f : 45f;
+                    var direction = Quaternion.AngleAxis(back, Vector3.up) * SweepDirection(forward, move, 0f);
+                    pose = origin + direction * (move.Reach * 0.75f) + Vector3.up * 0.9f;
+                    break;
+            }
+            var eased = t * t * (3f - 2f * t);
+            return Vector3.Lerp(rest, pose, eased);
+        }
+
         public static Vector3 Tip(Vector3 origin, Vector3 forward, WeaponMove move, float elapsed)
         {
             var rest = origin + forward * RestReach;

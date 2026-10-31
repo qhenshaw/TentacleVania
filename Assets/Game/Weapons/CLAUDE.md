@@ -9,7 +9,7 @@ The creature's weapons (`TentacleVania.Weapons`), following Core Mechanics & Con
   - `Sweep`: an arc from `StartAngle` to `EndAngle` (0 = forward, positive = right) at `Reach`, as sphere casts of `Radius` subdivided to ≤10° (sweeps, thrusts with equal angles, the 360° Whirlwind).
   - `Area`: a circle or sector (`SectorAngle`) of `Radius` at `AreaOffset` in front, checked once at strike start (slams, Quake, Tentacle storm).
   - `Body`: an overlap of `Radius` around the creature every strike frame, for dash attacks that `LungeDistance` along the attack direction.
-- Heavies have no wind-up: the charge is the wind-up.
+- Heavies have no wind-up of their own: the charge is the wind-up. While charging, `WeaponTentacleView` raises that slot's weapon tentacle into `MoveShapes.ChargeTip` (sweeps: pulled 45° behind the start angle, raised 0.9 m; areas: raised overhead; body: coiled behind) over `HeavyWindUp` (0.5 s), holds it with a slight tremble, and flashes the creature and rumbles once when ready (developer decisions).
 
 ## Weapons
 
@@ -27,7 +27,7 @@ The creature's weapons (`TentacleVania.Weapons`), following Core Mechanics & Con
 ## WeaponController (on the creature)
 - Tuning is in assets, not on the prefab: `Data/HatchlingWeaponHandling` (`WeaponHandlingSettings`: heavy threshold, max hold, input buffer, combo reset, dash-attack window, attack move speed, soft-lock range and cones) for `WeaponController`, and `Data/HatchlingWeaponTentacles` (`WeaponTentacleSettings`: joints, length, arch, root offset, widths, emerge and retract times, spring) for `WeaponTentacleView`. The numbers below are their current values.
 
-- Both weapon buttons share one `ComboCounter` (3 steps, crossover, reset after 0.6 s without attacking, after a finisher, after a heavy; dash attacks don't touch it). `ChargeButton` resolves a tap on release; holding past 0.35 s charges the heavy, which fires on release or at 1.5 s. Presses up to 0.15 s before the current move ends are buffered.
+- Both weapon buttons share one `ComboCounter` (3 steps, crossover, reset after 0.6 s without attacking, after a finisher, after a heavy; dash attacks don't touch it). `ChargeButton` resolves a tap on release; holding past 0.35 s charges the heavy, which fires only on release (never by itself; developer decision); a release before the 0.5 s windup completes queues it until then (`ChargeButton`, unit tested). Presses up to 0.15 s before the current move ends are buffered.
 - A press during a dash or within 0.12 s after it is a dash attack (immediate, no tap wait).
 - While attacking or charging the creature steers at 40% speed (developer decision: slowed, free steering, no lunges on normal moves). Dash is locked during wind-up and strike; a dash in recovery cancels the move without resetting the combo.
 - Soft-lock (developer decision): at attack start the move aims at the best enemy (distance × angle score) within 6 m and a 90° cone around the facing, or a 30° cone around active aim (mouse, or right stick past the deadzone). The creature snaps to that direction and keeps it for the move.
