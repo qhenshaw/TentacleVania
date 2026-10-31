@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 6451338741358025683}
   - component: {fileID: 5751535750192524386}
   - component: {fileID: 906184000046546651}
+  - component: {fileID: 6476554414125923144}
   m_Layer: 0
   m_Name: CombatHud
   m_TagString: Untagged
@@ -233,3 +234,15 @@ MonoBehaviour:
   _heavyBpm: 110
   _lurchDepth: 0.8
   _lurchDuration: 0.9
+--- !u!114 &6476554414125923144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703636293144204845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4e41065e77d284db9763fc4f86bcc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.SubtitleView

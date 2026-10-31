@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Dialogue Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Dialogue
+  m_TableCollectionNameGuidString: 2f0ee082b9462944eaa7a29918420727
+  m_Entries:
+  - m_Id: 672940032
+    m_Key: line.01
+    m_Metadata:
+      m_Items: []
+  - m_Id: 714883072
+    m_Key: line.02
+    m_Metadata:
+      m_Items: []
+  - m_Id: 714883073
+    m_Key: line.03
+    m_Metadata:
+      m_Items: []
+  - m_Id: 714883074
+    m_Key: line.04
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271680
+    m_Key: line.05
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271681
+    m_Key: line.06
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271682
+    m_Key: line.07
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271683
+    m_Key: line.08
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271684
+    m_Key: line.09
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271685
+    m_Key: line.10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271686
+    m_Key: line.11
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271687
+    m_Key: line.12
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271688
+    m_Key: line.13
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271689
+    m_Key: line.14
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271690
+    m_Key: line.15
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271691
+    m_Key: line.16
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271692
+    m_Key: line.17
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271693
+    m_Key: line.18
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271694
+    m_Key: line.19
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271695
+    m_Key: line.20
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271696
+    m_Key: line.21
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271697
+    m_Key: sector.SH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271698
+    m_Key: sector.BL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271699
+    m_Key: sector.Debug
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271700
+    m_Key: speaker.pa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271701
+    m_Key: speaker.radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723271702
+    m_Key: speaker.crane
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2885659076352016465
+  references:
+    version: 2
+    RefIds:
+    - rid: 2885659076352016465
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1793428351600

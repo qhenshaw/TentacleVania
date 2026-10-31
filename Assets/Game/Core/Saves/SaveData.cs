@@ -52,6 +52,7 @@ namespace TentacleVania.Core.Saves
         CollectedPickup,
         ExploredRoom,
         ClearedArena,
+        PlayedLine,
     }
 
     [Serializable]
@@ -64,6 +65,7 @@ namespace TentacleVania.Core.Saves
         public List<string> CollectedPickups = new();
         public List<string> ExploredRooms = new();
         public List<string> ClearedArenas = new();
+        public List<string> PlayedLines = new();
 
         public List<string> List(WorldFlag flag) => flag switch
         {
@@ -73,6 +75,7 @@ namespace TentacleVania.Core.Saves
             WorldFlag.DefeatedBoss => DefeatedBosses,
             WorldFlag.CollectedPickup => CollectedPickups,
             WorldFlag.ExploredRoom => ExploredRooms,
+            WorldFlag.PlayedLine => PlayedLines,
             _ => ClearedArenas,
         };
 

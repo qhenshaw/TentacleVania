@@ -15,6 +15,10 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:Label name="reward" class="hud__reward" picking-mode="Ignore" />
+        <ui:VisualElement name="subtitle" class="hud__subtitle" picking-mode="Ignore">
+            <ui:Label name="subtitle-speaker" class="hud__subtitle-speaker" picking-mode="Ignore" />
+            <ui:Label name="subtitle-text" class="hud__subtitle-text" picking-mode="Ignore" />
+        </ui:VisualElement>
         <ui:Label name="prompt" class="hud__prompt hud__prompt--hidden" picking-mode="Ignore" />
         <ui:VisualElement name="status-icons" class="hud__status" picking-mode="Ignore">
             <ui:VisualElement name="status-slow" class="hud__status-icon hud__status-icon--slow" picking-mode="Ignore" />
