@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/SpecimenHolding/SpecimenHolding.unity
     guid: ca30497d58036174484f47853d3783f6
   - enabled: 1
+    path: Assets/Game/Scenes/BioLabs/BioLabs.unity
+    guid: d7f612256fb63f949891a3ad37f56a62
+  - enabled: 1
     path: Assets/Game/Scenes/CombatArena.unity
     guid: 0edb014f4b9f7cd44b232e1f7a0ebbfd
   m_configObjects:
