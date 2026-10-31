@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Core.Input;
+using TentacleVania.Core.Progression;
 using TentacleVania.Core.Saves;
 using TentacleVania.Creature.Movement;
 using TentacleVania.Weapons.Combo;
@@ -59,7 +60,7 @@ namespace TentacleVania.Weapons
         public int ActiveStep { get; private set; } = -1;
         public WeaponMove ActiveMove => _move;
         public Vector3 ActiveForward => _moveForward;
-        public float ActiveElapsed => Time.time - _moveStarted;
+        public float ActiveElapsed => (Time.time - _moveStarted) * Stats.AttackSpeed;
         public bool IsAttacking => _move != null;
         public MovePhase Phase => _move != null ? MoveShapes.Phase(_move, ActiveElapsed) : MovePhase.Done;
         public int NextComboStep => _combo.Peek(Time.time);
@@ -223,7 +224,7 @@ namespace TentacleVania.Weapons
 
         private void TickMove(float now)
         {
-            var elapsed = now - _moveStarted;
+            var elapsed = (now - _moveStarted) * Stats.AttackSpeed;
             switch (MoveShapes.Phase(_move, elapsed))
             {
                 case MovePhase.Strike:

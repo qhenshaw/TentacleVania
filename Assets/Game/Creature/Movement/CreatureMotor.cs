@@ -104,7 +104,7 @@ namespace TentacleVania.Creature.Movement
         public bool TryDash(Vector3 direction)
         {
             var now = Time.time;
-            if (DashLocked || !_dash.TryStart(now))
+            if (DashLocked || !_dash.TryStart(now, Core.Progression.Stats.DashRecovery))
                 return false;
             _lungeRemaining = 0f;
             direction.y = 0f;

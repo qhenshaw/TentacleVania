@@ -34,15 +34,20 @@ namespace TentacleVania.Creature
         {
             CombatEvents.HitLanded += OnHitLanded;
             Nests.Rested += OnRested;
+            Stats.Changed += ApplyStats;
+            ApplyStats();
         }
 
         private void OnDisable()
         {
             CombatEvents.HitLanded -= OnHitLanded;
             Nests.Rested -= OnRested;
+            Stats.Changed -= ApplyStats;
         }
 
         private void OnRested(string nest) => Set(Max);
+
+        private void ApplyStats() => Meter.GainScale = Stats.ChargeGain;
 
         public void AddConsume() => Add(_settings.PerConsume);
 

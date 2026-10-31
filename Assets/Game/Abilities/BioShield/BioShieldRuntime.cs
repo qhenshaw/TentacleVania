@@ -148,7 +148,7 @@ namespace TentacleVania.Abilities.BioShield
                 var direction = target.transform.position - center;
                 direction.y = 0f;
                 var info = DamageInfo.Create(_definition.BurstDamage, Team.Creature, _definition.BurstType, _definition.BurstStagger);
-                info.Flags = HitFlags.Heavy;
+                info.Flags = HitFlags.Heavy | HitFlags.Ability;
                 info.Attacker = _context.Health;
                 info.Point = Hits[i].ClosestPoint(origin);
                 info.Direction = direction.sqrMagnitude > 1e-4f ? direction.normalized : _context.Owner.forward;

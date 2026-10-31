@@ -19,6 +19,9 @@ namespace TentacleVania.Creature
         private CharacterMaterials _materials;
         private CreatureCharge _charge;
         private DashInvulnerability _dashInvulnerability;
+        private readonly OutgoingStatModifier _outgoingStats = new();
+        private readonly IncomingStatModifier _incomingStats = new();
+        private float _configuredMax;
         private float _stunnedUntil = float.NegativeInfinity;
         private float _stunImmuneUntil = float.NegativeInfinity;
         private bool _stunned;
@@ -37,12 +40,15 @@ namespace TentacleVania.Creature
             _materials = GetComponent<CharacterMaterials>();
             _charge = GetComponent<CreatureCharge>();
             _dashInvulnerability = new(_motor);
-            _health.Configure(Team.Creature, _settings.MaxHealth, _settings.MaxArmor);
+            ConfigureHealth();
         }
 
         private void OnEnable()
         {
             _health.Incoming.Add(_dashInvulnerability);
+            _health.Incoming.Add(_incomingStats);
+            _health.Outgoing.Add(_outgoingStats);
+            Stats.Changed += ConfigureHealth;
             _health.Damaged += OnDamaged;
             _health.Died += OnDied;
             Nests.Rested += OnRested;
@@ -52,6 +58,9 @@ namespace TentacleVania.Creature
         private void OnDisable()
         {
             _health.Incoming.Remove(_dashInvulnerability);
+            _health.Incoming.Remove(_incomingStats);
+            _health.Outgoing.Remove(_outgoingStats);
+            Stats.Changed -= ConfigureHealth;
             _health.Damaged -= OnDamaged;
             _health.Died -= OnDied;
             Nests.Rested -= OnRested;
@@ -100,6 +109,15 @@ namespace TentacleVania.Creature
             EndStun();
             _motor.LockControl();
             StartCoroutine(RestartArena());
+        }
+
+        private void ConfigureHealth()
+        {
+            var max = _settings.MaxHealth + Stats.MaxHealthBonus;
+            if (Mathf.Approximately(max, _configuredMax))
+                return;
+            _configuredMax = max;
+            _health.Configure(Team.Creature, max, _settings.MaxArmor);
         }
 
         private void OnRested(string nest)

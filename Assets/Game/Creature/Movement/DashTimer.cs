@@ -26,7 +26,7 @@ namespace TentacleVania.Creature.Movement
 
         public bool CanDash(float now) => now >= _readyAt;
 
-        public bool TryStart(float now)
+        public bool TryStart(float now, float recoveryScale = 1f)
         {
             if (!CanDash(now))
                 return false;
@@ -34,7 +34,7 @@ namespace TentacleVania.Creature.Movement
                 _count = 0;
             _count++;
             _lastEnd = now + _duration;
-            var wait = _count >= _chain ? _lockout : _cooldown;
+            var wait = (_count >= _chain ? _lockout : _cooldown) * recoveryScale;
             if (_count >= _chain)
                 _count = 0;
             _readyAt = _lastEnd + wait;
