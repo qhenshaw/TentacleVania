@@ -15,6 +15,7 @@ Runtime UI (`TentacleVania.UI`), all UI Toolkit.
 - Shared runtime theme: `RuntimeTheme.tss`; both the menu and HUD panel settings use it.
 - `Hud/InteractionPromptView` (on `CombatHud.prefab`) shows `Core.Interaction.Interactions.Current`'s `PromptKey` from the `UI` table in the `prompt` label above the player bars, hidden (`hud__prompt--hidden`) when there is none; keys so far: `prompt.nest.grow`, `prompt.nest.rest`.
 - `Hud/SaveIndicatorView` (on `CombatHud.prefab`) fades in the `saving` ring (bottom right, icon only) for 1.2 s after each autosave. `MainMenuScreen.Play` continues slot 1 when it holds a save (load it, then `SceneFlow.Load(SaveSystem.ContinueScene(...))`), else starts a new game in slot 1; the full slot menu is TV-83.
+- `Hud/StatusIconsView` (on `CombatHud.prefab`) shows the creature's active statuses from `Combat.Status.StatusEffects` above the player bars: `status-slow` (purple square) and `status-root` (gold diamond), placeholder shapes with no text.
 
 ## Debug menu
 

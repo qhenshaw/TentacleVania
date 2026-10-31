@@ -4,6 +4,10 @@
         <ui:VisualElement name="enemy-layer" class="hud__layer" picking-mode="Ignore" />
         <ui:VisualElement name="saving" class="hud__saving" picking-mode="Ignore" />
         <ui:Label name="prompt" class="hud__prompt hud__prompt--hidden" picking-mode="Ignore" />
+        <ui:VisualElement name="status-icons" class="hud__status" picking-mode="Ignore">
+            <ui:VisualElement name="status-slow" class="hud__status-icon hud__status-icon--slow" picking-mode="Ignore" />
+            <ui:VisualElement name="status-root" class="hud__status-icon hud__status-icon--root" picking-mode="Ignore" />
+        </ui:VisualElement>
         <ui:VisualElement name="player" class="hud__player" picking-mode="Ignore">
             <ui:VisualElement name="health" class="hud-bar hud-bar--health" picking-mode="Ignore">
                 <ui:VisualElement name="health-trail" class="hud-bar__layer hud-bar__trail" picking-mode="Ignore" />
