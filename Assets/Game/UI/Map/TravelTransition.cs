@@ -84,7 +84,7 @@ namespace TentacleVania.UI.Map
                 return;
             }
             _overlay.style.backgroundImage = StyleKeyword.None;
-            _label.style.display = DisplayStyle.Flex;
+            _label.style.display = FastTravel.Kind == TravelKind.Recover ? DisplayStyle.None : DisplayStyle.Flex;
             _overlay.style.backgroundColor = Color.Lerp(new Color(0.07f, 0.01f, 0.05f), new Color(0.22f, 0.03f, 0.15f), pulse);
             _label.style.opacity = 0.6f + 0.4f * pulse;
         }
