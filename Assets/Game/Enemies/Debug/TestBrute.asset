@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestBrute
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
   _displayName: Test Brute
-  _maxHealth: 60
+  _maxHealth: 120
   _maxArmor: 0
   _maxStagger: 0
   _staggerStun: 2

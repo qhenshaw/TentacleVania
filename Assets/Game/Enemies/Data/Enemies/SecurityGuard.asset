@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SecurityGuard
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
   _displayName: Security Guard
-  _maxHealth: 40
+  _maxHealth: 80
   _maxArmor: 0
-  _maxStagger: 40
+  _maxStagger: 80
   _staggerStun: 2
   _staggerDamageTaken: 1.5
   _feedableDamageTaken: 0.5

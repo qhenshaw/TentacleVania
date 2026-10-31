@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Handler
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
   _displayName: Handler
-  _maxHealth: 50
+  _maxHealth: 100
   _maxArmor: 0
-  _maxStagger: 50
+  _maxStagger: 100
   _staggerStun: 2
   _staggerDamageTaken: 1.5
   _feedableDamageTaken: 0.5

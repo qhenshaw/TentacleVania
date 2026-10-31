@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Surgeon
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
   _displayName: Surgeon
-  _maxHealth: 35
+  _maxHealth: 70
   _maxArmor: 0
-  _maxStagger: 20
+  _maxStagger: 40
   _staggerStun: 2
   _staggerDamageTaken: 1.5
   _feedableDamageTaken: 0.5
