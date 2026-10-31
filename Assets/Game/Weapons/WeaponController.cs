@@ -473,6 +473,12 @@ namespace TentacleVania.Weapons
         {
             if (_move != null && Phase == MovePhase.Recovery)
                 EndMove(Time.time);
+            var now = Time.time;
+            for (var i = 0; i < Slots; i++)
+                if (_buttons[i].IsCharging(now))
+                    _buttons[i].Cancel();
+            if (_hasRequest && _requestKind == AttackKind.Heavy)
+                _hasRequest = false;
         }
 
         private void ApplyMotorState(float now)
