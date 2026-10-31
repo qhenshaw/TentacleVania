@@ -62,6 +62,7 @@ namespace TentacleVania.Bosses.Warden
         private float _beamsStarted = -1f;
         private int _beamCount;
         private bool _beamsFired;
+        private bool _guardsPending;
         private float _bobPhase;
 
         protected override void Awake()
@@ -113,6 +114,11 @@ namespace TentacleVania.Bosses.Warden
                 HideBeams();
                 return;
             }
+            if (_guardsPending && !IsStaggerBroken)
+            {
+                _guardsPending = false;
+                SpawnGuards();
+            }
             if (State == EnemyState.Attacking && CurrentAttack != null && CurrentAttack.Name == _lungeAttack && CurrentPhase == AttackPhase.Active && Agent.enabled && Agent.isOnNavMesh)
                 Agent.Move(transform.forward * (_lungeSpeed * dt));
             TickBeams(now);
@@ -137,7 +143,9 @@ namespace TentacleVania.Bosses.Warden
             return TrySampleNavMesh(wanted, 3f, out var fallback) ? fallback : Position;
         }
 
-        private void OnStaggered(Enemy enemy)
+        private void OnStaggered(Enemy enemy) => _guardsPending = true;
+
+        private void SpawnGuards()
         {
             if (_guardPrefab == null)
                 return;
