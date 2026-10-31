@@ -68,6 +68,15 @@ namespace TentacleVania.Audio
             Apply(i);
         }
 
+        public static void SetPaused(string bus, bool paused)
+        {
+            if (!Application.isPlaying)
+                return;
+            var handle = RuntimeManager.GetBus(bus);
+            if (handle.isValid())
+                handle.setPaused(paused);
+        }
+
         private static int Index(string bus)
         {
             for (var i = 0; i < Paths.Length; i++)

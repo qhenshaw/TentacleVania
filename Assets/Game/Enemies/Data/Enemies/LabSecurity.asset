@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
   _displayName: Lab Security
   _maxHealth: 45
-  _maxArmor: 0
+  _maxArmor: 20
   _maxStagger: 25
   _staggerStun: 2
   _staggerDamageTaken: 1.5
@@ -36,6 +36,7 @@ MonoBehaviour:
     Recovery: 0.5
     Cooldown: 1.2
     TrackDuringWindUp: 0.6
+    Hits: 1
     MinRange: 0
     MaxRange: 1.8
     Damage: 8
@@ -55,6 +56,8 @@ MonoBehaviour:
     ProjectileSpeed: 14
     ProjectileLifetime: 3
     LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
     WindUpSound:
       Guid:
         Data1: 0
@@ -87,6 +90,7 @@ MonoBehaviour:
     Recovery: 0.4
     Cooldown: 1.4
     TrackDuringWindUp: 0.7
+    Hits: 1
     MinRange: 4
     MaxRange: 11
     Damage: 8
@@ -106,6 +110,8 @@ MonoBehaviour:
     ProjectileSpeed: 18
     ProjectileLifetime: 2
     LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
     WindUpSound:
       Guid:
         Data1: 0
@@ -129,8 +135,13 @@ MonoBehaviour:
       Path: event:/Enemies/LabSecurity/TranqHit
   _consumeHeal: 0.12
   _biomass: 10
+  _spawnOnWall: 0
   _despawnDelay: 2
   _panicRange: 7
   _fleeDistance: 6
   _corneredDistance: 1.2
   _preferredRange: {x: 5, y: 8}
+  _machine: 0
+  _healPerSecond: 8
+  _healRange: 6
+  _keepAwayRange: 7

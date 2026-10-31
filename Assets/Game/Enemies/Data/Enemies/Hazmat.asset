@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
   _displayName: Hazmat Containment Security
   _maxHealth: 55
-  _maxArmor: 0
+  _maxArmor: 20
   _maxStagger: 35
   _staggerStun: 2
   _staggerDamageTaken: 1.5
@@ -36,6 +36,7 @@ MonoBehaviour:
     Recovery: 0.5
     Cooldown: 1.2
     TrackDuringWindUp: 0.6
+    Hits: 1
     MinRange: 0
     MaxRange: 1.8
     Damage: 8
@@ -89,6 +90,7 @@ MonoBehaviour:
     Recovery: 0.5
     Cooldown: 4
     TrackDuringWindUp: 0.75
+    Hits: 1
     MinRange: 2.5
     MaxRange: 9
     Damage: 0
@@ -133,8 +135,13 @@ MonoBehaviour:
       Path: 
   _consumeHeal: 0.12
   _biomass: 10
+  _spawnOnWall: 0
   _despawnDelay: 2
   _panicRange: 7
   _fleeDistance: 6
   _corneredDistance: 1.2
   _preferredRange: {x: 5, y: 8}
+  _machine: 0
+  _healPerSecond: 8
+  _healRange: 6
+  _keepAwayRange: 7

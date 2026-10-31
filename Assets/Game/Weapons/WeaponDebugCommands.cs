@@ -18,6 +18,7 @@ namespace TentacleVania.Weapons
             DebugMenu.Value(Tab, "Modifiers", () => $"{ModifierName(0)} / {ModifierName(1)}");
             DebugMenu.Value(Tab, "Mutagen", () => Upgrades.Mutagen.ToString());
             DebugMenu.Button(Tab, "+1 Mutagen", () => Upgrades.AddMutagen(1));
+            DebugMenu.Button(Tab, "Give Crusher Mass", () => Collectibles.Grant(PickupKind.Weapon, "CrusherMass", 1));
             DebugMenu.Button(Tab, "Cycle weapon 1 modifier", () => CycleModifier(0));
             DebugMenu.Button(Tab, "Cycle weapon 2 modifier", () => CycleModifier(1));
             DebugMenu.Toggle(Tab, "Weapon tip meshes", () => WeaponTentacleView.ShowTipMeshes, v => WeaponTentacleView.ShowTipMeshes = v);
