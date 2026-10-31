@@ -1,0 +1,105 @@
+.settings {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(4, 6, 4, 0.82);
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.settings--open {
+    display: flex;
+}
+
+.settings__panel {
+    width: 1100px;
+    height: 800px;
+    padding: 24px 32px;
+    background-color: rgb(14, 18, 14);
+    border-width: 2px;
+    border-color: rgb(110, 84, 24);
+}
+
+.settings__title {
+    font-size: 34px;
+    -unity-font-style: bold;
+    color: rgb(235, 220, 190);
+    margin-bottom: 12px;
+}
+
+.settings__tabs {
+    flex-direction: row;
+    border-bottom-width: 2px;
+    border-color: rgb(70, 56, 20);
+    margin-bottom: 12px;
+}
+
+.settings__tab {
+    font-size: 22px;
+    margin: 0 6px 0 0;
+    padding: 6px 14px;
+    color: rgb(170, 160, 140);
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+}
+
+.settings__tab--active {
+    color: rgb(250, 230, 180);
+    background-color: rgb(50, 40, 14);
+}
+
+.settings__content {
+    flex-grow: 1;
+}
+
+.settings__row {
+    flex-direction: row;
+    align-self: stretch;
+    flex-shrink: 0;
+    align-items: center;
+    min-height: 48px;
+    padding: 4px 0;
+    border-bottom-width: 1px;
+    border-color: rgba(110, 84, 24, 0.3);
+}
+
+.settings__label {
+    width: 360px;
+    font-size: 21px;
+    color: rgb(230, 222, 205);
+}
+
+.settings__control {
+    flex-grow: 1;
+    font-size: 20px;
+}
+
+.settings__binding {
+    width: 260px;
+    height: 40px;
+    font-size: 19px;
+    margin-left: 10px;
+}
+
+.settings__actions {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.settings__action {
+    height: 46px;
+    padding: 0 22px;
+    margin-left: 10px;
+    font-size: 21px;
+}
+
+.settings__tab:focus,
+.settings__action:focus,
+.settings__binding:focus {
+    border-width: 2px;
+    border-color: rgb(230, 190, 80);
+}

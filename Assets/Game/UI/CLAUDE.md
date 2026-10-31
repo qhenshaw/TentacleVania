@@ -7,6 +7,14 @@ Runtime UI (`TentacleVania.UI`), all UI Toolkit.
 - `Menu/MainMenu.prefab` (in the `MainMenu` scene) is a `UIDocument` on `MainMenuPanelSettings` (1920×1080 scale-with-screen) with `MainMenuScreen`, which binds the UXML's named elements to `UI` string table keys (`menu.title`, `menu.play`, `menu.quit`) through `LocalizedString.StringChanged`, focuses Play for gamepad navigation, and loads `SceneFlow.FirstGameplay` on Play. From an eval: `TentacleVania.UI.Menu.MainMenuScreen.Instance.Play()`.
 - Player-facing text comes from string tables (`Assets/Game/Localization/`); set a key in UXML by name and bind it in code, never write the text in UXML or C#. Debug menu labels are exempt.
 
+## Settings
+
+- `Settings/SettingsScreen.prefab` (nested in `MainMenu.prefab` and `CombatHud.prefab`; its own `SettingsPanelSettings`, sort order 100, so it draws over everything) is the settings screen. Main menu Settings button, F5 HUD tab "Open settings"; the pause menu (TV-83) should call `SettingsScreen.Instance.Open(onClose)`.
+- **Tabs:** Audio, Gameplay (assists, keep biomass), Accessibility (shake, flashes, gore, rumble, subtitles, colour-blind mode), Controls, Display and Language. Rows are built in code from `UI` table keys (`settings.*`, `action.*`).
+- **Behaviour:** every change writes `Core.Settings.SettingsStore.Data` and calls `Apply`; closing (Back, or cancel) saves. Reset tab restores one tab's defaults. While it's open, creature control is locked.
+- **Rebinding:** Controls lists Weapon 1/2, Dash, Grab and Ability with one button for the Gamepad binding and one for Keyboard&Mouse. Pressing one starts `PerformInteractiveRebinding` (Esc cancels; mouse movement excluded) and saves when done.
+- **Pitfall:** the UIDocument root must `StretchToParentSize()`, or the full-screen backdrop and panel collapse to zero height.
+
 ## Combat HUD
 
 - `Hud/CombatHud.prefab` (one per gameplay scene, in `CombatArena`) is a `UIDocument` on `HudPanelSettings` with `CombatHud`, which updates in `LateUpdate` without allocating (enemy bars are a fixed pool of 32 built in `OnEnable`). Developer decisions: player health over charge at bottom-centre with no text; boss bars will go at the top; no combo-step display.

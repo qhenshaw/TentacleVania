@@ -122,6 +122,182 @@ MonoBehaviour:
     m_Localized: Open shortcut
     m_Metadata:
       m_Items: []
+  - m_Id: 421825294909440
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046784
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046785
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046786
+    m_Localized: Gameplay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046787
+    m_Localized: Accessibility
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046788
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046789
+    m_Localized: Display
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046790
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046791
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046792
+    m_Localized: Reset tab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046793
+    m_Localized: Master volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046794
+    m_Localized: Music volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046795
+    m_Localized: Effects volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046796
+    m_Localized: Voice volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046797
+    m_Localized: Damage taken (assist)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046798
+    m_Localized: Damage dealt (assist)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046799
+    m_Localized: Enemy speed (assist)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046800
+    m_Localized: Keep biomass on death
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046801
+    m_Localized: Screen shake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046802
+    m_Localized: Flashes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046803
+    m_Localized: Gore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046804
+    m_Localized: Controller rumble
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046805
+    m_Localized: Subtitles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046806
+    m_Localized: Colour-blind mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046807
+    m_Localized: Off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046808
+    m_Localized: Protanopia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046809
+    m_Localized: Deuteranopia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046810
+    m_Localized: Tritanopia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046811
+    m_Localized: Display mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046812
+    m_Localized: Borderless fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046813
+    m_Localized: Exclusive fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046814
+    m_Localized: Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046815
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046816
+    m_Localized: Native
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046817
+    m_Localized: V-sync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046818
+    m_Localized: Frame rate cap (v-sync off)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046819
+    m_Localized: Unlimited
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046820
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046821
+    m_Localized: Press a button... (Esc cancels)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046822
+    m_Localized: Weapon 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046823
+    m_Localized: Weapon 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046824
+    m_Localized: Dash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046825
+    m_Localized: Grab / consume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421825341046826
+    m_Localized: Ability
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -4,6 +4,7 @@ using FMODUnity;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Combat.Feedback;
+using TentacleVania.Core;
 using TentacleVania.Enemies.AI;
 using TentacleVania.Enemies.Data;
 using TentacleVania.Enemies.Telegraphs;
@@ -78,6 +79,7 @@ namespace TentacleVania.Enemies
         public virtual bool IsBoss => false;
         public AttackPhase CurrentPhase => CurrentAttack == null ? AttackPhase.Done : AttackMath.Phase(CurrentAttack, Time.time - _attackStarted);
         protected NavMeshAgent Agent => _agent;
+        protected float BaseSpeed { get; set; }
         protected float StateTime => Time.time - _stateStarted;
 
         protected virtual void Awake()
@@ -89,7 +91,8 @@ namespace TentacleVania.Enemies
             _readyAt = new float[_definition.Attacks.Count];
             _health.Configure(Team.Site, _definition.MaxHealth, _definition.MaxArmor);
             _health.Bleeds = !_definition.Machine;
-            _agent.speed = _definition.MoveSpeed;
+            BaseSpeed = _definition.MoveSpeed;
+            _agent.speed = BaseSpeed * GameSettings.EnemySpeedScale;
             _circleAngle = UnityEngine.Random.Range(0f, 360f);
             _stagger = new(_definition.MaxStagger);
             _staggerVulnerability = new() { HealthScale = _definition.StaggerDamageTaken };
@@ -123,6 +126,7 @@ namespace TentacleVania.Enemies
 
         public void Tick(float now, float dt)
         {
+            _agent.speed = BaseSpeed * GameSettings.EnemySpeedScale;
             var target = CombatTargets.Creature;
             switch (State)
             {

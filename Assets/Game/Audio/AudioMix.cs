@@ -1,4 +1,5 @@
 using FMODUnity;
+using TentacleVania.Core.Settings;
 using UnityEngine;
 
 namespace TentacleVania.Audio
@@ -22,6 +23,31 @@ namespace TentacleVania.Audio
                 User[i] = 1f;
                 Duck[i] = 1f;
             }
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void FollowSettings()
+        {
+            if (!Application.isPlaying)
+                return;
+            SettingsStore.Applied -= OnSettingsApplied;
+            SettingsStore.Applied += OnSettingsApplied;
+            OnSettingsApplied(SettingsStore.Data);
+        }
+
+        private static void OnSettingsApplied(SettingsData data)
+        {
+            User[0] = data.MasterVolume;
+            User[1] = data.MusicVolume;
+            User[2] = data.SfxVolume;
+            User[3] = data.VoiceVolume;
+            ApplyAll();
+        }
+
+        public static void ApplyAll()
+        {
+            for (var i = 0; i < Paths.Length; i++)
+                Apply(i);
         }
 
         public static float UserVolume(string bus) => User[Index(bus)];
