@@ -38,7 +38,7 @@ MonoBehaviour:
     TrackDuringWindUp: 0.7
     Hits: 1
     MinRange: 0
-    MaxRange: 12
+    MaxRange: 6
     Damage: 10
     Stagger: 0
     Type: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
   _panicRange: 7
   _fleeDistance: 6
   _corneredDistance: 1.2
-  _preferredRange: {x: 5, y: 8}
+  _preferredRange: {x: 2.5, y: 3.5}
   _voice: {fileID: 11400000, guid: 7c638bbfa4e1d044282777c5e96bb250, type: 2}
   _machine: 1
   _healPerSecond: 8
