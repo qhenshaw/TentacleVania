@@ -20,6 +20,10 @@ namespace TentacleVania.Abilities.BioShield
         [SerializeField] private DamageType _burstType = DamageType.Physical;
         [SerializeField] private LayerMask _hitLayers;
 
+        [Header("Tier 2 (Balance Sheet)")]
+        [SerializeField, Min(0f)] private float _tier2Absorb = 60f;
+        [SerializeField, Min(0f)] private float _tier2BurstDamage = 35f;
+
         [Header("Placeholder presentation")]
         [SerializeField] private GameObject _shellPrefab;
         [SerializeField, Min(0.1f)] private float _shellRadius = 0.75f;
@@ -35,6 +39,10 @@ namespace TentacleVania.Abilities.BioShield
         public float Absorb => _absorb;
         public float Duration => _duration;
         public float BurstDamage => _burstDamage;
+
+        public float AbsorbAt(int tier) => tier >= 2 ? _tier2Absorb : _absorb;
+
+        public float BurstDamageAt(int tier) => tier >= 2 ? _tier2BurstDamage : _burstDamage;
         public float BurstRadius => _burstRadius;
         public float BurstStagger => _burstStagger;
         public DamageType BurstType => _burstType;

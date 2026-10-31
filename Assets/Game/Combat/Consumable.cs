@@ -12,6 +12,8 @@ namespace TentacleVania.Combat
         [SerializeField, Min(0)] private int _biomass = 5;
 
         private Health _health;
+        private float _bonusThreshold;
+        private float _bonusUntil;
 
         public event Action<Consumable> Grabbed;
         public event Action<Consumable> Consumed;
@@ -37,7 +39,15 @@ namespace TentacleVania.Combat
         }
 
         public bool CanBeGrabbed(float threshold) =>
-            !Locked && !IsBeingConsumed && _health.IsAlive && _health.Normalized < threshold;
+            !Locked && !IsBeingConsumed && _health.IsAlive && _health.Normalized < Mathf.Max(threshold, BonusThreshold);
+
+        public float BonusThreshold => Time.time < _bonusUntil ? _bonusThreshold : 0f;
+
+        public void RaiseThreshold(float threshold, float duration)
+        {
+            _bonusThreshold = Mathf.Max(BonusThreshold, threshold);
+            _bonusUntil = Mathf.Max(_bonusUntil, Time.time + duration);
+        }
 
         public void BeginConsume()
         {

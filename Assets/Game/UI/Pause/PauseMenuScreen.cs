@@ -253,7 +253,11 @@ namespace TentacleVania.UI.Pause
                 for (var slot = 0; slot < WeaponController.Slots; slot++)
                 {
                     var weapon = weapons.Weapon(slot);
-                    Row(T(slot == 0 ? "nest.weapon1" : "nest.weapon2"), weapon != null ? weapon.DisplayName : T("nest.empty"));
+                    var modifier = weapons.Modifier(slot);
+                    var name = weapon != null ? weapon.DisplayName : T("nest.empty");
+                    if (modifier != null)
+                        name += "  ·  " + string.Format(T("pause.modifier"), T(modifier.TextKey + ".name"));
+                    Row(T(slot == 0 ? "nest.weapon1" : "nest.weapon2"), name);
                 }
             }
             if (ability != null)
@@ -266,7 +270,10 @@ namespace TentacleVania.UI.Pause
                 var definition = ability != null ? ability.Find(id) : null;
                 if (definition == null)
                     continue;
-                Row(definition.DisplayName, T(definition.SlotAbility ? "pause.ability.active" : "pause.ability.traversal"));
+                var kind = T(definition.SlotAbility ? "pause.ability.active" : "pause.ability.traversal");
+                if (definition.MaxTier > 1)
+                    kind += "  ·  " + string.Format(T("nest.upgrades.tier"), Upgrades.AbilityTier(id), definition.MaxTier);
+                Row(definition.DisplayName, kind);
                 shown++;
             }
             if (shown == 0)

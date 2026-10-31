@@ -21,6 +21,9 @@ namespace TentacleVania.Weapons.Data
         [SerializeField] private WeaponMove _heavy = new();
         [SerializeField] private WeaponMove _dashAttack = new();
 
+        [Header("Modifiers (unlocked with biomass + Mutagen, one equipped)")]
+        [SerializeField] private WeaponModifier[] _modifiers = System.Array.Empty<WeaponModifier>();
+
         [Header("Tip mesh")]
         [Tooltip("Prefab drawn at the weapon tentacle's tip while attacking, modelled along +Y from its base.")]
         [SerializeField] private GameObject _tipMesh;
@@ -35,6 +38,7 @@ namespace TentacleVania.Weapons.Data
         public DamageType DamageType => _damageType;
         public WeaponMove Heavy => _heavy;
         public WeaponMove DashAttack => _dashAttack;
+        public WeaponModifier[] Modifiers => _modifiers;
         public GameObject TipMesh => _tipMesh;
         public float TipScale => _tipScale;
         public float TipOverlap => _tipOverlap;

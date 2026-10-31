@@ -29,6 +29,7 @@ namespace TentacleVania.Combat
         public float Normalized => _pool.MaxHealth > 0f ? _pool.Health / _pool.MaxHealth : 0f;
         public bool IsAlive => _pool.IsAlive;
         public bool Bleeds { get; set; } = true;
+        public bool IsStaggered { get; set; }
         public float Floor { get; set; }
         public bool AtFloor => Floor > 0f && _pool.IsAlive && _pool.Health <= Floor;
 
