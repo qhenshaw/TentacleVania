@@ -16,7 +16,7 @@ MonoBehaviour:
   _maxHealth: 1200
   _maxArmor: 0
   _maxStagger: 150
-  _staggerStun: 3
+  _staggerStun: 8
   _staggerDamageTaken: 1.5
   _feedableDamageTaken: 0.5
   _moveSpeed: 5
