@@ -292,3 +292,120 @@
 .hud__reward--shown {
     opacity: 1;
 }
+
+.hud__status-icon--stun {
+    border-color: rgb(150, 210, 255);
+    background-color: rgba(150, 210, 255, 0.35);
+    border-radius: 13px;
+}
+
+.hud__loadout {
+    position: absolute;
+    bottom: 44px;
+    left: 50%;
+    translate: 300px 0;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.hud__slot {
+    width: 54px;
+    height: 54px;
+    margin-left: 6px;
+    background-color: rgba(6, 8, 6, 0.6);
+    border-width: 2px;
+    border-color: rgb(110, 84, 24);
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.hud__slot--ability {
+    width: 62px;
+    height: 62px;
+    margin-left: 12px;
+    border-color: rgb(30, 160, 145);
+    transition-property: border-color, background-color;
+    transition-duration: 0.15s;
+}
+
+.hud__slot--ready {
+    border-color: rgb(80, 255, 225);
+    background-color: rgba(30, 160, 145, 0.35);
+}
+
+.hud__slot--active {
+    background-color: rgba(80, 255, 225, 0.6);
+}
+
+.hud__slot--empty {
+    opacity: 0.35;
+}
+
+.hud__slot-label {
+    font-size: 20px;
+    -unity-font-style: bold;
+    color: rgb(235, 225, 200);
+    padding: 0;
+}
+
+.hud__slot-key {
+    position: absolute;
+    right: 3px;
+    bottom: 1px;
+    font-size: 11px;
+    color: rgba(235, 225, 200, 0.6);
+    padding: 0;
+}
+
+.hud__biomass {
+    position: absolute;
+    bottom: 44px;
+    left: 50%;
+    translate: -420px 0;
+    flex-direction: row;
+    align-items: center;
+}
+
+.hud__biomass-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background-color: rgb(200, 60, 110);
+    border-width: 2px;
+    border-color: rgb(255, 150, 190);
+}
+
+.hud__biomass-count {
+    font-size: 24px;
+    -unity-font-style: bold;
+    color: rgb(240, 225, 230);
+    margin-left: 6px;
+    padding: 0;
+}
+
+.hud__biomass-delta {
+    position: absolute;
+    left: 24px;
+    bottom: 28px;
+    font-size: 20px;
+    -unity-font-style: bold;
+    opacity: 0;
+    translate: 0 8px;
+    transition-property: opacity, translate;
+    transition-duration: 0.25s;
+    padding: 0;
+}
+
+.hud__biomass-delta--shown {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.hud__biomass-delta--gain {
+    color: rgb(140, 240, 120);
+}
+
+.hud__biomass-delta--loss {
+    color: rgb(255, 90, 90);
+}
