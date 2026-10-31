@@ -1,0 +1,251 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30eac26dc7a577547b9a6a8bde088ab6, type: 3}
+  m_Name: WardenDrone
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
+  _displayName: Warden Drone
+  _maxHealth: 1200
+  _maxArmor: 0
+  _maxStagger: 150
+  _staggerStun: 3
+  _staggerDamageTaken: 1.5
+  _feedableDamageTaken: 0.5
+  _moveSpeed: 5
+  _turnSpeed: 300
+  _spawnDelay: 3
+  _circleRange: {x: 5, y: 8}
+  _knockbackScale: 0
+  _attacks:
+  - Name: Shock Prod
+    Kind: 0
+    Telegraph: 0
+    Animation: 1
+    AnimationHitTime: 0
+    GroundIndicator: 1
+    WindUp: 0.6
+    Active: 0.2
+    Recovery: 0.6
+    Cooldown: 2.5
+    TrackDuringWindUp: 0.7
+    MinRange: 3
+    MaxRange: 8
+    Damage: 15
+    Stagger: 0
+    Type: 1
+    StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
+    Reach: 6
+    Arc: 20
+    SweepRadius: 0.6
+    Height: 1.2
+    AreaRadius: 0
+    AreaForwardOffset: 0
+    Projectile: {fileID: 0}
+    ProjectileSpeed: 0
+    ProjectileLifetime: 0
+    LaneWidth: 0
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 0
+    WindUpSound:
+      Guid:
+        Data1: 1427928911
+        Data2: 1297490236
+        Data3: -976986977
+        Data4: 1465295908
+      Path: event:/Bosses/Warden/ProdWindUp
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 1803816737
+        Data2: 1100068539
+        Data3: 1160529847
+        Data4: -1646317435
+      Path: event:/Bosses/Warden/ShockHit
+  - Name: Electrified Sweep
+    Kind: 0
+    Telegraph: 0
+    Animation: 1
+    AnimationHitTime: 0
+    GroundIndicator: 1
+    WindUp: 0.8
+    Active: 0.2
+    Recovery: 0.6
+    Cooldown: 3
+    TrackDuringWindUp: 0.7
+    MinRange: 0
+    MaxRange: 4
+    Damage: 12
+    Stagger: 0
+    Type: 1
+    StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
+    Reach: 4
+    Arc: 270
+    SweepRadius: 0.4
+    Height: 1.2
+    AreaRadius: 0
+    AreaForwardOffset: 0
+    Projectile: {fileID: 0}
+    ProjectileSpeed: 0
+    ProjectileLifetime: 0
+    LaneWidth: 0
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 0
+    WindUpSound:
+      Guid:
+        Data1: -556364820
+        Data2: 1303285349
+        Data3: -202629989
+        Data4: -176711835
+      Path: event:/Bosses/Warden/SweepWindUp
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 1803816737
+        Data2: 1100068539
+        Data3: 1160529847
+        Data4: -1646317435
+      Path: event:/Bosses/Warden/ShockHit
+  - Name: Shock Prod
+    Kind: 0
+    Telegraph: 0
+    Animation: 1
+    AnimationHitTime: 0
+    GroundIndicator: 1
+    WindUp: 0.45
+    Active: 0.2
+    Recovery: 0.45
+    Cooldown: 1.9
+    TrackDuringWindUp: 0.7
+    MinRange: 3
+    MaxRange: 8
+    Damage: 15
+    Stagger: 0
+    Type: 1
+    StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
+    Reach: 6
+    Arc: 20
+    SweepRadius: 0.6
+    Height: 1.2
+    AreaRadius: 0
+    AreaForwardOffset: 0
+    Projectile: {fileID: 0}
+    ProjectileSpeed: 0
+    ProjectileLifetime: 0
+    LaneWidth: 0
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 0
+    WindUpSound:
+      Guid:
+        Data1: 1427928911
+        Data2: 1297490236
+        Data3: -976986977
+        Data4: 1465295908
+      Path: event:/Bosses/Warden/ProdWindUp
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 1803816737
+        Data2: 1100068539
+        Data3: 1160529847
+        Data4: -1646317435
+      Path: event:/Bosses/Warden/ShockHit
+  - Name: Electrified Sweep
+    Kind: 0
+    Telegraph: 0
+    Animation: 1
+    AnimationHitTime: 0
+    GroundIndicator: 1
+    WindUp: 0.6
+    Active: 0.2
+    Recovery: 0.45
+    Cooldown: 2.25
+    TrackDuringWindUp: 0.7
+    MinRange: 0
+    MaxRange: 4
+    Damage: 12
+    Stagger: 0
+    Type: 1
+    StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
+    Reach: 4
+    Arc: 270
+    SweepRadius: 0.4
+    Height: 1.2
+    AreaRadius: 0
+    AreaForwardOffset: 0
+    Projectile: {fileID: 0}
+    ProjectileSpeed: 0
+    ProjectileLifetime: 0
+    LaneWidth: 0
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 0
+    WindUpSound:
+      Guid:
+        Data1: -556364820
+        Data2: 1303285349
+        Data3: -202629989
+        Data4: -176711835
+      Path: event:/Bosses/Warden/SweepWindUp
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 1803816737
+        Data2: 1100068539
+        Data3: 1160529847
+        Data4: -1646317435
+      Path: event:/Bosses/Warden/ShockHit
+  _consumeHeal: 0.5
+  _biomass: 200
+  _spawnOnWall: 0
+  _despawnDelay: 6
+  _panicRange: 7
+  _fleeDistance: 6
+  _corneredDistance: 1.2
+  _preferredRange: {x: 5, y: 8}
+  _machine: 1
+  _healPerSecond: 8
+  _healRange: 6
+  _keepAwayRange: 7

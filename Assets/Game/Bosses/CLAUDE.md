@@ -17,7 +17,21 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - **No refights:** a boss whose id is defeated destroys itself on enable. Boss arenas (`ArenaEncounter._bossArena`) also stay cleared and open.
 - `BossEnemy.Active` is the current boss: `UI/Hud/BossBarView` shows its name, health (with phase ticks) and stagger at the top of the screen. `Enemy.IsBoss` keeps it out of the overhead enemy bars. Static events: `IntroStarted`, `PhaseChanged`, `Absorbed` (hooks for PA lines and music).
 
+## Warden Drone (`Warden/`; design: Warden Drone page and Changelog "Warden Drone fight", which supersede the task's older notes)
+
+- **Assets:** `WardenDrone.prefab` (`WardenDrone : BossEnemy`; the Med-Drone body ×2.2 with a red eye as placeholder), enemy data `WardenDrone.asset` and boss data `WardenBoss.asset` (id `SH/WardenDrone`, matching the PA script; music `event:/Music/BossWarden`; reward Bio-Shield).
+- **Numbers:** 1,200 HP, stagger 150, a 3 s stun (the damage window), 5 m/s, a 3 s intro, machine, consume 50% / 200 biomass.
+- **Immunity:** a `StaggerShield` incoming modifier zeroes health damage unless `IsStaggerBroken`. Stagger still builds, and the window applies the usual ×1.5.
+- **Movement:** it holds 6–8 m from the creature (tries ±40°/±80° on the NavMesh) and always faces it.
+- **Attacks (yellow, Electric):**
+  - Shock Prod: melee 20° at 6 m, 15 damage, 0.6 s wind-up, used at 3–8 m. The drone lunges forward at 22 m/s while it's active.
+  - Electrified Sweep: 270° at 4 m, 12 damage, 0.8 s wind-up, used within 4 m.
+  - Phase 2 (≤40% HP) uses copies at ×0.75 timings and ×1.25 move speed (attack masks 0b0011 and 0b1100).
+- **Wall Beams (red, undodgeable):** every 15 s (×0.75 at low HP), 2 beams, or 3 at ≤40%. The beams cross the `WardenHall` (put one in the boss room, x along the long walls; otherwise 24×18 around the spawn, facing its yaw). They show as floor lanes for 1.2 s, then fire for 0.3 s, dealing 25 damage to a creature inside the 1.6 m width. `WardenRules` (unit tested) spaces the lanes evenly with a random shift, then moves the nearest lane onto the creature, so it must move to a safe lane. The visuals are three `LineRenderer`s on `TurretLaser.mat`. FMOD: `event:/Bosses/Warden/BeamWarn`, `BeamFire`, `ProdWindUp`, `SweepWindUp`, `ShockHit`.
+- **Adds:** each stagger break summons 2 Security Guards near the boss (max 4 alive).
+- **Finish:** the shared finishing consume. The PA plays `sh.warden` (lines 4–5, then Crane's first address).
+
 ## Debug
 
 - **Test boss:** `Debug/Resources/DebugTestBoss.prefab` (the Handler scaled 1.4×, `Debug/TestBoss.asset` 400 HP / 150 stagger, `Debug/TestBossPhases.asset`). Phase 1 uses the poke only. Phase 2 starts at 50%: all attacks, ×1.3 speed, and up to 2 Scientist adds every 6 s. It rewards Bio-Shield.
-- **F5 Bosses tab:** boss readout, spawn test boss (revives it first), HP to next phase, spawn add, bring boss to 0 HP (finish), kill boss (skip consume), reset defeated bosses.
+- **F5 Bosses tab:** boss readout, spawn test boss (revives it first), Spawn boss (any boss in `Debug/Resources/DebugBossSpawnList`, revived first), HP to next phase, spawn add, bring boss to 0 HP (finish), kill boss (skip consume), reset defeated bosses.

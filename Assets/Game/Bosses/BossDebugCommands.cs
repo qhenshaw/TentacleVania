@@ -19,6 +19,14 @@ namespace TentacleVania.Bosses
         {
             DebugMenu.Value(Tab, "Boss", Describe);
             DebugMenu.Button(Tab, "Spawn test boss", SpawnTestBoss);
+            var bosses = Resources.Load<Enemies.Data.EnemySpawnList>(BossListResource);
+            if (bosses != null && bosses.Prefabs.Length > 0)
+            {
+                var names = new string[bosses.Prefabs.Length];
+                for (var i = 0; i < names.Length; i++)
+                    names[i] = bosses.Prefabs[i].name;
+                DebugMenu.Choice(Tab, "Spawn boss", names, index => SpawnBoss(bosses.Prefabs[index]));
+            }
             DebugMenu.Button(Tab, "HP to next phase", ToNextPhase);
             DebugMenu.Button(Tab, "Spawn add", () =>
             {
@@ -46,9 +54,13 @@ namespace TentacleVania.Bosses
             DebugMenu.Button(Tab, "Reset defeated bosses", ResetDefeated);
         }
 
-        public static void SpawnTestBoss()
+        public const string BossListResource = "DebugBossSpawnList";
+
+        public static void SpawnTestBoss() => SpawnBoss(Resources.Load<BossEnemy>(TestBossResource));
+
+        public static void SpawnBoss(Enemies.Enemy enemy)
         {
-            var prefab = Resources.Load<BossEnemy>(TestBossResource);
+            var prefab = enemy as BossEnemy;
             if (prefab == null)
                 return;
             BossProgress.Revive(prefab.Boss.Id);

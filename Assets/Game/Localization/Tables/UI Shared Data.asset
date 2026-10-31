@@ -295,6 +295,10 @@ MonoBehaviour:
     m_Key: action.Ability
     m_Metadata:
       m_Items: []
+  - m_Id: 430659937779712
+    m_Key: boss.warden
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
