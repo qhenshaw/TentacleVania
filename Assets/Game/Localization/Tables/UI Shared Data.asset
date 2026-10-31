@@ -671,6 +671,38 @@ MonoBehaviour:
     m_Key: trinket.LabBadge.name
     m_Metadata:
       m_Items: []
+  - m_Id: 550532185604096
+    m_Key: prompt.hoarder.trade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130048
+    m_Key: hoarder.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130049
+    m_Key: hoarder.leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130050
+    m_Key: hoarder.buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130051
+    m_Key: hoarder.biomass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130052
+    m_Key: hoarder.soldOut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130053
+    m_Key: trinket.PodReleaseKey.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 550532240130054
+    m_Key: trinket.TaggedLockerKey.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -219,6 +219,34 @@ MonoBehaviour:
     m_Key: lore.DissectionSchedule.body
     m_Metadata:
       m_Items: []
+  - m_Id: 131941162303488
+    m_Key: hoarder.speaker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857920
+    m_Key: hoarder.greet.1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857921
+    m_Key: hoarder.greet.2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857922
+    m_Key: hoarder.greet.3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857923
+    m_Key: hoarder.buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857924
+    m_Key: hoarder.poor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857925
+    m_Key: hoarder.empty
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

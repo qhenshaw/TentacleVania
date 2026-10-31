@@ -399,7 +399,8 @@ namespace TentacleVania.UI.Pause
             var settings = Settings.SettingsScreen.Instance;
             var nest = NestMenuScreen.Instance;
             var reader = LoreReaderScreen.Instance;
-            return (settings != null && settings.IsOpen) || (nest != null && nest.IsOpen) || (reader != null && reader.IsOpen) || !GameplayInput.Default.Enabled;
+            var hoarder = Hoarder.HoarderScreen.Instance;
+            return (settings != null && settings.IsOpen) || (nest != null && nest.IsOpen) || (reader != null && reader.IsOpen) || (hoarder != null && hoarder.IsOpen) || !GameplayInput.Default.Enabled;
         }
 
         private static Button Button(VisualElement root, string name, string key, Action onClick)

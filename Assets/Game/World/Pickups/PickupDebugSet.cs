@@ -7,8 +7,10 @@ namespace TentacleVania.World.Pickups
     {
         [SerializeField] private GameObject[] _pickups = System.Array.Empty<GameObject>();
         [SerializeField] private GameObject _loreTerminal;
+        [SerializeField] private GameObject _hoarder;
 
         public GameObject[] Pickups => _pickups;
         public GameObject LoreTerminal => _loreTerminal;
+        public GameObject Hoarder => _hoarder;
     }
 }

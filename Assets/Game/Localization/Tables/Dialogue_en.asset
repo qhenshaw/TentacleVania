@@ -222,6 +222,34 @@ MonoBehaviour:
     m_Localized: "BIO-LABS \xB7 WEEKLY THEATRE SCHEDULE\r\n\r\n- Mon: Subject \u2588\u2588\u2588, full dissection (neural mapping)\r\n- Tue: Subject \u2588\u2588\u2588, partial (limb regrowth study)\r\n- Wed: Theatre 2 cleaning. Do not skip the drains.\r\n- Thu: Subject \u2588\u2588\u2588, termination and dissection. Obedience trial failed.\r\n- Fri: Open\r\n\r\nNote from Dr. Crane: Any subject that fails two obedience trials goes on Thursday's list. I don't want them housed, fed or studied any further. We are not running a zoo. We are building something that listens. Fill Friday."
     m_Metadata:
       m_Items: []
+  - m_Id: 131941162303488
+    m_Localized: 'SPECIMEN 41 [TRANSLATED]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857920
+    m_Localized: '*click-click* The little one comes. Shiny things, yes? Bring, and Forty-One trades.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857921
+    m_Localized: '*tk-tk* You smell of the Warden. Good. Show me what you carry.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857922
+    m_Localized: '*skrrt* Bigger now. Hungrier. Forty-One has what hungry things want.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857923
+    m_Localized: '*chk* Wear it well. Grow.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857924
+    m_Localized: '*hss* Not enough. Eat more of them, then come back.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131941195857925
+    m_Localized: '*click* Nothing for you yet. Bring me keys. Things that open.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
