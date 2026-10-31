@@ -1,0 +1,11 @@
+{
+    "target": "Fullscreen",
+    "hlsl": "Assets/Game/Core/Rendering/LowHealthTendrils.hlsl",
+    "fragmentFunction": "LowHealthTendrils",
+    "properties": [
+        { "name": "_Source", "type": "Texture2D" },
+        { "name": "_Amount", "type": "Float", "value": 0 },
+        { "name": "_Pulse", "type": "Float", "value": 0 },
+        { "name": "_Reach", "type": "Float", "value": 0.22 }
+    ]
+}
