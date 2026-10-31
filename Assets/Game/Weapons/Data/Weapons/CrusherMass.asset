@@ -35,6 +35,8 @@ MonoBehaviour:
     SectorAngle: 360
     Height: 0.5
     LungeDistance: 0
+    Vfx: {fileID: 2213924841121076903, guid: 9782a0f9902f7fe4a99a35a1bbd44902, type: 3}
+    VfxScale: 1
   - Name: Slam
     Shape: 1
     WindUp: 0.25
@@ -52,6 +54,8 @@ MonoBehaviour:
     SectorAngle: 360
     Height: 0.5
     LungeDistance: 0
+    Vfx: {fileID: 2213924841121076903, guid: 9782a0f9902f7fe4a99a35a1bbd44902, type: 3}
+    VfxScale: 1
   - Name: Quake
     Shape: 1
     WindUp: 0.35
@@ -69,6 +73,8 @@ MonoBehaviour:
     SectorAngle: 360
     Height: 0.5
     LungeDistance: 0
+    Vfx: {fileID: 2213924841121076903, guid: 9782a0f9902f7fe4a99a35a1bbd44902, type: 3}
+    VfxScale: 1.5
   _heavy:
     Name: Armor breaker
     Shape: 1
@@ -87,6 +93,8 @@ MonoBehaviour:
     SectorAngle: 360
     Height: 0.5
     LungeDistance: 0
+    Vfx: {fileID: 2213924841121076903, guid: 9782a0f9902f7fe4a99a35a1bbd44902, type: 3}
+    VfxScale: 1
   _dashAttack:
     Name: Battering ram
     Shape: 2
@@ -105,6 +113,8 @@ MonoBehaviour:
     SectorAngle: 360
     Height: 0.5
     LungeDistance: 3.5
+    Vfx: {fileID: 8570919988020545500, guid: 3ac89e87f6ea6604aa12e453b94569f5, type: 3}
+    VfxScale: 1
   _modifiers:
   - {fileID: 11400000, guid: a14b7f77b53ce1b4a9cd67522d75ef2b, type: 2}
   - {fileID: 11400000, guid: b17c2c3c467f7174daf27bf072fa7b9b, type: 2}

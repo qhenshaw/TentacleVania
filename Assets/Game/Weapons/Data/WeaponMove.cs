@@ -1,6 +1,7 @@
 using System;
 using TentacleVania.Combat.Damage;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace TentacleVania.Weapons.Data
 {
@@ -44,6 +45,11 @@ namespace TentacleVania.Weapons.Data
 
         [Header("Dash attacks")]
         [Min(0f)] public float LungeDistance;
+
+        [Header("VFX")]
+        [Tooltip("Played when the strike starts: sweeps at the creature, areas at the area centre, body moves follow the creature. Receives StartAngle, EndAngle, Reach, Radius and Duration when exposed.")]
+        public VisualEffect Vfx;
+        [Min(0f)] public float VfxScale = 1f;
 
         public float Duration => WindUp + Strike + Recovery;
     }
