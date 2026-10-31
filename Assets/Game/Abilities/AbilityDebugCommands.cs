@@ -26,6 +26,18 @@ namespace TentacleVania.Abilities
                 return controller.IsActive ? "active" : "ready";
             });
             DebugMenu.Toggle(tab, "Free abilities (no charge)", () => AbilityController.FreeAbilities, v => AbilityController.FreeAbilities = v);
+            DebugMenu.Button(tab, "Equip Bio-Shield", () =>
+            {
+                var controller = Controller;
+                if (controller != null)
+                    controller.EquipById("BioShield");
+            });
+            DebugMenu.Button(tab, "Unequip", () =>
+            {
+                var controller = Controller;
+                if (controller != null)
+                    controller.Equip(null);
+            });
             DebugMenu.Button(tab, "Activate", () =>
             {
                 var controller = Controller;

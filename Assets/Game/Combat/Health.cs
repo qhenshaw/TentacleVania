@@ -29,6 +29,8 @@ namespace TentacleVania.Combat
         public float Normalized => _pool.MaxHealth > 0f ? _pool.Health / _pool.MaxHealth : 0f;
         public bool IsAlive => _pool.IsAlive;
         public bool Bleeds { get; set; } = true;
+        public float Floor { get; set; }
+        public bool AtFloor => Floor > 0f && _pool.IsAlive && _pool.Health <= Floor;
 
         private void Awake() => ResetToFull();
 
@@ -62,6 +64,12 @@ namespace TentacleVania.Combat
             var result = DamagePipeline.Resolve(info, _team, ref _pool, outgoing, Incoming, GameSettings.DamageDealtScale, GameSettings.DamageTakenScale);
             if (!result.Applied)
                 return result;
+            if (Floor > 0f && _pool.Health < Floor)
+            {
+                var spared = Floor - _pool.Health;
+                _pool.Health = Floor;
+                result = new DamageResult(result.Outcome, Mathf.Max(0f, result.HealthDamage - spared), result.ArmorDamage, result.StaggerDamage, false);
+            }
 
             Damaged?.Invoke(this, info, result);
             CombatEvents.RaiseHit(this, info, result);

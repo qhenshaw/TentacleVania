@@ -29,10 +29,19 @@ namespace TentacleVania.Bosses
                 if (prefab != null)
                     boss.SpawnAdd(prefab);
             });
-            DebugMenu.Button(Tab, "Kill boss", () =>
+            DebugMenu.Button(Tab, "Bring boss to 0 HP (finish)", () =>
             {
-                if (BossEnemy.Active != null)
-                    BossEnemy.Active.Health.Kill();
+                var boss = BossEnemy.Active;
+                if (boss != null)
+                    boss.Health.TakeDamage(DamageInfo.Create(boss.Health.Max * 10f, Team.Environment));
+            });
+            DebugMenu.Button(Tab, "Kill boss (skip consume)", () =>
+            {
+                var boss = BossEnemy.Active;
+                if (boss == null)
+                    return;
+                boss.Health.Floor = 0f;
+                boss.Health.Kill();
             });
             DebugMenu.Button(Tab, "Reset defeated bosses", ResetDefeated);
         }

@@ -63,14 +63,14 @@ namespace TentacleVania.Abilities
             if (_catalog == null)
                 return;
             var ability = _catalog.Find<AbilityDefinition>(data.Build.Ability);
-            if (ability != null && ability != _equipped)
+            if (ability != _equipped)
                 Equip(ability);
         }
 
         private void OnAbilityUnlocked(string id)
         {
             var ability = _catalog != null ? _catalog.Find<AbilityDefinition>(id) : null;
-            if (ability != null && ability != _equipped)
+            if (ability != null && _equipped == null)
                 Equip(ability);
         }
 
@@ -78,6 +78,15 @@ namespace TentacleVania.Abilities
         {
             if (Runtime != null)
                 Runtime.Dispose();
+        }
+
+        public bool EquipById(string id)
+        {
+            var ability = _catalog != null ? _catalog.Find<AbilityDefinition>(id) : null;
+            if (ability == null)
+                return false;
+            Equip(ability);
+            return true;
         }
 
         public void Equip(AbilityDefinition ability)

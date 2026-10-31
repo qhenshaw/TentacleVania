@@ -17,6 +17,7 @@ namespace TentacleVania.Bosses
     {
         private const int IntroPriority = 50;
         private const int IdlePriority = -10;
+        private const float FinishingStun = 100000f;
 
         [SerializeField] private BossDefinition _boss;
         [SerializeField] private CinemachineCamera _introCamera;
@@ -28,15 +29,19 @@ namespace TentacleVania.Bosses
         private float _nextAdd;
         private bool _introDone;
         private Vector3 _essenceHome;
+        private bool _finishing;
 
         public static BossEnemy Active { get; private set; }
         public static event Action<BossEnemy> IntroStarted;
         public static event Action<BossEnemy> PhaseChanged;
         public static event Action<BossEnemy> Absorbed;
+        public static event Action<BossEnemy> Finishable;
 
         public BossDefinition Boss => _boss;
         public int Phase => _phase;
         public override bool IsBoss => true;
+        protected override bool FeedProtection => false;
+        public bool IsFinishing => _finishing;
         public IReadOnlyList<Enemy> Adds => _adds;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -46,6 +51,7 @@ namespace TentacleVania.Bosses
             IntroStarted = null;
             PhaseChanged = null;
             Absorbed = null;
+            Finishable = null;
         }
 
         protected override void Awake()
@@ -71,6 +77,10 @@ namespace TentacleVania.Bosses
             _phase = -1;
             _introDone = false;
             _adds.Clear();
+            _finishing = false;
+            Health.Floor = 1f;
+            if (ConsumeTarget != null)
+                ConsumeTarget.Locked = true;
             EnterPhase(0, Time.time);
             SetIntroCamera(true);
             Play(_boss.IntroSound);
@@ -100,6 +110,10 @@ namespace TentacleVania.Bosses
             }
             if (!Health.IsAlive || State == EnemyState.Dead || State == EnemyState.Consumed)
                 return;
+            if (!_finishing && Health.AtFloor)
+                BeginFinishing();
+            if (_finishing)
+                return;
             var phase = BossProgress.PhaseFor(Health.Normalized, _boss.Thresholds);
             if (phase != _phase)
                 EnterPhase(phase, now);
@@ -107,15 +121,39 @@ namespace TentacleVania.Bosses
                 TickAdds(now);
         }
 
+        public void BeginFinishing()
+        {
+            if (_finishing || !Health.IsAlive)
+                return;
+            _finishing = true;
+            KillAdds();
+            Play(_boss.DeathSound);
+            if (ConsumeTarget == null)
+            {
+                Health.Floor = 0f;
+                Health.Kill();
+                return;
+            }
+            ConsumeTarget.Locked = false;
+            Stun(FinishingStun);
+            Finishable?.Invoke(this);
+        }
+
         protected override void OnDeath()
+        {
+            KillAdds();
+            BossProgress.Defeat(_boss.Id, ContentCatalog.IdOf(_boss.RewardAbility));
+            if (!_finishing)
+                Play(_boss.DeathSound);
+            StartCoroutine(AbsorbRoutine(!_finishing));
+        }
+
+        private void KillAdds()
         {
             for (var i = _adds.Count - 1; i >= 0; i--)
                 if (_adds[i] != null && _adds[i].Health.IsAlive)
                     _adds[i].Health.Kill();
             _adds.Clear();
-            BossProgress.Defeat(_boss.Id, ContentCatalog.IdOf(_boss.RewardAbility));
-            Play(_boss.DeathSound);
-            StartCoroutine(AbsorbRoutine());
         }
 
         private void EnterPhase(int phase, float now)
@@ -157,11 +195,11 @@ namespace TentacleVania.Bosses
             return add;
         }
 
-        private IEnumerator AbsorbRoutine()
+        private IEnumerator AbsorbRoutine(bool flyEssence)
         {
-            yield return new WaitForSeconds(_boss.DeathPause);
+            yield return new WaitForSeconds(flyEssence ? _boss.DeathPause : 0.2f);
             var creature = CombatTargets.Creature;
-            if (_essence != null && creature != null)
+            if (flyEssence && _essence != null && creature != null)
             {
                 _essence.SetParent(null, true);
                 _essence.gameObject.SetActive(true);
