@@ -190,3 +190,35 @@
     opacity: 1;
     scale: 1 1;
 }
+
+.hud__status {
+    position: absolute;
+    bottom: 96px;
+    left: 50%;
+    translate: -50% 0;
+    flex-direction: row;
+}
+
+.hud__status-icon {
+    width: 26px;
+    height: 26px;
+    margin: 0 4px;
+    border-radius: 6px;
+    border-width: 3px;
+    display: none;
+}
+
+.hud__status-icon--active {
+    display: flex;
+}
+
+.hud__status-icon--slow {
+    border-color: rgb(150, 110, 255);
+    background-color: rgba(150, 110, 255, 0.35);
+}
+
+.hud__status-icon--root {
+    border-color: rgb(255, 200, 60);
+    background-color: rgba(255, 200, 60, 0.35);
+    rotate: 45deg;
+}

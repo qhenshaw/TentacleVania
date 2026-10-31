@@ -1,6 +1,7 @@
 using System;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
+using TentacleVania.Combat.Status;
 using TentacleVania.Core.Characters;
 using TentacleVania.Core.Progression;
 using UnityEngine;
@@ -35,6 +36,8 @@ namespace TentacleVania.Creature
             CombatEvents.HitLanded += OnHitLanded;
             Nests.Rested += OnRested;
             Stats.Changed += ApplyStats;
+            if (TryGetComponent<StatusEffects>(out var status))
+                status.Ended += OnStatusEnded;
             ApplyStats();
         }
 
@@ -43,11 +46,15 @@ namespace TentacleVania.Creature
             CombatEvents.HitLanded -= OnHitLanded;
             Nests.Rested -= OnRested;
             Stats.Changed -= ApplyStats;
+            if (TryGetComponent<StatusEffects>(out var status))
+                status.Ended -= OnStatusEnded;
         }
 
         private void OnRested(string nest) => Set(Max);
 
         private void ApplyStats() => Meter.GainScale = Stats.ChargeGain;
+
+        private void OnStatusEnded(StatusEffects status, StatusKind kind) => RefreshGlow();
 
         public void AddConsume() => Add(_settings.PerConsume);
 

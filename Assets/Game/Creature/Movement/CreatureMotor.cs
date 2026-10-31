@@ -1,4 +1,5 @@
 using System;
+using TentacleVania.Combat.Status;
 using TentacleVania.Core.Input;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace TentacleVania.Creature.Movement
 
         private CharacterController _controller;
         private DashTimer _dash;
+        private StatusEffects _status;
         private Camera _camera;
         private Vector3 _velocity;
         private float _fallSpeed;
@@ -51,6 +53,7 @@ namespace TentacleVania.Creature.Movement
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
+            _status = GetComponent<StatusEffects>();
             _dash = new(_settings);
         }
 
@@ -68,7 +71,7 @@ namespace TentacleVania.Creature.Movement
             if (now <= _dashBufferedUntil && TryDash(MoveInput))
                 _dashBufferedUntil = float.NegativeInfinity;
 
-            var walkSpeed = _settings.MoveSpeed * SpeedMultiplier;
+            var walkSpeed = _settings.MoveSpeed * SpeedMultiplier * (_status != null ? _status.MoveScale : 1f);
             Vector3 step;
             if (IsLunging)
             {
@@ -104,7 +107,7 @@ namespace TentacleVania.Creature.Movement
         public bool TryDash(Vector3 direction)
         {
             var now = Time.time;
-            if (DashLocked || !_dash.TryStart(now, Core.Progression.Stats.DashRecovery))
+            if (DashLocked || (_status != null && _status.IsRooted) || !_dash.TryStart(now, Core.Progression.Stats.DashRecovery))
                 return false;
             _lungeRemaining = 0f;
             direction.y = 0f;
