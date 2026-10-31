@@ -146,6 +146,8 @@ namespace TentacleVania.World.Streaming
             var target = CameraFocus.Target;
             if (target != null)
                 return target.position;
+            if (SpawnOverride.TryGet(SceneManager.GetActiveScene().name, out var arrival, out _))
+                return arrival;
             if (Nests.TryGetRespawn(SceneManager.GetActiveScene().name, out var nest, out _))
                 return nest;
             return _spawnPoint != null ? _spawnPoint.position : transform.position;

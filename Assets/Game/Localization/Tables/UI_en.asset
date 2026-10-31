@@ -782,6 +782,18 @@ MonoBehaviour:
     m_Localized: '{0} Ability ready'
     m_Metadata:
       m_Items: []
+  - m_Id: 558100933001216
+    m_Localized: Ride
+    m_Metadata:
+      m_Items: []
+  - m_Id: 558100987527168
+    m_Localized: No power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 558100987527169
+    m_Localized: FREIGHT ELEVATOR
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
