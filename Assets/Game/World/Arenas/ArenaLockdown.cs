@@ -60,7 +60,7 @@ namespace TentacleVania.World.Arenas
                 Apply(BeaconState.Alarm);
                 SetDim(true);
                 Play(_klaxon);
-                Tween.Delay(KlaxonGap, () => Play(_klaxon));
+                Tween.Delay(this, KlaxonGap, lockdown => lockdown.Play(lockdown._klaxon));
             }
             else if (state == ArenaState.Cleared && _last != ArenaState.Cleared)
             {

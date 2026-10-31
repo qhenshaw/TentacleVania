@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325cbc783835bd14bb9e3269675def00, type: 3}
+  m_Name: ApexRigPlaceholder
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Rig.CreatureRigSettings
+  _legCount: 16
+  _legJoints: 6
+  _legLength: 2.2
+  _rootRadius: 0.5
+  _rootHeight: 0.15
+  _restRadius: 1.4
+  _archHeight: 4
+  _stepThreshold: 0.28
+  _emergencyDistance: 0.6
+  _stepDuration: 0.3
+  _stepHeight: 0.2
+  _predictTime: 0.05
+  _variation: 0.25
+  _liftCurve: 0.55
+  _swingOutward: 0.12
+  _writheAmplitude: 0.05
+  _writheSpeed: 1
+  _bodyBob: 0.1
+  _bodySway: 0.5
+  _bodySpringFrequency: 1
+  _bodySpringDamping: 0.3
+  _bodyInertia: 0.5
+  _bodyMaxOffset: 0.15
+  _solverIterations: 6
+  _freeCount: 6
+  _freeJoints: 6
+  _freeLength: 0.92
+  _freeRootHeight: 0.27
+  _freeSpread: 300
+  _freePitch: 60
+  _freeCurl: 44
+  _freeSway: 40
+  _freeSwaySpeed: 0.7
+  _freeRootWidth: 0.07
+  _freeTipWidth: 0.01
+  _freeSpring:
+    PoseStiffness: 4
+    TipLooseness: 0.75
+    Damping: 0.2
+    Gravity: 3
+    Iterations: 8
+  _dashStretch: 3
+  _dashRise: 0.04
+  _dashRecoverFrequency: 2.5
+  _dashRecoverDamping: 0.5
+  _dashThinning: 0.5
+  _dashFan: 5
+  _dashTrailHeight: 0.15
+  _mawCount: 20
+  _mawJoints: 12
+  _mawOffset: {x: 0, y: 0.45, z: 0.35}
+  _mawRootRadius: 0.25
+  _mawOpenMargin: 0.35
+  _mawOpenRadius: {x: 0.6, y: 1.4}
+  _mawOpenReach: 0.55
+  _mawWrap: 1
+  _mawLungeStop: 0.5
+  _mawRootWidth: 0.1
+  _mawTipWidth: 0.001
+  _mawOpenTime: 0.3
+  _mawCloseTime: 0.2
+  _mawSwallowTime: 0.4
+  _mawRetractTime: 0.2
+  _mawSpring:
+    PoseStiffness: 30
+    TipLooseness: 0.5
+    Damping: 0.15
+    Gravity: 1
+    Iterations: 3
+  _mawWhipSpring:
+    PoseStiffness: 14
+    TipLooseness: 0.85
+    Damping: 0.04
+    Gravity: 1
+    Iterations: 2
+  _mawLeaders: {x: 2, y: 3}
+  _mawLeaderStrike: 0.6
+  _mawAnticipation: 0.06
+  _mawRearBack: 0.15
+  _mawAngleJitter: 20
+  _mawRootJitter: 0.3
+  _mawLengthJitter: 0.25
+  _mawWidthJitter: 0.3
+  _mawTimingJitter: 0.4
+  _mawOvershoot: 1.7
+  _mawSeekWrithe: 0.12
+  _mawSeekLean: 0.2
+  _mawWrithe: 0.06
+  _mawWritheSpeed: 5
+  _mawCoilAngle: 150
+  _mawCoilAngleJitter: 40
+  _mawCoilPitch: 0.15
+  _mawCoilHeightSpread: 0.8
+  _mawCoilStartSpread: 50
+  _mawCoilClearance: 0.05
+  _mawCoilStrike: 0.4
+  _mawCoilWrithe: 0.4
+  _rootWidth: 0.1
+  _tipWidth: 0.025
