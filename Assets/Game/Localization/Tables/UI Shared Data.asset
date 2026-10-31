@@ -799,6 +799,14 @@ MonoBehaviour:
     m_Key: prompt.crawlspace.enter
     m_Metadata:
       m_Items: []
+  - m_Id: 609467647148032
+    m_Key: lockdown.humans
+    m_Metadata:
+      m_Items: []
+  - m_Id: 609467701673984
+    m_Key: lockdown.machines
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

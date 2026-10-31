@@ -31,12 +31,14 @@ namespace TentacleVania.UI.Lore
             root.Q("reader").parent.Add(_toast);
             Collectibles.Found += OnFound;
             LoreLogs.Collected += OnLogCollected;
+            World.Arenas.ArenaEncounter.AnyCleared += OnArenaCleared;
         }
 
         private void OnDisable()
         {
             Collectibles.Found -= OnFound;
             LoreLogs.Collected -= OnLogCollected;
+            World.Arenas.ArenaEncounter.AnyCleared -= OnArenaCleared;
             _toast?.RemoveFromHierarchy();
         }
 
@@ -61,6 +63,8 @@ namespace TentacleVania.UI.Lore
         }
 
         private void OnLogCollected(string id) => Show(T("pickup.log"));
+
+        private void OnArenaCleared(World.Arenas.ArenaEncounter arena) => Show(T(arena.HadHumans ? "lockdown.humans" : "lockdown.machines"));
 
         private void Show(string text)
         {

@@ -802,6 +802,14 @@ MonoBehaviour:
     m_Localized: Crawl through
     m_Metadata:
       m_Items: []
+  - m_Id: 609467647148032
+    m_Localized: HUMAN LIFESIGNS LOST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 609467701673984
+    m_Localized: SECURITY UNITS OFFLINE
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
