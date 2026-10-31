@@ -38,6 +38,25 @@ namespace TentacleVania.Abilities
                 if (controller != null)
                     controller.Equip(null);
             });
+            DebugMenu.Value(tab, "Grapple", () =>
+            {
+                var grapple = CreatureSpawner.Spawned != null ? CreatureSpawner.Spawned.GetComponent<Grapple.TentacleGrapple>() : null;
+                if (grapple == null)
+                    return "-";
+                return !grapple.IsUnlocked ? "locked" : grapple.IsBusy ? "grappling" : grapple.CooldownRemaining > 0f ? $"cooldown {grapple.CooldownRemaining:F1} s" : "ready (LT / F)";
+            });
+            DebugMenu.Toggle(tab, "Grapple unlocked (debug)", () => Grapple.TentacleGrapple.ForceUnlocked, v => Grapple.TentacleGrapple.ForceUnlocked = v);
+            DebugMenu.Button(tab, "Spawn grapple rig", () =>
+            {
+                var prefab = Resources.Load<GameObject>("DebugGrappleRig");
+                var creature = CreatureSpawner.Spawned;
+                if (prefab == null || creature == null)
+                    return;
+                var forward = creature.transform.forward;
+                forward.y = 0f;
+                var rotation = Quaternion.LookRotation(forward.sqrMagnitude > 1e-4f ? forward.normalized : Vector3.forward);
+                Object.Instantiate(prefab, creature.transform.position + rotation * new Vector3(0f, 0.01f, -2f), rotation);
+            });
             DebugMenu.Button(tab, "Activate", () =>
             {
                 var controller = Controller;

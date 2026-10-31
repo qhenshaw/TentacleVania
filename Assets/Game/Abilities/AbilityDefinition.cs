@@ -36,6 +36,7 @@ namespace TentacleVania.Abilities
 
         public string DisplayName => _displayName;
         public float Cost => _cost;
+        public virtual bool SlotAbility => true;
 
         public abstract AbilityRuntime CreateRuntime(AbilityContext context);
     }

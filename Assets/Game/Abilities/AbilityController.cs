@@ -70,7 +70,7 @@ namespace TentacleVania.Abilities
         private void OnAbilityUnlocked(string id)
         {
             var ability = _catalog != null ? _catalog.Find<AbilityDefinition>(id) : null;
-            if (ability != null && _equipped == null)
+            if (ability != null && ability.SlotAbility && _equipped == null)
                 Equip(ability);
         }
 
@@ -83,7 +83,7 @@ namespace TentacleVania.Abilities
         public bool EquipById(string id)
         {
             var ability = _catalog != null ? _catalog.Find<AbilityDefinition>(id) : null;
-            if (ability == null)
+            if (ability == null || !ability.SlotAbility)
                 return false;
             Equip(ability);
             return true;
