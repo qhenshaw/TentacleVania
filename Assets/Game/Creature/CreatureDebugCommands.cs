@@ -39,8 +39,17 @@ namespace TentacleVania.Creature
                 var charge = Charge;
                 return charge != null ? $"{charge.Current:F0} / {charge.Max:F0}{(charge.IsFull ? " FULL" : "")}" : "-";
             });
-            DebugMenu.Value(tab, "Biomass carried", () =>
-                Spawned != null && Spawned.TryGetComponent<CreatureConsume>(out var consume) ? consume.Biomass.ToString() : "-");
+            DebugMenu.Value(tab, "Biomass", () => Core.Progression.Biomass.HasDrop
+                ? $"{Core.Progression.Biomass.Carried} carried, {Core.Progression.Biomass.DropAmount} dropped in {Core.Progression.Biomass.DropScene}"
+                : $"{Core.Progression.Biomass.Carried} carried");
+            DebugMenu.Button(tab, "Add 100 biomass", () => Core.Progression.Biomass.Add(100));
+            DebugMenu.Toggle(tab, "Keep biomass on death", () => GameSettings.KeepBiomassOnDeath, v => GameSettings.KeepBiomassOnDeath = v);
+            DebugMenu.Button(tab, "Kill creature", () =>
+            {
+                var health = Health;
+                if (health != null)
+                    health.Kill();
+            });
             DebugMenu.Value(tab, "Consume", () =>
             {
                 if (Spawned == null || !Spawned.TryGetComponent<CreatureConsume>(out var consume))

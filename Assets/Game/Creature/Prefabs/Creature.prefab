@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 5522881091801206148}
   - component: {fileID: 3229476483880945898}
   - component: {fileID: 5419547591085182262}
+  - component: {fileID: 9051656861580778372}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -801,6 +802,22 @@ MonoBehaviour:
   _sources:
   - {fileID: 3229476483880945898}
   _ownBudget: 1
+--- !u!114 &9051656861580778372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647510f74c3b7dd46b21ae808cff2cc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.Biomass.CreatureBiomass
+  _dropPrefab: {fileID: 7587134913214033226, guid: 7c0a2a2b3f2abc34bb2833b53e60f3f3, type: 3}
+  _groundLayers:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &6618560833441987083
 GameObject:
   m_ObjectHideFlags: 0
