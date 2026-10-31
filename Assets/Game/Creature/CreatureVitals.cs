@@ -16,6 +16,7 @@ namespace TentacleVania.Creature
 
         private Health _health;
         private CreatureMotor _motor;
+        private CreatureConsume _consume;
         private CharacterMaterials _materials;
         private CreatureCharge _charge;
         private DashInvulnerability _dashInvulnerability;
@@ -39,6 +40,7 @@ namespace TentacleVania.Creature
             _motor = GetComponent<CreatureMotor>();
             _materials = GetComponent<CharacterMaterials>();
             _charge = GetComponent<CreatureCharge>();
+            _consume = GetComponent<CreatureConsume>();
             _dashInvulnerability = new(_motor);
             ConfigureHealth();
         }
@@ -76,7 +78,7 @@ namespace TentacleVania.Creature
 
         public void Stun(float duration)
         {
-            if (duration <= 0f || !_health.IsAlive || _stunned || Time.time < _stunImmuneUntil)
+            if (duration <= 0f || !_health.IsAlive || _stunned || Time.time < _stunImmuneUntil || (_consume != null && _consume.IsRooted))
                 return;
             _stunnedUntil = Time.time + duration;
             _stunned = true;

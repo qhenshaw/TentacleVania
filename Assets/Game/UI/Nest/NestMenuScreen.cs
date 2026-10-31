@@ -322,7 +322,7 @@ namespace TentacleVania.UI.Nest
             _notches.EnableInClassList(HiddenClass, !_mutationMode);
             _biomass.text = Biomass.Carried.ToString("N0");
             _next.text = Stats.NextLevelCost.ToString("N0");
-            _level.text = Stats.TotalLevel.ToString();
+            _level.text = Stats.Level.ToString();
             if (_travelMode)
             {
                 RefreshTravel();

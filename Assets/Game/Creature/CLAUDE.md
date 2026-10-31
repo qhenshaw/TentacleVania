@@ -35,7 +35,7 @@ The player creature (`TentacleVania.Creature`). The prefab `Prefabs/Creature.pre
 
 ## Charge meter
 
-`CreatureCharge` (on the prefab) wraps a `Combat.ChargeMeter` (values in `HatchlingCharge`): a gain for every hit the creature lands (`CombatEvents.HitLanded` with the creature as attacker, hazards excluded) and per `AddConsume()` (for grab & consume). Abilities call `TrySpend(cost)` (35–60). `ChargeMeter.GainScale` is the hook for Cunning's +2% charge gain. When full, the creature pulses teal through `CharacterMaterials.SetStatus` (Art Direction's charge-full bioluminescence), body and tentacles alike.
+`CreatureCharge` (on the prefab) wraps a `Combat.ChargeMeter` (values in `HatchlingCharge`): a gain for every hit the creature lands (`CombatEvents.HitLanded` with the creature as attacker, hazards excluded) and per `AddConsume()` (for grab & consume). Abilities call `TrySpend(cost)` (35–60). Nothing is gained while no ability is equipped (`GainEnabled`, set by `AbilityController.Equip`; developer decision); charge already held is kept. While consuming, the creature ignores stuns (`CreatureVitals.Stun`) and roots and slows (`StatusEffects.ControlImmune`, set by `CreatureConsume` from grab to swallow; developer decision). `ChargeMeter.GainScale` is the hook for Cunning's +2% charge gain. When full, the creature pulses teal through `CharacterMaterials.SetStatus` (Art Direction's charge-full bioluminescence), body and tentacles alike.
 
 ## Testing in play
 

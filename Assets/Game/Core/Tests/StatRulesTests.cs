@@ -15,6 +15,14 @@ namespace TentacleVania.Core.Tests
         public void LevelCostFollowsTheBalanceSheet(int totalLevel, int expected) =>
             Assert.That(StatRules.LevelCost(totalLevel), Is.EqualTo(expected));
 
+        [Test]
+        public void NewCreatureIsLevelOneAndTheFirstLevelIsCheaper()
+        {
+            Assert.That(StatRules.DisplayLevel(StatRules.StartTotal), Is.EqualTo(1));
+            Assert.That(StatRules.DisplayLevel(StatRules.StartTotal + 9), Is.EqualTo(10));
+            Assert.That(StatRules.LevelCost(1), Is.EqualTo(72));
+        }
+
         [TestCase(1, 1f)]
         [TestCase(20, 20f)]
         [TestCase(30, 25f)]
@@ -60,13 +68,14 @@ namespace TentacleVania.Core.Tests
         {
             SaveSystem.NewGame(0);
             Assert.That(Stats.TotalLevel, Is.EqualTo(4));
+            Assert.That(Stats.Level, Is.EqualTo(1));
             Assert.That(Stats.TryLevelUp(StatKind.Brutality), Is.False);
-            Biomass.Add(200);
+            Biomass.Add(100);
             Assert.That(Stats.TryLevelUp(StatKind.Brutality), Is.True);
             Assert.That(Stats.Brutality, Is.EqualTo(2));
-            Assert.That(Stats.TotalLevel, Is.EqualTo(5));
-            Assert.That(Biomass.Carried, Is.EqualTo(200 - 144));
-            Assert.That(Stats.BiomassSpent, Is.EqualTo(144));
+            Assert.That(Stats.Level, Is.EqualTo(2));
+            Assert.That(Biomass.Carried, Is.EqualTo(100 - 72));
+            Assert.That(Stats.BiomassSpent, Is.EqualTo(72));
         }
 
         [Test]

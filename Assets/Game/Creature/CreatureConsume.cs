@@ -26,6 +26,7 @@ namespace TentacleVania.Creature
         private CreatureMotor _motor;
         private CreatureCharge _charge;
         private CreatureMaw _maw;
+        private Combat.Status.StatusEffects _status;
         private ScaleModifier _armored;
 
         private Consumable _victim;
@@ -58,6 +59,7 @@ namespace TentacleVania.Creature
             _motor = GetComponent<CreatureMotor>();
             _charge = GetComponent<CreatureCharge>();
             _maw = GetComponent<CreatureMaw>();
+            _status = GetComponent<Combat.Status.StatusEffects>();
             _armored = new ScaleModifier(100) { HealthScale = _settings.DamageTakenWhileConsuming };
         }
 
@@ -142,6 +144,8 @@ namespace TentacleVania.Creature
                 _victimHalfHeight = FallbackHeight;
             }
             target.BeginConsume();
+            if (_status != null)
+                _status.ControlImmune = true;
             _motor.LockControl();
             var toVictim = _victimStart - transform.position;
             toVictim.y = 0f;
@@ -230,6 +234,8 @@ namespace TentacleVania.Creature
                 return;
             var victim = _victim;
             _victim = null;
+            if (_status != null)
+                _status.ControlImmune = false;
             _maw.SpeedMultiplier = 1f;
             _motor.UnlockControl();
             if (consumed)

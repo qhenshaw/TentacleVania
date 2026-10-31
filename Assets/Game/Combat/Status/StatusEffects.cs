@@ -53,9 +53,13 @@ namespace TentacleVania.Combat.Status
             _health.Died -= OnDied;
         }
 
+        public bool ControlImmune { get; set; }
+
+        public static bool Blocked(StatusKind kind, bool controlImmune) => controlImmune && kind is StatusKind.Root or StatusKind.Slow;
+
         public void Apply(StatusKind kind, float magnitude, float duration)
         {
-            if (!_health.IsAlive)
+            if (!_health.IsAlive || Blocked(kind, ControlImmune))
                 return;
             _timers.Apply(kind, magnitude, duration, Time.time);
             Refresh();
