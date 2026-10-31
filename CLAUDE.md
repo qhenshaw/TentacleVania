@@ -75,6 +75,7 @@ Content databases in the wiki: Abilities, Weapons, Mutations, Lore Logs, Areas &
 - Status flow: `Backlog` → `Ready` → `In Progress` → `Done`. `In Review` means blocked, waiting on the developer; `Notes` says what's needed.
 - Fields: `Design Page`, `Milestone` (Combat Prototype, Vertical Slice, Demo: Next Fest, Content Complete, Beta, Launch), `Area`, `Discipline`, `Priority` (P0–P3), `Estimate (days)`, `Assignee`, `Notes`, and `ID` (`TV-<n>`).
 - The team is 2–5 people: skip tasks with an `Assignee` other than you.
+- The Notion connection limits SQL and rows-mode queries per hour; when one fails with `usage_limit_reached`, fetch known task pages by URL (fetch still works) instead of retrying the query.
 
 ### Bugs database
 
@@ -190,6 +191,7 @@ unity command eval --caller plugin --skill unity-cli '<C# statements>; return <v
 - Eval code has no `using` directives, so extension methods don't resolve as methods: call them statically (`InputActionSetupExtensions.AddAction(map, ...)`).
 - Don't name a MonoBehaviour method after a Unity message (`Reset`, `Awake`, `OnValidate`...) unless it is that message: a `static Reset()` used for `[RuntimeInitializeOnLoadMethod]` logs "Failed to call static function Reset" whenever the component is added.
 - Never use `??` or `?.` on Unity objects (`GetComponent<T>() ?? AddComponent<T>()`): a missing component is a fake null that `??` treats as present. Compare with `== null`.
+- Removing or renaming a serialized field leaves its old value in every prefab and asset YAML until that file is saved again: after moving fields, re-save the affected prefabs (`LoadPrefabContents` + `SaveAsPrefabAsset`) so the stale values are dropped, and diff them.
 - CLI command names change between CLI versions (for example `editor.playmode start`, `console get`). If a command isn't found, list the current names with `unity command --tag <tag>`.
 
 ### Shell pitfalls
