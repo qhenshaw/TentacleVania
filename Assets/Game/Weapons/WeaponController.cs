@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Core.Input;
+using TentacleVania.Core.Saves;
 using TentacleVania.Creature.Movement;
 using TentacleVania.Weapons.Combo;
 using TentacleVania.Weapons.Data;
@@ -18,7 +19,7 @@ namespace TentacleVania.Weapons
     }
 
     [RequireComponent(typeof(CreatureMotor), typeof(Health))]
-    public sealed class WeaponController : MonoBehaviour
+    public sealed class WeaponController : MonoBehaviour, ISaveParticipant
     {
         public const int Slots = 2;
 
@@ -29,6 +30,7 @@ namespace TentacleVania.Weapons
         [SerializeField] private WeaponDefinition _weapon2;
         [SerializeField] private LayerMask _hitLayers;
         [SerializeField] private WeaponHandlingSettings _settings;
+        [SerializeField] private ContentCatalog _catalog;
 
         private readonly List<Health> _hitThisMove = new(8);
         private readonly ChargeButton[] _buttons = new ChargeButton[Slots];
@@ -79,12 +81,35 @@ namespace TentacleVania.Weapons
             Equip(1, _weapon2);
         }
 
-        private void OnEnable() => _motor.Dashed += OnDashed;
+        private void OnEnable()
+        {
+            _motor.Dashed += OnDashed;
+            SaveSystem.Register(this);
+        }
 
         private void OnDisable()
         {
             _motor.Dashed -= OnDashed;
+            SaveSystem.Unregister(this);
             EndMove(Time.time);
+        }
+
+        public void Capture(SaveData data)
+        {
+            data.Build.Weapon1 = ContentCatalog.IdOf(_weapons[0]);
+            data.Build.Weapon2 = ContentCatalog.IdOf(_weapons[1]);
+        }
+
+        public void Restore(SaveData data)
+        {
+            if (_catalog == null)
+                return;
+            var first = _catalog.Find<WeaponDefinition>(data.Build.Weapon1);
+            var second = _catalog.Find<WeaponDefinition>(data.Build.Weapon2);
+            if (first != null)
+                Equip(0, first);
+            if (second != null)
+                Equip(1, second);
         }
 
         public void Equip(int slot, WeaponDefinition weapon)

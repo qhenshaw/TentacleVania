@@ -521,6 +521,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _settings: {fileID: 11400000, guid: 18894594b43e6584eafc155e7099b90f, type: 2}
+  _catalog: {fileID: 11400000, guid: ff08b91d7608ba9409f7e9552077330e, type: 2}
 --- !u!114 &5879995599559319355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,6 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.AbilityController
   _equipped: {fileID: 11400000, guid: 1fc211d948915244b912f2a92ade5640, type: 2}
+  _catalog: {fileID: 11400000, guid: ff08b91d7608ba9409f7e9552077330e, type: 2}
 --- !u!114 &3894992379214571265
 MonoBehaviour:
   m_ObjectHideFlags: 0
