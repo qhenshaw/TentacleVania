@@ -23,7 +23,7 @@ Shared code every area may reference (`TentacleVania.Core`). Keep it free of gam
 
 ## Scenes
 
-- `Scenes/SceneFlow` keeps `Bootstrap` loaded and swaps every other scene: `Load(name)` unloads the rest, loads the scene additively and makes it active (so lighting and runtime spawns land in it), `Reload()` reloads the active scene, `Loaded` fires after. `GameBootstrap` (prefab in the `Bootstrap` scene) calls `Load(MainMenu)` on start.
+- `Scenes/SceneFlow` keeps `Bootstrap` loaded and swaps every other scene: `Load(name)` unloads the rest, loads the scene additively and makes it active (so lighting and runtime spawns land in it), `Reload()` reloads the active scene, `Loaded` fires after. `GameBootstrap` (prefab in the `Bootstrap` scene) calls `Load(MainMenu)` on start. `Scenes/LoadGate` (`Hold(owner)` / `Release(owner)`, `IsOpen`) lets loaders (the room streamer) hold back `CreatureSpawner` until the ground has loaded.
 
 ## Saves
 

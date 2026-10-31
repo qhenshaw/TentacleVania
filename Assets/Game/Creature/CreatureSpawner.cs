@@ -1,5 +1,6 @@
 using TentacleVania.Core;
 using TentacleVania.Core.Progression;
+using TentacleVania.Core.Scenes;
 using UnityEngine;
 
 namespace TentacleVania.Creature
@@ -10,8 +11,22 @@ namespace TentacleVania.Creature
 
         public static GameObject Spawned { get; private set; }
 
-        private void Start()
+        private bool _done;
+
+        private void Start() => TrySpawn();
+
+        private void Update()
         {
+            if (!_done)
+                TrySpawn();
+        }
+
+        private void TrySpawn()
+        {
+            if (!LoadGate.IsOpen)
+                return;
+            _done = true;
+            enabled = false;
             var position = transform.position;
             var rotation = transform.rotation;
             if (Nests.TryGetRespawn(gameObject.scene.name, out var nestPosition, out var yaw))

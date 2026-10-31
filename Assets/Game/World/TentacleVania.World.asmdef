@@ -6,7 +6,9 @@
         "TentacleVania.Combat",
         "TentacleVania.Enemies",
         "PrimeTween.Runtime",
-        "FMODUnity"
+        "FMODUnity",
+        "Unity.Addressables",
+        "Unity.ResourceManager"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

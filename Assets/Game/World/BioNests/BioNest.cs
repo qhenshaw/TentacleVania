@@ -58,7 +58,7 @@ namespace TentacleVania.World.BioNests
             if (!IsGrown)
                 return;
             var respawn = RespawnPoint;
-            Nests.Rest(SaveId, gameObject.scene.name, respawn.position, respawn.eulerAngles.y);
+            Nests.Rest(SaveId, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, respawn.position, respawn.eulerAngles.y);
             Play(_restBurst, _restSound);
         }
 
