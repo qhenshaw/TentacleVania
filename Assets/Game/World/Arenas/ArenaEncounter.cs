@@ -29,6 +29,8 @@ namespace TentacleVania.World.Arenas
         [SerializeField] private Vector3 _triggerSize = new(18f, 4f, 16f);
         [Tooltip("Boss arenas stay empty and open for good once cleared (saved); other arenas refill when the creature rests.")]
         [SerializeField] private bool _bossArena;
+        [Tooltip("Clears once and never refills on rest, like a boss arena (the opening pod chamber).")]
+        [SerializeField] private bool _oneTime;
         [Tooltip("Unique save id; when empty, the scene name and object name are used.")]
         [SerializeField] private string _id;
 
@@ -79,7 +81,7 @@ namespace TentacleVania.World.Arenas
 
         private void Start()
         {
-            if (!Nests.StaysCleared(_bossArena) || !SaveSystem.Data.World.Has(WorldFlag.ClearedArena, SaveId))
+            if (!Nests.StaysCleared(_bossArena || _oneTime) || !SaveSystem.Data.World.Has(WorldFlag.ClearedArena, SaveId))
                 return;
             foreach (var door in _doors)
                 door.Open();
@@ -88,7 +90,7 @@ namespace TentacleVania.World.Arenas
 
         public void ResetForRest()
         {
-            if (Nests.StaysCleared(_bossArena) && State == ArenaState.Cleared)
+            if (Nests.StaysCleared(_bossArena || _oneTime) && State == ArenaState.Cleared)
                 return;
             foreach (var enemy in _alive)
                 if (enemy != null)
@@ -203,7 +205,7 @@ namespace TentacleVania.World.Arenas
             if (_waveIndex + 1 >= _waves.Waves.Count)
             {
                 ClearedAt = now;
-                if (Nests.StaysCleared(_bossArena))
+                if (Nests.StaysCleared(_bossArena || _oneTime))
                     SaveSystem.Data.World.Set(WorldFlag.ClearedArena, SaveId);
                 foreach (var door in _doors)
                     door.Open();

@@ -68,7 +68,7 @@ namespace TentacleVania.World.Layout
             var neighbour = cell + Sides.Offset(side);
             var hasNeighbour = _owner.TryGetValue(neighbour, out var other);
             if (_openings.ContainsKey((cell, side)))
-                return hasNeighbour ? EdgeState.Opening : EdgeState.Wall;
+                return EdgeState.Opening;
             if (!hasNeighbour)
                 return EdgeState.Wall;
             if (other == owner)

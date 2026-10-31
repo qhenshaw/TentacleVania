@@ -34,6 +34,7 @@ namespace TentacleVania.World.Editor
 
             rooms.Add(new RoomPlan("SH_PodChamber", PlanRole.Arena, new RectInt(1, 36, 6, 5))
             {
+                OneTime = true,
                 Place = c =>
                 {
                     Nest(c, "SH/PodNest", RoomContext.CellCenter(5f, 39f), 180f);

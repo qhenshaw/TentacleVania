@@ -16,8 +16,8 @@ MonoBehaviour:
   _unloadRadius: 28
   _rooms:
   - Scene: SH_PodChamber
-    Center: {x: 11.999999, y: 1.4155036, z: 108}
-    Size: {x: 18.760612, y: 3.6310077, z: 31.158691}
+    Center: {x: 11.999999, y: 1.4155036, z: 108.28941}
+    Size: {x: 18.760612, y: 3.6310077, z: 30.579865}
     Neighbours:
     - SH_A1
     - SH_T1North
@@ -53,8 +53,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_A1
-    Center: {x: 19.599524, y: 1.4155036, z: 73.59952}
-    Size: {x: 39.959663, y: 3.6310077, z: 39.959656}
+    Center: {x: 19.30985, y: 1.4155036, z: 73.789444}
+    Size: {x: 39.380318, y: 3.6310077, z: 39.579834}
     Neighbours:
     - SH_PodChamber
     - SH_A2
@@ -128,8 +128,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_A2
-    Center: {x: 55.599525, y: 1.4155036, z: 91.59952}
-    Size: {x: 33.959656, y: 3.6310077, z: 33.959656}
+    Center: {x: 55.309845, y: 1.4155036, z: 91.309845}
+    Size: {x: 33.38031, y: 3.6310077, z: 33.38031}
     Neighbours:
     - SH_A1
     - SH_A3
@@ -201,8 +201,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_A3
-    Center: {x: 82.5, y: 1.4655038, z: 74.90048}
-    Size: {x: 21.76062, y: 3.5310075, z: 36.959656}
+    Center: {x: 82.5, y: 1.4655038, z: 75.190155}
+    Size: {x: 21.76062, y: 3.5310075, z: 36.38031}
     Neighbours:
     - SH_A2
     - SH_A5
@@ -240,8 +240,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_A4
-    Center: {x: 10.599523, y: 1.4655038, z: 37.599525}
-    Size: {x: 51.95966, y: 3.5310075, z: 33.959656}
+    Center: {x: 10.500002, y: 1.4655038, z: 37.78944}
+    Size: {x: 51.000008, y: 3.5310075, z: 33.579826}
     Neighbours:
     - SH_A1
     - SH_A5
@@ -345,8 +345,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_A5
-    Center: {x: 54, y: 1.4655038, z: 38.90048}
-    Size: {x: 36.76062, y: 3.5310075, z: 36.959656}
+    Center: {x: 53.809845, y: 1.4655038, z: 39.18992}
+    Size: {x: 36.38031, y: 3.5310075, z: 36.380783}
     Neighbours:
     - SH_A1
     - SH_A3
@@ -412,8 +412,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_A6
-    Center: {x: 90.09952, y: 1.4655038, z: 46.400475}
-    Size: {x: 36.959656, y: 3.5310075, z: 21.959656}
+    Center: {x: 89.81, y: 1.4655038, z: 46.400475}
+    Size: {x: 36.380615, y: 3.5310075, z: 21.959656}
     Neighbours:
     - SH_A3
     - SH_A5
@@ -451,8 +451,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_A7
-    Center: {x: 18.000002, y: 1.4155036, z: 10.499999}
-    Size: {x: 37.158707, y: 3.6310077, z: 22.158703}
+    Center: {x: 17.71033, y: 1.4155036, z: 10.499999}
+    Size: {x: 36.57936, y: 3.6310077, z: 22.158703}
     Neighbours:
     - SH_A4
     - SH_A5
@@ -490,8 +490,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_A8
-    Center: {x: 54, y: 1.4655038, z: 10.599523}
-    Size: {x: 37.158707, y: 3.5310075, z: 21.95966}
+    Center: {x: 53.71048, y: 1.4655038, z: 10.599523}
+    Size: {x: 36.579666, y: 3.5310075, z: 21.95966}
     Neighbours:
     - SH_A4
     - SH_A5
@@ -530,8 +530,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_PreBossNest
-    Center: {x: 88.5, y: 1.6999999, z: 10.499999}
-    Size: {x: 34.15869, y: 4.2000003, z: 16.158705}
+    Center: {x: 88.21033, y: 1.6999999, z: 10.499999}
+    Size: {x: 33.579346, y: 4.2000003, z: 16.158705}
     Neighbours:
     - SH_A8
     - SH_WardenArena
@@ -617,8 +617,8 @@ MonoBehaviour:
       width: 15
       height: 15
   - Scene: SH_T2
-    Center: {x: 48.099525, y: 1.4655038, z: 64.5}
-    Size: {x: 60.959656, y: 3.5310075, z: 15.76062}
+    Center: {x: 48.099525, y: 1.4655038, z: 64.49976}
+    Size: {x: 60.959656, y: 3.5310075, z: 15.000473}
     Neighbours:
     - SH_A1
     - SH_A3
@@ -746,8 +746,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_T1South
-    Center: {x: 21.099522, y: 1.4155036, z: -3.0995216}
-    Size: {x: 120.959656, y: 3.6310077, z: 12.95966}
+    Center: {x: 21.009846, y: 1.4155036, z: -3.2896748}
+    Size: {x: 120.780304, y: 3.6310077, z: 12.579353}
     Neighbours:
     - SH_A7
     - SH_A8
@@ -970,8 +970,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_T1West
-    Center: {x: -37.5, y: 1.3500061, z: 54}
-    Size: {x: 4.1587067, y: 3.300012, z: 121.15871}
+    Center: {x: -37.5, y: 1.3500061, z: 53.999996}
+    Size: {x: 3.6583862, y: 3.300012, z: 120}
     Neighbours:
     - SH_T1South
     - SH_T1North
@@ -1177,8 +1177,8 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: SH_T1North
-    Center: {x: -17.900476, y: 1.5655037, z: 115.40048}
-    Size: {x: 42.95966, y: 3.3310075, z: 3.9596558}
+    Center: {x: -18.164593, y: 1.5655037, z: 115.525566}
+    Size: {x: 42.329193, y: 3.3310075, z: 3.709488}
     Neighbours:
     - SH_PodChamber
     - SH_T1West
