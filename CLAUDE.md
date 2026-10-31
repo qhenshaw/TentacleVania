@@ -16,7 +16,7 @@ At the end of each milestone, run `Tools/UnityCheck/unity-build.sh <milestone>` 
 
 Stop and report when no unblocked `Ready` tasks remain, or before starting the `Demo: Next Fest` and `Launch` milestones, which are public-facing and need the developer's sign-off.
 
-If a task is blocked, because the design is ambiguous or it needs the developer (buying assets, Steam setup, testing on a Steam Deck), don't guess. Set it to `In Review`, write what's needed in `Notes`, and move on to the next task. When you stop working, list every `In Review` task and what it needs.
+If a task is blocked, because the design is ambiguous or it needs the developer (buying assets, Steam setup, testing on a Steam Deck), don't guess. Set it to `In Review`, write what's needed in `Notes`, and move on to the next task. When you stop working, list every `In Review` task and what it needs, and send the developer a push notification (`PushNotification`, one line under 200 characters) saying what finished and what's waiting on them (developer rule).
 
 If a task can't be finished without purchased assets or the developer's input (common for Art, Audio, Design and Production tasks), build everything possible with placeholders first, then block it the same way, naming the asset or decision needed.
 
