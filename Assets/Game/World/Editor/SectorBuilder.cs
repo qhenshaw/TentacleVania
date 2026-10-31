@@ -300,6 +300,7 @@ namespace TentacleVania.World.Editor
             so.FindProperty("_triggerCenter").vector3Value = center + Vector3.up;
             so.FindProperty("_triggerSize").vector3Value = new Vector3(x1 - x0 - 3f, 4f, z1 - z0 - 3f);
             so.FindProperty("_bossArena").boolValue = room.Role == PlanRole.Boss;
+            so.FindProperty("_oneTime").boolValue = room.OneTime;
             so.FindProperty("_id").stringValue = plan.Sector + "/" + room.Scene;
             so.ApplyModifiedPropertiesWithoutUndo();
         }

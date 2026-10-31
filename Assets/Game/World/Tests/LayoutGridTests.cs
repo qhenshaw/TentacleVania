@@ -35,6 +35,18 @@ namespace TentacleVania.World.Tests
         }
 
         [Test]
+        public void OpeningOnAnOuterEdgeStaysOpenForTheNextScene()
+        {
+            var grid = new LayoutGrid();
+            grid.AddSpace(false, Rects(new RectInt(0, 0, 2, 2)));
+            grid.AddOpening(new OpeningSpec(new Vector2Int(1, 0), Side.East, 1), 0);
+            grid.Finish();
+            Assert.AreEqual(EdgeState.Opening, grid.Edge(new Vector2Int(1, 0), Side.East));
+            Assert.AreEqual(EdgeState.Wall, grid.Edge(new Vector2Int(1, 1), Side.East));
+            Assert.IsFalse(grid.IsConvexCorner(new Vector2Int(1, 0), Side.East));
+        }
+
+        [Test]
         public void TwoRoomsTouchingGetWallsUnlessAnOpeningJoinsThem()
         {
             var grid = new LayoutGrid();

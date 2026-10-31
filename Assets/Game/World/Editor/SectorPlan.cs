@@ -47,6 +47,7 @@ namespace TentacleVania.World.Editor
         public readonly List<DoorPlan> Doors = new();
         public readonly List<WaveEntryPlan[]> Waves = new();
         public bool WallMounts;
+        public bool OneTime;
         public Action<RoomContext> Place;
 
         public RoomPlan(string scene, PlanRole role, RectInt? rect = null)
