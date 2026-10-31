@@ -43,6 +43,9 @@ namespace TentacleVania.World.Arenas
         private int _wallCursor;
 
         public event Action<ArenaEncounter> StateChanged;
+        public static event Action<ArenaEncounter> AnyCleared;
+
+        public bool HadHumans { get; private set; }
 
         public static ArenaEncounter Active { get; private set; }
 
@@ -54,6 +57,13 @@ namespace TentacleVania.World.Arenas
         public float ClearedAt { get; private set; }
         public bool IsBossArena => _bossArena;
         public string SaveId => string.IsNullOrEmpty(_id) ? gameObject.scene.name + "/" + name : _id;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics()
+        {
+            Active = null;
+            AnyCleared = null;
+        }
 
         private void Awake()
         {
@@ -136,6 +146,7 @@ namespace TentacleVania.World.Arenas
         public void Begin(float now)
         {
             StartedAt = now;
+            HadHumans = false;
             foreach (var door in _doors)
                 door.Seal();
             StartWave(0, now);
@@ -196,6 +207,8 @@ namespace TentacleVania.World.Arenas
             var position = point.position;
             if (NavMesh.SamplePosition(position, out var hit, 2f, NavMesh.AllAreas))
                 position = hit.position;
+            if (prefab.Definition != null && !prefab.Definition.Machine)
+                HadHumans = true;
             var enemy = Instantiate(prefab, position, point.rotation);
             _alive.Add(enemy);
         }
@@ -210,6 +223,7 @@ namespace TentacleVania.World.Arenas
                 foreach (var door in _doors)
                     door.Open();
                 SetState(ArenaState.Cleared);
+                AnyCleared?.Invoke(this);
                 Autosave.Request(AutosaveReason.RoomCleared);
                 return;
             }

@@ -106,6 +106,7 @@ namespace TentacleVania.World.Editor
         private const string TilesetPath = "Assets/Game/World/Data/Layout/SciFiTopDown_Tileset.asset";
         private const string DressingPath = "Assets/Game/World/Data/Layout/SciFiTopDown_Dressing.asset";
         public const string ArenaDoorPath = "Assets/Game/World/Arenas/ArenaDoorCell.prefab";
+        public const string BeaconPath = "Assets/Game/World/Arenas/ArenaBeacon.prefab";
         private const string TemplateRoot = "Assets/Game/Scenes/StreamingTest/StreamingTest.unity";
         private const string CameraBoundsType = "TentacleVania.Camera.CameraBounds";
 
@@ -311,6 +312,51 @@ namespace TentacleVania.World.Editor
             so.FindProperty("_bossArena").boolValue = room.Role == PlanRole.Boss;
             so.FindProperty("_oneTime").boolValue = room.OneTime;
             so.FindProperty("_id").stringValue = plan.Sector + "/" + room.Scene;
+            so.ApplyModifiedPropertiesWithoutUndo();
+            AddLockdown(room, root);
+        }
+
+        private static void AddLockdown(RoomPlan room, GameObject root)
+        {
+            var lockdown = root.AddComponent<ArenaLockdown>();
+            SetEvent(lockdown, "_klaxon", "event:/World/Arena/Klaxon");
+            SetEvent(lockdown, "_allClear", "event:/World/Arena/AllClear");
+            var beaconPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(BeaconPath);
+            if (beaconPrefab == null)
+                return;
+            var parent = new GameObject("Beacons").transform;
+            parent.SetParent(root.transform, false);
+            foreach (var door in room.Doors)
+            {
+                if (!door.ArenaDoor)
+                    continue;
+                var inward = -Offset(door.Side);
+                var lateral = new Vector3(inward.z, 0f, -inward.x);
+                var position = RoomContext.CellCenter(door.Cell.x, door.Cell.y) - inward * 1.2f + lateral * 1.7f + Vector3.up * 2.4f;
+                var beacon = (GameObject)PrefabUtility.InstantiatePrefab(beaconPrefab, root.scene);
+                beacon.transform.SetParent(parent, false);
+                beacon.transform.SetPositionAndRotation(position, Quaternion.LookRotation(inward));
+            }
+        }
+
+        private static Vector3 Offset(Side side) => side switch
+        {
+            Side.North => Vector3.forward,
+            Side.South => Vector3.back,
+            Side.East => Vector3.right,
+            _ => Vector3.left,
+        };
+
+        private static void SetEvent(UnityEngine.Object target, string field, string path)
+        {
+            var reference = FMODUnity.EventManager.EventFromPath(path);
+            if (reference == null)
+                return;
+            var so = new SerializedObject(target);
+            so.FindProperty(field + ".Guid.Data1").intValue = reference.Guid.Data1;
+            so.FindProperty(field + ".Guid.Data2").intValue = reference.Guid.Data2;
+            so.FindProperty(field + ".Guid.Data3").intValue = reference.Guid.Data3;
+            so.FindProperty(field + ".Guid.Data4").intValue = reference.Guid.Data4;
             so.ApplyModifiedPropertiesWithoutUndo();
         }
 
