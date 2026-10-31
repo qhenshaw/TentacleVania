@@ -3,8 +3,8 @@
     <ui:VisualElement name="nest-menu" class="nest" picking-mode="Ignore">
         <ui:VisualElement name="panel" class="nest__panel">
             <ui:VisualElement class="nest__tabs">
-                <ui:Label name="tab-stats" class="nest__tab nest__tab--active" />
-                <ui:Label name="tab-mutations" class="nest__tab nest__tab--locked" />
+                <ui:Button name="tab-stats" class="nest__tab nest__tab--active" />
+                <ui:Button name="tab-mutations" class="nest__tab" />
             </ui:VisualElement>
             <ui:VisualElement class="nest__summary">
                 <ui:VisualElement class="nest__summary-item">
@@ -22,6 +22,8 @@
             </ui:VisualElement>
             <ui:Label name="points" class="nest__points nest__hidden" />
             <ui:VisualElement name="rows" class="nest__rows" />
+            <ui:Label name="notches" class="nest__points nest__hidden" />
+            <ui:VisualElement name="mutation-rows" class="nest__rows nest__hidden" />
             <ui:VisualElement class="nest__actions">
                 <ui:Button name="respec" class="nest__action" />
                 <ui:Button name="confirm" class="nest__action nest__hidden" />

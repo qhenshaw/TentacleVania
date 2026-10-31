@@ -306,6 +306,54 @@ MonoBehaviour:
     m_Localized: Surgical Automaton
     m_Metadata:
       m_Items: []
+  - m_Id: 435372125077504
+    m_Localized: Wide Dodge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214848
+    m_Localized: Dash invulnerability lasts 0.3 s.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214849
+    m_Localized: Gluttony
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214850
+    m_Localized: For 6 s after consuming, the next consume is 30% faster and heals 50% more.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214851
+    m_Localized: Rapid Digestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214852
+    m_Localized: Consume healing arrives twice as fast.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214853
+    m_Localized: Lunging Maw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214854
+    m_Localized: Grappling to a grabbable enemy grabs it on arrival.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214855
+    m_Localized: 'Notches: {0} / {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214856
+    m_Localized: Equip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214857
+    m_Localized: Remove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214858
+    m_Localized: No mutations yet. Find them in the facility or trade with the Hoarder.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

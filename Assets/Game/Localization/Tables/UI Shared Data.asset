@@ -303,6 +303,54 @@ MonoBehaviour:
     m_Key: boss.automaton
     m_Metadata:
       m_Items: []
+  - m_Id: 435372125077504
+    m_Key: mutation.wideDodge.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214848
+    m_Key: mutation.wideDodge.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214849
+    m_Key: mutation.gluttony.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214850
+    m_Key: mutation.gluttony.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214851
+    m_Key: mutation.rapidDigestion.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214852
+    m_Key: mutation.rapidDigestion.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214853
+    m_Key: mutation.lungingMaw.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214854
+    m_Key: mutation.lungingMaw.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214855
+    m_Key: nest.notches
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214856
+    m_Key: nest.equip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214857
+    m_Key: nest.unequip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435372171214858
+    m_Key: nest.mutations.none
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

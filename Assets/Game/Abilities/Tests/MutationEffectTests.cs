@@ -1,0 +1,73 @@
+using NUnit.Framework;
+using TentacleVania.Abilities.Grapple;
+using TentacleVania.Abilities.Mutations;
+using TentacleVania.Creature;
+using TentacleVania.Creature.Movement;
+using UnityEngine;
+
+namespace TentacleVania.Abilities.Tests
+{
+    public sealed class MutationEffectTests
+    {
+        private GameObject _creature;
+        private MutationHost _host;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _creature = new GameObject("MutationTestCreature");
+            _creature.AddComponent<CharacterController>();
+            var motor = _creature.AddComponent<CreatureMotor>();
+            var consume = _creature.AddComponent<CreatureConsume>();
+            var grapple = _creature.AddComponent<TentacleGrapple>();
+            _host = new(motor, consume, grapple);
+        }
+
+        [TearDown]
+        public void TearDown() => Object.DestroyImmediate(_creature);
+
+        private static T Make<T>() where T : MutationDefinition => ScriptableObject.CreateInstance<T>();
+
+        [Test]
+        public void WideDodgeLengthensDashIFrames()
+        {
+            var effect = Make<WideDodgeMutation>().CreateEffect();
+            effect.Enable(_host);
+            Assert.That(_host.Motor.MinDashInvulnerability, Is.EqualTo(0.3f).Within(1e-4f));
+            effect.Disable(_host);
+            Assert.That(_host.Motor.MinDashInvulnerability, Is.EqualTo(0f));
+        }
+
+        [Test]
+        public void RapidDigestionHalvesTheHealDuration()
+        {
+            var effect = Make<RapidDigestionMutation>().CreateEffect();
+            effect.Enable(_host);
+            Assert.That(_host.Consume.HealDurationScale, Is.EqualTo(0.5f).Within(1e-4f));
+            effect.Disable(_host);
+            Assert.That(_host.Consume.HealDurationScale, Is.EqualTo(1f));
+        }
+
+        [Test]
+        public void LungingMawTurnsOnGrabOnArrival()
+        {
+            var effect = Make<LungingMawMutation>().CreateEffect();
+            effect.Enable(_host);
+            Assert.That(_host.Grapple.GrabOnArrival, Is.True);
+            effect.Disable(_host);
+            Assert.That(_host.Grapple.GrabOnArrival, Is.False);
+        }
+
+        [Test]
+        public void GluttonyBoostExpiresAfterItsWindow()
+        {
+            var effect = Make<GluttonyMutation>().CreateEffect();
+            effect.Enable(_host);
+            _host.Consume.NextConsumeSpeed = 1.3f;
+            _host.Consume.NextHealScale = 1.5f;
+            effect.Disable(_host);
+            Assert.That(_host.Consume.NextConsumeSpeed, Is.EqualTo(1f));
+            Assert.That(_host.Consume.NextHealScale, Is.EqualTo(1f));
+        }
+    }
+}

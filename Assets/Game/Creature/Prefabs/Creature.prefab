@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 9051656861580778372}
   - component: {fileID: 5043879446654485484}
   - component: {fileID: 9191924850288195891}
+  - component: {fileID: 4779626605629041017}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -862,6 +863,19 @@ MonoBehaviour:
     m_Bits: 1
   _line: {fileID: 7005873194559604186}
   _origin: {fileID: 0}
+--- !u!114 &4779626605629041017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6792d2bb9c6a5a4c82578f8adb3d794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.MutationController
+  _catalog: {fileID: 11400000, guid: ff08b91d7608ba9409f7e9552077330e, type: 2}
 --- !u!1 &4860062330439387882
 GameObject:
   m_ObjectHideFlags: 0

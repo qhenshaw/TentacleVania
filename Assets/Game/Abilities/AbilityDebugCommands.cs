@@ -57,6 +57,21 @@ namespace TentacleVania.Abilities
                 var rotation = Quaternion.LookRotation(forward.sqrMagnitude > 1e-4f ? forward.normalized : Vector3.forward);
                 Object.Instantiate(prefab, creature.transform.position + rotation * new Vector3(0f, 0.01f, -2f), rotation);
             });
+            var mutationIds = new[] { "WideDodge", "Gluttony", "RapidDigestion", "LungingMaw" };
+            DebugMenu.Value(tab, "Mutations", () =>
+            {
+                var controller = CreatureSpawner.Spawned != null ? CreatureSpawner.Spawned.GetComponent<Mutations.MutationController>() : null;
+                var used = controller != null ? controller.UsedNotches() : 0;
+                return $"notches {used}/{Core.Progression.MutationLoadout.NotchPool}, owned {string.Join(", ", Core.Progression.MutationLoadout.Owned)}, equipped {string.Join(", ", Core.Progression.MutationLoadout.Equipped)}";
+            });
+            DebugMenu.Choice(tab, "Grant mutation", mutationIds, i => Core.Progression.MutationLoadout.Grant(mutationIds[i]));
+            DebugMenu.Choice(tab, "Equip mutation (ignores nests)", mutationIds, i =>
+            {
+                var controller = CreatureSpawner.Spawned != null ? CreatureSpawner.Spawned.GetComponent<Mutations.MutationController>() : null;
+                if (controller != null)
+                    controller.Equip(mutationIds[i]);
+            });
+            DebugMenu.Button(tab, "Clear mutations", Core.Progression.MutationLoadout.Clear);
             DebugMenu.Button(tab, "Activate", () =>
             {
                 var controller = Controller;

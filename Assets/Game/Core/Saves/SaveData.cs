@@ -41,6 +41,8 @@ namespace TentacleVania.Core.Saves
         public string Ability = "";
         public List<string> Abilities = new();
         public List<string> Mutations = new();
+        public List<string> OwnedMutations = new();
+        public int BonusNotches;
     }
 
     public enum WorldFlag

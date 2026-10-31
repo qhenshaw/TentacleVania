@@ -42,6 +42,7 @@ namespace TentacleVania.Creature.Movement
         public bool DashLocked { get; set; }
         public bool FacingLocked { get; set; }
         public bool Suspended { get; set; }
+        public float MinDashInvulnerability { get; set; }
         public float LastDashEndTime { get; private set; } = float.NegativeInfinity;
         public bool IsDashing => _dashRemaining > 0f;
         public bool IsLunging => _lungeRemaining > 0f;
@@ -120,7 +121,7 @@ namespace TentacleVania.Creature.Movement
             direction.y = 0f;
             _dashDirection = direction.sqrMagnitude > 1e-4f ? direction.normalized : transform.forward;
             _dashRemaining = _settings.DashDistance;
-            _invulnerableUntil = now + _settings.DashInvulnerability;
+            _invulnerableUntil = now + Mathf.Max(_settings.DashInvulnerability, MinDashInvulnerability);
             Dashed?.Invoke();
             return true;
         }

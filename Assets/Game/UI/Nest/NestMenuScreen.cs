@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using TentacleVania.Abilities.Mutations;
 using TentacleVania.Core.Input;
 using TentacleVania.Core.Progression;
 using TentacleVania.Creature;
 using TentacleVania.Creature.Movement;
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UIElements;
 
 namespace TentacleVania.UI.Nest
@@ -16,6 +18,7 @@ namespace TentacleVania.UI.Nest
         private const string OpenClass = "nest--open";
         private const string ShownClass = "nest--shown";
         private const string HiddenClass = "nest__hidden";
+        private const string ActiveTabClass = "nest__tab--active";
 
         private static readonly StatKind[] Kinds = { StatKind.Brutality, StatKind.Ferocity, StatKind.Tenacity, StatKind.Cunning };
         private static readonly string[] StatKeys = { "nest.stat.brutality", "nest.stat.ferocity", "nest.stat.tenacity", "nest.stat.cunning" };
@@ -42,6 +45,12 @@ namespace TentacleVania.UI.Nest
         private CreatureMotor _lockedMotor;
         private bool _respecMode;
         private bool _waitForRelease;
+        private bool _mutationMode;
+        private Button _tabStats;
+        private Button _tabMutations;
+        private VisualElement _statRows;
+        private VisualElement _mutationRows;
+        private Label _notches;
 
         public static NestMenuScreen Instance { get; private set; }
 
@@ -53,8 +62,15 @@ namespace TentacleVania.UI.Nest
             Instance = this;
             var root = GetComponent<UIDocument>().rootVisualElement;
             _menu = root.Q<VisualElement>("nest-menu");
-            Bind(root.Q<Label>("tab-stats"), "nest.tab.stats");
-            Bind(root.Q<Label>("tab-mutations"), "nest.tab.mutations");
+            _tabStats = root.Q<Button>("tab-stats");
+            _tabMutations = root.Q<Button>("tab-mutations");
+            Bind(_tabStats, "nest.tab.stats");
+            Bind(_tabMutations, "nest.tab.mutations");
+            _tabStats.clicked += () => ShowTab(false);
+            _tabMutations.clicked += () => ShowTab(true);
+            _statRows = root.Q<VisualElement>("rows");
+            _mutationRows = root.Q<VisualElement>("mutation-rows");
+            _notches = root.Q<Label>("notches");
             Bind(root.Q<Label>("biomass-label"), "nest.biomass");
             Bind(root.Q<Label>("next-label"), "nest.next");
             Bind(root.Q<Label>("level-label"), "nest.level");
@@ -114,6 +130,7 @@ namespace TentacleVania.UI.Nest
                 return;
             IsOpen = true;
             _respecMode = false;
+            _mutationMode = false;
             _menu.AddToClassList(OpenClass);
             _menu.schedule.Execute(() => _menu.AddToClassList(ShownClass));
             var spawned = CreatureSpawner.Spawned;
@@ -136,6 +153,31 @@ namespace TentacleVania.UI.Nest
             _menu.RemoveFromClassList(OpenClass);
             _waitForRelease = true;
         }
+
+        public void ShowTab(bool mutations)
+        {
+            if (_respecMode)
+                CancelRespec();
+            _mutationMode = mutations;
+            _tabStats.EnableInClassList(ActiveTabClass, !mutations);
+            _tabMutations.EnableInClassList(ActiveTabClass, mutations);
+            Refresh();
+        }
+
+        public void ToggleMutation(string id)
+        {
+            var controller = Mutations;
+            if (controller == null)
+                return;
+            if (MutationLoadout.IsEquipped(id))
+                MutationLoadout.Unequip(id);
+            else
+                controller.Equip(id);
+            Refresh();
+        }
+
+        private static MutationController Mutations =>
+            CreatureSpawner.Spawned != null ? CreatureSpawner.Spawned.GetComponent<MutationController>() : null;
 
         public void Back()
         {
@@ -204,6 +246,14 @@ namespace TentacleVania.UI.Nest
 
         private void Refresh()
         {
+            _statRows.EnableInClassList(HiddenClass, _mutationMode);
+            _mutationRows.EnableInClassList(HiddenClass, !_mutationMode);
+            _notches.EnableInClassList(HiddenClass, !_mutationMode);
+            if (_mutationMode)
+            {
+                RefreshMutations();
+                return;
+            }
             _biomass.text = Biomass.Carried.ToString("N0");
             _next.text = Stats.NextLevelCost.ToString("N0");
             _level.text = Stats.TotalLevel.ToString();
@@ -226,6 +276,51 @@ namespace TentacleVania.UI.Nest
             _cancel.EnableInClassList(HiddenClass, !_respecMode);
             _confirm.SetEnabled(_draft.IsComplete);
         }
+
+        private void RefreshMutations()
+        {
+            _points.AddToClassList(HiddenClass);
+            _respec.AddToClassList(HiddenClass);
+            _confirm.AddToClassList(HiddenClass);
+            _cancel.AddToClassList(HiddenClass);
+            _leave.RemoveFromClassList(HiddenClass);
+            _mutationRows.Clear();
+            var controller = Mutations;
+            var used = controller != null ? controller.UsedNotches() : 0;
+            _notches.text = string.Format(Text("nest.notches"), used, MutationLoadout.NotchPool);
+            if (controller == null || MutationLoadout.Owned.Count == 0)
+            {
+                var none = new Label(Text("nest.mutations.none"));
+                none.AddToClassList("nest__effect");
+                _mutationRows.Add(none);
+                return;
+            }
+            foreach (var id in MutationLoadout.Owned)
+            {
+                var definition = controller.Find(id);
+                if (definition == null)
+                    continue;
+                var equipped = MutationLoadout.IsEquipped(id);
+                var row = new VisualElement();
+                row.AddToClassList("nest__row");
+                var name = new Label(Text(definition.TextKey + ".name"));
+                name.AddToClassList("nest__stat");
+                var cost = new Label(new string('●', definition.Notches));
+                cost.AddToClassList("nest__cost");
+                var effect = new Label(Text(definition.TextKey + ".effect"));
+                effect.AddToClassList("nest__effect");
+                var button = new Button(() => ToggleMutation(id)) { text = Text(equipped ? "nest.unequip" : "nest.equip"), name = "mutation-" + id };
+                button.AddToClassList("nest__action");
+                button.SetEnabled(equipped || MutationLoadout.Fits(used, definition.Notches, MutationLoadout.NotchPool));
+                row.Add(name);
+                row.Add(cost);
+                row.Add(effect);
+                row.Add(button);
+                _mutationRows.Add(row);
+            }
+        }
+
+        private static string Text(string key) => LocalizationSettings.StringDatabase.GetLocalizedString(Table, key);
 
         private string Effect(int index, int value) => index switch
         {
