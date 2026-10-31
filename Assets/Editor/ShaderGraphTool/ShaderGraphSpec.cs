@@ -14,6 +14,7 @@ namespace TentacleVania.Editor.ShaderGraphTool
         public bool castShadows = true;
         public string renderFace = "Front";
         public bool transparent;
+        public bool alphaClip;
         public string depthTest;
         public bool vfx;
         public bool normalTS;

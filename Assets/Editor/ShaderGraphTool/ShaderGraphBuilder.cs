@@ -107,11 +107,17 @@ namespace TentacleVania.Editor.ShaderGraphTool
             function.AddSlot(new Vector3MaterialSlot(outColor, "OutBaseColor", "OutBaseColor", SlotType.Output, Vector3.zero, ShaderStageCapability.Fragment));
             ConnectBlock(graph, graph.fragmentContext, BlockFields.SurfaceDescription.BaseColor, function, outColor);
 
-            if (spec.transparent || spec.IsFullscreen || spec.IsDecal)
+            if (spec.transparent || spec.alphaClip || spec.IsFullscreen || spec.IsDecal)
             {
                 var outAlpha = slot++;
                 function.AddSlot(new Vector1MaterialSlot(outAlpha, "OutAlpha", "OutAlpha", SlotType.Output, 1f, ShaderStageCapability.Fragment));
                 ConnectBlock(graph, graph.fragmentContext, BlockFields.SurfaceDescription.Alpha, function, outAlpha);
+            }
+            if (spec.alphaClip && !spec.IsFullscreen && !spec.IsDecal)
+            {
+                var outClip = slot++;
+                function.AddSlot(new Vector1MaterialSlot(outClip, "OutAlphaClipThreshold", "OutAlphaClipThreshold", SlotType.Output, 0.5f, ShaderStageCapability.Fragment));
+                ConnectBlock(graph, graph.fragmentContext, BlockFields.SurfaceDescription.AlphaClipThreshold, function, outClip);
             }
 
             if (spec.IsDecal)
@@ -233,8 +239,10 @@ namespace TentacleVania.Editor.ShaderGraphTool
                 yield return BlockFields.SurfaceDescription.Emission;
                 yield break;
             }
-            if (spec.transparent)
+            if (spec.transparent || spec.alphaClip)
                 yield return BlockFields.SurfaceDescription.Alpha;
+            if (spec.alphaClip)
+                yield return BlockFields.SurfaceDescription.AlphaClipThreshold;
             if (!spec.IsLit)
                 yield break;
             yield return BlockFields.SurfaceDescription.NormalTS;
@@ -263,6 +271,8 @@ namespace TentacleVania.Editor.ShaderGraphTool
                 var zWrite = targetType.GetProperty("zWriteControl", flags);
                 zWrite.SetValue(target, Enum.Parse(zWrite.PropertyType, "ForceDisabled"));
             }
+            if (spec.alphaClip)
+                targetType.GetProperty("alphaClip", flags).SetValue(target, true);
             if (!string.IsNullOrEmpty(spec.depthTest))
             {
                 var zTest = targetType.GetProperty("zTestMode", flags);
