@@ -6,7 +6,7 @@ using UnityEngine;
 namespace TentacleVania.Creature.Movement
 {
     [RequireComponent(typeof(CharacterController))]
-    public sealed class CreatureMotor : MonoBehaviour
+    public sealed class CreatureMotor : MonoBehaviour, Core.Characters.ICreatureTransit
     {
         private const float GroundStick = -2f;
 
@@ -42,6 +42,27 @@ namespace TentacleVania.Creature.Movement
         public bool DashLocked { get; set; }
         public bool FacingLocked { get; set; }
         public bool Suspended { get; set; }
+        public bool InTransit { get; private set; }
+
+        public void BeginTransit()
+        {
+            if (InTransit)
+                return;
+            InTransit = true;
+            Suspended = true;
+            LockControl();
+            _controller.enabled = false;
+        }
+
+        public void EndTransit()
+        {
+            if (!InTransit)
+                return;
+            InTransit = false;
+            _controller.enabled = true;
+            Suspended = false;
+            UnlockControl();
+        }
         public float MinDashInvulnerability { get; set; }
         public float LastDashEndTime { get; private set; } = float.NegativeInfinity;
         public bool IsDashing => _dashRemaining > 0f;

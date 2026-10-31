@@ -70,28 +70,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bda5cedf8c00e3f4fb8893251763cc34
-    m_Address: SH_T1South
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c3edc45fb83e48745af61e84e2570f31
     m_Address: SH_PodChamber
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d801b415a59423947b8c4b3ea674f446
-    m_Address: SH_T1West
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: da0df8401a4e9d843a73f33a6020e792
-    m_Address: SH_T2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dfe56b1cf9166164f8ba7d8bdec6a9dd
-    m_Address: SH_T1North
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
