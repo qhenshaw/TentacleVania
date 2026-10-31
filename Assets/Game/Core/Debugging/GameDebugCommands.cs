@@ -18,6 +18,8 @@ namespace TentacleVania.Core.Debugging
                 return $"{1f / _smoothedDelta:F0} ({_smoothedDelta * 1000f:F1} ms)";
             });
             DebugMenu.Value(DebugMenu.Game, "Scene", () => SceneManager.GetActiveScene().name);
+            DebugMenu.Toggle(DebugMenu.Game, "Dynamic resolution", () => Rendering.DynamicResolution.Enabled, v => Rendering.DynamicResolution.Enabled = v);
+            DebugMenu.Value(DebugMenu.Game, "Render scale", () => $"{Rendering.DynamicResolution.Scale:P0}, GPU {Rendering.DynamicResolution.LastGpuMs:F1} ms (players only)");
             DebugMenu.Slider(DebugMenu.Game, "Time scale", 0.05f, 2f, () => Time.timeScale, v => Time.timeScale = v);
             DebugMenu.Button(DebugMenu.Game, "Normal speed", () => Time.timeScale = 1f);
             DebugMenu.Button(DebugMenu.Game, "Load CombatArena (test)", () =>

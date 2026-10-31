@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Runs the performance benchmark on a Windows player built by unity-build.sh: starts Builds/<label>/<ProjectName>.exe
 # with `-benchmark <seconds> <report path>`, waits for it to quit and prints the report. The game implements the
-# benchmark itself (a runtime component, not built yet): on that argument it sets up a repeatable heavy scene,
+# benchmark itself (Assets/Game/Benchmark/BenchmarkRunner): on that argument it sets up a repeatable heavy scene,
 # warms up, records frame times and GC allocations for the given seconds, writes the report and quits. On a Steam Deck
 # use the Steam launch options `-benchmark 60` instead (the report lands in the save folder as benchmark.txt). Desktop
 # numbers don't stand in for the Deck budget.
