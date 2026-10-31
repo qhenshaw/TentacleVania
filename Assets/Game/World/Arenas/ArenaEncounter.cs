@@ -46,6 +46,7 @@ namespace TentacleVania.World.Arenas
         public static event Action<ArenaEncounter> AnyCleared;
 
         public bool HadHumans { get; private set; }
+        public bool Held { get; set; }
 
         public static ArenaEncounter Active { get; private set; }
 
@@ -125,7 +126,7 @@ namespace TentacleVania.World.Arenas
             switch (State)
             {
                 case ArenaState.Waiting:
-                    if (CreatureInside())
+                    if (!Held && CreatureInside())
                         Begin(now);
                     break;
                 case ArenaState.Spawning:
@@ -150,6 +151,26 @@ namespace TentacleVania.World.Arenas
             foreach (var door in _doors)
                 door.Seal();
             StartWave(0, now);
+        }
+
+        public void Adopt(IReadOnlyList<Enemy> enemies, float now)
+        {
+            StartedAt = now;
+            HadHumans = false;
+            foreach (var door in _doors)
+                door.Seal();
+            _waveIndex = _waves.Waves.Count - 1;
+            _queue.Clear();
+            _alive.Clear();
+            foreach (var enemy in enemies)
+            {
+                if (enemy == null)
+                    continue;
+                _alive.Add(enemy);
+                if (enemy.Definition != null && !enemy.Definition.Machine)
+                    HadHumans = true;
+            }
+            SetState(ArenaState.Fighting);
         }
 
         public void SkipWave()

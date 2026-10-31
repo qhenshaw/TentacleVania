@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 5751535750192524386}
   - component: {fileID: 906184000046546651}
   - component: {fileID: 6476554414125923144}
+  - component: {fileID: 7989227644479482823}
   m_Layer: 0
   m_Name: CombatHud
   m_TagString: Untagged
@@ -402,6 +403,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4e41065e77d284db9763fc4f86bcc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.SubtitleView
+--- !u!114 &7989227644479482823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703636293144204845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee2077a416b89042b4120db4487d703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.OpeningSkipView
 --- !u!1 &3146986584512052326
 GameObject:
   m_ObjectHideFlags: 0

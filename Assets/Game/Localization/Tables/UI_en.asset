@@ -814,6 +814,10 @@ MonoBehaviour:
     m_Localized: Map overlay
     m_Metadata:
       m_Items: []
+  - m_Id: 622799024308224
+    m_Localized: Hold to skip
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

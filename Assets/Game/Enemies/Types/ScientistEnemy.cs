@@ -6,11 +6,20 @@ namespace TentacleVania.Enemies.Types
     {
 
         private bool _cowering;
+        private bool _terrified;
 
         public override bool IsCowering => _cowering;
 
+        public void Terrify()
+        {
+            _terrified = true;
+            _cowering = true;
+        }
+
         protected override Vector3 ChaseDestination(Vector3 targetPosition)
         {
+            if (_terrified)
+                return Position;
             var away = Position - targetPosition;
             away.y = 0f;
             var distance = away.magnitude;
@@ -35,6 +44,8 @@ namespace TentacleVania.Enemies.Types
             _cowering = true;
             return Position;
         }
+
+        protected override bool AttackAllowed(int index) => !_terrified;
 
         protected override Vector3 CircleDestination(Vector3 targetPosition, float dt) => ChaseDestination(targetPosition);
 

@@ -6,7 +6,6 @@ namespace TentacleVania.Core.Progression
 {
     public static class Tutorials
     {
-        public const string Move = "move";
         public const string Attack = "attack";
         public const string Dash = "dash";
         public const string Grab = "grab";

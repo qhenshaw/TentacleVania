@@ -20,7 +20,6 @@ namespace TentacleVania.UI.Hud
     {
         private const string Table = "UI";
         private const string ShownClass = "tutorial--shown";
-        private const float MoveNeeded = 0.6f;
         private const float ContextHold = 8f;
         private const float ConsumeShowTime = 4f;
         private const float DashTriggerRange = 12f;
@@ -38,7 +37,6 @@ namespace TentacleVania.UI.Hud
         private CreatureCharge _charge;
         private string _active;
         private float _activeSince;
-        private float _moveTime;
         private bool _consumePending;
         private bool _weapon2Pending;
         private InputDeviceKind _device;
@@ -82,12 +80,6 @@ namespace TentacleVania.UI.Hud
                 _activeSince = Time.time;
                 _dirty = true;
             }
-            if (_active == Tutorials.Move)
-            {
-                _moveTime += GameplayInput.Default.Move.magnitude > 0.5f ? Time.deltaTime : 0f;
-                if (_moveTime >= MoveNeeded)
-                    Tutorials.Complete(Tutorials.Move);
-            }
             if (_active == Tutorials.Consume && Time.time - _activeSince >= ConsumeShowTime)
             {
                 _consumePending = false;
@@ -117,11 +109,9 @@ namespace TentacleVania.UI.Hud
                 return Tutorials.Weapon2;
             if (Want(Tutorials.Ability, _ability != null && _ability.Equipped != null && _charge != null && _charge.Current >= _ability.Equipped.Cost))
                 return Tutorials.Ability;
-            if (Want(Tutorials.Move, true))
-                return Tutorials.Move;
             if (Want(Tutorials.Nest, Interactions.Current != null && Interactions.Current.PromptKey == "prompt.nest.grow"))
                 return Tutorials.Nest;
-            if (Want(Tutorials.Attack, Tutorials.IsDone(Tutorials.Move)))
+            if (Want(Tutorials.Attack, true))
                 return Tutorials.Attack;
             return null;
         }
@@ -173,7 +163,6 @@ namespace TentacleVania.UI.Hud
             var format = LocalizationSettings.StringDatabase.GetLocalizedString(Table, "tutorial." + _active);
             var actionName = _active switch
             {
-                Tutorials.Move => "Move",
                 Tutorials.Attack => "Weapon1",
                 Tutorials.Dash => "Dash",
                 Tutorials.Grab or Tutorials.Nest => "Grab",
@@ -274,8 +263,7 @@ namespace TentacleVania.UI.Hud
 
         private void OnAttack(WeaponController weapons)
         {
-            if (Tutorials.IsDone(Tutorials.Move))
-                Tutorials.Complete(Tutorials.Attack);
+            Tutorials.Complete(Tutorials.Attack);
             if (weapons.ActiveSlot == 1 && _weapon2Pending)
             {
                 _weapon2Pending = false;

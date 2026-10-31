@@ -90,6 +90,11 @@ namespace TentacleVania.World.Editor
                 case UnityEngine.Object reference:
                     property.objectReferenceValue = reference;
                     break;
+                case UnityEngine.Object[] list:
+                    property.arraySize = list.Length;
+                    for (var i = 0; i < list.Length; i++)
+                        property.GetArrayElementAtIndex(i).objectReferenceValue = list[i];
+                    break;
                 case null:
                     property.objectReferenceValue = null;
                     break;
