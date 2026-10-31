@@ -23,22 +23,29 @@ MonoBehaviour:
   _turnSpeed: 540
   _spawnDelay: 0.5
   _circleRange: {x: 3.5, y: 5.5}
+  _knockbackScale: 1
   _attacks:
   - Name: Swipe
     Kind: 0
     Telegraph: 0
     Animation: 0
+    AnimationHitTime: 0.48
+    GroundIndicator: 0
     WindUp: 0.6
     Active: 0.15
     Recovery: 0.5
     Cooldown: 1.2
     TrackDuringWindUp: 0.6
+    Hits: 1
     MinRange: 0
     MaxRange: 2.2
     Damage: 8
     Stagger: 0
     Type: 0
     StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
     Reach: 2
     Arc: 120
     SweepRadius: 0.3
@@ -48,21 +55,51 @@ MonoBehaviour:
     Projectile: {fileID: 0}
     ProjectileSpeed: 14
     ProjectileLifetime: 3
+    LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
+    WindUpSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
   - Name: Slam
     Kind: 1
     Telegraph: 1
     Animation: 2
+    AnimationHitTime: 0.48
+    GroundIndicator: 0
     WindUp: 1
     Active: 0.1
     Recovery: 0.8
     Cooldown: 4
     TrackDuringWindUp: 0.6
+    Hits: 1
     MinRange: 0
     MaxRange: 3
     Damage: 14
     Stagger: 0
     Type: 0
     StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
     Reach: 2
     Arc: 120
     SweepRadius: 0.3
@@ -72,21 +109,51 @@ MonoBehaviour:
     Projectile: {fileID: 0}
     ProjectileSpeed: 14
     ProjectileLifetime: 3
+    LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
+    WindUpSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
   - Name: Shot
     Kind: 2
     Telegraph: 0
     Animation: 3
+    AnimationHitTime: 0.48
+    GroundIndicator: 0
     WindUp: 0.5
     Active: 0.05
     Recovery: 0.4
     Cooldown: 2
     TrackDuringWindUp: 0.6
-    MinRange: 4
-    MaxRange: 12
+    Hits: 1
+    MinRange: 3
+    MaxRange: 6
     Damage: 6
     Stagger: 0
     Type: 0
     StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
     Reach: 2
     Arc: 120
     SweepRadius: 0.3
@@ -96,6 +163,40 @@ MonoBehaviour:
     Projectile: {fileID: 7832528784957437939, guid: afd49bb3e78f7c74fb296654755ced65, type: 3}
     ProjectileSpeed: 14
     ProjectileLifetime: 3
+    LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
+    WindUpSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
   _consumeHeal: 0.12
   _biomass: 10
+  _spawnOnWall: 0
   _despawnDelay: 2
+  _panicRange: 7
+  _fleeDistance: 6
+  _corneredDistance: 1.2
+  _preferredRange: {x: 2.5, y: 3.5}
+  _voice: {fileID: 0}
+  _machine: 0
+  _healPerSecond: 8
+  _healRange: 6
+  _keepAwayRange: 7
