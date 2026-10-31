@@ -409,3 +409,54 @@
 .hud__biomass-delta--loss {
     color: rgb(255, 90, 90);
 }
+
+.hud__subtitle {
+    position: absolute;
+    bottom: 150px;
+    left: 50%;
+    translate: -50% 0;
+    max-width: 960px;
+    padding: 8px 18px;
+    background-color: rgba(8, 10, 8, 0.72);
+    border-left-width: 3px;
+    border-color: rgb(230, 190, 80);
+    border-radius: 3px;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+}
+
+.hud__subtitle--shown {
+    opacity: 1;
+}
+
+.hud__subtitle--radio {
+    border-color: rgb(110, 200, 140);
+}
+
+.hud__subtitle--crane {
+    border-color: rgb(200, 60, 80);
+}
+
+.hud__subtitle-speaker {
+    font-size: 15px;
+    color: rgb(230, 190, 80);
+    -unity-font-style: bold;
+    padding: 0;
+    margin-bottom: 2px;
+}
+
+.hud__subtitle--radio .hud__subtitle-speaker {
+    color: rgb(110, 200, 140);
+}
+
+.hud__subtitle--crane .hud__subtitle-speaker {
+    color: rgb(220, 90, 105);
+}
+
+.hud__subtitle-text {
+    font-size: 22px;
+    color: rgb(240, 236, 228);
+    white-space: normal;
+    padding: 0;
+}

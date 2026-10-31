@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Routes every FMOD event to a volume bus: events under event:/Music/ to bus:/Music, all others to bus:/SFX (both are
+# Routes every FMOD event to a volume bus: event:/Music/ to bus:/Music, event:/VO/ to bus:/VO, all others to bus:/SFX (all
 # created under the master bus when missing). The game's audio settings set the volumes of bus:/ (master), bus:/Music
 # and bus:/SFX. fmod-placeholder.sh and fmod-music-event.sh route new events themselves; rerun this after adding events
 # any other way. Drives the FMOD Studio command-line tool; FMOD Studio must not have the project open.

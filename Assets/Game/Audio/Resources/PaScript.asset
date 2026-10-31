@@ -1,0 +1,273 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e012bdc2e3437144b423ce69dc34c57, type: 3}
+  m_Name: PaScript
+  m_EditorClassIdentifier: TentacleVania.Audio::TentacleVania.Audio.PaScript
+  _chime:
+    Guid:
+      Data1: 965413886
+      Data2: 1081621477
+      Data3: -1390758475
+      Data4: -1977764574
+    Path: event:/VO/PA/Chime
+  _paVoice:
+    Guid:
+      Data1: 700418648
+      Data2: 1230217172
+      Data3: 2050441867
+      Data4: -538889362
+    Path: event:/VO/PA/Voice
+  _radioVoice:
+    Guid:
+      Data1: 1834092095
+      Data2: 1127883810
+      Data3: -1721796423
+      Data4: -169024939
+    Path: event:/VO/Radio/Voice
+  _craneVoice:
+    Guid:
+      Data1: 212325357
+      Data2: 1194733168
+      Data3: -1025209181
+      Data4: 486140090
+    Path: event:/VO/Crane/Voice
+  _secondsPerCharacter: 0.055
+  _minLineSeconds: 2
+  _gapSeconds: 0.4
+  _chimeSeconds: 0.9
+  _musicDuck: 0.45
+  _sfxDuck: 0.7
+  _sequences:
+  - Id: sh.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.01
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.02
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.03
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: sh.warden
+    Trigger: 1
+    TriggerKey: SH/WardenDrone
+    PerSector: 0
+    Lines:
+    - Key: line.04
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.05
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.06
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.07
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.08
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.09
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: bl.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.10
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.11
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.12
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: bl.automaton
+    Trigger: 1
+    TriggerKey: BL/SurgicalAutomaton
+    PerSector: 0
+    Lines:
+    - Key: line.13
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.14
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.15
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.19
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.20
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.21
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: relay.1
+    Trigger: 2
+    TriggerKey: 1
+    PerSector: 1
+    Lines:
+    - Key: line.16
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: relay.2
+    Trigger: 2
+    TriggerKey: 2
+    PerSector: 1
+    Lines:
+    - Key: line.17
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: relay.3
+    Trigger: 2
+    TriggerKey: 3
+    PerSector: 1
+    Lines:
+    - Key: line.18
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
