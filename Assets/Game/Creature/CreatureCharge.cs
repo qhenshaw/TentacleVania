@@ -2,6 +2,7 @@ using System;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Core.Characters;
+using TentacleVania.Core.Progression;
 using UnityEngine;
 
 namespace TentacleVania.Creature
@@ -29,9 +30,19 @@ namespace TentacleVania.Creature
             Meter = new(_settings.Max);
         }
 
-        private void OnEnable() => CombatEvents.HitLanded += OnHitLanded;
+        private void OnEnable()
+        {
+            CombatEvents.HitLanded += OnHitLanded;
+            Nests.Rested += OnRested;
+        }
 
-        private void OnDisable() => CombatEvents.HitLanded -= OnHitLanded;
+        private void OnDisable()
+        {
+            CombatEvents.HitLanded -= OnHitLanded;
+            Nests.Rested -= OnRested;
+        }
+
+        private void OnRested(string nest) => Set(Max);
 
         public void AddConsume() => Add(_settings.PerConsume);
 

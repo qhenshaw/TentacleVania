@@ -2,6 +2,7 @@ using System.Collections;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Core.Characters;
+using TentacleVania.Core.Progression;
 using TentacleVania.Core.Scenes;
 using TentacleVania.Creature.Movement;
 using UnityEngine;
@@ -44,6 +45,7 @@ namespace TentacleVania.Creature
             _health.Incoming.Add(_dashInvulnerability);
             _health.Damaged += OnDamaged;
             _health.Died += OnDied;
+            Nests.Rested += OnRested;
             CombatTargets.RegisterCreature(_health, GetComponent<CharacterController>().center.y);
         }
 
@@ -52,6 +54,7 @@ namespace TentacleVania.Creature
             _health.Incoming.Remove(_dashInvulnerability);
             _health.Damaged -= OnDamaged;
             _health.Died -= OnDied;
+            Nests.Rested -= OnRested;
             CombatTargets.UnregisterCreature(_health);
             EndStun();
         }
@@ -99,10 +102,19 @@ namespace TentacleVania.Creature
             StartCoroutine(RestartArena());
         }
 
+        private void OnRested(string nest)
+        {
+            if (!_health.IsAlive)
+                return;
+            EndStun();
+            _health.ResetToFull();
+        }
+
         private IEnumerator RestartArena()
         {
             yield return new WaitForSeconds(_settings.RestartDelay);
-            SceneFlow.Load(gameObject.scene.name);
+            var scene = string.IsNullOrEmpty(Nests.RespawnScene) ? gameObject.scene.name : Nests.RespawnScene;
+            SceneFlow.Load(scene);
         }
 
         private sealed class DashInvulnerability : IDamageModifier

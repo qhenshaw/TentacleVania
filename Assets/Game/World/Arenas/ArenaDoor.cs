@@ -22,6 +22,8 @@ namespace TentacleVania.World.Arenas
 
         public void Open() => Move(false);
 
+        public void ResetToStart() => Move(!_startOpen);
+
         private void Move(bool seal)
         {
             if (IsSealed == seal)

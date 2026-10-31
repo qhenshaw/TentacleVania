@@ -153,3 +153,19 @@
 .enemy-bar__stagger-fill {
     background-color: rgb(255, 176, 0);
 }
+
+.hud__prompt {
+    position: absolute;
+    bottom: 22%;
+    align-self: center;
+    padding: 6px 18px;
+    font-size: 26px;
+    color: rgb(230, 240, 235);
+    background-color: rgba(10, 12, 14, 0.7);
+    border-radius: 4px;
+    -unity-text-align: middle-center;
+}
+
+.hud__prompt--hidden {
+    display: none;
+}

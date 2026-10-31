@@ -3,6 +3,7 @@ using FMODUnity;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Core.Input;
+using TentacleVania.Core.Interaction;
 using TentacleVania.Creature.Movement;
 using TentacleVania.Creature.Rig;
 using UnityEngine;
@@ -70,9 +71,20 @@ namespace TentacleVania.Creature
         {
             var now = Time.time;
             if (_victim != null)
+            {
                 TickGulp();
-            else if (_health.IsAlive && _motor.InputEnabled && !_motor.IsDashing && GameplayInput.Default.Grab.Pressed)
-                TryGrab();
+                Interactions.Clear();
+            }
+            else if (_health.IsAlive && _motor.InputEnabled)
+            {
+                Interactions.Refresh(transform.position);
+                if (!_motor.IsDashing && GameplayInput.Default.Grab.Pressed && !TryGrab())
+                    Interactions.TryInteract();
+            }
+            else
+            {
+                Interactions.Clear();
+            }
 
             if (_healRemaining > 0f && _health.IsAlive)
             {
