@@ -3,9 +3,11 @@ using FMODUnity;
 using TentacleVania.Bosses;
 using TentacleVania.Combat;
 using TentacleVania.Core.Progression;
+using TentacleVania.Core.Scenes;
 using TentacleVania.Enemies;
 using TentacleVania.World.Arenas;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TentacleVania.Audio
 {
@@ -22,6 +24,7 @@ namespace TentacleVania.Audio
         private readonly Track _arena = new();
         private readonly Track _boss = new();
         private readonly Track _rest = new();
+        private readonly Track _menu = new();
         private MusicSettings _settings;
         private ArenaState _lastArenaState;
         private ArenaEncounter _lastArena;
@@ -64,6 +67,7 @@ namespace TentacleVania.Audio
             Release(_arena);
             Release(_boss);
             Release(_rest);
+            Release(_menu);
         }
 
         private void OnDestroy()
@@ -89,12 +93,14 @@ namespace TentacleVania.Audio
             var bossFighting = boss != null && boss.Health.IsAlive && boss.State != EnemyState.Dead;
             if (_restActive && (creature == null || (creature.transform.position - _restPosition).sqrMagnitude > _settings.RestLeaveDistance * _settings.RestLeaveDistance))
                 _restActive = false;
-            State = alive ? MusicRules.Pick(bossFighting, arenaFighting, _restActive) : MusicState.Silent;
+            var inMenu = SceneManager.GetActiveScene().name == SceneFlow.MainMenu && !Muted;
+            State = inMenu ? MusicState.Menu : alive ? MusicRules.Pick(bossFighting, arenaFighting, _restActive) : MusicState.Silent;
 
             var targetIntensity = State switch
             {
                 MusicState.Arena => MusicRules.ArenaIntensity(arena.WaveNumber, arena.WaveCount),
                 MusicState.Boss => MusicRules.BossIntensity(boss.Phase, boss.Boss.Phases.Count),
+                MusicState.Menu => _settings.MenuIntensity,
                 _ => _arena.Playing || _boss.Playing ? Intensity : 0f,
             };
             var dt = Time.unscaledDeltaTime;
@@ -104,6 +110,7 @@ namespace TentacleVania.Audio
             Drive(_arena, _settings.Arena, State == MusicState.Arena, dt);
             Drive(_boss, State == MusicState.Boss ? bossMusic : default, State == MusicState.Boss, dt);
             Drive(_rest, _settings.NestRest, State == MusicState.NestRest, dt);
+            Drive(_menu, _settings.Menu, State == MusicState.Menu, dt);
             ApplyIntensity();
         }
 
@@ -139,6 +146,8 @@ namespace TentacleVania.Audio
                 _arena.Instance.setParameterByName(_settings.IntensityParameter, Intensity);
             if (_boss.Playing)
                 _boss.Instance.setParameterByName(_settings.IntensityParameter, Intensity);
+            if (_menu.Playing)
+                _menu.Instance.setParameterByName(_settings.IntensityParameter, Intensity);
         }
 
         private static void Release(Track track)

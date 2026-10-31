@@ -40,6 +40,14 @@ MonoBehaviour:
       Data3: 835879348
       Data4: -1758613794
     Path: event:/Music/NestRest
+  _menu:
+    Guid:
+      Data1: -1945961588
+      Data2: 1300076318
+      Data3: 1246241678
+      Data4: -665170363
+    Path: 
+  _menuIntensity: 0.5
   _intensityParameter: Intensity
   _fadeIn: 1.5
   _fadeOut: 4

@@ -8,6 +8,7 @@ namespace TentacleVania.Audio
         Arena,
         Boss,
         NestRest,
+        Menu,
     }
 
     public static class MusicRules

@@ -6,6 +6,7 @@ Music and PA/radio voice (`TentacleVania.Audio`). Design: Audio Direction (ambie
   - **Boss** while `BossEnemy.Active` is alive, from its intro on. It plays `BossDefinition.Music`, or the shared `BossTheme`. Intensity goes from 0.5 in the first phase to 1 in the last.
   - **Arena** while `ArenaEncounter.Active` is spawning or fighting. Intensity goes from 0.25 on wave 1 to 1 on the last wave.
   - **NestRest** after `Nests.Rested`, until the creature walks 3 m away.
+  - **Menu** whenever the main menu is the active scene (ahead of every other state), at `MusicSettings._menuIntensity` (0.5: drone and pulse); it fades out over `_fadeOut` as gameplay loads.
   - **Silent** otherwise, and while the creature is dead.
 - **Tracks:** each fades in over 1.5 s and out over 4 s by instance volume, then is released. Intensity eases at 0.35 a second and decays to 0 once no music plays. It drives the global FMOD parameter `Intensity`, falling back to the instance parameter if it isn't global.
 - **Sting:** `event:/Music/Stings/RoomClear` plays when an arena clears.
@@ -14,6 +15,7 @@ Music and PA/radio voice (`TentacleVania.Audio`). Design: Audio Direction (ambie
   - `event:/Music/BossWarden`: for the Warden Drone, TV-63.
   - `event:/Music/BossTheme`.
   - `event:/Music/NestRest`: a loop.
+  - `event:/Music/Menu`: placeholder layered theme (60 bpm, 55 Hz root, 8 bars) from `placeholder_music.py` and `fmod-music-event.sh`.
   Swap in licensed stems with `fmod-swap-sound.sh --track n`.
 - `MusicDirector.Muted` silences it (tests).
 - `AudioMix` sets the FMOD bus volumes as user volume × duck factor for `bus:/`, `bus:/Music`, `bus:/SFX` and `bus:/VO`. User volumes follow `Core.Settings.SettingsStore.Applied`. Never call `Bus.setVolume` directly, or ducking and settings overwrite each other.
