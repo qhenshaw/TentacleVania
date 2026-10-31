@@ -50,20 +50,17 @@
     flex-grow: 1;
 }
 
-.map__minimap {
+.map__overlay {
     position: absolute;
-    top: 40px;
-    right: 40px;
-    width: 340px;
-    height: 340px;
-    background-color: rgba(3, 8, 6, 0.75);
-    border-width: 2px;
-    border-color: rgb(60, 200, 110);
-    border-radius: 6px;
+    left: 15%;
+    right: 15%;
+    top: 12%;
+    bottom: 12%;
+    opacity: 0.6;
     display: none;
 }
 
-.map__minimap--shown {
+.map__overlay--shown {
     display: flex;
 }
 

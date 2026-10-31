@@ -810,6 +810,10 @@ MonoBehaviour:
     m_Localized: SECURITY UNITS OFFLINE
     m_Metadata:
       m_Items: []
+  - m_Id: 611767434362880
+    m_Localized: Map overlay
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

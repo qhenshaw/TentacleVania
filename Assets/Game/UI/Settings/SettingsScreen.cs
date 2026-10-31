@@ -17,7 +17,7 @@ namespace TentacleVania.UI.Settings
         private const string OpenClass = "settings--open";
         private const string ActiveTabClass = "settings__tab--active";
         private static readonly string[] Tabs = { "audio", "gameplay", "accessibility", "controls", "display", "language" };
-        private static readonly string[] RebindActions = { "Weapon1", "Weapon2", "Dash", "Grab", "Ability" };
+        private static readonly string[] RebindActions = { "Weapon1", "Weapon2", "Dash", "Grab", "Ability", "MapOverlay" };
         private static readonly int[] FrameCaps = { 0, 30, 60, 120, 144 };
 
         private readonly List<Button> _tabButtons = new();
