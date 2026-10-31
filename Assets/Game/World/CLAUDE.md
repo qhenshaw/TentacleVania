@@ -39,6 +39,10 @@ Rooms and encounters (`TentacleVania.World`).
 - `Map/FastTravel.Travel(nestId)` (grown nests only): `Nests.SetRespawn` to the marker, then `FastTravelRunner` (persistent) runs Covering (0.6 s unscaled) → `SceneFlow.Load(rootScene)` → Loading (until the load gate opens) → Revealing (0.8 s) → Idle, exposing `Cover` (0–1) for the UI transition, resetting the time scale to 1 and autosaving on arrival. The creature spawns at the nest through the normal respawn.
 - F5 World: Map (explored rooms, markers, travel phase), Reveal sector map, Forget sector map, Grow every atlas nest. The `StreamingTest` rooms have test nests in Room 1 and Room 5 and a `MapGate` in Room 3.
 
+## Sector transit
+
+- `Transit/SectorElevator` (`Transit/FreightElevator.prefab`: greybox platform, rails and a lamp, red without power, green with it; an `IInteractable`, Grab: `prompt.elevator.ride`, or `prompt.elevator.locked` until `_requiredBoss` (default `Warden`) is defeated) calls `Map.FastTravel.Transit(destinationScene, arrival, yaw)`: the same runner and cover as fast travel (`TravelKind.Elevator`, label `transit.elevator`, `event:/World/Transit/Elevator`). `Core.Scenes.SpawnOverride` carries the arrival point; `CreatureSpawner` and `RoomStreamer` (its focus before the creature spawns) use it ahead of the nest respawn, and the spawner clears it. Set `_arrivalPosition` / `_arrivalYaw` to the paired elevator's platform in the other sector (the slice pair: Warden arena and Bio-Labs entry, both ways). F5 World: Nearest elevator, Power elevators (defeat Warden), Ride nearest elevator.
+
 ## Room streaming
 
 - A streamed sector is a root scene (light, `CreatureSpawn`, `GameplayCamera`, `CombatHud`, volume, `RoomStreamer`) plus one scene per arena or corridor, loaded additively through Addressables (address = scene name). Room scenes are not in Build Settings.

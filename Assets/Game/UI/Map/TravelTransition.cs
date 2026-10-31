@@ -15,6 +15,7 @@ namespace TentacleVania.UI.Map
 
         private VisualElement _overlay;
         private Label _label;
+        private TravelKind _kind = (TravelKind)(-1);
 
         public static float ShownOpacity => _instance != null && _instance._overlay != null ? _instance._overlay.resolvedStyle.opacity : 0f;
 
@@ -51,7 +52,7 @@ namespace TentacleVania.UI.Map
             _overlay.style.left = _overlay.style.top = _overlay.style.right = _overlay.style.bottom = 0f;
             _overlay.style.alignItems = Align.Center;
             _overlay.style.justifyContent = Justify.Center;
-            _label = new Label(LocalizationSettings.StringDatabase.GetLocalizedString("UI", "nest.travel.transit"));
+            _label = new Label();
             _label.style.fontSize = 30f;
             _label.style.letterSpacing = 8f;
             _label.style.color = new Color(0.95f, 0.5f, 0.8f);
@@ -63,6 +64,11 @@ namespace TentacleVania.UI.Map
         {
             if (_overlay == null)
                 return;
+            if (FastTravel.Kind != _kind)
+            {
+                _kind = FastTravel.Kind;
+                _label.text = LocalizationSettings.StringDatabase.GetLocalizedString("UI", _kind == TravelKind.Elevator ? "transit.elevator" : "nest.travel.transit");
+            }
             var cover = FastTravel.Cover;
             var pulse = 0.5f + 0.5f * Mathf.Sin(Time.unscaledTime * PulseRate * Mathf.PI * 2f);
             _overlay.style.opacity = cover;

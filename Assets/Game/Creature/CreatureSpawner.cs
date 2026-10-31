@@ -29,7 +29,13 @@ namespace TentacleVania.Creature
             enabled = false;
             var position = transform.position;
             var rotation = transform.rotation;
-            if (Nests.TryGetRespawn(gameObject.scene.name, out var nestPosition, out var yaw))
+            if (SpawnOverride.TryGet(gameObject.scene.name, out var overridePosition, out var overrideYaw))
+            {
+                position = overridePosition;
+                rotation = Quaternion.Euler(0f, overrideYaw, 0f);
+                SpawnOverride.Clear();
+            }
+            else if (Nests.TryGetRespawn(gameObject.scene.name, out var nestPosition, out var yaw))
             {
                 position = nestPosition;
                 rotation = Quaternion.Euler(0f, yaw, 0f);

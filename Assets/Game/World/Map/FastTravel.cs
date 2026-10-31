@@ -14,6 +14,12 @@ namespace TentacleVania.World.Map
         Revealing,
     }
 
+    public enum TravelKind
+    {
+        Nest,
+        Elevator,
+    }
+
     public static class FastTravel
     {
         public const float CoverTime = 0.6f;
@@ -24,6 +30,7 @@ namespace TentacleVania.World.Map
         public static TravelPhase Phase { get; private set; }
         public static float Cover { get; internal set; }
         public static string Destination { get; private set; }
+        public static TravelKind Kind { get; private set; }
 
         internal static string PendingScene { get; private set; }
 
@@ -48,10 +55,26 @@ namespace TentacleVania.World.Map
             if (!Nests.SetRespawn(nestId, registry.RootScene, marker.Position, marker.Yaw))
                 return false;
             Destination = nestId;
-            PendingScene = registry.RootScene;
+            Begin(TravelKind.Nest, registry.RootScene);
+            return true;
+        }
+
+        public static bool Transit(string scene, Vector3 arrival, float yaw)
+        {
+            if (Phase != TravelPhase.Idle || SceneFlow.IsLoading || string.IsNullOrEmpty(scene))
+                return false;
+            SpawnOverride.Set(scene, arrival, yaw);
+            Destination = scene;
+            Begin(TravelKind.Elevator, scene);
+            return true;
+        }
+
+        private static void Begin(TravelKind kind, string scene)
+        {
+            Kind = kind;
+            PendingScene = scene;
             FastTravelRunner.Ensure();
             SetPhase(TravelPhase.Covering);
-            return true;
         }
 
         internal static void SetPhase(TravelPhase phase)

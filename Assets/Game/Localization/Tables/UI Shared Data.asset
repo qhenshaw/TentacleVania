@@ -779,6 +779,18 @@ MonoBehaviour:
     m_Key: tutorial.ability
     m_Metadata:
       m_Items: []
+  - m_Id: 558100933001216
+    m_Key: prompt.elevator.ride
+    m_Metadata:
+      m_Items: []
+  - m_Id: 558100987527168
+    m_Key: prompt.elevator.locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 558100987527169
+    m_Key: transit.elevator
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
