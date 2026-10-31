@@ -1,6 +1,7 @@
 var name = UnityEditor.SessionState.GetString("closeupName", "closeup");
 var offset = UnityEditor.SessionState.GetString("closeupOffset", "2.2,2,-3").Split(',');
-var creature = TentacleVania.Creature.CreatureSpawner.Spawned.transform;
+var targetName = UnityEditor.SessionState.GetString("closeupTarget", "");
+var creature = targetName.Length > 0 ? UnityEngine.GameObject.Find(targetName).transform : TentacleVania.Creature.CreatureSpawner.Spawned.transform;
 var target = creature.position + UnityEngine.Vector3.up * 0.5f;
 var cam = UnityEngine.Camera.main;
 var oldPos = cam.transform.position;
