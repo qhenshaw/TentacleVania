@@ -33,6 +33,9 @@ namespace TentacleVania.Enemies
         private static readonly RaycastHit[] SweepHits = new RaycastHit[16];
         private static readonly Collider[] OverlapHits = new Collider[16];
         private const float LaneOvershoot = 1f;
+        private const float DissolveTime = 0.8f;
+        private const float DissolveSinkSpeed = 2.5f;
+        private static readonly List<Renderer> BodyRenderers = new();
 
         [SerializeField] private EnemyDefinition _definition;
         [SerializeField] private TelegraphGlow _glow;
@@ -62,6 +65,7 @@ namespace TentacleVania.Enemies
         private EnemyAnimator _animator;
         private Vector3 _knockbackVelocity;
         private float _knockbackRemaining;
+        private float _dissolveAt = -1f;
 
         public event Action<Enemy> StateChanged;
         public event Action<Enemy> Staggered;
@@ -95,6 +99,7 @@ namespace TentacleVania.Enemies
             _readyAt = new float[_definition.Attacks.Count];
             _health.Configure(Team.Site, _definition.MaxHealth, _definition.MaxArmor);
             _health.Bleeds = !_definition.Machine;
+            _health.BurstsOnDeath = !IsBoss;
             BaseSpeed = _definition.MoveSpeed;
             _agent.speed = BaseSpeed * GameSettings.EnemySpeedScale;
             _circleAngle = UnityEngine.Random.Range(0f, 360f);
@@ -171,6 +176,14 @@ namespace TentacleVania.Enemies
             if (_animator != null)
                 _animator.Tick(Time.deltaTime);
             TickKnockback(Time.deltaTime);
+            TickDissolve(Time.deltaTime);
+        }
+
+        private void TickDissolve(float dt)
+        {
+            if (_dissolveAt < 0f || Time.time < _dissolveAt)
+                return;
+            transform.position += Vector3.down * (DissolveSinkSpeed * dt);
         }
 
         private void TickKnockback(float dt)
@@ -529,12 +542,28 @@ namespace TentacleVania.Enemies
             if (_agent.enabled)
                 Halt();
             _agent.enabled = false;
+            var consumed = State == EnemyState.Consumed;
             SetState(EnemyState.Dead);
             OnDeath();
+            if (!consumed && _health.BurstsOnDeath)
+            {
+                if (GameSettings.Gore)
+                    HideBody();
+                else
+                    _dissolveAt = Time.time + Mathf.Max(0f, _definition.DespawnDelay - DissolveTime);
+            }
             Destroy(gameObject, _definition.DespawnDelay);
         }
 
         protected virtual void OnDeath() { }
+
+        private void HideBody()
+        {
+            GetComponentsInChildren(true, BodyRenderers);
+            foreach (var body in BodyRenderers)
+                body.enabled = false;
+            BodyRenderers.Clear();
+        }
 
         private void OnDamaged(Health health, in DamageInfo info, in DamageResult result)
         {

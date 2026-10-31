@@ -24,6 +24,12 @@ MonoBehaviour:
     BloodDecal: {fileID: 3253151241989615436, guid: cd5396dfc736d7a4f8f99c3910ea5d70, type: 3}
     PoolSize: 8
     DecalSize: {x: 0.8, y: 1.6}
+  _machine:
+    Impact: {fileID: 5555839672399503525, guid: 815da6da73295964cb9913ac7e70273c, type: 3}
+    BloodSpray: {fileID: 5555839672399503525, guid: a9f63b7c273caf24892783fd522b5d08, type: 3}
+    BloodDecal: {fileID: 3253151241989615436, guid: 6e129e7f531660a4cbdcdbd82960771c, type: 3}
+    PoolSize: 8
+    DecalSize: {x: 0.8, y: 1.6}
   _creatureBigHit: 0.1
   _lightIntensity: 0.5
   _heavyIntensity: 1
@@ -34,3 +40,13 @@ MonoBehaviour:
   _groundLayers:
     serializedVersion: 2
     m_Bits: 1
+  _fleshGib: {fileID: 1916033945074234968, guid: df487381457107f479c6bdbf4a285971, type: 3}
+  _boneGib: {fileID: 7677929795119658609, guid: e130c6b3f7ce7aa4cb68800d47805d32, type: 3}
+  _metalGib: {fileID: 1712107321574523078, guid: 083721cb943258441a231f0534850ab4, type: 3}
+  _ichorSmoke: {fileID: 5555839672399503525, guid: b9b1816c0a6d8e24a9ea3e175cd80d27, type: 3}
+  _gibPoolSize: 48
+  _killGibs: 8
+  _biteGibs: 3
+  _boneEvery: 3
+  _gibLifetime: 6
+  _gibSpeed: {x: 3, y: 7}

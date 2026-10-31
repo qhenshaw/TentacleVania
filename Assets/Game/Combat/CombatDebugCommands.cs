@@ -39,6 +39,13 @@ namespace TentacleVania.Combat
                 if (Feedback.HitEffects.Instance != null)
                     Feedback.HitEffects.Instance.ClearDecals();
             });
+            DebugMenu.Value(DebugMenu.Combat, "Gibs active", () =>
+                Feedback.HitEffects.Instance != null ? Feedback.HitEffects.Instance.ActiveGibs.ToString() : "-");
+            DebugMenu.Button(DebugMenu.Combat, "Clear gibs", () =>
+            {
+                if (Feedback.HitEffects.Instance != null)
+                    Feedback.HitEffects.Instance.ClearGibs();
+            });
         }
 
         private static void OnHit(Health target, in DamageInfo info, in DamageResult result)

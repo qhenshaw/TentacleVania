@@ -10,6 +10,7 @@ namespace TentacleVania.Combat
         public static event System.Action<Consumable> ConsumeStarted;
         public static event System.Action<Consumable> ConsumeBitten;
         public static event System.Action<Consumable> Consumed;
+        public static event System.Action<Health> Died;
 
         internal static void RaiseHit(Health target, in DamageInfo info, in DamageResult result) => HitLanded?.Invoke(target, info, result);
 
@@ -21,6 +22,8 @@ namespace TentacleVania.Combat
 
         internal static void RaiseConsumed(Consumable consumable) => Consumed?.Invoke(consumable);
 
+        internal static void RaiseDied(Health health) => Died?.Invoke(health);
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset()
         {
@@ -29,6 +32,7 @@ namespace TentacleVania.Combat
             ConsumeStarted = null;
             ConsumeBitten = null;
             Consumed = null;
+            Died = null;
         }
     }
 }

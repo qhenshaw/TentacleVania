@@ -21,6 +21,8 @@ namespace TentacleVania.Combat.Feedback
 
         [SerializeField] private Side _creature = new();
         [SerializeField] private Side _enemy = new();
+        [Tooltip("Non-bleeding targets: Impact on hits, BloodSpray (sparks) and BloodDecal (oil) on deaths and consumes.")]
+        [SerializeField] private Side _machine = new();
 
         [Header("Rules")]
         [Tooltip("A hit on the creature leaves a decal when it takes at least this fraction of its max health.")]
@@ -37,6 +39,21 @@ namespace TentacleVania.Combat.Feedback
         [SerializeField, Min(0f)] private float _recycleFade = 0.15f;
         [SerializeField] private LayerMask _groundLayers = 1;
 
+        [Header("Death gore")]
+        [SerializeField] private Rigidbody _fleshGib;
+        [SerializeField] private Rigidbody _boneGib;
+        [SerializeField] private Rigidbody _metalGib;
+        [Tooltip("Plays where a body dissolves when gore is off.")]
+        [SerializeField] private VisualEffect _ichorSmoke;
+        [SerializeField, Min(1)] private int _gibPoolSize = 48;
+        [SerializeField, Min(0)] private int _killGibs = 8;
+        [SerializeField, Min(0)] private int _biteGibs = 3;
+        [Tooltip("Every nth flesh gib is bone.")]
+        [SerializeField, Min(1)] private int _boneEvery = 3;
+        [SerializeField, Min(0.5f)] private float _gibLifetime = 6f;
+        [Tooltip("Upward and outward launch speed range in m/s.")]
+        [SerializeField] private Vector2 _gibSpeed = new(3f, 7f);
+
         public Side Creature => _creature;
         public Side Enemy => _enemy;
         public float CreatureBigHit => _creatureBigHit;
@@ -47,5 +64,16 @@ namespace TentacleVania.Combat.Feedback
         public float DecalOffset => _decalOffset;
         public float RecycleFade => _recycleFade;
         public LayerMask GroundLayers => _groundLayers;
+        public Side Machine => _machine;
+        public Rigidbody FleshGib => _fleshGib;
+        public Rigidbody BoneGib => _boneGib;
+        public Rigidbody MetalGib => _metalGib;
+        public VisualEffect IchorSmoke => _ichorSmoke;
+        public int GibPoolSize => _gibPoolSize;
+        public int KillGibs => _killGibs;
+        public int BiteGibs => _biteGibs;
+        public int BoneEvery => _boneEvery;
+        public float GibLifetime => _gibLifetime;
+        public Vector2 GibSpeed => _gibSpeed;
     }
 }
