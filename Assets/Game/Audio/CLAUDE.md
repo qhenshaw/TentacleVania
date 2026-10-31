@@ -23,7 +23,7 @@ Music and PA/radio voice (`TentacleVania.Audio`). Design: Audio Direction (ambie
 ## PA and radio (design: Vertical Slice: Script & Audio)
 
 - `Resources/PaScript.asset` (`PaScript`): the PA chime, a placeholder voice event per channel (PA, Radio, Crane), timing (0.055 s per character, at least 2 s, 0.4 s between lines, 0.9 s chime), duck levels (music 0.45, SFX 0.7) and the `PaSequence`s:
-  - `sh.entry` (lines 1–3) and `bl.entry` (10–12) are `Manual`, played by a `PaZone`;
+  - `sh.entry` (lines 1–3) and `bl.entry` (10–12) are `Manual`, played by a `PaZone` (the pod chamber's after 5.5 s, so it lands in the cold open's alarms; `OpeningSequence.Skipped` marks it played and stops the PA);
   - `sh.warden` (4–5, then Crane 6–9) and `bl.automaton` (13–15, then Crane 19–21) are `BossDefeated`, keyed by boss save id `SH/WardenDrone` and `BL/SurgicalAutomaton` (the boss tasks must use these ids);
   - `relay.1`–`3` (16–18) are `RelayCount` and `PerSector`.
 - **Text:** subtitles are in the `Dialogue` string table (`line.01`–`line.21`, `sector.<system>` swapped into the relay lines' `{0}`, `speaker.pa`/`radio`/`crane`).

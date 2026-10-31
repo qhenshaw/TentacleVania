@@ -73,12 +73,14 @@ namespace TentacleVania.Audio
         {
             BossProgress.Defeated += OnBossDefeated;
             SecurityRelays.RelayDestroyed += OnRelayDestroyed;
+            World.Opening.OpeningSequence.Skipped += OnOpeningSkipped;
         }
 
         private void OnDisable()
         {
             BossProgress.Defeated -= OnBossDefeated;
             SecurityRelays.RelayDestroyed -= OnRelayDestroyed;
+            World.Opening.OpeningSequence.Skipped -= OnOpeningSkipped;
             StopVoice();
             AudioMix.SetDuck(AudioMix.Music, 1f);
             AudioMix.SetDuck(AudioMix.Sfx, 1f);
@@ -100,6 +102,14 @@ namespace TentacleVania.Audio
             foreach (var line in sequence.Lines)
                 _queue.Enqueue(new Queued { Line = line, Sector = sector });
             return true;
+        }
+
+        private void OnOpeningSkipped(string sequenceId)
+        {
+            var sequence = _script != null ? _script.Find(sequenceId) : null;
+            if (sequence != null)
+                SaveSystem.Data.World.Set(WorldFlag.PlayedLine, PaRules.SaveKey(sequence.Id, sequence.PerSector, null));
+            SkipAll();
         }
 
         public void SkipAll()

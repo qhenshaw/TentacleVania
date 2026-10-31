@@ -48,6 +48,13 @@ namespace TentacleVania.World.Editor
                     var zone = c.AddByName(c.Empty("PaZone", RoomContext.CellCenter(3.5f, 38.5f), 0f), "TentacleVania.Audio.PaZone");
                     RoomContext.Set(zone, "_sequence", "sh.entry");
                     RoomContext.Set(zone, "_size", new Vector3(16f, 4f, 13f));
+                    RoomContext.Set(zone, "_delay", 5.5f);
+                    var pod = c.Spawn("Assets/Game/World/Opening/CreaturePod.prefab", RoomContext.CellCenter(3f, 38.5f), 180f, "CreaturePod");
+                    c.Spawn("Assets/Game/World/Opening/SpecimenPod.prefab", RoomContext.CellCenter(1.9f, 38.5f), 180f, "SpecimenPod_W");
+                    c.Spawn("Assets/Game/World/Opening/SpecimenPod.prefab", RoomContext.CellCenter(4.1f, 38.5f), 180f, "SpecimenPod_E");
+                    var consoleW = c.Spawn("Assets/Game/World/Opening/LabConsole.prefab", RoomContext.CellCenter(2.2f, 40.1f), 0f, "LabConsole_W");
+                    var consoleE = c.Spawn("Assets/Game/World/Opening/LabConsole.prefab", RoomContext.CellCenter(4.3f, 40.1f), 0f, "LabConsole_E");
+                    RoomContext.Set(pod.GetComponent<Opening.OpeningSequence>(), "_workSpots", new UnityEngine.Object[] { consoleW.transform.Find("WorkSpot"), consoleE.transform.Find("WorkSpot") });
                 },
             }.Hall(P(3, 35), P(3, 31)).Door(3, 31, Side.South).Wave(E("Scientist", 2)));
 

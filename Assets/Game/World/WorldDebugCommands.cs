@@ -18,6 +18,19 @@ namespace TentacleVania.World
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Register()
         {
+            DebugMenu.Value(Tab, "Opening", () => Opening.OpeningSequence.Playing
+                ? $"playing {Opening.OpeningSequence.Current.Elapsed:F1} s"
+                : Opening.OpeningSequence.Seen ? "seen" : "not seen");
+            DebugMenu.Button(Tab, "Replay opening", () =>
+            {
+                if (Opening.OpeningSequence.Current != null)
+                    Opening.OpeningSequence.Current.Replay();
+            });
+            DebugMenu.Button(Tab, "Skip opening", () =>
+            {
+                if (Opening.OpeningSequence.Current != null)
+                    Opening.OpeningSequence.Current.Skip();
+            });
             DebugMenu.Value(Tab, "Arena", () =>
             {
                 var arena = ArenaEncounter.Active;

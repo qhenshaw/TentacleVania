@@ -811,6 +811,10 @@ MonoBehaviour:
     m_Key: action.MapOverlay
     m_Metadata:
       m_Items: []
+  - m_Id: 622799024308224
+    m_Key: opening.holdToSkip
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
