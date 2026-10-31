@@ -36,12 +36,16 @@ MonoBehaviour:
     Recovery: 0.6
     Cooldown: 1.5
     TrackDuringWindUp: 0.6
+    Hits: 1
     MinRange: 0
     MaxRange: 1.6
     Damage: 4
     Stagger: 0
     Type: 0
     StunDuration: 0
+    Status: 0
+    StatusMagnitude: 0
+    StatusDuration: 0
     Reach: 1.4
     Arc: 60
     SweepRadius: 0.3
@@ -52,10 +56,39 @@ MonoBehaviour:
     ProjectileSpeed: 14
     ProjectileLifetime: 3
     LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
+    WindUpSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
   _consumeHeal: 0.1
   _biomass: 5
+  _spawnOnWall: 0
   _despawnDelay: 2
   _panicRange: 7
   _fleeDistance: 6
   _corneredDistance: 1.2
   _preferredRange: {x: 5, y: 8}
+  _voice: {fileID: 11400000, guid: df0a8b0c6ac80984c89e4f403b09c67d, type: 2}
+  _machine: 0
+  _healPerSecond: 8
+  _healRange: 6
+  _keepAwayRange: 7

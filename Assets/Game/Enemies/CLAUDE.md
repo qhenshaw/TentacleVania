@@ -31,6 +31,11 @@ Each `EnemyAttack` has optional FMOD events: `WindUpSound` (attack start), `Stri
 
 New enemy prefabs are built from the TestBrute layout by an eval (replace the `Enemy` component with the subclass, give it its own CharacterMaster material and definition) and added to `Debug/Resources/DebugEnemySpawnList`.
 
+## Voices
+
+- `EnemyDefinition._voice` points at an `Data/EnemyVoice` asset (`Data/Voices/HumanVoice`, `MachineVoice`; every slice enemy and both bosses have one): Alert when the enemy first leaves Spawning, Pain on health damage (per-enemy `_painCooldown`, 1.2 s), Death (not when consumed) and Grabbed on the maw's grab. Placeholder FMOD events `event:/Enemies/Voice/Human|Machine/Alert|Pain|Death|Grabbed`.
+- All go through `EnemyVoices.Play`, which caps voices at 3 per 0.6 s (`VoiceLimiter`, unit tested); death and grabbed are important and always play. F5 Enemies: Enemy voices on/off, Voices played / dropped.
+
 ## Placeholder bodies and animation
 
 - Bodies are Kenney Animated Characters (CC0, `Assets/ThirdParty/Kenney/AnimatedCharacters/`, imported as Humanoid so clips retarget between body sizes) under each prefab's `Model` child, scaled to 1.78 m: Scientist medium + businessMaleA, Security Guard medium + militaryMaleA with a pistol on the right hand, Handler large male + cyborg, TestBrute large male + robot (developer decisions). The skin is the `_BaseMap` of the enemy's CharacterMaster material; `CharacterMaterials` lists the skinned mesh (and pistol).
