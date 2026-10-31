@@ -7,6 +7,8 @@
 }
 
 .tutorial {
+    flex-direction: row;
+    align-items: center;
     padding: 10px 26px;
     background-color: rgba(4, 14, 8, 0.85);
     border-width: 2px;
@@ -21,6 +23,13 @@
 .tutorial--shown {
     opacity: 1;
     translate: 0 0;
+}
+
+.tutorial__icon {
+    width: 44px;
+    height: 44px;
+    margin-right: 12px;
+    -unity-background-scale-mode: scale-to-fit;
 }
 
 .tutorial__text {

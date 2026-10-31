@@ -2,6 +2,7 @@
     <Style src="Tutorial.uss" />
     <ui:VisualElement name="tutorial-root" class="tutorial-root" picking-mode="Ignore">
         <ui:VisualElement name="tutorial" class="tutorial" picking-mode="Ignore">
+            <ui:VisualElement name="tutorial-icon" class="tutorial__icon" picking-mode="Ignore" />
             <ui:Label name="tutorial-text" class="tutorial__text" picking-mode="Ignore" />
         </ui:VisualElement>
     </ui:VisualElement>
