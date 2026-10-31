@@ -62,7 +62,7 @@ namespace TentacleVania.World.Map
                     Time.timeScale = 1f;
                     if (tunnel)
                         EnterTunnel();
-                    else if (FastTravel.Kind == TravelKind.Crawl)
+                    else if (FastTravel.Kind is TravelKind.Crawl or TravelKind.Recover)
                         Streaming.RoomStreamer.FocusOverride = FastTravel.CrawlTarget;
                     else
                         SceneFlow.Load(FastTravel.PendingScene);
@@ -82,7 +82,7 @@ namespace TentacleVania.World.Map
                     }
                     if (elapsed > 0.6f && !SceneFlow.IsLoading && LoadGate.IsOpen && StreamerIdle())
                     {
-                        if (FastTravel.Kind == TravelKind.Crawl)
+                        if (FastTravel.Kind is TravelKind.Crawl or TravelKind.Recover)
                         {
                             Teleport(FastTravel.CrawlTarget, FastTravel.CrawlYaw);
                             Streaming.RoomStreamer.FocusOverride = null;

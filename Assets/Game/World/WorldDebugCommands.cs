@@ -21,6 +21,19 @@ namespace TentacleVania.World
             DebugMenu.Value(Tab, "Opening", () => Opening.OpeningSequence.Playing
                 ? $"playing {Opening.OpeningSequence.Current.Elapsed:F1} s"
                 : Opening.OpeningSequence.Seen ? "seen" : "not seen");
+            DebugMenu.Value(Tab, "Fall recoveries", () => $"creature {Map.FallRecovery.CreatureRecoveries}, enemies {Map.FallRecovery.EnemyRecoveries}, safe {Map.FallRecovery.SafePoint:F1}");
+            DebugMenu.Button(Tab, "Drop creature out of the map", () =>
+            {
+                var creature = CombatTargets.Creature;
+                if (creature == null)
+                    return;
+                var controller = creature.GetComponent<CharacterController>();
+                if (controller != null)
+                    controller.enabled = false;
+                creature.transform.position += new Vector3(0f, -12f, 0f);
+                if (controller != null)
+                    controller.enabled = true;
+            });
             DebugMenu.Button(Tab, "Replay opening", () =>
             {
                 if (Opening.OpeningSequence.Current != null)
