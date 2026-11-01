@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: CryoTechnicianVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -118613168
+      Data2: 1296884404
+      Data3: 719230882
+      Data4: 1194112272
+    Path: event:/Enemies/Voice/CryoTechnician/Alert
+  _pain:
+    Guid:
+      Data1: -1104325487
+      Data2: 1183464357
+      Data3: 2045259436
+      Data4: -124969997
+    Path: event:/Enemies/Voice/CryoTechnician/Pain
+  _death:
+    Guid:
+      Data1: -385491419
+      Data2: 1168363826
+      Data3: -1981553476
+      Data4: -1074371449
+    Path: event:/Enemies/Voice/CryoTechnician/Death
+  _grabbed:
+    Guid:
+      Data1: 555571447
+      Data2: 1327600032
+      Data3: -1375667579
+      Data4: 1596597256
+    Path: event:/Enemies/Voice/CryoTechnician/Grabbed
+  _attack:
+    Guid:
+      Data1: 800671552
+      Data2: 1203964765
+      Data3: 2134008751
+      Data4: -796611201
+    Path: event:/Enemies/Voice/CryoTechnician/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

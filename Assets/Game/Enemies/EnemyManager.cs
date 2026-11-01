@@ -18,6 +18,7 @@ namespace TentacleVania.Enemies
         private readonly Dictionary<EnemyProjectile, Stack<EnemyProjectile>> _projectilePools = new();
         private readonly Dictionary<ContainmentTrap, Stack<ContainmentTrap>> _trapPools = new();
         private readonly Dictionary<AcidBurst, Stack<AcidBurst>> _burstPools = new();
+        private readonly Dictionary<IceWall, Stack<IceWall>> _wallPools = new();
 
         public static EnemyManager Instance
         {
@@ -158,6 +159,34 @@ namespace TentacleVania.Enemies
                 burst.gameObject.SetActive(false);
                 pool.Push(burst);
             }
+        }
+
+        public static IceWall RaiseWall(IceWall prefab, Vector3 position, Vector3 along, float width, float lifetime)
+        {
+            var manager = Instance;
+            if (!manager._wallPools.TryGetValue(prefab, out var pool))
+                manager._wallPools[prefab] = pool = new Stack<IceWall>(4);
+            var wall = pool.Count > 0 ? pool.Pop() : null;
+            if (wall == null)
+            {
+                wall = Instantiate(prefab, manager.transform);
+                wall.Prefab = prefab;
+            }
+            wall.Raise(position, along, width, lifetime);
+            return wall;
+        }
+
+        public static void ReturnWall(IceWall wall)
+        {
+            wall.gameObject.SetActive(false);
+            if (_instance == null || wall.Prefab == null)
+            {
+                Destroy(wall.gameObject);
+                return;
+            }
+            if (!_instance._wallPools.TryGetValue(wall.Prefab, out var pool))
+                _instance._wallPools[wall.Prefab] = pool = new Stack<IceWall>(4);
+            pool.Push(wall);
         }
 
         public static void ReturnBurst(AcidBurst burst)

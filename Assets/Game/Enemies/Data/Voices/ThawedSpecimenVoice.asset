@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: ThawedSpecimenVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 465356032
+      Data2: 1308714065
+      Data3: -1540041808
+      Data4: -1119574023
+    Path: event:/Enemies/Voice/ThawedSpecimen/Alert
+  _pain:
+    Guid:
+      Data1: 1907250167
+      Data2: 1129755813
+      Data3: 1131300027
+      Data4: -148502076
+    Path: event:/Enemies/Voice/ThawedSpecimen/Pain
+  _death:
+    Guid:
+      Data1: -972060190
+      Data2: 1201730012
+      Data3: 1672919957
+      Data4: 1651786041
+    Path: event:/Enemies/Voice/ThawedSpecimen/Death
+  _grabbed:
+    Guid:
+      Data1: -813904555
+      Data2: 1192605166
+      Data3: -759387260
+      Data4: 604523766
+    Path: event:/Enemies/Voice/ThawedSpecimen/Grabbed
+  _attack:
+    Guid:
+      Data1: -891552438
+      Data2: 1225956750
+      Data3: 1382053001
+      Data4: -2102765482
+    Path: event:/Enemies/Voice/ThawedSpecimen/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2
