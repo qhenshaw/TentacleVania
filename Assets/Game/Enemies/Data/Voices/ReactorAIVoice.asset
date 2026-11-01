@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: ReactorAIVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -2084143787
+      Data2: 1108576975
+      Data3: -1593899587
+      Data4: 540276201
+    Path: event:/Enemies/Voice/ReactorAI/Alert
+  _pain:
+    Guid:
+      Data1: -598022341
+      Data2: 1264982968
+      Data3: 1182376878
+      Data4: 1730303156
+    Path: event:/Enemies/Voice/ReactorAI/Pain
+  _death:
+    Guid:
+      Data1: 1850313904
+      Data2: 1098506295
+      Data3: -267264864
+      Data4: 334001583
+    Path: event:/Enemies/Voice/ReactorAI/Death
+  _grabbed:
+    Guid:
+      Data1: 1215756962
+      Data2: 1260226358
+      Data3: 1149817225
+      Data4: 910154177
+    Path: event:/Enemies/Voice/ReactorAI/Grabbed
+  _attack:
+    Guid:
+      Data1: 2023881573
+      Data2: 1244815635
+      Data3: -816288111
+      Data4: -969076946
+    Path: event:/Enemies/Voice/ReactorAI/Attack
+  _stagger:
+    Guid:
+      Data1: 1123651922
+      Data2: 1331137045
+      Data3: 617784508
+      Data4: -841319759
+    Path: event:/Enemies/Voice/ReactorAI/Stagger
+  _painCooldown: 1.2

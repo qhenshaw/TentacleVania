@@ -95,6 +95,13 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - **Attacks (yellow):** Drill Jab (60° at 3 m, 18); Drill Sweep (240° at 3.5 m, 2 × 14; phase 2).
 - **Phase 2 (≤50%), drop down:** the floor gives way (greybox stand-in: the pits clear, FMOD `event:/Bosses/Excavator/Collapse`, a 2.5 s stun); it no longer burrows, and hits from within 120° behind it deal ×1.75 to the exposed engine. Adds: Dig Crew (max 2, every 15 s), then Security Drones as maintenance drones (1 on start, max 2).
 
+## Containment Reactor AI (`ReactorAI/`; design: Containment Reactor AI page, TV-197; placeholder numbers)
+
+- **Assets:** `ReactorAI.prefab` (`ReactorBoss : BossEnemy`; a green `Core` cylinder in its `CharacterMaterials`, the Kenney body shrunk away), data `ReactorAI.asset` (speed 0, machine), boss data `ReactorAIBoss.asset` (id `BS/ReactorAI`, key `boss.reactorAI`, reward `RadiationResistance`), voice set `ReactorAIVoice`; `ReactorRod.prefab` (`ReactorRod`: a destructible 150 HP rod on the Enemy layer with a trigger collider, so spawning it never shoves the creature; `Restore()` puts it back); `Enemies/Prefabs/RepairDrone.prefab` (`Enemies/Types/TaskDroneEnemy`: flies to its `Goal` instead of the creature and doesn't attack while it has one).
+- **Numbers:** 2,000 HP; no stagger.
+- **Control rods (design core mechanic):** 4 rods spawn on a 4.5 m ring at 45° offsets. The core takes no damage until a rod is destroyed; each one pulled exposes it for 6 s (FMOD `event:/Bosses/Reactor/RodPulled`), and with all 4 out it stays exposed. Each pull sends a Repair Drone (an add) to that rod: 3 s within 1.6 m reinserts it (`event:/Bosses/Reactor/RodRestored`), so kill it or lose the progress.
+- **Escalation by rods pulled:** 1+ radiation bursts (3 Radiation `FireZone`s, 2.5 m, 1 s warning, 1.5 s, 18/s, every 5 s); 2+ Steam Jets (yellow 180° sweep at 9 m, 3 × 8 + Slow 0.3); 3+ drones fly ×1.6 faster; 4 the whole floor pulses (16 m, 1.5 s warning, 10/s, every 6 s).
+
 ## Surgical Automaton (`Automaton/`; design: Surgical Automaton page and Changelog "Surgical Automaton fight")
 
 - **Assets:** `SurgicalAutomaton.prefab` (`SurgicalAutomaton : BossEnemy`; the test boss's Handler body ×1.6 in steel as placeholder), enemy data `SurgicalAutomaton.asset` and boss data `AutomatonBoss.asset` (id `BL/SurgicalAutomaton`, matching the PA script; the shared boss theme; reward `TentacleGrapple`, which unlocks Grapple without taking the slot).

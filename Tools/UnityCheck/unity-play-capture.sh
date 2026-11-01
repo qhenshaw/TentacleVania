@@ -40,6 +40,7 @@ if [[ "$(eval_result 'return UnityEditor.EditorApplication.isPlaying;' 2>/dev/nu
 fi
 eval_result 'UnityEditor.AssetDatabase.Refresh(); return 0;' >/dev/null 2>&1
 wait_idle 180 || exit 2
+echo "Playing $(eval_result 'return UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;' 2>/dev/null)"
 
 trap 'eval_result "UnityEditor.EditorApplication.isPaused = false; return 0;" >/dev/null 2>&1; "${Unity[@]}" editor.playmode stop >/dev/null 2>&1; wait_until 30 "!UnityEditor.EditorApplication.isPlaying" >/dev/null 2>&1; eval_result "PlayFromMainMenu.Bypass = false; return 0;" >/dev/null 2>&1; rm -rf Assets/Temp Assets/Temp.meta' EXIT
 eval_result 'UnityEditor.EditorPrefs.SetInt("InteractionMode", 1); PlayFromMainMenu.Bypass = true; return 0;' >/dev/null 2>&1
