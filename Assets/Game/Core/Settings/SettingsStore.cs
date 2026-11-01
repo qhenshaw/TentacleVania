@@ -87,6 +87,7 @@ namespace TentacleVania.Core.Settings
             GameSettings.Gore = data.Gore;
             GameSettings.Rumble = data.Rumble;
             GameSettings.Subtitles = data.Subtitles;
+            GameSettings.SpeedrunTimer = data.SpeedrunTimer;
             GameSettings.KeepBiomassOnDeath = data.KeepBiomassOnDeath;
             GameSettings.DamageTakenScale = data.DamageTakenScale;
             GameSettings.DamageDealtScale = data.DamageDealtScale;

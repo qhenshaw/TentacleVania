@@ -36,6 +36,7 @@ namespace TentacleVania.Core.Settings
         public bool Gore = true;
         public bool Rumble = true;
         public bool Subtitles = true;
+        public bool SpeedrunTimer;
         public ColorblindMode Colorblind;
         public string Language = "";
         public DisplayModeSetting DisplayMode;

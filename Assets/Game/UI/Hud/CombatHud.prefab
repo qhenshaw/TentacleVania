@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 4876044312293847031}
   - component: {fileID: 2269295934017072161}
   - component: {fileID: 2479015800784636932}
+  - component: {fileID: 6055401294241571585}
   m_Layer: 0
   m_Name: CombatHud
   m_TagString: Untagged
@@ -465,6 +466,18 @@ MonoBehaviour:
   _duration: 24
   _fadeTime: 1.5
   _skipAfter: 2
+--- !u!114 &6055401294241571585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703636293144204845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89267507dc5bbf6458c6256c823101d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.SpeedrunTimerView
 --- !u!1 &3146986584512052326
 GameObject:
   m_ObjectHideFlags: 0

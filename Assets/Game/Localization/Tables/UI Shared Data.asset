@@ -1695,6 +1695,154 @@ MonoBehaviour:
     m_Key: ability.MimicShell.name
     m_Metadata:
       m_Items: []
+  - m_Id: 1025775173910528
+    m_Key: achievement.Breakout.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047872
+    m_Key: achievement.Breakout.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047873
+    m_Key: achievement.BadgeRevoked.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047874
+    m_Key: achievement.BadgeRevoked.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047875
+    m_Key: achievement.ColdOpen.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047876
+    m_Key: achievement.ColdOpen.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047877
+    m_Key: achievement.Overwatched.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047878
+    m_Key: achievement.Overwatched.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047879
+    m_Key: achievement.CriticalMass.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047880
+    m_Key: achievement.CriticalMass.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047881
+    m_Key: achievement.FriendlyFire.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047882
+    m_Key: achievement.FriendlyFire.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047883
+    m_Key: achievement.OneOfMany.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047884
+    m_Key: achievement.OneOfMany.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047885
+    m_Key: achievement.HunterHunted.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047886
+    m_Key: achievement.HunterHunted.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047887
+    m_Key: achievement.Subject312.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047888
+    m_Key: achievement.Subject312.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047889
+    m_Key: achievement.EscapeVelocity.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047890
+    m_Key: achievement.EscapeVelocity.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047891
+    m_Key: achievement.ApexPredator.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047892
+    m_Key: achievement.ApexPredator.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047893
+    m_Key: achievement.Mutant.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047894
+    m_Key: achievement.Mutant.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047895
+    m_Key: achievement.FullSpine.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047896
+    m_Key: achievement.FullSpine.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047897
+    m_Key: achievement.HoardersFriend.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047898
+    m_Key: achievement.HoardersFriend.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047899
+    m_Key: achievement.Archivist.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047900
+    m_Key: achievement.Archivist.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047901
+    m_Key: achievement.Arsenal.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047902
+    m_Key: achievement.Arsenal.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047903
+    m_Key: achievement.BiomassBaron.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047904
+    m_Key: achievement.BiomassBaron.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047905
+    m_Key: achievement.FeatOfStrength.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047906
+    m_Key: achievement.FeatOfStrength.desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047907
+    m_Key: settings.speedrunTimer
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
