@@ -1159,6 +1159,10 @@ MonoBehaviour:
     m_Key: mutation.feedbackLoop.name
     m_Metadata:
       m_Items: []
+  - m_Id: 950488457297920
+    m_Key: ability.Shock.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
