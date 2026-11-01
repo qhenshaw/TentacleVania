@@ -19,8 +19,13 @@ while (( $# )); do
     shift
 done
 
-wait_idle 180 || exit 2
-out=$("${Unity[@]}" test run --mode "$mode" --filter "$filter" --timeout "$timeout" 2>&1)
+# right after a recompile the runner can report 0 tests before it has found them, so a run of 0 is retried
+for attempt in 1 2 3; do
+    wait_idle 180 || exit 2
+    out=$("${Unity[@]}" test run --mode "$mode" --filter "$filter" --timeout "$timeout" 2>&1)
+    [[ "$(json_number Total <<<"$out")" != 0 ]] && break
+    sleep 5
+done
 if ! grep -q '"Summary"' <<<"$out"; then
     echo "Test run didn't finish:"
     sed 's/^/  /' <<<"$out" | head -20
@@ -32,6 +37,10 @@ passed=$(json_number Passed <<<"$out")
 failed=$(json_number Failed <<<"$out")
 skipped=$(json_number Skipped <<<"$out")
 echo "$mode tests: $passed/$total passed, $failed failed, $skipped skipped."
+if [[ "$total" == 0 && "$filter" == "$ROOT_NAMESPACE" ]]; then
+    echo "No tests ran; the runner didn't find the project's tests."
+    exit 2
+fi
 
 if (( ${failed:-0} > 0 )); then
     awk '
