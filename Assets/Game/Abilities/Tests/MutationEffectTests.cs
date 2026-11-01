@@ -204,5 +204,26 @@ namespace TentacleVania.Abilities.Tests
             Assert.That(Combat.Status.StatusEffects.ExtraChainTargets, Is.EqualTo(targets));
             Assert.That(Combat.StaggerRules.MachineElectricScale, Is.EqualTo(1f).Within(1e-4f));
         }
+
+        [Test]
+        public void DeathThroesBoostsDamageOnlyBelowThirtyPercent()
+        {
+            _host.Health.Configure(Combat.Damage.Team.Creature, 100f);
+            var before = _host.Health.Outgoing.Count;
+            var effect = Make<DeathThroesMutation>().CreateEffect();
+            effect.Enable(_host);
+            Assert.That(_host.Health.Outgoing.Count, Is.EqualTo(before + 1));
+            var context = new Combat.Damage.DamageContext(Combat.Damage.DamageInfo.Create(10f, Combat.Damage.Team.Creature), Combat.Damage.Team.Site);
+            effect.Tick(_host, 0f);
+            _host.Health.Outgoing.Apply(ref context);
+            Assert.That(context.HealthScale, Is.EqualTo(1f).Within(1e-4f));
+            _host.Health.SetFraction(0.2f);
+            effect.Tick(_host, 0f);
+            context = new Combat.Damage.DamageContext(Combat.Damage.DamageInfo.Create(10f, Combat.Damage.Team.Creature), Combat.Damage.Team.Site);
+            _host.Health.Outgoing.Apply(ref context);
+            Assert.That(context.HealthScale, Is.EqualTo(1.5f).Within(1e-4f));
+            effect.Disable(_host);
+            Assert.That(_host.Health.Outgoing.Count, Is.EqualTo(before));
+        }
     }
 }

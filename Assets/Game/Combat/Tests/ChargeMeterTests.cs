@@ -43,5 +43,17 @@ namespace TentacleVania.Combat.Tests
             meter.Add(20f);
             Assert.IsTrue(meter.TrySpend(35f), "41 charge covers the cheapest ability (35)");
         }
+
+        [Test]
+        public void ResizeClampsTheCurrentCharge()
+        {
+            var meter = new ChargeMeter(100f);
+            meter.Set(90f);
+            meter.Resize(150f);
+            Assert.That(meter.Max, Is.EqualTo(150f));
+            Assert.That(meter.Current, Is.EqualTo(90f));
+            meter.Resize(60f);
+            Assert.That(meter.Current, Is.EqualTo(60f));
+        }
     }
 }

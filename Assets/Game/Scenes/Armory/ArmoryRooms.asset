@@ -796,6 +796,11 @@ MonoBehaviour:
     Room: AR_R3
     Position: {x: 46.5, y: 0, z: -19.5}
     Yaw: 0
+  - Kind: 5
+    Id: AR_R3/Afterglow
+    Room: AR_R3
+    Position: {x: 51, y: 0, z: -15}
+    Yaw: 0
   - Kind: 7
     Id: AR/Auto-AR_A3
     Room: AR_A3

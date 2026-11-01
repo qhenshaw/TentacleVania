@@ -1037,6 +1037,17 @@
           ],
           "yaw": 0,
           "name": "FlameGland"
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            16.5,
+            -5.5
+          ],
+          "yaw": 0,
+          "name": "Afterglow",
+          "itemId": "Afterglow"
         }
       ]
     },

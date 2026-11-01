@@ -972,6 +972,17 @@
             -6
           ],
           "yaw": 0
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            16.5,
+            -5.5
+          ],
+          "yaw": 0,
+          "name": "PuppetSpores",
+          "itemId": "PuppetSpores"
         }
       ]
     },

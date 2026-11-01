@@ -1102,6 +1102,17 @@
             15
           ],
           "yaw": 0
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            38.5,
+            16.5
+          ],
+          "yaw": 0,
+          "name": "OverchargeSac",
+          "itemId": "OverchargeSac"
         }
       ]
     }

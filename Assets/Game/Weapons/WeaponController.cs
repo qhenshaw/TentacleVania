@@ -292,6 +292,8 @@ namespace TentacleVania.Weapons
             AttackStarted?.Invoke(this);
             if (kind == AttackKind.Heavy || _finisher)
                 Core.Characters.CreatureSignals.RaiseHeavyAttack();
+            if (kind == AttackKind.Heavy)
+                Core.Characters.CreatureSignals.RaiseChargedHeavy(_moveForward);
         }
 
         private Vector3 ChooseDirection()

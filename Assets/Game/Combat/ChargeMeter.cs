@@ -6,7 +6,7 @@ namespace TentacleVania.Combat
     {
         public ChargeMeter(float max) => Max = Mathf.Max(1f, max);
 
-        public float Max { get; }
+        public float Max { get; private set; }
         public float Current { get; private set; }
         public float GainScale { get; set; } = 1f;
         public bool IsFull => Current >= Max;
@@ -30,5 +30,11 @@ namespace TentacleVania.Combat
         }
 
         public void Set(float value) => Current = Mathf.Clamp(value, 0f, Max);
+
+        public void Resize(float max)
+        {
+            Max = Mathf.Max(1f, max);
+            Current = Mathf.Min(Current, Max);
+        }
     }
 }
