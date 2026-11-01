@@ -237,6 +237,10 @@ namespace TentacleVania.UI.Hud
                 BleedPips = StatusPips.Build(Bleed);
                 statusRow.Add(Bleed);
                 statusRow.Add(Burn);
+                Static = Element("enemy-bar__static");
+                StaticFill = Element("enemy-bar__static-fill");
+                Static.Add(StaticFill);
+                statusRow.Add(Static);
                 Root.Add(healthBar);
                 Root.Add(staggerBar);
                 Root.Add(statusRow);
@@ -253,6 +257,9 @@ namespace TentacleVania.UI.Hud
             public VisualElement[] BleedPips { get; }
             public int BleedStacks { get; private set; }
             public bool Burning { get; private set; }
+            public VisualElement Static { get; }
+            public VisualElement StaticFill { get; }
+            public float StaticShown { get; private set; }
             public BarTrail Trail { get; }
             public Enemy Enemy { get; private set; }
             public bool IsAssigned { get; private set; }
@@ -275,6 +282,7 @@ namespace TentacleVania.UI.Hud
                 Trail.Snap(LastHealth);
                 BleedStacks = -1;
                 Burning = true;
+                StaticShown = -1f;
                 SetStatus(enemy.Status);
             }
 
@@ -292,6 +300,13 @@ namespace TentacleVania.UI.Hud
                 {
                     Burning = burning;
                     Burn.style.display = burning ? DisplayStyle.Flex : DisplayStyle.None;
+                }
+                var charge = status != null ? status.StaticNormalized : 0f;
+                if (!Mathf.Approximately(charge, StaticShown))
+                {
+                    Static.style.display = charge > 0f ? DisplayStyle.Flex : DisplayStyle.None;
+                    SetWidth(StaticFill, charge);
+                    StaticShown = charge;
                 }
             }
 
