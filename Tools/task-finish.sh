@@ -46,8 +46,16 @@ branch=$(git branch --show-current)
 has_origin() { git remote get-url origin >/dev/null 2>&1; }
 push_main() {
     has_origin || { echo "No origin remote; main is at $(git rev-parse --short HEAD), not pushed."; return; }
-    git push -q 2>&1 | grep -v "^Uploading LFS\|^$" || true
-    echo "Pushed main at $(git rev-parse --short HEAD)."
+    for attempt in 1 2 3; do
+        if git push -q 2>&1 | grep -v "^Uploading LFS\|^$"; [[ ${PIPESTATUS[0]} == 0 ]]; then
+            echo "Pushed main at $(git rev-parse --short HEAD)."
+            return
+        fi
+        echo "Push rejected; merging the latest origin/main and retrying."
+        git pull -q --no-rebase --no-edit || { echo "Pulling main conflicts; resolve the merge and push by hand."; exit 1; }
+    done
+    echo "Pushing main was rejected three times (other agents pushing); push by hand."
+    exit 1
 }
 [[ "$branch" == main ]] && { push_main; exit 0; }
 
