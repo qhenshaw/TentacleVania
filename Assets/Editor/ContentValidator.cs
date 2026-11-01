@@ -19,6 +19,7 @@ using UnityEngine;
 public static class ContentValidator
 {
     public const string GameFolder = "Assets/Game";
+    public const float MinWindUp = 0.4f;
 
     private static readonly (Regex Pattern, string Rule)[] BannedApis =
     {
@@ -154,6 +155,15 @@ public static class ContentValidator
                         report.Warn($"{label}: {entry.Prefab.name} is not in DebugEnemySpawnList");
             }
         }
+
+        foreach (var definition in Assets<EnemyDefinition>("t:EnemyDefinition"))
+            foreach (var attack in definition.Attacks)
+            {
+                if (attack.GroundIndicator == IndicatorMode.Off)
+                    report.Error($"{AssetDatabase.GetAssetPath(definition)}: attack {attack.Name} hides its ground indicator (every attack shows one)");
+                if (attack.WindUp < MinWindUp)
+                    report.Error($"{AssetDatabase.GetAssetPath(definition)}: attack {attack.Name} winds up {attack.WindUp} s (minimum {MinWindUp} s)");
+            }
 
         foreach (var go in Assets<GameObject>("t:Prefab"))
         {

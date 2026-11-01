@@ -113,7 +113,7 @@ namespace TentacleVania.Enemies.Data
         {
             IndicatorMode.On => true,
             IndicatorMode.Off => forceAll,
-            _ => forceAll || Kind != AttackKind.Melee || Telegraph == Telegraph.Undodgeable,
+            _ => true,
         };
     }
 }
