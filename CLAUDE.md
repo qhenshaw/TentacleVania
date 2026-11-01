@@ -157,6 +157,7 @@ A small `Bootstrap` scene is the entry point: it holds the persistent managers (
 | `LayoutSandbox` | Level layout tool test room built from `SciFiTopDown` (`World/CLAUDE.md`); not in the build |
 | `StreamingTest` (+ `StreamingTest_Room1`–`5`) | Room streaming test chain: a root scene that streams five room scenes through Addressables (`World/CLAUDE.md`); not in the build |
 | `Administration` (+ `AD_*` rooms in `Administration/`) | L0 hub sector generated from `World/Data/Sectors/Administration.sector.json`; reached by the transit door in Specimen Holding's pre-boss nest after the Warden |
+| `MothersVault` (+ `MV_*` rooms in `MothersVault/`) | Finale sector from `World/Data/Sectors/MothersVault.sector.json`; reached by the transit in the Black Site's Reactor Hall (Radiation Resistance); three relay systems gate its parts and Crane's door |
 | `BlackSite` (+ `BS_*` rooms in `BlackSite/`) | L3 sector from `World/Data/Sectors/BlackSite.sector.json`; reached by the tunnel in Deep Containment's Burrow Tunnel room (Burrow) |
 | `DeepContainment` (+ `DC_*` rooms in `DeepContainment/`) | L3 sector from `World/Data/Sectors/DeepContainment.sector.json`; reached by the freight elevator in the Command Center's Core Chamber (Overload) |
 | `CommandCenter` (+ `CC_*` rooms in `CommandCenter/`) | L2 sector from `World/Data/Sectors/CommandCenter.sector.json`; reached by the transit door in the Armory's Blast Door room (Breach wall, Fire Resistance) |

@@ -1,0 +1,872 @@
+{
+  "sector": "MV",
+  "rootScene": "MothersVault",
+  "folder": "Assets/Game/Scenes/MothersVault",
+  "addressablesGroup": "MothersVault",
+  "color": [
+    0.85,
+    0.4,
+    0.6,
+    1
+  ],
+  "spawn": [
+    3.5,
+    38.5
+  ],
+  "spawnYaw": 180,
+  "rooms": [
+    {
+      "scene": "MV_EntryNest",
+      "role": "Plain",
+      "rect": [
+        1,
+        36,
+        6,
+        5
+      ],
+      "halls": [
+        [
+          [
+            3,
+            35
+          ],
+          [
+            3,
+            31
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 31,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "nest",
+          "id": "MV/EntryNest",
+          "at": [
+            5,
+            39.5
+          ],
+          "yaw": 180
+        },
+        {
+          "type": "transit",
+          "at": [
+            1.6,
+            38.5
+          ],
+          "yaw": 90,
+          "destination": "BlackSite",
+          "arrivalAt": [
+            42.4,
+            3
+          ],
+          "arrivalOffset": [
+            -1.5,
+            0,
+            0
+          ],
+          "arrivalYaw": 270,
+          "requiredBoss": "",
+          "requiredAbility": "RadiationResistance",
+          "name": "Transit_BS"
+        }
+      ]
+    },
+    {
+      "scene": "MV_A1",
+      "role": "Arena",
+      "rect": [
+        0,
+        24,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            7,
+            27
+          ],
+          [
+            12,
+            27
+          ]
+        ],
+        [
+          [
+            3,
+            23
+          ],
+          [
+            3,
+            18
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 30,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 6,
+          "y": 27,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 3,
+          "y": 24,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 12,
+          "y": 27,
+          "side": "East"
+        },
+        {
+          "x": 3,
+          "y": 18,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "MV1_A1",
+          "system": "MV1",
+          "at": [
+            1,
+            29.5
+          ]
+        },
+        {
+          "type": "securityDoor",
+          "system": "MV1",
+          "at": [
+            3,
+            20.5
+          ],
+          "yaw": 0,
+          "name": "SecurityDoor_MV1"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "HiveTissueSpawn",
+            "count": 4
+          }
+        ],
+        [
+          {
+            "enemy": "CraneLoyalist",
+            "count": 2
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "MV_A2",
+      "role": "Arena",
+      "rect": [
+        13,
+        25,
+        5,
+        5
+      ],
+      "wallMounts": true,
+      "halls": [
+        [
+          [
+            18,
+            27
+          ],
+          [
+            23,
+            27
+          ]
+        ],
+        [
+          [
+            15,
+            30
+          ],
+          [
+            15,
+            35
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 13,
+          "y": 27,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 17,
+          "y": 27,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 15,
+          "y": 29,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 23,
+          "y": 27,
+          "side": "East"
+        },
+        {
+          "x": 15,
+          "y": 35,
+          "side": "North"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "BlackOpsSoldier",
+            "count": 2
+          },
+          {
+            "enemy": "HiveTissueSpawn",
+            "count": 2
+          }
+        ]
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "MV1_A2",
+          "system": "MV1",
+          "at": [
+            17,
+            29
+          ]
+        }
+      ]
+    },
+    {
+      "scene": "MV_A3",
+      "role": "Arena",
+      "rect": [
+        24,
+        24,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            27,
+            23
+          ],
+          [
+            27,
+            19
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 24,
+          "y": 27,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 27,
+          "y": 24,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 27,
+          "y": 19,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "MV1_A3",
+          "system": "MV1",
+          "at": [
+            29.5,
+            29.5
+          ]
+        },
+        {
+          "type": "securityDoor",
+          "system": "MV1",
+          "at": [
+            27,
+            21
+          ],
+          "yaw": 0,
+          "name": "SecurityDoor_MV1"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "HiveTissueSpawn",
+            "count": 3
+          },
+          {
+            "enemy": "RadDrone",
+            "count": 1
+          }
+        ],
+        [
+          {
+            "enemy": "CraneLoyalist",
+            "count": 1
+          },
+          {
+            "enemy": "BlackOpsSoldier",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "MV_A4",
+      "role": "Arena",
+      "rect": [
+        1,
+        13,
+        5,
+        5
+      ],
+      "halls": [
+        [
+          [
+            6,
+            15
+          ],
+          [
+            11,
+            15
+          ]
+        ],
+        [
+          [
+            3,
+            12
+          ],
+          [
+            3,
+            7
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 17,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 5,
+          "y": 15,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 3,
+          "y": 13,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 11,
+          "y": 15,
+          "side": "East"
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "MV2_A4",
+          "system": "MV2",
+          "at": [
+            1.5,
+            13.5
+          ]
+        },
+        {
+          "type": "securityDoor",
+          "system": "MV2",
+          "at": [
+            3,
+            9.5
+          ],
+          "yaw": 0,
+          "name": "SecurityDoor_MV2"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "HiveClone",
+            "count": 2
+          },
+          {
+            "enemy": "HiveTissueSpawn",
+            "count": 2
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "MV_A5",
+      "role": "Arena",
+      "rect": [
+        12,
+        12,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            19,
+            15
+          ],
+          [
+            23,
+            15
+          ]
+        ],
+        [
+          [
+            15,
+            11
+          ],
+          [
+            15,
+            7
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 12,
+          "y": 15,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 18,
+          "y": 15,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 15,
+          "y": 12,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 23,
+          "y": 15,
+          "side": "East"
+        },
+        {
+          "x": 15,
+          "y": 7,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "MV2_A5",
+          "system": "MV2",
+          "at": [
+            17.5,
+            17.5
+          ]
+        },
+        {
+          "type": "securityDoor",
+          "system": "MV2",
+          "at": [
+            15,
+            9
+          ],
+          "yaw": 0,
+          "name": "SecurityDoor_MV2"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "CraneLoyalist",
+            "count": 2
+          },
+          {
+            "enemy": "BlackOpsSoldier",
+            "count": 2
+          }
+        ],
+        [
+          {
+            "enemy": "HiveTissueSpawn",
+            "count": 4
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "MV_A6",
+      "role": "Arena",
+      "rect": [
+        24,
+        12,
+        7,
+        7
+      ],
+      "wallMounts": true,
+      "halls": [],
+      "doors": [
+        {
+          "x": 27,
+          "y": 18,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 24,
+          "y": 15,
+          "side": "West",
+          "arena": true
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "MV2_A6",
+          "system": "MV2",
+          "at": [
+            29.5,
+            12.5
+          ]
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "AncientSpecimen",
+            "count": 1
+          },
+          {
+            "enemy": "HiveTissueSpawn",
+            "count": 3
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "MV_A7",
+      "role": "Arena",
+      "rect": [
+        0,
+        0,
+        7,
+        7
+      ],
+      "wallMounts": true,
+      "halls": [
+        [
+          [
+            7,
+            3
+          ],
+          [
+            11,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 6,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 6,
+          "y": 3,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 11,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "MV3_A7",
+          "system": "MV3",
+          "at": [
+            1,
+            1
+          ]
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "BlackOpsSoldier",
+            "count": 2
+          },
+          {
+            "enemy": "CraneLoyalist",
+            "count": 1
+          }
+        ],
+        [
+          {
+            "enemy": "HiveTissueSpawn",
+            "count": 3
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "MV_A8",
+      "role": "Arena",
+      "rect": [
+        12,
+        0,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            19,
+            3
+          ],
+          [
+            23,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 15,
+          "y": 6,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 18,
+          "y": 3,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 23,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "MV3_A8a",
+          "system": "MV3",
+          "at": [
+            13,
+            1
+          ]
+        },
+        {
+          "type": "relay",
+          "id": "MV3_A8b",
+          "system": "MV3",
+          "at": [
+            17.5,
+            5.5
+          ]
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "HiveClone",
+            "count": 2
+          },
+          {
+            "enemy": "CraneLoyalist",
+            "count": 2
+          }
+        ],
+        [
+          {
+            "enemy": "HiveTissueSpawn",
+            "count": 4
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "MV_PreBossNest",
+      "role": "Plain",
+      "rect": [
+        24,
+        1,
+        5,
+        5
+      ],
+      "halls": [
+        [
+          [
+            29,
+            3
+          ],
+          [
+            34,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 24,
+          "y": 3,
+          "side": "West"
+        },
+        {
+          "x": 34,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "nest",
+          "id": "MV/PreBossNest",
+          "at": [
+            26,
+            4
+          ],
+          "yaw": 180
+        },
+        {
+          "type": "securityDoor",
+          "system": "MV3",
+          "at": [
+            31,
+            3
+          ],
+          "yaw": 90,
+          "name": "CranesDoor"
+        }
+      ]
+    },
+    {
+      "scene": "MV_CraneLab",
+      "role": "Boss",
+      "rect": [
+        35,
+        0,
+        8,
+        6
+      ],
+      "doors": [
+        {
+          "x": 35,
+          "y": 3,
+          "side": "West",
+          "arena": true
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Props/MotherTank.prefab",
+          "at": [
+            41,
+            2.5
+          ],
+          "yaw": 0,
+          "name": "MotherTank"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Crane",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "MV_R1",
+      "role": "Plain",
+      "rect": [
+        13,
+        36,
+        5,
+        4
+      ],
+      "doors": [
+        {
+          "x": 15,
+          "y": 36,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "pickup",
+          "prefab": "TrinketPickup",
+          "at": [
+            15,
+            38
+          ],
+          "yaw": 0,
+          "name": "StarChartPlate",
+          "itemId": "StarChartPlate"
+        }
+      ]
+    }
+  ]
+}
