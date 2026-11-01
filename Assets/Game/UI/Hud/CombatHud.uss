@@ -145,6 +145,11 @@
     background-color: rgb(140, 255, 60);
 }
 
+.enemy-bar--elite .enemy-bar__health {
+    border-width: 2px;
+    border-color: rgb(255, 200, 60);
+}
+
 .enemy-bar__armor {
     bottom: auto;
     height: 2px;

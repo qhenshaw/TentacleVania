@@ -13,6 +13,8 @@ namespace TentacleVania.World.Arenas
         {
             public Enemy Prefab;
             [Min(1)] public int Count = 1;
+            [Tooltip("Spawn these as elites (Enemies/Data/Resources/EliteSettings).")]
+            public bool Elite;
         }
 
         [Serializable]

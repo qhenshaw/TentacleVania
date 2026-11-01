@@ -35,7 +35,7 @@ namespace TentacleVania.World.Arenas
         [SerializeField] private string _id;
 
         private readonly List<Enemy> _alive = new(16);
-        private readonly List<Enemy> _queue = new(16);
+        private readonly List<ArenaWaveSet.Entry> _queue = new(16);
 
         private int _waveIndex = -1;
         private float _nextAction;
@@ -207,7 +207,7 @@ namespace TentacleVania.World.Arenas
             _queue.Clear();
             foreach (var entry in _waves.Waves[index].Enemies)
                 for (var i = 0; i < entry.Count; i++)
-                    _queue.Add(entry.Prefab);
+                    _queue.Add(entry);
             Shuffle(_queue);
             _nextAction = now;
             SetState(ArenaState.Spawning);
@@ -223,13 +223,13 @@ namespace TentacleVania.World.Arenas
                 SetState(ArenaState.Fighting);
                 return;
             }
-            var prefab = _queue[^1];
+            var next = _queue[^1];
             _queue.RemoveAt(_queue.Count - 1);
-            Spawn(prefab);
+            Spawn(next.Prefab, next.Elite);
             _nextAction = now + _waves.SpawnInterval;
         }
 
-        private void Spawn(Enemy prefab)
+        private void Spawn(Enemy prefab, bool elite)
         {
             var onWall = prefab.Definition != null && prefab.Definition.SpawnOnWall && _wallMounts.Length > 0;
             var point = onWall ? _wallMounts[_wallCursor++ % _wallMounts.Length] : _spawnPoints[_spawnCursor++ % _spawnPoints.Length];
@@ -239,6 +239,8 @@ namespace TentacleVania.World.Arenas
             if (prefab.Definition != null && !prefab.Definition.Machine)
                 HadHumans = true;
             var enemy = Instantiate(prefab, position, point.rotation);
+            if (elite)
+                enemy.MakeElite();
             _alive.Add(enemy);
         }
 
@@ -281,7 +283,7 @@ namespace TentacleVania.World.Arenas
             StateChanged?.Invoke(this);
         }
 
-        private static void Shuffle(List<Enemy> list)
+        private static void Shuffle<T>(List<T> list)
         {
             for (var i = list.Count - 1; i > 0; i--)
             {

@@ -310,6 +310,7 @@ namespace TentacleVania.World.Editor
                         ?? throw new System.ArgumentException($"{room.Scene}: no enemy prefab named {room.Waves[w][e].Prefab}");
                     entry.FindPropertyRelative("Prefab").objectReferenceValue = prefab.GetComponent<Enemy>();
                     entry.FindPropertyRelative("Count").intValue = room.Waves[w][e].Count;
+                    entry.FindPropertyRelative("Elite").boolValue = room.Waves[w][e].Elite;
                 }
             }
             waveSo.ApplyModifiedPropertiesWithoutUndo();

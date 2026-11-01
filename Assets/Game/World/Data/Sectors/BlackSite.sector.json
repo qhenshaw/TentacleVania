@@ -528,7 +528,12 @@
         [
           {
             "enemy": "BlackOpsSoldier",
-            "count": 2
+            "count": 1,
+            "elite": true
+          },
+          {
+            "enemy": "BlackOpsSoldier",
+            "count": 1
           }
         ]
       ]
@@ -730,7 +735,12 @@
         [
           {
             "enemy": "HiveClone",
-            "count": 2
+            "count": 1,
+            "elite": true
+          },
+          {
+            "enemy": "HiveClone",
+            "count": 1
           },
           {
             "enemy": "BlackOpsSoldier",

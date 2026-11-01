@@ -503,7 +503,8 @@
         [
           {
             "enemy": "AssaultMech",
-            "count": 1
+            "count": 1,
+            "elite": true
           }
         ]
       ]
@@ -715,7 +716,12 @@
         [
           {
             "enemy": "EliteGuard",
-            "count": 2
+            "count": 1,
+            "elite": true
+          },
+          {
+            "enemy": "EliteGuard",
+            "count": 1
           },
           {
             "enemy": "Officer",

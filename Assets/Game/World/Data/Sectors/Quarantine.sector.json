@@ -547,7 +547,8 @@
         [
           {
             "enemy": "BloatedSpecimen",
-            "count": 1
+            "count": 1,
+            "elite": true
           },
           {
             "enemy": "HostileSpecimen",
@@ -768,7 +769,8 @@
         [
           {
             "enemy": "BloatedSpecimen",
-            "count": 1
+            "count": 1,
+            "elite": true
           },
           {
             "enemy": "HostileSpecimen",
