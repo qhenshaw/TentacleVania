@@ -59,6 +59,8 @@ namespace TentacleVania.UI.Nest
         private VisualElement _statRows;
         private VisualElement _mutationRows;
         private Label _notches;
+        private VisualElement _pips;
+        private int _pipsUsed;
 
         public static NestMenuScreen Instance { get; private set; }
 
@@ -85,6 +87,10 @@ namespace TentacleVania.UI.Nest
             _statRows = root.Q<VisualElement>("rows");
             _mutationRows = root.Q<VisualElement>("mutation-rows");
             _notches = root.Q<Label>("notches");
+            _pips = new VisualElement { name = "notch-pips" };
+            _pips.AddToClassList("nest__pips");
+            _pips.AddToClassList(HiddenClass);
+            _notches.parent.Insert(_notches.parent.IndexOf(_notches) + 1, _pips);
             Bind(root.Q<Label>("biomass-label"), "nest.biomass");
             Bind(root.Q<Label>("next-label"), "nest.next");
             Bind(root.Q<Label>("level-label"), "nest.level");
@@ -331,6 +337,7 @@ namespace TentacleVania.UI.Nest
             _statRows.EnableInClassList(HiddenClass, _mutationMode);
             _mutationRows.EnableInClassList(HiddenClass, !_mutationMode);
             _notches.EnableInClassList(HiddenClass, !_mutationMode);
+            _pips.AddToClassList(HiddenClass);
             _biomass.text = Biomass.Carried.ToString("N0");
             _next.text = Stats.NextLevelCost.ToString("N0");
             _level.text = Stats.Level.ToString();
@@ -384,6 +391,10 @@ namespace TentacleVania.UI.Nest
             var controller = Mutations;
             var used = controller != null ? controller.UsedNotches() : 0;
             _notches.text = string.Format(Text("nest.notches"), used, MutationLoadout.NotchPool);
+            _notches.AddToClassList(HiddenClass);
+            _pips.RemoveFromClassList(HiddenClass);
+            _pipsUsed = used;
+            ShowPips(0);
             if (controller == null || MutationLoadout.Owned.Count == 0)
             {
                 var none = new Label(Text("nest.mutations.none"));
@@ -408,11 +419,38 @@ namespace TentacleVania.UI.Nest
                 var button = new Button(() => ToggleMutation(id)) { text = Text(equipped ? "nest.unequip" : "nest.equip"), name = "mutation-" + id };
                 button.AddToClassList("nest__action");
                 button.SetEnabled(equipped || MutationLoadout.Fits(used, definition.Notches, MutationLoadout.NotchPool));
+                var change = equipped ? -definition.Notches : definition.Notches;
+                button.RegisterCallback<FocusInEvent>(_ => ShowPips(change));
+                button.RegisterCallback<PointerEnterEvent>(_ => ShowPips(change));
+                button.RegisterCallback<FocusOutEvent>(_ => ShowPips(0));
+                button.RegisterCallback<PointerLeaveEvent>(_ => ShowPips(0));
                 row.Add(name);
                 row.Add(cost);
                 row.Add(effect);
                 row.Add(button);
                 _mutationRows.Add(row);
+            }
+        }
+
+        private void ShowPips(int change)
+        {
+            var pool = MutationLoadout.NotchPool;
+            var after = _pipsUsed + change;
+            var count = Mathf.Max(pool, after);
+            while (_pips.childCount < count)
+            {
+                var pip = new VisualElement();
+                pip.AddToClassList("nest__pip");
+                _pips.Add(pip);
+            }
+            for (var i = 0; i < _pips.childCount; i++)
+            {
+                var pip = _pips[i];
+                pip.style.display = i < count ? DisplayStyle.Flex : DisplayStyle.None;
+                pip.EnableInClassList("nest__pip--used", i < _pipsUsed && (change >= 0 || i < after));
+                pip.EnableInClassList("nest__pip--free", change < 0 && i >= after && i < _pipsUsed);
+                pip.EnableInClassList("nest__pip--add", change > 0 && i >= _pipsUsed && i < after && i < pool);
+                pip.EnableInClassList("nest__pip--over", change > 0 && i >= pool && i < after);
             }
         }
 
