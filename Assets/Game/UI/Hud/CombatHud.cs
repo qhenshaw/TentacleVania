@@ -7,6 +7,7 @@ using TentacleVania.Enemies;
 using TentacleVania.Enemies.Data;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 namespace TentacleVania.UI.Hud
@@ -40,6 +41,8 @@ namespace TentacleVania.UI.Hud
         [SerializeField, Min(0f)] private float _enemyBarShowTime = 4f;
         [SerializeField, Min(0.01f)] private float _enemyBarFadeTime = 0.5f;
         [SerializeField, Min(0f)] private float _enemyBarClearance = 0.5f;
+        [Tooltip("Glyphs for the Consume prompt above the enemy a Grab would take.")]
+        [SerializeField] private InputGlyphLibrary _glyphs;
 
         private readonly EnemyBar[] _enemyBars = new EnemyBar[EnemyBarCount];
 
@@ -54,6 +57,11 @@ namespace TentacleVania.UI.Hud
         private BarTrail _health;
         private Health _creature;
         private CreatureCharge _charge;
+        private CreatureConsume _consume;
+        private Consumable _grabTarget;
+        private Texture2D _grabIcon;
+        private Core.Input.InputDeviceKind _grabIconDevice = (Core.Input.InputDeviceKind)(-1);
+        private Gamepad _grabIconPad;
         private int _frame;
 
         public static bool Visible { get; set; } = true;
@@ -120,6 +128,7 @@ namespace TentacleVania.UI.Hud
             {
                 _creature = creature;
                 _charge = creature != null ? creature.GetComponent<CreatureCharge>() : null;
+                _consume = creature != null ? creature.GetComponent<CreatureConsume>() : null;
                 if (creature != null)
                     _health.Snap(creature.Normalized);
             }
@@ -143,6 +152,9 @@ namespace TentacleVania.UI.Hud
             _frame++;
             var manager = EnemyManager.Current;
             var camera = UnityEngine.Camera.main;
+            _grabTarget = _consume != null ? _consume.Target : null;
+            if (_grabTarget != null)
+                RefreshGrabIcon();
             if (manager != null && camera != null)
             {
                 var enemies = manager.Enemies;
@@ -201,6 +213,21 @@ namespace TentacleVania.UI.Hud
             bar.Root.EnableInClassList(FeedableClass, feedable);
             bar.SetStatus(enemy.Status);
             bar.HealthFill.style.opacity = feedable ? 0.55f + 0.45f * Pulse() : 1f;
+            var prompt = _grabTarget != null && enemy.ConsumeTarget == _grabTarget && _grabIcon != null;
+            bar.Prompt.style.display = prompt ? DisplayStyle.Flex : DisplayStyle.None;
+            if (prompt && bar.Prompt.style.backgroundImage.value.texture != _grabIcon)
+                bar.Prompt.style.backgroundImage = _grabIcon;
+        }
+
+        private void RefreshGrabIcon()
+        {
+            var device = Core.Input.GameplayInput.Default.LastDevice;
+            var pad = Gamepad.current;
+            if (device == _grabIconDevice && pad == _grabIconPad)
+                return;
+            _grabIconDevice = device;
+            _grabIconPad = pad;
+            _grabIcon = _glyphs != null ? _glyphs.ForAction("Grab") : null;
         }
 
         private EnemyBar Find(Enemy enemy)
@@ -237,6 +264,9 @@ namespace TentacleVania.UI.Hud
             {
                 Trail = trail;
                 Root = Element("enemy-bar");
+                Prompt = Element("enemy-bar__prompt");
+                Prompt.style.display = DisplayStyle.None;
+                Root.Add(Prompt);
                 var healthBar = Element("enemy-bar__health");
                 HealthTrail = Element("enemy-bar__trail");
                 HealthFill = Element("enemy-bar__fill");
@@ -275,6 +305,7 @@ namespace TentacleVania.UI.Hud
             }
 
             public VisualElement Root { get; }
+            public VisualElement Prompt { get; }
             public VisualElement HealthTrail { get; }
             public VisualElement HealthFill { get; }
             public VisualElement Armor { get; }

@@ -88,7 +88,7 @@ namespace TentacleVania.Enemies
         public virtual bool IsBoss => false;
         protected virtual float SpawnDelay => _definition.SpawnDelay;
         protected virtual bool FeedProtection => true;
-        protected Consumable ConsumeTarget => _consumable;
+        public Consumable ConsumeTarget => _consumable;
         public AttackPhase CurrentPhase => CurrentAttack == null ? AttackPhase.Done : AttackMath.Phase(CurrentAttack, Time.time - _attackStarted);
         protected NavMeshAgent Agent => _agent;
         protected float BaseSpeed { get; set; }

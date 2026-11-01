@@ -309,6 +309,7 @@ MonoBehaviour:
   _enemyBarShowTime: 4
   _enemyBarFadeTime: 0.5
   _enemyBarClearance: 0.5
+  _glyphs: {fileID: 11400000, guid: 2f4af73fd6373b0489ba7832db4178af, type: 2}
 --- !u!114 &4429990449138818979
 MonoBehaviour:
   m_ObjectHideFlags: 0
