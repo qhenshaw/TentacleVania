@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Finishes a task the way CLAUDE.md's Git workflow requires: checks compilation and shaders, runs the edit-mode tests,
+# Finishes a task the way CLAUDE.md's Git workflow requires: checks compilation and shaders, runs the edit-mode tests
+# and the content validator,
 # stages everything, moves large files into LFS, commits, and on a feature branch merges into main with --no-ff,
 # deletes the branch, and pushes main. On main it commits and pushes. Stops at the first failing step. It pulls main
 # before merging, since other agents push to it; in an agent worktree it merges onto origin/main detached and pushes
@@ -19,6 +20,7 @@ trailer="Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 
 bash Tools/UnityCheck/unity-check.sh || exit $?
 bash Tools/UnityCheck/unity-test.sh || exit $?
+bash Tools/UnityCheck/unity-validate.sh || exit $?
 
 git add -A 2>&1 | grep -v "LF will be replaced" || true
 keep="$(git rev-parse --git-common-dir)/info/keep-local"
