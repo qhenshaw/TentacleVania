@@ -827,6 +827,10 @@ MonoBehaviour:
     m_Key: ability.Breach.name
     m_Metadata:
       m_Items: []
+  - m_Id: 742766302478336
+    m_Key: ability.Burrow.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

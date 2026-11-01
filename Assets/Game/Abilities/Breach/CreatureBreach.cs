@@ -67,7 +67,7 @@ namespace TentacleVania.Abilities.Breach
             {
                 case Phase.Idle:
                     if (GameplayInput.Default.Traverse.Pressed && _motor.InputEnabled && TryBreach())
-                        TraversalInput.Claim();
+                        Core.Interaction.Traversals.Claim();
                     break;
                 case Phase.Lunging:
                     TickLunge();
