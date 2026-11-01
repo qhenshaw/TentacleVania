@@ -67,5 +67,6 @@ namespace TentacleVania.World.Editor
         public float ArrivalYaw;
         public string RequiredBoss;
         public string Hook;
+        public string Kind;
     }
 }

@@ -3,6 +3,7 @@
     "rootNamespace": "TentacleVania.World.Tests",
     "references": [
         "TentacleVania.World",
+        "TentacleVania.Combat",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

@@ -978,6 +978,22 @@ MonoBehaviour:
     m_Localized: needs Radiation Resistance
     m_Metadata:
       m_Items: []
+  - m_Id: 809578591436800
+    m_Localized: Electric Resistance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 809578633379840
+    m_Localized: Fire Resistance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 809578633379841
+    m_Localized: Acid Resistance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 809578633379842
+    m_Localized: Radiation Resistance
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

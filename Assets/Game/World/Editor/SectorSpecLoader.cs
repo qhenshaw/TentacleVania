@@ -124,6 +124,12 @@ namespace TentacleVania.World.Editor
                     RoomContext.Set(elevator, "_arrivalYaw", spec.ArrivalYaw);
                     RoomContext.Set(elevator, "_requiredBoss", spec.RequiredBoss ?? "");
                     break;
+                case "hazard":
+                    var kind = (Hazards.HazardKind)Enum.Parse(typeof(Hazards.HazardKind), spec.Kind);
+                    var hazard = c.Spawn($"Assets/Game/World/Hazards/Hazard_{kind}.prefab", position, spec.Yaw, spec.Name ?? "Hazard_" + kind);
+                    var size = spec.Size != null ? new Vector3(spec.Size[0], spec.Size.Length > 2 ? spec.Size[1] : 2f, spec.Size[spec.Size.Length > 2 ? 2 : 1]) : new Vector3(6f, 2f, 6f);
+                    hazard.GetComponent<Hazards.HazardZone>().Configure(kind, size);
+                    break;
                 case "hook":
                     if (!SectorHooks.TryGet(spec.Hook, out var hook))
                         throw new ArgumentException($"{c.Plan.Scene}: unknown sector hook '{spec.Hook}' (add it to SectorHooks)");
