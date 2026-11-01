@@ -40,6 +40,11 @@ Active abilities (`TentacleVania.Abilities`), on the ability input (RT / Q), pai
 
 - A slot ability (45 charge), reward of the optional boss The Many: releases creature-team minions from the shared parasite-minion pool (`Combat/Status/ParasiteSwarm.Spawn`, so their speed, bite damage, lifetime and look come from `StatusEffectSettings`, the same as parasite bursts) with the swarm burst VFX. Tiers (800 / 1,600): 3 / 4 / 6 minions.
 
+## Regenerative Cocoon and Mimic Shell (`RegenerativeCocoon/`, `MimicShell/`; TV-158; Hoarder stock; placeholder numbers)
+
+- **Regenerative Cocoon** (40 charge): locks the creature's control and shows `CocoonShell.prefab` (a flesh sphere) while healing 12% / 18% / 18% max HP per second for up to 4 s or until full; any hit that deals health damage breaks it (`event:/Abilities/RegenerativeCocoon/Break`). Tier 3 (Hardened) cancels the first hit through an incoming modifier. The design's exception to consume-only healing.
+- **Mimic Shell** (45 charge): sets `Combat.CombatTargets.Hidden`, which makes chasing and circling enemies halt instead of pursuing (`Enemy.Tick`), and tints the creature through `CharacterMaterials.SetGlow`, for 6 / 9 / 30 s (tier 3 Infiltrate: until it attacks). The first creature hit out of the disguise is the ambush (×2 / ×2.5 damage, ×2 stagger, every target hit that frame) and ends it. The disguise doesn't copy a consumed enemy's look yet (placeholder tint).
+
 ## Tentacle Grapple (`Grapple/`, `TentacleGrapple.asset`; design: Tentacle Grapple page, Changelog Grilling sessions 3 and 5)
 
 - A traversal ability on its own input, the `Traverse` action (LT / F). It isn't in the ability slot: `GrappleDefinition.SlotAbility` is false, so `AbilityController` never equips it. It's unlocked like a boss reward, by the id `TentacleGrapple` in `Build.Abilities` (the Surgical Automaton's `RewardAbility`), and it's in the `ContentCatalog`.

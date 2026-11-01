@@ -1736,6 +1736,14 @@ MonoBehaviour:
     m_Localized: Hunter-Killer Squad
     m_Metadata:
       m_Items: []
+  - m_Id: 1019194659061760
+    m_Localized: Regenerative Cocoon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1019460250779648
+    m_Localized: Mimic Shell
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

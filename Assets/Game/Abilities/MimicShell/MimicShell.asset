@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad91bb2111cd1744680bcd9bf588f031, type: 3}
+  m_Name: MimicShell
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.MimicShell.MimicShellDefinition
+  _displayName: Mimic Shell
+  _cost: 45
+  _tierCosts: 20030000c4090000i
+  _duration:
+  - 6
+  - 9
+  - 30
+  _ambush:
+  - 2
+  - 2.5
+  - 2.5
+  _ambushStagger: 2
+  _disguiseGlow: {r: 0.55, g: 0.6, b: 0.5, a: 1}
+  _disguiseAmount: 0.6
+  _activateSound:
+    Guid:
+      Data1: -245137672
+      Data2: 1114847921
+      Data3: 865189000
+      Data4: 2044512774
+    Path: event:/Abilities/MimicShell/Activate
+  _ambushSound:
+    Guid:
+      Data1: 338145674
+      Data2: 1116312037
+      Data3: 207001746
+      Data4: 1400350656
+    Path: event:/Abilities/MimicShell/Ambush

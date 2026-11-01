@@ -6,6 +6,7 @@ namespace TentacleVania.Combat
     {
         public static Health Creature { get; private set; }
         public static float CreatureAimHeight { get; private set; }
+        public static bool Hidden { get; set; }
 
         public static Vector3 CreatureAimPoint => Creature != null ? Creature.transform.position + Vector3.up * CreatureAimHeight : Vector3.zero;
 
@@ -22,6 +23,10 @@ namespace TentacleVania.Combat
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void Reset() => Creature = null;
+        private static void Reset()
+        {
+            Creature = null;
+            Hidden = false;
+        }
     }
 }
