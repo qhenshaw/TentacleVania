@@ -146,8 +146,12 @@ MonoBehaviour:
   _maxBranches: 2
   _branchAlong: {x: 0.3, y: 0.7}
   _branchWidth: 0.7
-  _vibration: 0.04
-  _vibrationSpeed: 3
+  _targetTotal: 32
+  _linkAlong: {x: 0.25, y: 0.85}
+  _linkWidth: 0.5
+  _slack: 0.04
+  _vibration: 0.2
+  _vibrationSpeed: 0.5
   _rootWidth: 0.18
   _tipWidth: 0.05
   _emergeTime: 1.6
@@ -182,6 +186,12 @@ VisualEffect:
       - m_Value: 0.2
         m_Name: NoiseSpeed
         m_Overridden: 1
+      - m_Value: 0.2
+        m_Name: NoiseOffset
+        m_Overridden: 1
+      - m_Value: 1.074567
+        m_Name: NoiseFrequency
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -192,17 +202,122 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 30
+      - m_Value: 60
         m_Name: StripsPerChain
+        m_Overridden: 1
+      - m_Value: 32
+        m_Name: ChainCount
+        m_Overridden: 1
+      - m_Value: 10
+        m_Name: ChainLength
         m_Overridden: 1
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: -3.6353588
+            outSlope: -3.6353588
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.067796536
+          - serializedVersion: 3
+            time: 0.5
+            value: 0.2
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 4.0010815
+            outSlope: 4.0010815
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.067805886
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: NoiseStrengthOverLength
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 3.3417065
+            outSlope: 3.3417065
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.060102597
+          - serializedVersion: 3
+            time: 0.5
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: -3.6086833
+            outSlope: -3.6086833
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.049987793
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: NoiseSpeedOverLength
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: StripSizeOverLength
+        m_Overridden: 1
     m_Gradient:
       m_Array: []
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: 0}
+        m_Name: ChainPositions
+        m_Overridden: 1
     m_Bool:
       m_Array: []
 --- !u!73398921 &3566501081525995040
