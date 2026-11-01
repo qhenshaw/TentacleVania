@@ -290,6 +290,22 @@ MonoBehaviour:
     m_Localized: Mother's Vault
     m_Metadata:
       m_Items: []
+  - m_Id: 524257370849280
+    m_Localized: Containment failure in Mother's Vault. All personnel, evacuate Site Beta.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 524257391820800
+    m_Localized: Biological growth detected in every sector. Lockdown failing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 524257391820801
+    m_Localized: Overwatch, this is Barracks. It's in the walls. It's everywhere.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 524257391820802
+    m_Localized: Site Beta is lost.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

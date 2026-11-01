@@ -271,3 +271,44 @@ MonoBehaviour:
           Data3: 0
           Data4: 0
         Path: 
+  - Id: mv.finale
+    Trigger: 1
+    TriggerKey: MV/Crane
+    PerSector: 0
+    Lines:
+    - Key: line.22
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.23
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.24
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.25
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
