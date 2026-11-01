@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EventFolder" id="{9b6f9056-02a0-496d-87c8-35c111a53f6d}">
+		<property name="name">
+			<value>VentSqueeze</value>
+		</property>
+		<relationship name="folder">
+			<destination>{65bd9a41-9bc1-4b25-8396-23dc206d28aa}</destination>
+		</relationship>
+	</object>
+</objects>

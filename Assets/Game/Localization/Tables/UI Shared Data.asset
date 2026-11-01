@@ -831,6 +831,10 @@ MonoBehaviour:
     m_Key: ability.Burrow.name
     m_Metadata:
       m_Items: []
+  - m_Id: 744127458983936
+    m_Key: ability.VentSqueeze.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
