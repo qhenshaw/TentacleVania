@@ -93,6 +93,7 @@ namespace TentacleVania.Enemies
         protected NavMeshAgent Agent => _agent;
         protected float BaseSpeed { get; set; }
         protected float StateTime => Time.time - _stateStarted;
+        protected bool DiedConsumed { get; private set; }
 
         protected virtual void Awake()
         {
@@ -554,6 +555,7 @@ namespace TentacleVania.Enemies
                 Halt();
             _agent.enabled = false;
             var consumed = State == EnemyState.Consumed;
+            DiedConsumed = consumed;
             SetState(EnemyState.Dead);
             OnDeath();
             if (!consumed && _health.BurstsOnDeath)

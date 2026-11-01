@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: OutbreakCrawlerVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1180911274
+      Data2: 1091816441
+      Data3: 1350582709
+      Data4: 2029764823
+    Path: event:/Enemies/Voice/OutbreakCrawler/Alert
+  _pain:
+    Guid:
+      Data1: -844925467
+      Data2: 1100306899
+      Data3: -2060552525
+      Data4: 138544081
+    Path: event:/Enemies/Voice/OutbreakCrawler/Pain
+  _death:
+    Guid:
+      Data1: -1069290810
+      Data2: 1271822817
+      Data3: 2138549894
+      Data4: -1342310965
+    Path: event:/Enemies/Voice/OutbreakCrawler/Death
+  _grabbed:
+    Guid:
+      Data1: 748630710
+      Data2: 1086375422
+      Data3: 42777486
+      Data4: 889805456
+    Path: event:/Enemies/Voice/OutbreakCrawler/Grabbed
+  _attack:
+    Guid:
+      Data1: -380249149
+      Data2: 1182820081
+      Data3: -2128385858
+      Data4: 1823150884
+    Path: event:/Enemies/Voice/OutbreakCrawler/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

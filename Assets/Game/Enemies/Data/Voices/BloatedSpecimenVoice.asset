@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: BloatedSpecimenVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 877030404
+      Data2: 1081780852
+      Data3: -1163484010
+      Data4: -272381786
+    Path: event:/Enemies/Voice/BloatedSpecimen/Alert
+  _pain:
+    Guid:
+      Data1: -423828923
+      Data2: 1331113985
+      Data3: 1938672773
+      Data4: 1060517311
+    Path: event:/Enemies/Voice/BloatedSpecimen/Pain
+  _death:
+    Guid:
+      Data1: 1610883441
+      Data2: 1239916729
+      Data3: -577365118
+      Data4: -304550701
+    Path: event:/Enemies/Voice/BloatedSpecimen/Death
+  _grabbed:
+    Guid:
+      Data1: -194246242
+      Data2: 1115428524
+      Data3: 2083409067
+      Data4: 1252855069
+    Path: event:/Enemies/Voice/BloatedSpecimen/Grabbed
+  _attack:
+    Guid:
+      Data1: 1327242760
+      Data2: 1334321838
+      Data3: -1870781031
+      Data4: -287865372
+    Path: event:/Enemies/Voice/BloatedSpecimen/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

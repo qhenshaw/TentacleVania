@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: HostileSpecimenVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 367012591
+      Data2: 1221276337
+      Data3: -1187343482
+      Data4: 761805853
+    Path: event:/Enemies/Voice/HostileSpecimen/Alert
+  _pain:
+    Guid:
+      Data1: -1698754304
+      Data2: 1190859916
+      Data3: 1170816899
+      Data4: 822124128
+    Path: event:/Enemies/Voice/HostileSpecimen/Pain
+  _death:
+    Guid:
+      Data1: 774916093
+      Data2: 1307879028
+      Data3: 1909545131
+      Data4: 1710316991
+    Path: event:/Enemies/Voice/HostileSpecimen/Death
+  _grabbed:
+    Guid:
+      Data1: 199126108
+      Data2: 1113609493
+      Data3: -1715200835
+      Data4: 1846576546
+    Path: event:/Enemies/Voice/HostileSpecimen/Grabbed
+  _attack:
+    Guid:
+      Data1: -846515684
+      Data2: 1236778677
+      Data3: -1595265631
+      Data4: 1377521796
+    Path: event:/Enemies/Voice/HostileSpecimen/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2
