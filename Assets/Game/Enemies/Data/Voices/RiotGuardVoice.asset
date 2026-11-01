@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: RiotGuardVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 1129921176
+      Data2: 1315273120
+      Data3: -229764435
+      Data4: 637311546
+    Path: event:/Enemies/Voice/RiotGuard/Alert
+  _pain:
+    Guid:
+      Data1: -907845067
+      Data2: 1124537612
+      Data3: 172478108
+      Data4: 446272395
+    Path: event:/Enemies/Voice/RiotGuard/Pain
+  _death:
+    Guid:
+      Data1: -64333727
+      Data2: 1150129664
+      Data3: -9625963
+      Data4: 397944935
+    Path: event:/Enemies/Voice/RiotGuard/Death
+  _grabbed:
+    Guid:
+      Data1: 241031160
+      Data2: 1257655632
+      Data3: 858105989
+      Data4: -150721782
+    Path: event:/Enemies/Voice/RiotGuard/Grabbed
+  _attack:
+    Guid:
+      Data1: -1290015958
+      Data2: 1118315857
+      Data3: 489400760
+      Data4: 2040386901
+    Path: event:/Enemies/Voice/RiotGuard/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

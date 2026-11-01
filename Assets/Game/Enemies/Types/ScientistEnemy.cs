@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TentacleVania.Enemies.Types
 {
-    public sealed class ScientistEnemy : Enemy
+    public class ScientistEnemy : Enemy
     {
 
         private bool _cowering;
