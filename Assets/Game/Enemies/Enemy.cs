@@ -26,7 +26,7 @@ namespace TentacleVania.Enemies
     }
 
     [RequireComponent(typeof(NavMeshAgent), typeof(Health))]
-    public class Enemy : MonoBehaviour, IStatsSource
+    public class Enemy : MonoBehaviour, IStatsSource, IStunnable
     {
         private const float CircleStepDegrees = 35f;
         private const float HitFlashDuration = 0.08f;
@@ -239,6 +239,12 @@ namespace TentacleVania.Enemies
             _stunUntil = Mathf.Max(_stunUntil, Time.time + duration);
             Halt();
             SetState(EnemyState.Stunned);
+        }
+
+        public void ExtendStun(float seconds)
+        {
+            if (State == EnemyState.Stunned && seconds > 0f)
+                _stunUntil += seconds;
         }
 
         public void SetFrozen(bool frozen)
@@ -622,7 +628,7 @@ namespace TentacleVania.Enemies
                 _nextPain = Time.time + voice.PainCooldown;
                 EnemyVoices.Play(voice.Pain, transform.position);
             }
-            if (health.IsAlive && State != EnemyState.Stunned && State != EnemyState.Dead && _stagger.Add(result.StaggerDamage))
+            if (health.IsAlive && State != EnemyState.Stunned && State != EnemyState.Dead && _stagger.Add(result.StaggerDamage * (_status.IsActive(StatusKind.Corrode) ? StaggerRules.CorrodedScale : 1f)))
                 BreakStagger();
             TickFeedback();
         }
@@ -644,7 +650,8 @@ namespace TentacleVania.Enemies
         {
             if (_definition.Voice != null)
                 EnemyVoices.Play(_definition.Voice.Stagger, transform.position, true);
-            Stun(_definition.StaggerStun);
+            Stun(_definition.StaggerStun + StaggerRules.ExtraStun);
+            _staggerVulnerability.HealthScale = _definition.StaggerDamageTaken * StaggerRules.WindowDamageScale;
             _staggerBroken = true;
             _health.IsStaggered = true;
             _health.Incoming.Add(_staggerVulnerability);

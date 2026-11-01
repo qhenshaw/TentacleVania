@@ -118,7 +118,8 @@ namespace TentacleVania.Abilities
                 var rotation = Quaternion.LookRotation(forward.sqrMagnitude > 1e-4f ? forward.normalized : Vector3.forward);
                 Object.Instantiate(prefab, creature.transform.position + rotation * new Vector3(0f, 0f, 2.2f), rotation);
             });
-            var mutationIds = new[] { "WideDodge", "Gluttony", "RapidDigestion", "LungingMaw" };
+            var mutationIds = new[] { "WideDodge", "Gluttony", "RapidDigestion", "LungingMaw", "Shatterpoint", "CrushingCoils", "ConcussiveSlam", "Aftershock", "Hemorrhage", "MeltingPoint", "BarbedHide", "RetaliationPlating", "QuillBurst", "JaggedRecoil" };
+            DebugMenu.Value(tab, "Thorns hits", () => Mutations.MutationStrikes.ThornsHits.ToString());
             DebugMenu.Value(tab, "Mutations", () =>
             {
                 var controller = CreatureSpawner.Spawned != null ? CreatureSpawner.Spawned.GetComponent<Mutations.MutationController>() : null;

@@ -18,7 +18,7 @@ namespace TentacleVania.Abilities.Mutations
 
         public int ActiveCount => _active.Count;
 
-        private void Awake() => _host = new(GetComponent<CreatureMotor>(), GetComponent<CreatureConsume>(), GetComponent<TentacleGrapple>());
+        private void Awake() => _host = new(GetComponent<CreatureMotor>(), GetComponent<CreatureConsume>(), GetComponent<TentacleGrapple>(), GetComponent<Combat.Health>());
 
         private void OnEnable()
         {

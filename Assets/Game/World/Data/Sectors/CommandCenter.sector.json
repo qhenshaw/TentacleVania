@@ -883,6 +883,17 @@
             15
           ],
           "yaw": 0
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            39.5,
+            16.5
+          ],
+          "yaw": 0,
+          "name": "Aftershock",
+          "itemId": "Aftershock"
         }
       ]
     },

@@ -1348,6 +1348,82 @@ MonoBehaviour:
     m_Localized: Ricochet bounces one extra time for each enemy it kills.
     m_Metadata:
       m_Items: []
+  - m_Id: 964165914869760
+    m_Localized: Shatterpoint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964165956812800
+    m_Localized: Stagger breaks stun 1 s longer, and stunned enemies take 30% more damage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964391157383168
+    m_Localized: Crushing Coils
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964391165771776
+    m_Localized: Your attacks build stagger 40% faster.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964614206275584
+    m_Localized: Concussive Slam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964614214664192
+    m_Localized: Breaking an enemy's stagger releases a shockwave that staggers everything around it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964838609928192
+    m_Localized: Aftershock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964838622511104
+    m_Localized: A heavy attack on a staggered enemy extends its stun by 1 s, once per stun.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965065135898624
+    m_Localized: Hemorrhage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965065148481536
+    m_Localized: Breaking an enemy's stagger bursts all of its bleed stacks at once.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965289392750592
+    m_Localized: Melting Point
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965289401139200
+    m_Localized: Corroded enemies build stagger 50% faster, and breaking one splashes acid on those nearby.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965508255727616
+    m_Localized: Barbed Hide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965508264116224
+    m_Localized: Enemies that strike you in melee take damage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965729157136384
+    m_Localized: While armored during a consume, damage you take is reflected at the attacker.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965949551034368
+    m_Localized: Quill Burst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965949563617280
+    m_Localized: Taking damage releases a ring of spines around you. Short cooldown.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 966170255310848
+    m_Localized: Jagged Recoil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 966170259505152
+    m_Localized: Thorns damage also builds stagger.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

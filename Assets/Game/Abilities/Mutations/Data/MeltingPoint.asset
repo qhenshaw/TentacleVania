@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2083610abfeed4b41908d1098c1d5b95, type: 3}
+  m_Name: MeltingPoint
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.MeltingPointMutation
+  _textKey: mutation.meltingPoint
+  _notches: 2
+  _corrodedStagger: 1.5
+  _splashRadius: 3
+  _splashDamage: 10
+  _sound:
+    Guid:
+      Data1: 1676099784
+      Data2: 1183726868
+      Data3: 625281
+      Data4: 981524565
+    Path: event:/Mutations/MeltingPoint
