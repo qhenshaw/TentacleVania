@@ -198,6 +198,39 @@
     color: rgb(240, 200, 120);
 }
 
+.nest__pips {
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.nest__pip {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    border-radius: 9px;
+    border-width: 2px;
+    border-color: rgb(240, 200, 120);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.nest__pip--used {
+    background-color: rgb(240, 200, 120);
+}
+
+.nest__pip--add {
+    border-color: rgb(120, 230, 190);
+    background-color: rgba(120, 230, 190, 0.45);
+}
+
+.nest__pip--free {
+    background-color: rgba(240, 200, 120, 0.25);
+}
+
+.nest__pip--over {
+    border-color: rgb(230, 80, 70);
+    background-color: rgba(230, 80, 70, 0.45);
+}
+
 .nest__cost {
     min-width: 70px;
     flex-shrink: 0;
