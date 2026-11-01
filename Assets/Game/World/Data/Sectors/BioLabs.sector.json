@@ -1,0 +1,156 @@
+{
+  "sector": "BL",
+  "rootScene": "BioLabs",
+  "folder": "Assets/Game/Scenes/BioLabs",
+  "addressablesGroup": "BioLabs",
+  "color": [0.45, 0.9, 0.6, 1],
+  "spawn": [3.5, 38],
+  "spawnYaw": 180,
+  "rooms": [
+    {
+      "scene": "BL_EntryNest", "role": "Plain", "rect": [1, 36, 6, 5],
+      "halls": [[[3, 35], [3, 31]]],
+      "doors": [{ "x": 3, "y": 31, "side": "South" }],
+      "place": [
+        { "type": "nest", "id": "BL/EntryNest", "at": [3.5, 39], "yaw": 180 },
+        { "type": "prefab", "prefab": "Assets/Game/World/Hoarder/Hoarder.prefab", "at": [6.3, 38], "yaw": 270, "name": "Hoarder" },
+        { "type": "elevator", "at": [1.6, 36.6], "yaw": 90, "destination": "SpecimenHolding", "arrivalAt": [41.5, 4], "arrivalOffset": [-1.5, 0, 0], "arrivalYaw": 270, "requiredBoss": "" },
+        { "type": "paZone", "sequence": "bl.entry", "at": [3.5, 38.5], "size": [16, 4, 13] },
+        { "type": "crawl", "id": "BL/T1", "opensHere": false, "at": [6, 40], "yaw": 180, "otherAt": [13, 18], "otherYaw": 180 }
+      ]
+    },
+    {
+      "scene": "BL_A1", "role": "Arena", "rect": [0, 24, 7, 7],
+      "halls": [[[7, 27], [12, 27]], [[3, 23], [3, 19]]],
+      "doors": [
+        { "x": 3, "y": 30, "side": "North", "arena": true }, { "x": 6, "y": 27, "side": "East", "arena": true }, { "x": 3, "y": 24, "side": "South", "arena": true },
+        { "x": 12, "y": 27, "side": "East" }, { "x": 3, "y": 19, "side": "South" }
+      ],
+      "waves": [[{ "enemy": "Surgeon", "count": 2 }, { "enemy": "Scientist", "count": 2 }]]
+    },
+    {
+      "scene": "BL_A2", "role": "Arena", "rect": [13, 25, 5, 5],
+      "halls": [[[18, 27], [23, 27]], [[15, 24], [15, 19]], [[15, 30], [15, 35]]],
+      "doors": [
+        { "x": 13, "y": 27, "side": "West", "arena": true }, { "x": 17, "y": 27, "side": "East", "arena": true }, { "x": 15, "y": 25, "side": "South", "arena": true }, { "x": 15, "y": 29, "side": "North", "arena": true },
+        { "x": 23, "y": 27, "side": "East" }, { "x": 15, "y": 19, "side": "South" }, { "x": 15, "y": 35, "side": "North" }
+      ],
+      "waves": [[{ "enemy": "LabSecurity", "count": 2 }, { "enemy": "MedDrone", "count": 1 }]]
+    },
+    {
+      "scene": "BL_A3", "role": "Arena", "rect": [24, 24, 7, 7],
+      "halls": [[[27, 23], [27, 18]]],
+      "doors": [{ "x": 24, "y": 27, "side": "West", "arena": true }, { "x": 27, "y": 24, "side": "South", "arena": true }, { "x": 27, "y": 18, "side": "South" }],
+      "waves": [[{ "enemy": "Hazmat", "count": 2 }, { "enemy": "Surgeon", "count": 1 }], [{ "enemy": "LabSecurity", "count": 2 }]],
+      "place": [
+        { "type": "relay", "id": "A3", "at": [29.5, 25] },
+        { "type": "crawl", "id": "BL/T2", "opensHere": false, "at": [30, 30], "yaw": 180, "otherAt": [30, 0], "otherYaw": 0 }
+      ]
+    },
+    {
+      "scene": "BL_A4", "role": "Arena", "rect": [0, 12, 7, 7],
+      "halls": [[[7, 15], [11, 15]], [[3, 11], [3, 7]], [[-1, 15], [-4, 15]]],
+      "doors": [
+        { "x": 3, "y": 18, "side": "North", "arena": true }, { "x": 6, "y": 15, "side": "East", "arena": true }, { "x": 3, "y": 12, "side": "South", "arena": true }, { "x": 0, "y": 15, "side": "West", "arena": true },
+        { "x": 11, "y": 15, "side": "East" }, { "x": 3, "y": 7, "side": "South" }, { "x": -4, "y": 15, "side": "West" }
+      ],
+      "waves": [[{ "enemy": "Surgeon", "count": 3 }, { "enemy": "MedDrone", "count": 1 }]],
+      "place": [
+        { "type": "crawl", "id": "BL/T3", "opensHere": false, "at": [0, 12], "yaw": 0, "otherAt": [40, 5], "otherYaw": 180 },
+        { "type": "terminal", "log": "TissueSampleSource", "at": [9, 15.35], "yaw": 180 }
+      ]
+    },
+    {
+      "scene": "BL_A5", "role": "Arena", "rect": [12, 12, 7, 7],
+      "halls": [[[19, 15], [24, 15]]],
+      "doors": [
+        { "x": 15, "y": 18, "side": "North", "arena": true }, { "x": 12, "y": 15, "side": "West", "arena": true }, { "x": 18, "y": 15, "side": "East", "arena": true },
+        { "x": 24, "y": 15, "side": "East" }
+      ],
+      "waves": [[{ "enemy": "LabSecurity", "count": 2 }, { "enemy": "Hazmat", "count": 2 }], [{ "enemy": "MedDrone", "count": 2 }]],
+      "place": [
+        { "type": "terminal", "log": "SiblingTermination", "at": [16.5, 17.7], "yaw": 180 },
+        { "type": "terminal", "log": "SurgeonsBettingPool", "at": [17.7, 13.5], "yaw": 270 },
+        { "type": "crawl", "id": "BL/T1", "opensHere": true, "at": [13, 18], "yaw": 180, "otherAt": [6, 40], "otherYaw": 180 }
+      ]
+    },
+    {
+      "scene": "BL_A6", "role": "Arena", "rect": [25, 13, 5, 5],
+      "halls": [[[27, 12], [27, 7]], [[30, 15], [34, 15]]],
+      "doors": [
+        { "x": 27, "y": 17, "side": "North", "arena": true }, { "x": 25, "y": 15, "side": "West", "arena": true }, { "x": 27, "y": 13, "side": "South", "arena": true }, { "x": 29, "y": 15, "side": "East", "arena": true },
+        { "x": 27, "y": 7, "side": "South" }, { "x": 34, "y": 15, "side": "East" }
+      ],
+      "waves": [[{ "enemy": "Surgeon", "count": 3 }]],
+      "place": [{ "type": "prefab", "prefab": "Assets/Game/World/Passages/VentGate.prefab", "at": [32, 15], "yaw": 90, "name": "VentGate" }]
+    },
+    {
+      "scene": "BL_A7", "role": "Arena", "rect": [0, 0, 7, 7],
+      "halls": [[[7, 3], [11, 3]]],
+      "doors": [{ "x": 3, "y": 6, "side": "North", "arena": true }, { "x": 6, "y": 3, "side": "East", "arena": true }, { "x": 11, "y": 3, "side": "East" }],
+      "waves": [[{ "enemy": "LabSecurity", "count": 3 }, { "enemy": "MedDrone", "count": 1 }]],
+      "place": [{ "type": "relay", "id": "A7", "at": [1, 1] }]
+    },
+    {
+      "scene": "BL_A8", "role": "Arena", "rect": [12, 0, 7, 7],
+      "halls": [[[19, 3], [23, 3]], [[15, -1], [15, -4]]],
+      "doors": [
+        { "x": 12, "y": 3, "side": "West", "arena": true }, { "x": 18, "y": 3, "side": "East", "arena": true }, { "x": 15, "y": 0, "side": "South", "arena": true },
+        { "x": 23, "y": 3, "side": "East" }, { "x": 15, "y": -4, "side": "South" }
+      ],
+      "waves": [[{ "enemy": "Hazmat", "count": 2 }, { "enemy": "Surgeon", "count": 2 }], [{ "enemy": "LabSecurity", "count": 2 }]]
+    },
+    {
+      "scene": "BL_A9", "role": "Arena", "rect": [24, 0, 7, 7],
+      "halls": [[[31, 3], [35, 3]]],
+      "doors": [
+        { "x": 27, "y": 6, "side": "North", "arena": true }, { "x": 24, "y": 3, "side": "West", "arena": true }, { "x": 30, "y": 3, "side": "East", "arena": true },
+        { "x": 35, "y": 3, "side": "East" }
+      ],
+      "waves": [[{ "enemy": "MedDrone", "count": 2 }, { "enemy": "Hazmat", "count": 2 }, { "enemy": "Surgeon", "count": 2 }]],
+      "place": [
+        { "type": "relay", "id": "A9", "at": [29.5, 5.5] },
+        { "type": "crawl", "id": "BL/T2", "opensHere": true, "at": [30, 0], "yaw": 0, "otherAt": [30, 30], "otherYaw": 180 }
+      ]
+    },
+    {
+      "scene": "BL_PreBossNest", "role": "Plain", "rect": [36, 1, 5, 5],
+      "halls": [[[41, 3], [46, 3]]],
+      "doors": [{ "x": 36, "y": 3, "side": "West" }, { "x": 46, "y": 3, "side": "East" }],
+      "place": [
+        { "type": "nest", "id": "BL/PreBossNest", "at": [38, 4], "yaw": 180 },
+        { "type": "securityDoor", "at": [43, 3], "yaw": 90 },
+        { "type": "crawl", "id": "BL/T3", "opensHere": true, "at": [40, 5], "yaw": 180, "otherAt": [0, 12], "otherYaw": 0 }
+      ]
+    },
+    {
+      "scene": "BL_AutomatonTheatre", "role": "Boss", "rect": [47, -1, 8, 8],
+      "doors": [{ "x": 47, "y": 3, "side": "West", "arena": true }],
+      "waves": [[{ "enemy": "SurgicalAutomaton", "count": 1 }]],
+      "place": [{ "type": "hook", "hook": "BL.AutomatonTheatre" }]
+    },
+    {
+      "scene": "BL_R1", "role": "Plain", "rect": [13, 36, 5, 4],
+      "doors": [{ "x": 15, "y": 36, "side": "South" }],
+      "place": [{ "type": "pickup", "prefab": "TrinketPickup", "at": [15, 38], "yaw": 0, "name": "TaggedLockerKey", "itemId": "TaggedLockerKey" }]
+    },
+    {
+      "scene": "BL_R2", "role": "Plain", "rect": [-9, 13, 5, 5],
+      "doors": [{ "x": -5, "y": 15, "side": "East" }],
+      "place": [
+        { "type": "pickup", "prefab": "BiomassCache", "at": [-7, 15], "yaw": 0 },
+        { "type": "terminal", "log": "DissectionSchedule", "at": [-8.8, 15], "yaw": 90 }
+      ]
+    },
+    {
+      "scene": "BL_R3", "role": "Plain", "rect": [13, -9, 5, 5],
+      "doors": [{ "x": 15, "y": -5, "side": "North" }],
+      "place": [{ "type": "pickup", "prefab": "MutationPickup", "at": [15, -7], "yaw": 0, "name": "LungingMaw", "itemId": "LungingMaw" }]
+    },
+    {
+      "scene": "BL_VentRoom", "role": "Plain", "rect": [35, 13, 5, 5],
+      "doors": [{ "x": 35, "y": 15, "side": "West" }],
+      "place": [{ "type": "pickup", "prefab": "MutagenPickup", "at": [37, 15], "yaw": 0 }]
+    }
+  ]
+}
