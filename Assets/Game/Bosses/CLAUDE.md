@@ -27,6 +27,7 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
   - Shock Prod: melee 20° at 6 m, 15 damage, 0.6 s wind-up, used at 3–8 m. The drone lunges forward at 22 m/s while it's active.
   - Electrified Sweep: 270° at 4 m, 12 damage, 0.8 s wind-up, used within 4 m.
   - Phase 2 (≤40% HP) uses copies at ×0.75 timings and ×1.25 move speed (attack masks 0b0011 and 0b1100).
+- **Stagger break (developer decision):** the `Model` drops from its hover and tips `_tipAngle` 85° onto its side at `_tippedHeight` 0.6 m in 0.3 s, lies there for the whole stagger stun (8 s), and rights itself back to hover in 0.5 s as the stun ends (`WardenDrone.Bob`).
 - **Wall Beams (red, undodgeable):** every 15 s (×0.75 at low HP), 2 beams, or 3 at ≤40%. The beams cross the `WardenHall` (put one in the boss room, x along the long walls; otherwise 24×18 around the spawn, facing its yaw). They show as floor lanes for 1.2 s, then fire for 0.3 s, dealing 25 damage to a creature inside the 1.6 m width. `WardenRules` (unit tested) spaces the lanes evenly with a random shift, then moves the nearest lane onto the creature, so it must move to a safe lane. The visuals are three `LineRenderer`s on `TurretLaser.mat`. FMOD: `event:/Bosses/Warden/BeamWarn`, `BeamFire`, `ProdWindUp`, `SweepWindUp`, `ShockHit`.
 - **Adds:** each stagger break summons 2 Security Guards near the boss (max 4 alive) once the stun ends (developer decision).
 - **Finish:** the shared finishing consume. The PA plays `sh.warden` (lines 4–5, then Crane's first address).

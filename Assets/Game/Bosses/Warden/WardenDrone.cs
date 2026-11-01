@@ -28,6 +28,12 @@ namespace TentacleVania.Bosses.Warden
         [SerializeField] private Transform _model;
         [SerializeField, Min(0f)] private float _hoverHeight = 1.8f;
 
+        [Header("Stagger break: tips over on the floor for the stun")]
+        [SerializeField, Range(0f, 120f)] private float _tipAngle = 85f;
+        [SerializeField, Min(0f)] private float _tippedHeight = 0.6f;
+        [SerializeField, Min(0.05f)] private float _tipFallTime = 0.3f;
+        [SerializeField, Min(0.05f)] private float _tipRecoverTime = 0.5f;
+
         [Header("Shock Prod lunge")]
         [SerializeField] private string _lungeAttack = "Shock Prod";
         [SerializeField, Min(0f)] private float _lungeSpeed = 22f;
@@ -64,6 +70,7 @@ namespace TentacleVania.Bosses.Warden
         private bool _beamsFired;
         private bool _guardsPending;
         private float _bobPhase;
+        private float _tip;
 
         protected override void Awake()
         {
@@ -233,9 +240,15 @@ namespace TentacleVania.Bosses.Warden
         {
             if (_model == null)
                 return;
-            var y = IsFinishing ? 0.4f : _hoverHeight + Mathf.Sin(now * 1.3f + _bobPhase) * 0.15f;
+            var tipped = IsStaggerBroken && !IsFinishing && Health.IsAlive;
+            _tip = Mathf.MoveTowards(_tip, tipped ? 1f : 0f, Time.deltaTime / (tipped ? _tipFallTime : _tipRecoverTime));
+            var tip = Mathf.SmoothStep(0f, 1f, _tip);
+            var hover = IsFinishing ? 0.4f : _hoverHeight + Mathf.Sin(now * 1.3f + _bobPhase) * 0.15f;
+            var y = Mathf.Lerp(hover, _tippedHeight, tip);
             var local = _model.localPosition;
-            _model.localPosition = new(local.x, Mathf.MoveTowards(local.y, y, Time.deltaTime * 4f), local.z);
+            var speed = tip > 0f ? 12f : 4f;
+            _model.localPosition = new(local.x, Mathf.MoveTowards(local.y, y, Time.deltaTime * speed), local.z);
+            _model.localRotation = Quaternion.AngleAxis(_tipAngle * tip, Vector3.forward);
         }
 
         private void Play(EventReference sound)
