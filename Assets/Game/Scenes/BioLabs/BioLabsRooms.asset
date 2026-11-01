@@ -16,8 +16,8 @@ MonoBehaviour:
   _unloadRadius: 28
   _rooms:
   - Scene: BL_EntryNest
-    Center: {x: 11.999999, y: 1.4155036, z: 108.28941}
-    Size: {x: 18.760612, y: 3.6310077, z: 30.579865}
+    Center: {x: 11.999999, y: 1.5, z: 108.28941}
+    Size: {x: 18.760612, y: 4.8, z: 30.579865}
     Neighbours:
     - BL_A1
     MapShapes:
@@ -716,21 +716,6 @@ MonoBehaviour:
     Room: BL_EntryNest
     Position: {x: 19.5, y: 0, z: 121.5}
     Yaw: 0
-  - Kind: 7
-    Id: BL/Auto-BL_A3
-    Room: BL_EntryNest
-    Position: {x: 4.5, y: 0, z: 121.5}
-    Yaw: 0
-  - Kind: 7
-    Id: BL/Auto-BL_A7
-    Room: BL_EntryNest
-    Position: {x: 19.5, y: 0, z: 109.5}
-    Yaw: 0
-  - Kind: 7
-    Id: BL/Auto-BL_R1
-    Room: BL_EntryNest
-    Position: {x: 4.5, y: 0, z: 115.5}
-    Yaw: 0
   - Kind: 1
     Id: BL/A3
     Room: BL_A3
@@ -740,11 +725,6 @@ MonoBehaviour:
     Id: BL/T2
     Room: BL_A3
     Position: {x: 91.5, y: 0, z: 91.5}
-    Yaw: 0
-  - Kind: 7
-    Id: BL/Auto-BL_A3
-    Room: BL_A3
-    Position: {x: 73.5, y: 0, z: 73.5}
     Yaw: 0
   - Kind: 7
     Id: BL/T3
@@ -781,11 +761,6 @@ MonoBehaviour:
     Room: BL_A7
     Position: {x: 4.5, y: 0, z: 4.5}
     Yaw: 0
-  - Kind: 7
-    Id: BL/Auto-BL_A7
-    Room: BL_A7
-    Position: {x: 1.5, y: 0, z: 1.5}
-    Yaw: 0
   - Kind: 1
     Id: BL/A9
     Room: BL_A9
@@ -816,11 +791,6 @@ MonoBehaviour:
     Room: BL_R1
     Position: {x: 46.5, y: 0, z: 115.5}
     Yaw: 0
-  - Kind: 7
-    Id: BL/Auto-BL_R1
-    Room: BL_R1
-    Position: {x: 40.5, y: 0, z: 109.5}
-    Yaw: 0
   - Kind: 5
     Id: BL_R2/BiomassCache
     Room: BL_R2
@@ -840,4 +810,34 @@ MonoBehaviour:
     Id: BL_VentRoom/MutagenPickup
     Room: BL_VentRoom
     Position: {x: 112.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_A3
+    Room: BL_A3
+    Position: {x: 73.5, y: 0, z: 73.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_A3
+    Room: BL_EntryNest
+    Position: {x: 19.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_A7
+    Room: BL_A7
+    Position: {x: 1.5, y: 0, z: 1.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_A7
+    Room: BL_EntryNest
+    Position: {x: 4.5, y: 0, z: 115.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_R1
+    Room: BL_R1
+    Position: {x: 40.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_R1
+    Room: BL_EntryNest
+    Position: {x: 13.5, y: 0, z: 109.5}
     Yaw: 0

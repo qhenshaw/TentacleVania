@@ -451,7 +451,14 @@ namespace TentacleVania.World.Editor
             {
                 var next = current + "/" + parts[i];
                 if (!AssetDatabase.IsValidFolder(next))
-                    AssetDatabase.CreateFolder(current, parts[i]);
+                {
+                    var made = AssetDatabase.GUIDToAssetPath(AssetDatabase.CreateFolder(current, parts[i]));
+                    if (!string.Equals(made, next, StringComparison.Ordinal))
+                    {
+                        AssetDatabase.MoveAsset(made, next + "_case");
+                        AssetDatabase.MoveAsset(next + "_case", next);
+                    }
+                }
                 current = next;
             }
         }
