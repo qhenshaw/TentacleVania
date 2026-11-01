@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SurgicalAutomaton
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
   _displayName: Surgical Automaton
-  _maxHealth: 1600
+  _maxHealth: 2400
   _maxArmor: 0
-  _maxStagger: 200
+  _maxStagger: 1300
   _staggerStun: 2.5
   _staggerDamageTaken: 1.5
   _feedableDamageTaken: 0.5
