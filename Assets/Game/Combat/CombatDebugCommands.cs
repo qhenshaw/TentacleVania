@@ -82,6 +82,20 @@ namespace TentacleVania.Combat
             });
             DebugMenu.Value(DebugMenu.Combat, "Acid pools active", () => AcidPools.Active.ToString());
             DebugMenu.Button(DebugMenu.Combat, "Corrode creature", () => ApplyToCreature(StatusKind.Corrode));
+            DebugMenu.Button(DebugMenu.Combat, "Infect nearest enemy", () => ApplyToNearest(StatusKind.Parasite));
+            DebugMenu.Button(DebugMenu.Combat, "Spread parasites from nearest enemy (5 m)", () =>
+            {
+                var target = NearestEnemyStatus();
+                if (target != null)
+                    target.SpreadParasites(5f, Team.Creature);
+            });
+            DebugMenu.Button(DebugMenu.Combat, "Spawn 2 parasite minions", () =>
+            {
+                if (CombatTargets.Creature != null)
+                    ParasiteSwarm.Spawn(CombatTargets.Creature.transform.position, 2, Team.Creature);
+            });
+            DebugMenu.Toggle(DebugMenu.Combat, "Parasites burst on death", () => StatusEffects.ParasitesBurstOnDeath, v => StatusEffects.ParasitesBurstOnDeath = v);
+            DebugMenu.Value(DebugMenu.Combat, "Parasite bursts / minions", () => $"{StatusEffects.ParasiteBursts} / {ParasiteSwarm.Active}");
             DebugMenu.Value(DebugMenu.Combat, "Chain lightning discharges", () => StatusEffects.Discharges.ToString());
             DebugMenu.Value(DebugMenu.Combat, "Nearest enemy status", FormatNearestStatus);
             DebugMenu.Button(DebugMenu.Combat, "Bleed creature (+1 stack)", () => ApplyToCreature(StatusKind.Bleed));
@@ -144,7 +158,7 @@ namespace TentacleVania.Combat
             var target = NearestEnemyStatus();
             if (target == null)
                 return "-";
-            return $"{target.name}: bleed {target.BleedStacks} ({target.BleedDamagePerSecond:F1}/s, {target.Remaining(StatusKind.Bleed):F1} s) burn {target.BurnDamagePerSecond:F1}/s ({target.Remaining(StatusKind.Burn):F1} s) static {target.StaticNormalized:P0} corrode {target.Remaining(StatusKind.Corrode):F1} s";
+            return $"{target.name}: bleed {target.BleedStacks} ({target.BleedDamagePerSecond:F1}/s, {target.Remaining(StatusKind.Bleed):F1} s) burn {target.BurnDamagePerSecond:F1}/s ({target.Remaining(StatusKind.Burn):F1} s) static {target.StaticNormalized:P0} corrode {target.Remaining(StatusKind.Corrode):F1} s parasite {target.Remaining(StatusKind.Parasite):F1} s";
         }
 
         private static string FormatLastHit()

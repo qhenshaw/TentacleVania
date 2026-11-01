@@ -239,6 +239,8 @@ namespace TentacleVania.UI.Hud
                 statusRow.Add(Burn);
                 Corrode = Element("enemy-bar__corrode");
                 statusRow.Add(Corrode);
+                Parasite = Element("enemy-bar__parasite");
+                statusRow.Add(Parasite);
                 Static = Element("enemy-bar__static");
                 StaticFill = Element("enemy-bar__static-fill");
                 Static.Add(StaticFill);
@@ -261,6 +263,8 @@ namespace TentacleVania.UI.Hud
             public bool Burning { get; private set; }
             public VisualElement Corrode { get; }
             public bool Corroded { get; private set; }
+            public VisualElement Parasite { get; }
+            public bool Infected { get; private set; }
             public VisualElement Static { get; }
             public VisualElement StaticFill { get; }
             public float StaticShown { get; private set; }
@@ -287,6 +291,7 @@ namespace TentacleVania.UI.Hud
                 BleedStacks = -1;
                 Burning = true;
                 Corroded = true;
+                Infected = true;
                 StaticShown = -1f;
                 SetStatus(enemy.Status);
             }
@@ -311,6 +316,12 @@ namespace TentacleVania.UI.Hud
                 {
                     Corroded = corroded;
                     Corrode.style.display = corroded ? DisplayStyle.Flex : DisplayStyle.None;
+                }
+                var infected = status != null && status.IsActive(StatusKind.Parasite);
+                if (infected != Infected)
+                {
+                    Infected = infected;
+                    Parasite.style.display = infected ? DisplayStyle.Flex : DisplayStyle.None;
                 }
                 var charge = status != null ? status.StaticNormalized : 0f;
                 if (!Mathf.Approximately(charge, StaticShown))

@@ -184,6 +184,15 @@
     display: none;
 }
 
+.enemy-bar__parasite {
+    width: 7px;
+    height: 7px;
+    margin-left: 4px;
+    border-radius: 3px 0 3px 0;
+    background-color: rgb(210, 80, 230);
+    display: none;
+}
+
 .enemy-bar__static {
     width: 30px;
     height: 5px;
@@ -386,6 +395,12 @@
     background-color: rgba(140, 230, 40, 0.35);
     border-bottom-left-radius: 13px;
     border-bottom-right-radius: 13px;
+}
+
+.hud__status-icon--parasite {
+    border-color: rgb(210, 80, 230);
+    background-color: rgba(210, 80, 230, 0.35);
+    border-radius: 13px 2px 13px 2px;
 }
 
 .hud__status-icon--stun {
