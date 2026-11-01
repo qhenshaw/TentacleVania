@@ -24,6 +24,8 @@ namespace TentacleVania.UI.Hud
         private VisualElement _bleed;
         private VisualElement _burn;
         private VisualElement _corrode;
+        private VisualElement _parasite;
+        private bool _parasiteShown;
         private bool _corrodeShown;
         private VisualElement[] _bleedPips;
         private bool _bleedShown;
@@ -39,6 +41,8 @@ namespace TentacleVania.UI.Hud
             _bleed = root.Q<VisualElement>("status-bleed");
             _burn = root.Q<VisualElement>("status-burn");
             _corrode = root.Q<VisualElement>("status-corrode");
+            _parasite = root.Q<VisualElement>("status-parasite");
+            _parasiteShown = false;
             _corrodeShown = false;
             if (_bleed != null)
             {
@@ -80,6 +84,8 @@ namespace TentacleVania.UI.Hud
                 Set(_burn, ref _burnShown, _status != null && _status.IsActive(StatusKind.Burn));
             if (_corrode != null)
                 Set(_corrode, ref _corrodeShown, _status != null && _status.IsActive(StatusKind.Corrode));
+            if (_parasite != null)
+                Set(_parasite, ref _parasiteShown, _status != null && _status.IsActive(StatusKind.Parasite));
             if (_stun != null)
                 Set(_stun, ref _stunShown, _vitals != null && _vitals.IsStunned);
         }

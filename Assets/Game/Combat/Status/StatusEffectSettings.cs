@@ -55,6 +55,24 @@ namespace TentacleVania.Combat.Status
         [SerializeField] private Material _acidPoolMaterial;
         [SerializeField] private EventReference _acidPoolSound;
 
+        [Header("Parasites (no Balance Sheet numbers yet: placeholders)")]
+        [SerializeField] private DamageStatus _parasite = new() { DamagePerSecond = 2f, Duration = 8f, MaxStacks = 1 };
+        [SerializeField, Min(0f)] private float _parasiteBurstDamage = 15f;
+        [SerializeField, Min(0f)] private float _parasiteBurstRadius = 3f;
+        [SerializeField] private VisualEffect _parasiteBurstEffect;
+        [SerializeField] private EventReference _parasiteBurstSound;
+
+        [Header("Parasite minions (placeholders)")]
+        [SerializeField] private GameObject _minionPrefab;
+        [SerializeField, Min(1)] private int _minionCount = 12;
+        [SerializeField, Min(0.1f)] private float _minionLifetime = 6f;
+        [SerializeField, Min(0f)] private float _minionSpeed = 5f;
+        [SerializeField, Min(0f)] private float _minionSeekRadius = 10f;
+        [SerializeField, Min(0f)] private float _minionBiteRange = 0.9f;
+        [SerializeField, Min(0f)] private float _minionBiteDamage = 4f;
+        [SerializeField, Min(0.05f)] private float _minionBiteInterval = 0.6f;
+        [SerializeField] private EventReference _minionBiteSound;
+
         private static StatusEffectSettings _loaded;
         private static bool _tried;
 
@@ -92,6 +110,20 @@ namespace TentacleVania.Combat.Status
         public float AcidPoolFade => _acidPoolFade;
         public Material AcidPoolMaterial => _acidPoolMaterial;
         public EventReference AcidPoolSound => _acidPoolSound;
+        public DamageStatus Parasite => _parasite;
+        public float ParasiteBurstDamage => _parasiteBurstDamage;
+        public float ParasiteBurstRadius => _parasiteBurstRadius;
+        public VisualEffect ParasiteBurstEffect => _parasiteBurstEffect;
+        public EventReference ParasiteBurstSound => _parasiteBurstSound;
+        public GameObject MinionPrefab => _minionPrefab;
+        public int MinionCount => _minionCount;
+        public float MinionLifetime => _minionLifetime;
+        public float MinionSpeed => _minionSpeed;
+        public float MinionSeekRadius => _minionSeekRadius;
+        public float MinionBiteRange => _minionBiteRange;
+        public float MinionBiteDamage => _minionBiteDamage;
+        public float MinionBiteInterval => _minionBiteInterval;
+        public EventReference MinionBiteSound => _minionBiteSound;
 
         public static StatusEffectSettings Instance
         {

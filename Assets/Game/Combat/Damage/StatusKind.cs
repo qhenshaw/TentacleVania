@@ -9,5 +9,6 @@ namespace TentacleVania.Combat.Damage
         Burn,
         Static,
         Corrode,
+        Parasite,
     }
 }

@@ -12,7 +12,7 @@ namespace TentacleVania.Combat.Status
     [RequireComponent(typeof(Health))]
     public sealed class StatusEffects : MonoBehaviour
     {
-        private const int KindCount = 7;
+        private const int KindCount = 8;
         private const int MaxCascade = 8;
 
         private static readonly List<StatusEffects> Registry = new();
@@ -35,11 +35,13 @@ namespace TentacleVania.Combat.Status
         [SerializeField] private Visual _bleed = new() { Color = new Color(1.6f, 0.08f, 0.1f), Amount = 0.6f, Pulse = 2f };
         [SerializeField] private Visual _burn = new() { Color = new Color(2f, 0.7f, 0.1f), Amount = 0.7f, Pulse = 4f };
         [SerializeField] private Visual _corrode = new() { Color = new Color(0.5f, 1.8f, 0.2f), Amount = 0.6f, Pulse = 1f };
+        [SerializeField] private Visual _parasite = new() { Color = new Color(1.2f, 0.3f, 1.4f), Amount = 0.5f, Pulse = 0.8f };
         [SerializeField, Min(0f)] private float _effectHeight = 1f;
 
         private readonly StatusTimers _timers = new();
         private readonly DamageOverTime _bleedDot = new();
         private readonly DamageOverTime _burnDot = new();
+        private readonly DamageOverTime _parasiteDot = new();
         private readonly bool[] _shown = new bool[KindCount];
 
         private Health _health;
@@ -48,6 +50,8 @@ namespace TentacleVania.Combat.Status
         private VisualEffect _bleedEffect;
         private VisualEffect _burnEffect;
         private VisualEffect _corrodeEffect;
+        private VisualEffect _parasiteEffect;
+        private Team _parasiteSource = Team.Environment;
         private ScaleModifier _corrodeModifier;
         private Team _bleedSource = Team.Environment;
         private Team _burnSource = Team.Environment;
@@ -63,6 +67,10 @@ namespace TentacleVania.Combat.Status
         public static float ChainDamageScale { get; set; } = 1f;
         public static float ChainAddsStatic { get; set; }
         public static int Discharges { get; private set; }
+        public static bool ParasitesBurstOnDeath { get; set; } = true;
+        public static float ParasiteBurstScale { get; set; } = 1f;
+        public static int ParasiteBursts { get; private set; }
+        public static event Action<StatusEffects, int> ParasiteBurst;
 
         private static StatusEffects[][] BuildTargetBuffers()
         {
@@ -82,6 +90,10 @@ namespace TentacleVania.Combat.Status
             ChainDamageScale = 1f;
             ChainAddsStatic = 0f;
             Discharges = 0;
+            ParasitesBurstOnDeath = true;
+            ParasiteBurstScale = 1f;
+            ParasiteBursts = 0;
+            ParasiteBurst = null;
             _cascade = 0;
         }
 
@@ -100,6 +112,7 @@ namespace TentacleVania.Combat.Status
         {
             StatusKind.Bleed => _bleedDot.IsActive,
             StatusKind.Burn => _burnDot.IsActive,
+            StatusKind.Parasite => _parasiteDot.IsActive,
             StatusKind.Static => _static != null && _static.IsCharged,
             _ => _timers.IsActive(kind, Time.time),
         };
@@ -108,6 +121,7 @@ namespace TentacleVania.Combat.Status
         {
             StatusKind.Bleed => _bleedDot.Remaining(Time.time),
             StatusKind.Burn => _burnDot.Remaining(Time.time),
+            StatusKind.Parasite => _parasiteDot.Remaining(Time.time),
             _ => _timers.Remaining(kind, Time.time),
         };
 
@@ -121,6 +135,8 @@ namespace TentacleVania.Combat.Status
             _bleedEffect = SpawnEffect(_settings.Bleed.Effect);
             _burnEffect = SpawnEffect(_settings.Burn.Effect);
             _corrodeEffect = SpawnEffect(_settings.CorrodeEffect);
+            _parasiteEffect = SpawnEffect(_settings.Parasite.Effect);
+            ParasiteSwarm.Prewarm(_settings);
             _corrodeModifier = new() { HealthScale = _settings.CorrodeDamageTaken, ArmorScale = _settings.CorrodeArmorDamage };
             AcidPools.Prewarm(_settings);
             _static = new(_settings.StaticCapacity);
@@ -165,6 +181,10 @@ namespace TentacleVania.Combat.Status
                 case StatusKind.Burn:
                     ApplyDot(_burnDot, _settings.Burn, magnitude, duration, potency);
                     _burnSource = source;
+                    break;
+                case StatusKind.Parasite:
+                    ApplyDot(_parasiteDot, _settings.Parasite, magnitude, duration, potency);
+                    _parasiteSource = source;
                     break;
                 case StatusKind.Corrode:
                     _timers.Apply(kind, 1f, duration > 0f ? duration : _settings.CorrodeDuration, Time.time);
@@ -232,7 +252,7 @@ namespace TentacleVania.Combat.Status
             {
                 Discharges++;
                 var origin = transform.position + Vector3.up * _effectHeight;
-                var count = PickChainTargets(origin, _health.Team);
+                var count = PickChainTargets(origin);
                 var targets = TargetBuffers[_cascade - 1];
                 for (var i = 0; i < count; i++)
                     targets[i] = Candidates[Picks[i]];
@@ -257,19 +277,7 @@ namespace TentacleVania.Combat.Status
             }
         }
 
-        private int PickChainTargets(Vector3 origin, Team team)
-        {
-            Candidates.Clear();
-            CandidatePositions.Clear();
-            foreach (var other in Registry)
-            {
-                if (other == this || other._health == null || !other._health.IsAlive || other._health.Team != team)
-                    continue;
-                Candidates.Add(other);
-                CandidatePositions.Add(other.transform.position + Vector3.up * other._effectHeight);
-            }
-            return ChainRules.PickNearest(origin, CandidatePositions, _settings.ChainRadius, _settings.ChainTargets + ExtraChainTargets, Picks);
-        }
+        private int PickChainTargets(Vector3 origin) => Gather(origin, _settings.ChainRadius, _settings.ChainTargets + ExtraChainTargets);
 
         private void TakeChain(float damage, Team source, Vector3 point, Vector3 direction)
         {
@@ -294,6 +302,7 @@ namespace TentacleVania.Combat.Status
             _timers.Clear(StatusKind.Corrode);
             _bleedDot.Clear();
             _burnDot.Clear();
+            _parasiteDot.Clear();
             _static.Clear();
             Refresh();
         }
@@ -304,10 +313,13 @@ namespace TentacleVania.Combat.Status
             var interval = _settings.TickInterval;
             var bleed = _bleedDot.Tick(now, interval);
             var burn = _burnDot.Tick(now, interval);
+            var parasite = _parasiteDot.Tick(now, interval);
             if (bleed > 0f)
                 Deal(bleed, DamageType.Physical, _bleedSource);
             if (burn > 0f)
                 Deal(burn, DamageType.Fire, _burnSource);
+            if (parasite > 0f)
+                Deal(parasite, DamageType.Physical, _parasiteSource);
             if (Refresh())
                 enabled = false;
         }
@@ -333,7 +345,105 @@ namespace TentacleVania.Combat.Status
                 AddStatic(_settings.StaticPerHit * potency, info.SourceTeam);
         }
 
-        private void OnDied(Health health) => ClearAll();
+        private void OnDied(Health health)
+        {
+            var infected = _parasiteDot.IsActive;
+            var source = _parasiteSource;
+            ClearAll();
+            if (infected && ParasitesBurstOnDeath)
+                BurstParasites(source);
+        }
+
+        private void BurstParasites(Team source)
+        {
+            if (_cascade >= MaxCascade)
+                return;
+            _cascade++;
+            try
+            {
+                ParasiteBursts++;
+                var origin = transform.position + Vector3.up * _effectHeight;
+                ParasiteSwarm.PlayBurst(origin);
+                if (!_settings.ParasiteBurstSound.IsNull)
+                    RuntimeManager.PlayOneShot(_settings.ParasiteBurstSound, origin);
+                var count = Gather(origin, _settings.ParasiteBurstRadius, Picks.Length);
+                var targets = TargetBuffers[_cascade - 1];
+                for (var i = 0; i < count; i++)
+                    targets[i] = Candidates[Picks[i]];
+                var damage = _settings.ParasiteBurstDamage * ParasiteBurstScale;
+                for (var i = 0; i < count; i++)
+                {
+                    var target = targets[i];
+                    targets[i] = null;
+                    target.Infect(source, damage);
+                }
+                ParasiteBurst?.Invoke(this, count);
+            }
+            finally
+            {
+                _cascade--;
+            }
+        }
+
+        public int SpreadParasites(float radius, Team source)
+        {
+            var origin = transform.position + Vector3.up * _effectHeight;
+            if (_cascade >= MaxCascade || _health == null)
+                return 0;
+            var count = Gather(origin, radius, Picks.Length);
+            var targets = TargetBuffers[_cascade];
+            for (var i = 0; i < count; i++)
+                targets[i] = Candidates[Picks[i]];
+            for (var i = 0; i < count; i++)
+            {
+                var target = targets[i];
+                targets[i] = null;
+                target.Infect(source, 0f);
+            }
+            return count;
+        }
+
+        private void Infect(Team source, float damage)
+        {
+            if (_health == null || !_health.IsAlive)
+                return;
+            Apply(StatusKind.Parasite, 0f, 0f, source, 1f);
+            if (damage > 0f)
+                Deal(damage, DamageType.Physical, source);
+        }
+
+        private int Gather(Vector3 origin, float radius, int max)
+        {
+            Candidates.Clear();
+            CandidatePositions.Clear();
+            foreach (var other in Registry)
+            {
+                if (other == this || other._health == null || !other._health.IsAlive || other._health.Team != _health.Team)
+                    continue;
+                Candidates.Add(other);
+                CandidatePositions.Add(other.transform.position + Vector3.up * other._effectHeight);
+            }
+            return ChainRules.PickNearest(origin, CandidatePositions, radius, max, Picks);
+        }
+
+        public static StatusEffects NearestHostile(Vector3 position, Team attacker, float radius)
+        {
+            StatusEffects best = null;
+            var bestDistance = radius * radius;
+            foreach (var other in Registry)
+            {
+                if (other._health == null || !other._health.IsAlive || !TeamRules.CanDamage(attacker, other._health.Team) || other._health.Team == Team.Environment)
+                    continue;
+                var offset = other.transform.position - position;
+                offset.y = 0f;
+                var distance = offset.sqrMagnitude;
+                if (distance > bestDistance)
+                    continue;
+                bestDistance = distance;
+                best = other;
+            }
+            return best;
+        }
 
         private bool Refresh()
         {
@@ -353,6 +463,8 @@ namespace TentacleVania.Combat.Status
                     Toggle(_bleedEffect, active);
                 else if (kind == StatusKind.Burn)
                     Toggle(_burnEffect, active);
+                else if (kind == StatusKind.Parasite)
+                    Toggle(_parasiteEffect, active);
                 else if (kind == StatusKind.Corrode)
                 {
                     Toggle(_corrodeEffect, active);
@@ -390,6 +502,7 @@ namespace TentacleVania.Combat.Status
                 : _shown[(int)StatusKind.Burn] ? _burn
                 : _shown[(int)StatusKind.Corrode] ? _corrode
                 : _shown[(int)StatusKind.Bleed] ? _bleed
+                : _shown[(int)StatusKind.Parasite] ? _parasite
                 : null;
             if (visual != null)
                 _materials.SetStatus(visual.Color, visual.Amount, visual.Pulse);
