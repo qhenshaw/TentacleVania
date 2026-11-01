@@ -134,7 +134,7 @@ MonoBehaviour:
         Data4: -1247594387
       Path: event:/Enemies/Surgeon/SawHit
   _consumeHeal: 0.1
-  _biomass: 5
+  _biomass: 10
   _spawnOnWall: 0
   _despawnDelay: 2
   _panicRange: 7

@@ -20,7 +20,7 @@ namespace TentacleVania.Enemies.Tests
             Assert.That(surgeon.MaxHealth, Is.EqualTo(70f));
             Assert.That(surgeon.MaxStagger, Is.EqualTo(40f));
             Assert.That(surgeon.ConsumeHeal, Is.EqualTo(0.1f).Within(1e-4f));
-            Assert.That(surgeon.Biomass, Is.EqualTo(5));
+            Assert.That(surgeon.Biomass, Is.EqualTo(10));
             Assert.That(surgeon.Attacks.Count, Is.GreaterThan(0));
             foreach (var attack in surgeon.Attacks)
             {
@@ -72,7 +72,7 @@ namespace TentacleVania.Enemies.Tests
             Assert.That(turret.KnockbackScale, Is.EqualTo(0f));
             Assert.That(turret.SpawnOnWall, Is.True);
             Assert.That(turret.ConsumeHeal, Is.EqualTo(0.08f).Within(1e-4f));
-            Assert.That(turret.Biomass, Is.EqualTo(15));
+            Assert.That(turret.Biomass, Is.EqualTo(30));
             Assert.That(turret.Attacks.Count, Is.EqualTo(1));
             Assert.That(turret.Attacks[0].Kind, Is.EqualTo(AttackKind.Projectile));
             Assert.That(turret.Attacks[0].Damage, Is.EqualTo(10f));
@@ -87,7 +87,7 @@ namespace TentacleVania.Enemies.Tests
             Assert.That(drone.MaxHealth, Is.EqualTo(60f));
             Assert.That(drone.MaxStagger, Is.EqualTo(30f));
             Assert.That(drone.ConsumeHeal, Is.EqualTo(0.08f).Within(1e-4f));
-            Assert.That(drone.Biomass, Is.EqualTo(15));
+            Assert.That(drone.Biomass, Is.EqualTo(30));
             Assert.That(drone.Machine, Is.True);
             Assert.That(drone.HealPerSecond, Is.EqualTo(8f));
             Assert.That(drone.HealRange, Is.EqualTo(6f));

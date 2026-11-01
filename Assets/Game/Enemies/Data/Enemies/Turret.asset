@@ -80,7 +80,7 @@ MonoBehaviour:
         Data4: -2043124812
       Path: event:/Enemies/Turret/Hit
   _consumeHeal: 0.08
-  _biomass: 15
+  _biomass: 30
   _spawnOnWall: 1
   _despawnDelay: 2
   _panicRange: 7
