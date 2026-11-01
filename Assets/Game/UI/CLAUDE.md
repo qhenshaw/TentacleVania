@@ -2,6 +2,8 @@
 
 Runtime UI (`TentacleVania.UI`), all UI Toolkit.
 
+Static screen text that's set once in code must go through `Fonts/UiText.Bind(element, key)` (re-applied when the locale changes); per-open text can use plain lookups. Labels and buttons use `min-width` (not `width`) and tab rows wrap, so longer languages grow instead of clipping. `Hud/LoadoutHudView` fills the slot key hints from the current bindings.
+
 ## Main menu
 
 - `Menu/MainMenu.prefab` (in the `MainMenu` scene) is a `UIDocument` on `MainMenuPanelSettings` (1920×1080 scale-with-screen) with `MainMenuScreen`. Buttons: Continue (only when a save exists; loads the most recently saved slot, `Core.Saves.SaveSlots.MostRecent`), New Game and Load Game (both open the 5-slot list: sector, level and playtime per slot, Delete with a confirm; New Game asks before overwriting a slot and saves the new slot at once), Settings, Quit. Cancel backs out of the confirm, then the list. Loading goes `SaveSystem.Load` then `SceneFlow.Load(SaveSystem.ContinueScene(...))`. From an eval: `MainMenuScreen.Instance.Play()` (Continue, else a new game in the first empty slot), `OpenSlots(newGame)`, `ChooseSlot(i)`, `DeleteSlot(i)` then `Confirm()`. Play-testing it writes real saves under `Application.persistentDataPath/Saves`: back the folder up first and restore it.

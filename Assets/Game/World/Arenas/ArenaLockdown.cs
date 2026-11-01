@@ -17,6 +17,8 @@ namespace TentacleVania.World.Arenas
         [SerializeField] private EventReference _allClear;
 
         private static Light _sun;
+
+        private Tween _klaxonDelay;
         private static float _sunIntensity;
         private static int _dimmers;
 
@@ -49,6 +51,7 @@ namespace TentacleVania.World.Arenas
         private void OnDisable()
         {
             _arena.StateChanged -= OnStateChanged;
+            _klaxonDelay.Stop();
             SetDim(false);
         }
 
@@ -60,7 +63,7 @@ namespace TentacleVania.World.Arenas
                 Apply(BeaconState.Alarm);
                 SetDim(true);
                 Play(_klaxon);
-                Tween.Delay(this, KlaxonGap, lockdown => lockdown.Play(lockdown._klaxon));
+                _klaxonDelay = Tween.Delay(this, KlaxonGap, lockdown => lockdown.Play(lockdown._klaxon));
             }
             else if (state == ArenaState.Cleared && _last != ArenaState.Cleared)
             {

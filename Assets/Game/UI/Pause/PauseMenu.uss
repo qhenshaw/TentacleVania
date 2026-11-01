@@ -41,7 +41,7 @@
 }
 
 .pause__buttons {
-    width: 300px;
+    min-width: 300px;
     margin-right: 28px;
 }
 
@@ -74,6 +74,7 @@
 
 .pause__tabs {
     flex-direction: row;
+    flex-wrap: wrap;
     border-bottom-width: 2px;
     border-color: rgb(80, 30, 60);
     margin-bottom: 12px;
@@ -116,7 +117,7 @@
 }
 
 .pause__label {
-    width: 260px;
+    min-width: 260px;
     font-size: 21px;
     color: rgb(170, 140, 160);
 }
@@ -130,7 +131,7 @@
 }
 
 .pause__cost {
-    width: 70px;
+    min-width: 70px;
     font-size: 18px;
     color: rgb(200, 50, 110);
 }
@@ -175,6 +176,6 @@
 }
 
 .pause__dialog-button {
-    width: 240px;
+    min-width: 240px;
     margin: 0 10px;
 }

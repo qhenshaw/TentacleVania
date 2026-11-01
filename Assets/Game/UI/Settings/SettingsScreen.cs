@@ -39,12 +39,12 @@ namespace TentacleVania.UI.Settings
             root.pickingMode = PickingMode.Ignore;
             _root = root.Q("settings");
             _content = root.Q<ScrollView>("content");
-            root.Q<Label>("title").text = T("settings.title");
+            Fonts.UiText.Bind(root.Q<Label>("title"), "settings.title");
             var back = root.Q<Button>("back");
-            back.text = T("settings.back");
+            Fonts.UiText.Bind(back, "settings.back");
             back.clicked += Close;
             var reset = root.Q<Button>("reset");
-            reset.text = T("settings.reset");
+            Fonts.UiText.Bind(reset, "settings.reset");
             reset.clicked += ResetTab;
             var tabs = root.Q("tabs");
             tabs.Clear();
@@ -52,7 +52,8 @@ namespace TentacleVania.UI.Settings
             for (var i = 0; i < Tabs.Length; i++)
             {
                 var index = i;
-                var button = new Button(() => ShowTab(index)) { text = T("settings.tab." + Tabs[i]) };
+                var button = new Button(() => ShowTab(index));
+                Fonts.UiText.Bind(button, "settings.tab." + Tabs[i]);
                 button.AddToClassList("settings__tab");
                 tabs.Add(button);
                 _tabButtons.Add(button);
@@ -282,7 +283,10 @@ namespace TentacleVania.UI.Settings
 
         private void LanguageRow(SettingsData data)
         {
-            var locales = LocalizationSettings.AvailableLocales.Locales;
+            var locales = new List<UnityEngine.Localization.Locale>();
+            foreach (var locale in LocalizationSettings.AvailableLocales.Locales)
+                if (locale is not UnityEngine.Localization.Pseudo.PseudoLocale)
+                    locales.Add(locale);
             var options = new string[locales.Count];
             var current = 0;
             for (var i = 0; i < locales.Count; i++)

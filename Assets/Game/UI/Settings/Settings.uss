@@ -32,6 +32,7 @@
 
 .settings__tabs {
     flex-direction: row;
+    flex-wrap: wrap;
     border-bottom-width: 2px;
     border-color: rgb(70, 56, 20);
     margin-bottom: 12px;
@@ -67,7 +68,7 @@
 }
 
 .settings__label {
-    width: 360px;
+    min-width: 360px;
     font-size: 21px;
     color: rgb(230, 222, 205);
 }
@@ -78,7 +79,7 @@
 }
 
 .settings__binding {
-    width: 260px;
+    min-width: 260px;
     height: 40px;
     font-size: 19px;
     margin-left: 10px;

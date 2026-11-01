@@ -114,6 +114,6 @@
 
 .hoarder__leave {
     align-self: flex-end;
-    width: 200px;
+    min-width: 200px;
     margin-top: 12px;
 }
