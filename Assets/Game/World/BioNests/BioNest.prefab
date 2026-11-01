@@ -143,6 +143,9 @@ MonoBehaviour:
   _rootRadius: 0.45
   _rootHeight: 0.3
   _minAnchorHeight: 1
+  _maxBranches: 2
+  _branchAlong: {x: 0.3, y: 0.7}
+  _branchWidth: 0.7
   _vibration: 0.04
   _vibrationSpeed: 3
   _rootWidth: 0.18
@@ -265,6 +268,7 @@ MonoBehaviour:
   _sources:
   - {fileID: 8290886348810446471}
   _ownBudget: 1
+  _budget: 72
 --- !u!1 &1136025202577259756
 GameObject:
   m_ObjectHideFlags: 0
