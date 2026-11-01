@@ -158,6 +158,7 @@ namespace TentacleVania.UI.Nest
                 _lockedMotor = motor;
                 motor.LockControl();
             }
+            SetCharge(false);
             Refresh();
             _plus[0].schedule.Execute(() => _plus[0].Focus());
         }
@@ -171,18 +172,16 @@ namespace TentacleVania.UI.Nest
             _menu.RemoveFromClassList(ShownClass);
             _menu.RemoveFromClassList(OpenClass);
             _waitForRelease = true;
-            DrainChargeWithoutAbility();
+            SetCharge(true);
         }
 
-        private static void DrainChargeWithoutAbility()
+        private static void SetCharge(bool leaving)
         {
             var creature = CreatureSpawner.Spawned;
-            if (creature == null)
+            if (creature == null || !creature.TryGetComponent<CreatureCharge>(out var charge))
                 return;
-            var ability = creature.GetComponent<AbilityController>();
-            var charge = creature.GetComponent<CreatureCharge>();
-            if (ability != null && ability.Equipped == null && charge != null)
-                charge.Set(0f);
+            var equipped = creature.TryGetComponent<AbilityController>(out var ability) && ability.Equipped != null;
+            charge.Set(leaving && equipped ? charge.Max : 0f);
         }
 
         public void ShowTab(bool mutations) => ShowTab(mutations ? 1 : 0);

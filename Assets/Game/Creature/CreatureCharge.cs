@@ -34,7 +34,6 @@ namespace TentacleVania.Creature
         private void OnEnable()
         {
             CombatEvents.HitLanded += OnHitLanded;
-            Nests.Rested += OnRested;
             Stats.Changed += ApplyStats;
             if (TryGetComponent<StatusEffects>(out var status))
                 status.Ended += OnStatusEnded;
@@ -44,13 +43,10 @@ namespace TentacleVania.Creature
         private void OnDisable()
         {
             CombatEvents.HitLanded -= OnHitLanded;
-            Nests.Rested -= OnRested;
             Stats.Changed -= ApplyStats;
             if (TryGetComponent<StatusEffects>(out var status))
                 status.Ended -= OnStatusEnded;
         }
-
-        private void OnRested(string nest) => Set(Max);
 
         private void ApplyStats() => Meter.GainScale = Stats.ChargeGain;
 
