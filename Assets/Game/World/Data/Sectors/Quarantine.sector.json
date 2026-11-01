@@ -1,0 +1,1041 @@
+{
+  "sector": "QU",
+  "rootScene": "Quarantine",
+  "folder": "Assets/Game/Scenes/Quarantine",
+  "addressablesGroup": "Quarantine",
+  "color": [
+    0.6,
+    0.9,
+    0.25,
+    1
+  ],
+  "spawn": [
+    3.5,
+    38.5
+  ],
+  "spawnYaw": 180,
+  "rooms": [
+    {
+      "scene": "QU_EntryNest",
+      "role": "Plain",
+      "rect": [
+        1,
+        36,
+        6,
+        5
+      ],
+      "halls": [
+        [
+          [
+            3,
+            35
+          ],
+          [
+            3,
+            31
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 31,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "nest",
+          "id": "QU/EntryNest",
+          "at": [
+            4,
+            40
+          ],
+          "yaw": 180
+        },
+        {
+          "type": "transit",
+          "at": [
+            1.6,
+            38.5
+          ],
+          "yaw": 90,
+          "destination": "Administration",
+          "arrivalAt": [
+            6.4,
+            38.5
+          ],
+          "arrivalOffset": [
+            -1.5,
+            0,
+            0
+          ],
+          "arrivalYaw": 270,
+          "requiredBoss": "",
+          "name": "Transit_AD"
+        },
+        {
+          "type": "elevator",
+          "at": [
+            6.4,
+            38.5
+          ],
+          "yaw": 270,
+          "destination": "BioLabs",
+          "arrivalAt": [
+            1.6,
+            39.6
+          ],
+          "arrivalOffset": [
+            1.5,
+            0,
+            0
+          ],
+          "arrivalYaw": 90,
+          "requiredBoss": "",
+          "requiredAbility": "ElectricResistance",
+          "name": "Lift_BL"
+        }
+      ]
+    },
+    {
+      "scene": "QU_A1",
+      "role": "Arena",
+      "rect": [
+        0,
+        24,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            7,
+            27
+          ],
+          [
+            12,
+            27
+          ]
+        ],
+        [
+          [
+            3,
+            23
+          ],
+          [
+            3,
+            18
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 30,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 6,
+          "y": 27,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 3,
+          "y": 24,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 12,
+          "y": 27,
+          "side": "East"
+        },
+        {
+          "x": 3,
+          "y": 18,
+          "side": "South"
+        }
+      ],
+      "place": [],
+      "waves": [
+        [
+          {
+            "enemy": "OutbreakCrawler",
+            "count": 3
+          },
+          {
+            "enemy": "InfestedCorpse",
+            "count": 1
+          }
+        ],
+        [
+          {
+            "enemy": "HazmatTrooper",
+            "count": 2
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "QU_A2",
+      "role": "Arena",
+      "rect": [
+        13,
+        25,
+        5,
+        5
+      ],
+      "wallMounts": true,
+      "halls": [
+        [
+          [
+            18,
+            27
+          ],
+          [
+            23,
+            27
+          ]
+        ],
+        [
+          [
+            15,
+            30
+          ],
+          [
+            15,
+            35
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 13,
+          "y": 27,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 17,
+          "y": 27,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 15,
+          "y": 29,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 23,
+          "y": 27,
+          "side": "East"
+        },
+        {
+          "x": 15,
+          "y": 35,
+          "side": "North"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "HostileSpecimen",
+            "count": 1
+          },
+          {
+            "enemy": "OutbreakCrawler",
+            "count": 2
+          }
+        ]
+      ],
+      "place": []
+    },
+    {
+      "scene": "QU_A3",
+      "role": "Arena",
+      "rect": [
+        24,
+        24,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            27,
+            23
+          ],
+          [
+            27,
+            19
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 24,
+          "y": 27,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 27,
+          "y": 24,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 27,
+          "y": 19,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "A3",
+          "at": [
+            29.5,
+            29.5
+          ]
+        },
+        {
+          "type": "hazard",
+          "kind": "Acid",
+          "at": [
+            26.5,
+            26.5
+          ],
+          "size": [
+            6,
+            2,
+            6
+          ],
+          "name": "AcidPool"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "BloatedSpecimen",
+            "count": 1
+          },
+          {
+            "enemy": "OutbreakCrawler",
+            "count": 2
+          }
+        ],
+        [
+          {
+            "enemy": "HazmatTrooper",
+            "count": 2
+          },
+          {
+            "enemy": "InfestedCorpse",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "QU_A4",
+      "role": "Arena",
+      "rect": [
+        1,
+        13,
+        5,
+        5
+      ],
+      "halls": [
+        [
+          [
+            6,
+            15
+          ],
+          [
+            11,
+            15
+          ]
+        ],
+        [
+          [
+            3,
+            12
+          ],
+          [
+            3,
+            7
+          ]
+        ],
+        [
+          [
+            0,
+            15
+          ],
+          [
+            -5,
+            15
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 17,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 5,
+          "y": 15,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 3,
+          "y": 13,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 1,
+          "y": 15,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 11,
+          "y": 15,
+          "side": "East"
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "side": "South"
+        },
+        {
+          "x": -5,
+          "y": 15,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "hazard",
+          "kind": "Fire",
+          "at": [
+            -2.5,
+            15
+          ],
+          "size": [
+            15,
+            2,
+            3
+          ],
+          "yaw": 0,
+          "name": "IncineratorFire"
+        },
+        {
+          "type": "mapGate",
+          "at": [
+            -2.5,
+            15
+          ],
+          "yaw": 90
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "HostileSpecimen",
+            "count": 2
+          },
+          {
+            "enemy": "InfestedCorpse",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "QU_A5",
+      "role": "Arena",
+      "rect": [
+        12,
+        12,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            19,
+            15
+          ],
+          [
+            23,
+            15
+          ]
+        ],
+        [
+          [
+            15,
+            11
+          ],
+          [
+            15,
+            7
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 12,
+          "y": 15,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 18,
+          "y": 15,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 15,
+          "y": 12,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 23,
+          "y": 15,
+          "side": "East"
+        },
+        {
+          "x": 15,
+          "y": 7,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "A5",
+          "at": [
+            17.5,
+            17.5
+          ]
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "HazmatTrooper",
+            "count": 2
+          },
+          {
+            "enemy": "OutbreakCrawler",
+            "count": 3
+          }
+        ],
+        [
+          {
+            "enemy": "BloatedSpecimen",
+            "count": 1
+          },
+          {
+            "enemy": "HostileSpecimen",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "QU_A6",
+      "role": "Arena",
+      "rect": [
+        24,
+        12,
+        7,
+        7
+      ],
+      "wallMounts": true,
+      "halls": [
+        [
+          [
+            31,
+            15
+          ],
+          [
+            35,
+            15
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 27,
+          "y": 18,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 24,
+          "y": 15,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 30,
+          "y": 15,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 35,
+          "y": 15,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "hazard",
+          "kind": "Acid",
+          "at": [
+            27.5,
+            12.5
+          ],
+          "size": [
+            6,
+            2,
+            4
+          ],
+          "name": "AcidPool"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "BloatedSpecimen",
+            "count": 2
+          },
+          {
+            "enemy": "OutbreakCrawler",
+            "count": 2
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "QU_A7",
+      "role": "Arena",
+      "rect": [
+        0,
+        0,
+        7,
+        7
+      ],
+      "wallMounts": true,
+      "halls": [
+        [
+          [
+            7,
+            3
+          ],
+          [
+            11,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 6,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 6,
+          "y": 3,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 11,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "A7",
+          "at": [
+            1,
+            1
+          ]
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "HostileSpecimen",
+            "count": 2
+          },
+          {
+            "enemy": "HazmatTrooper",
+            "count": 1
+          }
+        ],
+        [
+          {
+            "enemy": "OutbreakCrawler",
+            "count": 4
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "QU_A8",
+      "role": "Arena",
+      "rect": [
+        12,
+        0,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            19,
+            3
+          ],
+          [
+            23,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 15,
+          "y": 6,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 18,
+          "y": 3,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 23,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "hazard",
+          "kind": "Acid",
+          "at": [
+            15.5,
+            3.5
+          ],
+          "size": [
+            6,
+            2,
+            6
+          ],
+          "name": "AcidPool"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "BloatedSpecimen",
+            "count": 1
+          },
+          {
+            "enemy": "HostileSpecimen",
+            "count": 1
+          },
+          {
+            "enemy": "HazmatTrooper",
+            "count": 2
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "QU_PreBossNest",
+      "role": "Plain",
+      "rect": [
+        24,
+        1,
+        5,
+        5
+      ],
+      "halls": [
+        [
+          [
+            29,
+            3
+          ],
+          [
+            34,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 24,
+          "y": 3,
+          "side": "West"
+        },
+        {
+          "x": 34,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "nest",
+          "id": "QU/PreBossNest",
+          "at": [
+            26,
+            4
+          ],
+          "yaw": 180
+        },
+        {
+          "type": "securityDoor",
+          "at": [
+            31,
+            3
+          ],
+          "yaw": 90
+        }
+      ]
+    },
+    {
+      "scene": "QU_SeeperPit",
+      "role": "Boss",
+      "rect": [
+        35,
+        0,
+        8,
+        6
+      ],
+      "doors": [
+        {
+          "x": 35,
+          "y": 3,
+          "side": "West",
+          "arena": true
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/Bosses/Seeper/SeeperVent.prefab",
+          "at": [
+            36.5,
+            1
+          ],
+          "yaw": 0,
+          "name": "SeeperVent0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/Bosses/Seeper/SeeperVent.prefab",
+          "at": [
+            39,
+            1
+          ],
+          "yaw": 0,
+          "name": "SeeperVent1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/Bosses/Seeper/SeeperVent.prefab",
+          "at": [
+            41.5,
+            1
+          ],
+          "yaw": 0,
+          "name": "SeeperVent2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/Bosses/Seeper/SeeperVent.prefab",
+          "at": [
+            36.5,
+            4.5
+          ],
+          "yaw": 0,
+          "name": "SeeperVent3"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/Bosses/Seeper/SeeperVent.prefab",
+          "at": [
+            39,
+            4.5
+          ],
+          "yaw": 0,
+          "name": "SeeperVent4"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/Bosses/Seeper/SeeperVent.prefab",
+          "at": [
+            41.5,
+            4.5
+          ],
+          "yaw": 0,
+          "name": "SeeperVent5"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Seeper",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "QU_R1",
+      "role": "Plain",
+      "rect": [
+        13,
+        36,
+        5,
+        4
+      ],
+      "doors": [
+        {
+          "x": 15,
+          "y": 36,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "hazard",
+          "kind": "Acid",
+          "at": [
+            15.5,
+            37.5
+          ],
+          "size": [
+            15,
+            2,
+            12
+          ],
+          "name": "AcidFlood"
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutagenPickup",
+          "at": [
+            15,
+            38
+          ],
+          "yaw": 0
+        }
+      ]
+    },
+    {
+      "scene": "QU_VentShaft",
+      "role": "Plain",
+      "rect": [
+        36,
+        13,
+        5,
+        5
+      ],
+      "doors": [
+        {
+          "x": 36,
+          "y": 15,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "pickup",
+          "prefab": "BiomassCache",
+          "at": [
+            38,
+            15
+          ],
+          "yaw": 0
+        },
+        {
+          "type": "transit",
+          "at": [
+            40.4,
+            15
+          ],
+          "yaw": 270,
+          "destination": "Armory",
+          "arrivalAt": [
+            3.5,
+            38.5
+          ],
+          "arrivalYaw": 180,
+          "requiredBoss": "",
+          "requiredAbility": "VentSqueeze",
+          "name": "Vent_AR"
+        }
+      ]
+    },
+    {
+      "scene": "QU_Incinerator",
+      "role": "Plain",
+      "rect": [
+        -10,
+        13,
+        5,
+        5
+      ],
+      "doors": [
+        {
+          "x": -6,
+          "y": 15,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "pickup",
+          "prefab": "BiomassCache",
+          "at": [
+            -8,
+            15
+          ],
+          "yaw": 0
+        }
+      ]
+    }
+  ]
+}
