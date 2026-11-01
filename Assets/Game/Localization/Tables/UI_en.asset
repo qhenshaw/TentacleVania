@@ -1228,6 +1228,26 @@ MonoBehaviour:
     m_Localized: Spawn Brood
     m_Metadata:
       m_Items: []
+  - m_Id: 955439086583808
+    m_Localized: Bone Scythes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 955685455806464
+    m_Localized: Bloodletter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 955685455806465
+    m_Localized: Hitting an enemy at max bleed stacks heals you a little.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 955685455806466
+    m_Localized: Frenzy Edge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 955685455806467
+    m_Localized: Each combo step is faster than the last; a dash attack resets it.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

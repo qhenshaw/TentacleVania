@@ -110,6 +110,7 @@ namespace TentacleVania.Combat.Status
         public bool IsRooted => _timers.IsActive(StatusKind.Root, Time.time);
         public bool IsSlowed => _timers.IsActive(StatusKind.Slow, Time.time);
         public int BleedStacks => _bleedDot.Stacks;
+        public int BleedMaxStacks => _settings != null ? _settings.Bleed.MaxStacks : 1;
         public float StaticNormalized => _static != null ? _static.Normalized : 0f;
         public float BleedDamagePerSecond => _bleedDot.DamagePerSecond;
         public float BurnDamagePerSecond => _burnDot.DamagePerSecond;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
+using TentacleVania.Combat.Status;
 using TentacleVania.Core.Input;
 using TentacleVania.Core.Progression;
 using TentacleVania.Core.Saves;
@@ -48,6 +49,7 @@ namespace TentacleVania.Weapons
         private ComboCounter _combo;
         private CreatureCharge _charge;
         private float _durationScale = 1f;
+        private int _frenzy;
 
         private WeaponMove _move;
         private float _moveStarted;
@@ -267,6 +269,14 @@ namespace TentacleVania.Weapons
             ActiveKind = kind;
             var modifier = _modifiers[slot];
             _durationScale = _finisher && modifier != null && modifier.Kind == ModifierKind.Maelstrom ? Mathf.Max(0.1f, modifier.Value) : 1f;
+            if (kind == AttackKind.DashAttack || kind == AttackKind.Heavy)
+                _frenzy = 0;
+            else if (modifier != null && modifier.Kind == ModifierKind.FrenzyEdge)
+            {
+                if (ActiveStep == 0)
+                    _frenzy = 0;
+                _durationScale = Mathf.Max(0.4f, 1f - modifier.Value * _frenzy++);
+            }
             _moveStarted = now;
             _moveForward = ChooseDirection();
             _motor.FaceImmediately(_moveForward);
@@ -371,12 +381,23 @@ namespace TentacleVania.Weapons
                 if (inward.magnitude > modifier.MinDistance)
                     info.Direction = inward.normalized;
             }
+            if (_move.Status != StatusKind.None)
+            {
+                info.Status = _move.Status;
+                info.StatusDuration = _move.StatusDuration;
+            }
             var hadArmor = target.Armor > 0f;
             var staggered = target.IsStaggered;
+            var maxBleed = target.TryGetComponent(out StatusEffects status) && status.BleedStacks >= status.BleedMaxStacks;
             var result = target.TakeDamage(info);
             if (result.Outcome == DamageOutcome.Ignored)
                 return;
             _hitThisMove.Add(target);
+            if (status != null && _move.Status != StatusKind.None)
+                for (var i = 1; i < _move.StatusStacks; i++)
+                    status.Apply(_move.Status, 0f, _move.StatusDuration, Team.Creature, 1f);
+            if (modifier != null && modifier.Kind == ModifierKind.Bloodletter && maxBleed)
+                _health.Heal(modifier.Value);
             if (modifier != null)
                 ApplyModifier(modifier, target, hadArmor, staggered);
         }

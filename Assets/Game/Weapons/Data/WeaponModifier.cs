@@ -8,6 +8,8 @@ namespace TentacleVania.Weapons.Data
         ChargedCyclone,
         Shatter,
         BoneBreaker,
+        Bloodletter,
+        FrenzyEdge,
     }
 
     [CreateAssetMenu(menuName = "TentacleVania/Weapons/Weapon Modifier")]

@@ -28,6 +28,10 @@ namespace TentacleVania.Weapons.Data
         [Min(0f)] public float StaggerScale = 1f;
         [Min(0f)] public float ArmorDamageScale = 1f;
         public HitFlags Flags;
+        [Tooltip("Status applied on hit (Bleed for Bone Scythes); StatusStacks applies it that many times.")]
+        public StatusKind Status;
+        [Min(1)] public int StatusStacks = 1;
+        [Min(0f)] public float StatusDuration;
 
         [Header("Shape")]
         [Tooltip("Sweep: distance of the swept arc. Area: unused. Body: unused.")]
