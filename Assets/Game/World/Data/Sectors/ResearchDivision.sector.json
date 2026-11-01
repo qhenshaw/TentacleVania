@@ -989,12 +989,13 @@
       "place": [
         {
           "type": "pickup",
-          "prefab": "BiomassCache",
+          "prefab": "RailSpinePickup",
           "at": [
             15,
             38
           ],
-          "yaw": 0
+          "yaw": 0,
+          "name": "RailSpine"
         }
       ]
     },
