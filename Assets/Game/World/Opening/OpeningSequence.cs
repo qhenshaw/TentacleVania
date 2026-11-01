@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FMODUnity;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
+using TentacleVania.Core;
 using TentacleVania.Core.Characters;
 using TentacleVania.Core.Feedback;
 using TentacleVania.Core.Saves;
@@ -141,6 +142,7 @@ namespace TentacleVania.World.Opening
             if (creature == null)
                 return;
             _running = true;
+            Cutscene.Begin(this);
             _started = Time.time;
             _skip = 0f;
             _flickered = _alarmed = _cracked = false;
@@ -246,6 +248,7 @@ namespace TentacleVania.World.Opening
         private void Finish(bool burst)
         {
             _running = false;
+            Cutscene.End(this);
             _skip = 0f;
             var sun = RenderSettings.sun;
             if (sun != null && _sunIntensity > 0f)

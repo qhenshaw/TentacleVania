@@ -7,6 +7,8 @@ namespace TentacleVania.UI.Hud
     {
         private const string Tab = "HUD";
 
+        private static readonly object DebugCutscene = new();
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Register()
         {
@@ -16,6 +18,7 @@ namespace TentacleVania.UI.Hud
             DebugMenu.Toggle(Tab, "Tutorial prompts", () => Core.Progression.Tutorials.Enabled, v => Core.Progression.Tutorials.Enabled = v);
             DebugMenu.Value(Tab, "Tutorials seen", () => string.Join(", ", Core.Saves.SaveSystem.Data.World.SeenTutorials));
             DebugMenu.Button(Tab, "Reset tutorials", Core.Progression.Tutorials.ResetAll);
+            DebugMenu.Toggle(Tab, "Letterbox (test cutscene)", () => Core.Cutscene.Active, v => { if (v) Core.Cutscene.Begin(DebugCutscene); else Core.Cutscene.End(DebugCutscene); });
             DebugMenu.Button(Tab, "Open settings", () =>
             {
                 if (Settings.SettingsScreen.Instance != null)

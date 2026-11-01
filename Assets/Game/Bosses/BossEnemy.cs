@@ -251,12 +251,14 @@ namespace TentacleVania.Bosses
             {
                 _restoreFocus = CameraFocus.Target;
                 CameraFocus.Target = transform;
+                Cutscene.Begin(this);
                 _framing = true;
             }
             else if (!on && _framing)
             {
                 if (CameraFocus.Target == transform)
                     CameraFocus.Target = _restoreFocus;
+                Cutscene.End(this);
                 _framing = false;
             }
         }
