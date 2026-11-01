@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Arenas.ArenaWaveSet
   _waves:
   - Enemies:
-    - Prefab: {fileID: 7658896402719967232, guid: f807ed8794e91a54cb26607225f1d958, type: 3}
-      Count: 3
+    - Prefab: {fileID: 2404004391919544509, guid: 19bd46d1cfbb77e40b9562fd62dce166, type: 3}
+      Count: 1
   _delayBetweenWaves: 2
   _spawnInterval: 0.3

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: SecurityChiefVanceVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -91800322
+      Data2: 1103496584
+      Data3: 1267284891
+      Data4: -121876934
+    Path: event:/Enemies/Voice/SecurityChiefVance/Alert
+  _pain:
+    Guid:
+      Data1: 83877610
+      Data2: 1107324874
+      Data3: -1930944364
+      Data4: 680408545
+    Path: event:/Enemies/Voice/SecurityChiefVance/Pain
+  _death:
+    Guid:
+      Data1: 2112657416
+      Data2: 1076777892
+      Data3: 169557936
+      Data4: 913693079
+    Path: event:/Enemies/Voice/SecurityChiefVance/Death
+  _grabbed:
+    Guid:
+      Data1: -61070567
+      Data2: 1326734574
+      Data3: 1174127265
+      Data4: -1261580301
+    Path: event:/Enemies/Voice/SecurityChiefVance/Grabbed
+  _attack:
+    Guid:
+      Data1: -990675518
+      Data2: 1179086641
+      Data3: 1389042563
+      Data4: -1497143972
+    Path: event:/Enemies/Voice/SecurityChiefVance/Attack
+  _stagger:
+    Guid:
+      Data1: -1821998080
+      Data2: 1186884671
+      Data3: -283830101
+      Data4: 138698344
+    Path: event:/Enemies/Voice/SecurityChiefVance/Stagger
+  _painCooldown: 1.2

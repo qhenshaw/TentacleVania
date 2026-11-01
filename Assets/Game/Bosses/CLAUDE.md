@@ -32,6 +32,14 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - **Adds:** each stagger break summons 2 Security Guards near the boss (max 4 alive) once the stun ends (developer decision).
 - **Finish:** the shared finishing consume. The PA plays `sh.warden` (lines 4–5, then Crane's first address).
 
+## Security Chief Vance (`SecurityChiefVance/`; design: Enemies & Bosses row, TV-189; placeholder numbers)
+
+- **Assets:** `SecurityChiefVance.prefab` (`VanceBoss : BossEnemy`, the test boss's Handler body tinted navy with a steel `RiotShield` cube; scaffolded with `content-new.sh boss`), enemy data `SecurityChiefVance.asset`, boss data `SecurityChiefVanceBoss.asset` (id `AD/SecurityChiefVance`, key `boss.securityChiefVance`, reward `FreightClearance`), voice set `SecurityChiefVanceVoice`. He waits in `AD_CommandPost`, the last room of Administration's 3-room siege (Siege1 and Siege2 are escalating guard waves).
+- **Numbers:** 2,600 HP, stagger 1,300 with a 3 s window, 4.5 m/s (scaled from the TV-224 boss curve).
+- **Riot shield:** while `ShieldUp` (phases 1–2) hits from within `_shieldArc` 120° of his facing deal no health damage unless his stagger is broken (flank him or break the bar); the last phase drops the shield.
+- **Attacks:** Baton Combo (Electric, 2 hits of 12, 0.55 s), Shield Bash (10, 0.7 s), Shield Charge (red, 0.9 s wind-up, lunges at 16 m/s while active, used at 4–10 m), Shock Slam (Electric area 3.2 m, 22, 1.0 s; last phase).
+- **Phases:** 100% baton + bash with up to 2 Security Guard adds every 15 s; ≤60% adds the charge and Riot Guard adds (1 on start, max 2); ≤30% shield off, baton/charge/slam, ×1.2 speed, Security Guard adds (2 on start, max 3). Adds are consumable heal sources (design).
+
 ## Surgical Automaton (`Automaton/`; design: Surgical Automaton page and Changelog "Surgical Automaton fight")
 
 - **Assets:** `SurgicalAutomaton.prefab` (`SurgicalAutomaton : BossEnemy`; the test boss's Handler body ×1.6 in steel as placeholder), enemy data `SurgicalAutomaton.asset` and boss data `AutomatonBoss.asset` (id `BL/SurgicalAutomaton`, matching the PA script; the shared boss theme; reward `TentacleGrapple`, which unlocks Grapple without taking the slot).

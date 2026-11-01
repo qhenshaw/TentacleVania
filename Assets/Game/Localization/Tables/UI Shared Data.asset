@@ -1023,6 +1023,10 @@ MonoBehaviour:
     m_Key: transit.corridor
     m_Metadata:
       m_Items: []
+  - m_Id: 819064026710016
+    m_Key: boss.securityChiefVance
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
