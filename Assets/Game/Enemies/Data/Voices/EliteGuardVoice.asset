@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: EliteGuardVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1848764798
+      Data2: 1254713136
+      Data3: -2130527607
+      Data4: -86249623
+    Path: event:/Enemies/Voice/EliteGuard/Alert
+  _pain:
+    Guid:
+      Data1: -111503511
+      Data2: 1132286403
+      Data3: -1455493468
+      Data4: -1051104673
+    Path: event:/Enemies/Voice/EliteGuard/Pain
+  _death:
+    Guid:
+      Data1: -248759765
+      Data2: 1274118330
+      Data3: 123476664
+      Data4: -1273063344
+    Path: event:/Enemies/Voice/EliteGuard/Death
+  _grabbed:
+    Guid:
+      Data1: 1376647985
+      Data2: 1333657262
+      Data3: 1061476785
+      Data4: 1999946679
+    Path: event:/Enemies/Voice/EliteGuard/Grabbed
+  _attack:
+    Guid:
+      Data1: -892045560
+      Data2: 1324279022
+      Data3: -1849798251
+      Data4: -931794130
+    Path: event:/Enemies/Voice/EliteGuard/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

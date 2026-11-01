@@ -559,6 +559,8 @@ namespace TentacleVania.Enemies
             _agent.enabled = false;
             var consumed = State == EnemyState.Consumed;
             DiedConsumed = consumed;
+            if (_definition.Drop != null && UnityEngine.Random.value < _definition.DropChance)
+                DropLoot();
             SetState(EnemyState.Dead);
             OnDeath();
             if (!consumed && _health.BurstsOnDeath)
@@ -572,6 +574,13 @@ namespace TentacleVania.Enemies
         }
 
         protected virtual void OnDeath() { }
+
+        private void DropLoot()
+        {
+            var position = transform.position;
+            var drop = Instantiate(_definition.Drop, position + Vector3.up * 0.5f, Quaternion.identity);
+            drop.name = $"{_definition.Drop.name}_{Mathf.RoundToInt(position.x)}_{Mathf.RoundToInt(position.z)}";
+        }
 
         private void HideBody()
         {

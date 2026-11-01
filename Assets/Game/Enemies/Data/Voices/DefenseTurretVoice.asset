@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: DefenseTurretVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1613553389
+      Data2: 1228999002
+      Data3: 1374597536
+      Data4: 1810242079
+    Path: event:/Enemies/Voice/DefenseTurret/Alert
+  _pain:
+    Guid:
+      Data1: 1845944834
+      Data2: 1278406994
+      Data3: -632532089
+      Data4: -645032423
+    Path: event:/Enemies/Voice/DefenseTurret/Pain
+  _death:
+    Guid:
+      Data1: 680927330
+      Data2: 1182246843
+      Data3: 144204435
+      Data4: -1160469496
+    Path: event:/Enemies/Voice/DefenseTurret/Death
+  _grabbed:
+    Guid:
+      Data1: 166939619
+      Data2: 1180484805
+      Data3: -708679027
+      Data4: 836528726
+    Path: event:/Enemies/Voice/DefenseTurret/Grabbed
+  _attack:
+    Guid:
+      Data1: -183064630
+      Data2: 1266609630
+      Data3: -1070026606
+      Data4: -486520533
+    Path: event:/Enemies/Voice/DefenseTurret/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2
