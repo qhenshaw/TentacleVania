@@ -1,0 +1,912 @@
+{
+  "sector": "CC",
+  "rootScene": "CommandCenter",
+  "folder": "Assets/Game/Scenes/CommandCenter",
+  "addressablesGroup": "CommandCenter",
+  "color": [
+    0.4,
+    0.8,
+    1.0,
+    1
+  ],
+  "spawn": [
+    3.5,
+    38.5
+  ],
+  "spawnYaw": 180,
+  "rooms": [
+    {
+      "scene": "CC_EntryNest",
+      "role": "Plain",
+      "rect": [
+        1,
+        36,
+        6,
+        5
+      ],
+      "halls": [
+        [
+          [
+            3,
+            35
+          ],
+          [
+            3,
+            31
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 31,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "nest",
+          "id": "CC/EntryNest",
+          "at": [
+            5,
+            39.5
+          ],
+          "yaw": 180
+        },
+        {
+          "type": "transit",
+          "at": [
+            1.6,
+            38.5
+          ],
+          "yaw": 90,
+          "destination": "Armory",
+          "arrivalAt": [
+            39.4,
+            15
+          ],
+          "arrivalOffset": [
+            -1.5,
+            0,
+            0
+          ],
+          "arrivalYaw": 270,
+          "requiredBoss": "",
+          "requiredAbility": "FireResistance",
+          "name": "Transit_AR"
+        }
+      ]
+    },
+    {
+      "scene": "CC_A1",
+      "role": "Arena",
+      "rect": [
+        0,
+        24,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            7,
+            27
+          ],
+          [
+            12,
+            27
+          ]
+        ],
+        [
+          [
+            3,
+            23
+          ],
+          [
+            3,
+            18
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 30,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 6,
+          "y": 27,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 3,
+          "y": 24,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 12,
+          "y": 27,
+          "side": "East"
+        },
+        {
+          "x": 3,
+          "y": 18,
+          "side": "South"
+        }
+      ],
+      "place": [],
+      "waves": [
+        [
+          {
+            "enemy": "SecurityGuard",
+            "count": 2
+          },
+          {
+            "enemy": "Officer",
+            "count": 1
+          }
+        ],
+        [
+          {
+            "enemy": "SecurityDrone",
+            "count": 2
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "CC_A2",
+      "role": "Arena",
+      "rect": [
+        13,
+        25,
+        5,
+        5
+      ],
+      "wallMounts": true,
+      "halls": [
+        [
+          [
+            18,
+            27
+          ],
+          [
+            23,
+            27
+          ]
+        ],
+        [
+          [
+            15,
+            30
+          ],
+          [
+            15,
+            35
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 13,
+          "y": 27,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 17,
+          "y": 27,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 15,
+          "y": 29,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 23,
+          "y": 27,
+          "side": "East"
+        },
+        {
+          "x": 15,
+          "y": 35,
+          "side": "North"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "DefenseTurret",
+            "count": 2
+          },
+          {
+            "enemy": "SecurityGuard",
+            "count": 2
+          }
+        ]
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/Enemies/Prefabs/TurretConsole.prefab",
+          "at": [
+            14,
+            26
+          ],
+          "yaw": 0,
+          "name": "TurretConsole"
+        }
+      ]
+    },
+    {
+      "scene": "CC_A3",
+      "role": "Arena",
+      "rect": [
+        24,
+        24,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            27,
+            23
+          ],
+          [
+            27,
+            19
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 24,
+          "y": 27,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 27,
+          "y": 24,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 27,
+          "y": 19,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "A3",
+          "at": [
+            29.5,
+            29.5
+          ]
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "EliteGuard",
+            "count": 1
+          },
+          {
+            "enemy": "Soldier",
+            "count": 2
+          }
+        ],
+        [
+          {
+            "enemy": "Officer",
+            "count": 1
+          },
+          {
+            "enemy": "HeavyTrooper",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "CC_A4",
+      "role": "Arena",
+      "rect": [
+        1,
+        13,
+        5,
+        5
+      ],
+      "halls": [
+        [
+          [
+            6,
+            15
+          ],
+          [
+            11,
+            15
+          ]
+        ],
+        [
+          [
+            3,
+            12
+          ],
+          [
+            3,
+            7
+          ]
+        ],
+        [
+          [
+            0,
+            15
+          ],
+          [
+            -5,
+            15
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 17,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 5,
+          "y": 15,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 3,
+          "y": 13,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 1,
+          "y": 15,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 11,
+          "y": 15,
+          "side": "East"
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "side": "South"
+        },
+        {
+          "x": -5,
+          "y": 15,
+          "side": "West"
+        }
+      ],
+      "place": [],
+      "waves": [
+        [
+          {
+            "enemy": "Soldier",
+            "count": 2
+          },
+          {
+            "enemy": "SecurityDrone",
+            "count": 2
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "CC_A5",
+      "role": "Arena",
+      "rect": [
+        12,
+        12,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            19,
+            15
+          ],
+          [
+            23,
+            15
+          ]
+        ],
+        [
+          [
+            15,
+            11
+          ],
+          [
+            15,
+            7
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 12,
+          "y": 15,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 18,
+          "y": 15,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 15,
+          "y": 12,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 23,
+          "y": 15,
+          "side": "East"
+        },
+        {
+          "x": 15,
+          "y": 7,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "A5",
+          "at": [
+            17.5,
+            17.5
+          ]
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Officer",
+            "count": 1
+          },
+          {
+            "enemy": "Soldier",
+            "count": 2
+          },
+          {
+            "enemy": "EliteGuard",
+            "count": 1
+          }
+        ],
+        [
+          {
+            "enemy": "AssaultMech",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "CC_A6",
+      "role": "Arena",
+      "rect": [
+        24,
+        12,
+        7,
+        7
+      ],
+      "wallMounts": true,
+      "halls": [
+        [
+          [
+            31,
+            15
+          ],
+          [
+            35,
+            15
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 27,
+          "y": 18,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 24,
+          "y": 15,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 30,
+          "y": 15,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 35,
+          "y": 15,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/Enemies/Prefabs/TurretConsole.prefab",
+          "at": [
+            25,
+            13
+          ],
+          "yaw": 0,
+          "name": "TurretConsole"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "DefenseTurret",
+            "count": 2
+          },
+          {
+            "enemy": "EliteGuard",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "CC_A7",
+      "role": "Arena",
+      "rect": [
+        0,
+        0,
+        7,
+        7
+      ],
+      "wallMounts": true,
+      "halls": [
+        [
+          [
+            7,
+            3
+          ],
+          [
+            11,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 6,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 6,
+          "y": 3,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 11,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "A7",
+          "at": [
+            1,
+            1
+          ]
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/Enemies/Prefabs/TurretConsole.prefab",
+          "at": [
+            5.5,
+            1
+          ],
+          "yaw": 0,
+          "name": "TurretConsole"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "DefenseTurret",
+            "count": 1
+          },
+          {
+            "enemy": "Officer",
+            "count": 1
+          },
+          {
+            "enemy": "Soldier",
+            "count": 2
+          }
+        ],
+        [
+          {
+            "enemy": "HeavyTrooper",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "CC_A8",
+      "role": "Arena",
+      "rect": [
+        12,
+        0,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            19,
+            3
+          ],
+          [
+            23,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 15,
+          "y": 6,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 18,
+          "y": 3,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 23,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [],
+      "waves": [
+        [
+          {
+            "enemy": "EliteGuard",
+            "count": 2
+          },
+          {
+            "enemy": "Officer",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "CC_PreBossNest",
+      "role": "Plain",
+      "rect": [
+        24,
+        1,
+        5,
+        5
+      ],
+      "halls": [
+        [
+          [
+            29,
+            3
+          ],
+          [
+            34,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 24,
+          "y": 3,
+          "side": "West"
+        },
+        {
+          "x": 34,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "nest",
+          "id": "CC/PreBossNest",
+          "at": [
+            26,
+            4
+          ],
+          "yaw": 180
+        },
+        {
+          "type": "securityDoor",
+          "at": [
+            31,
+            3
+          ],
+          "yaw": 90
+        }
+      ]
+    },
+    {
+      "scene": "CC_CoreChamber",
+      "role": "Boss",
+      "rect": [
+        35,
+        0,
+        8,
+        6
+      ],
+      "doors": [
+        {
+          "x": 35,
+          "y": 3,
+          "side": "West",
+          "arena": true
+        }
+      ],
+      "place": [
+        {
+          "type": "elevator",
+          "at": [
+            41.5,
+            4
+          ],
+          "yaw": 270,
+          "destination": "DeepContainment",
+          "arrivalAt": [
+            3.5,
+            38.5
+          ],
+          "arrivalYaw": 180,
+          "requiredBoss": "",
+          "requiredAbility": "Overload",
+          "name": "Freight_DC"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "OverwatchCore",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "CC_R1",
+      "role": "Plain",
+      "rect": [
+        13,
+        36,
+        5,
+        4
+      ],
+      "doors": [
+        {
+          "x": 15,
+          "y": 36,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "pickup",
+          "prefab": "TrinketPickup",
+          "at": [
+            15,
+            38
+          ],
+          "yaw": 0,
+          "name": "SurfaceLiftCode",
+          "itemId": "SurfaceLiftCode"
+        }
+      ]
+    },
+    {
+      "scene": "CC_ServerRoom",
+      "role": "Plain",
+      "rect": [
+        36,
+        13,
+        5,
+        5
+      ],
+      "doors": [
+        {
+          "x": 36,
+          "y": 15,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "pickup",
+          "prefab": "MutagenPickup",
+          "at": [
+            38,
+            15
+          ],
+          "yaw": 0
+        }
+      ]
+    },
+    {
+      "scene": "CC_TitanBay",
+      "role": "Plain",
+      "rect": [
+        -10,
+        13,
+        5,
+        5
+      ],
+      "doors": [
+        {
+          "x": -6,
+          "y": 15,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "pickup",
+          "prefab": "BiomassCache",
+          "at": [
+            -8,
+            15
+          ],
+          "yaw": 0
+        }
+      ]
+    }
+  ]
+}
