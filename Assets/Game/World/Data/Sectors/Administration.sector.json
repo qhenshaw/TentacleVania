@@ -142,7 +142,7 @@
     {
       "scene": "AD_ArchiveVault", "role": "Plain", "rect": [-10, 13, 5, 5],
       "doors": [{ "x": -6, "y": 15, "side": "East" }],
-      "place": [{ "type": "pickup", "prefab": "BiomassCache", "at": [-8, 15], "yaw": 0 }]
+      "place": [{ "type": "pickup", "prefab": "BiomassCache", "at": [-8, 15], "yaw": 0 }, { "type": "pickup", "prefab": "BoneScythesPickup", "at": [-7, 16.5], "yaw": 0 }]
     }
   ]
 }

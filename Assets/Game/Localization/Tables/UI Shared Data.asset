@@ -1179,6 +1179,26 @@ MonoBehaviour:
     m_Key: ability.SpawnBrood.name
     m_Metadata:
       m_Items: []
+  - m_Id: 955439086583808
+    m_Key: weapon.BoneScythes.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 955685455806464
+    m_Key: modifier.bloodletter.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 955685455806465
+    m_Key: modifier.bloodletter.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 955685455806466
+    m_Key: modifier.frenzyEdge.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 955685455806467
+    m_Key: modifier.frenzyEdge.effect
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
