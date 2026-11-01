@@ -15,6 +15,8 @@ namespace TentacleVania.Creature.Rig
         [SerializeField] private VisualEffect _effect;
         [SerializeField] private MonoBehaviour[] _sources;
         [SerializeField] private bool _ownBudget;
+        [Tooltip("With Own Budget: the chain cap for this effect (0 uses the maw budget).")]
+        [SerializeField, Min(0)] private int _budget;
 
         private readonly List<IChainSource> _chainSources = new(4);
         private readonly List<ChainTexture> _textures = new(2);
@@ -60,7 +62,7 @@ namespace TentacleVania.Creature.Rig
         private int Budget()
         {
             if (_ownBudget)
-                return CreatureRigSettings.MaxMawChains;
+                return _budget > 0 ? _budget : CreatureRigSettings.MaxMawChains;
             var budget = CreatureRigSettings.MaxChains;
             foreach (var texture in _textures)
             {
@@ -89,6 +91,7 @@ namespace TentacleVania.Creature.Rig
             _effect.SetTexture(ChainPositions, _texture);
             _effect.SetInt(ChainCount, count);
             _effect.SetInt(ChainLength, width);
+            _effect.Reinit();
         }
     }
 }
