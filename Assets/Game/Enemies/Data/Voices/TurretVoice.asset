@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: TurretVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1048110543
+      Data2: 1286251112
+      Data3: 2091976077
+      Data4: -951648297
+    Path: 
+  _pain:
+    Guid:
+      Data1: 82126609
+      Data2: 1285515483
+      Data3: -1266286930
+      Data4: -2003815338
+    Path: 
+  _death:
+    Guid:
+      Data1: 1495343765
+      Data2: 1286065197
+      Data3: 804987551
+      Data4: -1625919567
+    Path: 
+  _grabbed:
+    Guid:
+      Data1: 1527366942
+      Data2: 1110847321
+      Data3: -933168493
+      Data4: -1902342036
+    Path: 
+  _attack:
+    Guid:
+      Data1: -1071111831
+      Data2: 1305800232
+      Data3: -1302749511
+      Data4: -1733215586
+    Path: 
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: GuardVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 1868060662
+      Data2: 1102797377
+      Data3: -1656405071
+      Data4: 757320008
+    Path: 
+  _pain:
+    Guid:
+      Data1: -2014661177
+      Data2: 1326057334
+      Data3: -371575379
+      Data4: 1823690461
+    Path: 
+  _death:
+    Guid:
+      Data1: -264355227
+      Data2: 1185829753
+      Data3: -1888439365
+      Data4: 107924100
+    Path: 
+  _grabbed:
+    Guid:
+      Data1: 1955121877
+      Data2: 1100612457
+      Data3: 964486546
+      Data4: 1637476041
+    Path: 
+  _attack:
+    Guid:
+      Data1: 1229911591
+      Data2: 1268250630
+      Data3: -1340508483
+      Data4: 137351824
+    Path: 
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

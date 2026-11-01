@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: AutomatonVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -130315105
+      Data2: 1207452607
+      Data3: -1660075338
+      Data4: 1026488323
+    Path: 
+  _pain:
+    Guid:
+      Data1: -542744697
+      Data2: 1080528944
+      Data3: -348298057
+      Data4: 702844144
+    Path: 
+  _death:
+    Guid:
+      Data1: -1082472882
+      Data2: 1207414954
+      Data3: -2111809120
+      Data4: 1483334640
+    Path: 
+  _grabbed:
+    Guid:
+      Data1: 495873751
+      Data2: 1328815086
+      Data3: 1817677739
+      Data4: 386506329
+    Path: 
+  _attack:
+    Guid:
+      Data1: -681756763
+      Data2: 1161785220
+      Data3: 851237028
+      Data4: 559326824
+    Path: 
+  _stagger:
+    Guid:
+      Data1: 139047909
+      Data2: 1122806433
+      Data3: -1722547048
+      Data4: 1184203473
+    Path: 
+  _painCooldown: 1.2

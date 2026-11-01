@@ -276,6 +276,8 @@ namespace TentacleVania.Weapons
             if (kind == AttackKind.DashAttack)
                 _motor.Lunge(_moveForward, _move.LungeDistance, _move.WindUp + _move.Strike);
             AttackStarted?.Invoke(this);
+            if (kind == AttackKind.Heavy || _finisher)
+                Core.Characters.CreatureSignals.RaiseHeavyAttack();
         }
 
         private Vector3 ChooseDirection()

@@ -63,6 +63,7 @@ namespace TentacleVania.World.Arenas
                 Apply(BeaconState.Alarm);
                 SetDim(true);
                 Play(_klaxon);
+                Core.Characters.CreatureSignals.RaiseLockdown();
                 _klaxonDelay = Tween.Delay(this, KlaxonGap, lockdown => lockdown.Play(lockdown._klaxon));
             }
             else if (state == ArenaState.Cleared && _last != ArenaState.Cleared)

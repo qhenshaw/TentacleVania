@@ -333,6 +333,8 @@ namespace TentacleVania.Enemies
             UpdateAreaCenter();
             SetState(EnemyState.Attacking);
             PlaySound(_definition.Attacks[index].WindUpSound);
+            if (_definition.Voice != null)
+                EnemyVoices.Play(_definition.Voice.Attack, transform.position);
         }
 
         private void PlaySound(EventReference sound)
@@ -597,6 +599,8 @@ namespace TentacleVania.Enemies
 
         private void BreakStagger()
         {
+            if (_definition.Voice != null)
+                EnemyVoices.Play(_definition.Voice.Stagger, transform.position, true);
             Stun(_definition.StaggerStun);
             _staggerBroken = true;
             _health.IsStaggered = true;

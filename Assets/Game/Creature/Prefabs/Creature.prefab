@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 4779626605629041017}
   - component: {fileID: 3324256350451842991}
   - component: {fileID: 8365291854207342177}
+  - component: {fileID: 2567351535055926216}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -694,6 +695,7 @@ MonoBehaviour:
   _sources:
   - {fileID: 8169341575981907583}
   _ownBudget: 0
+  _budget: 0
 --- !u!114 &6654993801079667695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,6 +752,7 @@ MonoBehaviour:
   _sources:
   - {fileID: 5879995599559319355}
   _ownBudget: 0
+  _budget: 0
 --- !u!114 &447328166624792470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,6 +769,7 @@ MonoBehaviour:
   _sources:
   - {fileID: 6654993801079667695}
   _ownBudget: 0
+  _budget: 0
 --- !u!114 &5522881091801206148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,6 +812,7 @@ MonoBehaviour:
   _sources:
   - {fileID: 3229476483880945898}
   _ownBudget: 1
+  _budget: 0
 --- !u!114 &9051656861580778372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,6 +912,64 @@ MonoBehaviour:
   _popTime: 0.25
   _flyTime: 0.45
   _popSpeed: 4
+--- !u!114 &2567351535055926216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2425871d65ccfcd43872fb0feb718e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.CreatureVoice
+  _hurt:
+    Guid:
+      Data1: -1902786466
+      Data2: 1292233083
+      Data3: -426345593
+      Data4: 949581639
+    Path: 
+  _death:
+    Guid:
+      Data1: 344841992
+      Data2: 1154521856
+      Data3: -2098229857
+      Data4: -1984717073
+    Path: 
+  _grunt:
+    Guid:
+      Data1: -655327450
+      Data2: 1208230939
+      Data3: -168605817
+      Data4: 842444086
+    Path: 
+  _feed:
+    Guid:
+      Data1: 1504797214
+      Data2: 1292298879
+      Data3: -1715532355
+      Data4: -799795120
+    Path: 
+  _idle:
+    Guid:
+      Data1: 1420557382
+      Data2: 1171551809
+      Data3: -1733491030
+      Data4: 739246883
+    Path: 
+  _hiss:
+    Guid:
+      Data1: -618970049
+      Data2: 1109072098
+      Data3: -1763803773
+      Data4: -177928880
+    Path: 
+  _hurtCooldown: 1.5
+  _idleInterval: {x: 8, y: 15}
+  _calmAfter: 6
+  _stillSpeed: 0.2
 --- !u!1 &4860062330439387882
 GameObject:
   m_ObjectHideFlags: 0
