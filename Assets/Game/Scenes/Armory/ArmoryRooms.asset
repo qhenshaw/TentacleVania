@@ -1,0 +1,788 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b65e2e6534cdb24a8636dc27ebb5a11, type: 3}
+  m_Name: ArmoryRooms
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Streaming.RoomRegistry
+  _loadRadius: 18
+  _unloadRadius: 28
+  _rooms:
+  - Scene: AR_EntryNest
+    Center: {x: 12.659846, y: 1.5, z: 108.28941}
+    Size: {x: 20.080307, y: 4.8, z: 30.579865}
+    Neighbours:
+    - AR_A1
+    MapShapes:
+    - serializedVersion: 2
+      x: 3
+      y: 108
+      width: 18
+      height: 15
+    - serializedVersion: 2
+      x: 9
+      y: 105
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 102
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 99
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 96
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 93
+      width: 3
+      height: 3
+  - Scene: AR_A1
+    Center: {x: 19.30985, y: 1.4155036, z: 75.289444}
+    Size: {x: 39.380318, y: 3.6310077, z: 36.579834}
+    Neighbours:
+    - AR_EntryNest
+    - AR_A2
+    - AR_A4
+    - AR_A5
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 72
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 21
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 24
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 27
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 30
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 33
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 36
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 69
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 66
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 60
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 57
+      width: 3
+      height: 3
+  - Scene: AR_A2
+    Center: {x: 55.309845, y: 1.4155036, z: 82.49976}
+    Size: {x: 33.38031, y: 3.6310077, z: 51.000473}
+    Neighbours:
+    - AR_A1
+    - AR_A3
+    - AR_A5
+    - AR_R1
+    MapShapes:
+    - serializedVersion: 2
+      x: 39
+      y: 75
+      width: 15
+      height: 15
+    - serializedVersion: 2
+      x: 54
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 57
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 60
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 63
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 66
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 69
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 72
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 69
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 66
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 60
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 57
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 90
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 93
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 96
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 99
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 102
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 105
+      width: 3
+      height: 3
+  - Scene: AR_A3
+    Center: {x: 82.5, y: 1.4655038, z: 73.68992}
+    Size: {x: 21.76062, y: 3.5310075, z: 39.380783}
+    Neighbours:
+    - AR_A2
+    - AR_A5
+    - AR_A6
+    MapShapes:
+    - serializedVersion: 2
+      x: 72
+      y: 72
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 81
+      y: 69
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 66
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 60
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 57
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 54
+      width: 3
+      height: 3
+  - Scene: AR_A4
+    Center: {x: 12.000002, y: 1.4655038, z: 39.18992}
+    Size: {x: 48.000008, y: 3.5310075, z: 36.380783}
+    Neighbours:
+    - AR_A1
+    - AR_A5
+    - AR_A7
+    - AR_A8
+    - AR_R2
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 36
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 21
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 24
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 27
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 30
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 33
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 33
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 30
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 27
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 24
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 21
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -3
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -6
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -9
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -12
+      y: 45
+      width: 3
+      height: 3
+  - Scene: AR_A5
+    Center: {x: 55.310005, y: 1.4655038, z: 46.5}
+    Size: {x: 39.380615, y: 3.5310075, z: 21.76062}
+    Neighbours:
+    - AR_A1
+    - AR_A2
+    - AR_A3
+    - AR_A4
+    - AR_A6
+    MapShapes:
+    - serializedVersion: 2
+      x: 36
+      y: 36
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 57
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 60
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 63
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 66
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 69
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 72
+      y: 45
+      width: 3
+      height: 3
+  - Scene: AR_A6
+    Center: {x: 89.809845, y: 1.5655037, z: 37.68992}
+    Size: {x: 30.38031, y: 3.3310075, z: 33.380783}
+    Neighbours:
+    - AR_A3
+    - AR_A5
+    - AR_A9
+    - AR_BlastDoor
+    MapShapes:
+    - serializedVersion: 2
+      x: 75
+      y: 39
+      width: 15
+      height: 15
+    - serializedVersion: 2
+      x: 81
+      y: 36
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 33
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 30
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 27
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 24
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 21
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 90
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 93
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 96
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 99
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 102
+      y: 45
+      width: 3
+      height: 3
+  - Scene: AR_A7
+    Center: {x: 17.71033, y: 1.4155036, z: 10.499999}
+    Size: {x: 36.57936, y: 3.6310077, z: 22.158703}
+    Neighbours:
+    - AR_A4
+    - AR_A8
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 21
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 24
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 27
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 30
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 33
+      y: 9
+      width: 3
+      height: 3
+  - Scene: AR_A8
+    Center: {x: 53.71048, y: 1.4655038, z: 4.78944}
+    Size: {x: 36.579666, y: 3.5310075, z: 33.579826}
+    Neighbours:
+    - AR_A4
+    - AR_A7
+    - AR_A9
+    - AR_R3
+    MapShapes:
+    - serializedVersion: 2
+      x: 36
+      y: 0
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 57
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 60
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 63
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 66
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 69
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: -3
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: -6
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: -9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: -12
+      width: 3
+      height: 3
+  - Scene: AR_A9
+    Center: {x: 89.809845, y: 1.4155036, z: 10.400477}
+    Size: {x: 36.38031, y: 3.6310077, z: 21.95966}
+    Neighbours:
+    - AR_A6
+    - AR_A8
+    - AR_PreBossNest
+    MapShapes:
+    - serializedVersion: 2
+      x: 72
+      y: 0
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 93
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 96
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 99
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 102
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 105
+      y: 9
+      width: 3
+      height: 3
+  - Scene: AR_PreBossNest
+    Center: {x: 124.21033, y: 1.85, z: 10.400476}
+    Size: {x: 33.579346, y: 3.9, z: 15.95966}
+    Neighbours:
+    - AR_A9
+    - AR_LiveFireRange
+    MapShapes:
+    - serializedVersion: 2
+      x: 108
+      y: 3
+      width: 15
+      height: 15
+    - serializedVersion: 2
+      x: 123
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 126
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 129
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 132
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 135
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 138
+      y: 9
+      width: 3
+      height: 3
+  - Scene: AR_LiveFireRange
+    Center: {x: 153, y: 1.4655038, z: 8.999999}
+    Size: {x: 24.76062, y: 3.5310075, z: 24.760612}
+    Neighbours:
+    - AR_PreBossNest
+    MapShapes:
+    - serializedVersion: 2
+      x: 141
+      y: -3
+      width: 24
+      height: 24
+  - Scene: AR_R1
+    Center: {x: 46.59952, y: 1.5655037, z: 114}
+    Size: {x: 15.959663, y: 3.3310075, z: 13.158691}
+    Neighbours:
+    - AR_A2
+    MapShapes:
+    - serializedVersion: 2
+      x: 39
+      y: 108
+      width: 15
+      height: 12
+  - Scene: AR_R2
+    Center: {x: -19.5, y: 1.4155036, z: 46.5}
+    Size: {x: 15.7606125, y: 3.6310077, z: 16.158707}
+    Neighbours:
+    - AR_A4
+    MapShapes:
+    - serializedVersion: 2
+      x: -27
+      y: 39
+      width: 15
+      height: 15
+  - Scene: AR_R3
+    Center: {x: 46.59952, y: 1.4155036, z: -19.599524}
+    Size: {x: 15.959663, y: 3.6310077, z: 15.95966}
+    Neighbours:
+    - AR_A8
+    MapShapes:
+    - serializedVersion: 2
+      x: 39
+      y: -27
+      width: 15
+      height: 15
+  - Scene: AR_BlastDoor
+    Center: {x: 113.15985, y: 1.5, z: 46.5}
+    Size: {x: 17.080322, y: 4.8, z: 16.158707}
+    Neighbours:
+    - AR_A6
+    MapShapes:
+    - serializedVersion: 2
+      x: 105
+      y: 39
+      width: 15
+      height: 15
+  _sector: AR
+  _rootScene: Armory
+  _color: {r: 0.95, g: 0.5, b: 0.3, a: 1}
+  _markers:
+  - Kind: 0
+    Id: AR/EntryNest
+    Room: AR_EntryNest
+    Position: {x: 12, y: 0, z: 118.2}
+    Yaw: 180
+  - Kind: 1
+    Id: AR/A3
+    Room: AR_A3
+    Position: {x: 90, y: 0, z: 76.5}
+    Yaw: 0
+  - Kind: 3
+    Id: MapGate
+    Room: AR_A6
+    Position: {x: 97.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 3
+    Id: MapGate
+    Room: AR_A6
+    Position: {x: 97.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 1
+    Id: AR/A7
+    Room: AR_A7
+    Position: {x: 4.5, y: 0, z: 4.5}
+    Yaw: 0
+  - Kind: 1
+    Id: AR/A9
+    Room: AR_A9
+    Position: {x: 90, y: 0, z: 18}
+    Yaw: 0
+  - Kind: 0
+    Id: AR/PreBossNest
+    Room: AR_PreBossNest
+    Position: {x: 115.5, y: 0, z: 11.7}
+    Yaw: 180
+  - Kind: 2
+    Id: AR
+    Room: AR_PreBossNest
+    Position: {x: 130.5, y: 0, z: 10.5}
+    Yaw: 0
+  - Kind: 5
+    Id: AR_R1/FlarePistol
+    Room: AR_R1
+    Position: {x: 46.5, y: 0, z: 115.5}
+    Yaw: 0
+  - Kind: 5
+    Id: AR_R2/MutagenPickup
+    Room: AR_R2
+    Position: {x: -19.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 5
+    Id: AR_R3/FlameGlandSpot
+    Room: AR_R3
+    Position: {x: 46.5, y: 0, z: -19.5}
+    Yaw: 0
+  - Kind: 7
+    Id: AR/Auto-AR_A3
+    Room: AR_A3
+    Position: {x: 73.5, y: 0, z: 73.5}
+    Yaw: 0
+  - Kind: 7
+    Id: AR/Auto-AR_A3
+    Room: AR_EntryNest
+    Position: {x: 4.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: AR/Auto-AR_A7
+    Room: AR_A7
+    Position: {x: 1.5, y: 0, z: 1.5}
+    Yaw: 0
+  - Kind: 7
+    Id: AR/Auto-AR_A7
+    Room: AR_EntryNest
+    Position: {x: 4.5, y: 0, z: 121.5}
+    Yaw: 0
+  - Kind: 7
+    Id: AR/Auto-AR_R1
+    Room: AR_R1
+    Position: {x: 40.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: AR/Auto-AR_R1
+    Room: AR_EntryNest
+    Position: {x: 19.5, y: 0, z: 109.5}
+    Yaw: 0
