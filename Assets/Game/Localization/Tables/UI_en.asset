@@ -1328,6 +1328,26 @@ MonoBehaviour:
     m_Localized: Burning enemies take extra stagger damage.
     m_Metadata:
       m_Items: []
+  - m_Id: 962321377411072
+    m_Localized: Rail Spine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 962557311205376
+    m_Localized: Pinning Spines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 962557311205377
+    m_Localized: Sniper shots pin enemies in place briefly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 962557311205378
+    m_Localized: Endless Ricochet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 962557311205379
+    m_Localized: Ricochet bounces one extra time for each enemy it kills.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

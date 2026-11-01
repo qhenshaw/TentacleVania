@@ -1279,6 +1279,26 @@ MonoBehaviour:
     m_Key: modifier.cauterize.effect
     m_Metadata:
       m_Items: []
+  - m_Id: 962321377411072
+    m_Key: weapon.RailSpine.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 962557311205376
+    m_Key: modifier.pinningSpines.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 962557311205377
+    m_Key: modifier.pinningSpines.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 962557311205378
+    m_Key: modifier.endlessRicochet.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 962557311205379
+    m_Key: modifier.endlessRicochet.effect
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -18,6 +18,8 @@ namespace TentacleVania.Weapons.Data
         ConductiveField,
         ScorchedEarth,
         Cauterize,
+        PinningSpines,
+        EndlessRicochet,
     }
 
     [CreateAssetMenu(menuName = "TentacleVania/Weapons/Weapon Modifier")]

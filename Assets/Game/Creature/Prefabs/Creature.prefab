@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 3836339207244102522}
   - component: {fileID: 5580451618102455880}
   - component: {fileID: 5764039901454299323}
+  - component: {fileID: 7804032526281408760}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -1197,6 +1198,46 @@ MonoBehaviour:
       Data3: 268444071
       Data4: 374685016
     Path: event:/Weapons/FlameGland/Ignite
+--- !u!114 &7804032526281408760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8828c33837338324b921de8878756c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.Behaviours.RailSpine
+  _weapons: {fileID: 615621536349149212}
+  _motor: {fileID: 8252016009454080188}
+  _weaponId: RailSpine
+  _hitLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  _wallLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  _lineMaterial: {fileID: 2100000, guid: 8d25ebdef54f43e428bad66136b7a74e, type: 2}
+  _range: 14
+  _sniperRange: 22
+  _sniperScale: 3
+  _critScale: 1.5
+  _bounces: 3
+  _bounceRange: 6
+  _doubleDelay: 0.12
+  _retreatDistance: 3
+  _retreatTime: 0.18
+  _pinTime: 1.5
+  _lineTime: 0.08
+  _shotSound:
+    Guid:
+      Data1: -1163072971
+      Data2: 1231479860
+      Data3: -360734055
+      Data4: -886158792
+    Path: event:/Weapons/RailSpine/Shot
 --- !u!1 &4860062330439387882
 GameObject:
   m_ObjectHideFlags: 0
