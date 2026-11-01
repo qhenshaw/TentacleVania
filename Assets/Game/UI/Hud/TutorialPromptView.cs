@@ -191,27 +191,7 @@ namespace TentacleVania.UI.Hud
 
         public Texture2D CurrentIcon { get; private set; }
 
-        public Texture2D Icon(string actionName)
-        {
-            if (_glyphs == null || InputSystem.actions == null)
-                return null;
-            var action = InputSystem.actions.FindAction(GameplayInput.MapName + "/" + actionName);
-            if (action == null)
-                return null;
-            var gamepad = GameplayInput.Default.LastDevice == InputDeviceKind.Gamepad;
-            var group = gamepad ? "Gamepad" : "Keyboard&Mouse";
-            var pad = Gamepad.current;
-            var family = !gamepad ? GlyphFamily.Keyboard : pad != null ? GlyphRules.FamilyFor(pad.layout, pad.description.product) : GlyphFamily.Xbox;
-            foreach (var binding in action.bindings)
-            {
-                if (binding.isComposite || binding.isPartOfComposite || binding.groups == null || !binding.groups.Contains(group))
-                    continue;
-                var texture = _glyphs.Find(GlyphRules.IconName(family, binding.effectivePath));
-                if (texture != null)
-                    return texture;
-            }
-            return null;
-        }
+        public Texture2D Icon(string actionName) => _glyphs != null ? _glyphs.ForAction(actionName) : null;
 
         public static string Glyph(string actionName)
         {

@@ -45,6 +45,7 @@ namespace TentacleVania.Creature
 
         public int Biomass { get; private set; }
         public bool IsRooted => _victim != null;
+        public Consumable Target => _health.IsAlive && _motor.InputEnabled && _victim == null ? FindTarget(_settings.GrabThreshold) : null;
         public bool IsHealing => _healRemaining > 0f;
         public bool IsArmored => _armorApplied;
         public float GrabThreshold => _settings.GrabThreshold;

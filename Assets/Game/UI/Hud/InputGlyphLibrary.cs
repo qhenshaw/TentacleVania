@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using TentacleVania.Core.Input;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace TentacleVania.UI.Hud
 {
@@ -25,6 +27,28 @@ namespace TentacleVania.UI.Hud
                         _byName[icon.name] = icon;
             }
             return _byName.TryGetValue(name, out var texture) ? texture : null;
+        }
+
+        public Texture2D ForAction(string actionName)
+        {
+            if (InputSystem.actions == null)
+                return null;
+            var action = InputSystem.actions.FindAction(GameplayInput.MapName + "/" + actionName);
+            if (action == null)
+                return null;
+            var gamepad = GameplayInput.Default.LastDevice == InputDeviceKind.Gamepad;
+            var group = gamepad ? "Gamepad" : "Keyboard&Mouse";
+            var pad = Gamepad.current;
+            var family = !gamepad ? GlyphFamily.Keyboard : pad != null ? GlyphRules.FamilyFor(pad.layout, pad.description.product) : GlyphFamily.Xbox;
+            foreach (var binding in action.bindings)
+            {
+                if (binding.isComposite || binding.isPartOfComposite || binding.groups == null || !binding.groups.Contains(group))
+                    continue;
+                var texture = Find(GlyphRules.IconName(family, binding.effectivePath));
+                if (texture != null)
+                    return texture;
+            }
+            return null;
         }
     }
 }

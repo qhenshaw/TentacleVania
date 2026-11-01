@@ -104,6 +104,16 @@
     margin-top: -16px;
 }
 
+.enemy-bar__prompt {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 33px;
+    bottom: 100%;
+    margin-bottom: 4px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
 .enemy-bar__health {
     height: 8px;
     overflow: hidden;
