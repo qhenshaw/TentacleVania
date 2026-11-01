@@ -5,6 +5,7 @@
 # deletes the branch, and pushes main. On main it commits and pushes. Stops at the first failing step. It pulls main
 # before merging, since other agents push to it; in an agent worktree it merges onto origin/main detached and pushes
 # HEAD:main, retrying when another agent pushed first. A merge conflict aborts and leaves you on the branch.
+# Before staging it restores editor churn with Tools/asset-drift.sh --fix and stops on drift it can't restore.
 #
 # Paths listed in <git common dir>/info/keep-local (one per line; local tweaks such as a renderer setting) are
 # never staged, so they stay uncommitted in the working tree.
@@ -21,6 +22,7 @@ trailer="Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 bash Tools/UnityCheck/unity-check.sh || exit $?
 bash Tools/UnityCheck/unity-test.sh || exit $?
 bash Tools/UnityCheck/unity-validate.sh || exit $?
+bash Tools/asset-drift.sh --fix || { echo "Fix the asset drift above (or list deliberate changes in DRIFT_KEEP) and rerun."; exit 1; }
 
 git add -A 2>&1 | grep -v "LF will be replaced" || true
 keep="$(git rev-parse --git-common-dir)/info/keep-local"

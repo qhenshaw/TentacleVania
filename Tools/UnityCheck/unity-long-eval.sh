@@ -39,7 +39,13 @@ mkdir -p Temp
     echo 'return "scheduled";'
 } >"$Wrapper"
 
-scheduled=$("${Unity[@]}" eval_file --file "$Wrapper" 2>&1)
+# right after a domain reload eval_file can answer "File not found" for a file that exists, so wait and retry
+wait_idle 180 || exit 2
+for attempt in 1 2 3 4 5; do
+    scheduled=$("${Unity[@]}" eval_file --file "$Wrapper" 2>&1)
+    [[ "$(json_string result <<<"$scheduled")" == scheduled ]] && break
+    sleep 3
+done
 if [[ "$(json_string result <<<"$scheduled")" != scheduled ]]; then
     echo "Could not start $file:"
     sed 's/^/  /' <<<"$scheduled"
