@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using FMODUnity;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Core.Characters;
@@ -11,7 +12,15 @@ namespace TentacleVania.Combat.Status
     [RequireComponent(typeof(Health))]
     public sealed class StatusEffects : MonoBehaviour
     {
-        private const int KindCount = 5;
+        private const int KindCount = 6;
+        private const int MaxCascade = 8;
+
+        private static readonly List<StatusEffects> Registry = new();
+        private static readonly List<Vector3> CandidatePositions = new();
+        private static readonly List<StatusEffects> Candidates = new();
+        private static readonly int[] Picks = new int[16];
+        private static readonly StatusEffects[][] TargetBuffers = BuildTargetBuffers();
+        private static int _cascade;
 
         [Serializable]
         public sealed class Visual
@@ -39,15 +48,45 @@ namespace TentacleVania.Combat.Status
         private VisualEffect _burnEffect;
         private Team _bleedSource = Team.Environment;
         private Team _burnSource = Team.Environment;
+        private StaticMeter _static;
 
         public event Action<StatusEffects, StatusKind> Started;
         public event Action<StatusEffects, StatusKind> Ended;
         public event Action<StatusEffects, float> BleedBurst;
+        public static event Action<StatusEffects, int> StaticDischarged;
+
+        public static float StaticBuildScale { get; set; } = 1f;
+        public static int ExtraChainTargets { get; set; }
+        public static float ChainDamageScale { get; set; } = 1f;
+        public static float ChainAddsStatic { get; set; }
+        public static int Discharges { get; private set; }
+
+        private static StatusEffects[][] BuildTargetBuffers()
+        {
+            var buffers = new StatusEffects[MaxCascade][];
+            for (var i = 0; i < MaxCascade; i++)
+                buffers[i] = new StatusEffects[16];
+            return buffers;
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics()
+        {
+            Registry.Clear();
+            StaticDischarged = null;
+            StaticBuildScale = 1f;
+            ExtraChainTargets = 0;
+            ChainDamageScale = 1f;
+            ChainAddsStatic = 0f;
+            Discharges = 0;
+            _cascade = 0;
+        }
 
         public float MoveScale => _timers.MoveScale(Time.time);
         public bool IsRooted => _timers.IsActive(StatusKind.Root, Time.time);
         public bool IsSlowed => _timers.IsActive(StatusKind.Slow, Time.time);
         public int BleedStacks => _bleedDot.Stacks;
+        public float StaticNormalized => _static != null ? _static.Normalized : 0f;
         public float BleedDamagePerSecond => _bleedDot.DamagePerSecond;
         public float BurnDamagePerSecond => _burnDot.DamagePerSecond;
         public bool Glow { get; set; } = true;
@@ -58,6 +97,7 @@ namespace TentacleVania.Combat.Status
         {
             StatusKind.Bleed => _bleedDot.IsActive,
             StatusKind.Burn => _burnDot.IsActive,
+            StatusKind.Static => _static != null && _static.IsCharged,
             _ => _timers.IsActive(kind, Time.time),
         };
 
@@ -77,6 +117,9 @@ namespace TentacleVania.Combat.Status
             _settings = StatusEffectSettings.Instance;
             _bleedEffect = SpawnEffect(_settings.Bleed.Effect);
             _burnEffect = SpawnEffect(_settings.Burn.Effect);
+            _static = new(_settings.StaticCapacity);
+            ChainLightningLines.Prewarm(_settings);
+            Registry.Add(this);
             _health.Damaged += OnDamaged;
             _health.Died += OnDied;
             enabled = false;
@@ -84,6 +127,7 @@ namespace TentacleVania.Combat.Status
 
         private void OnDestroy()
         {
+            Registry.Remove(this);
             if (_health == null)
                 return;
             _health.Damaged -= OnDamaged;
@@ -116,6 +160,9 @@ namespace TentacleVania.Combat.Status
                     ApplyDot(_burnDot, _settings.Burn, magnitude, duration, potency);
                     _burnSource = source;
                     break;
+                case StatusKind.Static:
+                    AddStatic((magnitude > 0f ? magnitude : _settings.StaticPerHit) * Mathf.Max(0f, potency), source);
+                    return;
                 default:
                     _timers.Apply(kind, magnitude, duration, Time.time);
                     break;
@@ -144,12 +191,98 @@ namespace TentacleVania.Combat.Status
             return damage;
         }
 
+        public void AddStatic(float amount, Team source)
+        {
+            if (_health == null || !_health.IsAlive || source == _health.Team || amount <= 0f)
+                return;
+            if (_static.Add(amount * StaticBuildScale))
+                Discharge(source, 1f);
+            Refresh();
+        }
+
+        public void FillStatic(Team source) => AddStatic(_static.Capacity - _static.Value, source);
+
+        public float ReleaseStatic(Team source, float scale = 1f)
+        {
+            if (!_static.IsCharged)
+                return 0f;
+            var fraction = _static.Release();
+            Refresh();
+            Discharge(source, fraction * scale);
+            return fraction;
+        }
+
+        private void Discharge(Team source, float scale)
+        {
+            if (_cascade >= MaxCascade)
+                return;
+            _cascade++;
+            try
+            {
+                Discharges++;
+                var origin = transform.position + Vector3.up * _effectHeight;
+                var count = PickChainTargets(origin, _health.Team);
+                var targets = TargetBuffers[_cascade - 1];
+                for (var i = 0; i < count; i++)
+                    targets[i] = Candidates[Picks[i]];
+                var damage = _settings.ChainDamage * ChainDamageScale * scale;
+                if (!_settings.ChainSound.IsNull)
+                    RuntimeManager.PlayOneShot(_settings.ChainSound, origin);
+                for (var i = 0; i < count; i++)
+                {
+                    var target = targets[i];
+                    targets[i] = null;
+                    var point = target.transform.position + Vector3.up * target._effectHeight;
+                    ChainLightningLines.Draw(origin, point);
+                    target.TakeChain(damage, source, point, point - origin);
+                }
+                if (_settings.ChainHitsSource)
+                    TakeChain(damage, source, origin, Vector3.up);
+                StaticDischarged?.Invoke(this, count);
+            }
+            finally
+            {
+                _cascade--;
+            }
+        }
+
+        private int PickChainTargets(Vector3 origin, Team team)
+        {
+            Candidates.Clear();
+            CandidatePositions.Clear();
+            foreach (var other in Registry)
+            {
+                if (other == this || other._health == null || !other._health.IsAlive || other._health.Team != team)
+                    continue;
+                Candidates.Add(other);
+                CandidatePositions.Add(other.transform.position + Vector3.up * other._effectHeight);
+            }
+            return ChainRules.PickNearest(origin, CandidatePositions, _settings.ChainRadius, _settings.ChainTargets + ExtraChainTargets, Picks);
+        }
+
+        private void TakeChain(float damage, Team source, Vector3 point, Vector3 direction)
+        {
+            if (!_health.IsAlive)
+                return;
+            if (damage > 0f)
+            {
+                var info = DamageInfo.Create(damage, source, DamageType.Electric);
+                info.Flags = HitFlags.ChainLightning;
+                info.Point = point;
+                info.Direction = direction;
+                _health.TakeDamage(info);
+            }
+            if (ChainAddsStatic > 0f)
+                AddStatic(ChainAddsStatic, source);
+        }
+
         public void ClearAll()
         {
             _timers.Clear(StatusKind.Slow);
             _timers.Clear(StatusKind.Root);
             _bleedDot.Clear();
             _burnDot.Clear();
+            _static.Clear();
             Refresh();
         }
 
@@ -179,10 +312,13 @@ namespace TentacleVania.Combat.Status
 
         private void OnDamaged(Health health, in DamageInfo info, in DamageResult result)
         {
-            if (info.Status == StatusKind.None || (info.Flags & HitFlags.DamageOverTime) != 0)
+            if ((info.Flags & (HitFlags.DamageOverTime | HitFlags.ChainLightning)) != 0)
                 return;
             var potency = info.SourceTeam == Team.Creature ? Stats.StatusPotency : 1f;
-            Apply(info.Status, info.StatusMagnitude, info.StatusDuration, info.SourceTeam, potency);
+            if (info.Status != StatusKind.None)
+                Apply(info.Status, info.StatusMagnitude, info.StatusDuration, info.SourceTeam, potency);
+            if (info.Type == DamageType.Electric && info.Status != StatusKind.Static && info.SourceTeam == Team.Creature)
+                AddStatic(_settings.StaticPerHit * potency, info.SourceTeam);
         }
 
         private void OnDied(Health health) => ClearAll();
@@ -195,7 +331,8 @@ namespace TentacleVania.Combat.Status
             {
                 var kind = (StatusKind)i;
                 var active = IsActive(kind);
-                idle &= !active;
+                if (kind != StatusKind.Static)
+                    idle &= !active;
                 if (active == _shown[i])
                     continue;
                 _shown[i] = active;

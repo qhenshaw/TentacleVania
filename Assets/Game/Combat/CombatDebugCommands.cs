@@ -55,6 +55,20 @@ namespace TentacleVania.Combat
                 if (target != null)
                     target.BurstBleed();
             });
+            DebugMenu.Button(DebugMenu.Combat, "Static hit nearest enemy", () => ApplyToNearest(StatusKind.Static));
+            DebugMenu.Button(DebugMenu.Combat, "Fill nearest enemy's static", () =>
+            {
+                var target = NearestEnemyStatus();
+                if (target != null)
+                    target.FillStatic(Team.Creature);
+            });
+            DebugMenu.Button(DebugMenu.Combat, "Release nearest enemy's static", () =>
+            {
+                var target = NearestEnemyStatus();
+                if (target != null)
+                    target.ReleaseStatic(Team.Creature);
+            });
+            DebugMenu.Value(DebugMenu.Combat, "Chain lightning discharges", () => StatusEffects.Discharges.ToString());
             DebugMenu.Value(DebugMenu.Combat, "Nearest enemy status", FormatNearestStatus);
             DebugMenu.Button(DebugMenu.Combat, "Bleed creature (+1 stack)", () => ApplyToCreature(StatusKind.Bleed));
             DebugMenu.Button(DebugMenu.Combat, "Burn creature", () => ApplyToCreature(StatusKind.Burn));
@@ -116,7 +130,7 @@ namespace TentacleVania.Combat
             var target = NearestEnemyStatus();
             if (target == null)
                 return "-";
-            return $"{target.name}: bleed {target.BleedStacks} ({target.BleedDamagePerSecond:F1}/s, {target.Remaining(StatusKind.Bleed):F1} s) burn {target.BurnDamagePerSecond:F1}/s ({target.Remaining(StatusKind.Burn):F1} s)";
+            return $"{target.name}: bleed {target.BleedStacks} ({target.BleedDamagePerSecond:F1}/s, {target.Remaining(StatusKind.Bleed):F1} s) burn {target.BurnDamagePerSecond:F1}/s ({target.Remaining(StatusKind.Burn):F1} s) static {target.StaticNormalized:P0}";
         }
 
         private static string FormatLastHit()

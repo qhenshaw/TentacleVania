@@ -29,6 +29,7 @@ namespace TentacleVania.Combat.Damage
         Undodgeable = 1 << 4,
         Ability = 1 << 5,
         DamageOverTime = 1 << 6,
+        ChainLightning = 1 << 7,
     }
 
     public static class TeamRules

@@ -37,3 +37,21 @@ MonoBehaviour:
         Data4: 1720034096
       Path: event:/Combat/Status/BurnIgnite
   _tickInterval: 0.5
+  _staticCapacity: 100
+  _staticPerHit: 20
+  _chainDamage: 30
+  _chainTargets: 3
+  _chainRadius: 6
+  _chainHitsSource: 0
+  _chainMaterial: {fileID: 2100000, guid: 8d25ebdef54f43e428bad66136b7a74e, type: 2}
+  _chainColor: {r: 0.6, g: 1.6, b: 2.4, a: 1}
+  _chainWidth: 0.08
+  _chainDuration: 0.25
+  _chainJitter: 0.35
+  _chainSound:
+    Guid:
+      Data1: 1057885471
+      Data2: 1231421166
+      Data3: -1532046148
+      Data4: 762693216
+    Path: event:/Combat/Status/ChainLightning
