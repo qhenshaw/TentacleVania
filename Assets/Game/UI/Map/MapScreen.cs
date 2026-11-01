@@ -43,7 +43,7 @@ namespace TentacleVania.UI.Map
             _overlayFrame = root.Q("overlay");
             _title = root.Q<Label>("title");
             _info = root.Q<Label>("info");
-            Fonts.UiText.Bind(root.Q<Label>("legend"), "map.legend");
+            BuildLegend(root.Q<Label>("legend"));
             _fullView = new MapView(false);
             root.Q("frame").Add(_fullView);
             _fullView.style.flexGrow = 1f;
@@ -138,6 +138,45 @@ namespace TentacleVania.UI.Map
             foreach (var marker in registry.Markers)
                 hasRelays |= marker.Kind == MapMarkerKind.Relay;
             info.text = hasRelays ? string.Format(T("map.relays"), SecurityRelays.Count(registry.Sector), RelaysRequired) : "";
+        }
+
+        private static readonly (string Icon, string Key)[] LegendItems =
+        {
+            ("map-marker--nest", "map.legend.nest"),
+            ("map-marker--nest-site", "map.legend.nestSite"),
+            ("map-marker--relay", "map.legend.relay"),
+            ("map-marker--door", "map.legend.door"),
+            ("map-marker--gate", "map.legend.gate"),
+            ("map-marker--hoarder", "map.legend.hoarder"),
+            ("map-marker--pickup", "map.legend.pickup"),
+            ("map-marker--lore", "map.legend.lore"),
+            ("map-marker--tunnel", "map.legend.tunnel"),
+            ("map-marker--biomass", "map.legend.biomass"),
+            ("map-creature", "map.legend.you"),
+        };
+
+        private static void BuildLegend(Label placeholder)
+        {
+            var legend = new VisualElement { name = "legend-items", pickingMode = PickingMode.Ignore };
+            legend.AddToClassList("map__legend");
+            foreach (var (icon, key) in LegendItems)
+            {
+                var item = new VisualElement { pickingMode = PickingMode.Ignore };
+                item.AddToClassList("map-legend__item");
+                var marker = new VisualElement { pickingMode = PickingMode.Ignore };
+                if (icon != "map-creature")
+                    marker.AddToClassList("map-marker");
+                marker.AddToClassList(icon);
+                marker.AddToClassList("map-legend__icon");
+                var label = new Label { pickingMode = PickingMode.Ignore };
+                label.AddToClassList("map-legend__label");
+                Fonts.UiText.Bind(label, key);
+                item.Add(marker);
+                item.Add(label);
+                legend.Add(item);
+            }
+            placeholder.parent.Insert(placeholder.parent.IndexOf(placeholder), legend);
+            placeholder.RemoveFromHierarchy();
         }
 
         public static string SectorName(string sector)

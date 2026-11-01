@@ -842,6 +842,50 @@ MonoBehaviour:
     m_Localized: Overload
     m_Metadata:
       m_Items: []
+  - m_Id: 796195452370944
+    m_Localized: Nest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313984
+    m_Localized: Nest site
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313985
+    m_Localized: Security relay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313986
+    m_Localized: Security door
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313987
+    m_Localized: Blocked path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313988
+    m_Localized: Hoarder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313989
+    m_Localized: Item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313990
+    m_Localized: Lore log
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313991
+    m_Localized: Open tunnel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313992
+    m_Localized: Dropped biomass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313993
+    m_Localized: You
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -839,6 +839,50 @@ MonoBehaviour:
     m_Key: ability.Overload.name
     m_Metadata:
       m_Items: []
+  - m_Id: 796195452370944
+    m_Key: map.legend.nest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313984
+    m_Key: map.legend.nestSite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313985
+    m_Key: map.legend.relay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313986
+    m_Key: map.legend.door
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313987
+    m_Key: map.legend.gate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313988
+    m_Key: map.legend.hoarder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313989
+    m_Key: map.legend.pickup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313990
+    m_Key: map.legend.lore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313991
+    m_Key: map.legend.tunnel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313992
+    m_Key: map.legend.biomass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 796195494313993
+    m_Key: map.legend.you
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

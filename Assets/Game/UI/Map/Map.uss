@@ -34,9 +34,21 @@
 }
 
 .map__legend {
-    font-size: 18px;
-    color: rgb(120, 190, 140);
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-top: 8px;
+}
+
+.map-legend__item {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 18px;
+    margin-bottom: 6px;
+}
+
+.map-legend__label {
+    font-size: 17px;
+    color: rgb(170, 210, 180);
 }
 
 .map__empty {
@@ -73,10 +85,12 @@
 }
 
 .map-marker {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     translate: -50% -50%;
-    border-radius: 7px;
+    border-radius: 8px;
+    border-width: 2px;
+    border-color: rgba(8, 8, 10, 0.9);
 }
 
 .map-marker--nest {
@@ -117,15 +131,19 @@
 
 .map-marker--hoarder {
     background-color: rgb(80, 230, 120);
+    border-color: rgb(255, 255, 255);
 }
 
 .map-marker--pickup {
     background-color: rgb(255, 210, 70);
+    border-radius: 0;
     rotate: 45deg;
 }
 
 .map-marker--lore {
-    background-color: rgb(120, 200, 255);
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(40, 90, 220);
+    border-radius: 3px;
 }
 
 .map-marker--tunnel {
@@ -172,4 +190,13 @@
     font-size: 30px;
     letter-spacing: 8px;
     color: rgb(240, 120, 200);
+}
+
+.map-legend__icon {
+    position: relative;
+    translate: 0 0;
+    left: 0;
+    top: 0;
+    margin-right: 8px;
+    flex-shrink: 0;
 }
