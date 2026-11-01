@@ -40,10 +40,23 @@ namespace TentacleVania.Enemies.Traps
         public IceWall Prefab { get; set; }
         public WallState State { get; private set; }
         public float Width => _width;
+        public int Generation { get; private set; }
         public bool Solid => State == WallState.Rising || State == WallState.Up;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics() => Raised.Clear();
+
+        public static float Distance(Vector3 center, Vector3 along, float width, float thickness, Vector3 point)
+        {
+            var offset = point - center;
+            offset.y = 0f;
+            along.y = 0f;
+            along = along.sqrMagnitude > 1e-6f ? along.normalized : Vector3.forward;
+            var closest = along * Mathf.Clamp(Vector3.Dot(offset, along), -width * 0.5f, width * 0.5f);
+            return Mathf.Max(0f, (offset - closest).magnitude - thickness * 0.5f);
+        }
+
+        public bool Touches(Vector3 point, float radius) => Solid && Distance(transform.position, transform.forward, _width, _thickness, point) <= radius;
 
         public void Raise(Vector3 position, Vector3 along, float width, float lifetime)
         {
@@ -51,6 +64,7 @@ namespace TentacleVania.Enemies.Traps
             transform.SetPositionAndRotation(position, Quaternion.LookRotation(along.sqrMagnitude > 1e-4f ? along.normalized : Vector3.forward));
             _width = width;
             _lifetime = lifetime;
+            Generation++;
             if (_collider != null)
             {
                 _collider.size = new Vector3(_thickness, _height, width);
