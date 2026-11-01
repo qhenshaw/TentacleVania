@@ -996,6 +996,17 @@
           ],
           "yaw": 0,
           "name": "RailSpine"
+        },
+        {
+          "type": "pickup",
+          "prefab": "TrinketPickup",
+          "at": [
+            16.5,
+            38.5
+          ],
+          "yaw": 0,
+          "name": "NavigationShard",
+          "itemId": "NavigationShard"
         }
       ]
     },

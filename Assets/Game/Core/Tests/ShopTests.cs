@@ -38,5 +38,17 @@ namespace TentacleVania.Core.Tests
             Assert.That(MutationLoadout.Owns("Gluttony"), Is.True);
             Assert.That(Shop.InStock("Gluttony", "PodReleaseKey"), Is.False);
         }
+
+        [Test]
+        public void WeaponsAndAbilitiesGrantTheirOwnKind()
+        {
+            Biomass.Add(5000);
+            Assert.That(Shop.TryBuy(PickupKind.Weapon, "HookBarbs", "", 2500), Is.True);
+            Assert.That(Collectibles.OwnedWeapons, Does.Contain("HookBarbs"));
+            Assert.That(Shop.InStock(PickupKind.Weapon, "HookBarbs", ""), Is.False);
+            Assert.That(Shop.TryBuy(PickupKind.Ability, "RegenerativeCocoon", "", 1200), Is.True);
+            Assert.That(BossProgress.IsAbilityUnlocked("RegenerativeCocoon"), Is.True);
+            Assert.That(Biomass.Carried, Is.EqualTo(1300));
+        }
     }
 }

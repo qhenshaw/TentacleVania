@@ -74,6 +74,16 @@
           "requiredBoss": "",
           "requiredAbility": "Overload",
           "name": "Freight_CC"
+        },
+        {
+          "type": "hoarder",
+          "at": [
+            6.3,
+            38
+          ],
+          "yaw": 270,
+          "name": "Hoarder",
+          "floor": 3
         }
       ]
     },

@@ -88,13 +88,12 @@ namespace TentacleVania.UI.Hoarder
             _lockedMotor = null;
         }
 
-        public void Buy(string mutationId)
+        public void Buy(string id)
         {
-            var entry = Find(mutationId);
-            var definition = Mutation(mutationId);
-            if (entry == null || definition == null)
+            var entry = Find(id);
+            if (entry == null || !Describe(entry, out _, out _, out _, out var price))
                 return;
-            if (Shop.TryBuyMutation(mutationId, entry.Trinket, Price(entry, definition)))
+            if (Shop.TryBuy(entry.Kind, entry.Mutation, entry.Trinket, price))
             {
                 _line.text = T(LineTable, "hoarder.buy");
                 if (_merchant != null)
@@ -117,10 +116,9 @@ namespace TentacleVania.UI.Hoarder
             {
                 foreach (var entry in _merchant.Stock.Entries)
                 {
-                    var definition = Mutation(entry.Mutation);
-                    if (definition == null || !Shop.InStock(entry.Mutation, entry.Trinket))
+                    if (!_merchant.Sells(entry) || !Describe(entry, out var name, out var effect, out var cost, out var price))
                         continue;
-                    _rows.Add(Row(entry, definition));
+                    _rows.Add(Row(entry.Mutation, name, effect, cost, price));
                     shown++;
                 }
             }
@@ -132,25 +130,23 @@ namespace TentacleVania.UI.Hoarder
             }
         }
 
-        private VisualElement Row(StockEntry entry, MutationDefinition definition)
+        private VisualElement Row(string id, string nameText, string effectText, string costText, int price)
         {
-            var price = Price(entry, definition);
             var row = new VisualElement();
             row.AddToClassList("hoarder__row");
             var head = new VisualElement();
             head.AddToClassList("hoarder__row-head");
-            var name = new Label(T(Table, definition.TextKey + ".name"));
+            var name = new Label(nameText);
             name.AddToClassList("hoarder__name");
-            var cost = new Label(new string('●', definition.Notches));
+            var cost = new Label(costText);
             cost.AddToClassList("hoarder__cost");
-            var id = entry.Mutation;
             var buy = new Button(() => Buy(id)) { text = string.Format(T(Table, "hoarder.buy"), price.ToString("N0")), name = "buy-" + id };
             buy.AddToClassList("hoarder__button");
             buy.SetEnabled(Biomass.Carried >= price);
             head.Add(name);
             head.Add(cost);
             head.Add(buy);
-            var effect = new Label(T(Table, definition.TextKey + ".effect"));
+            var effect = new Label(effectText);
             effect.AddToClassList("hoarder__effect");
             row.Add(head);
             row.Add(effect);
@@ -162,7 +158,7 @@ namespace TentacleVania.UI.Hoarder
             if (_merchant == null || _merchant.Stock == null)
                 return false;
             foreach (var entry in _merchant.Stock.Entries)
-                if (Mutation(entry.Mutation) != null && Shop.InStock(entry.Mutation, entry.Trinket))
+                if (_merchant.Sells(entry) && Describe(entry, out _, out _, out _, out _))
                     return true;
             return false;
         }
@@ -182,23 +178,57 @@ namespace TentacleVania.UI.Hoarder
                 Refresh();
         }
 
-        private StockEntry Find(string mutationId)
+        private StockEntry Find(string id)
         {
             if (_merchant == null || _merchant.Stock == null)
                 return null;
             foreach (var entry in _merchant.Stock.Entries)
-                if (entry.Mutation == mutationId)
+                if (entry.Mutation == id)
                     return entry;
             return null;
         }
 
-        private static int Price(StockEntry entry, MutationDefinition definition) => entry.Price > 0 ? entry.Price : Shop.MutationPrice(definition.Notches);
+        private static bool Describe(StockEntry entry, out string name, out string effect, out string cost, out int price)
+        {
+            name = effect = cost = "";
+            price = entry.Price;
+            var catalog = Catalog();
+            if (catalog == null)
+                return false;
+            switch (entry.Kind)
+            {
+                case PickupKind.Weapon:
+                    var weapon = catalog.Find<Weapons.Data.WeaponDefinition>(entry.Mutation);
+                    if (weapon == null || price <= 0)
+                        return false;
+                    name = weapon.DisplayName;
+                    effect = T(Table, "hoarder.kind.weapon");
+                    return true;
+                case PickupKind.Ability:
+                    var ability = catalog.Find<Abilities.AbilityDefinition>(entry.Mutation);
+                    if (ability == null || price <= 0)
+                        return false;
+                    name = ability.DisplayName;
+                    effect = T(Table, "hoarder.kind.ability");
+                    return true;
+                default:
+                    var mutation = catalog.Find<MutationDefinition>(entry.Mutation);
+                    if (mutation == null)
+                        return false;
+                    name = T(Table, mutation.TextKey + ".name");
+                    effect = T(Table, mutation.TextKey + ".effect");
+                    cost = new string('\u25CF', mutation.Notches);
+                    if (price <= 0)
+                        price = Shop.MutationPrice(mutation.Notches);
+                    return true;
+            }
+        }
 
-        private static MutationDefinition Mutation(string id)
+        private static Core.Saves.ContentCatalog Catalog()
         {
             var spawned = CreatureSpawner.Spawned;
             var controller = spawned != null ? spawned.GetComponent<MutationController>() : null;
-            return controller != null ? controller.Find(id) : null;
+            return controller != null ? controller.Catalog : null;
         }
 
         private static string T(string table, string key) => LocalizationSettings.StringDatabase.GetLocalizedString(table, key);

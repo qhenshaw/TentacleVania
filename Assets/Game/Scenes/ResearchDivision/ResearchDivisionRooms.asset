@@ -766,10 +766,10 @@ MonoBehaviour:
     Room: RD_R1
     Position: {x: 46.5, y: 0, z: 115.5}
     Yaw: 0
-  - Kind: 7
-    Id: RD/Auto-RD_R1
+  - Kind: 5
+    Id: RD_R1/NavigationShard
     Room: RD_R1
-    Position: {x: 40.5, y: 0, z: 109.5}
+    Position: {x: 51, y: 0, z: 117}
     Yaw: 0
   - Kind: 5
     Id: RD_R2/MutagenPickup

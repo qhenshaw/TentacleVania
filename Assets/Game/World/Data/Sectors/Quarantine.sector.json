@@ -974,6 +974,17 @@
           "yaw": 0,
           "name": "QuillBurst",
           "itemId": "QuillBurst"
+        },
+        {
+          "type": "pickup",
+          "prefab": "TrinketPickup",
+          "at": [
+            14,
+            38.5
+          ],
+          "yaw": 0,
+          "name": "DeconOverrideCard",
+          "itemId": "DeconOverrideCard"
         }
       ]
     },

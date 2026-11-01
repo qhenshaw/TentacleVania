@@ -70,5 +70,6 @@ namespace TentacleVania.World.Editor
         public string Hook;
         public string Kind;
         public string RequiredAbility;
+        public int Floor;
     }
 }

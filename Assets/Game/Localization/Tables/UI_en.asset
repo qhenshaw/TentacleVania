@@ -1688,6 +1688,26 @@ MonoBehaviour:
     m_Localized: 'Using an ability empowers your next combo finisher: 50% more damage and stagger.'
     m_Metadata:
       m_Items: []
+  - m_Id: 990106833666048
+    m_Localized: Evacuation Floor Plan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990106879803392
+    m_Localized: Navigation Shard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990106879803393
+    m_Localized: Decon Override Card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990106879803394
+    m_Localized: Weapon. Equip it at a bio-nest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990106879803395
+    m_Localized: Ability. Equip it at a bio-nest.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
