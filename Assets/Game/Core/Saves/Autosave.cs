@@ -17,6 +17,7 @@ namespace TentacleVania.Core.Saves
         Reclaim,
         BossDefeated,
         RelayDestroyed,
+        WallBreached,
     }
 
     public static class Autosave

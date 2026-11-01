@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 3324256350451842991}
   - component: {fileID: 8365291854207342177}
   - component: {fileID: 2567351535055926216}
+  - component: {fileID: 6527555119604667887}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -849,6 +850,23 @@ MonoBehaviour:
     Color: {r: 1.4, g: 1.1, b: 0.2, a: 1}
     Amount: 0.8
     Pulse: 3
+  _bleed:
+    Color: {r: 1.6, g: 0.08, b: 0.1, a: 1}
+    Amount: 0.6
+    Pulse: 2
+  _burn:
+    Color: {r: 2, g: 0.7, b: 0.1, a: 1}
+    Amount: 0.7
+    Pulse: 4
+  _corrode:
+    Color: {r: 0.5, g: 1.8, b: 0.2, a: 1}
+    Amount: 0.6
+    Pulse: 1
+  _parasite:
+    Color: {r: 1.2, g: 0.3, b: 1.4, a: 1}
+    Amount: 0.5
+    Pulse: 0.8
+  _effectHeight: 1
 --- !u!114 &9191924850288195891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,6 +988,19 @@ MonoBehaviour:
   _idleInterval: {x: 8, y: 15}
   _calmAfter: 6
   _stillSpeed: 0.2
+--- !u!114 &6527555119604667887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77990f662506dd944a0a1e264461187a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Breach.CreatureBreach
+  _definition: {fileID: 11400000, guid: 7d95a128dc4b8cc4f85207ba8a7e95e9, type: 2}
 --- !u!1 &4860062330439387882
 GameObject:
   m_ObjectHideFlags: 0
