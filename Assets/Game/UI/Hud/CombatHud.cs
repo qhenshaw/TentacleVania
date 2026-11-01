@@ -2,7 +2,9 @@ using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Combat.Status;
 using TentacleVania.Creature;
+using System.Collections.Generic;
 using TentacleVania.Enemies;
+using TentacleVania.Enemies.Data;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -16,6 +18,20 @@ namespace TentacleVania.UI.Hud
         private const int HealthTicks = 10;
         private const string ChargeFullClass = "hud-bar--charge-full";
         private const string FeedableClass = "enemy-bar--feedable";
+        private const int MaxTraits = 4;
+        private const float TraitFlashTime = 0.35f;
+        private const string WeakClass = "enemy-bar__trait--weak";
+        private const string ResistClass = "enemy-bar__trait--resist";
+        private const string TraitHitClass = "enemy-bar__trait--hit";
+        private static readonly string[] TraitClasses =
+        {
+            "", "", "",
+            "enemy-bar__trait--bleed",
+            "enemy-bar__trait--burn",
+            "enemy-bar__trait--static",
+            "enemy-bar__trait--corrode",
+            "enemy-bar__trait--parasite",
+        };
 
         [SerializeField, Min(0f)] private float _drainDelay = 0.5f;
         [SerializeField, Min(0f)] private float _drainSpeed = 0.6f;
@@ -237,9 +253,24 @@ namespace TentacleVania.UI.Hud
                 BleedPips = StatusPips.Build(Bleed);
                 statusRow.Add(Bleed);
                 statusRow.Add(Burn);
+                Corrode = Element("enemy-bar__corrode");
+                statusRow.Add(Corrode);
+                Parasite = Element("enemy-bar__parasite");
+                statusRow.Add(Parasite);
+                Static = Element("enemy-bar__static");
+                StaticFill = Element("enemy-bar__static-fill");
+                Static.Add(StaticFill);
+                statusRow.Add(Static);
                 Root.Add(healthBar);
                 Root.Add(staggerBar);
                 Root.Add(statusRow);
+                var traitRow = Element("enemy-bar__traits");
+                for (var i = 0; i < Traits.Length; i++)
+                {
+                    Traits[i] = Element("enemy-bar__trait");
+                    traitRow.Add(Traits[i]);
+                }
+                Root.Add(traitRow);
                 Root.style.display = DisplayStyle.None;
             }
 
@@ -253,6 +284,17 @@ namespace TentacleVania.UI.Hud
             public VisualElement[] BleedPips { get; }
             public int BleedStacks { get; private set; }
             public bool Burning { get; private set; }
+            public VisualElement Corrode { get; }
+            public VisualElement[] Traits { get; } = new VisualElement[MaxTraits];
+            public StatusKind[] TraitKinds { get; } = new StatusKind[MaxTraits];
+            public bool[] TraitHit { get; } = new bool[MaxTraits];
+            public int TraitCount { get; private set; }
+            public bool Corroded { get; private set; }
+            public VisualElement Parasite { get; }
+            public bool Infected { get; private set; }
+            public VisualElement Static { get; }
+            public VisualElement StaticFill { get; }
+            public float StaticShown { get; private set; }
             public BarTrail Trail { get; }
             public Enemy Enemy { get; private set; }
             public bool IsAssigned { get; private set; }
@@ -275,11 +317,60 @@ namespace TentacleVania.UI.Hud
                 Trail.Snap(LastHealth);
                 BleedStacks = -1;
                 Burning = true;
+                Corroded = true;
+                Infected = true;
+                StaticShown = -1f;
+                AssignTraits(enemy.Definition);
                 SetStatus(enemy.Status);
+            }
+
+            private void AssignTraits(EnemyDefinition definition)
+            {
+                TraitCount = 0;
+                if (definition != null)
+                {
+                    AddTraits(definition.WeakTo, true);
+                    AddTraits(definition.Resists, false);
+                }
+                for (var i = TraitCount; i < Traits.Length; i++)
+                    Traits[i].style.display = DisplayStyle.None;
+            }
+
+            private void AddTraits(IReadOnlyList<StatusKind> kinds, bool weak)
+            {
+                foreach (var kind in kinds)
+                {
+                    if (TraitCount >= Traits.Length)
+                        return;
+                    var trait = Traits[TraitCount];
+                    TraitKinds[TraitCount] = kind;
+                    TraitHit[TraitCount] = false;
+                    trait.style.display = DisplayStyle.Flex;
+                    trait.EnableInClassList(WeakClass, weak);
+                    trait.EnableInClassList(ResistClass, !weak);
+                    trait.RemoveFromClassList(TraitHitClass);
+                    for (var k = 0; k < TraitClasses.Length; k++)
+                        if (TraitClasses[k].Length > 0)
+                            trait.EnableInClassList(TraitClasses[k], k == (int)kind);
+                    TraitCount++;
+                }
+            }
+
+            private void UpdateTraits(StatusEffects status)
+            {
+                for (var i = 0; i < TraitCount; i++)
+                {
+                    var hit = status != null && status.SinceApplied(TraitKinds[i]) < TraitFlashTime;
+                    if (hit == TraitHit[i])
+                        continue;
+                    TraitHit[i] = hit;
+                    Traits[i].EnableInClassList(TraitHitClass, hit);
+                }
             }
 
             public void SetStatus(StatusEffects status)
             {
+                UpdateTraits(status);
                 var stacks = status != null ? status.BleedStacks : 0;
                 var burning = status != null && status.IsActive(StatusKind.Burn);
                 if (stacks != BleedStacks)
@@ -292,6 +383,25 @@ namespace TentacleVania.UI.Hud
                 {
                     Burning = burning;
                     Burn.style.display = burning ? DisplayStyle.Flex : DisplayStyle.None;
+                }
+                var corroded = status != null && status.IsActive(StatusKind.Corrode);
+                if (corroded != Corroded)
+                {
+                    Corroded = corroded;
+                    Corrode.style.display = corroded ? DisplayStyle.Flex : DisplayStyle.None;
+                }
+                var infected = status != null && status.IsActive(StatusKind.Parasite);
+                if (infected != Infected)
+                {
+                    Infected = infected;
+                    Parasite.style.display = infected ? DisplayStyle.Flex : DisplayStyle.None;
+                }
+                var charge = status != null ? status.StaticNormalized : 0f;
+                if (!Mathf.Approximately(charge, StaticShown))
+                {
+                    Static.style.display = charge > 0f ? DisplayStyle.Flex : DisplayStyle.None;
+                    SetWidth(StaticFill, charge);
+                    StaticShown = charge;
                 }
             }
 

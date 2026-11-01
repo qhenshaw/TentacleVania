@@ -26,6 +26,8 @@
             <ui:VisualElement name="status-stun" class="hud__status-icon hud__status-icon--stun" picking-mode="Ignore" />
             <ui:VisualElement name="status-bleed" class="hud__status-icon hud__status-icon--bleed" picking-mode="Ignore" />
             <ui:VisualElement name="status-burn" class="hud__status-icon hud__status-icon--burn" picking-mode="Ignore" />
+            <ui:VisualElement name="status-corrode" class="hud__status-icon hud__status-icon--corrode" picking-mode="Ignore" />
+            <ui:VisualElement name="status-parasite" class="hud__status-icon hud__status-icon--parasite" picking-mode="Ignore" />
         </ui:VisualElement>
         <ui:VisualElement name="loadout" class="hud__loadout" picking-mode="Ignore">
             <ui:VisualElement name="slot-weapon1" class="hud__slot hud__slot--weapon" picking-mode="Ignore">

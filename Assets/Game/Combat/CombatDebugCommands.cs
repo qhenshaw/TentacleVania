@@ -55,6 +55,48 @@ namespace TentacleVania.Combat
                 if (target != null)
                     target.BurstBleed();
             });
+            DebugMenu.Button(DebugMenu.Combat, "Static hit nearest enemy", () => ApplyToNearest(StatusKind.Static));
+            DebugMenu.Button(DebugMenu.Combat, "Fill nearest enemy's static", () =>
+            {
+                var target = NearestEnemyStatus();
+                if (target != null)
+                    target.FillStatic(Team.Creature);
+            });
+            DebugMenu.Button(DebugMenu.Combat, "Release nearest enemy's static", () =>
+            {
+                var target = NearestEnemyStatus();
+                if (target != null)
+                    target.ReleaseStatic(Team.Creature);
+            });
+            DebugMenu.Button(DebugMenu.Combat, "Corrode nearest enemy", () => ApplyToNearest(StatusKind.Corrode));
+            DebugMenu.Button(DebugMenu.Combat, "Acid pool under nearest enemy", () =>
+            {
+                var target = NearestEnemyStatus();
+                if (target != null)
+                    AcidPools.Spawn(target.transform.position, Team.Creature);
+            });
+            DebugMenu.Button(DebugMenu.Combat, "Hostile acid pool under creature", () =>
+            {
+                if (CombatTargets.Creature != null)
+                    AcidPools.Spawn(CombatTargets.Creature.transform.position, Team.Site);
+            });
+            DebugMenu.Value(DebugMenu.Combat, "Acid pools active", () => AcidPools.Active.ToString());
+            DebugMenu.Button(DebugMenu.Combat, "Corrode creature", () => ApplyToCreature(StatusKind.Corrode));
+            DebugMenu.Button(DebugMenu.Combat, "Infect nearest enemy", () => ApplyToNearest(StatusKind.Parasite));
+            DebugMenu.Button(DebugMenu.Combat, "Spread parasites from nearest enemy (5 m)", () =>
+            {
+                var target = NearestEnemyStatus();
+                if (target != null)
+                    target.SpreadParasites(5f, Team.Creature);
+            });
+            DebugMenu.Button(DebugMenu.Combat, "Spawn 2 parasite minions", () =>
+            {
+                if (CombatTargets.Creature != null)
+                    ParasiteSwarm.Spawn(CombatTargets.Creature.transform.position, 2, Team.Creature);
+            });
+            DebugMenu.Toggle(DebugMenu.Combat, "Parasites burst on death", () => StatusEffects.ParasitesBurstOnDeath, v => StatusEffects.ParasitesBurstOnDeath = v);
+            DebugMenu.Value(DebugMenu.Combat, "Parasite bursts / minions", () => $"{StatusEffects.ParasiteBursts} / {ParasiteSwarm.Active}");
+            DebugMenu.Value(DebugMenu.Combat, "Chain lightning discharges", () => StatusEffects.Discharges.ToString());
             DebugMenu.Value(DebugMenu.Combat, "Nearest enemy status", FormatNearestStatus);
             DebugMenu.Button(DebugMenu.Combat, "Bleed creature (+1 stack)", () => ApplyToCreature(StatusKind.Bleed));
             DebugMenu.Button(DebugMenu.Combat, "Burn creature", () => ApplyToCreature(StatusKind.Burn));
@@ -116,7 +158,7 @@ namespace TentacleVania.Combat
             var target = NearestEnemyStatus();
             if (target == null)
                 return "-";
-            return $"{target.name}: bleed {target.BleedStacks} ({target.BleedDamagePerSecond:F1}/s, {target.Remaining(StatusKind.Bleed):F1} s) burn {target.BurnDamagePerSecond:F1}/s ({target.Remaining(StatusKind.Burn):F1} s)";
+            return $"{target.name}: bleed {target.BleedStacks} ({target.BleedDamagePerSecond:F1}/s, {target.Remaining(StatusKind.Bleed):F1} s) burn {target.BurnDamagePerSecond:F1}/s ({target.Remaining(StatusKind.Burn):F1} s) static {target.StaticNormalized:P0} corrode {target.Remaining(StatusKind.Corrode):F1} s parasite {target.Remaining(StatusKind.Parasite):F1} s";
         }
 
         private static string FormatLastHit()

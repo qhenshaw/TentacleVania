@@ -37,3 +37,82 @@ MonoBehaviour:
         Data4: 1720034096
       Path: event:/Combat/Status/BurnIgnite
   _tickInterval: 0.5
+  _staticCapacity: 100
+  _staticPerHit: 20
+  _chainDamage: 30
+  _chainTargets: 3
+  _chainRadius: 6
+  _chainHitsSource: 0
+  _chainMaterial: {fileID: 2100000, guid: 8d25ebdef54f43e428bad66136b7a74e, type: 2}
+  _chainColor: {r: 0.6, g: 1.6, b: 2.4, a: 1}
+  _chainWidth: 0.08
+  _chainDuration: 0.25
+  _chainJitter: 0.35
+  _chainSound:
+    Guid:
+      Data1: 1057885471
+      Data2: 1231421166
+      Data3: -1532046148
+      Data4: 762693216
+    Path: event:/Combat/Status/ChainLightning
+  _corrodeDamageTaken: 1.2
+  _corrodeArmorDamage: 1.5
+  _corrodeDuration: 4
+  _corrodeEffect: {fileID: 1145979562980707830, guid: 3b84b3218d0b0a446a2db2990e94e7ec, type: 3}
+  _corrodeSound:
+    Guid:
+      Data1: -473184449
+      Data2: 1338901808
+      Data3: 102014881
+      Data4: 1725601529
+    Path: event:/Combat/Status/CorrodeApply
+  _acidPoolCount: 12
+  _acidPoolRadius: 1.5
+  _acidPoolDuration: 4
+  _acidPoolDamagePerSecond: 6
+  _acidPoolFade: 0.4
+  _acidPoolMaterial: {fileID: 2100000, guid: ae9ab6024858fa143a3a7a4858414684, type: 2}
+  _acidPoolSound:
+    Guid:
+      Data1: -738755302
+      Data2: 1272922583
+      Data3: 1165620638
+      Data4: -1663796819
+    Path: event:/Combat/Status/AcidPoolSplash
+  _parasite:
+    DamagePerSecond: 2
+    Duration: 8
+    MaxStacks: 1
+    Effect: {fileID: 6140260132486112988, guid: 279486c02d7476b4e9c57c391d782ba7, type: 3}
+    ApplySound:
+      Guid:
+        Data1: 1453985973
+        Data2: 1222255227
+        Data3: 144477322
+        Data4: 1477192340
+      Path: event:/Combat/Status/ParasiteApply
+  _parasiteBurstDamage: 15
+  _parasiteBurstRadius: 3
+  _parasiteBurstEffect: {fileID: 6632920675716505928, guid: c655a41769c684f40b6fbdf0200e0b89, type: 3}
+  _parasiteBurstSound:
+    Guid:
+      Data1: -1068518243
+      Data2: 1234452224
+      Data3: 1743604365
+      Data4: 908330066
+    Path: event:/Combat/Status/ParasiteBurst
+  _minionPrefab: {fileID: 3493498227377731078, guid: 4a82a54e4ea1e3e4d8022e3224665a57, type: 3}
+  _minionCount: 12
+  _minionLifetime: 6
+  _minionSpeed: 5
+  _minionSeekRadius: 10
+  _minionBiteRange: 0.9
+  _minionBiteDamage: 4
+  _minionBiteInterval: 0.6
+  _minionBiteSound:
+    Guid:
+      Data1: -206434357
+      Data2: 1332367138
+      Data3: -2085316430
+      Data4: -1127834103
+    Path: event:/Combat/Status/MinionBite

@@ -174,6 +174,95 @@
     display: none;
 }
 
+.enemy-bar__corrode {
+    width: 7px;
+    height: 7px;
+    margin-left: 4px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: rgb(140, 230, 40);
+    display: none;
+}
+
+.enemy-bar__parasite {
+    width: 7px;
+    height: 7px;
+    margin-left: 4px;
+    border-radius: 3px 0 3px 0;
+    background-color: rgb(210, 80, 230);
+    display: none;
+}
+
+.enemy-bar__traits {
+    flex-direction: row;
+    height: 9px;
+    margin-top: 2px;
+}
+
+.enemy-bar__trait {
+    width: 9px;
+    height: 9px;
+    margin-right: 3px;
+    border-radius: 5px;
+    border-width: 2px;
+    display: none;
+    transition-property: scale;
+    transition-duration: 0.12s;
+}
+
+.enemy-bar__trait--weak {
+    border-color: rgb(255, 255, 255);
+}
+
+.enemy-bar__trait--resist {
+    border-color: rgb(60, 60, 60);
+    opacity: 0.55;
+}
+
+.enemy-bar__trait--hit {
+    scale: 1.6 1.6;
+}
+
+.enemy-bar__trait--bleed {
+    background-color: rgb(210, 20, 30);
+}
+
+.enemy-bar__trait--burn {
+    background-color: rgb(255, 140, 20);
+}
+
+.enemy-bar__trait--static {
+    background-color: rgb(110, 220, 255);
+}
+
+.enemy-bar__trait--corrode {
+    background-color: rgb(140, 230, 40);
+}
+
+.enemy-bar__trait--parasite {
+    background-color: rgb(210, 80, 230);
+}
+
+.enemy-bar__static {
+    width: 30px;
+    height: 5px;
+    margin-left: 4px;
+    margin-top: 1px;
+    background-color: rgba(10, 12, 10, 0.85);
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.9);
+    display: none;
+}
+
+.enemy-bar__static-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background-color: rgb(110, 220, 255);
+}
+
 .status-pip {
     width: 5px;
     height: 7px;
@@ -349,6 +438,19 @@
     background-color: rgba(255, 140, 20, 0.35);
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
+}
+
+.hud__status-icon--corrode {
+    border-color: rgb(140, 230, 40);
+    background-color: rgba(140, 230, 40, 0.35);
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+}
+
+.hud__status-icon--parasite {
+    border-color: rgb(210, 80, 230);
+    background-color: rgba(210, 80, 230, 0.35);
+    border-radius: 13px 2px 13px 2px;
 }
 
 .hud__status-icon--stun {

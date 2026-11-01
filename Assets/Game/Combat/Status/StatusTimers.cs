@@ -5,7 +5,7 @@ namespace TentacleVania.Combat.Status
 {
     public sealed class StatusTimers
     {
-        private const int Count = 3;
+        private const int Count = 7;
 
         private readonly float[] _endsAt = new float[Count];
         private readonly float[] _magnitude = new float[Count];

@@ -89,6 +89,8 @@ MonoBehaviour:
   _preferredRange: {x: 5, y: 8}
   _voice: {fileID: 11400000, guid: 16e0766858ba0bd4189f7da0db5c7c79, type: 2}
   _machine: 0
+  _weakTo: 0300000007000000i
+  _resists: 
   _healPerSecond: 8
   _healRange: 6
   _keepAwayRange: 7
