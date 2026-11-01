@@ -1424,6 +1424,94 @@ MonoBehaviour:
     m_Localized: Thorns damage also builds stagger.
     m_Metadata:
       m_Items: []
+  - m_Id: 970431999524864
+    m_Localized: Rending Edges
+    m_Metadata:
+      m_Items: []
+  - m_Id: 970432045662208
+    m_Localized: Combo step 1 and step 2 hits apply a stack of bleed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 970668348555264
+    m_Localized: Bleed stacks 2 higher and ticks 30% faster.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 970911647547392
+    m_Localized: Spines apply bleed stacks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971146608263168
+    m_Localized: Sanguine Feast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971146612457472
+    m_Localized: Consuming a bleeding enemy heals an extra 2% of your health per bleed stack on it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971389533962240
+    m_Localized: Hungry Grasp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971389542350848
+    m_Localized: Elites and armored enemies can be grabbed below 35% health, plus 5% per size stage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971631717269504
+    m_Localized: Long Reach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971631725658112
+    m_Localized: Grab enemies from 50% further away.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971864958320640
+    m_Localized: Desperate Hunger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971864970903552
+    m_Localized: While below 30% health, enemies can be grabbed at 10% more health.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972100820811776
+    m_Localized: Faltering Prey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972100829200384
+    m_Localized: Enemies that drop low enough to grab are stunned for 1 s.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972337350197248
+    m_Localized: Dissolving Grip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972337362780160
+    m_Localized: Corroded enemies can be grabbed below 40% health.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972575326617600
+    m_Localized: Ravenous Maw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972575339200512
+    m_Localized: Consuming heals 25% more, and the bonus doubles while below 30% health.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972811931500544
+    m_Localized: Leech Tendrils
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972811948277760
+    m_Localized: Every attack hit heals a tiny amount.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 973948617244672
+    m_Localized: Consume healing past full health becomes a shield that decays over 4 s.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 973948625633280
+    m_Localized: Marrow Store
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

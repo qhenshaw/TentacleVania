@@ -742,6 +742,11 @@ MonoBehaviour:
     Position: {x: -19.5, y: 0, z: 46.5}
     Yaw: 0
   - Kind: 5
+    Id: DC_R2/SanguineFeast
+    Room: DC_R2
+    Position: {x: -15, y: 0, z: 51}
+    Yaw: 0
+  - Kind: 5
     Id: DC_R3/BiomassCache
     Room: DC_R3
     Position: {x: 46.5, y: 0, z: -19.5}

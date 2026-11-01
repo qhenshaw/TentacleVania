@@ -95,6 +95,8 @@ namespace TentacleVania.Combat.Status
             Registry.Clear();
             StaticDischarged = null;
             StaticBuildScale = 1f;
+            BleedExtraStacks = 0;
+            BleedRateScale = 1f;
             ExtraChainTargets = 0;
             ChainDamageScale = 1f;
             ChainAddsStatic = 0f;
@@ -110,7 +112,9 @@ namespace TentacleVania.Combat.Status
         public bool IsRooted => _timers.IsActive(StatusKind.Root, Time.time);
         public bool IsSlowed => _timers.IsActive(StatusKind.Slow, Time.time);
         public int BleedStacks => _bleedDot.Stacks;
-        public int BleedMaxStacks => _settings != null ? _settings.Bleed.MaxStacks : 1;
+        public int BleedMaxStacks => (_settings != null ? _settings.Bleed.MaxStacks : 1) + BleedExtraStacks;
+        public static int BleedExtraStacks { get; set; }
+        public static float BleedRateScale { get; set; } = 1f;
         public float StaticNormalized => _static != null ? _static.Normalized : 0f;
         public float BleedDamagePerSecond => _bleedDot.DamagePerSecond;
         public float BurnDamagePerSecond => _burnDot.DamagePerSecond;
@@ -193,7 +197,7 @@ namespace TentacleVania.Combat.Status
             switch (kind)
             {
                 case StatusKind.Bleed:
-                    ApplyDot(_bleedDot, _settings.Bleed, magnitude, duration, potency);
+                    ApplyDot(_bleedDot, _settings.Bleed, magnitude, duration, potency * BleedRateScale, BleedExtraStacks, BleedRateScale);
                     _bleedSource = source;
                     break;
                 case StatusKind.Burn:
@@ -220,10 +224,10 @@ namespace TentacleVania.Combat.Status
             Refresh();
         }
 
-        private void ApplyDot(DamageOverTime dot, StatusEffectSettings.DamageStatus status, float magnitude, float duration, float potency)
+        private void ApplyDot(DamageOverTime dot, StatusEffectSettings.DamageStatus status, float magnitude, float duration, float potency, int extraStacks = 0, float rate = 1f)
         {
             var perStack = (magnitude > 0f ? magnitude : status.DamagePerSecond) * Mathf.Max(0f, potency);
-            dot.Apply(perStack, duration > 0f ? duration : status.Duration, status.MaxStacks, Time.time, _settings.TickInterval);
+            dot.Apply(perStack, duration > 0f ? duration : status.Duration, status.MaxStacks + extraStacks, Time.time, _settings.TickInterval / Mathf.Max(0.1f, rate));
             if (!status.ApplySound.IsNull)
                 RuntimeManager.PlayOneShot(status.ApplySound, transform.position);
         }
@@ -330,7 +334,7 @@ namespace TentacleVania.Combat.Status
         {
             var now = Time.time;
             var interval = _settings.TickInterval;
-            var bleed = _bleedDot.Tick(now, interval);
+            var bleed = _bleedDot.Tick(now, interval / Mathf.Max(0.1f, BleedRateScale));
             var burn = _burnDot.Tick(now, interval);
             var parasite = _parasiteDot.Tick(now, interval);
             if (bleed > 0f)

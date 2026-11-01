@@ -618,6 +618,11 @@ MonoBehaviour:
     Room: MV_R1
     Position: {x: 46.5, y: 0, z: 115.5}
     Yaw: 0
+  - Kind: 5
+    Id: MV_R1/DesperateHunger
+    Room: MV_R1
+    Position: {x: 51, y: 0, z: 117}
+    Yaw: 0
   - Kind: 7
     Id: MV/Auto-MV_A3
     Room: MV_A3

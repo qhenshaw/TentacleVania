@@ -1024,6 +1024,17 @@
             15
           ],
           "yaw": 0
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            -5.5,
+            16.5
+          ],
+          "yaw": 0,
+          "name": "LongReach",
+          "itemId": "LongReach"
         }
       ]
     },
@@ -1052,6 +1063,17 @@
             -7
           ],
           "yaw": 0
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            16.5,
+            -5.5
+          ],
+          "yaw": 0,
+          "name": "MarrowStore",
+          "itemId": "MarrowStore"
         }
       ]
     },

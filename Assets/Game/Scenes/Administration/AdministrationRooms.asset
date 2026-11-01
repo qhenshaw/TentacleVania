@@ -749,9 +749,19 @@ MonoBehaviour:
     Position: {x: 46.5, y: 0, z: -19.5}
     Yaw: 0
   - Kind: 5
+    Id: AD_R2/FalteringPrey
+    Room: AD_R2
+    Position: {x: 51, y: 0, z: -15}
+    Yaw: 0
+  - Kind: 5
     Id: AD_ArchiveVault/BiomassCache
     Room: AD_ArchiveVault
     Position: {x: -22.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 5
+    Id: AD_ArchiveVault/BoneScythesPickup
+    Room: AD_ArchiveVault
+    Position: {x: -19.5, y: 0, z: 51}
     Yaw: 0
   - Kind: 7
     Id: AD/Auto-AD_A3

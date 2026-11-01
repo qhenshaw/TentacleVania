@@ -16,7 +16,9 @@ MonoBehaviour:
   - Enemies:
     - Prefab: {fileID: 7721236903334716932, guid: 99d4a509e8d3991418aed2fc29e58c80, type: 3}
       Count: 2
+      Elite: 0
     - Prefab: {fileID: 5110673907316712019, guid: d45bff2eab984f74d8e0dfd70e70d40c, type: 3}
       Count: 1
+      Elite: 0
   _delayBetweenWaves: 2
   _spawnInterval: 0.3
