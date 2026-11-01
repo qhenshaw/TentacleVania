@@ -8,5 +8,6 @@ namespace TentacleVania.Combat.Damage
         Bleed,
         Burn,
         Static,
+        Corrode,
     }
 }

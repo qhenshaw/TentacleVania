@@ -55,3 +55,27 @@ MonoBehaviour:
       Data3: -1532046148
       Data4: 762693216
     Path: event:/Combat/Status/ChainLightning
+  _corrodeDamageTaken: 1.2
+  _corrodeArmorDamage: 1.5
+  _corrodeDuration: 4
+  _corrodeEffect: {fileID: 1145979562980707830, guid: 3b84b3218d0b0a446a2db2990e94e7ec, type: 3}
+  _corrodeSound:
+    Guid:
+      Data1: -473184449
+      Data2: 1338901808
+      Data3: 102014881
+      Data4: 1725601529
+    Path: event:/Combat/Status/CorrodeApply
+  _acidPoolCount: 12
+  _acidPoolRadius: 1.5
+  _acidPoolDuration: 4
+  _acidPoolDamagePerSecond: 6
+  _acidPoolFade: 0.4
+  _acidPoolMaterial: {fileID: 2100000, guid: ae9ab6024858fa143a3a7a4858414684, type: 2}
+  _acidPoolSound:
+    Guid:
+      Data1: -738755302
+      Data2: 1272922583
+      Data3: 1165620638
+      Data4: -1663796819
+    Path: event:/Combat/Status/AcidPoolSplash
