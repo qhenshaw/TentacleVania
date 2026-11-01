@@ -665,8 +665,8 @@ MonoBehaviour:
       width: 15
       height: 12
   - Scene: BL_R2
-    Center: {x: -19.5, y: 1.4155036, z: 46.5}
-    Size: {x: 15.7606125, y: 3.6310077, z: 16.158707}
+    Center: {x: -19.5, y: 1.5, z: 47.360325}
+    Size: {x: 15.7606125, y: 4.8, z: 17.879356}
     Neighbours:
     - BL_A4
     MapShapes:

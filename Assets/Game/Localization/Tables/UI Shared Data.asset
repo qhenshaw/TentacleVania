@@ -1039,6 +1039,10 @@ MonoBehaviour:
     m_Key: boss.cryoLoader
     m_Metadata:
       m_Items: []
+  - m_Id: 909501425008640
+    m_Key: trinket.EmergencyThermalBlanket.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
