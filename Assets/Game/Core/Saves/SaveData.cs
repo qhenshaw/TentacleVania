@@ -63,6 +63,7 @@ namespace TentacleVania.Core.Saves
         PlayedLine,
         CollectedLog,
         SeenTutorial,
+        BreachedWall,
     }
 
     [Serializable]
@@ -78,6 +79,7 @@ namespace TentacleVania.Core.Saves
         public List<string> PlayedLines = new();
         public List<string> CollectedLogs = new();
         public List<string> SeenTutorials = new();
+        public List<string> BreachedWalls = new();
 
         public List<string> List(WorldFlag flag) => flag switch
         {
@@ -90,6 +92,7 @@ namespace TentacleVania.Core.Saves
             WorldFlag.PlayedLine => PlayedLines,
             WorldFlag.CollectedLog => CollectedLogs,
             WorldFlag.SeenTutorial => SeenTutorials,
+            WorldFlag.BreachedWall => BreachedWalls,
             _ => ClearedArenas,
         };
 
