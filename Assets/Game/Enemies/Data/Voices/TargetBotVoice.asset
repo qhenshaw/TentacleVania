@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: TargetBotVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -157680379
+      Data2: 1167765756
+      Data3: 288724662
+      Data4: 421206075
+    Path: event:/Enemies/Voice/TargetBot/Alert
+  _pain:
+    Guid:
+      Data1: -1800638172
+      Data2: 1315892084
+      Data3: 1738233276
+      Data4: 2025652090
+    Path: event:/Enemies/Voice/TargetBot/Pain
+  _death:
+    Guid:
+      Data1: 747776265
+      Data2: 1319083877
+      Data3: -1262798702
+      Data4: -640464733
+    Path: event:/Enemies/Voice/TargetBot/Death
+  _grabbed:
+    Guid:
+      Data1: 921749502
+      Data2: 1205420459
+      Data3: -987489148
+      Data4: 1507679132
+    Path: event:/Enemies/Voice/TargetBot/Grabbed
+  _attack:
+    Guid:
+      Data1: 1810799030
+      Data2: 1074592063
+      Data3: 1618929580
+      Data4: 1051132742
+    Path: event:/Enemies/Voice/TargetBot/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

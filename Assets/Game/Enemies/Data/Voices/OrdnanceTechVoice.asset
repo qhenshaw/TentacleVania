@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: OrdnanceTechVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 1511882432
+      Data2: 1186627234
+      Data3: -405797704
+      Data4: -2012241238
+    Path: event:/Enemies/Voice/OrdnanceTech/Alert
+  _pain:
+    Guid:
+      Data1: -1398661894
+      Data2: 1205032893
+      Data3: -1832244083
+      Data4: 174564845
+    Path: event:/Enemies/Voice/OrdnanceTech/Pain
+  _death:
+    Guid:
+      Data1: 1355617682
+      Data2: 1258163042
+      Data3: 898842285
+      Data4: 913316006
+    Path: event:/Enemies/Voice/OrdnanceTech/Death
+  _grabbed:
+    Guid:
+      Data1: 168090840
+      Data2: 1341517677
+      Data3: 424179893
+      Data4: 580460344
+    Path: event:/Enemies/Voice/OrdnanceTech/Grabbed
+  _attack:
+    Guid:
+      Data1: -55408154
+      Data2: 1262471614
+      Data3: 821362090
+      Data4: -1507635802
+    Path: event:/Enemies/Voice/OrdnanceTech/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

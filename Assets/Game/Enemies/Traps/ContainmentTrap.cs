@@ -12,6 +12,11 @@ namespace TentacleVania.Enemies.Traps
 
         [SerializeField] private Transform _disc;
         [SerializeField] private EventReference _snapSound;
+        [Tooltip("Proximity mine: stepping in arms this pooled burst (its circle fills over the fuse, then it blasts) instead of only applying the status.")]
+        [SerializeField] private AcidBurst _burst;
+        [SerializeField, Min(0.1f)] private float _burstRadius = 2f;
+        [SerializeField, Min(0.4f)] private float _burstFuse = 0.6f;
+        [SerializeField, Min(0f)] private float _burstDamage = 20f;
 
         private float _radius;
         private StatusKind _status;
@@ -65,8 +70,13 @@ namespace TentacleVania.Enemies.Traps
                 _cachedCreature = creature;
                 _cachedStatus = creature.GetComponent<StatusEffects>();
             }
-            if (_cachedStatus != null)
+            if (_cachedStatus != null && _status != StatusKind.None)
                 _cachedStatus.Apply(_status, _magnitude, _duration);
+            if (_burst != null)
+            {
+                var info = DamageInfo.Create(_burstDamage, Team.Site, DamageType.Physical);
+                EnemyManager.PlaceBurst(_burst, transform.position, _burstRadius, _burstFuse, info);
+            }
             if (!_snapSound.IsNull)
                 RuntimeManager.PlayOneShot(_snapSound, transform.position);
             EnemyManager.ReturnTrap(this);
