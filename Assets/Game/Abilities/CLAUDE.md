@@ -18,6 +18,12 @@ Active abilities (`TentacleVania.Abilities`), on the ability input (RT / Q), pai
 - Tiers: `AbilityDefinition._tierCosts` (biomass to reach tier 2, 3...; Bio-Shield has 800, so tier 2 is its maximum in the slice) and `MaxTier`; the tier is `Core.Progression.Upgrades.AbilityTier(id)`, bought in the nest menu's Upgrades tab. Bio-Shield reads it on activation: tier 2 absorbs 60 and bursts for 35 (`_tier2Absorb`, `_tier2BurstDamage`). Tier 3 (perfect timing) isn't built. F5 Abilities: Bio-Shield tier, Toggle Bio-Shield tier 1/2.
 - Placeholder presentation: an amber transparent sphere (`BioShieldShell.prefab`, URP Unlit) that swells as hits land and expands to the burst radius, the amber status glow on the creature, and FMOD placeholder events `event:/Abilities/BioShield/Activate`, `Absorb` and `Burst`.
 
+## Shock (`Shock/`, `Shock.asset`; TV-154; placeholder numbers)
+
+- A slot ability on the charge meter (40 charge): an instant bio-electric discharge around the creature, an overlap on the Enemy layer that hits each enemy once with Electric damage flagged `HitFlags.Ability` (so the Galvanic Overload feat counts it), plus `StatusKind.Static` (a full Static bar chains lightning, `Combat/CLAUDE.md`) and 40 stagger.
+- Tiers (bought at nests: 600 and 1,200 biomass): radius 4 / 5 / 6 m, damage 25 / 35 / 45, Static 35 / 50 / 70 per hit (`ShockDefinition.At`).
+- Placeholder presentation: a cyan creature flash and a pooled `VFX/Abilities/ShockBurst` burst (scaled to the radius); FMOD `event:/Abilities/Shock/Activate`. Reward of the optional Sentry Titan (TV-199).
+
 ## Tentacle Grapple (`Grapple/`, `TentacleGrapple.asset`; design: Tentacle Grapple page, Changelog Grilling sessions 3 and 5)
 
 - A traversal ability on its own input, the `Traverse` action (LT / F). It isn't in the ability slot: `GrappleDefinition.SlotAbility` is false, so `AbilityController` never equips it. It's unlocked like a boss reward, by the id `TentacleGrapple` in `Build.Abilities` (the Surgical Automaton's `RewardAbility`), and it's in the `ContentCatalog`.
