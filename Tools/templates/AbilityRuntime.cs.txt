@@ -1,0 +1,31 @@
+using FMODUnity;
+using UnityEngine;
+
+namespace TentacleVania.Abilities.__NAME__
+{
+    public sealed class __NAME__Runtime : AbilityRuntime
+    {
+        private readonly __NAME__Definition _definition;
+        private readonly AbilityContext _context;
+        private float _remaining;
+
+        public __NAME__Runtime(__NAME__Definition definition, AbilityContext context)
+        {
+            _definition = definition;
+            _context = context;
+        }
+
+        public override bool IsActive => _remaining > 0f;
+
+        public override void Activate()
+        {
+            _remaining = _definition.Duration;
+            if (!_definition.ActivateSound.IsNull)
+                RuntimeManager.PlayOneShot(_definition.ActivateSound, _context.Owner.position);
+        }
+
+        public override void Tick(float dt) => _remaining = Mathf.Max(0f, _remaining - dt);
+
+        public override void Cancel() => _remaining = 0f;
+    }
+}

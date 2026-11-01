@@ -1,0 +1,17 @@
+using FMODUnity;
+using UnityEngine;
+
+namespace TentacleVania.Abilities.__NAME__
+{
+    [CreateAssetMenu(menuName = "TentacleVania/Abilities/__TITLE__")]
+    public sealed class __NAME__Definition : AbilityDefinition
+    {
+        [SerializeField, Min(0.1f)] private float _duration = 1f;
+        [SerializeField] private EventReference _activateSound;
+
+        public float Duration => _duration;
+        public EventReference ActivateSound => _activateSound;
+
+        public override AbilityRuntime CreateRuntime(AbilityContext context) => new __NAME__Runtime(this, context);
+    }
+}

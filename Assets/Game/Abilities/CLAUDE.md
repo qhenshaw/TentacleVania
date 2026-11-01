@@ -4,6 +4,7 @@ Active abilities (`TentacleVania.Abilities`), on the ability input (RT / Q), pai
 
 ## Structure
 
+- Create new abilities and mutations with `Tools/content-new.sh ability|mutation <Name>`: stub classes, asset, `ContentCatalog` entry and UI strings.
 - `AbilityDefinition` (ScriptableObject): display name, charge `Cost`, and `CreateRuntime(AbilityContext)`, which builds the ability's plain C# `AbilityRuntime` (`Activate`, `Tick`, `Cancel`, `Dispose`) once at equip, so activations allocate nothing.
 - `AbilityController` (on the creature prefab) holds the one equipped ability (`Equip(definition)` swaps it), ticks the runtime, and on `Ability.Pressed` spends the cost with `CreatureCharge.TrySpend` and activates. Nothing fires while control is locked (stun, consume) or the creature is dead; death or disabling cancels without effects. `AbilityContext.RefreshStatus` hands the status glow back to the charge meter (`CreatureCharge.RefreshGlow`) when an ability ends.
 - `Core.Progression.BossProgress.AbilityUnlocked` (a boss reward) equips the unlocked ability through the `ContentCatalog` only when the slot is empty (developer decision). A save restores exactly its `Build.Ability`, so a new game starts with an empty slot (the Warden grants Bio-Shield); the prefab's Bio-Shield only shows when playing a scene without a save. F5 Abilities: Equip Bio-Shield, Unequip.
