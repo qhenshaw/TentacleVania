@@ -14,6 +14,8 @@ namespace TentacleVania.Weapons.Data
         FeedingLine,
         MeltingArmor,
         AcidBath,
+        OverloadChain,
+        ConductiveField,
     }
 
     [CreateAssetMenu(menuName = "TentacleVania/Weapons/Weapon Modifier")]

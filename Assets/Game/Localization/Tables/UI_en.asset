@@ -1288,6 +1288,26 @@ MonoBehaviour:
     m_Localized: Standing in your own acid pool boosts attack speed.
     m_Metadata:
       m_Items: []
+  - m_Id: 959780384161792
+    m_Localized: Arc Tendrils
+    m_Metadata:
+      m_Items: []
+  - m_Id: 960177463115776
+    m_Localized: Overload Chain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 960177471504384
+    m_Localized: Chain lightning adds static to the enemies it hits, enabling cascades.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 960177471504385
+    m_Localized: Conductive Field
+    m_Metadata:
+      m_Items: []
+  - m_Id: 960177471504386
+    m_Localized: Storm field also locks machines in place.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

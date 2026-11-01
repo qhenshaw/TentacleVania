@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 5501406323500830954}
   - component: {fileID: 3294564128731436930}
   - component: {fileID: 3836339207244102522}
+  - component: {fileID: 5580451618102455880}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -1135,6 +1136,33 @@ MonoBehaviour:
       Data3: 2138416520
       Data4: 712641677
     Path: event:/Weapons/AcidSpitter/Splash
+--- !u!114 &5580451618102455880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3115d3b12ba8d37438f82f9c69ba9de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.Behaviours.ArcTendrils
+  _weapons: {fileID: 615621536349149212}
+  _weaponId: ArcTendrils
+  _hitLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  _fieldPrefab: {fileID: 2685982491828210647, guid: a62b69763cb797e4da69796c15a828a1, type: 3}
+  _fieldDuration: 4
+  _fieldRadius: 3
+  _tick: 0.35
+  _tickDamage: 2
+  _machineRoot: 1
+  _trailLife: 3
+  _trailSpacing: 0.1
+  _trailRadius: 1
+  _chainStatic: 25
 --- !u!1 &4860062330439387882
 GameObject:
   m_ObjectHideFlags: 0
