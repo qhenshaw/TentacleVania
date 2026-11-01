@@ -35,6 +35,8 @@ namespace TentacleVania.Bosses
         [SerializeField] private AbilityDefinition _rewardAbility;
         [Tooltip("Optional second ability granted with the first (The Seeper: Vent Squeeze + Acid Resistance).")]
         [SerializeField] private AbilityDefinition _secondReward;
+        [Tooltip("Optional pickup spawned where the boss dies (give the prefab's pickup a fixed save id).")]
+        [SerializeField] private GameObject _dropPrefab;
         [Tooltip("Boss music; empty uses the shared boss theme (Audio/Resources/MusicSettings).")]
         [SerializeField] private EventReference _music;
 
@@ -53,6 +55,7 @@ namespace TentacleVania.Bosses
         public IReadOnlyList<BossPhase> Phases => _phases;
         public AbilityDefinition RewardAbility => _rewardAbility;
         public AbilityDefinition SecondReward => _secondReward;
+        public GameObject DropPrefab => _dropPrefab;
         public EventReference Music => _music;
         public EventReference IntroSound => _introSound;
         public EventReference DeathSound => _deathSound;

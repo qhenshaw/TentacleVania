@@ -155,6 +155,8 @@ namespace TentacleVania.Bosses
         {
             KillAdds();
             BossProgress.Defeat(_boss.Id, ContentCatalog.IdOf(_boss.RewardAbility), ContentCatalog.IdOf(_boss.SecondReward));
+            if (_boss.DropPrefab != null)
+                Instantiate(_boss.DropPrefab, transform.position, Quaternion.identity).name = _boss.DropPrefab.name;
             if (!_finishing)
                 Play(_boss.DeathSound);
             StartCoroutine(AbsorbRoutine(!_finishing));

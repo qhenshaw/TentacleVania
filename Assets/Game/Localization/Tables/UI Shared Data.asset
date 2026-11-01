@@ -1043,6 +1043,10 @@ MonoBehaviour:
     m_Key: trinket.EmergencyThermalBlanket.name
     m_Metadata:
       m_Items: []
+  - m_Id: 914756858560512
+    m_Key: boss.majorRoss
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
