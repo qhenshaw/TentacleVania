@@ -1062,6 +1062,10 @@ MonoBehaviour:
     m_Localized: Flare Pistol
     m_Metadata:
       m_Items: []
+  - m_Id: 925351364280320
+    m_Localized: Overwatch Core
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

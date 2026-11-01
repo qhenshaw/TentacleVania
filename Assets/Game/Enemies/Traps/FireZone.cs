@@ -12,6 +12,8 @@ namespace TentacleVania.Enemies.Traps
         [SerializeField] private GroundIndicator _indicator;
         [SerializeField, Min(0.05f)] private float _tick = 0.25f;
         [SerializeField] private EventReference _igniteSound;
+        [SerializeField] private DamageType _type = DamageType.Fire;
+        [SerializeField] private StatusKind _status = StatusKind.Burn;
 
         private Vector3 _forward;
         private float _radius;
@@ -97,9 +99,9 @@ namespace TentacleVania.Enemies.Traps
             var creature = CombatTargets.Creature;
             if (creature == null || !creature.IsAlive || !Inside(transform.position, _forward, _radius, _arc, creature.transform.position))
                 return;
-            var info = DamageInfo.Create(_damagePerSecond * _tick, Team.Site, DamageType.Fire);
+            var info = DamageInfo.Create(_damagePerSecond * _tick, Team.Site, _type);
             info.Flags = HitFlags.Hazard | HitFlags.DamageOverTime;
-            info.Status = StatusKind.Burn;
+            info.Status = _status;
             info.Attacker = _source;
             info.Point = creature.transform.position;
             creature.TakeDamage(info);
