@@ -1224,6 +1224,10 @@ MonoBehaviour:
     m_Localized: 'Ability gained: {0}'
     m_Metadata:
       m_Items: []
+  - m_Id: 954421292580864
+    m_Localized: Spawn Brood
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
