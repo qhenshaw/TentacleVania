@@ -1067,6 +1067,10 @@ MonoBehaviour:
     m_Key: trinket.SurfaceLiftCode.name
     m_Metadata:
       m_Items: []
+  - m_Id: 931802279329792
+    m_Key: boss.excavatorRig
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

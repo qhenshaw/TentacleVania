@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: ExcavatorRigVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 1166979204
+      Data2: 1170406123
+      Data3: -1020867452
+      Data4: -1946334322
+    Path: event:/Enemies/Voice/ExcavatorRig/Alert
+  _pain:
+    Guid:
+      Data1: -763025177
+      Data2: 1134820863
+      Data3: -1118546776
+      Data4: -713108252
+    Path: event:/Enemies/Voice/ExcavatorRig/Pain
+  _death:
+    Guid:
+      Data1: 624577719
+      Data2: 1231563726
+      Data3: -1895991384
+      Data4: 350303309
+    Path: event:/Enemies/Voice/ExcavatorRig/Death
+  _grabbed:
+    Guid:
+      Data1: 409635663
+      Data2: 1255440681
+      Data3: -1753754224
+      Data4: 1089906836
+    Path: event:/Enemies/Voice/ExcavatorRig/Grabbed
+  _attack:
+    Guid:
+      Data1: -623951776
+      Data2: 1098588409
+      Data3: -203373386
+      Data4: -127213733
+    Path: event:/Enemies/Voice/ExcavatorRig/Attack
+  _stagger:
+    Guid:
+      Data1: 1109261388
+      Data2: 1147413242
+      Data3: 508527803
+      Data4: 1107184084
+    Path: event:/Enemies/Voice/ExcavatorRig/Stagger
+  _painCooldown: 1.2
