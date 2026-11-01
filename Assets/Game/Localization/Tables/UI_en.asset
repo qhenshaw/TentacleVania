@@ -1086,6 +1086,10 @@ MonoBehaviour:
     m_Localized: Alpha Survivor's Badge
     m_Metadata:
       m_Items: []
+  - m_Id: 938622075027456
+    m_Localized: Dr. Elias Crane
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

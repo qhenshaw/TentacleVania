@@ -1083,6 +1083,10 @@ MonoBehaviour:
     m_Key: trinket.AlphaSurvivorsBadge.name
     m_Metadata:
       m_Items: []
+  - m_Id: 938622075027456
+    m_Key: boss.crane
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

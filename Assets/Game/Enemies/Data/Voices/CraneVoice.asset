@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: CraneVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 1861513314
+      Data2: 1305198976
+      Data3: 2006806414
+      Data4: -475460210
+    Path: event:/Enemies/Voice/Crane/Alert
+  _pain:
+    Guid:
+      Data1: 2046549908
+      Data2: 1220937398
+      Data3: 1103866519
+      Data4: -680703745
+    Path: event:/Enemies/Voice/Crane/Pain
+  _death:
+    Guid:
+      Data1: 1884219771
+      Data2: 1162887075
+      Data3: -128398450
+      Data4: -1971826031
+    Path: event:/Enemies/Voice/Crane/Death
+  _grabbed:
+    Guid:
+      Data1: -989941722
+      Data2: 1277516719
+      Data3: -1262222448
+      Data4: -1335931870
+    Path: event:/Enemies/Voice/Crane/Grabbed
+  _attack:
+    Guid:
+      Data1: 895944247
+      Data2: 1309426958
+      Data3: -52124996
+      Data4: 1417756335
+    Path: event:/Enemies/Voice/Crane/Attack
+  _stagger:
+    Guid:
+      Data1: 2077031958
+      Data2: 1309442787
+      Data3: 836292774
+      Data4: 435556335
+    Path: event:/Enemies/Voice/Crane/Stagger
+  _painCooldown: 1.2
