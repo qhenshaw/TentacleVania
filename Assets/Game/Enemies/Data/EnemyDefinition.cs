@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TentacleVania.Combat.Damage;
 using UnityEngine;
 
 namespace TentacleVania.Enemies.Data
@@ -57,6 +58,10 @@ namespace TentacleVania.Enemies.Data
         [Tooltip("Machines are never healed by Med-Drones.")]
         [SerializeField] private bool _machine;
 
+        [Header("Status weaknesses (Balance Sheet: weak +25%, resist -25% build-up and status damage)")]
+        [SerializeField] private StatusKind[] _weakTo = System.Array.Empty<StatusKind>();
+        [SerializeField] private StatusKind[] _resists = System.Array.Empty<StatusKind>();
+
         [Header("Med-Drone behaviour")]
         [SerializeField, Min(0f)] private float _healPerSecond = 8f;
         [SerializeField, Min(0f)] private float _healRange = 6f;
@@ -84,6 +89,8 @@ namespace TentacleVania.Enemies.Data
         public float CorneredDistance => _corneredDistance;
         public Vector2 PreferredRange => _preferredRange;
         public bool Machine => _machine;
+        public IReadOnlyList<StatusKind> WeakTo => _weakTo;
+        public IReadOnlyList<StatusKind> Resists => _resists;
         public EnemyVoice Voice => _voice;
         public float HealPerSecond => _healPerSecond;
         public float HealRange => _healRange;

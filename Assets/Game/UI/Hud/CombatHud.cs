@@ -2,7 +2,9 @@ using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Combat.Status;
 using TentacleVania.Creature;
+using System.Collections.Generic;
 using TentacleVania.Enemies;
+using TentacleVania.Enemies.Data;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -16,6 +18,20 @@ namespace TentacleVania.UI.Hud
         private const int HealthTicks = 10;
         private const string ChargeFullClass = "hud-bar--charge-full";
         private const string FeedableClass = "enemy-bar--feedable";
+        private const int MaxTraits = 4;
+        private const float TraitFlashTime = 0.35f;
+        private const string WeakClass = "enemy-bar__trait--weak";
+        private const string ResistClass = "enemy-bar__trait--resist";
+        private const string TraitHitClass = "enemy-bar__trait--hit";
+        private static readonly string[] TraitClasses =
+        {
+            "", "", "",
+            "enemy-bar__trait--bleed",
+            "enemy-bar__trait--burn",
+            "enemy-bar__trait--static",
+            "enemy-bar__trait--corrode",
+            "enemy-bar__trait--parasite",
+        };
 
         [SerializeField, Min(0f)] private float _drainDelay = 0.5f;
         [SerializeField, Min(0f)] private float _drainSpeed = 0.6f;
@@ -248,6 +264,13 @@ namespace TentacleVania.UI.Hud
                 Root.Add(healthBar);
                 Root.Add(staggerBar);
                 Root.Add(statusRow);
+                var traitRow = Element("enemy-bar__traits");
+                for (var i = 0; i < Traits.Length; i++)
+                {
+                    Traits[i] = Element("enemy-bar__trait");
+                    traitRow.Add(Traits[i]);
+                }
+                Root.Add(traitRow);
                 Root.style.display = DisplayStyle.None;
             }
 
@@ -262,6 +285,10 @@ namespace TentacleVania.UI.Hud
             public int BleedStacks { get; private set; }
             public bool Burning { get; private set; }
             public VisualElement Corrode { get; }
+            public VisualElement[] Traits { get; } = new VisualElement[MaxTraits];
+            public StatusKind[] TraitKinds { get; } = new StatusKind[MaxTraits];
+            public bool[] TraitHit { get; } = new bool[MaxTraits];
+            public int TraitCount { get; private set; }
             public bool Corroded { get; private set; }
             public VisualElement Parasite { get; }
             public bool Infected { get; private set; }
@@ -293,11 +320,57 @@ namespace TentacleVania.UI.Hud
                 Corroded = true;
                 Infected = true;
                 StaticShown = -1f;
+                AssignTraits(enemy.Definition);
                 SetStatus(enemy.Status);
+            }
+
+            private void AssignTraits(EnemyDefinition definition)
+            {
+                TraitCount = 0;
+                if (definition != null)
+                {
+                    AddTraits(definition.WeakTo, true);
+                    AddTraits(definition.Resists, false);
+                }
+                for (var i = TraitCount; i < Traits.Length; i++)
+                    Traits[i].style.display = DisplayStyle.None;
+            }
+
+            private void AddTraits(IReadOnlyList<StatusKind> kinds, bool weak)
+            {
+                foreach (var kind in kinds)
+                {
+                    if (TraitCount >= Traits.Length)
+                        return;
+                    var trait = Traits[TraitCount];
+                    TraitKinds[TraitCount] = kind;
+                    TraitHit[TraitCount] = false;
+                    trait.style.display = DisplayStyle.Flex;
+                    trait.EnableInClassList(WeakClass, weak);
+                    trait.EnableInClassList(ResistClass, !weak);
+                    trait.RemoveFromClassList(TraitHitClass);
+                    for (var k = 0; k < TraitClasses.Length; k++)
+                        if (TraitClasses[k].Length > 0)
+                            trait.EnableInClassList(TraitClasses[k], k == (int)kind);
+                    TraitCount++;
+                }
+            }
+
+            private void UpdateTraits(StatusEffects status)
+            {
+                for (var i = 0; i < TraitCount; i++)
+                {
+                    var hit = status != null && status.SinceApplied(TraitKinds[i]) < TraitFlashTime;
+                    if (hit == TraitHit[i])
+                        continue;
+                    TraitHit[i] = hit;
+                    Traits[i].EnableInClassList(TraitHitClass, hit);
+                }
             }
 
             public void SetStatus(StatusEffects status)
             {
+                UpdateTraits(status);
                 var stacks = status != null ? status.BleedStacks : 0;
                 var burning = status != null && status.IsActive(StatusKind.Burn);
                 if (stacks != BleedStacks)

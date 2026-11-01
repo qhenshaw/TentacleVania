@@ -193,6 +193,56 @@
     display: none;
 }
 
+.enemy-bar__traits {
+    flex-direction: row;
+    height: 9px;
+    margin-top: 2px;
+}
+
+.enemy-bar__trait {
+    width: 9px;
+    height: 9px;
+    margin-right: 3px;
+    border-radius: 5px;
+    border-width: 2px;
+    display: none;
+    transition-property: scale;
+    transition-duration: 0.12s;
+}
+
+.enemy-bar__trait--weak {
+    border-color: rgb(255, 255, 255);
+}
+
+.enemy-bar__trait--resist {
+    border-color: rgb(60, 60, 60);
+    opacity: 0.55;
+}
+
+.enemy-bar__trait--hit {
+    scale: 1.6 1.6;
+}
+
+.enemy-bar__trait--bleed {
+    background-color: rgb(210, 20, 30);
+}
+
+.enemy-bar__trait--burn {
+    background-color: rgb(255, 140, 20);
+}
+
+.enemy-bar__trait--static {
+    background-color: rgb(110, 220, 255);
+}
+
+.enemy-bar__trait--corrode {
+    background-color: rgb(140, 230, 40);
+}
+
+.enemy-bar__trait--parasite {
+    background-color: rgb(210, 80, 230);
+}
+
 .enemy-bar__static {
     width: 30px;
     height: 5px;
