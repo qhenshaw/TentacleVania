@@ -21,6 +21,12 @@ namespace TentacleVania.UI.Hud
         private StatusEffects _status;
         private bool _slowShown;
         private bool _rootShown;
+        private VisualElement _bleed;
+        private VisualElement _burn;
+        private VisualElement[] _bleedPips;
+        private bool _bleedShown;
+        private bool _burnShown;
+        private int _bleedStacks = -1;
 
         private void OnEnable()
         {
@@ -28,6 +34,16 @@ namespace TentacleVania.UI.Hud
             _slow = root.Q<VisualElement>("status-slow");
             _root = root.Q<VisualElement>("status-root");
             _stun = root.Q<VisualElement>("status-stun");
+            _bleed = root.Q<VisualElement>("status-bleed");
+            _burn = root.Q<VisualElement>("status-burn");
+            if (_bleed != null)
+            {
+                _bleed.Clear();
+                _bleedPips = StatusPips.Build(_bleed);
+            }
+            _bleedShown = false;
+            _burnShown = false;
+            _bleedStacks = -1;
             _stunShown = false;
             _slowShown = false;
             _rootShown = false;
@@ -46,6 +62,18 @@ namespace TentacleVania.UI.Hud
             }
             Set(_slow, ref _slowShown, _status != null && _status.IsActive(StatusKind.Slow));
             Set(_root, ref _rootShown, _status != null && _status.IsActive(StatusKind.Root));
+            if (_bleed != null)
+            {
+                Set(_bleed, ref _bleedShown, _status != null && _status.IsActive(StatusKind.Bleed));
+                var stacks = _status != null ? _status.BleedStacks : 0;
+                if (stacks != _bleedStacks)
+                {
+                    _bleedStacks = stacks;
+                    StatusPips.Set(_bleedPips, stacks);
+                }
+            }
+            if (_burn != null)
+                Set(_burn, ref _burnShown, _status != null && _status.IsActive(StatusKind.Burn));
             if (_stun != null)
                 Set(_stun, ref _stunShown, _vitals != null && _vitals.IsStunned);
         }

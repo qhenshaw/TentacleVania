@@ -4,6 +4,7 @@ using FMODUnity;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Combat.Feedback;
+using TentacleVania.Combat.Status;
 using TentacleVania.Core;
 using TentacleVania.Enemies.AI;
 using TentacleVania.Enemies.Data;
@@ -62,6 +63,7 @@ namespace TentacleVania.Enemies
         private ScaleModifier _staggerVulnerability;
         private bool _staggerBroken;
         private Consumable _consumable;
+        private StatusEffects _status;
         private EnemyAnimator _animator;
         private Vector3 _knockbackVelocity;
         private float _knockbackRemaining;
@@ -77,6 +79,7 @@ namespace TentacleVania.Enemies
         public EnemyDefinition Definition => _definition;
         public UnityEngine.Object StatsAsset => _definition;
         public Health Health => _health;
+        public StatusEffects Status => _status;
         public EnemyState State { get; private set; }
         public EnemyAttack CurrentAttack => _attackIndex >= 0 ? _definition.Attacks[_attackIndex] : null;
         public float AttackStartedAt => _attackStarted;
@@ -108,6 +111,9 @@ namespace TentacleVania.Enemies
             if (TryGetComponent(out _consumable))
                 _consumable.Configure(_definition.ConsumeHeal, _definition.Biomass);
             TryGetComponent(out _animator);
+            if (!TryGetComponent(out _status))
+                _status = gameObject.AddComponent<StatusEffects>();
+            _status.Glow = false;
             UpdateProtection();
         }
 

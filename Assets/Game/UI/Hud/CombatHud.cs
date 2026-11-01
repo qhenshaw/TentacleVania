@@ -1,4 +1,6 @@
 using TentacleVania.Combat;
+using TentacleVania.Combat.Damage;
+using TentacleVania.Combat.Status;
 using TentacleVania.Creature;
 using TentacleVania.Enemies;
 using UnityEngine;
@@ -181,6 +183,7 @@ namespace TentacleVania.UI.Hud
             SetWidth(bar.Armor, armor);
             SetWidth(bar.StaggerFill, stagger);
             bar.Root.EnableInClassList(FeedableClass, feedable);
+            bar.SetStatus(enemy.Status);
             bar.HealthFill.style.opacity = feedable ? 0.55f + 0.45f * Pulse() : 1f;
         }
 
@@ -228,8 +231,15 @@ namespace TentacleVania.UI.Hud
                 healthBar.Add(HealthFill);
                 healthBar.Add(Armor);
                 staggerBar.Add(StaggerFill);
+                var statusRow = Element("enemy-bar__status");
+                Bleed = Element("enemy-bar__bleed");
+                Burn = Element("enemy-bar__burn");
+                BleedPips = StatusPips.Build(Bleed);
+                statusRow.Add(Bleed);
+                statusRow.Add(Burn);
                 Root.Add(healthBar);
                 Root.Add(staggerBar);
+                Root.Add(statusRow);
                 Root.style.display = DisplayStyle.None;
             }
 
@@ -238,6 +248,11 @@ namespace TentacleVania.UI.Hud
             public VisualElement HealthFill { get; }
             public VisualElement Armor { get; }
             public VisualElement StaggerFill { get; }
+            public VisualElement Bleed { get; }
+            public VisualElement Burn { get; }
+            public VisualElement[] BleedPips { get; }
+            public int BleedStacks { get; private set; }
+            public bool Burning { get; private set; }
             public BarTrail Trail { get; }
             public Enemy Enemy { get; private set; }
             public bool IsAssigned { get; private set; }
@@ -258,6 +273,26 @@ namespace TentacleVania.UI.Hud
                 LastStagger = enemy.Stagger.Normalized;
                 LastArmor = enemy.Health.MaxArmor > 0f ? enemy.Health.Armor / enemy.Health.MaxArmor : 0f;
                 Trail.Snap(LastHealth);
+                BleedStacks = -1;
+                Burning = true;
+                SetStatus(enemy.Status);
+            }
+
+            public void SetStatus(StatusEffects status)
+            {
+                var stacks = status != null ? status.BleedStacks : 0;
+                var burning = status != null && status.IsActive(StatusKind.Burn);
+                if (stacks != BleedStacks)
+                {
+                    BleedStacks = stacks;
+                    Bleed.style.display = stacks > 0 ? DisplayStyle.Flex : DisplayStyle.None;
+                    StatusPips.Set(BleedPips, stacks);
+                }
+                if (burning != Burning)
+                {
+                    Burning = burning;
+                    Burn.style.display = burning ? DisplayStyle.Flex : DisplayStyle.None;
+                }
             }
 
             public void Release()

@@ -146,7 +146,7 @@ namespace TentacleVania.Combat.Feedback
 
         private void OnHit(Health target, in DamageInfo info, in DamageResult result)
         {
-            if (!Enabled || _settings == null || result.Outcome != DamageOutcome.Applied)
+            if (!Enabled || _settings == null || result.Outcome != DamageOutcome.Applied || (info.Flags & HitFlags.DamageOverTime) != 0)
                 return;
             var isCreature = CombatTargets.Creature != null && target == CombatTargets.Creature;
             var kind = HitFeedback.ClassifyForPlayer(info, target);
