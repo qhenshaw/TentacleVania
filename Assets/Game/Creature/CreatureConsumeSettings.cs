@@ -7,7 +7,7 @@ namespace TentacleVania.Creature
     [CreateAssetMenu(menuName = "TentacleVania/Creature/Consume Settings")]
     public sealed class CreatureConsumeSettings : ScriptableObject
     {
-        [SerializeField, Min(0f)] private float _reach = 2.2f;
+        [SerializeField, Min(0f)] private float _reach = 3f;
         [SerializeField, Range(0f, 1f)] private float _grabThreshold = Consumable.DefaultGrabThreshold;
         [SerializeField, Min(0.01f)] private float _healDuration = 1.5f;
         [Tooltip("Machines (non-bleeding, not boss cores) give this fraction of the charge meter instead of healing.")]

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e37735be63d9ff40b8278f6d74f8c74, type: 3}
   m_Name: HatchlingConsume
   m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.CreatureConsumeSettings
-  _reach: 2.2
+  _reach: 3
   _grabThreshold: 0.25
   _healDuration: 1.5
+  _machineCharge: 0.25
   _damageTakenWhileConsuming: 0.5
   _openSound:
     Guid:
