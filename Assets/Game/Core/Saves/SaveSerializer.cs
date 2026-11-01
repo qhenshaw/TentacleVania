@@ -6,7 +6,12 @@ namespace TentacleVania.Core.Saves
 {
     public static class SaveSerializer
     {
-        public const int CurrentVersion = 1;
+        public const int CurrentVersion = 2;
+
+        private static readonly Dictionary<int, Action<SaveData>> BuiltIn = new()
+        {
+            [1] = data => data.Progress.ArenaInProgress ??= "",
+        };
 
         private static readonly Dictionary<int, Action<SaveData>> Migrations = new();
 
@@ -35,8 +40,12 @@ namespace TentacleVania.Core.Saves
                 throw new FormatException($"Save version {header.Version} is newer than this build ({currentVersion})");
             var data = JsonUtility.FromJson<SaveData>(json);
             for (var version = header.Version; version < currentVersion; version++)
+            {
+                if (BuiltIn.TryGetValue(version, out var builtIn))
+                    builtIn(data);
                 if (Migrations.TryGetValue(version, out var migrate))
                     migrate(data);
+            }
             data.Version = currentVersion;
             return data;
         }

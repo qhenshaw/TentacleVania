@@ -43,6 +43,7 @@ namespace TentacleVania.Core.Progression
         public static void Die(string scene, Vector3 position)
         {
             BiomassRules.Die(State, GameSettings.KeepBiomassOnDeath, scene, position);
+            SaveSystem.Data.Progress.ArenaInProgress = "";
             Changed?.Invoke(State.Carried);
             if (State.Dropped)
                 Dropped?.Invoke(State.DroppedAmount);
