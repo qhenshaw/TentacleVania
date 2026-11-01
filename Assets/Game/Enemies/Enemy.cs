@@ -630,7 +630,7 @@ namespace TentacleVania.Enemies
                 _nextPain = Time.time + voice.PainCooldown;
                 EnemyVoices.Play(voice.Pain, transform.position);
             }
-            if (health.IsAlive && State != EnemyState.Stunned && State != EnemyState.Dead && _stagger.Add(result.StaggerDamage * (_status.IsActive(StatusKind.Corrode) ? StaggerRules.CorrodedScale : 1f)))
+            if (health.IsAlive && State != EnemyState.Stunned && State != EnemyState.Dead && _stagger.Add(result.StaggerDamage * (_status.IsActive(StatusKind.Corrode) ? StaggerRules.CorrodedScale : 1f) * (info.Type == DamageType.Electric && !_health.Bleeds && info.SourceTeam == Team.Creature ? StaggerRules.MachineElectricScale : 1f)))
                 BreakStagger();
             TickFeedback();
         }

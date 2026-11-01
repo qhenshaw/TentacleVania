@@ -14,6 +14,7 @@ namespace TentacleVania.Creature
         [SerializeField] private CreatureChargeSettings _settings;
 
         private Health _health;
+        private float _gainBonus = 1f;
         private CharacterMaterials _materials;
         private bool _showingFull;
 
@@ -48,7 +49,17 @@ namespace TentacleVania.Creature
                 status.Ended -= OnStatusEnded;
         }
 
-        private void ApplyStats() => Meter.GainScale = Stats.ChargeGain;
+        public float GainBonus
+        {
+            get => _gainBonus;
+            set
+            {
+                _gainBonus = value;
+                ApplyStats();
+            }
+        }
+
+        private void ApplyStats() => Meter.GainScale = Stats.ChargeGain * _gainBonus;
 
         private void OnStatusEnded(StatusEffects status, StatusKind kind) => RefreshGlow();
 

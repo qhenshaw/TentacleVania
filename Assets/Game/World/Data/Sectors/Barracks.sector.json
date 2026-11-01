@@ -1042,6 +1042,17 @@
           "yaw": 0,
           "name": "UnsentLetter",
           "itemId": "UnsentLetter"
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            16.5,
+            38.5
+          ],
+          "yaw": 0,
+          "name": "GroundingSpike",
+          "itemId": "GroundingSpike"
         }
       ]
     },
