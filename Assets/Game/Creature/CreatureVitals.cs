@@ -115,7 +115,7 @@ namespace TentacleVania.Creature
 
         private void ConfigureHealth()
         {
-            var max = _settings.MaxHealth + Stats.MaxHealthBonus;
+            var max = (_settings.MaxHealth + Stats.MaxHealthBonus) * StatRules.SizeHealthScale(Stats.SizeStage);
             if (Mathf.Approximately(max, _configuredMax))
                 return;
             _configuredMax = max;

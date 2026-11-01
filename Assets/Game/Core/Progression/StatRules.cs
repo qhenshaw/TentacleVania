@@ -53,6 +53,10 @@ namespace TentacleVania.Core.Progression
 
         public static int SizeStage(int biomassSpent) => biomassSpent >= 30000 ? 3 : biomassSpent >= 10000 ? 2 : biomassSpent >= 2500 ? 1 : 0;
 
+        public static readonly int[] SizeStageThresholds = { 0, 2500, 10000, 30000 };
+
+        public static float SizeHealthScale(int stage) => stage switch { 1 => 1.2f, 2 => 1.4f, >= 3 => 1.7f, _ => 1f };
+
         public static bool IsValidRespec(int brutality, int ferocity, int tenacity, int cunning, int total) =>
             brutality >= StartValue && ferocity >= StartValue && tenacity >= StartValue && cunning >= StartValue &&
             brutality <= MaxValue && ferocity <= MaxValue && tenacity <= MaxValue && cunning <= MaxValue &&

@@ -22,6 +22,13 @@ namespace TentacleVania.Creature
                 return health != null ? $"{health.Current:F0} / {health.Max:F0}" : "no creature";
             });
             DebugMenu.Value(tab, "Position", () => Spawned != null ? Spawned.transform.position.ToString("F1") : "-");
+            DebugMenu.Value(tab, "Size stage", () => $"{Core.Characters.CreatureSize.Stage + 1} (biomass spent {Core.Progression.Stats.BiomassSpent})");
+            DebugMenu.Button(tab, "Grow to next size stage", () =>
+            {
+                var next = Mathf.Min(Core.Progression.Stats.SizeStage + 1, CreatureSizeStage.StageCount - 1);
+                Core.Progression.Stats.SetBiomassSpent(Core.Progression.StatRules.SizeStageThresholds[next]);
+            });
+            DebugMenu.Button(tab, "Reset size stage to Hatchling", () => Core.Progression.Stats.SetBiomassSpent(0));
             DebugMenu.Value(tab, "Speed", () =>
             {
                 var motor = Motor;

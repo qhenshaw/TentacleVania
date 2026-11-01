@@ -70,6 +70,12 @@ namespace TentacleVania.Core.Progression
             return true;
         }
 
+        public static void SetBiomassSpent(int value)
+        {
+            Build.BiomassSpent = Mathf.Max(0, value);
+            Changed?.Invoke();
+        }
+
         public static void Set(StatKind kind, int value)
         {
             value = Mathf.Clamp(value, StatRules.StartValue, StatRules.MaxValue);

@@ -303,6 +303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Camera::TentacleVania.Camera.GameplayCameraRig
   _camera: {fileID: 8617958167998596347}
   _impulses: {fileID: 8805302993752586122}
+  _composer: {fileID: 1686539189431566761}
+  _sizeZoomSpeed: 0.5
 --- !u!114 &2900664777144954725
 MonoBehaviour:
   m_ObjectHideFlags: 0

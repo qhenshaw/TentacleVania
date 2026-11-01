@@ -49,7 +49,8 @@ namespace TentacleVania.Creature
         public bool IsHealing => _healRemaining > 0f;
         public bool IsArmored => _armorApplied;
         public float GrabThreshold => _settings.GrabThreshold;
-        public float Reach => _settings.Reach;
+        public float Reach => _settings.Reach * ReachScale;
+        public float ReachScale { get; set; } = 1f;
         public float HealDurationScale { get; set; } = 1f;
         public float NextConsumeSpeed { get; set; } = 1f;
         public float NextHealScale { get; set; } = 1f;
@@ -114,7 +115,7 @@ namespace TentacleVania.Creature
                 return false;
             var offset = target.transform.position - transform.position;
             offset.y = 0f;
-            return offset.magnitude <= _settings.Reach && Grab(target);
+            return offset.magnitude <= Reach && Grab(target);
         }
 
         public bool ForceGrab()
@@ -182,7 +183,7 @@ namespace TentacleVania.Creature
         private Consumable FindTarget(float threshold)
         {
             var origin = transform.position;
-            var count = Physics.OverlapSphereNonAlloc(origin, _settings.Reach, Candidates, _grabLayers, QueryTriggerInteraction.Collide);
+            var count = Physics.OverlapSphereNonAlloc(origin, Reach, Candidates, _grabLayers, QueryTriggerInteraction.Collide);
             Consumable best = null;
             var bestScore = float.MaxValue;
             for (var i = 0; i < count; i++)
