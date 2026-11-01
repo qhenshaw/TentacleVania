@@ -15,6 +15,31 @@ namespace TentacleVania.World
     {
         public const string Tab = "World";
 
+        private static void SpawnCrate()
+        {
+            var creature = Combat.CombatTargets.Creature;
+            var atlas = Map.MapAtlas.Instance;
+            if (creature == null || atlas == null)
+                return;
+            var here = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            foreach (var registry in atlas.Sectors)
+            {
+                if (registry == null || registry.RootScene == here || registry.Sector == "Debug")
+                    continue;
+                foreach (var marker in registry.Markers)
+                {
+                    if (marker.Kind != MapMarkerKind.Nest)
+                        continue;
+                    var t = creature.transform;
+                    var prefab = Resources.Load<GameObject>("DebugFreightCrate");
+                    var crate = prefab != null ? Object.Instantiate(prefab) : new GameObject("DebugFreightCrate", typeof(Transit.FreightCrate));
+                    crate.transform.SetPositionAndRotation(t.position + t.forward * 4f, Quaternion.LookRotation(-t.forward));
+                    crate.GetComponent<Transit.FreightCrate>().Configure(registry.RootScene, marker.Position, marker.Yaw);
+                    return;
+                }
+            }
+        }
+
         private static void SpawnHazard(Hazards.HazardKind kind)
         {
             var creature = Combat.CombatTargets.Creature;
@@ -45,6 +70,8 @@ namespace TentacleVania.World
             }
             foreach (var kind in (Hazards.HazardKind[])System.Enum.GetValues(typeof(Hazards.HazardKind)))
                 DebugMenu.Button(Tab, "Spawn " + kind + " hazard ahead", () => SpawnHazard(kind));
+            DebugMenu.Toggle(Tab, "Freight Clearance (debug)", () => Transit.FreightCrate.ForceCleared, v => Transit.FreightCrate.ForceCleared = v);
+            DebugMenu.Button(Tab, "Spawn freight crate to the other sector", SpawnCrate);
             DebugMenu.Button(Tab, "Drop creature out of the map", () =>
             {
                 var creature = CombatTargets.Creature;

@@ -991,6 +991,22 @@ MonoBehaviour:
     m_Key: ability.RadiationResistance.name
     m_Metadata:
       m_Items: []
+  - m_Id: 811619883696128
+    m_Key: ability.FreightClearance.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 811619921444864
+    m_Key: prompt.crate.ride
+    m_Metadata:
+      m_Items: []
+  - m_Id: 811619921444865
+    m_Key: prompt.crate.locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 811619921444866
+    m_Key: transit.freight
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
