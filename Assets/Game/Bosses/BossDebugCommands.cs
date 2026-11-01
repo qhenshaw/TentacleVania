@@ -58,6 +58,7 @@ namespace TentacleVania.Bosses
                 boss.Health.Kill();
             });
             DebugMenu.Button(Tab, "Reset defeated bosses", ResetDefeated);
+            DebugMenu.Button(Tab, "Reset boss deaths (full intros)", () => SaveSystem.Data.World.BossDeaths.Clear());
         }
 
         public const string BossListResource = "DebugBossSpawnList";

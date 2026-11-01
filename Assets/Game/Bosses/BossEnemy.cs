@@ -20,12 +20,15 @@ namespace TentacleVania.Bosses
         [SerializeField] private BossDefinition _boss;
         [SerializeField] private Transform _essence;
         [SerializeField] private VisualEffect _absorbEffect;
+        [Tooltip("Intro length on attempts after the creature has died to this boss once.")]
+        [SerializeField, Min(0f)] private float _shortIntroTime = 1f;
 
         private readonly List<Enemy> _adds = new(8);
         private int _phase = -1;
         private float _nextAdd;
         private bool _introDone;
         private bool _framing;
+        private bool _shortIntro;
         private Transform _restoreFocus;
         private Vector3 _essenceHome;
         private bool _finishing;
@@ -40,6 +43,7 @@ namespace TentacleVania.Bosses
         public BossDefinition Boss => _boss;
         public int Phase => _phase;
         public override bool IsBoss => true;
+        protected override float SpawnDelay => _shortIntro ? Mathf.Min(_shortIntroTime, base.SpawnDelay) : base.SpawnDelay;
         protected override bool FeedProtection => false;
         public bool IsFinishing => _finishing;
         public IReadOnlyList<Enemy> Adds => _adds;
@@ -79,6 +83,8 @@ namespace TentacleVania.Bosses
                 return;
             }
             Active = this;
+            _shortIntro = BossProgress.HasDiedTo(_boss.Id);
+            CombatEvents.Died += OnSomethingDied;
             _phase = -1;
             _introDone = false;
             _adds.Clear();
@@ -95,6 +101,7 @@ namespace TentacleVania.Bosses
         protected override void OnDisable()
         {
             base.OnDisable();
+            CombatEvents.Died -= OnSomethingDied;
             SetIntroCamera(false);
             if (Active == this)
                 Active = null;
@@ -243,6 +250,12 @@ namespace TentacleVania.Bosses
             Absorbed?.Invoke(this);
             if (Active == this)
                 Active = null;
+        }
+
+        private void OnSomethingDied(Health health)
+        {
+            if (health == CombatTargets.Creature && Active == this && Health.IsAlive)
+                BossProgress.RecordDeath(_boss.Id);
         }
 
         private void SetIntroCamera(bool on)
