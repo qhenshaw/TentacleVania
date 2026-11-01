@@ -157,6 +157,7 @@ A small `Bootstrap` scene is the entry point: it holds the persistent managers (
 | `LayoutSandbox` | Level layout tool test room built from `SciFiTopDown` (`World/CLAUDE.md`); not in the build |
 | `StreamingTest` (+ `StreamingTest_Room1`–`5`) | Room streaming test chain: a root scene that streams five room scenes through Addressables (`World/CLAUDE.md`); not in the build |
 | `Administration` (+ `AD_*` rooms in `Administration/`) | L0 hub sector generated from `World/Data/Sectors/Administration.sector.json`; reached by the transit door in Specimen Holding's pre-boss nest after the Warden |
+| `Armory` (+ `AR_*` rooms in `Armory/`) | L2 sector from `World/Data/Sectors/Armory.sector.json`; reached by the vent in Quarantine's Vent Shaft (Vent Squeeze) and the stairwell in Cold Storage's Stairwell (Breach) |
 | `Barracks` (+ `BA_*` rooms in `Barracks/`) | L2 sector from `World/Data/Sectors/Barracks.sector.json`; reached by the freight crate in Administration's Freight Station and the shaft in Research Division's entry (Electric Resistance) |
 | `ColdStorage` (+ `CS_*` rooms in `ColdStorage/`) | L1 sector from `World/Data/Sectors/ColdStorage.sector.json`; reached by the freight crate in Administration's Freight Station and the corridor door in Bio-Labs' R2 (Grapple) |
 | `Quarantine` (+ `QU_*` rooms in `Quarantine/`) | L0 sector from `World/Data/Sectors/Quarantine.sector.json`; reached by the transit door in Administration's entry (Grapple) and the lift in Bio-Labs' entry (Electric Resistance) |

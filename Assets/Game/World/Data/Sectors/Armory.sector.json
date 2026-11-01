@@ -1,0 +1,1041 @@
+{
+  "sector": "AR",
+  "rootScene": "Armory",
+  "folder": "Assets/Game/Scenes/Armory",
+  "addressablesGroup": "Armory",
+  "color": [
+    0.95,
+    0.5,
+    0.3,
+    1
+  ],
+  "spawn": [
+    3.5,
+    38.5
+  ],
+  "spawnYaw": 180,
+  "rooms": [
+    {
+      "scene": "AR_EntryNest",
+      "role": "Plain",
+      "rect": [
+        1,
+        36,
+        6,
+        5
+      ],
+      "halls": [
+        [
+          [
+            3,
+            35
+          ],
+          [
+            3,
+            31
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 31,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "nest",
+          "id": "AR/EntryNest",
+          "at": [
+            3.5,
+            39.5
+          ],
+          "yaw": 180
+        },
+        {
+          "type": "transit",
+          "at": [
+            1.6,
+            38.5
+          ],
+          "yaw": 90,
+          "destination": "Quarantine",
+          "arrivalAt": [
+            40.4,
+            15
+          ],
+          "arrivalOffset": [
+            -1.5,
+            0,
+            0
+          ],
+          "arrivalYaw": 270,
+          "requiredBoss": "",
+          "requiredAbility": "VentSqueeze",
+          "name": "Vent_QU"
+        },
+        {
+          "type": "transit",
+          "at": [
+            6.4,
+            38.5
+          ],
+          "yaw": 270,
+          "destination": "ColdStorage",
+          "arrivalAt": [
+            39.4,
+            15
+          ],
+          "arrivalOffset": [
+            -1.5,
+            0,
+            0
+          ],
+          "arrivalYaw": 270,
+          "requiredBoss": "",
+          "requiredAbility": "Breach",
+          "name": "Stairwell_CS"
+        }
+      ]
+    },
+    {
+      "scene": "AR_A1",
+      "role": "Arena",
+      "rect": [
+        0,
+        24,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            7,
+            27
+          ],
+          [
+            12,
+            27
+          ]
+        ],
+        [
+          [
+            3,
+            23
+          ],
+          [
+            3,
+            19
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 30,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 6,
+          "y": 27,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 3,
+          "y": 24,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 12,
+          "y": 27,
+          "side": "East"
+        },
+        {
+          "x": 3,
+          "y": 19,
+          "side": "South"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Soldier",
+            "count": 2
+          },
+          {
+            "enemy": "TargetBot",
+            "count": 2
+          }
+        ],
+        [
+          {
+            "enemy": "OrdnanceTech",
+            "count": 1
+          },
+          {
+            "enemy": "ExoTrooper",
+            "count": 1
+          }
+        ]
+      ],
+      "place": []
+    },
+    {
+      "scene": "AR_A2",
+      "role": "Arena",
+      "rect": [
+        13,
+        25,
+        5,
+        5
+      ],
+      "halls": [
+        [
+          [
+            18,
+            27
+          ],
+          [
+            23,
+            27
+          ]
+        ],
+        [
+          [
+            15,
+            24
+          ],
+          [
+            15,
+            19
+          ]
+        ],
+        [
+          [
+            15,
+            30
+          ],
+          [
+            15,
+            35
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 13,
+          "y": 27,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 17,
+          "y": 27,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 15,
+          "y": 25,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 15,
+          "y": 29,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 23,
+          "y": 27,
+          "side": "East"
+        },
+        {
+          "x": 15,
+          "y": 19,
+          "side": "South"
+        },
+        {
+          "x": 15,
+          "y": 35,
+          "side": "North"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "TargetBot",
+            "count": 3
+          }
+        ],
+        [
+          {
+            "enemy": "FlameTrooper",
+            "count": 1
+          }
+        ]
+      ],
+      "place": []
+    },
+    {
+      "scene": "AR_A3",
+      "role": "Arena",
+      "rect": [
+        24,
+        24,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            27,
+            23
+          ],
+          [
+            27,
+            18
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 24,
+          "y": 27,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 27,
+          "y": 24,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 27,
+          "y": 18,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "A3",
+          "at": [
+            29.5,
+            25
+          ]
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "ExoTrooper",
+            "count": 1
+          },
+          {
+            "enemy": "Soldier",
+            "count": 2
+          }
+        ],
+        [
+          {
+            "enemy": "OrdnanceTech",
+            "count": 1
+          },
+          {
+            "enemy": "TargetBot",
+            "count": 2
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "AR_A4",
+      "role": "Arena",
+      "rect": [
+        0,
+        12,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            7,
+            15
+          ],
+          [
+            11,
+            15
+          ]
+        ],
+        [
+          [
+            3,
+            11
+          ],
+          [
+            3,
+            7
+          ]
+        ],
+        [
+          [
+            -1,
+            15
+          ],
+          [
+            -4,
+            15
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 18,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 6,
+          "y": 15,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 3,
+          "y": 12,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 0,
+          "y": 15,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 11,
+          "y": 15,
+          "side": "East"
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "side": "South"
+        },
+        {
+          "x": -4,
+          "y": 15,
+          "side": "West"
+        }
+      ],
+      "place": [],
+      "waves": [
+        [
+          {
+            "enemy": "FlameTrooper",
+            "count": 1
+          },
+          {
+            "enemy": "Soldier",
+            "count": 2
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "AR_A5",
+      "role": "Arena",
+      "rect": [
+        12,
+        12,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            19,
+            15
+          ],
+          [
+            24,
+            15
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 15,
+          "y": 18,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 12,
+          "y": 15,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 18,
+          "y": 15,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 24,
+          "y": 15,
+          "side": "East"
+        }
+      ],
+      "place": [],
+      "waves": [
+        [
+          {
+            "enemy": "AssaultMech",
+            "count": 1
+          }
+        ],
+        [
+          {
+            "enemy": "TargetBot",
+            "count": 2
+          },
+          {
+            "enemy": "OrdnanceTech",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "AR_A6",
+      "role": "Arena",
+      "rect": [
+        25,
+        13,
+        5,
+        5
+      ],
+      "halls": [
+        [
+          [
+            27,
+            12
+          ],
+          [
+            27,
+            7
+          ]
+        ],
+        [
+          [
+            30,
+            15
+          ],
+          [
+            34,
+            15
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 27,
+          "y": 17,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 25,
+          "y": 15,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 27,
+          "y": 13,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 29,
+          "y": 15,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 27,
+          "y": 7,
+          "side": "South"
+        },
+        {
+          "x": 34,
+          "y": 15,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/Abilities/Breach/WeakWall.prefab",
+          "at": [
+            32,
+            15
+          ],
+          "yaw": 90,
+          "name": "WeakWall"
+        },
+        {
+          "type": "mapGate",
+          "at": [
+            32,
+            15
+          ],
+          "yaw": 90
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "ExoTrooper",
+            "count": 2
+          },
+          {
+            "enemy": "OrdnanceTech",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "AR_A7",
+      "role": "Arena",
+      "rect": [
+        0,
+        0,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            7,
+            3
+          ],
+          [
+            11,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 6,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 6,
+          "y": 3,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 11,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "A7",
+          "at": [
+            1,
+            1
+          ]
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Soldier",
+            "count": 2
+          },
+          {
+            "enemy": "FlameTrooper",
+            "count": 1
+          }
+        ],
+        [
+          {
+            "enemy": "TargetBot",
+            "count": 2
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "AR_A8",
+      "role": "Arena",
+      "rect": [
+        12,
+        0,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            19,
+            3
+          ],
+          [
+            23,
+            3
+          ]
+        ],
+        [
+          [
+            15,
+            -1
+          ],
+          [
+            15,
+            -4
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 12,
+          "y": 3,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 18,
+          "y": 3,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 15,
+          "y": 0,
+          "side": "South",
+          "arena": true
+        },
+        {
+          "x": 23,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 15,
+          "y": -4,
+          "side": "South"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "AssaultMech",
+            "count": 1
+          },
+          {
+            "enemy": "Soldier",
+            "count": 2
+          }
+        ]
+      ],
+      "place": []
+    },
+    {
+      "scene": "AR_A9",
+      "role": "Arena",
+      "rect": [
+        24,
+        0,
+        7,
+        7
+      ],
+      "halls": [
+        [
+          [
+            31,
+            3
+          ],
+          [
+            35,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 27,
+          "y": 6,
+          "side": "North",
+          "arena": true
+        },
+        {
+          "x": 24,
+          "y": 3,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": 30,
+          "y": 3,
+          "side": "East",
+          "arena": true
+        },
+        {
+          "x": 35,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "relay",
+          "id": "A9",
+          "at": [
+            29.5,
+            5.5
+          ]
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "ExoTrooper",
+            "count": 1
+          },
+          {
+            "enemy": "FlameTrooper",
+            "count": 1
+          },
+          {
+            "enemy": "TargetBot",
+            "count": 2
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "AR_PreBossNest",
+      "role": "Plain",
+      "rect": [
+        36,
+        1,
+        5,
+        5
+      ],
+      "halls": [
+        [
+          [
+            41,
+            3
+          ],
+          [
+            46,
+            3
+          ]
+        ]
+      ],
+      "doors": [
+        {
+          "x": 36,
+          "y": 3,
+          "side": "West"
+        },
+        {
+          "x": 46,
+          "y": 3,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "nest",
+          "id": "AR/PreBossNest",
+          "at": [
+            38,
+            4
+          ],
+          "yaw": 180
+        },
+        {
+          "type": "securityDoor",
+          "at": [
+            43,
+            3
+          ],
+          "yaw": 90
+        }
+      ]
+    },
+    {
+      "scene": "AR_LiveFireRange",
+      "role": "Boss",
+      "rect": [
+        47,
+        -1,
+        8,
+        8
+      ],
+      "doors": [
+        {
+          "x": 47,
+          "y": 3,
+          "side": "West",
+          "arena": true
+        }
+      ],
+      "place": [],
+      "waves": [
+        [
+          {
+            "enemy": "Reyes",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "AR_R1",
+      "role": "Plain",
+      "rect": [
+        13,
+        36,
+        5,
+        4
+      ],
+      "doors": [
+        {
+          "x": 15,
+          "y": 36,
+          "side": "South"
+        }
+      ],
+      "place": [
+        {
+          "type": "pickup",
+          "prefab": "TrinketPickup",
+          "at": [
+            15,
+            38
+          ],
+          "yaw": 0,
+          "name": "FlarePistol",
+          "itemId": "FlarePistol"
+        }
+      ]
+    },
+    {
+      "scene": "AR_R2",
+      "role": "Plain",
+      "rect": [
+        -9,
+        13,
+        5,
+        5
+      ],
+      "doors": [
+        {
+          "x": -5,
+          "y": 15,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "pickup",
+          "prefab": "MutagenPickup",
+          "at": [
+            -7,
+            15
+          ],
+          "yaw": 0
+        }
+      ]
+    },
+    {
+      "scene": "AR_R3",
+      "role": "Plain",
+      "rect": [
+        13,
+        -9,
+        5,
+        5
+      ],
+      "doors": [
+        {
+          "x": 15,
+          "y": -5,
+          "side": "North"
+        }
+      ],
+      "place": [
+        {
+          "type": "pickup",
+          "prefab": "BiomassCache",
+          "at": [
+            15,
+            -7
+          ],
+          "yaw": 0,
+          "name": "FlameGlandSpot"
+        }
+      ]
+    },
+    {
+      "scene": "AR_BlastDoor",
+      "role": "Plain",
+      "rect": [
+        35,
+        13,
+        5,
+        5
+      ],
+      "doors": [
+        {
+          "x": 35,
+          "y": 15,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "transit",
+          "at": [
+            39.4,
+            15
+          ],
+          "yaw": 270,
+          "destination": "CommandCenter",
+          "arrivalAt": [
+            3.5,
+            38.5
+          ],
+          "arrivalYaw": 180,
+          "requiredBoss": "",
+          "requiredAbility": "FireResistance",
+          "name": "Transit_CC"
+        }
+      ]
+    }
+  ]
+}

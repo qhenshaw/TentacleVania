@@ -1055,6 +1055,10 @@ MonoBehaviour:
     m_Key: boss.reyes
     m_Metadata:
       m_Items: []
+  - m_Id: 922028259164160
+    m_Key: trinket.FlarePistol.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
