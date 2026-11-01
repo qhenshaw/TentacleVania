@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: ReyesVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 610900525
+      Data2: 1245637939
+      Data3: 2002876093
+      Data4: 1961360302
+    Path: event:/Enemies/Voice/Reyes/Alert
+  _pain:
+    Guid:
+      Data1: -1251868323
+      Data2: 1093700597
+      Data3: -294142310
+      Data4: -110286806
+    Path: event:/Enemies/Voice/Reyes/Pain
+  _death:
+    Guid:
+      Data1: -352435564
+      Data2: 1125101581
+      Data3: -2061386863
+      Data4: -782431405
+    Path: event:/Enemies/Voice/Reyes/Death
+  _grabbed:
+    Guid:
+      Data1: -1823320572
+      Data2: 1181120757
+      Data3: 938494636
+      Data4: -1998842116
+    Path: event:/Enemies/Voice/Reyes/Grabbed
+  _attack:
+    Guid:
+      Data1: -1704499688
+      Data2: 1206481054
+      Data3: -1329301603
+      Data4: -1956431707
+    Path: event:/Enemies/Voice/Reyes/Attack
+  _stagger:
+    Guid:
+      Data1: 270556082
+      Data2: 1231367893
+      Data3: 1927113125
+      Data4: -1800396570
+    Path: event:/Enemies/Voice/Reyes/Stagger
+  _painCooldown: 1.2

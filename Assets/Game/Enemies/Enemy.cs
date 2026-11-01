@@ -94,6 +94,7 @@ namespace TentacleVania.Enemies
         protected float BaseSpeed { get; set; }
         protected float StateTime => Time.time - _stateStarted;
         protected bool DiedConsumed { get; private set; }
+        protected Vector3 AreaCenter => _areaCenter;
 
         protected virtual void Awake()
         {
