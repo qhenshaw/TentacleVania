@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: OfficeStaffVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 1961875007
+      Data2: 1296738546
+      Data3: -715492954
+      Data4: 111449546
+    Path: event:/Enemies/Voice/OfficeStaff/Alert
+  _pain:
+    Guid:
+      Data1: 1135251348
+      Data2: 1308522117
+      Data3: -1792587346
+      Data4: 1920755839
+    Path: event:/Enemies/Voice/OfficeStaff/Pain
+  _death:
+    Guid:
+      Data1: -170484999
+      Data2: 1143904037
+      Data3: 954906510
+      Data4: -644573001
+    Path: event:/Enemies/Voice/OfficeStaff/Death
+  _grabbed:
+    Guid:
+      Data1: 1522635039
+      Data2: 1207678224
+      Data3: -1417290076
+      Data4: -693083096
+    Path: event:/Enemies/Voice/OfficeStaff/Grabbed
+  _attack:
+    Guid:
+      Data1: -741634377
+      Data2: 1221922063
+      Data3: -1793852759
+      Data4: 1086396109
+    Path: event:/Enemies/Voice/OfficeStaff/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2
