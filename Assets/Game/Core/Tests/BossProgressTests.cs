@@ -32,6 +32,17 @@ namespace TentacleVania.Core.Tests
         }
 
         [Test]
+        public void DeathsToABossAreRememberedPerBoss()
+        {
+            Assert.That(BossProgress.HasDiedTo("SH/WardenDrone"), Is.False);
+            BossProgress.RecordDeath("SH/WardenDrone");
+            BossProgress.RecordDeath("SH/WardenDrone");
+            Assert.That(BossProgress.HasDiedTo("SH/WardenDrone"), Is.True);
+            Assert.That(BossProgress.HasDiedTo("BL/SurgicalAutomaton"), Is.False);
+            Assert.That(SaveSystem.Data.World.BossDeaths.Count, Is.EqualTo(1));
+        }
+
+        [Test]
         public void RevivedBossesFightAgain()
         {
             BossProgress.Defeat("BL/Warden", "");

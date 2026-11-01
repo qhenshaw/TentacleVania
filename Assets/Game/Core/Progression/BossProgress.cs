@@ -35,6 +35,14 @@ namespace TentacleVania.Core.Progression
 
         public static void Revive(string id) => SaveSystem.Data.World.Clear(WorldFlag.DefeatedBoss, id);
 
+        public static bool HasDiedTo(string id) => SaveSystem.Data.World.Has(WorldFlag.DiedToBoss, id);
+
+        public static void RecordDeath(string id)
+        {
+            if (SaveSystem.Data.World.Set(WorldFlag.DiedToBoss, id))
+                Autosave.Request(AutosaveReason.Death);
+        }
+
         public static int PhaseFor(float normalizedHealth, IReadOnlyList<float> startsBelow)
         {
             var phase = 0;
