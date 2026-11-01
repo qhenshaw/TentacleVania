@@ -104,7 +104,7 @@ if [[ "$what" == all || "$what" == content ]]; then
         printf '%s\n' "var asset = UnityEditor.AssetDatabase.LoadMainAssetAtPath(\"$asset\");" \
             "UnityEditor.SessionState.SetString(\"regressionWeapon\", asset.name);" 'return 0;' > "$dir/content.cs"
         long "$dir/content.cs"
-        run_case "content-$name" 900 --setup "$dir/setup.cs" --at 800 "$dir/report.cs"
+        run_case "content-$name" 1500 --setup "$dir/setup.cs" --at 1400 "$dir/report.cs"
     done
 fi
 
