@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: WardenDrone
   m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
   _displayName: Warden Drone
-  _maxHealth: 1200
+  _maxHealth: 1350
   _maxArmor: 0
-  _maxStagger: 150
+  _maxStagger: 800
   _staggerStun: 8
   _staggerDamageTaken: 1.5
   _feedableDamageTaken: 0.5

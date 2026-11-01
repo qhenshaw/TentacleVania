@@ -20,7 +20,7 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 ## Warden Drone (`Warden/`; design: Warden Drone page and Changelog "Warden Drone fight", which supersede the task's older notes)
 
 - **Assets:** `WardenDrone.prefab` (`WardenDrone : BossEnemy`; the Med-Drone body ×2.2 with a red eye as placeholder), enemy data `WardenDrone.asset` and boss data `WardenBoss.asset` (id `SH/WardenDrone`, matching the PA script; music `event:/Music/BossWarden`; reward Bio-Shield).
-- **Numbers:** 1,200 HP, stagger 150, an 8 s stun (the damage window; developer decision), 5 m/s, a 3 s intro, machine, consume 50% / 200 biomass.
+- **Numbers:** 1,350 HP, stagger 800 (TV-224 balance pass for a ~3 min first clear with 4 breaks; math in the task), an 8 s stun (the damage window; developer decision), 5 m/s, a 3 s intro, machine, consume 50% / 200 biomass.
 - **Immunity:** a `StaggerShield` incoming modifier zeroes health damage unless `IsStaggerBroken`. Stagger still builds, and the window applies the usual ×1.5.
 - **Movement:** it holds 6–8 m from the creature (tries ±40°/±80° on the NavMesh) and always faces it.
 - **Attacks (yellow, Electric):**
@@ -35,7 +35,7 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 ## Surgical Automaton (`Automaton/`; design: Surgical Automaton page and Changelog "Surgical Automaton fight")
 
 - **Assets:** `SurgicalAutomaton.prefab` (`SurgicalAutomaton : BossEnemy`; the test boss's Handler body ×1.6 in steel as placeholder), enemy data `SurgicalAutomaton.asset` and boss data `AutomatonBoss.asset` (id `BL/SurgicalAutomaton`, matching the PA script; the shared boss theme; reward `TentacleGrapple`, which unlocks Grapple without taking the slot).
-- **Numbers:** 1,600 HP, stagger 200 with a 2.5 s window, takes damage normally, 4.5 m/s, machine, consume 50% / 300 biomass.
+- **Numbers:** 2,400 HP, stagger 1,300 (TV-224 balance pass for a ~4 min first clear with 4 breaks) with a 2.5 s window, takes damage normally, 4.5 m/s, machine, consume 50% / 300 biomass.
 - **Attacks (yellow):**
   - Clamp Lunge: 1.0 s wind-up, 20 damage, used at 4–12 m. It picks the wall clamp anchor (8 around the theatre) best aligned with its facing (`AutomatonRules.AnchorAlong`, unit tested), shows a steel cable `LineRenderer`, and lunges up to 12 m toward it during the 0.45 s active window, sweeping a 140° arc.
   - Scalpel Flurry: within 3 m, 4 × 5 damage (`EnemyAttack.Hits` = 4).
