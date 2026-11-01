@@ -150,6 +150,11 @@
     border-color: rgb(255, 200, 60);
 }
 
+.enemy-bar--rare .enemy-bar__health {
+    border-width: 2px;
+    border-color: rgb(200, 120, 255);
+}
+
 .enemy-bar__armor {
     bottom: auto;
     height: 2px;

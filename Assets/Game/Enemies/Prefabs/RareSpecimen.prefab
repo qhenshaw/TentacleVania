@@ -1,0 +1,449 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &222840682845439840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7178929902176901079}
+  - component: {fileID: 6955088902901383926}
+  - component: {fileID: 612784852721644539}
+  - component: {fileID: 7312965930494006511}
+  - component: {fileID: 2108940665289615204}
+  - component: {fileID: 394006148101222572}
+  - component: {fileID: 3363294445806193996}
+  - component: {fileID: 2759158070832454160}
+  - component: {fileID: 6623094156008369111}
+  - component: {fileID: 8442239213181155655}
+  - component: {fileID: 102121495408477761}
+  m_Layer: 9
+  m_Name: RareSpecimen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7178929902176901079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.05, y: 1.05, z: 1.05}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5182238024978273915}
+  - {fileID: 2895364839020643403}
+  - {fileID: 6582257209191687268}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6955088902901383926
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!195 &612784852721644539
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.4
+  m_Speed: 4.5
+  m_Acceleration: 30
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 1.3
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.8
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &7312965930494006511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c8855cafabc494bbd85259c8f0ab7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Health
+  _team: 1
+  _maxHealth: 100
+  _maxArmor: 0
+--- !u!114 &2108940665289615204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b7e3a9b8840da4eb1d4bf7add79b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Hurtbox
+  _collider: {fileID: 6955088902901383926}
+  _health: {fileID: 7312965930494006511}
+--- !u!114 &394006148101222572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b3b2a2cf6504a498a9d97f01a9d40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Telegraphs.TelegraphGlow
+  _style: {fileID: 11400000, guid: e1d8b53164b226d4abd2aed70799b7bd, type: 2}
+--- !u!114 &3363294445806193996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130f1d1cf95539c478819dc8f17d1ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Core::TentacleVania.Core.Characters.CharacterMaterials
+  _renderers:
+  - {fileID: 1637011230689674175}
+--- !u!114 &2759158070832454160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113b0eecc9df23a4fb33d43d1aaee974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Combat::TentacleVania.Combat.Consumable
+  _healFraction: 0.1
+  _biomass: 5
+--- !u!114 &6623094156008369111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c244fc7e51e18dc48961b14af152ca9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Enemy
+  _definition: {fileID: 11400000, guid: c0daf1e9d6b383842b315ca3f78f4dec, type: 2}
+  _glow: {fileID: 394006148101222572}
+  _indicator: {fileID: 2803837220569003498}
+  _muzzle: {fileID: 5182238024978273915}
+--- !u!114 &8442239213181155655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0098cf43cdc85408d86f92ceb55126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.EnemyAnimator
+  _animator: {fileID: 988765355744837150}
+--- !u!114 &102121495408477761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222840682845439840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cddc68d8f07bd54fa7180ff4e00d7b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Types.RareSpecimen
+  _saveId: 
+  _kind: 4
+  _itemId: 
+--- !u!1 &2254625757502233744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4504475217651124615}
+  - component: {fileID: 8102309050499716325}
+  m_Layer: 9
+  m_Name: Decal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4504475217651124615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2254625757502233744}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2895364839020643403}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8102309050499716325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2254625757502233744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 8a3183ec138976949a4de816da7b606b, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 1.5}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_FadeFactor: 1
+  m_VisibleInScene: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!1 &5803337756108910529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5182238024978273915}
+  m_Layer: 9
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5182238024978273915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5803337756108910529}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: 1.2, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7178929902176901079}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8072795864500447542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2895364839020643403}
+  - component: {fileID: 2803837220569003498}
+  m_Layer: 9
+  m_Name: GroundIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2895364839020643403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072795864500447542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4504475217651124615}
+  m_Father: {fileID: 7178929902176901079}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2803837220569003498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072795864500447542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edfc41bc09b3a3c40a33bdd6b857e995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Telegraphs.GroundIndicator
+  _decal: {fileID: 8102309050499716325}
+  _material: {fileID: 2100000, guid: 8a3183ec138976949a4de816da7b606b, type: 2}
+  _style: {fileID: 11400000, guid: e1d8b53164b226d4abd2aed70799b7bd, type: 2}
+--- !u!1001 &6688506750420812687
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7178929902176901079}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7796377
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7796377
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7796377
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_Name
+      value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360845384018542640, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a2f29b2d8cda0c947bf0e4d3d52223b5, type: 2}
+    - target: {fileID: 5866666021909216657, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 05f3db80094fe09489062e807d7ea813, type: 2}
+    - target: {fileID: 5866666021909216657, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917380771463857631, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.0090874005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917380771463857631, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.048492264
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+--- !u!95 &988765355744837150 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+  m_PrefabInstance: {fileID: 6688506750420812687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1637011230689674175 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5360845384018542640, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+  m_PrefabInstance: {fileID: 6688506750420812687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6582257209191687268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fd23f883d7bb59a4daa9c41dce175423, type: 3}
+  m_PrefabInstance: {fileID: 6688506750420812687}
+  m_PrefabAsset: {fileID: 0}

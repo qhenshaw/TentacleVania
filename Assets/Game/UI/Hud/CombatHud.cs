@@ -20,6 +20,7 @@ namespace TentacleVania.UI.Hud
         private const string ChargeFullClass = "hud-bar--charge-full";
         private const string FeedableClass = "enemy-bar--feedable";
         private const string EliteClass = "enemy-bar--elite";
+        private const string RareClass = "enemy-bar--rare";
         private const int MaxTraits = 4;
         private const float TraitFlashTime = 0.35f;
         private const string WeakClass = "enemy-bar__trait--weak";
@@ -250,6 +251,7 @@ namespace TentacleVania.UI.Hud
                 var height = enemy.TryGetComponent<NavMeshAgent>(out var agent) ? agent.height : 2f;
                 bar.Assign(enemy, height + _enemyBarClearance);
                 bar.Root.EnableInClassList(EliteClass, enemy.IsElite);
+                bar.Root.EnableInClassList(RareClass, enemy.TryGetComponent<Enemies.Types.RareSpecimen>(out _));
                 return bar;
             }
             return null;

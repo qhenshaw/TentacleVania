@@ -1008,6 +1008,17 @@
           "requiredBoss": "",
           "requiredAbility": "VentSqueeze",
           "name": "Vent_AR"
+        },
+        {
+          "type": "rare",
+          "id": "QU/Rare/AcidSpitter",
+          "kind": "Weapon",
+          "itemId": "AcidSpitter",
+          "at": [
+            37.5,
+            16.5
+          ],
+          "yaw": 0
         }
       ]
     },

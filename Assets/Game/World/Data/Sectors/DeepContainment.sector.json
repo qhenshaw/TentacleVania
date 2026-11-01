@@ -950,6 +950,17 @@
             -7
           ],
           "yaw": 0
+        },
+        {
+          "type": "rare",
+          "id": "DC/Rare/BroodImplant",
+          "kind": "Mutation",
+          "itemId": "BroodImplant",
+          "at": [
+            14.5,
+            -6
+          ],
+          "yaw": 0
         }
       ]
     },
