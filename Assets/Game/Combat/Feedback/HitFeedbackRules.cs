@@ -6,6 +6,8 @@ namespace TentacleVania.Combat.Feedback
     {
         public static HitFeedbackKind Classify(HitFlags flags, bool attackerIsPlayer, bool targetIsPlayer)
         {
+            if ((flags & HitFlags.DamageOverTime) != 0)
+                return HitFeedbackKind.None;
             if (targetIsPlayer)
                 return HitFeedbackKind.CreatureHurt;
             if (!attackerIsPlayer || (flags & HitFlags.Hazard) != 0)

@@ -147,7 +147,7 @@ namespace TentacleVania.Creature
 
             public void Modify(ref DamageContext context)
             {
-                if (GodMode || (_motor.IsInvulnerable && (context.Info.Flags & HitFlags.Undodgeable) == 0))
+                if (GodMode || (_motor.IsInvulnerable && (context.Info.Flags & (HitFlags.Undodgeable | HitFlags.DamageOverTime)) == 0))
                     context.Cancelled = true;
             }
         }

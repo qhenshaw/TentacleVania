@@ -3,6 +3,7 @@
     "rootNamespace": "TentacleVania.Combat",
     "references": [
         "TentacleVania.Core",
+        "FMODUnity",
         "Unity.RenderPipelines.Universal.Runtime"
     ],
     "includePlatforms": [],

@@ -1,4 +1,5 @@
 using TentacleVania.Combat.Damage;
+using TentacleVania.Combat.Status;
 using TentacleVania.Core;
 using TentacleVania.Core.Debugging;
 using UnityEngine;
@@ -46,6 +47,23 @@ namespace TentacleVania.Combat
                 if (Feedback.HitEffects.Instance != null)
                     Feedback.HitEffects.Instance.ClearGibs();
             });
+            DebugMenu.Button(DebugMenu.Combat, "Bleed nearest enemy (+1 stack)", () => ApplyToNearest(StatusKind.Bleed));
+            DebugMenu.Button(DebugMenu.Combat, "Burn nearest enemy", () => ApplyToNearest(StatusKind.Burn));
+            DebugMenu.Button(DebugMenu.Combat, "Burst nearest enemy's bleed", () =>
+            {
+                var target = NearestEnemyStatus();
+                if (target != null)
+                    target.BurstBleed();
+            });
+            DebugMenu.Value(DebugMenu.Combat, "Nearest enemy status", FormatNearestStatus);
+            DebugMenu.Button(DebugMenu.Combat, "Bleed creature (+1 stack)", () => ApplyToCreature(StatusKind.Bleed));
+            DebugMenu.Button(DebugMenu.Combat, "Burn creature", () => ApplyToCreature(StatusKind.Burn));
+            DebugMenu.Button(DebugMenu.Combat, "Clear creature statuses", () =>
+            {
+                var status = CreatureStatus();
+                if (status != null)
+                    status.ClearAll();
+            });
         }
 
         private static void OnHit(Health target, in DamageInfo info, in DamageResult result)
@@ -54,6 +72,51 @@ namespace TentacleVania.Combat
             _lastTarget = target;
             _lastInfo = info;
             _lastResult = result;
+        }
+
+        private static StatusEffects CreatureStatus() =>
+            CombatTargets.Creature != null ? CombatTargets.Creature.GetComponent<StatusEffects>() : null;
+
+        private static void ApplyToCreature(StatusKind kind)
+        {
+            var status = CreatureStatus();
+            if (status != null)
+                status.Apply(kind, 0f, 0f, Team.Site, 1f);
+        }
+
+        private static void ApplyToNearest(StatusKind kind)
+        {
+            var target = NearestEnemyStatus();
+            if (target != null)
+                target.Apply(kind, 0f, 0f, Team.Creature, Core.Progression.Stats.StatusPotency);
+        }
+
+        private static StatusEffects NearestEnemyStatus()
+        {
+            var creature = CombatTargets.Creature;
+            var origin = creature != null ? creature.transform.position : Vector3.zero;
+            StatusEffects best = null;
+            var bestDistance = float.MaxValue;
+            foreach (var status in Object.FindObjectsByType<StatusEffects>())
+            {
+                if (status.Health == creature || status.Health == null || !status.Health.IsAlive)
+                    continue;
+                var distance = (status.transform.position - origin).sqrMagnitude;
+                if (distance < bestDistance)
+                {
+                    bestDistance = distance;
+                    best = status;
+                }
+            }
+            return best;
+        }
+
+        private static string FormatNearestStatus()
+        {
+            var target = NearestEnemyStatus();
+            if (target == null)
+                return "-";
+            return $"{target.name}: bleed {target.BleedStacks} ({target.BleedDamagePerSecond:F1}/s, {target.Remaining(StatusKind.Bleed):F1} s) burn {target.BurnDamagePerSecond:F1}/s ({target.Remaining(StatusKind.Burn):F1} s)";
         }
 
         private static string FormatLastHit()

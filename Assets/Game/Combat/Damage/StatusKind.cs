@@ -5,5 +5,7 @@ namespace TentacleVania.Combat.Damage
         None,
         Slow,
         Root,
+        Bleed,
+        Burn,
     }
 }

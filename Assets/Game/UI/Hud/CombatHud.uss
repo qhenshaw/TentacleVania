@@ -154,6 +154,40 @@
     background-color: rgb(255, 176, 0);
 }
 
+.enemy-bar__status {
+    flex-direction: row;
+    height: 7px;
+    margin-top: 2px;
+}
+
+.enemy-bar__bleed {
+    flex-direction: row;
+    display: none;
+}
+
+.enemy-bar__burn {
+    width: 7px;
+    height: 7px;
+    margin-left: 4px;
+    border-radius: 3px;
+    background-color: rgb(255, 140, 20);
+    display: none;
+}
+
+.status-pip {
+    width: 5px;
+    height: 7px;
+    margin-right: 1px;
+    background-color: rgb(210, 20, 30);
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.9);
+    display: none;
+}
+
+.status-pip--on {
+    display: flex;
+}
+
 .hud__prompt {
     position: absolute;
     bottom: 22%;
@@ -291,6 +325,30 @@
 
 .hud__reward--shown {
     opacity: 1;
+}
+
+.hud__status-icon--bleed {
+    border-color: rgb(220, 30, 40);
+    background-color: rgba(220, 30, 40, 0.35);
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 2px;
+}
+
+.hud__status-icon--bleed .status-pip {
+    width: 3px;
+    height: 6px;
+    margin: 0 0.5px;
+    border-width: 0;
+    background-color: rgb(255, 220, 220);
+}
+
+.hud__status-icon--burn {
+    border-color: rgb(255, 140, 20);
+    background-color: rgba(255, 140, 20, 0.35);
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
 }
 
 .hud__status-icon--stun {
