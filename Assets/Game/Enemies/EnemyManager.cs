@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Enemies.AI;
 using TentacleVania.Enemies.Traps;
@@ -19,6 +20,7 @@ namespace TentacleVania.Enemies
         private readonly Dictionary<ContainmentTrap, Stack<ContainmentTrap>> _trapPools = new();
         private readonly Dictionary<AcidBurst, Stack<AcidBurst>> _burstPools = new();
         private readonly Dictionary<IceWall, Stack<IceWall>> _wallPools = new();
+        private readonly Dictionary<FireZone, Stack<FireZone>> _firePools = new();
 
         public static EnemyManager Instance
         {
@@ -174,6 +176,34 @@ namespace TentacleVania.Enemies
             }
             wall.Raise(position, along, width, lifetime);
             return wall;
+        }
+
+        public static FireZone PlaceFire(FireZone prefab, Vector3 center, Vector3 forward, float radius, float arc, float warn, float duration, float damagePerSecond, Health source)
+        {
+            var manager = Instance;
+            if (!manager._firePools.TryGetValue(prefab, out var pool))
+                manager._firePools[prefab] = pool = new Stack<FireZone>(8);
+            var zone = pool.Count > 0 ? pool.Pop() : null;
+            if (zone == null)
+            {
+                zone = Instantiate(prefab, manager.transform);
+                zone.Prefab = prefab;
+            }
+            zone.Arm(center, forward, radius, arc, warn, duration, damagePerSecond, source);
+            return zone;
+        }
+
+        public static void ReturnFire(FireZone zone)
+        {
+            zone.gameObject.SetActive(false);
+            if (_instance == null || zone.Prefab == null)
+            {
+                Destroy(zone.gameObject);
+                return;
+            }
+            if (!_instance._firePools.TryGetValue(zone.Prefab, out var pool))
+                _instance._firePools[zone.Prefab] = pool = new Stack<FireZone>(8);
+            pool.Push(zone);
         }
 
         public static void ReturnWall(IceWall wall)

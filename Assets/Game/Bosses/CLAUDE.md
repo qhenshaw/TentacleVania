@@ -72,6 +72,14 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - **Phase 1 (100–30%), walker (attack mask 0b00111):** Chaingun Sweep (yellow, 120° at 7 m, 4 hits of 6 over 1 s, used at 2.5–7 m), Missile Barrage (Trap kind with the `Enemies/Traps/Grenade` burst on the creature's marked spot plus `_extraRockets` 3 more 3–5 m around it, staggered 0.2 s apart, 18 each), Stomp (area 3.2 m around it, 20, within 3 m). Soldier adds (1 on start, max 2, every 15 s) are the heal source.
 - **Phase 2 (≤30%), on foot (mask 0b11000):** the walker is wrecked (`Walker` hidden, the body shrinks to ×0.65, FMOD `event:/Bosses/MajorRoss/WalkerWreck`, a 2 s stun), then Ross holds 4–6 m like a guard with a Rifle (9, any range to 7 m) and Grenades (every 5 s), ×1.5 speed, rallying 2 Soldiers (max 3, every 12 s).
 
+## Captain Dana Reyes (`Reyes/`; design: Captain Dana Reyes (Flame Corps) page, TV-194; placeholder numbers)
+
+- **Assets:** `Reyes.prefab` (`ReyesBoss : BossEnemy`; the test boss body in orange), data `Reyes.asset`, boss data `ReyesBoss.asset` (id `AR/Reyes`, key `boss.reyes`, reward `FireResistance`), voice set `ReyesVoice`.
+- **Numbers:** 3,600 HP + 150 heat armour, stagger 1,700 with a 3 s window, 3.8 m/s.
+- **Fire zones (design core mechanic):** pooled `Enemies/Traps/FireZone`s (`FireZone.prefab`: a ground decal drawn yellow and filling over the warning, then red while lit; a creature inside, `FireZone.Inside` (unit tested), takes 12/s Fire as `Hazard` ticks every 0.25 s plus Burn; FMOD `event:/Bosses/Reyes/Ignite`).
+- **Attacks (yellow, Fire + Burn):** Flame Stream (70° sweep at 5.5 m, 6 hits of 5 over 1.2 s), Napalm Grenade (Trap kind with the Grenade burst, 12, then a 2.2 m fire pool lit for 7 s where it lands).
+- **Phases:** 100% Flame Trooper adds (max 2, every 16 s); ≤50% Fire Slice: every 7 s she snaps to a random heading and lights a 45° wedge 14 m long in front of her (1.2 s warning, 6 s; FMOD `event:/Bosses/Reyes/FireSlice`), carving the arena into burning wedges; 1 Flame Trooper on start, ×1.15 speed.
+
 ## Surgical Automaton (`Automaton/`; design: Surgical Automaton page and Changelog "Surgical Automaton fight")
 
 - **Assets:** `SurgicalAutomaton.prefab` (`SurgicalAutomaton : BossEnemy`; the test boss's Handler body ×1.6 in steel as placeholder), enemy data `SurgicalAutomaton.asset` and boss data `AutomatonBoss.asset` (id `BL/SurgicalAutomaton`, matching the PA script; the shared boss theme; reward `TentacleGrapple`, which unlocks Grapple without taking the slot).
