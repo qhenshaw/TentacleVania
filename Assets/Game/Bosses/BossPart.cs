@@ -3,16 +3,16 @@ using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using UnityEngine;
 
-namespace TentacleVania.Bosses.ReactorAI
+namespace TentacleVania.Bosses
 {
-    public sealed class ReactorRod : MonoBehaviour
+    public sealed class BossPart : MonoBehaviour
     {
         [SerializeField] private Health _health;
         [SerializeField] private Collider _collider;
         [SerializeField, Min(1f)] private float _maxHealth = 150f;
         [SerializeField] private Transform _rod;
 
-        public event Action<ReactorRod> Pulled;
+        public event Action<BossPart> Pulled;
 
         public bool Inserted { get; private set; } = true;
 

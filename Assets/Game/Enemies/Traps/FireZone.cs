@@ -1,6 +1,7 @@
 using FMODUnity;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
+using TentacleVania.Combat.Status;
 using TentacleVania.Enemies.Data;
 using TentacleVania.Enemies.Telegraphs;
 using UnityEngine;
@@ -14,6 +15,11 @@ namespace TentacleVania.Enemies.Traps
         [SerializeField] private EventReference _igniteSound;
         [SerializeField] private DamageType _type = DamageType.Fire;
         [SerializeField] private StatusKind _status = StatusKind.Burn;
+        [Tooltip("Status magnitude and duration (0 uses the status defaults; Slow and Root need a duration).")]
+        [SerializeField, Min(0f)] private float _statusMagnitude;
+        [SerializeField, Min(0f)] private float _statusDuration;
+        [Tooltip("Colour of the warning before it goes live (Undodgeable for red grabs).")]
+        [SerializeField] private Telegraph _warnTelegraph = Telegraph.Dodgeable;
 
         private Vector3 _forward;
         private float _radius;
@@ -25,6 +31,8 @@ namespace TentacleVania.Enemies.Traps
         private float _nextTick;
         private Health _source;
         private bool _lit;
+        private Health _cachedCreature;
+        private StatusEffects _cachedStatus;
 
         public FireZone Prefab { get; set; }
         public bool Lit => _lit;
@@ -87,7 +95,7 @@ namespace TentacleVania.Enemies.Traps
         {
             if (_indicator == null)
                 return;
-            var telegraph = lit ? Telegraph.Undodgeable : Telegraph.Dodgeable;
+            var telegraph = lit ? Telegraph.Undodgeable : _warnTelegraph;
             if (_arc >= 360f)
                 _indicator.ShowCircle(transform.position, _radius, telegraph, progress, true);
             else
@@ -101,10 +109,18 @@ namespace TentacleVania.Enemies.Traps
                 return;
             var info = DamageInfo.Create(_damagePerSecond * _tick, Team.Site, _type);
             info.Flags = HitFlags.Hazard | HitFlags.DamageOverTime;
-            info.Status = _status;
             info.Attacker = _source;
             info.Point = creature.transform.position;
             creature.TakeDamage(info);
+            if (_status == StatusKind.None)
+                return;
+            if (creature != _cachedCreature)
+            {
+                _cachedCreature = creature;
+                _cachedStatus = creature.GetComponent<StatusEffects>();
+            }
+            if (_cachedStatus != null)
+                _cachedStatus.Apply(_status, _statusMagnitude, _statusDuration);
         }
     }
 }

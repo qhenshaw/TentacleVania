@@ -27,7 +27,7 @@ namespace TentacleVania.Bosses.ReactorAI
         public const int RodCount = 4;
 
         [Header("Control rods (design: each rod pulled exposes the core and escalates the room)")]
-        [SerializeField] private ReactorRod _rodPrefab;
+        [SerializeField] private BossPart _rodPrefab;
         [SerializeField, Min(1f)] private float _rodRing = 4.5f;
         [SerializeField, Min(0.5f)] private float _exposeTime = 6f;
         [SerializeField] private EventReference _pulledSound;
@@ -55,7 +55,7 @@ namespace TentacleVania.Bosses.ReactorAI
         [SerializeField, Min(0)] private int _steamRods = 2;
 
         private readonly ReactorShield _shield = new();
-        private readonly ReactorRod[] _rods = new ReactorRod[RodCount];
+        private readonly BossPart[] _rods = new BossPart[RodCount];
         private readonly TaskDroneEnemy[] _drones = new TaskDroneEnemy[RodCount];
         private readonly float[] _repairProgress = new float[RodCount];
         private float _exposedUntil;
@@ -75,7 +75,7 @@ namespace TentacleVania.Bosses.ReactorAI
         }
 
         public bool Exposed => RodsPulled >= RodCount || Time.time < _exposedUntil || IsFinishing;
-        public ReactorRod Rod(int index) => _rods[index];
+        public BossPart Rod(int index) => _rods[index];
 
         protected override void Awake()
         {
@@ -136,7 +136,7 @@ namespace TentacleVania.Bosses.ReactorAI
         protected override bool AttackAllowed(int index) =>
             (Definition.Attacks[index].Name != _steamAttack || RodsPulled >= _steamRods) && base.AttackAllowed(index);
 
-        private void OnPulled(ReactorRod rod)
+        private void OnPulled(BossPart rod)
         {
             _exposedUntil = Time.time + _exposeTime;
             if (!_pulledSound.IsNull)
