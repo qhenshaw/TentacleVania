@@ -128,7 +128,8 @@ namespace TentacleVania.UI.Hud
             var ability = boss.Boss.RewardAbility;
             if (ability == null || _reward == null)
                 return;
-            _reward.text = string.Format(_rewardText, ability.DisplayName);
+            var second = boss.Boss.SecondReward;
+            _reward.text = string.Format(_rewardText, second != null ? ability.DisplayName + " + " + second.DisplayName : ability.DisplayName);
             _rewardUntil = Time.unscaledTime + _rewardSeconds;
         }
 

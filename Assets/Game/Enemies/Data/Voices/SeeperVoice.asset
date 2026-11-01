@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: SeeperVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 291856378
+      Data2: 1201241823
+      Data3: -1629866566
+      Data4: 994755394
+    Path: event:/Enemies/Voice/Seeper/Alert
+  _pain:
+    Guid:
+      Data1: 567330395
+      Data2: 1150095016
+      Data3: -1881961804
+      Data4: -2094247993
+    Path: event:/Enemies/Voice/Seeper/Pain
+  _death:
+    Guid:
+      Data1: -1959813043
+      Data2: 1123514243
+      Data3: -1879743076
+      Data4: -885892185
+    Path: event:/Enemies/Voice/Seeper/Death
+  _grabbed:
+    Guid:
+      Data1: -2067980677
+      Data2: 1297463092
+      Data3: 1471494327
+      Data4: 1786701584
+    Path: event:/Enemies/Voice/Seeper/Grabbed
+  _attack:
+    Guid:
+      Data1: -1336893863
+      Data2: 1191573147
+      Data3: -681887852
+      Data4: -491623046
+    Path: event:/Enemies/Voice/Seeper/Attack
+  _stagger:
+    Guid:
+      Data1: -1903684720
+      Data2: 1223531979
+      Data3: 1862892948
+      Data4: -699669467
+    Path: event:/Enemies/Voice/Seeper/Stagger
+  _painCooldown: 1.2

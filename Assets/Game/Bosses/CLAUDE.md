@@ -12,7 +12,7 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
   `Core.Progression.BossProgress.PhaseFor` (unit tested) picks the phase.
 - **Adds:** they spawn `AddSpawnDistance` from the boss on the NavMesh once the intro ends, and die with the boss.
 - **Finishing consume (design: every boss ends in a unique finishing consume, Grab at 0 HP):** bosses keep a `Consumable`, `Locked` until the end; `BossEnemy` sets its heal to 1, so the finishing consume restores full health (developer decision). `Health.Floor` = 1 HP stops lethal damage; at the floor `BeginFinishing` kills the adds, plays the death sound, stuns the boss indefinitely and unlocks the consumable, so it glows feedable and Grab consumes it (heal and biomass from the enemy definition). `FeedProtection` is off for bosses (no ×0.5 below 25%), and they can't be grabbed before the floor. A boss without a `Consumable` dies at the floor. `BossEnemy.Finishable` fires at the floor.
-- **Death:** `BossProgress.Defeat(id, ability)` saves `WorldFlag.DefeatedBoss`, adds the ability to `Build.Abilities` (raising `AbilityUnlocked`; `AbilityController` equips it only into an empty slot, developer decision) and requests an autosave, all at the moment of death so quitting during the absorb can't lose the reward.
+- **Death:** `BossProgress.Defeat(id, ability, secondAbility)` saves `WorldFlag.DefeatedBoss`, adds the ability (and the definition's optional `SecondReward`, shown as "A + B" on the reward banner) to `Build.Abilities` (raising `AbilityUnlocked`; `AbilityController` equips it only into an empty slot, developer decision) and requests an autosave, all at the moment of death so quitting during the absorb can't lose the reward.
 - **Absorb:** after a consume, the burst, sound and `Absorbed` play right away. After a debug kill, after `DeathPause` the `Essence` child (an orb with the `BossEssence` VFX trail) arcs into the creature over `AbsorbDuration`, then the `AbsorbEffect` burst and sound play and `BossEnemy.Absorbed` fires (HUD banner).
 - **No refights:** a boss whose id is defeated destroys itself on enable. Boss arenas (`ArenaEncounter._bossArena`) also stay cleared and open.
 - `BossEnemy.Active` is the current boss: `UI/Hud/BossBarView` shows its name, health (with phase ticks) and stagger at the top of the screen. `Enemy.IsBoss` keeps it out of the overhead enemy bars. Static events: `IntroStarted`, `PhaseChanged`, `Absorbed` (hooks for PA lines and music).
@@ -48,6 +48,14 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - **Attacks (Electric):** Arc Blast (projectile, 14, 3–10 m), Arc Sweep (180° melee 2.8 m, 18), Discharge (red area 4.5 m, 26, from ≤60%).
 - **Phases:** 100% blast + sweep, Researcher adds (max 2, every 16 s); ≤60% + Discharge, Test Drone adds (1 on start, max 2); ≤25% ×1.25 speed, Test Drone adds (2 on start, max 3).
 - **Arena:** the test chamber's electrified floor is a `World/Hazards/FloorPattern` (placed by the Research Division spec's test chamber hook).
+
+## The Seeper (`Seeper/`; design: The Seeper page, TV-191; placeholder numbers)
+
+- **Assets:** `Seeper.prefab` (`SeeperBoss : BossEnemy`; the test boss's Handler body squashed into an acid-green `Mass` sphere listed in its `CharacterMaterials`), data `Seeper.asset`, boss data `SeeperBoss.asset` (id `QU/Seeper`, key `boss.seeper`, rewards `VentSqueeze` + `AcidResistance`), voice set `SeeperVoice`; `SeeperVent.prefab` (a `SeeperVent` marker with an acid grate) for the arena; `SeeperEruption.prefab` (an `Enemies/Traps/AcidBurst` without the acid pool, FMOD `event:/Bosses/Seeper/Eruption`).
+- **Numbers:** 2,600 HP, stagger 1,200 with a 3 s window, 3 m/s.
+- **Vent ambush (design core mechanic):** exposed for `_exposedTime` (7 s, 5 s in phase 2), it sinks (`Model` lowers 2.5 m over 0.6 s, FMOD `event:/Bosses/Seeper/Sink`) with every collider off, so it can't be hit until it erupts. It picks the vent nearest the creature (not the one it left; `SeeperRules`, unit tested), shows a 2 m eruption circle for 1.2 s, then bursts out there (22 Acid + Corrode) and rises. Vents are the `SeeperVent`s within 30 m, or a ring of 6 at 7 m around its spawn when fewer than 2 (CombatArena tests).
+- **Attacks (yellow, Acid + Corrode, only while exposed):** Acid Spray (70° cone at 5 m, 3 × 8), Engulf (160° at 2.5 m, 18).
+- **Phases:** 100% Outbreak Crawler adds (max 2, every 18 s); ≤50% multi-vent: a second eruption at the vent farthest from the first, which releases 2 Outbreak Crawlers (the split body; adds capped at 4), ×1.2 speed.
 
 ## Surgical Automaton (`Automaton/`; design: Surgical Automaton page and Changelog "Surgical Automaton fight")
 
