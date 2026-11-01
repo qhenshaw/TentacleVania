@@ -161,7 +161,7 @@ namespace TentacleVania.Enemies
                     break;
                 case EnemyState.Chase:
                 case EnemyState.Circle:
-                    if (target == null || !target.IsAlive)
+                    if (target == null || !target.IsAlive || CombatTargets.Hidden)
                     {
                         Halt();
                         break;

@@ -1687,6 +1687,14 @@ MonoBehaviour:
     m_Key: boss.hunterKillerSquad
     m_Metadata:
       m_Items: []
+  - m_Id: 1019194659061760
+    m_Key: ability.RegenerativeCocoon.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1019460250779648
+    m_Key: ability.MimicShell.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
