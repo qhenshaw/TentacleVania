@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: ExoTrooperVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 613551147
+      Data2: 1297921148
+      Data3: -982264917
+      Data4: 1224854448
+    Path: event:/Enemies/Voice/ExoTrooper/Alert
+  _pain:
+    Guid:
+      Data1: -1113753300
+      Data2: 1225946623
+      Data3: -652554567
+      Data4: -1153446033
+    Path: event:/Enemies/Voice/ExoTrooper/Pain
+  _death:
+    Guid:
+      Data1: -573180279
+      Data2: 1207670839
+      Data3: -1387957104
+      Data4: -1268872168
+    Path: event:/Enemies/Voice/ExoTrooper/Death
+  _grabbed:
+    Guid:
+      Data1: 1958768263
+      Data2: 1302370978
+      Data3: 2134419889
+      Data4: 505250606
+    Path: event:/Enemies/Voice/ExoTrooper/Grabbed
+  _attack:
+    Guid:
+      Data1: -967066229
+      Data2: 1335343713
+      Data3: 1490043552
+      Data4: -1129339106
+    Path: event:/Enemies/Voice/ExoTrooper/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2
