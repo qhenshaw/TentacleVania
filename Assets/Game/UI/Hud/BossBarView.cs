@@ -70,7 +70,7 @@ namespace TentacleVania.UI.Hud
             if (_shown != null)
             {
                 var dt = Time.unscaledDeltaTime;
-                _health.Update(alive ? _shown.Health.Normalized : 0f, dt);
+                _health.Update(alive ? _shown.GroupNormalized : 0f, dt);
                 SetWidth(_trail, _health.Trail);
                 SetWidth(_fill, _health.Shown);
                 SetWidth(_staggerFill, alive ? _shown.Stagger.Normalized : 0f);
@@ -95,7 +95,7 @@ namespace TentacleVania.UI.Hud
                 SetName(null);
                 return;
             }
-            _health.Snap(boss.Health.Normalized);
+            _health.Snap(boss.GroupNormalized);
             var thresholds = boss.Boss.Thresholds;
             for (var i = 1; i < thresholds.Count; i++)
             {

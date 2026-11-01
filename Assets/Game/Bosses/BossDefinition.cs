@@ -37,6 +37,8 @@ namespace TentacleVania.Bosses
         [SerializeField] private AbilityDefinition _secondReward;
         [Tooltip("Optional pickup spawned where the boss dies (give the prefab's pickup a fixed save id).")]
         [SerializeField] private GameObject _dropPrefab;
+        [Tooltip("Optional mutation id granted on defeat (mini-bosses: ability + mutation).")]
+        [SerializeField] private string _rewardMutation;
         [Tooltip("Boss music; empty uses the shared boss theme (Audio/Resources/MusicSettings).")]
         [SerializeField] private EventReference _music;
 
@@ -56,6 +58,7 @@ namespace TentacleVania.Bosses
         public AbilityDefinition RewardAbility => _rewardAbility;
         public AbilityDefinition SecondReward => _secondReward;
         public GameObject DropPrefab => _dropPrefab;
+        public string RewardMutation => _rewardMutation;
         public EventReference Music => _music;
         public EventReference IntroSound => _introSound;
         public EventReference DeathSound => _deathSound;

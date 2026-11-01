@@ -34,6 +34,8 @@ namespace TentacleVania.Bosses
         private bool _finishing;
         private int _pendingStartAdds;
 
+        private static readonly List<BossEnemy> Roster = new();
+
         public static BossEnemy Active { get; private set; }
         public static event Action<BossEnemy> IntroStarted;
         public static event Action<BossEnemy> PhaseChanged;
@@ -48,10 +50,39 @@ namespace TentacleVania.Bosses
         public bool IsFinishing => _finishing;
         public IReadOnlyList<Enemy> Adds => _adds;
 
+        public bool LastStanding
+        {
+            get
+            {
+                foreach (var member in Roster)
+                    if (member != this && member != null && member._boss == _boss && member.Health.IsAlive)
+                        return false;
+                return true;
+            }
+        }
+
+        public float GroupNormalized
+        {
+            get
+            {
+                var current = 0f;
+                var max = 0f;
+                foreach (var member in Roster)
+                {
+                    if (member == null || member._boss != _boss)
+                        continue;
+                    current += member.Health.IsAlive ? member.Health.Current : 0f;
+                    max += member.Health.Max;
+                }
+                return max > 0f ? current / max : 0f;
+            }
+        }
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
         {
             Active = null;
+            Roster.Clear();
             IntroStarted = null;
             PhaseChanged = null;
             Absorbed = null;
@@ -83,6 +114,8 @@ namespace TentacleVania.Bosses
                 return;
             }
             Active = this;
+            if (!Roster.Contains(this))
+                Roster.Add(this);
             _shortIntro = BossProgress.HasDiedTo(_boss.Id);
             CombatEvents.Died += OnSomethingDied;
             _phase = -1;
@@ -103,6 +136,7 @@ namespace TentacleVania.Bosses
             base.OnDisable();
             CombatEvents.Died -= OnSomethingDied;
             SetIntroCamera(false);
+            Roster.Remove(this);
             if (Active == this)
                 Active = null;
         }
@@ -122,6 +156,7 @@ namespace TentacleVania.Bosses
             }
             if (!Health.IsAlive || State == EnemyState.Dead || State == EnemyState.Consumed)
                 return;
+            Health.Floor = LastStanding ? 1f : 0f;
             if (!_finishing && Health.AtFloor)
                 BeginFinishing();
             if (_finishing)
@@ -154,6 +189,19 @@ namespace TentacleVania.Bosses
         protected override void OnDeath()
         {
             KillAdds();
+            if (!LastStanding)
+            {
+                if (Active == this)
+                    foreach (var member in Roster)
+                        if (member != this && member != null && member._boss == _boss && member.Health.IsAlive)
+                        {
+                            Active = member;
+                            break;
+                        }
+                return;
+            }
+            if (!string.IsNullOrEmpty(_boss.RewardMutation))
+                Collectibles.Grant(PickupKind.Mutation, _boss.RewardMutation, 1);
             BossProgress.Defeat(_boss.Id, ContentCatalog.IdOf(_boss.RewardAbility), ContentCatalog.IdOf(_boss.SecondReward));
             if (_boss.DropPrefab != null)
                 Instantiate(_boss.DropPrefab, transform.position, Quaternion.identity).name = _boss.DropPrefab.name;
