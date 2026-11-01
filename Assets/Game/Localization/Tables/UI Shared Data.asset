@@ -1075,6 +1075,10 @@ MonoBehaviour:
     m_Key: trinket.DistressBeacon.name
     m_Metadata:
       m_Items: []
+  - m_Id: 934331444641792
+    m_Key: boss.reactorAI
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

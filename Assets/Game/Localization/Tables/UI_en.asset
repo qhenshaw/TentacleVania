@@ -1078,6 +1078,10 @@ MonoBehaviour:
     m_Localized: Distress Beacon
     m_Metadata:
       m_Items: []
+  - m_Id: 934331444641792
+    m_Localized: Containment Reactor AI
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
