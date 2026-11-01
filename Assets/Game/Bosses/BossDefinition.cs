@@ -33,6 +33,8 @@ namespace TentacleVania.Bosses
         [SerializeField] private string _nameKey = "boss.test";
         [SerializeField] private List<BossPhase> _phases = new() { new() };
         [SerializeField] private AbilityDefinition _rewardAbility;
+        [Tooltip("Optional second ability granted with the first (The Seeper: Vent Squeeze + Acid Resistance).")]
+        [SerializeField] private AbilityDefinition _secondReward;
         [Tooltip("Boss music; empty uses the shared boss theme (Audio/Resources/MusicSettings).")]
         [SerializeField] private EventReference _music;
 
@@ -50,6 +52,7 @@ namespace TentacleVania.Bosses
         public string NameKey => _nameKey;
         public IReadOnlyList<BossPhase> Phases => _phases;
         public AbilityDefinition RewardAbility => _rewardAbility;
+        public AbilityDefinition SecondReward => _secondReward;
         public EventReference Music => _music;
         public EventReference IntroSound => _introSound;
         public EventReference DeathSound => _deathSound;

@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30eac26dc7a577547b9a6a8bde088ab6, type: 3}
+  m_Name: Seeper
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
+  _displayName: The Seeper
+  _maxHealth: 2600
+  _maxArmor: 0
+  _maxStagger: 1200
+  _staggerStun: 3
+  _staggerDamageTaken: 1.5
+  _feedableDamageTaken: 0.5
+  _moveSpeed: 3
+  _turnSpeed: 540
+  _spawnDelay: 2.5
+  _circleRange: {x: 2.5, y: 4}
+  _knockbackScale: 0.25
+  _attacks:
+  - Name: Acid Spray
+    Kind: 0
+    Telegraph: 0
+    Animation: 0
+    AnimationHitTime: 0.48
+    GroundIndicator: 1
+    WindUp: 0.8
+    Active: 0.6
+    Recovery: 0.6
+    Cooldown: 2.5
+    TrackDuringWindUp: 0.5
+    Hits: 3
+    MinRange: 0
+    MaxRange: 5
+    Damage: 8
+    Stagger: 0
+    Type: 3
+    StunDuration: 0
+    Status: 6
+    StatusMagnitude: 0
+    StatusDuration: 0
+    Reach: 5
+    Arc: 70
+    SweepRadius: 0.5
+    Height: 0.6
+    AreaRadius: 2.5
+    AreaForwardOffset: 0
+    Projectile: {fileID: 0}
+    ProjectileSpeed: 14
+    ProjectileLifetime: 3
+    LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
+    WindUpSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+  - Name: Engulf
+    Kind: 0
+    Telegraph: 0
+    Animation: 1
+    AnimationHitTime: 0.43
+    GroundIndicator: 1
+    WindUp: 0.7
+    Active: 0.2
+    Recovery: 0.6
+    Cooldown: 3
+    TrackDuringWindUp: 0.6
+    Hits: 1
+    MinRange: 0
+    MaxRange: 2.5
+    Damage: 18
+    Stagger: 0
+    Type: 3
+    StunDuration: 0
+    Status: 6
+    StatusMagnitude: 0
+    StatusDuration: 0
+    Reach: 2.5
+    Arc: 160
+    SweepRadius: 0.5
+    Height: 0.6
+    AreaRadius: 2.5
+    AreaForwardOffset: 0
+    Projectile: {fileID: 0}
+    ProjectileSpeed: 14
+    ProjectileLifetime: 3
+    LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
+    WindUpSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+  _consumeHeal: 0.5
+  _biomass: 300
+  _spawnOnWall: 0
+  _despawnDelay: 4
+  _panicRange: 7
+  _fleeDistance: 6
+  _corneredDistance: 1.2
+  _preferredRange: {x: 5, y: 8}
+  _voice: {fileID: 11400000, guid: 3ca3c72f34bc62f48843d9985d833aec, type: 2}
+  _machine: 0
+  _weakTo: 
+  _resists: 
+  _healPerSecond: 8
+  _healRange: 6
+  _keepAwayRange: 7

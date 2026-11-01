@@ -21,16 +21,21 @@ namespace TentacleVania.Core.Progression
 
         public static bool IsAbilityUnlocked(string ability) => SaveSystem.Data.Build.Abilities.Contains(ability);
 
-        public static void Defeat(string id, string ability)
+        public static void Defeat(string id, string ability, string secondAbility = null)
         {
             SaveSystem.Data.World.Set(WorldFlag.DefeatedBoss, id);
-            if (!string.IsNullOrEmpty(ability) && !IsAbilityUnlocked(ability))
-            {
-                SaveSystem.Data.Build.Abilities.Add(ability);
-                AbilityUnlocked?.Invoke(ability);
-            }
+            Unlock(ability);
+            Unlock(secondAbility);
             Defeated?.Invoke(id);
             Autosave.Request(AutosaveReason.BossDefeated);
+        }
+
+        private static void Unlock(string ability)
+        {
+            if (string.IsNullOrEmpty(ability) || IsAbilityUnlocked(ability))
+                return;
+            SaveSystem.Data.Build.Abilities.Add(ability);
+            AbilityUnlocked?.Invoke(ability);
         }
 
         public static void Revive(string id) => SaveSystem.Data.World.Clear(WorldFlag.DefeatedBoss, id);

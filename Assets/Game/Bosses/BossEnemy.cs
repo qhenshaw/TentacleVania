@@ -154,7 +154,7 @@ namespace TentacleVania.Bosses
         protected override void OnDeath()
         {
             KillAdds();
-            BossProgress.Defeat(_boss.Id, ContentCatalog.IdOf(_boss.RewardAbility));
+            BossProgress.Defeat(_boss.Id, ContentCatalog.IdOf(_boss.RewardAbility), ContentCatalog.IdOf(_boss.SecondReward));
             if (!_finishing)
                 Play(_boss.DeathSound);
             StartCoroutine(AbsorbRoutine(!_finishing));
@@ -210,6 +210,17 @@ namespace TentacleVania.Bosses
             if (NavMesh.SamplePosition(position, out var hit, _boss.AddSpawnDistance, NavMesh.AllAreas))
                 position = hit.position;
             var add = Instantiate(prefab, position, Quaternion.LookRotation(direction));
+            _adds.Add(add);
+            return add;
+        }
+
+        public Enemy SpawnAdd(Enemy prefab, Vector3 position)
+        {
+            if (NavMesh.SamplePosition(position, out var hit, 2f, NavMesh.AllAreas))
+                position = hit.position;
+            var away = position - transform.position;
+            away.y = 0f;
+            var add = Instantiate(prefab, position, away.sqrMagnitude > 1e-4f ? Quaternion.LookRotation(away) : Quaternion.identity);
             _adds.Add(add);
             return add;
         }
