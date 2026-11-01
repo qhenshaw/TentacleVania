@@ -94,8 +94,10 @@ namespace TentacleVania.Abilities
             });
             DebugMenu.Toggle(tab, "Burrow unlocked (debug)", () => CreatureTraversal.IsForced("Burrow"), v => CreatureTraversal.SetForced("Burrow", v));
             DebugMenu.Toggle(tab, "Vent Squeeze unlocked (debug)", () => CreatureTraversal.IsForced("VentSqueeze"), v => CreatureTraversal.SetForced("VentSqueeze", v));
-            var gates = new[] { "DebugBurrowGate", "DebugVentGate" };
-            DebugMenu.Choice(tab, "Spawn passage gate ahead", new[] { "Burrow gate", "Vent gate" }, i =>
+            DebugMenu.Toggle(tab, "Overload unlocked (debug)", () => CreatureTraversal.IsForced("Overload"), v => CreatureTraversal.SetForced("Overload", v));
+            DebugMenu.Button(tab, "Reset overloaded doors (save)", Core.Progression.OverloadedNodes.ResetAll);
+            var gates = new[] { "DebugBurrowGate", "DebugVentGate", "DebugOverloadDoor", "DebugOverloadJunction" };
+            DebugMenu.Choice(tab, "Spawn LT gate ahead", new[] { "Burrow gate", "Vent gate", "Overload door", "Overload junction" }, i =>
             {
                 var prefab = Resources.Load<GameObject>(gates[i]);
                 var creature = CreatureSpawner.Spawned;
