@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: HKSniperVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -112559207
+      Data2: 1198180015
+      Data3: 615871131
+      Data4: -953299023
+    Path: event:/Enemies/Voice/HKSniper/Alert
+  _pain:
+    Guid:
+      Data1: 198876564
+      Data2: 1113404302
+      Data3: 511980961
+      Data4: 1561697564
+    Path: event:/Enemies/Voice/HKSniper/Pain
+  _death:
+    Guid:
+      Data1: -2012478318
+      Data2: 1130529302
+      Data3: -859874632
+      Data4: 138729334
+    Path: event:/Enemies/Voice/HKSniper/Death
+  _grabbed:
+    Guid:
+      Data1: -205105590
+      Data2: 1156683701
+      Data3: 2144594089
+      Data4: -141863920
+    Path: event:/Enemies/Voice/HKSniper/Grabbed
+  _attack:
+    Guid:
+      Data1: -2109592275
+      Data2: 1128450310
+      Data3: -552253507
+      Data4: -843881597
+    Path: event:/Enemies/Voice/HKSniper/Attack
+  _stagger:
+    Guid:
+      Data1: -1257516857
+      Data2: 1123244625
+      Data3: 1110820532
+      Data4: 770778897
+    Path: event:/Enemies/Voice/HKSniper/Stagger
+  _painCooldown: 1.2

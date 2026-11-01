@@ -1716,6 +1716,26 @@ MonoBehaviour:
     m_Localized: The Many
     m_Metadata:
       m_Items: []
+  - m_Id: 999734518759424
+    m_Localized: Squad Sniper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 999939326623744
+    m_Localized: Squad Heavy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1000141773094912
+    m_Localized: Squad Medic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1000344500584448
+    m_Localized: Squad Tracker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1000905463578624
+    m_Localized: Hunter-Killer Squad
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

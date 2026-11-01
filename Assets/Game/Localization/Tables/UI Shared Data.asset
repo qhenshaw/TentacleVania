@@ -1667,6 +1667,26 @@ MonoBehaviour:
     m_Key: boss.theMany
     m_Metadata:
       m_Items: []
+  - m_Id: 999734518759424
+    m_Key: boss.hKSniper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 999939326623744
+    m_Key: boss.hKHeavy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1000141773094912
+    m_Key: boss.hKMedic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1000344500584448
+    m_Key: boss.hKTracker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1000905463578624
+    m_Key: boss.hunterKillerSquad
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

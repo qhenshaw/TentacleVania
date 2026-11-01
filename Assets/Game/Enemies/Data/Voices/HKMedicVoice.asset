@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: HKMedicVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1334110517
+      Data2: 1329243766
+      Data3: 758155688
+      Data4: -775108884
+    Path: event:/Enemies/Voice/HKMedic/Alert
+  _pain:
+    Guid:
+      Data1: -2118930868
+      Data2: 1260321002
+      Data3: -344731985
+      Data4: 275853922
+    Path: event:/Enemies/Voice/HKMedic/Pain
+  _death:
+    Guid:
+      Data1: -101555571
+      Data2: 1094423663
+      Data3: 1114974114
+      Data4: -875785580
+    Path: event:/Enemies/Voice/HKMedic/Death
+  _grabbed:
+    Guid:
+      Data1: 1228716106
+      Data2: 1234226849
+      Data3: 1386535052
+      Data4: 376502765
+    Path: event:/Enemies/Voice/HKMedic/Grabbed
+  _attack:
+    Guid:
+      Data1: -956301208
+      Data2: 1249009330
+      Data3: -1050447737
+      Data4: 679570630
+    Path: event:/Enemies/Voice/HKMedic/Attack
+  _stagger:
+    Guid:
+      Data1: 1511304475
+      Data2: 1313425938
+      Data3: 1560176059
+      Data4: 638434157
+    Path: event:/Enemies/Voice/HKMedic/Stagger
+  _painCooldown: 1.2

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: HKHeavyVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 1537772606
+      Data2: 1337946828
+      Data3: -1728319334
+      Data4: -81982966
+    Path: event:/Enemies/Voice/HKHeavy/Alert
+  _pain:
+    Guid:
+      Data1: -148447303
+      Data2: 1317611679
+      Data3: 1362781071
+      Data4: 1356006187
+    Path: event:/Enemies/Voice/HKHeavy/Pain
+  _death:
+    Guid:
+      Data1: -1232881033
+      Data2: 1285183202
+      Data3: -1326237312
+      Data4: 1661872515
+    Path: event:/Enemies/Voice/HKHeavy/Death
+  _grabbed:
+    Guid:
+      Data1: -1641287758
+      Data2: 1172071171
+      Data3: -763898234
+      Data4: -37825191
+    Path: event:/Enemies/Voice/HKHeavy/Grabbed
+  _attack:
+    Guid:
+      Data1: 1839981852
+      Data2: 1241990802
+      Data3: 341422761
+      Data4: -8828405
+    Path: event:/Enemies/Voice/HKHeavy/Attack
+  _stagger:
+    Guid:
+      Data1: -692480147
+      Data2: 1182258934
+      Data3: -383750978
+      Data4: 1315968044
+    Path: event:/Enemies/Voice/HKHeavy/Stagger
+  _painCooldown: 1.2

@@ -37,6 +37,7 @@ namespace TentacleVania.Bosses
         private static readonly List<BossEnemy> Roster = new();
 
         public static BossEnemy Active { get; private set; }
+        public static IReadOnlyList<BossEnemy> Members => Roster;
         public static event Action<BossEnemy> IntroStarted;
         public static event Action<BossEnemy> PhaseChanged;
         public static event Action<BossEnemy> Absorbed;

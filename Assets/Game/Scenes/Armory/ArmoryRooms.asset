@@ -467,11 +467,12 @@ MonoBehaviour:
       width: 3
       height: 3
   - Scene: AR_A7
-    Center: {x: 17.71033, y: 1.4155036, z: 10.499999}
-    Size: {x: 36.57936, y: 3.6310077, z: 22.158703}
+    Center: {x: 10.500002, y: 1.4155036, z: 10.499999}
+    Size: {x: 51.000008, y: 3.6310077, z: 22.158703}
     Neighbours:
     - AR_A4
     - AR_A8
+    - AR_Vault
     MapShapes:
     - serializedVersion: 2
       x: 0
@@ -500,6 +501,31 @@ MonoBehaviour:
       height: 3
     - serializedVersion: 2
       x: 33
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -3
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -6
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -9
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -12
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -15
       y: 9
       width: 3
       height: 3
@@ -697,6 +723,17 @@ MonoBehaviour:
       y: 39
       width: 15
       height: 15
+  - Scene: AR_Vault
+    Center: {x: -34.5, y: 1.4155036, z: 10.499999}
+    Size: {x: 39.760605, y: 3.6310077, z: 33.760612}
+    Neighbours:
+    - AR_A7
+    MapShapes:
+    - serializedVersion: 2
+      x: -54
+      y: -6
+      width: 39
+      height: 33
   _sector: AR
   _rootScene: Armory
   _color: {r: 0.95, g: 0.5, b: 0.3, a: 1}
@@ -706,30 +743,10 @@ MonoBehaviour:
     Room: AR_EntryNest
     Position: {x: 12, y: 0, z: 118.2}
     Yaw: 180
-  - Kind: 7
-    Id: AR/Auto-AR_A3
-    Room: AR_EntryNest
-    Position: {x: 4.5, y: 0, z: 109.5}
-    Yaw: 0
-  - Kind: 7
-    Id: AR/Auto-AR_A7
-    Room: AR_EntryNest
-    Position: {x: 4.5, y: 0, z: 121.5}
-    Yaw: 0
-  - Kind: 7
-    Id: AR/Auto-AR_R1
-    Room: AR_EntryNest
-    Position: {x: 19.5, y: 0, z: 109.5}
-    Yaw: 0
   - Kind: 1
     Id: AR/A3
     Room: AR_A3
     Position: {x: 90, y: 0, z: 76.5}
-    Yaw: 0
-  - Kind: 7
-    Id: AR/Auto-AR_A3
-    Room: AR_A3
-    Position: {x: 73.5, y: 0, z: 73.5}
     Yaw: 0
   - Kind: 3
     Id: MapGate
@@ -746,10 +763,15 @@ MonoBehaviour:
     Room: AR_A7
     Position: {x: 4.5, y: 0, z: 4.5}
     Yaw: 0
-  - Kind: 7
-    Id: AR/Auto-AR_A7
+  - Kind: 3
+    Id: MapGate
     Room: AR_A7
-    Position: {x: 1.5, y: 0, z: 1.5}
+    Position: {x: -7.5, y: 0, z: 10.5}
+    Yaw: 0
+  - Kind: 3
+    Id: MapGate
+    Room: AR_A7
+    Position: {x: -7.5, y: 0, z: 10.5}
     Yaw: 0
   - Kind: 1
     Id: AR/A9
@@ -775,11 +797,6 @@ MonoBehaviour:
     Id: AR_R1/JaggedRecoil
     Room: AR_R1
     Position: {x: 51, y: 0, z: 117}
-    Yaw: 0
-  - Kind: 7
-    Id: AR/Auto-AR_R1
-    Room: AR_R1
-    Position: {x: 40.5, y: 0, z: 109.5}
     Yaw: 0
   - Kind: 5
     Id: AR_R2/MutagenPickup
