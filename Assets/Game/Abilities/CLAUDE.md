@@ -24,6 +24,12 @@ Active abilities (`TentacleVania.Abilities`), on the ability input (RT / Q), pai
 - Tiers (bought at nests: 600 and 1,200 biomass): radius 4 / 5 / 6 m, damage 25 / 35 / 45, Static 35 / 50 / 70 per hit (`ShockDefinition.At`).
 - Placeholder presentation: a cyan creature flash and a pooled `VFX/Abilities/ShockBurst` burst (scaled to the radius); FMOD `event:/Abilities/Shock/Activate`. Reward of the optional Sentry Titan (TV-199).
 
+## Spine Volley (`SpineVolley/`, `SpineVolley.asset`; TV-155; placeholder numbers)
+
+- A slot ability (30 charge) and Major Ross's reward: a fan of spines over 30° from the creature, auto-aimed at the nearest enemy within 12 m and 35° of its facing (`SpineVolleyDefinition.FanDirection`, unit tested). Spines are pooled (`MaxSpines × 2` instances of `Spine.prefab`, a thin cylinder, made at equip) and simulated in `Tick`: 24 m/s, a 0.2 m sphere cast each frame on the Enemy layer, stopped by Default walls, gone after 12 m. Each hit is Physical `HitFlags.Ability` damage with 6 stagger (FMOD `event:/Abilities/SpineVolley/Hit`).
+- Tiers (700 / 1,400 biomass): 5 / 7 / 9 spines, 10 / 13 / 16 damage.
+- **Mutation hooks:** `PiercingSpines` equipped lets a spine pass through up to 4 enemies; `EmbeddedBarbs` makes hits apply Bleed; `SpineVolleyRuntime.SpineHit` (static event: target, point) is for Spine Cascade and the like. Ability-flagged hits also count for the Embedded Barbs feat.
+
 ## Tentacle Grapple (`Grapple/`, `TentacleGrapple.asset`; design: Tentacle Grapple page, Changelog Grilling sessions 3 and 5)
 
 - A traversal ability on its own input, the `Traverse` action (LT / F). It isn't in the ability slot: `GrappleDefinition.SlotAbility` is false, so `AbilityController` never equips it. It's unlocked like a boss reward, by the id `TentacleGrapple` in `Build.Abilities` (the Surgical Automaton's `RewardAbility`), and it's in the `ContentCatalog`.

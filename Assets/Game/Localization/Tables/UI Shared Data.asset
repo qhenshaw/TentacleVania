@@ -1163,6 +1163,10 @@ MonoBehaviour:
     m_Key: ability.Shock.name
     m_Metadata:
       m_Items: []
+  - m_Id: 951560047443968
+    m_Key: ability.SpineVolley.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a017e6ff52b8524e9965b5d14adad4b, type: 3}
+  m_Name: SpineVolley
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.SpineVolley.SpineVolleyDefinition
+  _displayName: Spine Volley
+  _cost: 30
+  _tierCosts: bc02000078050000i
+  _spines: 050000000700000009000000i
+  _damage:
+  - 10
+  - 13
+  - 16
+  _spread: 30
+  _speed: 24
+  _range: 12
+  _radius: 0.2
+  _stagger: 6
+  _aimCone: 70
+  _hitLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  _wallLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  _spinePrefab: {fileID: 498692526882674861, guid: e100e918f37f10646b534832c33dea15, type: 3}
+  _piercingMutation: PiercingSpines
+  _bleedMutation: EmbeddedBarbs
+  _activateSound:
+    Guid:
+      Data1: -1233206267
+      Data2: 1235536773
+      Data3: -409303621
+      Data4: -626197211
+    Path: event:/Abilities/SpineVolley/Activate
+  _hitSound:
+    Guid:
+      Data1: -313243724
+      Data2: 1170856423
+      Data3: -1910298947
+      Data4: 2015196021
+    Path: event:/Abilities/SpineVolley/Hit
