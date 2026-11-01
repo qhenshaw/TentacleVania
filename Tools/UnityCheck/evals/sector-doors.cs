@@ -1,5 +1,6 @@
 TentacleVania.World.Streaming.RoomStreamer.Paused = true; TentacleVania.World.Streaming.RoomStreamer.Active.LoadAll();
-var plan = TentacleVania.World.Streaming.RoomStreamer.Active.Registry.Sector == "BL" ? TentacleVania.World.Editor.BioLabsPlan.Create() : TentacleVania.World.Editor.SpecimenHoldingPlan.Create();
+var plan = TentacleVania.World.Editor.SectorPlans.For(TentacleVania.World.Streaming.RoomStreamer.Active.Registry.Sector);
+if (plan == null) { TentacleVania.World.Streaming.RoomStreamer.Paused = false; UnityEditor.SessionState.SetString("doorsLog", "no plan for sector " + TentacleVania.World.Streaming.RoomStreamer.Active.Registry.Sector); return "no plan"; }
 var t0 = UnityEngine.Time.realtimeSinceStartup;
 UnityEditor.EditorApplication.CallbackFunction tick = null;
 tick = () =>

@@ -145,13 +145,15 @@ namespace TentacleVania.World.Arenas
             }
         }
 
-        public void Begin(float now)
+        public void Begin(float now) => BeginAt(0, now);
+
+        public void BeginAt(int wave, float now)
         {
             StartedAt = now;
             HadHumans = false;
             foreach (var door in _doors)
                 door.Seal();
-            StartWave(0, now);
+            StartWave(Mathf.Clamp(wave, 0, _waves.Waves.Count - 1), now);
         }
 
         public void Adopt(IReadOnlyList<Enemy> enemies, float now)
