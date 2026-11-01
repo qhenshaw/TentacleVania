@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 906184000046546651}
   - component: {fileID: 6476554414125923144}
   - component: {fileID: 7989227644479482823}
+  - component: {fileID: 4876044312293847031}
   m_Layer: 0
   m_Name: CombatHud
   m_TagString: Untagged
@@ -415,6 +416,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee2077a416b89042b4120db4487d703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.OpeningSkipView
+--- !u!114 &4876044312293847031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703636293144204845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09ec9b1f375b704eb1b50f8d263a1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.LetterboxView
+  _barPercent: 11
+  _slideTime: 0.35
 --- !u!1 &3146986584512052326
 GameObject:
   m_ObjectHideFlags: 0

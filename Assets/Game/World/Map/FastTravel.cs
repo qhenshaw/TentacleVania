@@ -1,4 +1,5 @@
 using System;
+using TentacleVania.Core;
 using TentacleVania.Core.Progression;
 using TentacleVania.Core.Saves;
 using TentacleVania.Core.Scenes;
@@ -34,6 +35,8 @@ namespace TentacleVania.World.Map
         public static float Cover { get; internal set; }
         public static string Destination { get; private set; }
         public static TravelKind Kind { get; private set; }
+
+        private static readonly object CutsceneOwner = new();
 
         internal static string PendingScene { get; private set; }
         internal static Vector3 CrawlTarget { get; private set; }
@@ -118,8 +121,11 @@ namespace TentacleVania.World.Map
         internal static void SetPhase(TravelPhase phase)
         {
             Phase = phase;
+            if (phase == TravelPhase.Covering && Kind != TravelKind.Recover)
+                Cutscene.Begin(CutsceneOwner);
             if (phase == TravelPhase.Idle)
             {
+                Cutscene.End(CutsceneOwner);
                 Destination = null;
                 PendingScene = null;
                 Autosave.Request(AutosaveReason.NestRest);
