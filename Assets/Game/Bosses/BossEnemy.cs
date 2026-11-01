@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
 using TentacleVania.Combat;
+using TentacleVania.Core;
 using TentacleVania.Core.Progression;
 using TentacleVania.Core.Saves;
 using TentacleVania.Enemies;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.VFX;
@@ -15,12 +15,9 @@ namespace TentacleVania.Bosses
 {
     public class BossEnemy : Enemy
     {
-        private const int IntroPriority = 50;
-        private const int IdlePriority = -10;
         private const float FinishingStun = 100000f;
 
         [SerializeField] private BossDefinition _boss;
-        [SerializeField] private CinemachineCamera _introCamera;
         [SerializeField] private Transform _essence;
         [SerializeField] private VisualEffect _absorbEffect;
 
@@ -28,6 +25,8 @@ namespace TentacleVania.Bosses
         private int _phase = -1;
         private float _nextAdd;
         private bool _introDone;
+        private bool _framing;
+        private Transform _restoreFocus;
         private Vector3 _essenceHome;
         private bool _finishing;
         private int _pendingStartAdds;
@@ -248,8 +247,18 @@ namespace TentacleVania.Bosses
 
         private void SetIntroCamera(bool on)
         {
-            if (_introCamera != null)
-                _introCamera.Priority = on ? IntroPriority : IdlePriority;
+            if (on && !_framing)
+            {
+                _restoreFocus = CameraFocus.Target;
+                CameraFocus.Target = transform;
+                _framing = true;
+            }
+            else if (!on && _framing)
+            {
+                if (CameraFocus.Target == transform)
+                    CameraFocus.Target = _restoreFocus;
+                _framing = false;
+            }
         }
 
         private void Play(EventReference sound) => Play(sound, transform.position);

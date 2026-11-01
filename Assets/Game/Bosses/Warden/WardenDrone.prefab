@@ -1422,7 +1422,6 @@ Transform:
   - {fileID: 2401320099929573212}
   - {fileID: 876985509785045267}
   - {fileID: 655850571372461768}
-  - {fileID: 3919214967867625583}
   - {fileID: 4394381761314865796}
   - {fileID: 2975541833312618464}
   m_Father: {fileID: 0}
@@ -1563,12 +1562,15 @@ MonoBehaviour:
   _indicator: {fileID: 0}
   _muzzle: {fileID: 0}
   _boss: {fileID: 11400000, guid: 2e6f0ce7f75625f4e9b167a4e60a729a, type: 2}
-  _introCamera: {fileID: 5985421584058763868}
   _essence: {fileID: 4394381761314865796}
   _absorbEffect: {fileID: 96785515791463237}
   _keepAway: {x: 6, y: 8}
   _model: {fileID: 1797730849521664794}
   _hoverHeight: 1.8
+  _tipAngle: 85
+  _tippedHeight: 0.6
+  _tipFallTime: 0.3
+  _tipRecoverTime: 0.5
   _lungeAttack: Shock Prod
   _lungeSpeed: 22
   _guardPrefab: {fileID: 7721236903334716932, guid: 5e28ae5b821ff244d9faeb1c1cdecdf1, type: 3}
@@ -1603,78 +1605,3 @@ MonoBehaviour:
       Data3: 380870590
       Data4: 1768494008
     Path: event:/Bosses/Warden/BeamFire
---- !u!1 &8865299386974498116
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3919214967867625583}
-  - component: {fileID: 5985421584058763868}
-  m_Layer: 0
-  m_Name: IntroCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3919214967867625583
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8865299386974498116}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.010977662, y: 0.98849356, z: -0.08917271, w: -0.12168913}
-  m_LocalPosition: {x: 2, y: 4, z: 8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7041455651927105809}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5985421584058763868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8865299386974498116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
-  Priority:
-    Enabled: 1
-    m_Value: -10
-  OutputChannel: 1
-  StandbyUpdate: 2
-  m_StreamingVersion: 0
-  m_LegacyPriority: 0
-  Target:
-    TrackingTarget: {fileID: 0}
-    LookAtTarget: {fileID: 0}
-    CustomLookAtTarget: 0
-  Lens:
-    FieldOfView: 40
-    OrthographicSize: 10
-    NearClipPlane: 0.1
-    FarClipPlane: 5000
-    Dutch: 0
-    ModeOverride: 0
-    PhysicalProperties:
-      GateFit: 2
-      SensorSize: {x: 21.946, y: 16.002}
-      LensShift: {x: 0, y: 0}
-      FocusDistance: 10
-      Iso: 200
-      ShutterSpeed: 0.005
-      Aperture: 16
-      BladeCount: 5
-      Curvature: {x: 2, y: 11}
-      BarrelClipping: 0.25
-      Anamorphism: 0
-  BlendHint: 0
