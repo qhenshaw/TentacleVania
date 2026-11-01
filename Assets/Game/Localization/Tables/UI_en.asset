@@ -834,6 +834,10 @@ MonoBehaviour:
     m_Localized: Burrow
     m_Metadata:
       m_Items: []
+  - m_Id: 744127458983936
+    m_Localized: Vent Squeeze
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -93,9 +93,11 @@ namespace TentacleVania.Abilities
                 return spot != null ? $"{spot.AbilityId} ready" : $"none in reach ({CreatureTraversal.Used} used)";
             });
             DebugMenu.Toggle(tab, "Burrow unlocked (debug)", () => CreatureTraversal.IsForced("Burrow"), v => CreatureTraversal.SetForced("Burrow", v));
-            DebugMenu.Button(tab, "Spawn burrow gate ahead", () =>
+            DebugMenu.Toggle(tab, "Vent Squeeze unlocked (debug)", () => CreatureTraversal.IsForced("VentSqueeze"), v => CreatureTraversal.SetForced("VentSqueeze", v));
+            var gates = new[] { "DebugBurrowGate", "DebugVentGate" };
+            DebugMenu.Choice(tab, "Spawn passage gate ahead", new[] { "Burrow gate", "Vent gate" }, i =>
             {
-                var prefab = Resources.Load<GameObject>("DebugBurrowGate");
+                var prefab = Resources.Load<GameObject>(gates[i]);
                 var creature = CreatureSpawner.Spawned;
                 if (prefab == null || creature == null)
                     return;

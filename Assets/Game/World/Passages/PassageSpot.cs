@@ -4,25 +4,25 @@ using TentacleVania.World.Map;
 using UnityEngine;
 using UnityEngine.VFX;
 
-namespace TentacleVania.World.Burrow
+namespace TentacleVania.World.Passages
 {
-    public sealed class BurrowSpot : MonoBehaviour, ITraversal
+    public sealed class PassageSpot : MonoBehaviour, ITraversal
     {
-        public const string Ability = "Burrow";
+        private static readonly System.Collections.Generic.List<Vector3> Route = new(16);
 
-        private static readonly Vector3[] Path = new Vector3[1];
-
-        [Tooltip("The soft spot on the other side of the barrier; the creature comes up there, facing along its forward.")]
-        [SerializeField] private BurrowSpot _exit;
+        [Tooltip("The traversal ability that uses this spot (Burrow, VentSqueeze).")]
+        [SerializeField] private string _abilityId = "Burrow";
+        [Tooltip("The spot on the other side; the creature comes out there, facing along its forward.")]
+        [SerializeField] private PassageSpot _exit;
         [SerializeField, Min(0.1f)] private float _radius = 1.4f;
         [SerializeField] private VisualEffect _dirt;
         [SerializeField] private EventReference _digSound;
 
-        public string AbilityId => Ability;
+        public string AbilityId => _abilityId;
         public Vector3 Position => transform.position;
         public float Radius => _radius;
         public bool CanTraverse => isActiveAndEnabled && _exit != null && FastTravel.Phase == TravelPhase.Idle;
-        public BurrowSpot Exit => _exit;
+        public PassageSpot Exit => _exit;
 
         private void OnEnable() => Traversals.Register(this);
 
@@ -32,18 +32,24 @@ namespace TentacleVania.World.Burrow
         {
             if (!CanTraverse)
                 return;
-            Path[0] = transform.position;
-            var forward = _exit.transform.forward;
+            var exit = _exit.transform;
+            var forward = exit.forward;
             var yaw = Mathf.Atan2(forward.x, forward.z) * Mathf.Rad2Deg;
-            if (!FastTravel.Tunnel(Path, _exit.transform.position, yaw))
+            Route.Clear();
+            var streamer = Streaming.RoomStreamer.Active;
+            if (streamer != null)
+                TunnelRoute.Build(streamer.Registry.Rooms, transform.position, exit.position, Route);
+            if (Route.Count == 0)
+                Route.Add(transform.position);
+            if (!FastTravel.Tunnel(Route, exit.position, yaw))
                 return;
-            PlayDirt();
-            _exit.PlayDirt();
+            Play();
+            _exit.Play();
             if (!_digSound.IsNull)
                 RuntimeManager.PlayOneShot(_digSound, transform.position);
         }
 
-        private void PlayDirt()
+        private void Play()
         {
             if (_dirt == null)
                 return;

@@ -98,13 +98,7 @@ namespace TentacleVania.World.Editor
             {
                 Place = c =>
                 {
-                    var grate = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    grate.name = "VentGrate";
-                    grate.transform.SetParent(c.Content, false);
-                    grate.transform.position = RoomContext.CellCenter(32f, 15f) + Vector3.up * 1.5f;
-                    grate.transform.localScale = new Vector3(0.3f, 3f, 3f);
-                    grate.GetComponent<MeshRenderer>().sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>("Assets/Game/World/Materials/Greybox_Hatch.mat");
-                    c.Empty("MapGate", RoomContext.CellCenter(32f, 15f), 90f).AddComponent<Map.MapGate>();
+                    c.Spawn("Assets/Game/World/Passages/VentGate.prefab", RoomContext.CellCenter(32f, 15f), 90f, "VentGate");
                 },
             }.Hall(P(27, 12), P(27, 7)).Hall(P(30, 15), P(34, 15))
                 .Door(27, 17, Side.North, true).Door(25, 15, Side.West, true).Door(27, 13, Side.South, true).Door(29, 15, Side.East, true)
