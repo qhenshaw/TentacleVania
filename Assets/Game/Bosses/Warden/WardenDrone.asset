@@ -58,6 +58,8 @@ MonoBehaviour:
     LaneWidth: 0
     TrapPrefab: {fileID: 0}
     TrapLifetime: 0
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: 1427928911
@@ -112,6 +114,8 @@ MonoBehaviour:
     LaneWidth: 0
     TrapPrefab: {fileID: 0}
     TrapLifetime: 0
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: -556364820
@@ -166,6 +170,8 @@ MonoBehaviour:
     LaneWidth: 0
     TrapPrefab: {fileID: 0}
     TrapLifetime: 0
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: 1427928911
@@ -220,6 +226,8 @@ MonoBehaviour:
     LaneWidth: 0
     TrapPrefab: {fileID: 0}
     TrapLifetime: 0
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: -556364820
@@ -242,7 +250,7 @@ MonoBehaviour:
         Data4: -1646317435
       Path: event:/Bosses/Warden/ShockHit
   _consumeHeal: 0.5
-  _biomass: 200
+  _biomass: 500
   _spawnOnWall: 0
   _despawnDelay: 6
   _panicRange: 7
@@ -251,6 +259,8 @@ MonoBehaviour:
   _preferredRange: {x: 5, y: 8}
   _voice: {fileID: 11400000, guid: c0fe6753b8f2c534e89b41796a20b7b2, type: 2}
   _machine: 1
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 06000000i
   _resists: 03000000i
   _healPerSecond: 8

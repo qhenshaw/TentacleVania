@@ -51,6 +51,7 @@ namespace TentacleVania.Enemies
         private float[] _readyAt;
         private float _stateStarted;
         private float _stunUntil;
+        private float _depthHealth = 1f;
         private float _circleAngle;
         private int _attackIndex = -1;
         private float _attackStarted;
@@ -104,16 +105,20 @@ namespace TentacleVania.Enemies
             _agent.updateRotation = false;
             _agent.autoBraking = true;
             _readyAt = new float[_definition.Attacks.Count];
-            _health.Configure(Team.Site, _definition.MaxHealth, _definition.MaxArmor);
+            var curve = Core.Progression.DifficultyCurve.Current;
+            _depthHealth = IsBoss ? 1f : curve.Health;
+            _health.Configure(Team.Site, _definition.MaxHealth * _depthHealth, _definition.MaxArmor);
+            if (!Mathf.Approximately(curve.Damage, 1f))
+                _health.Outgoing.Add(new ScaleModifier(410) { HealthScale = curve.Damage });
             _health.Bleeds = !_definition.Machine;
             _health.BurstsOnDeath = !IsBoss;
             BaseSpeed = _definition.MoveSpeed;
             _agent.speed = BaseSpeed * GameSettings.EnemySpeedScale;
             _circleAngle = UnityEngine.Random.Range(0f, 360f);
-            _stagger = new(_definition.MaxStagger);
+            _stagger = new(_definition.MaxStagger * _depthHealth);
             _staggerVulnerability = new() { HealthScale = _definition.StaggerDamageTaken };
             if (TryGetComponent(out _consumable))
-                _consumable.Configure(_definition.ConsumeHeal, _definition.Biomass);
+                _consumable.Configure(_definition.ConsumeHeal, IsBoss ? _definition.Biomass : Mathf.RoundToInt(_definition.Biomass * curve.Biomass));
             TryGetComponent(out _animator);
             if (!TryGetComponent(out _status))
                 _status = gameObject.AddComponent<StatusEffects>();
@@ -602,8 +607,8 @@ namespace TentacleVania.Enemies
             IsElite = true;
             if (_consumable != null)
                 _consumable.Elite = true;
-            _health.Configure(Team.Site, _definition.MaxHealth * settings.HealthScale, _definition.MaxArmor + settings.ArmorBonus);
-            _stagger = new(_definition.MaxStagger * settings.StaggerScale);
+            _health.Configure(Team.Site, _definition.MaxHealth * _depthHealth * settings.HealthScale, _definition.MaxArmor + settings.ArmorBonus);
+            _stagger = new(_definition.MaxStagger * _depthHealth * settings.StaggerScale);
             _health.Outgoing.Add(new ScaleModifier(400) { HealthScale = settings.DamageScale, StaggerScale = settings.DamageScale });
             var model = transform.Find("Model");
             if (model != null)

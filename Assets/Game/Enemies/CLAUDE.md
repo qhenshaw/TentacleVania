@@ -12,7 +12,7 @@ Enemy framework (`TentacleVania.Enemies`). Real enemies (Scientist, Security Gua
 
 ## Enemy types (`Types/`, prefabs in `Prefabs/`, definitions in `Data/Enemies/`)
 
-Numbers are the developer-approved baselines (damage from the Balance Sheet; stagger bar = HP). Developer decision 2026-10-31: every non-boss enemy's HP, stagger threshold and biomass is doubled from the Balance Sheet values (biomass with the TV-32 economy; Handler, Guard and Scientist give 20, 20 and 10).
+Numbers are the developer-approved baselines (damage from the Balance Sheet; stagger bar = HP). Developer decision 2026-10-31: every non-boss enemy's HP, stagger threshold and biomass is doubled from the Balance Sheet values (biomass with the TV-32 economy; Handler, Guard and Scientist give 20, 20 and 10). Those are the definitions' base values: `Enemy.Awake` scales non-boss health, stagger and biomass, and every enemy's outgoing damage, by the current sector's row in `Core.Progression.DifficultyCurve` (`Resources/DifficultyCurve.asset`, TV-209, proposed; `RoomStreamer` sets `DifficultyCurve.CurrentSector`), and `MakeElite` stacks on it. Boss biomass is set per boss definition (500 Warden up to 4,500 Reactor AI).
 
 | Enemy | HP | Behaviour | Attacks |
 | --- | --- | --- | --- |

@@ -58,6 +58,8 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: 0
@@ -112,6 +114,8 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: 0
@@ -166,6 +170,8 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: 0
@@ -188,7 +194,7 @@ MonoBehaviour:
         Data4: 0
       Path: 
   _consumeHeal: 0.5
-  _biomass: 300
+  _biomass: 800
   _spawnOnWall: 0
   _despawnDelay: 4
   _panicRange: 7
@@ -197,6 +203,8 @@ MonoBehaviour:
   _preferredRange: {x: 4, y: 7}
   _voice: {fileID: 11400000, guid: 1da9b0c8c0a27ea45a66290c0b5a8cdd, type: 2}
   _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 
   _resists: 
   _healPerSecond: 8

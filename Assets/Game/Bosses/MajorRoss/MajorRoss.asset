@@ -306,7 +306,7 @@ MonoBehaviour:
         Data4: 0
       Path: 
   _consumeHeal: 0.5
-  _biomass: 300
+  _biomass: 2000
   _spawnOnWall: 0
   _despawnDelay: 4
   _panicRange: 7
@@ -315,6 +315,8 @@ MonoBehaviour:
   _preferredRange: {x: 4, y: 6}
   _voice: {fileID: 11400000, guid: 83462202e8f4ff849b180376c655ccf5, type: 2}
   _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 
   _resists: 
   _healPerSecond: 8
