@@ -121,6 +121,7 @@ namespace TentacleVania.UI.Settings
                     Slider("settings.damageDealt", data.DamageDealtScale, 0.5f, 3f, v => data.DamageDealtScale = v);
                     Slider("settings.enemySpeed", data.EnemySpeedScale, 0.5f, 1f, v => data.EnemySpeedScale = v);
                     Toggle("settings.keepBiomass", data.KeepBiomassOnDeath, v => data.KeepBiomassOnDeath = v);
+                    Toggle("settings.speedrunTimer", data.SpeedrunTimer, v => data.SpeedrunTimer = v);
                     break;
                 case "accessibility":
                     Toggle("settings.shake", data.ScreenShake, v => data.ScreenShake = v);
@@ -177,6 +178,7 @@ namespace TentacleVania.UI.Settings
                         data.DamageDealtScale = fresh.DamageDealtScale;
                         data.EnemySpeedScale = fresh.EnemySpeedScale;
                         data.KeepBiomassOnDeath = fresh.KeepBiomassOnDeath;
+                        data.SpeedrunTimer = fresh.SpeedrunTimer;
                         break;
                     case "accessibility":
                         data.ScreenShake = fresh.ScreenShake;

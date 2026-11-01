@@ -26,6 +26,7 @@ namespace TentacleVania.Core.Saves
         public static int Slot { get; private set; }
         public static SaveData Data { get; private set; } = new();
         public static bool Active { get; private set; }
+        public static double LivePlaytime => Data.PlaytimeSeconds + (Time.realtimeSinceStartupAsDouble - _playtimeAnchor);
 
         public static ISaveStorage Storage
         {

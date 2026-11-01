@@ -7,6 +7,7 @@ namespace TentacleVania.Core
         public static bool Rumble { get; set; } = true;
         public static bool Gore { get; set; } = true;
         public static bool Subtitles { get; set; } = true;
+        public static bool SpeedrunTimer { get; set; }
         public static bool KeepBiomassOnDeath { get; set; }
         public static bool TentacleMerge { get; set; } = true;
         public static float DamageDealtScale { get; set; } = 1f;

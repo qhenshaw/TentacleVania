@@ -1744,6 +1744,154 @@ MonoBehaviour:
     m_Localized: Mimic Shell
     m_Metadata:
       m_Items: []
+  - m_Id: 1025775173910528
+    m_Localized: Breakout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047872
+    m_Localized: Destroy the Warden Drone and escape Specimen Holding.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047873
+    m_Localized: Badge Revoked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047874
+    m_Localized: Defeat Security Chief Vance.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047875
+    m_Localized: Cold Open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047876
+    m_Localized: Wreck the Cryo Loader Mech.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047877
+    m_Localized: Overwatched
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047878
+    m_Localized: Take Overwatch offline.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047879
+    m_Localized: Critical Mass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047880
+    m_Localized: Shut down the Containment Reactor AI.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047881
+    m_Localized: Friendly Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047882
+    m_Localized: Defeat the Sentry Titan.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047883
+    m_Localized: One of Many
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047884
+    m_Localized: Devour The Many.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047885
+    m_Localized: Hunter Becomes Hunted
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047886
+    m_Localized: Wipe out the Hunter-Killer Squad.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047887
+    m_Localized: Subject 312
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047888
+    m_Localized: Reach Mother.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047889
+    m_Localized: Escape Velocity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047890
+    m_Localized: Reach Mother within 6 hours of play.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047891
+    m_Localized: Apex Predator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047892
+    m_Localized: Grow to the Apex size stage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047893
+    m_Localized: Mutant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047894
+    m_Localized: Own 30 mutations.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047895
+    m_Localized: Full Spine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047896
+    m_Localized: Find all 3 hidden mutation notches.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047897
+    m_Localized: Hoarder's Friend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047898
+    m_Localized: Bring the Hoarder all 12 trinkets.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047899
+    m_Localized: Archivist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047900
+    m_Localized: Collect every lore log.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047901
+    m_Localized: Arsenal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047902
+    m_Localized: Own every weapon.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047903
+    m_Localized: Biomass Baron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047904
+    m_Localized: Spend 100,000 biomass.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047905
+    m_Localized: Feat of Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047906
+    m_Localized: Earn every combat-feat mutation.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1025775220047907
+    m_Localized: Speedrun timer
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

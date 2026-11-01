@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f759907336b5e29429cbdb9e305bc717, type: 3}
+  m_Name: AchievementList
+  m_EditorClassIdentifier: TentacleVania.Core::TentacleVania.Core.Platform.AchievementList
+  _entries:
+  - Id: Breakout
+    Condition: 0
+    Key: SH/WardenDrone
+    Value: 0
+    Hidden: 0
+  - Id: BadgeRevoked
+    Condition: 0
+    Key: AD/SecurityChiefVance
+    Value: 0
+    Hidden: 0
+  - Id: ColdOpen
+    Condition: 0
+    Key: CS/CryoLoader
+    Value: 0
+    Hidden: 0
+  - Id: Overwatched
+    Condition: 0
+    Key: CC/OverwatchCore
+    Value: 0
+    Hidden: 0
+  - Id: CriticalMass
+    Condition: 0
+    Key: BS/ReactorAI
+    Value: 0
+    Hidden: 0
+  - Id: FriendlyFire
+    Condition: 0
+    Key: CC/SentryTitan
+    Value: 0
+    Hidden: 0
+  - Id: OneOfMany
+    Condition: 0
+    Key: QU/TheMany
+    Value: 0
+    Hidden: 0
+  - Id: HunterHunted
+    Condition: 0
+    Key: AR/HunterKillerSquad
+    Value: 0
+    Hidden: 0
+  - Id: Subject312
+    Condition: 1
+    Key: 
+    Value: 0
+    Hidden: 1
+  - Id: EscapeVelocity
+    Condition: 2
+    Key: 
+    Value: 21600
+    Hidden: 1
+  - Id: ApexPredator
+    Condition: 3
+    Key: 
+    Value: 3
+    Hidden: 0
+  - Id: Mutant
+    Condition: 4
+    Key: 
+    Value: 30
+    Hidden: 0
+  - Id: FullSpine
+    Condition: 5
+    Key: 
+    Value: 3
+    Hidden: 0
+  - Id: HoardersFriend
+    Condition: 6
+    Key: 
+    Value: 12
+    Hidden: 0
+  - Id: Archivist
+    Condition: 7
+    Key: 
+    Value: 40
+    Hidden: 0
+  - Id: Arsenal
+    Condition: 8
+    Key: 
+    Value: 8
+    Hidden: 0
+  - Id: BiomassBaron
+    Condition: 9
+    Key: 
+    Value: 100000
+    Hidden: 0
+  - Id: FeatOfStrength
+    Condition: 10
+    Key: EmbeddedBarbs,GalvanicOverload,RetaliationPlating,OpenWounds,PyreFeast,AcidBlood,FeedbackLoop
+    Value: 0
+    Hidden: 0
