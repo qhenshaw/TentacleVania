@@ -86,6 +86,24 @@ namespace TentacleVania.Abilities
                 foreach (var wall in Breach.WeakWall.All)
                     wall.Restore();
             });
+            DebugMenu.Value(tab, "LT traversal", () =>
+            {
+                var traversal = CreatureSpawner.Spawned != null ? CreatureSpawner.Spawned.GetComponent<CreatureTraversal>() : null;
+                var spot = traversal != null ? traversal.Available() : null;
+                return spot != null ? $"{spot.AbilityId} ready" : $"none in reach ({CreatureTraversal.Used} used)";
+            });
+            DebugMenu.Toggle(tab, "Burrow unlocked (debug)", () => CreatureTraversal.IsForced("Burrow"), v => CreatureTraversal.SetForced("Burrow", v));
+            DebugMenu.Button(tab, "Spawn burrow gate ahead", () =>
+            {
+                var prefab = Resources.Load<GameObject>("DebugBurrowGate");
+                var creature = CreatureSpawner.Spawned;
+                if (prefab == null || creature == null)
+                    return;
+                var forward = creature.transform.forward;
+                forward.y = 0f;
+                var rotation = Quaternion.LookRotation(forward.sqrMagnitude > 1e-4f ? forward.normalized : Vector3.forward);
+                Object.Instantiate(prefab, creature.transform.position + rotation * new Vector3(0f, 0f, 2.2f), rotation);
+            });
             var mutationIds = new[] { "WideDodge", "Gluttony", "RapidDigestion", "LungingMaw" };
             DebugMenu.Value(tab, "Mutations", () =>
             {

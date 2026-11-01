@@ -71,7 +71,7 @@ namespace TentacleVania.Abilities.Grapple
             switch (_phase)
             {
                 case Phase.Idle:
-                    if (GameplayInput.Default.Traverse.Pressed && _motor.InputEnabled && !TraversalInput.ClaimedThisFrame)
+                    if (GameplayInput.Default.Traverse.Pressed && _motor.InputEnabled && !Core.Interaction.Traversals.ClaimedThisFrame)
                         TryGrapple();
                     break;
                 case Phase.Shooting:

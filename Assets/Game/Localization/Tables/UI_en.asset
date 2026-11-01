@@ -830,6 +830,10 @@ MonoBehaviour:
     m_Localized: Breach
     m_Metadata:
       m_Items: []
+  - m_Id: 742766302478336
+    m_Localized: Burrow
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
