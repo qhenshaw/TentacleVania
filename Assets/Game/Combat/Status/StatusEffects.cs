@@ -318,6 +318,23 @@ namespace TentacleVania.Combat.Status
                 AddStatic(ChainAddsStatic, source);
         }
 
+        public float ReleaseAnyStatic(Team source, float scale = 1f)
+        {
+            var fraction = _static.Normalized;
+            if (fraction <= 0f)
+                return 0f;
+            _static.Clear();
+            Refresh();
+            Discharge(source, fraction * scale);
+            return fraction;
+        }
+
+        public void ClearBurn()
+        {
+            _burnDot.Clear();
+            Refresh();
+        }
+
         public void ClearAll()
         {
             _timers.Clear(StatusKind.Slow);

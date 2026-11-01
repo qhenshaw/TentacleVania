@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53ddaff1d45f5345a3e7b49cfee9544, type: 3}
+  m_Name: Flashpoint
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.FlashpointMutation
+  _textKey: mutation.flashpoint
+  _notches: 3
+  _burnScale: 1.5
+  _machineStagger: 25
+  _sound:
+    Guid:
+      Data1: -483563516
+      Data2: 1331939129
+      Data3: -1910084960
+      Data4: -1869896248
+    Path: event:/Mutations/Flashpoint

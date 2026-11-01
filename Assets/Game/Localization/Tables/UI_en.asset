@@ -1512,6 +1512,82 @@ MonoBehaviour:
     m_Localized: Marrow Store
     m_Metadata:
       m_Items: []
+  - m_Id: 977600526434304
+    m_Localized: Static Skin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977600568377344
+    m_Localized: Dashing through enemies shocks them and builds static.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977820408627200
+    m_Localized: Arc Conductor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977820421210112
+    m_Localized: Electric hits build static 50% faster, and chain lightning jumps to 2 more targets.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978038202056704
+    m_Localized: Bio-electric damage deals double stagger to machines.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978257710956544
+    m_Localized: Grounding Spike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978257719345152
+    m_Localized: Charged heavies instantly release all static on the target as chain lightning.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978477953859584
+    m_Localized: Capacitor Organ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978477962248192
+    m_Localized: Charge fills 30% faster, and electric hits fill extra charge.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978698351951872
+    m_Localized: Flashpoint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978698360340480
+    m_Localized: Electric damage on a burning enemy detonates its burn for instant damage. Machines hit by the detonation are staggered.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978919681179648
+    m_Localized: Kindling Bile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978919685373952
+    m_Localized: Combo finishers ignite the target.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979140767137792
+    m_Localized: Consuming a burning enemy releases a fire burst that ignites enemies nearby.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979364034134016
+    m_Localized: Backdraft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979364046716928
+    m_Localized: Burning enemies explode on death, igniting enemies nearby.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979586793619456
+    m_Localized: Caustic Glands
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979586806202368
+    m_Localized: Dash attacks and charged heavies leave a small acid pool for 3 s that corrodes enemies standing in it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979809762820096
+    m_Localized: While below 30% health, you leak an acid trail that corrodes enemies who cross it.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

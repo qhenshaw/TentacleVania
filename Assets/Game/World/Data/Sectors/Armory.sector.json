@@ -997,6 +997,17 @@
             16.5
           ],
           "yaw": 0
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            -5.5,
+            16.5
+          ],
+          "yaw": 0,
+          "name": "Backdraft",
+          "itemId": "Backdraft"
         }
       ]
     },

@@ -855,6 +855,17 @@
           "yaw": 0,
           "name": "SurfaceLiftCode",
           "itemId": "SurfaceLiftCode"
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            16.5,
+            38.5
+          ],
+          "yaw": 0,
+          "name": "Flashpoint",
+          "itemId": "Flashpoint"
         }
       ]
     },

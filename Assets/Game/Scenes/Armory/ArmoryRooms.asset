@@ -776,10 +776,20 @@ MonoBehaviour:
     Room: AR_R1
     Position: {x: 51, y: 0, z: 117}
     Yaw: 0
+  - Kind: 7
+    Id: AR/Auto-AR_R1
+    Room: AR_R1
+    Position: {x: 40.5, y: 0, z: 109.5}
+    Yaw: 0
   - Kind: 5
     Id: AR_R2/MutagenPickup
     Room: AR_R2
     Position: {x: -19.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 5
+    Id: AR_R2/Backdraft
+    Room: AR_R2
+    Position: {x: -15, y: 0, z: 51}
     Yaw: 0
   - Kind: 5
     Id: AR_R3/FlameGland

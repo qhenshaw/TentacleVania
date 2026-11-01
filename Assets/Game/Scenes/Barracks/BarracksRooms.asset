@@ -678,6 +678,11 @@ MonoBehaviour:
     Position: {x: 46.5, y: 0, z: 115.5}
     Yaw: 0
   - Kind: 5
+    Id: BA_R1/GroundingSpike
+    Room: BA_R1
+    Position: {x: 51, y: 0, z: 117}
+    Yaw: 0
+  - Kind: 5
     Id: BA_Quartermaster/MutagenPickup
     Room: BA_Quartermaster
     Position: {x: 115.5, y: 0, z: 46.5}
@@ -686,6 +691,11 @@ MonoBehaviour:
     Id: BA_Quartermaster/Shatterpoint
     Room: BA_Quartermaster
     Position: {x: 120, y: 0, z: 51}
+    Yaw: 0
+  - Kind: 7
+    Id: BA/Auto-BA_Quartermaster
+    Room: BA_Quartermaster
+    Position: {x: 109.5, y: 0, z: 40.5}
     Yaw: 0
   - Kind: 5
     Id: BA_Stockroom/ArcTendrils

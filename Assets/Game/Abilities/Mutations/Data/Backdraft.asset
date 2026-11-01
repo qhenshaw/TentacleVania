@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e05bc321f41a94c8cce2b70f44ce50, type: 3}
+  m_Name: Backdraft
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.BackdraftMutation
+  _textKey: mutation.backdraft
+  _notches: 2
+  _radius: 3
+  _damage: 10
+  _sound:
+    Guid:
+      Data1: 7161959
+      Data2: 1208041480
+      Data3: -1755796827
+      Data4: -1071668418
+    Path: event:/Mutations/Backdraft

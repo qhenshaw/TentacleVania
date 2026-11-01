@@ -185,5 +185,24 @@ namespace TentacleVania.Abilities.Tests
                 Object.DestroyImmediate(prey);
             }
         }
+
+        [Test]
+        public void ArcConductorAndGalvanicOverloadScaleElectricRules()
+        {
+            var arc = Make<ArcConductorMutation>().CreateEffect();
+            var galvanic = Make<GalvanicOverloadMutation>().CreateEffect();
+            var build = Combat.Status.StatusEffects.StaticBuildScale;
+            var targets = Combat.Status.StatusEffects.ExtraChainTargets;
+            arc.Enable(_host);
+            galvanic.Enable(_host);
+            Assert.That(Combat.Status.StatusEffects.StaticBuildScale, Is.EqualTo(build * 1.5f).Within(1e-4f));
+            Assert.That(Combat.Status.StatusEffects.ExtraChainTargets, Is.EqualTo(targets + 2));
+            Assert.That(Combat.StaggerRules.MachineElectricScale, Is.EqualTo(2f).Within(1e-4f));
+            arc.Disable(_host);
+            galvanic.Disable(_host);
+            Assert.That(Combat.Status.StatusEffects.StaticBuildScale, Is.EqualTo(build).Within(1e-4f));
+            Assert.That(Combat.Status.StatusEffects.ExtraChainTargets, Is.EqualTo(targets));
+            Assert.That(Combat.StaggerRules.MachineElectricScale, Is.EqualTo(1f).Within(1e-4f));
+        }
     }
 }

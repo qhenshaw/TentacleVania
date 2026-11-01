@@ -1463,6 +1463,82 @@ MonoBehaviour:
     m_Key: mutation.marrowStore.name
     m_Metadata:
       m_Items: []
+  - m_Id: 977600526434304
+    m_Key: mutation.staticSkin.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977600568377344
+    m_Key: mutation.staticSkin.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977820408627200
+    m_Key: mutation.arcConductor.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977820421210112
+    m_Key: mutation.arcConductor.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978038202056704
+    m_Key: mutation.galvanicOverload.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978257710956544
+    m_Key: mutation.groundingSpike.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978257719345152
+    m_Key: mutation.groundingSpike.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978477953859584
+    m_Key: mutation.capacitorOrgan.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978477962248192
+    m_Key: mutation.capacitorOrgan.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978698351951872
+    m_Key: mutation.flashpoint.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978698360340480
+    m_Key: mutation.flashpoint.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978919681179648
+    m_Key: mutation.kindlingBile.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 978919685373952
+    m_Key: mutation.kindlingBile.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979140767137792
+    m_Key: mutation.pyreFeast.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979364034134016
+    m_Key: mutation.backdraft.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979364046716928
+    m_Key: mutation.backdraft.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979586793619456
+    m_Key: mutation.causticGlands.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979586806202368
+    m_Key: mutation.causticGlands.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979809762820096
+    m_Key: mutation.acidBlood.effect
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

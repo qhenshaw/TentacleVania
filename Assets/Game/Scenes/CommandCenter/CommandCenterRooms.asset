@@ -673,6 +673,11 @@ MonoBehaviour:
     Position: {x: 46.5, y: 0, z: 115.5}
     Yaw: 0
   - Kind: 5
+    Id: CC_R1/Flashpoint
+    Room: CC_R1
+    Position: {x: 51, y: 0, z: 117}
+    Yaw: 0
+  - Kind: 5
     Id: CC_ServerRoom/MutagenPickup
     Room: CC_ServerRoom
     Position: {x: 115.5, y: 0, z: 46.5}
@@ -681,6 +686,11 @@ MonoBehaviour:
     Id: CC_ServerRoom/Aftershock
     Room: CC_ServerRoom
     Position: {x: 120, y: 0, z: 51}
+    Yaw: 0
+  - Kind: 7
+    Id: CC/Auto-CC_ServerRoom
+    Room: CC_ServerRoom
+    Position: {x: 109.5, y: 0, z: 40.5}
     Yaw: 0
   - Kind: 5
     Id: CC_TitanBay/BiomassCache

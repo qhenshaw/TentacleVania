@@ -34,21 +34,27 @@ namespace TentacleVania.Abilities.Mutations
                 ThornsHits++;
         }
 
-        public static int Ring(Health source, Vector3 center, float radius, float damage, float stagger, DamageType type, HitFlags flags, StatusKind status = StatusKind.None, Health skip = null)
+        public static int Overlap(Health source, Vector3 center, float radius, List<Health> into, Health skip = null)
         {
             if (_mask < 0)
                 _mask = 1 << LayerMask.NameToLayer("Enemy");
             var count = Physics.OverlapSphereNonAlloc(center + Vector3.up * 0.5f, radius, Hits, _mask, QueryTriggerInteraction.Collide);
-            Struck.Clear();
+            into.Clear();
             for (var i = 0; i < count; i++)
             {
                 if (!Hurtbox.TryGet(Hits[i], out var hurtbox))
                     continue;
                 var target = hurtbox.Health;
-                if (target == null || target == source || target == skip || !target.IsAlive || Struck.Contains(target))
+                if (target == null || target == source || target == skip || !target.IsAlive || into.Contains(target))
                     continue;
-                Struck.Add(target);
+                into.Add(target);
             }
+            return into.Count;
+        }
+
+        public static int Ring(Health source, Vector3 center, float radius, float damage, float stagger, DamageType type, HitFlags flags, StatusKind status = StatusKind.None, Health skip = null)
+        {
+            Overlap(source, center, radius, Struck, skip);
             var struck = Struck.Count;
             for (var i = 0; i < struck; i++)
             {
