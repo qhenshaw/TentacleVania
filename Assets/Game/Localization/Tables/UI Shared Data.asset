@@ -823,6 +823,10 @@ MonoBehaviour:
     m_Key: ability.TentacleGrapple.name
     m_Metadata:
       m_Items: []
+  - m_Id: 741821850075136
+    m_Key: ability.Breach.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

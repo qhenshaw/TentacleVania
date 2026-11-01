@@ -60,6 +60,32 @@ namespace TentacleVania.Abilities
                 var rotation = Quaternion.LookRotation(forward.sqrMagnitude > 1e-4f ? forward.normalized : Vector3.forward);
                 Object.Instantiate(prefab, creature.transform.position + rotation * new Vector3(0f, 0.01f, -2f), rotation);
             });
+            DebugMenu.Value(tab, "Breach", () =>
+            {
+                var breach = CreatureSpawner.Spawned != null ? CreatureSpawner.Spawned.GetComponent<Breach.CreatureBreach>() : null;
+                if (breach == null)
+                    return "-";
+                var wall = breach.Definition != null ? breach.FindTarget() : null;
+                return !breach.IsUnlocked ? "locked" : breach.IsBusy ? "smashing" : wall != null ? $"ready: {wall.Id}" : $"no weak wall in reach ({Breach.CreatureBreach.Smashed} smashed)";
+            });
+            DebugMenu.Toggle(tab, "Breach unlocked (debug)", () => Breach.CreatureBreach.ForceUnlocked, v => Breach.CreatureBreach.ForceUnlocked = v);
+            DebugMenu.Button(tab, "Spawn weak wall ahead", () =>
+            {
+                var prefab = Resources.Load<GameObject>("DebugWeakWall");
+                var creature = CreatureSpawner.Spawned;
+                if (prefab == null || creature == null)
+                    return;
+                var forward = creature.transform.forward;
+                forward.y = 0f;
+                var rotation = Quaternion.LookRotation(forward.sqrMagnitude > 1e-4f ? forward.normalized : Vector3.forward);
+                Object.Instantiate(prefab, creature.transform.position + rotation * new Vector3(0f, 0f, 2.5f), rotation);
+            });
+            DebugMenu.Button(tab, "Restore breached walls", () =>
+            {
+                Core.Progression.BreachedWalls.RestoreAll();
+                foreach (var wall in Breach.WeakWall.All)
+                    wall.Restore();
+            });
             var mutationIds = new[] { "WideDodge", "Gluttony", "RapidDigestion", "LungingMaw" };
             DebugMenu.Value(tab, "Mutations", () =>
             {
