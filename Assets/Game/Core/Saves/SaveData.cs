@@ -28,6 +28,7 @@ namespace TentacleVania.Core.Saves
         public string ArenaInProgress = "";
         public string ArenaScene = "";
         public Vector3 ArenaPosition;
+        public bool Completed;
     }
 
     [Serializable]

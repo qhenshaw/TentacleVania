@@ -70,6 +70,14 @@ namespace TentacleVania.World
             }
             foreach (var kind in (Hazards.HazardKind[])System.Enum.GetValues(typeof(Hazards.HazardKind)))
                 DebugMenu.Button(Tab, "Spawn " + kind + " hazard ahead", () => SpawnHazard(kind));
+            DebugMenu.Value(Tab, "Finale", () => Ending.FinaleSequence.Playing ? "playing" : Core.Finale.RollingCredits ? "credits" : Core.Finale.Completed ? "completed" : "not seen");
+            DebugMenu.Button(Tab, "Play finale (needs Mother's tank loaded)", () =>
+            {
+                var finale = Object.FindAnyObjectByType<Ending.FinaleSequence>();
+                if (finale != null)
+                    finale.Play();
+            });
+            DebugMenu.Button(Tab, "Roll credits", Core.Finale.RollCredits);
             DebugMenu.Toggle(Tab, "Freight Clearance (debug)", () => Transit.FreightCrate.ForceCleared, v => Transit.FreightCrate.ForceCleared = v);
             DebugMenu.Button(Tab, "Spawn freight crate to the other sector", SpawnCrate);
             DebugMenu.Button(Tab, "Drop creature out of the map", () =>

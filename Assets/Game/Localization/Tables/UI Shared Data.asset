@@ -1091,6 +1091,14 @@ MonoBehaviour:
     m_Key: trinket.StarChartPlate.name
     m_Metadata:
       m_Items: []
+  - m_Id: 942856195555328
+    m_Key: credits.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 942856237498368
+    m_Key: credits.skip
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
