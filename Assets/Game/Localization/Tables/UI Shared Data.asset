@@ -1219,6 +1219,26 @@ MonoBehaviour:
     m_Key: modifier.feedingLine.effect
     m_Metadata:
       m_Items: []
+  - m_Id: 958398340022272
+    m_Key: weapon.AcidSpitter.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 958669547913216
+    m_Key: modifier.meltingArmor.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 958669547913217
+    m_Key: modifier.meltingArmor.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 958669547913218
+    m_Key: modifier.acidBath.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 958669547913219
+    m_Key: modifier.acidBath.effect
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -184,7 +184,11 @@ namespace TentacleVania.Weapons
             return null;
         }
 
-        private float Elapsed(float now) => (now - _moveStarted) * Stats.AttackSpeed / _durationScale;
+        public float SpeedBonus { get; set; } = 1f;
+        public float MoveWindUp => _move != null ? _move.WindUp * _durationScale / (Stats.AttackSpeed * SpeedBonus) : 0f;
+        public bool IsFinisher => _finisher;
+
+        private float Elapsed(float now) => (now - _moveStarted) * Stats.AttackSpeed * SpeedBonus / _durationScale;
 
         private void Update()
         {
