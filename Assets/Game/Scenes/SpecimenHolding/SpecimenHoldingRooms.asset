@@ -617,6 +617,21 @@ MonoBehaviour:
     Room: SH_PodChamber
     Position: {x: 16.5, y: 0, z: 116.7}
     Yaw: 180
+  - Kind: 6
+    Id: PodHistory
+    Room: SH_PodChamber
+    Position: {x: 5.1000004, y: 0, z: 121.5}
+    Yaw: 0
+  - Kind: 6
+    Id: PodLabel
+    Room: SH_PodChamber
+    Position: {x: 5.1000004, y: 0, z: 112.5}
+    Yaw: 0
+  - Kind: 6
+    Id: NightShiftChat
+    Room: SH_A1
+    Position: {x: 28.5, y: 0, z: 83.55}
+    Yaw: 0
   - Kind: 1
     Id: SH/A3
     Room: SH_A3
@@ -637,6 +652,11 @@ MonoBehaviour:
     Room: SH_A7
     Position: {x: 4.5, y: 0, z: 4.5}
     Yaw: 0
+  - Kind: 5
+    Id: SH_A8/CrusherMassPickup
+    Room: SH_A8
+    Position: {x: 40.5, y: 0, z: 4.5}
+    Yaw: 0
   - Kind: 0
     Id: SH/PreBossNest
     Room: SH_PreBossNest
@@ -646,4 +666,24 @@ MonoBehaviour:
     Id: SH
     Room: SH_PreBossNest
     Position: {x: 94.5, y: 0, z: 10.5}
+    Yaw: 0
+  - Kind: 5
+    Id: SH_R1/PodReleaseKey
+    Room: SH_R1
+    Position: {x: 46.5, y: 0, z: 115.5}
+    Yaw: 0
+  - Kind: 5
+    Id: SH_R2/BiomassCache
+    Room: SH_R2
+    Position: {x: 115.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 6
+    Id: IntakeMemo
+    Room: SH_R2
+    Position: {x: 122.100006, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 5
+    Id: SH_GrappleRoom/MutagenPickup
+    Room: SH_GrappleRoom
+    Position: {x: -22.5, y: 0, z: 46.5}
     Yaw: 0

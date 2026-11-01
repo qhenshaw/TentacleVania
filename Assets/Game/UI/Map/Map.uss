@@ -119,6 +119,15 @@
     background-color: rgb(80, 230, 120);
 }
 
+.map-marker--pickup {
+    background-color: rgb(255, 210, 70);
+    rotate: 45deg;
+}
+
+.map-marker--lore {
+    background-color: rgb(120, 200, 255);
+}
+
 .map-marker--biomass {
     width: 18px;
     height: 18px;

@@ -716,6 +716,21 @@ MonoBehaviour:
     Room: BL_A3
     Position: {x: 90, y: 0, z: 76.5}
     Yaw: 0
+  - Kind: 6
+    Id: TissueSampleSource
+    Room: BL_A4
+    Position: {x: 28.5, y: 0, z: 47.550003}
+    Yaw: 0
+  - Kind: 6
+    Id: SiblingTermination
+    Room: BL_A5
+    Position: {x: 51, y: 0, z: 54.600002}
+    Yaw: 0
+  - Kind: 6
+    Id: SurgeonsBettingPool
+    Room: BL_A5
+    Position: {x: 54.600002, y: 0, z: 42}
+    Yaw: 0
   - Kind: 3
     Id: MapGate
     Room: BL_A6
@@ -740,4 +755,29 @@ MonoBehaviour:
     Id: BL
     Room: BL_PreBossNest
     Position: {x: 130.5, y: 0, z: 10.5}
+    Yaw: 0
+  - Kind: 5
+    Id: BL_R1/TaggedLockerKey
+    Room: BL_R1
+    Position: {x: 46.5, y: 0, z: 115.5}
+    Yaw: 0
+  - Kind: 5
+    Id: BL_R2/BiomassCache
+    Room: BL_R2
+    Position: {x: -19.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 6
+    Id: DissectionSchedule
+    Room: BL_R2
+    Position: {x: -24.900002, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 5
+    Id: BL_R3/LungingMaw
+    Room: BL_R3
+    Position: {x: 46.5, y: 0, z: -19.5}
+    Yaw: 0
+  - Kind: 5
+    Id: BL_VentRoom/MutagenPickup
+    Room: BL_VentRoom
+    Position: {x: 112.5, y: 0, z: 46.5}
     Yaw: 0
