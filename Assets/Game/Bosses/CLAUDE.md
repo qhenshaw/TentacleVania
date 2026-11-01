@@ -80,6 +80,13 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - **Attacks (yellow, Fire + Burn):** Flame Stream (70° sweep at 5.5 m, 6 hits of 5 over 1.2 s), Napalm Grenade (Trap kind with the Grenade burst, 12, then a 2.2 m fire pool lit for 7 s where it lands).
 - **Phases:** 100% Flame Trooper adds (max 2, every 16 s); ≤50% Fire Slice: every 7 s she snaps to a random heading and lights a 45° wedge 14 m long in front of her (1.2 s warning, 6 s; FMOD `event:/Bosses/Reyes/FireSlice`), carving the arena into burning wedges; 1 Flame Trooper on start, ×1.15 speed.
 
+## Overwatch Core (`OverwatchCore/`; design: Overwatch Core page, TV-195; placeholder numbers)
+
+- **Assets:** `OverwatchCore.prefab` (`OverwatchBoss : BossEnemy`; a cyan `Core` cylinder in its `CharacterMaterials` inside a steel `Shell` sphere, the Kenney body shrunk away), data `OverwatchCore.asset` (no attacks, speed 0, machine), boss data `OverwatchCoreBoss.asset` (id `CC/OverwatchCore`, key `boss.overwatchCore`, reward `Overload`), voice set `OverwatchCoreVoice`; `SecurityWall.prefab` (a steel `Enemies/Traps/IceWall`) and `LaserZone.prefab` (an Electric `Enemies/Traps/FireZone` without a status; `FireZone` takes its damage type and status from the prefab).
+- **Numbers:** 2,400 HP; no stagger.
+- **Room hacking (design core mechanic):** the core never attacks. Every cycle it reconfigures for 7 s with the `Shell` closed (a `CoreShell` incoming modifier zeroes all damage; FMOD `event:/Bosses/Overwatch/Reconfigure`): 3 security walls rise on a 5 m ring around it (skipped where the creature stands) for the cycle, the previous Sentry Guns are removed and 2 (3 from phase 2) deploy at new spots on an 8 m ring. Then the shell opens for 4 s (`event:/Bosses/Overwatch/CoreOpen`), the only time it takes damage.
+- **Phases:** 100% Security Drone adds (1 on start, max 2, every 14 s); ≤66% Security Guard adds and 3 laser wedges (8° × 13 m from the core, 1.2 s warning, 3 s, 20/s Electric) each reconfiguration; ≤33% Security Drone adds (max 3, every 12 s) and one Assault Mech joins.
+
 ## Surgical Automaton (`Automaton/`; design: Surgical Automaton page and Changelog "Surgical Automaton fight")
 
 - **Assets:** `SurgicalAutomaton.prefab` (`SurgicalAutomaton : BossEnemy`; the test boss's Handler body ×1.6 in steel as placeholder), enemy data `SurgicalAutomaton.asset` and boss data `AutomatonBoss.asset` (id `BL/SurgicalAutomaton`, matching the PA script; the shared boss theme; reward `TentacleGrapple`, which unlocks Grapple without taking the slot).

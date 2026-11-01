@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: OverwatchCoreVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 217821686
+      Data2: 1261174746
+      Data3: -230421078
+      Data4: 903508830
+    Path: event:/Enemies/Voice/OverwatchCore/Alert
+  _pain:
+    Guid:
+      Data1: 1473738590
+      Data2: 1252682092
+      Data3: -834273917
+      Data4: -1761354190
+    Path: event:/Enemies/Voice/OverwatchCore/Pain
+  _death:
+    Guid:
+      Data1: -42077343
+      Data2: 1103064092
+      Data3: 121616788
+      Data4: 152397669
+    Path: event:/Enemies/Voice/OverwatchCore/Death
+  _grabbed:
+    Guid:
+      Data1: 1292428644
+      Data2: 1316346166
+      Data3: 882922376
+      Data4: -1152002589
+    Path: event:/Enemies/Voice/OverwatchCore/Grabbed
+  _attack:
+    Guid:
+      Data1: -1257305949
+      Data2: 1324406600
+      Data3: 1325853839
+      Data4: 1010390995
+    Path: event:/Enemies/Voice/OverwatchCore/Attack
+  _stagger:
+    Guid:
+      Data1: 911201979
+      Data2: 1161769964
+      Data3: 1765453468
+      Data4: 603378019
+    Path: event:/Enemies/Voice/OverwatchCore/Stagger
+  _painCooldown: 1.2
