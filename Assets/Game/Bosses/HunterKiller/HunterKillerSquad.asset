@@ -61,6 +61,8 @@ MonoBehaviour:
   _secondReward: {fileID: 0}
   _dropPrefab: {fileID: 0}
   _rewardMutation: LastGasp
+  _arenaRequires:
+  - Overload
   _music:
     Guid:
       Data1: 0

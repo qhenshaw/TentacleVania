@@ -4,6 +4,9 @@
     "references": [
         "TentacleVania.World",
         "TentacleVania.Combat",
+        "TentacleVania.Core",
+        "TentacleVania.Bosses",
+        "TentacleVania.Abilities",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

@@ -47,6 +47,8 @@ MonoBehaviour:
   _secondReward: {fileID: 0}
   _dropPrefab: {fileID: 0}
   _rewardMutation: HatcheryGut
+  _arenaRequires:
+  - FireResistance
   _music:
     Guid:
       Data1: 0

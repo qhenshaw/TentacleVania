@@ -39,6 +39,8 @@ namespace TentacleVania.Bosses
         [SerializeField] private GameObject _dropPrefab;
         [Tooltip("Optional mutation id granted on defeat (mini-bosses: ability + mutation).")]
         [SerializeField] private string _rewardMutation;
+        [Tooltip("Abilities needed to reach the arena inside its sector (optional bosses behind a gate), for the progression route check.")]
+        [SerializeField] private string[] _arenaRequires = System.Array.Empty<string>();
         [Tooltip("Boss music; empty uses the shared boss theme (Audio/Resources/MusicSettings).")]
         [SerializeField] private EventReference _music;
 
@@ -59,6 +61,7 @@ namespace TentacleVania.Bosses
         public AbilityDefinition SecondReward => _secondReward;
         public GameObject DropPrefab => _dropPrefab;
         public string RewardMutation => _rewardMutation;
+        public string[] ArenaRequires => _arenaRequires;
         public EventReference Music => _music;
         public EventReference IntroSound => _introSound;
         public EventReference DeathSound => _deathSound;
