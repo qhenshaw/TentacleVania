@@ -114,6 +114,7 @@ namespace TentacleVania.Enemies
             if (!TryGetComponent(out _status))
                 _status = gameObject.AddComponent<StatusEffects>();
             _status.Glow = false;
+            _status.Affinity.Configure(_definition.WeakTo, _definition.Resists);
             UpdateProtection();
         }
 

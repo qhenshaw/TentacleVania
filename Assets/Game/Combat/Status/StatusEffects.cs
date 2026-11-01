@@ -43,6 +43,7 @@ namespace TentacleVania.Combat.Status
         private readonly DamageOverTime _burnDot = new();
         private readonly DamageOverTime _parasiteDot = new();
         private readonly bool[] _shown = new bool[KindCount];
+        private readonly float[] _appliedAt = InitAppliedAt();
 
         private Health _health;
         private CharacterMaterials _materials;
@@ -71,6 +72,14 @@ namespace TentacleVania.Combat.Status
         public static float ParasiteBurstScale { get; set; } = 1f;
         public static int ParasiteBursts { get; private set; }
         public static event Action<StatusEffects, int> ParasiteBurst;
+
+        private static float[] InitAppliedAt()
+        {
+            var times = new float[KindCount];
+            for (var i = 0; i < KindCount; i++)
+                times[i] = float.NegativeInfinity;
+            return times;
+        }
 
         private static StatusEffects[][] BuildTargetBuffers()
         {
@@ -107,6 +116,9 @@ namespace TentacleVania.Combat.Status
         public bool Glow { get; set; } = true;
         public bool ControlImmune { get; set; }
         public Health Health => _health;
+        public StatusAffinity Affinity { get; } = new();
+
+        public float SinceApplied(StatusKind kind) => (int)kind < KindCount ? Time.time - _appliedAt[(int)kind] : float.PositiveInfinity;
 
         public bool IsActive(StatusKind kind) => kind switch
         {
@@ -172,6 +184,11 @@ namespace TentacleVania.Combat.Status
         {
             if (kind == StatusKind.None || _health == null || !_health.IsAlive || Blocked(kind, ControlImmune))
                 return;
+            if (kind != StatusKind.Static)
+            {
+                potency *= Affinity.Scale(kind);
+                _appliedAt[(int)kind] = Time.time;
+            }
             switch (kind)
             {
                 case StatusKind.Bleed:
@@ -187,7 +204,7 @@ namespace TentacleVania.Combat.Status
                     _parasiteSource = source;
                     break;
                 case StatusKind.Corrode:
-                    _timers.Apply(kind, 1f, duration > 0f ? duration : _settings.CorrodeDuration, Time.time);
+                    _timers.Apply(kind, 1f, (duration > 0f ? duration : _settings.CorrodeDuration) * Mathf.Max(0f, potency), Time.time);
                     if (!_settings.CorrodeSound.IsNull && !_shown[(int)StatusKind.Corrode])
                         RuntimeManager.PlayOneShot(_settings.CorrodeSound, transform.position);
                     break;
@@ -226,12 +243,13 @@ namespace TentacleVania.Combat.Status
         {
             if (_health == null || !_health.IsAlive || source == _health.Team || amount <= 0f)
                 return;
-            if (_static.Add(amount * StaticBuildScale))
+            _appliedAt[(int)StatusKind.Static] = Time.time;
+            if (_static.Add(amount * StaticBuildScale * Affinity.Scale(StatusKind.Static)))
                 Discharge(source, 1f);
             Refresh();
         }
 
-        public void FillStatic(Team source) => AddStatic(_static.Capacity - _static.Value, source);
+        public void FillStatic(Team source) => AddStatic((_static.Capacity - _static.Value) / Mathf.Max(0.01f, StaticBuildScale * Affinity.Scale(StatusKind.Static)), source);
 
         public float ReleaseStatic(Team source, float scale = 1f)
         {
