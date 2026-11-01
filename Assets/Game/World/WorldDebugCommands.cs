@@ -15,6 +15,22 @@ namespace TentacleVania.World
     {
         public const string Tab = "World";
 
+        private static void SpawnHazard(Hazards.HazardKind kind)
+        {
+            var creature = Combat.CombatTargets.Creature;
+            if (creature == null)
+                return;
+            var t = creature.transform;
+            var host = new GameObject("DebugHazard_" + kind);
+            host.transform.SetPositionAndRotation(t.position + t.forward * 4f, Quaternion.LookRotation(t.forward));
+            var surface = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Object.Destroy(surface.GetComponent<Collider>());
+            surface.transform.SetParent(host.transform, false);
+            surface.transform.localPosition = new Vector3(0f, 0.03f, 0f);
+            surface.transform.localScale = new Vector3(4f, 0.04f, 4f);
+            host.AddComponent<Hazards.HazardZone>().Configure(kind, new Vector3(4f, 2f, 4f), surface.transform);
+        }
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Register()
         {
@@ -22,6 +38,13 @@ namespace TentacleVania.World
                 ? $"playing {Opening.OpeningSequence.Current.Elapsed:F1} s"
                 : Opening.OpeningSequence.Seen ? "seen" : "not seen");
             DebugMenu.Value(Tab, "Fall recoveries", () => $"creature {Map.FallRecovery.CreatureRecoveries}, enemies {Map.FallRecovery.EnemyRecoveries}, safe {Map.FallRecovery.SafePoint:F1}");
+            foreach (var kind in new[] { Hazards.HazardKind.Electric, Hazards.HazardKind.Fire, Hazards.HazardKind.Acid, Hazards.HazardKind.Radiation })
+            {
+                var resistance = Hazards.HazardRules.ResistanceFor(kind);
+                DebugMenu.Toggle(Tab, resistance + " (debug)", () => Hazards.HazardRules.IsForced(resistance), v => Hazards.HazardRules.SetForced(resistance, v));
+            }
+            foreach (var kind in (Hazards.HazardKind[])System.Enum.GetValues(typeof(Hazards.HazardKind)))
+                DebugMenu.Button(Tab, "Spawn " + kind + " hazard ahead", () => SpawnHazard(kind));
             DebugMenu.Button(Tab, "Drop creature out of the map", () =>
             {
                 var creature = CombatTargets.Creature;
