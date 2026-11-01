@@ -28,6 +28,8 @@ namespace TentacleVania.Abilities
         public AbilityDefinition Equipped => _equipped;
         public AbilityRuntime Runtime { get; private set; }
         public bool IsActive => Runtime != null && Runtime.IsActive;
+        public bool IsReady => Runtime != null && !Runtime.IsActive && _health.IsAlive && (_motor == null || _motor.InputEnabled)
+            && (FreeAbilities || (_charge != null && _charge.Current >= _equipped.Cost));
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics() => FreeAbilities = false;
