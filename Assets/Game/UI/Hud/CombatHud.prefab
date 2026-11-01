@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 6476554414125923144}
   - component: {fileID: 7989227644479482823}
   - component: {fileID: 4876044312293847031}
+  - component: {fileID: 2269295934017072161}
   m_Layer: 0
   m_Name: CombatHud
   m_TagString: Untagged
@@ -431,6 +432,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.LetterboxView
   _barPercent: 11
   _slideTime: 0.35
+--- !u!114 &2269295934017072161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703636293144204845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704a980f0e4ae7147a4e6b358c6cb80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.UI::TentacleVania.UI.Hud.AbilityPromptView
+  _glyphs: {fileID: 11400000, guid: 2f4af73fd6373b0489ba7832db4178af, type: 2}
+  _combatRange: 12
+  _offset: {x: 0.9, y: 1.6, z: 0}
+  _size: 34
+  _pulseSpeed: 4
 --- !u!1 &3146986584512052326
 GameObject:
   m_ObjectHideFlags: 0
