@@ -134,7 +134,7 @@ MonoBehaviour:
         Data4: -857803762
       Path: event:/Enemies/LabSecurity/TranqHit
   _consumeHeal: 0.12
-  _biomass: 10
+  _biomass: 20
   _spawnOnWall: 0
   _despawnDelay: 2
   _panicRange: 7
