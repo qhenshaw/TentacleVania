@@ -1663,6 +1663,10 @@ MonoBehaviour:
     m_Key: boss.sentryTitan
     m_Metadata:
       m_Items: []
+  - m_Id: 997705759080448
+    m_Key: boss.theMany
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
