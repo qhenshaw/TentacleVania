@@ -79,7 +79,7 @@ namespace TentacleVania.UI.Pause
             _content = root.Q<ScrollView>("content");
             _confirm = root.Q("confirm");
             _confirmText = root.Q<Label>("confirm-text");
-            root.Q<Label>("title").text = T("pause.title");
+            Fonts.UiText.Bind(root.Q<Label>("title"), "pause.title");
             _resume = Button(root, "resume", "pause.resume", Close);
             _settings = Button(root, "settings", "pause.settings", OpenSettings);
             _quitMenu = Button(root, "quit-menu", "pause.quitMenu", () => AskQuit(false));
@@ -92,7 +92,8 @@ namespace TentacleVania.UI.Pause
             for (var i = 0; i < Tabs.Length; i++)
             {
                 var index = i;
-                var button = new Button(() => ShowTab(index)) { text = T("pause.tab." + Tabs[i]), name = "tab-" + Tabs[i] };
+                var button = new Button(() => ShowTab(index)) { name = "tab-" + Tabs[i] };
+                Fonts.UiText.Bind(button, "pause.tab." + Tabs[i]);
                 button.AddToClassList("pause__tab");
                 tabs.Add(button);
                 _tabButtons.Add(button);
@@ -428,7 +429,7 @@ namespace TentacleVania.UI.Pause
         private static Button Button(VisualElement root, string name, string key, Action onClick)
         {
             var button = root.Q<Button>(name);
-            button.text = T(key);
+            Fonts.UiText.Bind(button, key);
             button.clicked += onClick;
             return button;
         }

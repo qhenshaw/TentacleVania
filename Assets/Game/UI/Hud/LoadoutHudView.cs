@@ -1,9 +1,11 @@
 using TentacleVania.Abilities;
 using TentacleVania.Combat;
+using TentacleVania.Core.Input;
 using TentacleVania.Core.Progression;
 using TentacleVania.Creature;
 using TentacleVania.Weapons;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 namespace TentacleVania.UI.Hud
@@ -39,6 +41,9 @@ namespace TentacleVania.UI.Hud
         private bool _deltaShown;
         private bool _ready;
         private bool _active;
+        private readonly Label[] _keys = new Label[3];
+        private InputDeviceKind _keysDevice = (InputDeviceKind)(-1);
+        private static readonly string[] KeyActions = { "Weapon1", "Weapon2", "Ability" };
 
         private void OnEnable()
         {
@@ -50,6 +55,11 @@ namespace TentacleVania.UI.Hud
             }
             _abilitySlot = root.Q("slot-ability");
             _abilityLabel = root.Q<Label>("slot-ability-label");
+            _keys[0] = root.Q<Label>("slot-weapon1-key");
+            _keys[1] = root.Q<Label>("slot-weapon2-key");
+            _keys[2] = root.Q<Label>("slot-ability-key");
+            _keysDevice = (InputDeviceKind)(-1);
+            Core.Settings.SettingsStore.Applied += OnSettingsApplied;
             _dirty = true;
             _biomassCount = root.Q<Label>("biomass-count");
             _biomassDelta = root.Q<Label>("biomass-delta");
@@ -59,12 +69,36 @@ namespace TentacleVania.UI.Hud
             OnBiomassChanged(Biomass.Carried);
         }
 
-        private void OnDisable() => Biomass.Changed -= OnBiomassChanged;
+        private void OnDisable()
+        {
+            Biomass.Changed -= OnBiomassChanged;
+            Core.Settings.SettingsStore.Applied -= OnSettingsApplied;
+        }
+
+        private void OnSettingsApplied(Core.Settings.SettingsData data) => _keysDevice = (InputDeviceKind)(-1);
+
+        private void RefreshKeys()
+        {
+            var device = GameplayInput.Default.LastDevice;
+            if (device == _keysDevice || InputSystem.actions == null)
+                return;
+            _keysDevice = device;
+            var group = device == InputDeviceKind.Gamepad ? "Gamepad" : "Keyboard&Mouse";
+            for (var i = 0; i < _keys.Length; i++)
+            {
+                if (_keys[i] == null)
+                    continue;
+                var action = InputSystem.actions.FindAction(GameplayInput.MapName + "/" + KeyActions[i]);
+                var index = action != null ? action.GetBindingIndex(group: group) : -1;
+                _keys[i].text = index >= 0 ? action.GetBindingDisplayString(index, InputBinding.DisplayStringOptions.DontIncludeInteractions) : "";
+            }
+        }
 
         private void LateUpdate()
         {
             if (_abilitySlot == null)
                 return;
+            RefreshKeys();
             var creature = CombatTargets.Creature;
             if (creature != _creature)
             {

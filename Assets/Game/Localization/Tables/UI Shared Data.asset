@@ -815,6 +815,14 @@ MonoBehaviour:
     m_Key: opening.holdToSkip
     m_Metadata:
       m_Items: []
+  - m_Id: 692046953988096
+    m_Key: ability.BioShield.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692046995931136
+    m_Key: ability.TentacleGrapple.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

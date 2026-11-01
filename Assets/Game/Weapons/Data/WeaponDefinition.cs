@@ -31,7 +31,10 @@ namespace TentacleVania.Weapons.Data
         [Tooltip("Metres the mesh's base sinks into the tentacle tip, so no gap shows.")]
         [SerializeField, Min(0f)] private float _tipOverlap = 0.1f;
 
-        public string DisplayName => _displayName;
+        public string DisplayName => Core.Text.LocalizedNames.Get(NameKey, _displayName);
+        public string NameKey => _nameKey ??= "weapon." + name + ".name";
+
+        [System.NonSerialized] private string _nameKey;
         public float Damage => _damage;
         public float Stagger => _stagger;
         public float ArmorDamageScale => _armorDamageScale;

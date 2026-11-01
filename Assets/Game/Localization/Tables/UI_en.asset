@@ -818,6 +818,14 @@ MonoBehaviour:
     m_Localized: Hold to skip
     m_Metadata:
       m_Items: []
+  - m_Id: 692046953988096
+    m_Localized: Bio-Shield
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692046995931136
+    m_Localized: Tentacle Grapple
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

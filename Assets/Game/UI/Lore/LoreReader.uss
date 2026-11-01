@@ -15,6 +15,7 @@
 }
 
 .reader__panel {
+    -unity-font-definition: url("project://database/Assets/Game/UI/Fonts/NotoSansMono-SDF.asset");
     width: 1000px;
     height: 820px;
     padding: 28px 36px;
@@ -60,7 +61,7 @@
     align-self: flex-end;
     margin-top: 14px;
     height: 48px;
-    width: 220px;
+    min-width: 220px;
     font-size: 22px;
     color: rgb(170, 240, 190);
     background-color: rgb(10, 30, 18);

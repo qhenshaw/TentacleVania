@@ -33,6 +33,7 @@
 
 .nest__tabs {
     flex-direction: row;
+    flex-wrap: wrap;
     border-bottom-width: 2px;
     border-color: rgb(80, 30, 60);
     margin-bottom: 14px;
@@ -89,6 +90,8 @@
 .nest__stat {
     width: 150px;
     flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 24px;
     color: rgb(235, 215, 228);
 }
@@ -196,7 +199,7 @@
 }
 
 .nest__cost {
-    width: 70px;
+    min-width: 70px;
     flex-shrink: 0;
     font-size: 18px;
     color: rgb(240, 200, 120);

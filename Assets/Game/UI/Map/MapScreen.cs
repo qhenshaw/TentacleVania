@@ -43,7 +43,7 @@ namespace TentacleVania.UI.Map
             _overlayFrame = root.Q("overlay");
             _title = root.Q<Label>("title");
             _info = root.Q<Label>("info");
-            root.Q<Label>("legend").text = T("map.legend");
+            Fonts.UiText.Bind(root.Q<Label>("legend"), "map.legend");
             _fullView = new MapView(false);
             root.Q("frame").Add(_fullView);
             _fullView.style.flexGrow = 1f;
