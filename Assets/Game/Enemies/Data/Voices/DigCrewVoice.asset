@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: DigCrewVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1610767476
+      Data2: 1177569183
+      Data3: -1805108063
+      Data4: 547485333
+    Path: event:/Enemies/Voice/DigCrew/Alert
+  _pain:
+    Guid:
+      Data1: 1568438527
+      Data2: 1282501772
+      Data3: 867939232
+      Data4: 2078122745
+    Path: event:/Enemies/Voice/DigCrew/Pain
+  _death:
+    Guid:
+      Data1: -935463834
+      Data2: 1075381979
+      Data3: 1770971529
+      Data4: -178394682
+    Path: event:/Enemies/Voice/DigCrew/Death
+  _grabbed:
+    Guid:
+      Data1: -1663022740
+      Data2: 1322504594
+      Data3: 1822439300
+      Data4: 555576638
+    Path: event:/Enemies/Voice/DigCrew/Grabbed
+  _attack:
+    Guid:
+      Data1: -1767196849
+      Data2: 1325492912
+      Data3: -173451385
+      Data4: 1437049596
+    Path: event:/Enemies/Voice/DigCrew/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: CraneLoyalistVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -2095754202
+      Data2: 1267723844
+      Data3: 1662067380
+      Data4: 1506116888
+    Path: event:/Enemies/Voice/CraneLoyalist/Alert
+  _pain:
+    Guid:
+      Data1: 329361662
+      Data2: 1098224065
+      Data3: 1989665214
+      Data4: -579839235
+    Path: event:/Enemies/Voice/CraneLoyalist/Pain
+  _death:
+    Guid:
+      Data1: 517289135
+      Data2: 1329827010
+      Data3: -1867813475
+      Data4: -346486714
+    Path: event:/Enemies/Voice/CraneLoyalist/Death
+  _grabbed:
+    Guid:
+      Data1: -1591272845
+      Data2: 1334750012
+      Data3: -254177616
+      Data4: -104731436
+    Path: event:/Enemies/Voice/CraneLoyalist/Grabbed
+  _attack:
+    Guid:
+      Data1: -1701029504
+      Data2: 1214258870
+      Data3: -1759535488
+      Data4: 705342156
+    Path: event:/Enemies/Voice/CraneLoyalist/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2
