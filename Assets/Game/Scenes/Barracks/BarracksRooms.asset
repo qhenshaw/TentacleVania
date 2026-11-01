@@ -1,0 +1,689 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b65e2e6534cdb24a8636dc27ebb5a11, type: 3}
+  m_Name: BarracksRooms
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Streaming.RoomRegistry
+  _loadRadius: 18
+  _unloadRadius: 28
+  _rooms:
+  - Scene: BA_EntryNest
+    Center: {x: 12.424848, y: 1.4155036, z: 108.84975}
+    Size: {x: 19.61031, y: 3.6310077, z: 31.700531}
+    Neighbours:
+    - BA_A1
+    MapShapes:
+    - serializedVersion: 2
+      x: 3
+      y: 108
+      width: 18
+      height: 15
+    - serializedVersion: 2
+      x: 9
+      y: 105
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 102
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 99
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 96
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 93
+      width: 3
+      height: 3
+  - Scene: BA_A1
+    Center: {x: 19.30985, y: 1.4155036, z: 73.789444}
+    Size: {x: 39.380318, y: 3.6310077, z: 39.579834}
+    Neighbours:
+    - BA_EntryNest
+    - BA_A2
+    - BA_A4
+    - BA_A5
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 72
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 21
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 24
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 27
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 30
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 33
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 36
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 69
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 66
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 60
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 57
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 54
+      width: 3
+      height: 3
+  - Scene: BA_A2
+    Center: {x: 55.309845, y: 1.4155036, z: 91.309845}
+    Size: {x: 33.38031, y: 3.6310077, z: 33.38031}
+    Neighbours:
+    - BA_A1
+    - BA_A3
+    - BA_R1
+    MapShapes:
+    - serializedVersion: 2
+      x: 39
+      y: 75
+      width: 15
+      height: 15
+    - serializedVersion: 2
+      x: 54
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 57
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 60
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 63
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 66
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 69
+      y: 81
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 90
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 93
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 96
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 99
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 102
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 105
+      width: 3
+      height: 3
+  - Scene: BA_A3
+    Center: {x: 82.5, y: 1.4655038, z: 75.190155}
+    Size: {x: 21.76062, y: 3.5310075, z: 36.38031}
+    Neighbours:
+    - BA_A2
+    - BA_A5
+    - BA_A6
+    MapShapes:
+    - serializedVersion: 2
+      x: 72
+      y: 72
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 81
+      y: 69
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 66
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 63
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 60
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 81
+      y: 57
+      width: 3
+      height: 3
+  - Scene: BA_A4
+    Center: {x: 10.500002, y: 1.4655038, z: 37.78944}
+    Size: {x: 51.000008, y: 3.5310075, z: 33.579826}
+    Neighbours:
+    - BA_A1
+    - BA_A5
+    - BA_A7
+    - BA_A8
+    - BA_Stockroom
+    MapShapes:
+    - serializedVersion: 2
+      x: 3
+      y: 39
+      width: 15
+      height: 15
+    - serializedVersion: 2
+      x: 18
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 21
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 24
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 27
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 30
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 33
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 36
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 33
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 30
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 27
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 24
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 9
+      y: 21
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 0
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -3
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -6
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -9
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -12
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: -15
+      y: 45
+      width: 3
+      height: 3
+  - Scene: BA_A5
+    Center: {x: 53.809845, y: 1.4655038, z: 39.18992}
+    Size: {x: 36.38031, y: 3.5310075, z: 36.380783}
+    Neighbours:
+    - BA_A1
+    - BA_A3
+    - BA_A4
+    - BA_A6
+    - BA_A7
+    - BA_A8
+    MapShapes:
+    - serializedVersion: 2
+      x: 36
+      y: 36
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 57
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 60
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 63
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 66
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 69
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 33
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 30
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 27
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 24
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 45
+      y: 21
+      width: 3
+      height: 3
+  - Scene: BA_A6
+    Center: {x: 89.81, y: 1.4655038, z: 46.400475}
+    Size: {x: 36.380615, y: 3.5310075, z: 21.959656}
+    Neighbours:
+    - BA_A3
+    - BA_A5
+    - BA_Quartermaster
+    MapShapes:
+    - serializedVersion: 2
+      x: 72
+      y: 36
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 93
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 96
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 99
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 102
+      y: 45
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 105
+      y: 45
+      width: 3
+      height: 3
+  - Scene: BA_A7
+    Center: {x: 17.71033, y: 1.4155036, z: 10.499999}
+    Size: {x: 36.57936, y: 3.6310077, z: 22.158703}
+    Neighbours:
+    - BA_A4
+    - BA_A5
+    - BA_A8
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 21
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 24
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 27
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 30
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 33
+      y: 9
+      width: 3
+      height: 3
+  - Scene: BA_A8
+    Center: {x: 53.71048, y: 1.4655038, z: 10.599523}
+    Size: {x: 36.579666, y: 3.5310075, z: 21.95966}
+    Neighbours:
+    - BA_A4
+    - BA_A5
+    - BA_A7
+    - BA_PreBossNest
+    MapShapes:
+    - serializedVersion: 2
+      x: 36
+      y: 0
+      width: 21
+      height: 21
+    - serializedVersion: 2
+      x: 57
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 60
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 63
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 66
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 69
+      y: 9
+      width: 3
+      height: 3
+  - Scene: BA_PreBossNest
+    Center: {x: 88.21033, y: 1.6999999, z: 10.499999}
+    Size: {x: 33.579346, y: 4.2000003, z: 16.158705}
+    Neighbours:
+    - BA_A8
+    - BA_Courtyard
+    MapShapes:
+    - serializedVersion: 2
+      x: 72
+      y: 3
+      width: 15
+      height: 15
+    - serializedVersion: 2
+      x: 87
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 90
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 93
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 96
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 99
+      y: 9
+      width: 3
+      height: 3
+    - serializedVersion: 2
+      x: 102
+      y: 9
+      width: 3
+      height: 3
+  - Scene: BA_Courtyard
+    Center: {x: 116.900475, y: 1.5655037, z: 8.999999}
+    Size: {x: 24.959671, y: 3.3310075, z: 18.760612}
+    Neighbours:
+    - BA_PreBossNest
+    MapShapes:
+    - serializedVersion: 2
+      x: 105
+      y: 0
+      width: 24
+      height: 18
+  - Scene: BA_R1
+    Center: {x: 46.59952, y: 1.5655037, z: 114}
+    Size: {x: 15.959663, y: 3.3310075, z: 13.158691}
+    Neighbours:
+    - BA_A2
+    MapShapes:
+    - serializedVersion: 2
+      x: 39
+      y: 108
+      width: 15
+      height: 12
+  - Scene: BA_Quartermaster
+    Center: {x: 115.5, y: 1.5655037, z: 46.400475}
+    Size: {x: 15.76062, y: 3.3310075, z: 15.959656}
+    Neighbours:
+    - BA_A6
+    MapShapes:
+    - serializedVersion: 2
+      x: 108
+      y: 39
+      width: 15
+      height: 15
+  - Scene: BA_Stockroom
+    Center: {x: -22.400478, y: 1.4155036, z: 46.5}
+    Size: {x: 15.959656, y: 3.6310077, z: 16.158707}
+    Neighbours:
+    - BA_A4
+    MapShapes:
+    - serializedVersion: 2
+      x: -30
+      y: 39
+      width: 15
+      height: 15
+  _sector: BA
+  _rootScene: Barracks
+  _color: {r: 0.75, g: 0.7, b: 0.45, a: 1}
+  _markers:
+  - Kind: 0
+    Id: BA/EntryNest
+    Room: BA_EntryNest
+    Position: {x: 7.5, y: 0, z: 118.2}
+    Yaw: 180
+  - Kind: 1
+    Id: BA/A3
+    Room: BA_A3
+    Position: {x: 90, y: 0, z: 90}
+    Yaw: 0
+  - Kind: 1
+    Id: BA/A5
+    Room: BA_A5
+    Position: {x: 54, y: 0, z: 54}
+    Yaw: 0
+  - Kind: 1
+    Id: BA/A7
+    Room: BA_A7
+    Position: {x: 4.5, y: 0, z: 4.5}
+    Yaw: 0
+  - Kind: 0
+    Id: BA/PreBossNest
+    Room: BA_PreBossNest
+    Position: {x: 79.5, y: 0, z: 11.7}
+    Yaw: 180
+  - Kind: 2
+    Id: BA
+    Room: BA_PreBossNest
+    Position: {x: 94.5, y: 0, z: 10.5}
+    Yaw: 0
+  - Kind: 5
+    Id: BA_R1/UnsentLetter
+    Room: BA_R1
+    Position: {x: 46.5, y: 0, z: 115.5}
+    Yaw: 0
+  - Kind: 5
+    Id: BA_Quartermaster/MutagenPickup
+    Room: BA_Quartermaster
+    Position: {x: 115.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 5
+    Id: BA_Stockroom/ArcTendrilsSpot
+    Room: BA_Stockroom
+    Position: {x: -22.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BA/Auto-BA_A3
+    Room: BA_A3
+    Position: {x: 73.5, y: 0, z: 73.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BA/Auto-BA_A3
+    Room: BA_EntryNest
+    Position: {x: 4.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BA/Auto-BA_A6
+    Room: BA_A6
+    Position: {x: 73.5, y: 0, z: 37.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BA/Auto-BA_A6
+    Room: BA_EntryNest
+    Position: {x: 19.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BA/Auto-BA_Quartermaster
+    Room: BA_Quartermaster
+    Position: {x: 109.5, y: 0, z: 40.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BA/Auto-BA_Quartermaster
+    Room: BA_EntryNest
+    Position: {x: 19.5, y: 0, z: 121.5}
+    Yaw: 0
