@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30eac26dc7a577547b9a6a8bde088ab6, type: 3}
+  m_Name: FrostSentry
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
+  _displayName: Frost Sentry
+  _maxHealth: 100
+  _maxArmor: 0
+  _maxStagger: 70
+  _staggerStun: 2
+  _staggerDamageTaken: 1.5
+  _feedableDamageTaken: 0.5
+  _moveSpeed: 0
+  _turnSpeed: 150
+  _spawnDelay: 0.5
+  _circleRange: {x: 5, y: 8}
+  _knockbackScale: 0
+  _attacks:
+  - Name: Freezing Round
+    Kind: 2
+    Telegraph: 0
+    Animation: 3
+    AnimationHitTime: 0.67
+    GroundIndicator: 0
+    WindUp: 0.8
+    Active: 0.05
+    Recovery: 0.4
+    Cooldown: 2
+    TrackDuringWindUp: 0.7
+    Hits: 1
+    MinRange: 0
+    MaxRange: 6
+    Damage: 10
+    Stagger: 0
+    Type: 0
+    StunDuration: 0
+    Status: 1
+    StatusMagnitude: 0.35
+    StatusDuration: 2
+    Reach: 1
+    Arc: 0
+    SweepRadius: 0.2
+    Height: 1.1
+    AreaRadius: 2.5
+    AreaForwardOffset: 0
+    Projectile: {fileID: 7832528784957437939, guid: afd49bb3e78f7c74fb296654755ced65, type: 3}
+    ProjectileSpeed: 18
+    ProjectileLifetime: 2
+    LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
+    WindUpSound:
+      Guid:
+        Data1: -1064088439
+        Data2: 1133395062
+        Data3: 255216798
+        Data4: -1204876506
+      Path: event:/Enemies/Turret/Charge
+    StrikeSound:
+      Guid:
+        Data1: -1245295346
+        Data2: 1263063980
+        Data3: 900743854
+        Data4: -2098054476
+      Path: event:/Enemies/Turret/Fire
+    HitSound:
+      Guid:
+        Data1: 761273396
+        Data2: 1202235729
+        Data3: 1375033240
+        Data4: -2043124812
+      Path: event:/Enemies/Turret/Hit
+  _consumeHeal: 0.08
+  _biomass: 30
+  _spawnOnWall: 0
+  _despawnDelay: 2
+  _panicRange: 7
+  _fleeDistance: 6
+  _corneredDistance: 1.2
+  _preferredRange: {x: 2.5, y: 3.5}
+  _voice: {fileID: 11400000, guid: 327bdb0f89897664784cedcf1d089b79, type: 2}
+  _machine: 1
+  _weakTo: 0500000006000000i
+  _resists: 03000000i
+  _healPerSecond: 8
+  _healRange: 6
+  _keepAwayRange: 7

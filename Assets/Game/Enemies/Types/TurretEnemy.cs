@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TentacleVania.Enemies.Types
 {
-    public sealed class TurretEnemy : Enemy
+    public class TurretEnemy : Enemy
     {
         private const float LaserRange = 16f;
 

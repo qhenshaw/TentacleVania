@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: AlphaSpecimenVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -267094507
+      Data2: 1079747798
+      Data3: 1577288339
+      Data4: 1946412591
+    Path: event:/Enemies/Voice/AlphaSpecimen/Alert
+  _pain:
+    Guid:
+      Data1: -610723018
+      Data2: 1293924490
+      Data3: -1908981081
+      Data4: -1802420399
+    Path: event:/Enemies/Voice/AlphaSpecimen/Pain
+  _death:
+    Guid:
+      Data1: -556827193
+      Data2: 1210780058
+      Data3: -135978353
+      Data4: 1316166212
+    Path: event:/Enemies/Voice/AlphaSpecimen/Death
+  _grabbed:
+    Guid:
+      Data1: 1722208063
+      Data2: 1284388427
+      Data3: -939150175
+      Data4: 1463542483
+    Path: event:/Enemies/Voice/AlphaSpecimen/Grabbed
+  _attack:
+    Guid:
+      Data1: 661351018
+      Data2: 1219517383
+      Data3: -1843549767
+      Data4: 943686160
+    Path: event:/Enemies/Voice/AlphaSpecimen/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

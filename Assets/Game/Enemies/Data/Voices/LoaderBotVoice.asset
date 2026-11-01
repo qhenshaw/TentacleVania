@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: LoaderBotVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -2052936668
+      Data2: 1122859297
+      Data3: 1620362414
+      Data4: -1851127280
+    Path: event:/Enemies/Voice/LoaderBot/Alert
+  _pain:
+    Guid:
+      Data1: 1623182867
+      Data2: 1334623810
+      Data3: -168562514
+      Data4: 1679998457
+    Path: event:/Enemies/Voice/LoaderBot/Pain
+  _death:
+    Guid:
+      Data1: 420334240
+      Data2: 1281058848
+      Data3: 1277292451
+      Data4: 1764268549
+    Path: event:/Enemies/Voice/LoaderBot/Death
+  _grabbed:
+    Guid:
+      Data1: -978307163
+      Data2: 1279622216
+      Data3: 1046234024
+      Data4: 1771824082
+    Path: event:/Enemies/Voice/LoaderBot/Grabbed
+  _attack:
+    Guid:
+      Data1: -322082807
+      Data2: 1096924108
+      Data3: -1066725484
+      Data4: 1932882944
+    Path: event:/Enemies/Voice/LoaderBot/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2
