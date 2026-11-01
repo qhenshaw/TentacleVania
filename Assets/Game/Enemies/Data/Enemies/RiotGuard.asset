@@ -58,13 +58,15 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1547580887
+        Data2: 1259235964
+        Data3: -941249867
+        Data4: -194489028
+      Path: event:/Enemies/RiotGuard/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -74,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -286254953
+        Data2: 1249512473
+        Data3: -383723074
+        Data4: -710844922
+      Path: event:/Enemies/RiotGuard/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 25
   _spawnOnWall: 0
@@ -89,6 +92,8 @@ MonoBehaviour:
   _preferredRange: {x: 2.5, y: 3.5}
   _voice: {fileID: 11400000, guid: 59500e6265add7647b97a8a65b686d80, type: 2}
   _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 0300000004000000i
   _resists: 
   _healPerSecond: 8

@@ -58,6 +58,8 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: 1919176684
@@ -79,6 +81,7 @@ MonoBehaviour:
         Data3: -135141222
         Data4: -1247594387
       Path: event:/Enemies/Surgeon/SawHit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Lunging saw
     Kind: 0
     Telegraph: 0
@@ -112,6 +115,8 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: 1919176684
@@ -133,6 +138,7 @@ MonoBehaviour:
         Data3: -135141222
         Data4: -1247594387
       Path: event:/Enemies/Surgeon/SawHit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.1
   _biomass: 10
   _spawnOnWall: 0
@@ -143,6 +149,8 @@ MonoBehaviour:
   _preferredRange: {x: 5, y: 8}
   _voice: {fileID: 11400000, guid: 6cac050305def734bac5d331ba2beb05, type: 2}
   _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 03000000i
   _resists: 07000000i
   _healPerSecond: 8

@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1463108473
+        Data2: 1252405645
+        Data3: -300761160
+        Data4: -322115368
+      Path: event:/Enemies/TheMany/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1495984081
+        Data2: 1283317381
+        Data3: 568880790
+        Data4: -677689454
+      Path: event:/Enemies/TheMany/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.5
   _biomass: 2500
   _spawnOnWall: 0

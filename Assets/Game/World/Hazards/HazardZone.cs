@@ -1,3 +1,4 @@
+using FMODUnity;
 using TentacleVania.Combat;
 using TentacleVania.Combat.Damage;
 using TentacleVania.Combat.Status;
@@ -17,8 +18,12 @@ namespace TentacleVania.World.Hazards
         [SerializeField, Range(0.1f, 1f)] private float _slow = 0.5f;
         [Tooltip("Placeholder surface scaled to the zone footprint.")]
         [SerializeField] private Transform _surface;
+        [Tooltip("Played at the creature while the hazard hurts or slows it, at most every SoundInterval seconds.")]
+        [SerializeField] private EventReference _hurtSound;
+        [SerializeField, Min(0.1f)] private float _soundInterval = 0.6f;
 
         private float _nextTick;
+        private float _nextSound;
 
         public HazardKind Kind => _kind;
         public Vector3 Size => _size;
@@ -51,6 +56,13 @@ namespace TentacleVania.World.Hazards
             if (now < _nextTick)
                 return;
             _nextTick = now + _tick;
+            if (HazardRules.Damages(_kind) && HazardRules.IsResisted(_kind))
+                return;
+            if (!_hurtSound.IsNull && now >= _nextSound)
+            {
+                _nextSound = now + _soundInterval;
+                RuntimeManager.PlayOneShot(_hurtSound, creature.transform.position);
+            }
             if (!HazardRules.Damages(_kind))
             {
                 if (creature.TryGetComponent<StatusEffects>(out var status))

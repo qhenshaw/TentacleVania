@@ -141,3 +141,11 @@ MonoBehaviour:
   _tick: 0.25
   _slow: 0.5
   _surface: {fileID: 7872766621509291673}
+  _hurtSound:
+    Guid:
+      Data1: -591606654
+      Data2: 1224638784
+      Data3: 822263990
+      Data4: 630848370
+    Path: event:/World/Hazard/Cryo
+  _soundInterval: 0.6

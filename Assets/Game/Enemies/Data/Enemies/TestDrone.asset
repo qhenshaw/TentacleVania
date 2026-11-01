@@ -58,13 +58,15 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -683354962
+        Data2: 1251495981
+        Data3: 778319791
+        Data4: 1540038639
+      Path: event:/Enemies/TestDrone/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -74,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -365410880
+        Data2: 1086407242
+        Data3: -574052706
+        Data4: 1471331430
+      Path: event:/Enemies/TestDrone/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Arc Bolt
     Kind: 2
     Telegraph: 0
@@ -112,13 +115,15 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -683354962
+        Data2: 1251495981
+        Data3: 778319791
+        Data4: 1540038639
+      Path: event:/Enemies/TestDrone/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -128,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -365410880
+        Data2: 1086407242
+        Data3: -574052706
+        Data4: 1471331430
+      Path: event:/Enemies/TestDrone/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.08
   _biomass: 30
   _spawnOnWall: 0
@@ -143,6 +149,8 @@ MonoBehaviour:
   _preferredRange: {x: 2.5, y: 3.5}
   _voice: {fileID: 11400000, guid: ec23d325589b0a44ab5c23b46d2170aa, type: 2}
   _machine: 1
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 05000000i
   _resists: 03000000i
   _healPerSecond: 8

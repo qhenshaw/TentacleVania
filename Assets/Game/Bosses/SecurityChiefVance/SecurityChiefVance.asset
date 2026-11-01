@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1315477257
+        Data2: 1153391276
+        Data3: -593814862
+        Data4: 65320646
+      Path: event:/Enemies/SecurityChiefVance/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -670846404
+        Data2: 1101922817
+        Data3: 220031925
+        Data4: 1814338319
+      Path: event:/Enemies/SecurityChiefVance/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Shield Bash
     Kind: 0
     Telegraph: 0
@@ -118,11 +119,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1315477257
+        Data2: 1153391276
+        Data3: -593814862
+        Data4: 65320646
+      Path: event:/Enemies/SecurityChiefVance/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -132,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -670846404
+        Data2: 1101922817
+        Data3: 220031925
+        Data4: 1814338319
+      Path: event:/Enemies/SecurityChiefVance/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Shield Charge
     Kind: 0
     Telegraph: 1
@@ -174,11 +176,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1315477257
+        Data2: 1153391276
+        Data3: -593814862
+        Data4: 65320646
+      Path: event:/Enemies/SecurityChiefVance/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -188,11 +190,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -670846404
+        Data2: 1101922817
+        Data3: 220031925
+        Data4: 1814338319
+      Path: event:/Enemies/SecurityChiefVance/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Shock Slam
     Kind: 1
     Telegraph: 0
@@ -230,11 +233,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1315477257
+        Data2: 1153391276
+        Data3: -593814862
+        Data4: 65320646
+      Path: event:/Enemies/SecurityChiefVance/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -244,11 +247,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -670846404
+        Data2: 1101922817
+        Data3: 220031925
+        Data4: 1814338319
+      Path: event:/Enemies/SecurityChiefVance/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.5
   _biomass: 800
   _spawnOnWall: 0

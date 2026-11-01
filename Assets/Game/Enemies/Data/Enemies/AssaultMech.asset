@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1842788833
+        Data2: 1163085933
+        Data3: -1885183576
+        Data4: -1440692400
+      Path: event:/Enemies/AssaultMech/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 123622102
+        Data2: 1264315762
+        Data3: 400861848
+        Data4: 1192819485
+      Path: event:/Enemies/AssaultMech/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Rocket Barrage
     Kind: 3
     Telegraph: 0
@@ -118,11 +119,11 @@ MonoBehaviour:
     BurstFuse: 1
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1842788833
+        Data2: 1163085933
+        Data3: -1885183576
+        Data4: -1440692400
+      Path: event:/Enemies/AssaultMech/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -132,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 123622102
+        Data2: 1264315762
+        Data3: 400861848
+        Data4: 1192819485
+      Path: event:/Enemies/AssaultMech/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 60
   _spawnOnWall: 0
@@ -147,6 +149,8 @@ MonoBehaviour:
   _preferredRange: {x: 4, y: 6}
   _voice: {fileID: 11400000, guid: 1361505f969221441974c5ceff8c9936, type: 2}
   _machine: 1
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 04000000i
   _resists: 05000000i
   _healPerSecond: 8

@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1880640456
+        Data2: 1227290893
+        Data3: 2044300180
+        Data4: -1396856726
+      Path: event:/Enemies/HiveClone/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -712024925
+        Data2: 1103047140
+        Data3: 188285106
+        Data4: 941666844
+      Path: event:/Enemies/HiveClone/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Claw
     Kind: 0
     Telegraph: 0
@@ -118,11 +119,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1880640456
+        Data2: 1227290893
+        Data3: 2044300180
+        Data4: -1396856726
+      Path: event:/Enemies/HiveClone/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -132,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -712024925
+        Data2: 1103047140
+        Data3: 188285106
+        Data4: 941666844
+      Path: event:/Enemies/HiveClone/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 30
   _spawnOnWall: 0

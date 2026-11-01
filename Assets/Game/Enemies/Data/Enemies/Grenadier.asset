@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 520847237
+        Data2: 1171407075
+        Data3: 1917866669
+        Data4: -965677285
+      Path: event:/Enemies/Grenadier/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -138813215
+        Data2: 1298845448
+        Data3: -1138505292
+        Data4: -354768029
+      Path: event:/Enemies/Grenadier/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Grenade
     Kind: 3
     Telegraph: 0
@@ -118,11 +119,11 @@ MonoBehaviour:
     BurstFuse: 0.9
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 520847237
+        Data2: 1171407075
+        Data3: 1917866669
+        Data4: -965677285
+      Path: event:/Enemies/Grenadier/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -132,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -138813215
+        Data2: 1298845448
+        Data3: -1138505292
+        Data4: -354768029
+      Path: event:/Enemies/Grenadier/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 20
   _spawnOnWall: 0
@@ -147,6 +149,8 @@ MonoBehaviour:
   _preferredRange: {x: 4, y: 6}
   _voice: {fileID: 11400000, guid: 90560461b7b310d4785dd739fe83cdae, type: 2}
   _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 0300000004000000i
   _resists: 
   _healPerSecond: 8

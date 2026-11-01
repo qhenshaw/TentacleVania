@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 786283390
+        Data2: 1166634347
+        Data3: -1510381126
+        Data4: -1689177078
+      Path: event:/Enemies/AncientSpecimen/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1661992624
+        Data2: 1238511981
+        Data3: -496364395
+        Data4: -1095614699
+      Path: event:/Enemies/AncientSpecimen/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Old Claws
     Kind: 0
     Telegraph: 0
@@ -118,11 +119,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 786283390
+        Data2: 1166634347
+        Data3: -1510381126
+        Data4: -1689177078
+      Path: event:/Enemies/AncientSpecimen/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -132,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1661992624
+        Data2: 1238511981
+        Data3: -496364395
+        Data4: -1095614699
+      Path: event:/Enemies/AncientSpecimen/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 50
   _spawnOnWall: 0

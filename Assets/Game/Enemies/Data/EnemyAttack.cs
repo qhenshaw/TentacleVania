@@ -107,6 +107,10 @@ namespace TentacleVania.Enemies.Data
         public EventReference StrikeSound;
         public EventReference HitSound;
 
+        [Header("Effects (optional)")]
+        [Tooltip("One-shot VFX Graph played at the attacker, facing its attack, when the strike starts (pooled by EnemyManager).")]
+        public UnityEngine.VFX.VisualEffect StrikeVfx;
+
         public AttackTokenKind TokenKind => Kind == AttackKind.Projectile ? AttackTokenKind.Ranged : AttackTokenKind.Melee;
         public float Duration => WindUp + Active + Recovery;
         public HitFlags Flags => Telegraph == Telegraph.Undodgeable ? HitFlags.Undodgeable : HitFlags.None;

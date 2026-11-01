@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -510482418
+        Data2: 1295560597
+        Data3: 1619571095
+        Data4: -1573368683
+      Path: event:/Enemies/HKMedic/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1073324367
+        Data2: 1076421958
+        Data3: -1651950922
+        Data4: -1213688927
+      Path: event:/Enemies/HKMedic/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.5
   _biomass: 750
   _spawnOnWall: 0

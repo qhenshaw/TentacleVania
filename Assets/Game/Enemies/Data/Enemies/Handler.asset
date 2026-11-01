@@ -58,13 +58,15 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -289721819
+        Data2: 1258054886
+        Data3: 1024991671
+        Data4: 2143508381
+      Path: event:/Enemies/Handler/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -74,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1320577020
+        Data2: 1322138638
+        Data3: -1408504908
+        Data4: 764247821
+      Path: event:/Enemies/Handler/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Shock poke
     Kind: 0
     Telegraph: 0
@@ -112,13 +115,15 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -289721819
+        Data2: 1258054886
+        Data3: 1024991671
+        Data4: 2143508381
+      Path: event:/Enemies/Handler/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -128,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1320577020
+        Data2: 1322138638
+        Data3: -1408504908
+        Data4: 764247821
+      Path: event:/Enemies/Handler/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 20
   _spawnOnWall: 0
@@ -143,6 +149,8 @@ MonoBehaviour:
   _preferredRange: {x: 5, y: 8}
   _voice: {fileID: 11400000, guid: 88e5e573b33aaaa49af2462a00bea0cc, type: 2}
   _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 04000000i
   _resists: 05000000i
   _healPerSecond: 8

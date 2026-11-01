@@ -58,13 +58,15 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -2051382215
+        Data2: 1119178700
+        Data3: 1468488616
+        Data4: 943505357
+      Path: event:/Enemies/HostileSpecimen/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -74,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1148068225
+        Data2: 1210025467
+        Data3: -953202815
+        Data4: 853981445
+      Path: event:/Enemies/HostileSpecimen/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Claw
     Kind: 0
     Telegraph: 0
@@ -112,13 +115,15 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -2051382215
+        Data2: 1119178700
+        Data3: 1468488616
+        Data4: 943505357
+      Path: event:/Enemies/HostileSpecimen/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -128,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1148068225
+        Data2: 1210025467
+        Data3: -953202815
+        Data4: 853981445
+      Path: event:/Enemies/HostileSpecimen/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 30
   _spawnOnWall: 0
@@ -143,6 +149,8 @@ MonoBehaviour:
   _preferredRange: {x: 5, y: 8}
   _voice: {fileID: 11400000, guid: 76c36d85094e03d45b9469c131074a58, type: 2}
   _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 04000000i
   _resists: 05000000i
   _healPerSecond: 8

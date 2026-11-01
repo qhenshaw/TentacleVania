@@ -81,6 +81,7 @@ MonoBehaviour:
         Data3: 1160529847
         Data4: -1646317435
       Path: event:/Bosses/Warden/ShockHit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Electrified Sweep
     Kind: 0
     Telegraph: 0
@@ -137,6 +138,7 @@ MonoBehaviour:
         Data3: 1160529847
         Data4: -1646317435
       Path: event:/Bosses/Warden/ShockHit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Shock Prod
     Kind: 0
     Telegraph: 0
@@ -193,6 +195,7 @@ MonoBehaviour:
         Data3: 1160529847
         Data4: -1646317435
       Path: event:/Bosses/Warden/ShockHit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Electrified Sweep
     Kind: 0
     Telegraph: 0
@@ -249,6 +252,7 @@ MonoBehaviour:
         Data3: 1160529847
         Data4: -1646317435
       Path: event:/Bosses/Warden/ShockHit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.5
   _biomass: 500
   _spawnOnWall: 0

@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1795767681
+        Data2: 1239022308
+        Data3: -863229517
+        Data4: 1616559009
+      Path: event:/Enemies/HKTracker/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1827742779
+        Data2: 1318422747
+        Data3: 1411586189
+        Data4: -393975889
+      Path: event:/Enemies/HKTracker/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.5
   _biomass: 750
   _spawnOnWall: 0

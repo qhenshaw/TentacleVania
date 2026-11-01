@@ -58,6 +58,8 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: -1064088439
@@ -79,6 +81,7 @@ MonoBehaviour:
         Data3: 1375033240
         Data4: -2043124812
       Path: event:/Enemies/Turret/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.08
   _biomass: 30
   _spawnOnWall: 0
@@ -89,6 +92,8 @@ MonoBehaviour:
   _preferredRange: {x: 2.5, y: 3.5}
   _voice: {fileID: 11400000, guid: 20233dec608026047903f9c7ad01d841, type: 2}
   _machine: 1
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 0500000006000000i
   _resists: 03000000i
   _healPerSecond: 8

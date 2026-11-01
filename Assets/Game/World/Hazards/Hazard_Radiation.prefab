@@ -141,3 +141,11 @@ MonoBehaviour:
   _tick: 0.25
   _slow: 0.5
   _surface: {fileID: 5043946858855430480}
+  _hurtSound:
+    Guid:
+      Data1: 809096249
+      Data2: 1332206754
+      Data3: 615781047
+      Data4: -1644617343
+    Path: event:/World/Hazard/Radiation
+  _soundInterval: 0.6

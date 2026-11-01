@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -885381315
+        Data2: 1095402772
+        Data3: 290293401
+        Data4: -120805686
+      Path: event:/Enemies/TargetBot/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1201125547
+        Data2: 1335447209
+        Data3: -766501734
+        Data4: 1102674452
+      Path: event:/Enemies/TargetBot/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.08
   _biomass: 30
   _spawnOnWall: 0
@@ -91,6 +92,8 @@ MonoBehaviour:
   _preferredRange: {x: 2.5, y: 3.5}
   _voice: {fileID: 11400000, guid: dcde402f77a80da46a0610af665f6964, type: 2}
   _machine: 1
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 05000000i
   _resists: 03000000i
   _healPerSecond: 8

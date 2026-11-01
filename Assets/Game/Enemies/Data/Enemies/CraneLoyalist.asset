@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 573070733
+        Data2: 1216900985
+        Data3: -1259748472
+        Data4: 1819090634
+      Path: event:/Enemies/CraneLoyalist/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1612978453
+        Data2: 1232218088
+        Data3: 582865566
+        Data4: 1548327084
+      Path: event:/Enemies/CraneLoyalist/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Gene Disruptor
     Kind: 2
     Telegraph: 0
@@ -132,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1612978453
+        Data2: 1232218088
+        Data3: 582865566
+        Data4: 1548327084
+      Path: event:/Enemies/CraneLoyalist/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 25
   _spawnOnWall: 0

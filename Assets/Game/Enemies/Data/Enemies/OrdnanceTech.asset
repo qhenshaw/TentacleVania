@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1152066840
+        Data2: 1331179652
+        Data3: 1220942988
+        Data4: -2016298509
+      Path: event:/Enemies/OrdnanceTech/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1249424239
+        Data2: 1312117832
+        Data3: -1091230555
+        Data4: 636397687
+      Path: event:/Enemies/OrdnanceTech/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Plant Mine
     Kind: 3
     Telegraph: 0
@@ -132,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1249424239
+        Data2: 1312117832
+        Data3: -1091230555
+        Data4: 636397687
+      Path: event:/Enemies/OrdnanceTech/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 20
   _spawnOnWall: 0
@@ -147,6 +149,8 @@ MonoBehaviour:
   _preferredRange: {x: 2.5, y: 3.5}
   _voice: {fileID: 11400000, guid: ff9d1ce840881584a806a0a5dd7e62f7, type: 2}
   _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 04000000i
   _resists: 06000000i
   _healPerSecond: 8

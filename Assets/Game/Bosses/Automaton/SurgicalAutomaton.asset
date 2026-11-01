@@ -81,6 +81,7 @@ MonoBehaviour:
         Data3: 1867868324
         Data4: -463508119
       Path: event:/Bosses/Automaton/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Scalpel Flurry
     Kind: 0
     Telegraph: 0
@@ -137,6 +138,7 @@ MonoBehaviour:
         Data3: 1867868324
         Data4: -463508119
       Path: event:/Bosses/Automaton/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Bone Saw Spin
     Kind: 1
     Telegraph: 0
@@ -193,6 +195,7 @@ MonoBehaviour:
         Data3: 1867868324
         Data4: -463508119
       Path: event:/Bosses/Automaton/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.5
   _biomass: 800
   _spawnOnWall: 0

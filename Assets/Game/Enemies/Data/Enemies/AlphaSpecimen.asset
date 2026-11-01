@@ -58,13 +58,15 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1466671784
+        Data2: 1189981537
+        Data3: -1715029353
+        Data4: -742598290
+      Path: event:/Enemies/AlphaSpecimen/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -74,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1923676824
+        Data2: 1336360614
+        Data3: -1903634777
+        Data4: -1820568739
+      Path: event:/Enemies/AlphaSpecimen/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Rending Claws
     Kind: 0
     Telegraph: 0
@@ -112,13 +115,15 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1466671784
+        Data2: 1189981537
+        Data3: -1715029353
+        Data4: -742598290
+      Path: event:/Enemies/AlphaSpecimen/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -128,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1923676824
+        Data2: 1336360614
+        Data3: -1903634777
+        Data4: -1820568739
+      Path: event:/Enemies/AlphaSpecimen/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 60
   _spawnOnWall: 0
@@ -143,6 +149,8 @@ MonoBehaviour:
   _preferredRange: {x: 5, y: 8}
   _voice: {fileID: 11400000, guid: db0e385cf17ce334f88d2406fd7d6ec9, type: 2}
   _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 04000000i
   _resists: 05000000i
   _healPerSecond: 8

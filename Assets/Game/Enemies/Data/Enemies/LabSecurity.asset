@@ -58,13 +58,15 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -201510693
+        Data2: 1121558200
+        Data3: -1977428335
+        Data4: 300422267
+      Path: event:/Enemies/LabSecurity/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -74,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -976875836
+        Data2: 1160583321
+        Data3: -688293495
+        Data4: 218887934
+      Path: event:/Enemies/LabSecurity/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Tranq shot
     Kind: 2
     Telegraph: 0
@@ -112,13 +115,15 @@ MonoBehaviour:
     LaneWidth: 0.4
     TrapPrefab: {fileID: 0}
     TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -201510693
+        Data2: 1121558200
+        Data3: -1977428335
+        Data4: 300422267
+      Path: event:/Enemies/LabSecurity/WindUp
     StrikeSound:
       Guid:
         Data1: 1851580491
@@ -133,6 +138,7 @@ MonoBehaviour:
         Data3: -1494674289
         Data4: -857803762
       Path: event:/Enemies/LabSecurity/TranqHit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 20
   _spawnOnWall: 0
@@ -143,6 +149,8 @@ MonoBehaviour:
   _preferredRange: {x: 2.5, y: 3.5}
   _voice: {fileID: 11400000, guid: 2763415050dce1743b63182f4007e078, type: 2}
   _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 0300000007000000i
   _resists: 
   _healPerSecond: 8

@@ -141,3 +141,11 @@ MonoBehaviour:
   _tick: 0.25
   _slow: 0.5
   _surface: {fileID: 4264621086861517984}
+  _hurtSound:
+    Guid:
+      Data1: -677717039
+      Data2: 1229483609
+      Data3: 1871318695
+      Data4: -1786778608
+    Path: event:/World/Hazard/Electric
+  _soundInterval: 0.6

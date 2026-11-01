@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1727913261
+        Data2: 1102760622
+        Data3: 223710113
+        Data4: -1526507878
+      Path: event:/Enemies/FlameTrooper/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1995216043
+        Data2: 1095807505
+        Data3: -444960344
+        Data4: 1933861252
+      Path: event:/Enemies/FlameTrooper/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Flamethrower
     Kind: 0
     Telegraph: 0
@@ -118,11 +119,11 @@ MonoBehaviour:
     BurstFuse: 0.8
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1727913261
+        Data2: 1102760622
+        Data3: 223710113
+        Data4: -1526507878
+      Path: event:/Enemies/FlameTrooper/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -132,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1995216043
+        Data2: 1095807505
+        Data3: -444960344
+        Data4: 1933861252
+      Path: event:/Enemies/FlameTrooper/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.12
   _biomass: 40
   _spawnOnWall: 0
@@ -147,6 +149,8 @@ MonoBehaviour:
   _preferredRange: {x: 2, y: 3.5}
   _voice: {fileID: 11400000, guid: 3cdb04f831fe83547ab51799b3dcd21a, type: 2}
   _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 0300000004000000i
   _resists: 
   _healPerSecond: 8

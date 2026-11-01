@@ -21,6 +21,8 @@ namespace TentacleVania.Enemies
         private readonly Dictionary<AcidBurst, Stack<AcidBurst>> _burstPools = new();
         private readonly Dictionary<IceWall, Stack<IceWall>> _wallPools = new();
         private readonly Dictionary<FireZone, Stack<FireZone>> _firePools = new();
+        private readonly Dictionary<UnityEngine.VFX.VisualEffect, UnityEngine.VFX.VisualEffect[]> _strikePools = new();
+        private readonly Dictionary<UnityEngine.VFX.VisualEffect, int> _strikeCursor = new();
 
         public static EnemyManager Instance
         {
@@ -147,6 +149,35 @@ namespace TentacleVania.Enemies
                 burst.Prefab = prefab;
             }
             burst.Arm(position, radius, fuse, info);
+        }
+
+        public static void PrewarmStrike(UnityEngine.VFX.VisualEffect prefab, int count = 4)
+        {
+            var manager = Instance;
+            if (prefab == null || manager._strikePools.ContainsKey(prefab))
+                return;
+            var pool = new UnityEngine.VFX.VisualEffect[count];
+            for (var i = 0; i < count; i++)
+            {
+                pool[i] = Instantiate(prefab, manager.transform);
+                pool[i].gameObject.SetActive(false);
+            }
+            manager._strikePools[prefab] = pool;
+            manager._strikeCursor[prefab] = 0;
+        }
+
+        public static void PlayStrike(UnityEngine.VFX.VisualEffect prefab, Vector3 position, Quaternion rotation)
+        {
+            var manager = Instance;
+            if (prefab == null || !manager._strikePools.TryGetValue(prefab, out var pool))
+                return;
+            var index = manager._strikeCursor[prefab];
+            manager._strikeCursor[prefab] = (index + 1) % pool.Length;
+            var effect = pool[index];
+            effect.transform.SetPositionAndRotation(position, rotation);
+            effect.gameObject.SetActive(true);
+            effect.Reinit();
+            effect.Play();
         }
 
         public static void PrewarmBursts(AcidBurst prefab, int count)

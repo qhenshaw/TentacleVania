@@ -141,3 +141,11 @@ MonoBehaviour:
   _tick: 0.25
   _slow: 0.5
   _surface: {fileID: 8014706120160727683}
+  _hurtSound:
+    Guid:
+      Data1: 1192765845
+      Data2: 1298322273
+      Data3: -1972252764
+      Data4: -1866641993
+    Path: event:/World/Hazard/Acid
+  _soundInterval: 0.6

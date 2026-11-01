@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 1.1
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1294202653
+        Data2: 1082478755
+        Data3: -1917803879
+        Data4: 486184039
+      Path: event:/Enemies/MajorRoss/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -769385438
+        Data2: 1213899786
+        Data3: -943089754
+        Data4: -1838261385
+      Path: event:/Enemies/MajorRoss/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Missile Barrage
     Kind: 3
     Telegraph: 0
@@ -118,11 +119,11 @@ MonoBehaviour:
     BurstFuse: 1.1
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1294202653
+        Data2: 1082478755
+        Data3: -1917803879
+        Data4: 486184039
+      Path: event:/Enemies/MajorRoss/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -132,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -769385438
+        Data2: 1213899786
+        Data3: -943089754
+        Data4: -1838261385
+      Path: event:/Enemies/MajorRoss/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Stomp
     Kind: 1
     Telegraph: 0
@@ -174,11 +176,11 @@ MonoBehaviour:
     BurstFuse: 1.1
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1294202653
+        Data2: 1082478755
+        Data3: -1917803879
+        Data4: 486184039
+      Path: event:/Enemies/MajorRoss/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -188,11 +190,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -769385438
+        Data2: 1213899786
+        Data3: -943089754
+        Data4: -1838261385
+      Path: event:/Enemies/MajorRoss/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Rifle
     Kind: 2
     Telegraph: 0
@@ -230,11 +233,11 @@ MonoBehaviour:
     BurstFuse: 1.1
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1294202653
+        Data2: 1082478755
+        Data3: -1917803879
+        Data4: 486184039
+      Path: event:/Enemies/MajorRoss/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -244,11 +247,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -769385438
+        Data2: 1213899786
+        Data3: -943089754
+        Data4: -1838261385
+      Path: event:/Enemies/MajorRoss/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Grenade
     Kind: 3
     Telegraph: 0
@@ -286,11 +290,11 @@ MonoBehaviour:
     BurstFuse: 1.1
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1294202653
+        Data2: 1082478755
+        Data3: -1917803879
+        Data4: 486184039
+      Path: event:/Enemies/MajorRoss/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -300,11 +304,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -769385438
+        Data2: 1213899786
+        Data3: -943089754
+        Data4: -1838261385
+      Path: event:/Enemies/MajorRoss/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.5
   _biomass: 2000
   _spawnOnWall: 0

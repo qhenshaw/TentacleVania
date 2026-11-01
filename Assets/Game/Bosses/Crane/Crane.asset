@@ -62,11 +62,11 @@ MonoBehaviour:
     BurstFuse: 0.9
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1366737068
+        Data2: 1337270380
+        Data3: 1820307595
+        Data4: 836582879
+      Path: event:/Enemies/Crane/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -76,11 +76,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1079995248
+        Data2: 1252211008
+        Data3: -1350401388
+        Data4: 1460627523
+      Path: event:/Enemies/Crane/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Sedative Mist
     Kind: 3
     Telegraph: 0
@@ -118,11 +119,11 @@ MonoBehaviour:
     BurstFuse: 0.9
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1366737068
+        Data2: 1337270380
+        Data3: 1820307595
+        Data4: 836582879
+      Path: event:/Enemies/Crane/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -132,11 +133,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1079995248
+        Data2: 1252211008
+        Data3: -1350401388
+        Data4: 1460627523
+      Path: event:/Enemies/Crane/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Tissue Eruptions
     Kind: 3
     Telegraph: 0
@@ -174,11 +176,11 @@ MonoBehaviour:
     BurstFuse: 0.9
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1366737068
+        Data2: 1337270380
+        Data3: 1820307595
+        Data4: 836582879
+      Path: event:/Enemies/Crane/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -188,11 +190,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1079995248
+        Data2: 1252211008
+        Data3: -1350401388
+        Data4: 1460627523
+      Path: event:/Enemies/Crane/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   - Name: Mirror Tendrils
     Kind: 0
     Telegraph: 0
@@ -230,11 +233,11 @@ MonoBehaviour:
     BurstFuse: 0.9
     WindUpSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1366737068
+        Data2: 1337270380
+        Data3: 1820307595
+        Data4: 836582879
+      Path: event:/Enemies/Crane/WindUp
     StrikeSound:
       Guid:
         Data1: 0
@@ -244,11 +247,12 @@ MonoBehaviour:
       Path: 
     HitSound:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1079995248
+        Data2: 1252211008
+        Data3: -1350401388
+        Data4: 1460627523
+      Path: event:/Enemies/Crane/Hit
+    StrikeVfx: {fileID: 4399293694960389373, guid: 195c10c86cbcd6749b4aed4fcfa51a30, type: 3}
   _consumeHeal: 0.5
   _biomass: 0
   _spawnOnWall: 0

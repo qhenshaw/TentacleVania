@@ -105,6 +105,9 @@ namespace TentacleVania.Enemies
             _agent.updateRotation = false;
             _agent.autoBraking = true;
             _readyAt = new float[_definition.Attacks.Count];
+            foreach (var attack in _definition.Attacks)
+                if (attack.StrikeVfx != null)
+                    EnemyManager.PrewarmStrike(attack.StrikeVfx);
             var curve = Core.Progression.DifficultyCurve.Current;
             _depthHealth = IsBoss ? 1f : curve.Health;
             _health.Configure(Team.Site, _definition.MaxHealth * _depthHealth, _definition.MaxArmor);
@@ -391,6 +394,8 @@ namespace TentacleVania.Enemies
                         _lastSweepT = 0f;
                         _hitIndex = 0;
                         PlaySound(attack.StrikeSound);
+                        if (attack.StrikeVfx != null)
+                            EnemyManager.PlayStrike(attack.StrikeVfx, transform.position + Vector3.up, transform.rotation);
                         OnActiveStart(attack);
                     }
                     var activeProgress = AttackMath.ActiveProgress(attack, elapsed);
