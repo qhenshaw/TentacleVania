@@ -41,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/CommandCenter/CommandCenter.unity
     guid: a5d196414d884d44692a09f5c3496b3f
+  - enabled: 1
+    path: Assets/Game/Scenes/DeepContainment/DeepContainment.unity
+    guid: c121802fd3db67048b0d436760e5278c
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 8ca36ceef821b4e4ea040b572adefb5c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

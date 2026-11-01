@@ -1071,6 +1071,10 @@ MonoBehaviour:
     m_Key: boss.excavatorRig
     m_Metadata:
       m_Items: []
+  - m_Id: 932871331921920
+    m_Key: trinket.DistressBeacon.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
