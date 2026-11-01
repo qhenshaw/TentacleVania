@@ -87,6 +87,14 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - **Room hacking (design core mechanic):** the core never attacks. Every cycle it reconfigures for 7 s with the `Shell` closed (a `CoreShell` incoming modifier zeroes all damage; FMOD `event:/Bosses/Overwatch/Reconfigure`): 3 security walls rise on a 5 m ring around it (skipped where the creature stands) for the cycle, the previous Sentry Guns are removed and 2 (3 from phase 2) deploy at new spots on an 8 m ring. Then the shell opens for 4 s (`event:/Bosses/Overwatch/CoreOpen`), the only time it takes damage.
 - **Phases:** 100% Security Drone adds (1 on start, max 2, every 14 s); ≤66% Security Guard adds and 3 laser wedges (8° × 13 m from the core, 1.2 s warning, 3 s, 20/s Electric) each reconfiguration; ≤33% Security Drone adds (max 3, every 12 s) and one Assault Mech joins.
 
+## Excavator Rig (`ExcavatorRig/`; design: Excavator Rig page, TV-196; placeholder numbers)
+
+- **Assets:** `ExcavatorRig.prefab` (`ExcavatorBoss : BossEnemy`; the test boss body ×1.4 in yellow with a steel `Drill` and an orange `ExposedEngine` block on its back, hidden until the drop), data `ExcavatorRig.asset`, boss data `ExcavatorRigBoss.asset` (id `DC/ExcavatorRig`, key `boss.excavatorRig`, reward `Burrow`), voice set `ExcavatorRigVoice`; `SurfaceBurst.prefab` (a pool-less `AcidBurst`) and `CollapsePit.prefab` (a Physical `FireZone`).
+- **Numbers:** 3,800 HP, stagger 1,800 with a 3 s window, 3.6 m/s, machine.
+- **Burrow & surface (phase 1, design core mechanic):** surfaced for 7 s, then it sinks (`Model` drops 3 m over 0.7 s, FMOD `event:/Bosses/Excavator/Rumble`; all damage ignored until it rises), shows a 2.5 m circle under the creature for 1.3 s, bursts up there (26) and rises. Each dive leaves a 1.8 m collapse pit where it went down (20/s Physical hazard, up to 6), shrinking the arena.
+- **Attacks (yellow):** Drill Jab (60° at 3 m, 18); Drill Sweep (240° at 3.5 m, 2 × 14; phase 2).
+- **Phase 2 (≤50%), drop down:** the floor gives way (greybox stand-in: the pits clear, FMOD `event:/Bosses/Excavator/Collapse`, a 2.5 s stun); it no longer burrows, and hits from within 120° behind it deal ×1.75 to the exposed engine. Adds: Dig Crew (max 2, every 15 s), then Security Drones as maintenance drones (1 on start, max 2).
+
 ## Surgical Automaton (`Automaton/`; design: Surgical Automaton page and Changelog "Surgical Automaton fight")
 
 - **Assets:** `SurgicalAutomaton.prefab` (`SurgicalAutomaton : BossEnemy`; the test boss's Handler body ×1.6 in steel as placeholder), enemy data `SurgicalAutomaton.asset` and boss data `AutomatonBoss.asset` (id `BL/SurgicalAutomaton`, matching the PA script; the shared boss theme; reward `TentacleGrapple`, which unlocks Grapple without taking the slot).
