@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: HazmatVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 864302184
+      Data2: 1189159726
+      Data3: -663826026
+      Data4: -1238215769
+    Path: 
+  _pain:
+    Guid:
+      Data1: -864960319
+      Data2: 1230663300
+      Data3: -809217861
+      Data4: -1783836595
+    Path: 
+  _death:
+    Guid:
+      Data1: -1453916812
+      Data2: 1225397480
+      Data3: 592159910
+      Data4: 1666873440
+    Path: 
+  _grabbed:
+    Guid:
+      Data1: 999675446
+      Data2: 1322699122
+      Data3: -414906947
+      Data4: -1776936841
+    Path: 
+  _attack:
+    Guid:
+      Data1: 723478491
+      Data2: 1323339774
+      Data3: 1027737504
+      Data4: -323996632
+    Path: 
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

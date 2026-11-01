@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: WardenVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 302382017
+      Data2: 1118912853
+      Data3: -503533164
+      Data4: 433546218
+    Path: 
+  _pain:
+    Guid:
+      Data1: -301521591
+      Data2: 1180594538
+      Data3: 1067645320
+      Data4: 1004963512
+    Path: 
+  _death:
+    Guid:
+      Data1: -1668029988
+      Data2: 1342165629
+      Data3: 1406240699
+      Data4: 2020831644
+    Path: 
+  _grabbed:
+    Guid:
+      Data1: -953286738
+      Data2: 1149576653
+      Data3: 418054811
+      Data4: -2063833598
+    Path: 
+  _attack:
+    Guid:
+      Data1: 1256271476
+      Data2: 1233769847
+      Data3: -103647840
+      Data4: 204113037
+    Path: 
+  _stagger:
+    Guid:
+      Data1: -209355506
+      Data2: 1167012083
+      Data3: -402714714
+      Data4: -608972889
+    Path: 
+  _painCooldown: 1.2

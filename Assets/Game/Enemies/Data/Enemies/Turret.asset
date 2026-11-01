@@ -87,7 +87,7 @@ MonoBehaviour:
   _fleeDistance: 6
   _corneredDistance: 1.2
   _preferredRange: {x: 2.5, y: 3.5}
-  _voice: {fileID: 11400000, guid: 7c638bbfa4e1d044282777c5e96bb250, type: 2}
+  _voice: {fileID: 11400000, guid: 3759fb4d381304f47ac3d6e09ce84dfb, type: 2}
   _machine: 1
   _healPerSecond: 8
   _healRange: 6

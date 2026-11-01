@@ -4,20 +4,25 @@
 # refreshes FMOD's event list in the open Unity Editor. FMOD Studio must not have the project open.
 #
 # Usage: Tools/FMOD/fmod-placeholder.sh <event:/Path/Name> [--type blip|impact|whoosh|loop] [--bank Master] [--no-build]
+#        Tools/FMOD/fmod-placeholder.sh <event:/Path/Name> --voice alert|pain|death|grabbed|attack|stagger|idle|feed|hiss --pitch <Hz> [--machine] ...
 #   --type      blip (default, UI and pickups), impact (hits, explosions), whoosh (dashes, swings), loop (engines, beams;
 #               the event loops until stopped)
 #   --no-build  skip the bank build, e.g. when adding several events in a row; build with the last one
+#   --voice     a vocalization: a harmonic tone (or a square buzz with --machine) with a pitch contour per moment, at --pitch Hz
 # Exits 0 on success, 1 when the event or build failed, 2 for bad arguments or when FMOD Studio is open.
 
 set -u
 cd "$(dirname "$0")/../.."
 
-event="" type=blip bank=Master build=true
+event="" type=blip bank=Master build=true shape="" pitch=220 timbre=organic
 while (( $# )); do
     case "$1" in
         --type) type="$2"; shift ;;
         --bank) bank="$2"; shift ;;
         --no-build) build=false ;;
+        --voice) type=voice; shape="$2"; shift ;;
+        --pitch) pitch="$2"; shift ;;
+        --machine) timbre=machine ;;
         event:/*) event="$1" ;;
         *) echo "Unknown option: $1"; exit 2 ;;
     esac
@@ -28,7 +33,7 @@ if [[ ! "$event" =~ ^event:/[A-Za-z0-9_\ /-]+$ ]]; then
     echo "Usage: Tools/FMOD/fmod-placeholder.sh <event:/Path/Name> [--type blip|impact|whoosh|loop] [--bank Master] [--no-build]"
     exit 2
 fi
-case "$type" in blip|impact|whoosh|loop) ;; *) echo "Unknown type: $type"; exit 2 ;; esac
+case "$type" in blip|impact|whoosh|loop|voice) ;; *) echo "Unknown type: $type"; exit 2 ;; esac
 if tasklist 2>/dev/null | grep -qi "^FMOD Studio.exe"; then
     echo "FMOD Studio is running. Close it first so it doesn't overwrite the changes."
     exit 2
@@ -48,7 +53,11 @@ if [[ -e "$audio" ]]; then
     exit 1
 fi
 mkdir -p "$(dirname "$audio")" Temp
-python -I Tools/FMOD/placeholder_sound.py "$type" "$audio" || exit 1
+if [[ "$type" == voice ]]; then
+    python -I Tools/FMOD/placeholder_sound.py voice "$audio" "$shape" "$pitch" "$timbre" || exit 1
+else
+    python -I Tools/FMOD/placeholder_sound.py "$type" "$audio" || exit 1
+fi
 
 loop=false
 [[ "$type" == loop ]] && loop=true

@@ -43,6 +43,12 @@ namespace TentacleVania.Creature
                 ? $"{Core.Progression.Biomass.Carried} carried, {Core.Progression.Biomass.DropAmount} dropped in {Core.Progression.Biomass.DropScene}"
                 : $"{Core.Progression.Biomass.Carried} carried");
             DebugMenu.Button(tab, "Add 100 biomass", () => Core.Progression.Biomass.Add(100));
+            DebugMenu.Toggle(tab, "Creature voice", () => CreatureVoice.Enabled, v => CreatureVoice.Enabled = v);
+            DebugMenu.Value(tab, "Creature voice played", () =>
+            {
+                var voice = Health != null ? Health.GetComponent<CreatureVoice>() : null;
+                return voice != null ? voice.Played.ToString() : "-";
+            });
             DebugMenu.Toggle(tab, "Kill biomass orbs", () => Biomass.BiomassOrbs.Enabled, v => Biomass.BiomassOrbs.Enabled = v);
             DebugMenu.Value(tab, "Kill orbs", () =>
             {

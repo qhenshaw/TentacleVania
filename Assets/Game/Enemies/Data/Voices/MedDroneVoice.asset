@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: MedDroneVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 1498709317
+      Data2: 1236108831
+      Data3: -76454769
+      Data4: 1090982987
+    Path: 
+  _pain:
+    Guid:
+      Data1: 1995692745
+      Data2: 1277628291
+      Data3: 1590311079
+      Data4: 1647573574
+    Path: 
+  _death:
+    Guid:
+      Data1: 1191595721
+      Data2: 1146612014
+      Data3: 1373009067
+      Data4: 1079250792
+    Path: 
+  _grabbed:
+    Guid:
+      Data1: 2115074393
+      Data2: 1227272612
+      Data3: -1850708803
+      Data4: -1922046014
+    Path: 
+  _attack:
+    Guid:
+      Data1: -1441052956
+      Data2: 1234651510
+      Data3: -1470025569
+      Data4: -54270440
+    Path: 
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

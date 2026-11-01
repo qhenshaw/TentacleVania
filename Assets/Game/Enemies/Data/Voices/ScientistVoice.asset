@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: ScientistVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 1879224429
+      Data2: 1315554492
+      Data3: 889732995
+      Data4: -1707103451
+    Path: 
+  _pain:
+    Guid:
+      Data1: -78803225
+      Data2: 1157757574
+      Data3: -899481419
+      Data4: 1966840691
+    Path: 
+  _death:
+    Guid:
+      Data1: 1744209105
+      Data2: 1170774430
+      Data3: -2104126560
+      Data4: 2117219667
+    Path: 
+  _grabbed:
+    Guid:
+      Data1: -1953747784
+      Data2: 1190368721
+      Data3: -859839593
+      Data4: -1795452581
+    Path: 
+  _attack:
+    Guid:
+      Data1: 1733436439
+      Data2: 1274452522
+      Data3: -1991149940
+      Data4: -1954718840
+    Path: 
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

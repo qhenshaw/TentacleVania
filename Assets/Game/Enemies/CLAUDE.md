@@ -33,7 +33,7 @@ New enemy prefabs are built from the TestBrute layout by an eval (replace the `E
 
 ## Voices
 
-- `EnemyDefinition._voice` points at an `Data/EnemyVoice` asset (`Data/Voices/HumanVoice`, `MachineVoice`; every slice enemy and both bosses have one): Alert when the enemy first leaves Spawning, Pain on health damage (per-enemy `_painCooldown`, 1.2 s), Death (not when consumed) and Grabbed on the maw's grab. Placeholder FMOD events `event:/Enemies/Voice/Human|Machine/Alert|Pain|Death|Grabbed`.
+- `EnemyDefinition._voice` points at an `Data/EnemyVoice` asset, one set per type (developer decision): `ScientistVoice`, `GuardVoice` (Security Guard and Lab Security), `HandlerVoice`, `HazmatVoice`, `SurgeonVoice`, `TurretVoice`, `MedDroneVoice`, `WardenVoice` and `AutomatonVoice`. The shared `HumanVoice` and `MachineVoice` remain for the debug enemies. Each set has Alert (first leaving Spawning), Pain (per-enemy `_painCooldown`, 1.2 s), Death (not when consumed), Grabbed (the maw's grab), Attack (every attack wind-up) and Stagger (stagger break; bosses only). Placeholder FMOD events `event:/Enemies/Voice/<Type>/<Moment>` are synth voices pitched per type (machines buzz).
 - All go through `EnemyVoices.Play`, which caps voices at 3 per 0.6 s (`VoiceLimiter`, unit tested); death and grabbed are important and always play. F5 Enemies: Enemy voices on/off, Voices played / dropped.
 
 ## Placeholder bodies and animation
