@@ -617,15 +617,45 @@ MonoBehaviour:
     Room: BA_EntryNest
     Position: {x: 7.5, y: 0, z: 118.2}
     Yaw: 180
+  - Kind: 7
+    Id: BA/Auto-BA_A3
+    Room: BA_EntryNest
+    Position: {x: 4.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BA/Auto-BA_A6
+    Room: BA_EntryNest
+    Position: {x: 19.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BA/Auto-BA_Quartermaster
+    Room: BA_EntryNest
+    Position: {x: 19.5, y: 0, z: 121.5}
+    Yaw: 0
   - Kind: 1
     Id: BA/A3
     Room: BA_A3
     Position: {x: 90, y: 0, z: 90}
     Yaw: 0
+  - Kind: 7
+    Id: BA/Auto-BA_A3
+    Room: BA_A3
+    Position: {x: 73.5, y: 0, z: 73.5}
+    Yaw: 0
+  - Kind: 3
+    Id: MapGate
+    Room: BA_A4
+    Position: {x: -6, y: 0, z: 46.5}
+    Yaw: 0
   - Kind: 1
     Id: BA/A5
     Room: BA_A5
     Position: {x: 54, y: 0, z: 54}
+    Yaw: 0
+  - Kind: 7
+    Id: BA/Auto-BA_A6
+    Room: BA_A6
+    Position: {x: 73.5, y: 0, z: 37.5}
     Yaw: 0
   - Kind: 1
     Id: BA/A7
@@ -653,7 +683,12 @@ MonoBehaviour:
     Position: {x: 115.5, y: 0, z: 46.5}
     Yaw: 0
   - Kind: 5
-    Id: BA_Stockroom/ArcTendrilsSpot
+    Id: BA_Quartermaster/Shatterpoint
+    Room: BA_Quartermaster
+    Position: {x: 120, y: 0, z: 51}
+    Yaw: 0
+  - Kind: 5
+    Id: BA_Stockroom/ArcTendrils
     Room: BA_Stockroom
     Position: {x: -22.5, y: 0, z: 46.5}
     Yaw: 0

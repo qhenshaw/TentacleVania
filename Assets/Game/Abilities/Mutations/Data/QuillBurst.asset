@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915f76bc1d1f469448cb9b29b0475521, type: 3}
+  m_Name: QuillBurst
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.QuillBurstMutation
+  _textKey: mutation.quillBurst
+  _notches: 2
+  _radius: 3.5
+  _damage: 8
+  _cooldown: 1.5
+  _sound:
+    Guid:
+      Data1: -471751845
+      Data2: 1306873844
+      Data3: 587843519
+      Data4: -1969196425
+    Path: event:/Mutations/QuillBurst

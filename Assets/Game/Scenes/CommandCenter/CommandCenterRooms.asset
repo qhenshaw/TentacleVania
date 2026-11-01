@@ -617,15 +617,40 @@ MonoBehaviour:
     Room: CC_EntryNest
     Position: {x: 16.5, y: 0, z: 118.2}
     Yaw: 180
+  - Kind: 7
+    Id: CC/Auto-CC_A3
+    Room: CC_EntryNest
+    Position: {x: 4.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: CC/Auto-CC_A6
+    Room: CC_EntryNest
+    Position: {x: 4.5, y: 0, z: 121.5}
+    Yaw: 0
+  - Kind: 7
+    Id: CC/Auto-CC_ServerRoom
+    Room: CC_EntryNest
+    Position: {x: 19.5, y: 0, z: 109.5}
+    Yaw: 0
   - Kind: 1
     Id: CC/A3
     Room: CC_A3
     Position: {x: 90, y: 0, z: 90}
     Yaw: 0
+  - Kind: 7
+    Id: CC/Auto-CC_A3
+    Room: CC_A3
+    Position: {x: 73.5, y: 0, z: 73.5}
+    Yaw: 0
   - Kind: 1
     Id: CC/A5
     Room: CC_A5
     Position: {x: 54, y: 0, z: 54}
+    Yaw: 0
+  - Kind: 7
+    Id: CC/Auto-CC_A6
+    Room: CC_A6
+    Position: {x: 73.5, y: 0, z: 37.5}
     Yaw: 0
   - Kind: 1
     Id: CC/A7
@@ -651,6 +676,11 @@ MonoBehaviour:
     Id: CC_ServerRoom/MutagenPickup
     Room: CC_ServerRoom
     Position: {x: 115.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 5
+    Id: CC_ServerRoom/Aftershock
+    Room: CC_ServerRoom
+    Position: {x: 120, y: 0, z: 51}
     Yaw: 0
   - Kind: 5
     Id: CC_TitanBay/BiomassCache

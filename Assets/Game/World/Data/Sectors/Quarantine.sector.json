@@ -963,6 +963,17 @@
             38
           ],
           "yaw": 0
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            16.5,
+            38.5
+          ],
+          "yaw": 0,
+          "name": "QuillBurst",
+          "itemId": "QuillBurst"
         }
       ]
     },

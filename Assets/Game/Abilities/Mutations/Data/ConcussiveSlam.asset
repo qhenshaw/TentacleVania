@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16dead615385ae64dba0d03c6d515c33, type: 3}
+  m_Name: ConcussiveSlam
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.ConcussiveSlamMutation
+  _textKey: mutation.concussiveSlam
+  _notches: 3
+  _radius: 4
+  _damage: 5
+  _stagger: 40
+  _sound:
+    Guid:
+      Data1: -2012888021
+      Data2: 1291777053
+      Data3: 203913863
+      Data4: -638349921
+    Path: event:/Mutations/ConcussiveSlam

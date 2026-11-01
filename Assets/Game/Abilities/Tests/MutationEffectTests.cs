@@ -20,7 +20,7 @@ namespace TentacleVania.Abilities.Tests
             var motor = _creature.AddComponent<CreatureMotor>();
             var consume = _creature.AddComponent<CreatureConsume>();
             var grapple = _creature.AddComponent<TentacleGrapple>();
-            _host = new(motor, consume, grapple);
+            _host = new(motor, consume, grapple, _creature.AddComponent<TentacleVania.Combat.Health>());
         }
 
         [TearDown]
@@ -68,6 +68,61 @@ namespace TentacleVania.Abilities.Tests
             effect.Disable(_host);
             Assert.That(_host.Consume.NextConsumeSpeed, Is.EqualTo(1f));
             Assert.That(_host.Consume.NextHealScale, Is.EqualTo(1f));
+        }
+
+        [Test]
+        public void ShatterpointLengthensStunAndRaisesStunnedDamage()
+        {
+            var effect = Make<ShatterpointMutation>().CreateEffect();
+            effect.Enable(_host);
+            Assert.That(Combat.StaggerRules.ExtraStun, Is.EqualTo(1f).Within(1e-4f));
+            Assert.That(Combat.StaggerRules.WindowDamageScale, Is.EqualTo(1.3f).Within(1e-4f));
+            effect.Disable(_host);
+            Assert.That(Combat.StaggerRules.ExtraStun, Is.EqualTo(0f).Within(1e-4f));
+            Assert.That(Combat.StaggerRules.WindowDamageScale, Is.EqualTo(1f).Within(1e-4f));
+        }
+
+        [Test]
+        public void MeltingPointSpeedsCorrodedStagger()
+        {
+            var effect = Make<MeltingPointMutation>().CreateEffect();
+            effect.Enable(_host);
+            Assert.That(Combat.StaggerRules.CorrodedScale, Is.EqualTo(1.5f).Within(1e-4f));
+            effect.Disable(_host);
+            Assert.That(Combat.StaggerRules.CorrodedScale, Is.EqualTo(1f).Within(1e-4f));
+        }
+
+        [Test]
+        public void CrushingCoilsAddsAnOutgoingModifier()
+        {
+            var before = _host.Health.Outgoing.Count;
+            var effect = Make<CrushingCoilsMutation>().CreateEffect();
+            effect.Enable(_host);
+            Assert.That(_host.Health.Outgoing.Count, Is.EqualTo(before + 1));
+            effect.Disable(_host);
+            Assert.That(_host.Health.Outgoing.Count, Is.EqualTo(before));
+        }
+
+        [Test]
+        public void ThornsDamageTheAttackerAndJaggedRecoilAddsStagger()
+        {
+            var attacker = new GameObject("ThornsAttacker").AddComponent<Combat.Health>();
+            try
+            {
+                _host.Health.Configure(Combat.Damage.Team.Creature, 100f);
+                attacker.Configure(Combat.Damage.Team.Site, 100f);
+                MutationStrikes.Thorns(_host.Health, attacker, 6f);
+                Assert.That(attacker.Current, Is.EqualTo(94f).Within(1e-3f));
+                var effect = Make<JaggedRecoilMutation>().CreateEffect();
+                effect.Enable(_host);
+                Assert.That(MutationStrikes.ThornsStaggerScale, Is.EqualTo(1.5f).Within(1e-4f));
+                effect.Disable(_host);
+                Assert.That(MutationStrikes.ThornsStaggerScale, Is.EqualTo(0f));
+            }
+            finally
+            {
+                Object.DestroyImmediate(attacker.gameObject);
+            }
         }
     }
 }

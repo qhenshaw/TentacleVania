@@ -1299,6 +1299,82 @@ MonoBehaviour:
     m_Key: modifier.endlessRicochet.effect
     m_Metadata:
       m_Items: []
+  - m_Id: 964165914869760
+    m_Key: mutation.shatterpoint.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964165956812800
+    m_Key: mutation.shatterpoint.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964391157383168
+    m_Key: mutation.crushingCoils.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964391165771776
+    m_Key: mutation.crushingCoils.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964614206275584
+    m_Key: mutation.concussiveSlam.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964614214664192
+    m_Key: mutation.concussiveSlam.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964838609928192
+    m_Key: mutation.aftershock.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 964838622511104
+    m_Key: mutation.aftershock.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965065135898624
+    m_Key: mutation.hemorrhage.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965065148481536
+    m_Key: mutation.hemorrhage.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965289392750592
+    m_Key: mutation.meltingPoint.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965289401139200
+    m_Key: mutation.meltingPoint.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965508255727616
+    m_Key: mutation.barbedHide.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965508264116224
+    m_Key: mutation.barbedHide.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965729157136384
+    m_Key: mutation.retaliationPlating.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965949551034368
+    m_Key: mutation.quillBurst.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 965949563617280
+    m_Key: mutation.quillBurst.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 966170255310848
+    m_Key: mutation.jaggedRecoil.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 966170259505152
+    m_Key: mutation.jaggedRecoil.effect
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

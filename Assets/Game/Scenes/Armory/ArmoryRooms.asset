@@ -706,10 +706,30 @@ MonoBehaviour:
     Room: AR_EntryNest
     Position: {x: 12, y: 0, z: 118.2}
     Yaw: 180
+  - Kind: 7
+    Id: AR/Auto-AR_A3
+    Room: AR_EntryNest
+    Position: {x: 4.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: AR/Auto-AR_A7
+    Room: AR_EntryNest
+    Position: {x: 4.5, y: 0, z: 121.5}
+    Yaw: 0
+  - Kind: 7
+    Id: AR/Auto-AR_R1
+    Room: AR_EntryNest
+    Position: {x: 19.5, y: 0, z: 109.5}
+    Yaw: 0
   - Kind: 1
     Id: AR/A3
     Room: AR_A3
     Position: {x: 90, y: 0, z: 76.5}
+    Yaw: 0
+  - Kind: 7
+    Id: AR/Auto-AR_A3
+    Room: AR_A3
+    Position: {x: 73.5, y: 0, z: 73.5}
     Yaw: 0
   - Kind: 3
     Id: MapGate
@@ -725,6 +745,11 @@ MonoBehaviour:
     Id: AR/A7
     Room: AR_A7
     Position: {x: 4.5, y: 0, z: 4.5}
+    Yaw: 0
+  - Kind: 7
+    Id: AR/Auto-AR_A7
+    Room: AR_A7
+    Position: {x: 1.5, y: 0, z: 1.5}
     Yaw: 0
   - Kind: 1
     Id: AR/A9
@@ -747,12 +772,17 @@ MonoBehaviour:
     Position: {x: 46.5, y: 0, z: 115.5}
     Yaw: 0
   - Kind: 5
+    Id: AR_R1/JaggedRecoil
+    Room: AR_R1
+    Position: {x: 51, y: 0, z: 117}
+    Yaw: 0
+  - Kind: 5
     Id: AR_R2/MutagenPickup
     Room: AR_R2
     Position: {x: -19.5, y: 0, z: 46.5}
     Yaw: 0
   - Kind: 5
-    Id: AR_R3/FlameGlandSpot
+    Id: AR_R3/FlameGland
     Room: AR_R3
     Position: {x: 46.5, y: 0, z: -19.5}
     Yaw: 0

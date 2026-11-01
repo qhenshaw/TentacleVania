@@ -7,12 +7,15 @@ namespace TentacleVania.Abilities.Mutations
 {
     public sealed class MutationHost
     {
-        public MutationHost(CreatureMotor motor, CreatureConsume consume, TentacleGrapple grapple)
+        public MutationHost(CreatureMotor motor, CreatureConsume consume, TentacleGrapple grapple, Combat.Health health)
         {
             Motor = motor;
             Consume = consume;
             Grapple = grapple;
+            Health = health;
         }
+
+        public Combat.Health Health { get; }
 
         public CreatureMotor Motor { get; }
         public CreatureConsume Consume { get; }

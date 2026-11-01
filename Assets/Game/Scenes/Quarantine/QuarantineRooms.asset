@@ -617,10 +617,30 @@ MonoBehaviour:
     Room: QU_EntryNest
     Position: {x: 13.5, y: 0, z: 119.7}
     Yaw: 180
+  - Kind: 7
+    Id: QU/Auto-QU_A3
+    Room: QU_EntryNest
+    Position: {x: 4.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: QU/Auto-QU_A6
+    Room: QU_EntryNest
+    Position: {x: 4.5, y: 0, z: 121.5}
+    Yaw: 0
+  - Kind: 7
+    Id: QU/Auto-QU_VentShaft
+    Room: QU_EntryNest
+    Position: {x: 19.5, y: 0, z: 109.5}
+    Yaw: 0
   - Kind: 1
     Id: QU/A3
     Room: QU_A3
     Position: {x: 90, y: 0, z: 90}
+    Yaw: 0
+  - Kind: 7
+    Id: QU/Auto-QU_A3
+    Room: QU_A3
+    Position: {x: 73.5, y: 0, z: 73.5}
     Yaw: 0
   - Kind: 3
     Id: MapGate
@@ -631,6 +651,11 @@ MonoBehaviour:
     Id: QU/A5
     Room: QU_A5
     Position: {x: 54, y: 0, z: 54}
+    Yaw: 0
+  - Kind: 7
+    Id: QU/Auto-QU_A6
+    Room: QU_A6
+    Position: {x: 73.5, y: 0, z: 37.5}
     Yaw: 0
   - Kind: 1
     Id: QU/A7
@@ -653,9 +678,19 @@ MonoBehaviour:
     Position: {x: 46.5, y: 0, z: 115.5}
     Yaw: 0
   - Kind: 5
+    Id: QU_R1/QuillBurst
+    Room: QU_R1
+    Position: {x: 51, y: 0, z: 117}
+    Yaw: 0
+  - Kind: 5
     Id: QU_VentShaft/BiomassCache
     Room: QU_VentShaft
     Position: {x: 115.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 7
+    Id: QU/Auto-QU_VentShaft
+    Room: QU_VentShaft
+    Position: {x: 109.5, y: 0, z: 40.5}
     Yaw: 0
   - Kind: 5
     Id: QU_Incinerator/BiomassCache
