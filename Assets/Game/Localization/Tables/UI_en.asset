@@ -1010,6 +1010,22 @@ MonoBehaviour:
     m_Localized: FREIGHT CRATE
     m_Metadata:
       m_Items: []
+  - m_Id: 816425612361728
+    m_Localized: Sealed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816425658499072
+    m_Localized: Enter the transit corridor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816425658499073
+    m_Localized: Transit corridor (locked)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816425658499074
+    m_Localized: TRANSIT CORRIDOR
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

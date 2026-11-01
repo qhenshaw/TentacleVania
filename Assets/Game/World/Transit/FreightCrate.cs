@@ -34,7 +34,8 @@ namespace TentacleVania.World.Transit
         public string DestinationScene => _destinationScene;
         public Vector3 Position => transform.position;
         public float Radius => _radius;
-        public string PromptKey => Cleared ? RidePromptKey : LockedPromptKey;
+        public bool Reachable => !string.IsNullOrEmpty(_destinationScene) && Application.CanStreamedLevelBeLoaded(_destinationScene);
+        public string PromptKey => !Reachable ? SectorElevator.SealedPromptKey : Cleared ? RidePromptKey : LockedPromptKey;
         public bool CanInteract => isActiveAndEnabled && !string.IsNullOrEmpty(_destinationScene);
 
         private void OnEnable()
@@ -62,7 +63,7 @@ namespace TentacleVania.World.Transit
 
         public bool Ride()
         {
-            if (!Cleared || !FastTravel.Transit(_destinationScene, _arrivalPosition, _arrivalYaw, TravelKind.Freight))
+            if (!Cleared || !Reachable || !FastTravel.Transit(_destinationScene, _arrivalPosition, _arrivalYaw, TravelKind.Freight))
                 return false;
             if (!_rideSound.IsNull)
                 RuntimeManager.PlayOneShot(_rideSound, transform.position);

@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/CombatArena.unity
     guid: 0edb014f4b9f7cd44b232e1f7a0ebbfd
+  - enabled: 1
+    path: Assets/Game/Scenes/Administration/Administration.unity
+    guid: 77e5dd773ff6161418192e1cb8950baa
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 8ca36ceef821b4e4ea040b572adefb5c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

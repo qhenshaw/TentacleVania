@@ -1,0 +1,148 @@
+{
+  "sector": "AD",
+  "rootScene": "Administration",
+  "folder": "Assets/Game/Scenes/Administration",
+  "addressablesGroup": "Administration",
+  "color": [0.85, 0.65, 0.3, 1],
+  "spawn": [3.5, 38.5],
+  "spawnYaw": 180,
+  "rooms": [
+    {
+      "scene": "AD_EntryNest", "role": "Plain", "rect": [1, 36, 6, 5],
+      "halls": [[[3, 35], [3, 31]]],
+      "doors": [{ "x": 3, "y": 31, "side": "South" }],
+      "place": [
+        { "type": "nest", "id": "AD/EntryNest", "at": [5, 39], "yaw": 180 },
+        { "type": "transit", "at": [1.6, 38.5], "yaw": 90, "destination": "SpecimenHolding", "arrivalAt": [26.5, 5.4], "arrivalOffset": [0, 0, -1.5], "arrivalYaw": 180, "requiredBoss": "SH/WardenDrone", "name": "Transit_SH" },
+        { "type": "transit", "at": [6.4, 38.5], "yaw": 270, "destination": "Quarantine", "arrivalAt": [3.5, 38.5], "arrivalYaw": 180, "requiredBoss": "", "requiredAbility": "TentacleGrapple", "name": "Transit_QU" }
+      ]
+    },
+    {
+      "scene": "AD_A1", "role": "Arena", "rect": [0, 24, 7, 7],
+      "halls": [[[7, 27], [12, 27]], [[3, 23], [3, 18]]],
+      "doors": [
+        { "x": 3, "y": 30, "side": "North", "arena": true }, { "x": 6, "y": 27, "side": "East", "arena": true }, { "x": 3, "y": 24, "side": "South", "arena": true },
+        { "x": 12, "y": 27, "side": "East" }, { "x": 3, "y": 18, "side": "South" }
+      ],
+      "waves": [[{ "enemy": "OfficeStaff", "count": 3 }], [{ "enemy": "SecurityGuard", "count": 2 }]],
+      "place": [{ "type": "prefab", "prefab": "Assets/Game/Enemies/Alarms/AlarmPanel.prefab", "at": [0.2, 27], "yaw": 90, "name": "AlarmPanel" }]
+    },
+    {
+      "scene": "AD_A2", "role": "Arena", "rect": [13, 25, 5, 5], "wallMounts": true,
+      "halls": [[[18, 27], [23, 27]], [[15, 30], [15, 35]]],
+      "doors": [
+        { "x": 13, "y": 27, "side": "West", "arena": true }, { "x": 17, "y": 27, "side": "East", "arena": true }, { "x": 15, "y": 29, "side": "North", "arena": true },
+        { "x": 23, "y": 27, "side": "East" }, { "x": 15, "y": 35, "side": "North" }
+      ],
+      "waves": [[{ "enemy": "SecurityGuard", "count": 2 }, { "enemy": "Turret", "count": 1 }]]
+    },
+    {
+      "scene": "AD_A3", "role": "Arena", "rect": [24, 24, 7, 7],
+      "halls": [[[27, 23], [27, 19]]],
+      "doors": [{ "x": 24, "y": 27, "side": "West", "arena": true }, { "x": 27, "y": 24, "side": "South", "arena": true }, { "x": 27, "y": 19, "side": "South" }],
+      "waves": [[{ "enemy": "RiotGuard", "count": 1 }, { "enemy": "SecurityGuard", "count": 2 }], [{ "enemy": "SecurityDrone", "count": 2 }]],
+      "place": [{ "type": "relay", "id": "A3", "at": [29.5, 29.5] }]
+    },
+    {
+      "scene": "AD_A4", "role": "Arena", "rect": [1, 13, 5, 5],
+      "halls": [[[6, 15], [11, 15]], [[3, 12], [3, 7]], [[0, 15], [-5, 15]]],
+      "doors": [
+        { "x": 3, "y": 17, "side": "North", "arena": true }, { "x": 5, "y": 15, "side": "East", "arena": true }, { "x": 3, "y": 13, "side": "South", "arena": true }, { "x": 1, "y": 15, "side": "West", "arena": true },
+        { "x": 11, "y": 15, "side": "East" }, { "x": 3, "y": 7, "side": "South" }, { "x": -5, "y": 15, "side": "West" }
+      ],
+      "waves": [[{ "enemy": "OfficeStaff", "count": 2 }, { "enemy": "RiotGuard", "count": 1 }]],
+      "place": [
+        { "type": "prefab", "prefab": "Assets/Game/Enemies/Alarms/AlarmPanel.prefab", "at": [1.2, 17], "yaw": 180, "name": "AlarmPanel" },
+        { "type": "prefab", "prefab": "Assets/Game/Abilities/Breach/WeakWall.prefab", "at": [-3.5, 15], "yaw": 90, "name": "WeakWall" },
+        { "type": "mapGate", "at": [-3.5, 15], "yaw": 90 }
+      ]
+    },
+    {
+      "scene": "AD_A5", "role": "Arena", "rect": [12, 12, 7, 7],
+      "halls": [[[19, 15], [23, 15]], [[15, 11], [15, 7]]],
+      "doors": [
+        { "x": 12, "y": 15, "side": "West", "arena": true }, { "x": 18, "y": 15, "side": "East", "arena": true }, { "x": 15, "y": 12, "side": "South", "arena": true },
+        { "x": 23, "y": 15, "side": "East" }, { "x": 15, "y": 7, "side": "South" }
+      ],
+      "waves": [[{ "enemy": "RiotGuard", "count": 2 }, { "enemy": "SecurityDrone", "count": 1 }], [{ "enemy": "SecurityGuard", "count": 2 }]],
+      "place": [{ "type": "relay", "id": "A5", "at": [17.5, 17.5] }]
+    },
+    {
+      "scene": "AD_A6", "role": "Arena", "rect": [24, 12, 7, 7], "wallMounts": true,
+      "halls": [[[31, 15], [35, 15]]],
+      "doors": [
+        { "x": 27, "y": 18, "side": "North", "arena": true }, { "x": 24, "y": 15, "side": "West", "arena": true }, { "x": 30, "y": 15, "side": "East", "arena": true },
+        { "x": 35, "y": 15, "side": "East" }
+      ],
+      "waves": [[{ "enemy": "Turret", "count": 2 }, { "enemy": "SecurityDrone", "count": 2 }]]
+    },
+    {
+      "scene": "AD_A7", "role": "Arena", "rect": [0, 0, 7, 7], "wallMounts": true,
+      "halls": [[[7, 3], [11, 3]]],
+      "doors": [{ "x": 3, "y": 6, "side": "North", "arena": true }, { "x": 6, "y": 3, "side": "East", "arena": true }, { "x": 11, "y": 3, "side": "East" }],
+      "waves": [[{ "enemy": "OfficeStaff", "count": 2 }, { "enemy": "SecurityGuard", "count": 2 }], [{ "enemy": "Turret", "count": 1 }]],
+      "place": [
+        { "type": "relay", "id": "A7", "at": [1, 1] },
+        { "type": "prefab", "prefab": "Assets/Game/Enemies/Alarms/AlarmPanel.prefab", "at": [6.2, 5], "yaw": 270, "name": "AlarmPanel" }
+      ]
+    },
+    {
+      "scene": "AD_A8", "role": "Arena", "rect": [12, 0, 7, 7],
+      "halls": [[[19, 3], [23, 3]], [[15, -1], [15, -4]]],
+      "doors": [
+        { "x": 15, "y": 6, "side": "North", "arena": true }, { "x": 12, "y": 3, "side": "West", "arena": true }, { "x": 18, "y": 3, "side": "East", "arena": true }, { "x": 15, "y": 0, "side": "South", "arena": true },
+        { "x": 23, "y": 3, "side": "East" }, { "x": 15, "y": -4, "side": "South" }
+      ],
+      "waves": [[{ "enemy": "RiotGuard", "count": 2 }, { "enemy": "SecurityDrone", "count": 2 }]]
+    },
+    {
+      "scene": "AD_PreBossNest", "role": "Plain", "rect": [24, 1, 5, 5],
+      "halls": [[[29, 3], [34, 3]]],
+      "doors": [{ "x": 24, "y": 3, "side": "West" }, { "x": 34, "y": 3, "side": "East" }],
+      "place": [
+        { "type": "nest", "id": "AD/PreBossNest", "at": [26, 4], "yaw": 180 },
+        { "type": "securityDoor", "at": [31, 3], "yaw": 90 }
+      ]
+    },
+    {
+      "scene": "AD_Siege1", "role": "Arena", "rect": [35, 0, 7, 6],
+      "halls": [[[42, 3], [44, 3]]],
+      "doors": [{ "x": 35, "y": 3, "side": "West", "arena": true }, { "x": 41, "y": 3, "side": "East", "arena": true }, { "x": 44, "y": 3, "side": "East" }],
+      "waves": [[{ "enemy": "SecurityGuard", "count": 3 }], [{ "enemy": "RiotGuard", "count": 1 }, { "enemy": "SecurityDrone", "count": 1 }]]
+    },
+    {
+      "scene": "AD_Siege2", "role": "Arena", "rect": [45, 0, 7, 6],
+      "halls": [[[52, 3], [54, 3]]],
+      "doors": [{ "x": 45, "y": 3, "side": "West", "arena": true }, { "x": 51, "y": 3, "side": "East", "arena": true }, { "x": 54, "y": 3, "side": "East" }],
+      "waves": [[{ "enemy": "RiotGuard", "count": 2 }, { "enemy": "SecurityGuard", "count": 2 }], [{ "enemy": "SecurityDrone", "count": 2 }, { "enemy": "OfficeStaff", "count": 2 }]]
+    },
+    {
+      "scene": "AD_CommandPost", "role": "Boss", "rect": [55, 0, 8, 6],
+      "doors": [{ "x": 55, "y": 3, "side": "West", "arena": true }],
+      "waves": [[{ "enemy": "RiotGuard", "count": 3 }]]
+    },
+    {
+      "scene": "AD_R1", "role": "Plain", "rect": [13, 36, 5, 4],
+      "doors": [{ "x": 15, "y": 36, "side": "South" }],
+      "place": [{ "type": "pickup", "prefab": "BiomassCache", "at": [15, 38], "yaw": 0 }]
+    },
+    {
+      "scene": "AD_FreightStation", "role": "Plain", "rect": [36, 13, 5, 5],
+      "doors": [{ "x": 36, "y": 15, "side": "West" }],
+      "place": [
+        { "type": "freight", "at": [39.5, 16.5], "yaw": 180, "destination": "ColdStorage", "arrivalAt": [3.5, 38.5], "arrivalYaw": 180, "name": "Crate_ColdStorage" },
+        { "type": "freight", "at": [39.5, 14], "yaw": 270, "destination": "Barracks", "arrivalAt": [3.5, 38.5], "arrivalYaw": 180, "name": "Crate_Barracks" }
+      ]
+    },
+    {
+      "scene": "AD_R2", "role": "Plain", "rect": [13, -9, 5, 5],
+      "doors": [{ "x": 15, "y": -5, "side": "North" }],
+      "place": [{ "type": "pickup", "prefab": "MutagenPickup", "at": [15, -7], "yaw": 0 }]
+    },
+    {
+      "scene": "AD_ArchiveVault", "role": "Plain", "rect": [-10, 13, 5, 5],
+      "doors": [{ "x": -6, "y": 15, "side": "East" }],
+      "place": [{ "type": "pickup", "prefab": "BiomassCache", "at": [-8, 15], "yaw": 0 }]
+    }
+  ]
+}

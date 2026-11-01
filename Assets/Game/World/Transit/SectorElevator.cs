@@ -10,9 +10,12 @@ namespace TentacleVania.World.Transit
     {
         public const string RidePromptKey = "prompt.elevator.ride";
         public const string LockedPromptKey = "prompt.elevator.locked";
+        public const string SealedPromptKey = "prompt.transit.sealed";
 
         [Tooltip("Boss id whose defeat powers the elevator (Warden); empty = always powered.")]
         [SerializeField] private string _requiredBoss = "SH/WardenDrone";
+        [Tooltip("Ability id also needed (TentacleGrapple...); empty = none.")]
+        [SerializeField] private string _requiredAbility;
         [Tooltip("Root scene of the destination sector.")]
         [SerializeField] private string _destinationScene;
         [Tooltip("Where the creature arrives in the destination scene (the paired elevator's platform).")]
@@ -24,12 +27,18 @@ namespace TentacleVania.World.Transit
         [SerializeField] private Material _poweredMaterial;
         [SerializeField] private Material _unpoweredMaterial;
         [SerializeField] private EventReference _rideSound;
+        [Tooltip("Elevator, or Corridor for same-floor transit doors (transition label).")]
+        [SerializeField] private TravelKind _travelKind = TravelKind.Elevator;
+        [Tooltip("Prompt key while locked (empty: the elevator's).")]
+        [SerializeField] private string _lockedPromptKey;
 
-        public bool Powered => string.IsNullOrEmpty(_requiredBoss) || BossProgress.IsDefeated(_requiredBoss);
+        public bool Powered => (string.IsNullOrEmpty(_requiredBoss) || BossProgress.IsDefeated(_requiredBoss))
+            && (string.IsNullOrEmpty(_requiredAbility) || BossProgress.IsAbilityUnlocked(_requiredAbility));
         public string DestinationScene => _destinationScene;
         public Vector3 Position => transform.position;
         public float Radius => _radius;
-        public string PromptKey => Powered ? RidePromptKey : LockedPromptKey;
+        public bool Reachable => !string.IsNullOrEmpty(_destinationScene) && Application.CanStreamedLevelBeLoaded(_destinationScene);
+        public string PromptKey => !Reachable ? SealedPromptKey : Powered ? (_travelKind == TravelKind.Corridor ? "prompt.transit.enter" : RidePromptKey) : string.IsNullOrEmpty(_lockedPromptKey) ? LockedPromptKey : _lockedPromptKey;
         public bool CanInteract => isActiveAndEnabled && !string.IsNullOrEmpty(_destinationScene);
 
         private void OnEnable()
@@ -45,8 +54,9 @@ namespace TentacleVania.World.Transit
             BossProgress.Defeated -= OnBossDefeated;
         }
 
-        public void Configure(string destinationScene, Vector3 arrivalPosition, float arrivalYaw, string requiredBoss)
+        public void Configure(string destinationScene, Vector3 arrivalPosition, float arrivalYaw, string requiredBoss, string requiredAbility = null)
         {
+            _requiredAbility = requiredAbility ?? "";
             _destinationScene = destinationScene;
             _arrivalPosition = arrivalPosition;
             _arrivalYaw = arrivalYaw;
@@ -58,7 +68,7 @@ namespace TentacleVania.World.Transit
 
         public bool Ride()
         {
-            if (!Powered || !FastTravel.Transit(_destinationScene, _arrivalPosition, _arrivalYaw))
+            if (!Powered || !Reachable || !FastTravel.Transit(_destinationScene, _arrivalPosition, _arrivalYaw, _travelKind))
                 return false;
             if (!_rideSound.IsNull)
                 RuntimeManager.PlayOneShot(_rideSound, transform.position);

@@ -115,6 +115,19 @@ namespace TentacleVania.World.Editor
         private const string TemplateRoot = "Assets/Game/Scenes/StreamingTest/StreamingTest.unity";
         private const string CameraBoundsType = "TentacleVania.Camera.CameraBounds";
 
+        private static string EnemyPath(string name)
+        {
+            if (EnemyPaths.TryGetValue(name, out var path))
+                return path;
+            foreach (var guid in AssetDatabase.FindAssets($"t:Prefab {name}", new[] { "Assets/Game" }))
+            {
+                var candidate = AssetDatabase.GUIDToAssetPath(guid);
+                if (System.IO.Path.GetFileNameWithoutExtension(candidate) == name && AssetDatabase.LoadAssetAtPath<GameObject>(candidate).GetComponent<Enemy>() != null)
+                    return candidate;
+            }
+            return null;
+        }
+
         private static readonly Dictionary<string, string> EnemyPaths = new()
         {
             { "Scientist", "Assets/Game/Enemies/Prefabs/Scientist.prefab" },
@@ -145,6 +158,7 @@ namespace TentacleVania.World.Editor
             report.Append(RoomRegistryTools.Update(registry, plan.AddressablesGroup, true));
             report.Append(AutoTunnels.Place(plan, registry));
             BuildRoot(plan, registry);
+            AddToBuild($"{plan.Folder}/{plan.RootScene}.unity");
             AddToAtlas(registry);
             AssetDatabase.SaveAssets();
             return report.ToString();
@@ -292,7 +306,8 @@ namespace TentacleVania.World.Editor
                 for (var e = 0; e < room.Waves[w].Length; e++)
                 {
                     var entry = enemies.GetArrayElementAtIndex(e);
-                    var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(EnemyPaths[room.Waves[w][e].Prefab]);
+                    var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(EnemyPath(room.Waves[w][e].Prefab))
+                        ?? throw new System.ArgumentException($"{room.Scene}: no enemy prefab named {room.Waves[w][e].Prefab}");
                     entry.FindPropertyRelative("Prefab").objectReferenceValue = prefab.GetComponent<Enemy>();
                     entry.FindPropertyRelative("Count").intValue = room.Waves[w][e].Count;
                 }
@@ -416,6 +431,16 @@ namespace TentacleVania.World.Editor
             sectors.arraySize++;
             sectors.GetArrayElementAtIndex(sectors.arraySize - 1).objectReferenceValue = registry;
             so.ApplyModifiedPropertiesWithoutUndo();
+        }
+
+        private static void AddToBuild(string path)
+        {
+            var scenes = EditorBuildSettings.scenes;
+            if (System.Array.Exists(scenes, s => s.path == path))
+                return;
+            var list = new List<EditorBuildSettingsScene>(scenes) { new(path, true) };
+            EditorBuildSettings.scenes = list.ToArray();
+            AssetDatabase.SaveAssets();
         }
 
         private static void EnsureFolder(string folder)
