@@ -994,6 +994,22 @@ MonoBehaviour:
     m_Localized: Radiation Resistance
     m_Metadata:
       m_Items: []
+  - m_Id: 811619883696128
+    m_Localized: Freight Clearance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 811619921444864
+    m_Localized: Hide in the crate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 811619921444865
+    m_Localized: Freight crate (needs Freight Clearance)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 811619921444866
+    m_Localized: FREIGHT CRATE
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

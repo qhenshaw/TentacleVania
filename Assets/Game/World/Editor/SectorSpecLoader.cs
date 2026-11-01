@@ -124,6 +124,13 @@ namespace TentacleVania.World.Editor
                     RoomContext.Set(elevator, "_arrivalYaw", spec.ArrivalYaw);
                     RoomContext.Set(elevator, "_requiredBoss", spec.RequiredBoss ?? "");
                     break;
+                case "freight":
+                    var crate = c.Spawn("Assets/Game/World/Transit/FreightCrate.prefab", position, spec.Yaw, spec.Name ?? "FreightCrate").GetComponent<Transit.FreightCrate>();
+                    var crateArrival = RoomContext.CellCenter(spec.ArrivalAt[0], spec.ArrivalAt[1]);
+                    if (spec.ArrivalOffset != null)
+                        crateArrival += new Vector3(spec.ArrivalOffset[0], spec.ArrivalOffset[1], spec.ArrivalOffset[2]);
+                    crate.Configure(spec.Destination, crateArrival, spec.ArrivalYaw);
+                    break;
                 case "hazard":
                     var kind = (Hazards.HazardKind)Enum.Parse(typeof(Hazards.HazardKind), spec.Kind);
                     var hazard = c.Spawn($"Assets/Game/World/Hazards/Hazard_{kind}.prefab", position, spec.Yaw, spec.Name ?? "Hazard_" + kind);

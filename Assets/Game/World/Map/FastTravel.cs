@@ -22,6 +22,7 @@ namespace TentacleVania.World.Map
         Crawl,
         Tunnel,
         Recover,
+        Freight,
     }
 
     public static class FastTravel
@@ -70,13 +71,13 @@ namespace TentacleVania.World.Map
             return true;
         }
 
-        public static bool Transit(string scene, Vector3 arrival, float yaw)
+        public static bool Transit(string scene, Vector3 arrival, float yaw, TravelKind kind = TravelKind.Elevator)
         {
             if (Phase != TravelPhase.Idle || SceneFlow.IsLoading || string.IsNullOrEmpty(scene))
                 return false;
             SpawnOverride.Set(scene, arrival, yaw);
             Destination = scene;
-            Begin(TravelKind.Elevator, scene);
+            Begin(kind, scene);
             return true;
         }
 
