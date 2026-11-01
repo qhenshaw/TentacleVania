@@ -617,6 +617,11 @@ MonoBehaviour:
     Room: QU_EntryNest
     Position: {x: 13.5, y: 0, z: 119.7}
     Yaw: 180
+  - Kind: 6
+    Id: HazmatComplaint
+    Room: QU_A1
+    Position: {x: 2.1, y: 0, z: 78.75}
+    Yaw: 0
   - Kind: 1
     Id: QU/A3
     Room: QU_A3
@@ -662,6 +667,11 @@ MonoBehaviour:
     Room: QU_R1
     Position: {x: 43.5, y: 0, z: 117}
     Yaw: 0
+  - Kind: 6
+    Id: FieldMedicNotes
+    Room: QU_R1
+    Position: {x: 41.1, y: 0, z: 112.5}
+    Yaw: 0
   - Kind: 5
     Id: QU_VentShaft/BiomassCache
     Room: QU_VentShaft
@@ -671,6 +681,11 @@ MonoBehaviour:
     Id: QU_VentShaft/HostFeeding
     Room: QU_VentShaft
     Position: {x: 118.5, y: 0, z: 52.5}
+    Yaw: 0
+  - Kind: 6
+    Id: QuarantineRationale
+    Room: QU_VentShaft
+    Position: {x: 110.100006, y: 0, z: 44.25}
     Yaw: 0
   - Kind: 5
     Id: QU_Incinerator/BiomassCache

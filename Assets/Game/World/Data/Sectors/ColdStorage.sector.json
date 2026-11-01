@@ -985,6 +985,15 @@
           "yaw": 0,
           "name": "Hemorrhage",
           "itemId": "Hemorrhage"
+        },
+        {
+          "type": "terminal",
+          "log": "CryoRequestDenied",
+          "at": [
+            13.2,
+            37.0
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -1035,6 +1044,15 @@
           "yaw": 0,
           "name": "SpineCascade",
           "itemId": "SpineCascade"
+        },
+        {
+          "type": "terminal",
+          "log": "AlphaSpecimenTransfer",
+          "at": [
+            -8.8,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -1065,6 +1083,15 @@
           "yaw": 0,
           "name": "TendrilSnare",
           "itemId": "TendrilSnare"
+        },
+        {
+          "type": "terminal",
+          "log": "FrozenBrood",
+          "at": [
+            13.2,
+            -7.75
+          ],
+          "yaw": 90
         }
       ]
     },

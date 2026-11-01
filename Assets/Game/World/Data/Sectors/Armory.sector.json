@@ -997,6 +997,15 @@
           "yaw": 0,
           "name": "JaggedRecoil",
           "itemId": "JaggedRecoil"
+        },
+        {
+          "type": "terminal",
+          "log": "RangeLog",
+          "at": [
+            13.2,
+            37.0
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -1123,6 +1132,15 @@
           "requiredBoss": "",
           "requiredAbility": "FireResistance",
           "name": "Transit_CC"
+        },
+        {
+          "type": "terminal",
+          "log": "AlphaCountermeasures",
+          "at": [
+            35.2,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     },

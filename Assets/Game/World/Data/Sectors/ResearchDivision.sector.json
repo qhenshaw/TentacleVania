@@ -1007,6 +1007,15 @@
           "yaw": 0,
           "name": "NavigationShard",
           "itemId": "NavigationShard"
+        },
+        {
+          "type": "terminal",
+          "log": "ObedienceTrials",
+          "at": [
+            13.2,
+            37.0
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -1046,6 +1055,15 @@
           "yaw": 0,
           "name": "LongReach",
           "itemId": "LongReach"
+        },
+        {
+          "type": "terminal",
+          "log": "VitalSigns",
+          "at": [
+            -8.8,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -1085,6 +1103,15 @@
           "yaw": 0,
           "name": "MarrowStore",
           "itemId": "MarrowStore"
+        },
+        {
+          "type": "terminal",
+          "log": "BonusMemo",
+          "at": [
+            13.2,
+            -7.75
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -1124,6 +1151,15 @@
           "yaw": 0,
           "name": "OverchargeSac",
           "itemId": "OverchargeSac"
+        },
+        {
+          "type": "terminal",
+          "log": "FailedSubject",
+          "at": [
+            35.2,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     }

@@ -26,7 +26,7 @@
         { "x": 12, "y": 27, "side": "East" }, { "x": 3, "y": 18, "side": "South" }
       ],
       "waves": [[{ "enemy": "OfficeStaff", "count": 3 }], [{ "enemy": "SecurityGuard", "count": 2 }]],
-      "place": [{ "type": "prefab", "prefab": "Assets/Game/Enemies/Alarms/AlarmPanel.prefab", "at": [0.2, 27], "yaw": 90, "name": "AlarmPanel" }]
+      "place": [{ "type": "prefab", "prefab": "Assets/Game/Enemies/Alarms/AlarmPanel.prefab", "at": [0.2, 27], "yaw": 90, "name": "AlarmPanel" }, { "type": "terminal", "log": "EmployeeOfTheMonth", "at": [0.2, 25.75], "yaw": 90 }]
     },
     {
       "scene": "AD_A2", "role": "Arena", "rect": [13, 25, 5, 5], "wallMounts": true,
@@ -125,12 +125,13 @@
     {
       "scene": "AD_R1", "role": "Plain", "rect": [13, 36, 5, 4],
       "doors": [{ "x": 15, "y": 36, "side": "South" }],
-      "place": [{ "type": "pickup", "prefab": "BiomassCache", "at": [15, 38], "yaw": 0 }, { "type": "pickup", "prefab": "TrinketPickup", "at": [16.5, 38.5], "yaw": 0, "name": "EvacuationFloorPlan", "itemId": "EvacuationFloorPlan" }]
+      "place": [{ "type": "pickup", "prefab": "BiomassCache", "at": [15, 38], "yaw": 0 }, { "type": "pickup", "prefab": "TrinketPickup", "at": [16.5, 38.5], "yaw": 0, "name": "EvacuationFloorPlan", "itemId": "EvacuationFloorPlan" }, { "type": "terminal", "log": "AlphaIncidentOfficial", "at": [13.2, 37], "yaw": 90 }]
     },
     {
       "scene": "AD_FreightStation", "role": "Plain", "rect": [36, 13, 5, 5],
       "doors": [{ "x": 36, "y": 15, "side": "West" }],
       "place": [
+        { "type": "terminal", "log": "RecoveryReport", "at": [36.2, 14.25], "yaw": 90 },
         { "type": "freight", "at": [39.5, 16.5], "yaw": 180, "destination": "ColdStorage", "arrivalAt": [3.5, 38.5], "arrivalYaw": 180, "name": "Crate_ColdStorage" },
         { "type": "freight", "at": [39.5, 14], "yaw": 270, "destination": "Barracks", "arrivalAt": [3.5, 38.5], "arrivalYaw": 180, "name": "Crate_Barracks" }
       ]
@@ -138,12 +139,12 @@
     {
       "scene": "AD_R2", "role": "Plain", "rect": [13, -9, 5, 5],
       "doors": [{ "x": 15, "y": -5, "side": "North" }],
-      "place": [{ "type": "pickup", "prefab": "MutagenPickup", "at": [15, -7], "yaw": 0 }, { "type": "pickup", "prefab": "MutationPickup", "at": [16.5, -5.5], "yaw": 0, "name": "FalteringPrey", "itemId": "FalteringPrey" }]
+      "place": [{ "type": "pickup", "prefab": "MutagenPickup", "at": [15, -7], "yaw": 0 }, { "type": "pickup", "prefab": "MutationPickup", "at": [16.5, -5.5], "yaw": 0, "name": "FalteringPrey", "itemId": "FalteringPrey" }, { "type": "terminal", "log": "SurvivorRoster", "at": [13.2, -7.75], "yaw": 90 }]
     },
     {
       "scene": "AD_ArchiveVault", "role": "Plain", "rect": [-10, 13, 5, 5],
       "doors": [{ "x": -6, "y": 15, "side": "East" }],
-      "place": [{ "type": "pickup", "prefab": "BiomassCache", "at": [-8, 15], "yaw": 0 }, { "type": "pickup", "prefab": "BoneScythesPickup", "at": [-7, 16.5], "yaw": 0 }]
+      "place": [{ "type": "pickup", "prefab": "BiomassCache", "at": [-8, 15], "yaw": 0 }, { "type": "pickup", "prefab": "BoneScythesPickup", "at": [-7, 16.5], "yaw": 0 }, { "type": "terminal", "log": "PersonnelFileCrane", "at": [-9.8, 14.25], "yaw": 90 }]
     }
   ]
 }

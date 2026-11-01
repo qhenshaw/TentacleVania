@@ -617,6 +617,16 @@ MonoBehaviour:
     Room: CC_EntryNest
     Position: {x: 16.5, y: 0, z: 118.2}
     Yaw: 180
+  - Kind: 6
+    Id: CommendationList
+    Room: CC_A1
+    Position: {x: 2.1, y: 0, z: 78.75}
+    Yaw: 0
+  - Kind: 6
+    Id: ProgramStatistics
+    Room: CC_A2
+    Position: {x: 41.1, y: 0, z: 87.75}
+    Yaw: 0
   - Kind: 1
     Id: CC/A3
     Room: CC_A3
@@ -652,6 +662,11 @@ MonoBehaviour:
     Room: CC_R1
     Position: {x: 51, y: 0, z: 117}
     Yaw: 0
+  - Kind: 6
+    Id: MedicalExemption
+    Room: CC_R1
+    Position: {x: 41.1, y: 0, z: 112.5}
+    Yaw: 0
   - Kind: 5
     Id: CC_ServerRoom/MutagenPickup
     Room: CC_ServerRoom
@@ -661,6 +676,11 @@ MonoBehaviour:
     Id: CC_ServerRoom/Aftershock
     Room: CC_ServerRoom
     Position: {x: 120, y: 0, z: 51}
+    Yaw: 0
+  - Kind: 6
+    Id: ClassifiedDirectiveAlpha
+    Room: CC_ServerRoom
+    Position: {x: 110.100006, y: 0, z: 44.25}
     Yaw: 0
   - Kind: 5
     Id: CC_TitanBay/BiomassCache

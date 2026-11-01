@@ -617,30 +617,10 @@ MonoBehaviour:
     Room: BS_EntryNest
     Position: {x: 16.5, y: 0, z: 118.2}
     Yaw: 180
-  - Kind: 7
-    Id: BS/Auto-BS_A3
-    Room: BS_EntryNest
-    Position: {x: 4.5, y: 0, z: 109.5}
-    Yaw: 0
-  - Kind: 7
-    Id: BS/Auto-BS_A6
-    Room: BS_EntryNest
-    Position: {x: 4.5, y: 0, z: 121.5}
-    Yaw: 0
-  - Kind: 7
-    Id: BS/Auto-BS_CraneOffice
-    Room: BS_EntryNest
-    Position: {x: 19.5, y: 0, z: 109.5}
-    Yaw: 0
   - Kind: 1
     Id: BS/A3
     Room: BS_A3
     Position: {x: 90, y: 0, z: 90}
-    Yaw: 0
-  - Kind: 7
-    Id: BS/Auto-BS_A3
-    Room: BS_A3
-    Position: {x: 73.5, y: 0, z: 73.5}
     Yaw: 0
   - Kind: 3
     Id: MapGate
@@ -651,11 +631,6 @@ MonoBehaviour:
     Id: BS/A5
     Room: BS_A5
     Position: {x: 54, y: 0, z: 54}
-    Yaw: 0
-  - Kind: 7
-    Id: BS/Auto-BS_A6
-    Room: BS_A6
-    Position: {x: 73.5, y: 0, z: 37.5}
     Yaw: 0
   - Kind: 1
     Id: BS/A7
@@ -677,6 +652,11 @@ MonoBehaviour:
     Room: BS_R1
     Position: {x: 46.5, y: 0, z: 115.5}
     Yaw: 0
+  - Kind: 6
+    Id: CloneProgram
+    Room: BS_R1
+    Position: {x: 41.1, y: 0, z: 112.5}
+    Yaw: 0
   - Kind: 5
     Id: BS_CraneOffice/MutagenPickup
     Room: BS_CraneOffice
@@ -687,10 +667,10 @@ MonoBehaviour:
     Room: BS_CraneOffice
     Position: {x: 120, y: 0, z: 51}
     Yaw: 0
-  - Kind: 7
-    Id: BS/Auto-BS_CraneOffice
+  - Kind: 6
+    Id: SelfTrialLog
     Room: BS_CraneOffice
-    Position: {x: 109.5, y: 0, z: 40.5}
+    Position: {x: 110.100006, y: 0, z: 44.25}
     Yaw: 0
   - Kind: 5
     Id: BS_IsolationWard/BiomassCache
@@ -701,6 +681,11 @@ MonoBehaviour:
     Id: BS_IsolationWard/AdrenalSurge
     Room: BS_IsolationWard
     Position: {x: -18, y: 0, z: 51}
+    Yaw: 0
+  - Kind: 6
+    Id: CranesPrivateAccount
+    Room: BS_IsolationWard
+    Position: {x: -27.900002, y: 0, z: 44.25}
     Yaw: 0
   - Kind: 7
     Id: BS/Auto-BS_A3

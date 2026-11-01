@@ -662,6 +662,11 @@ MonoBehaviour:
     Room: BA_R1
     Position: {x: 51, y: 0, z: 117}
     Yaw: 0
+  - Kind: 6
+    Id: SoldiersLetter
+    Room: BA_R1
+    Position: {x: 41.1, y: 0, z: 112.5}
+    Yaw: 0
   - Kind: 5
     Id: BA_Quartermaster/MutagenPickup
     Room: BA_Quartermaster
@@ -672,6 +677,11 @@ MonoBehaviour:
     Room: BA_Quartermaster
     Position: {x: 120, y: 0, z: 51}
     Yaw: 0
+  - Kind: 6
+    Id: RequisitionCranePriority
+    Room: BA_Quartermaster
+    Position: {x: 110.100006, y: 0, z: 44.25}
+    Yaw: 0
   - Kind: 5
     Id: BA_Stockroom/ArcTendrils
     Room: BA_Stockroom
@@ -681,6 +691,11 @@ MonoBehaviour:
     Id: BA_Stockroom/SpinedCharge
     Room: BA_Stockroom
     Position: {x: -18, y: 0, z: 51}
+    Yaw: 0
+  - Kind: 6
+    Id: LiveFireRequisition
+    Room: BA_Stockroom
+    Position: {x: -27.900002, y: 0, z: 44.25}
     Yaw: 0
   - Kind: 7
     Id: BA/Auto-BA_A3

@@ -157,6 +157,15 @@
           ],
           "yaw": 0,
           "name": "SecurityDoor_MV1"
+        },
+        {
+          "type": "terminal",
+          "log": "SubjectRegistry",
+          "at": [
+            0.2,
+            25.75
+          ],
+          "yaw": 90
         }
       ],
       "waves": [
@@ -886,6 +895,15 @@
           "yaw": 0,
           "name": "DesperateHunger",
           "itemId": "DesperateHunger"
+        },
+        {
+          "type": "terminal",
+          "log": "FinalVitals",
+          "at": [
+            13.2,
+            37.0
+          ],
+          "yaw": 90
         }
       ]
     }

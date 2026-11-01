@@ -159,7 +159,17 @@
           "side": "South"
         }
       ],
-      "place": [],
+      "place": [
+        {
+          "type": "terminal",
+          "log": "HazmatComplaint",
+          "at": [
+            0.2,
+            25.75
+          ],
+          "yaw": 90
+        }
+      ],
       "waves": [
         [
           {
@@ -985,6 +995,15 @@
           "yaw": 0,
           "name": "DeconOverrideCard",
           "itemId": "DeconOverrideCard"
+        },
+        {
+          "type": "terminal",
+          "log": "FieldMedicNotes",
+          "at": [
+            13.2,
+            37.0
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -1052,6 +1071,15 @@
           "yaw": 0,
           "name": "HostFeeding",
           "itemId": "HostFeeding"
+        },
+        {
+          "type": "terminal",
+          "log": "QuarantineRationale",
+          "at": [
+            36.2,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     },

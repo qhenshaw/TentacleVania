@@ -138,7 +138,17 @@
           "side": "South"
         }
       ],
-      "place": [],
+      "place": [
+        {
+          "type": "terminal",
+          "log": "CommendationList",
+          "at": [
+            0.2,
+            25.75
+          ],
+          "yaw": 90
+        }
+      ],
       "waves": [
         [
           {
@@ -242,6 +252,15 @@
           ],
           "yaw": 0,
           "name": "TurretConsole"
+        },
+        {
+          "type": "terminal",
+          "log": "ProgramStatistics",
+          "at": [
+            13.2,
+            28.75
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -866,6 +885,15 @@
           "yaw": 0,
           "name": "Flashpoint",
           "itemId": "Flashpoint"
+        },
+        {
+          "type": "terminal",
+          "log": "MedicalExemption",
+          "at": [
+            13.2,
+            37.0
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -905,6 +933,15 @@
           "yaw": 0,
           "name": "Aftershock",
           "itemId": "Aftershock"
+        },
+        {
+          "type": "terminal",
+          "log": "ClassifiedDirectiveAlpha",
+          "at": [
+            36.2,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     },

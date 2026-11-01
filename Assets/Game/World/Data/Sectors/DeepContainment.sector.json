@@ -904,6 +904,15 @@
           "yaw": 0,
           "name": "DistressBeacon",
           "itemId": "DistressBeacon"
+        },
+        {
+          "type": "terminal",
+          "log": "TransferToVault",
+          "at": [
+            13.2,
+            37.0
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -943,6 +952,15 @@
           "yaw": 0,
           "name": "SanguineFeast",
           "itemId": "SanguineFeast"
+        },
+        {
+          "type": "terminal",
+          "log": "SealedTunnel",
+          "at": [
+            -8.8,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -1029,6 +1047,15 @@
           "requiredBoss": "",
           "requiredAbility": "Burrow",
           "name": "Tunnel_BS"
+        },
+        {
+          "type": "terminal",
+          "log": "ItListensToMe",
+          "at": [
+            35.2,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     }

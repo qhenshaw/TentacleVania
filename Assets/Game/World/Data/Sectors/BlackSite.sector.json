@@ -892,6 +892,15 @@
           "yaw": 0,
           "name": "AlphaSurvivorsBadge",
           "itemId": "AlphaSurvivorsBadge"
+        },
+        {
+          "type": "terminal",
+          "log": "CloneProgram",
+          "at": [
+            13.2,
+            37.0
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -931,6 +940,15 @@
           "yaw": 0,
           "name": "DissolvingGrip",
           "itemId": "DissolvingGrip"
+        },
+        {
+          "type": "terminal",
+          "log": "SelfTrialLog",
+          "at": [
+            36.2,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -981,6 +999,15 @@
           "yaw": 0,
           "name": "AdrenalSurge",
           "itemId": "AdrenalSurge"
+        },
+        {
+          "type": "terminal",
+          "log": "CranesPrivateAccount",
+          "at": [
+            -9.8,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     }

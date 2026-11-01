@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{09cc8132-c057-4a50-97de-091b17df3d9f}">
+		<property name="assetPath">
+			<value>Placeholder/VO_Lore_FieldMedicNotes.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.2</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{10c33526-16cd-470d-8044-1734468966d9}</destination>
+		</relationship>
+	</object>
+</objects>
