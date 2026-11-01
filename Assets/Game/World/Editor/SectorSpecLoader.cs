@@ -48,7 +48,7 @@ namespace TentacleVania.World.Editor
             foreach (var door in spec.Doors)
                 room.Door(door.X, door.Y, (Side)Enum.Parse(typeof(Side), door.Side), door.Arena);
             foreach (var wave in spec.Waves)
-                room.Wave(wave.Select(e => new WaveEntryPlan(e.Enemy, e.Count)).ToArray());
+                room.Wave(wave.Select(e => new WaveEntryPlan(e.Enemy, e.Count, e.Elite)).ToArray());
             foreach (var placement in spec.Place)
             {
                 var place = placement;

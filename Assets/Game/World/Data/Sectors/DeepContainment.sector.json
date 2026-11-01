@@ -482,7 +482,12 @@
         [
           {
             "enemy": "ContainmentWarden",
-            "count": 2
+            "count": 1,
+            "elite": true
+          },
+          {
+            "enemy": "ContainmentWarden",
+            "count": 1
           }
         ]
       ]
@@ -698,7 +703,8 @@
         [
           {
             "enemy": "ContainmentWarden",
-            "count": 1
+            "count": 1,
+            "elite": true
           },
           {
             "enemy": "AncientSpecimen",

@@ -533,7 +533,8 @@
         [
           {
             "enemy": "AlphaSpecimen",
-            "count": 1
+            "count": 1,
+            "elite": true
           }
         ]
       ]
@@ -757,7 +758,12 @@
         [
           {
             "enemy": "ThawedSpecimen",
-            "count": 2
+            "count": 1,
+            "elite": true
+          },
+          {
+            "enemy": "ThawedSpecimen",
+            "count": 1
           },
           {
             "enemy": "LoaderBot",

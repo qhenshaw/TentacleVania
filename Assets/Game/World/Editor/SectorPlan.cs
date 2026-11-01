@@ -30,11 +30,13 @@ namespace TentacleVania.World.Editor
     {
         public string Prefab;
         public int Count;
+        public bool Elite;
 
-        public WaveEntryPlan(string prefab, int count)
+        public WaveEntryPlan(string prefab, int count, bool elite = false)
         {
             Prefab = prefab;
             Count = count;
+            Elite = elite;
         }
     }
 

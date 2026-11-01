@@ -39,6 +39,7 @@ namespace TentacleVania.World.Editor
     {
         public string Enemy;
         public int Count = 1;
+        public bool Elite;
     }
 
     public sealed class PlacementSpec

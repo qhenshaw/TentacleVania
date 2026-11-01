@@ -73,6 +73,7 @@ namespace TentacleVania.Enemies
         public event Action<Enemy> Staggered;
 
         public StaggerBar Stagger => _stagger;
+        public bool IsElite { get; private set; }
         public bool IsStaggerBroken => _staggerBroken;
         public bool IsFeedable => _consumable != null && _consumable.IsGrabbable;
 
@@ -560,7 +561,10 @@ namespace TentacleVania.Enemies
             var consumed = State == EnemyState.Consumed;
             DiedConsumed = consumed;
             if (_definition.Drop != null && UnityEngine.Random.value < _definition.DropChance)
-                DropLoot();
+                DropLoot(_definition.Drop);
+            var elite = IsElite ? EliteSettings.Instance : null;
+            if (elite != null && elite.Drop != null && UnityEngine.Random.value < elite.DropChance)
+                DropLoot(elite.Drop);
             SetState(EnemyState.Dead);
             OnDeath();
             if (!consumed && _health.BurstsOnDeath)
@@ -575,11 +579,27 @@ namespace TentacleVania.Enemies
 
         protected virtual void OnDeath() { }
 
-        private void DropLoot()
+        private void DropLoot(GameObject prefab)
         {
             var position = transform.position;
-            var drop = Instantiate(_definition.Drop, position + Vector3.up * 0.5f, Quaternion.identity);
-            drop.name = $"{_definition.Drop.name}_{Mathf.RoundToInt(position.x)}_{Mathf.RoundToInt(position.z)}";
+            var drop = Instantiate(prefab, position + Vector3.up * 0.5f, Quaternion.identity);
+            drop.name = $"{prefab.name}_{Mathf.RoundToInt(position.x)}_{Mathf.RoundToInt(position.z)}";
+            drop.SetActive(false);
+            drop.SetActive(true);
+        }
+
+        public void MakeElite()
+        {
+            var settings = EliteSettings.Instance;
+            if (IsElite || settings == null)
+                return;
+            IsElite = true;
+            _health.Configure(Team.Site, _definition.MaxHealth * settings.HealthScale, _definition.MaxArmor + settings.ArmorBonus);
+            _stagger = new(_definition.MaxStagger * settings.StaggerScale);
+            _health.Outgoing.Add(new ScaleModifier(400) { HealthScale = settings.DamageScale, StaggerScale = settings.DamageScale });
+            var model = transform.Find("Model");
+            if (model != null)
+                model.localScale *= settings.BodyScale;
         }
 
         private void HideBody()

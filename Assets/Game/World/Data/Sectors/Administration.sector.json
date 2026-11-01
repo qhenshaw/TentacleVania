@@ -64,7 +64,7 @@
         { "x": 12, "y": 15, "side": "West", "arena": true }, { "x": 18, "y": 15, "side": "East", "arena": true }, { "x": 15, "y": 12, "side": "South", "arena": true },
         { "x": 23, "y": 15, "side": "East" }, { "x": 15, "y": 7, "side": "South" }
       ],
-      "waves": [[{ "enemy": "RiotGuard", "count": 2 }, { "enemy": "SecurityDrone", "count": 1 }], [{ "enemy": "SecurityGuard", "count": 2 }]],
+      "waves": [[{ "enemy": "RiotGuard", "count": 2 }, { "enemy": "SecurityDrone", "count": 1 }], [{ "enemy": "SecurityGuard", "count": 1, "elite": true }, { "enemy": "SecurityGuard", "count": 1 }]],
       "place": [{ "type": "relay", "id": "A5", "at": [17.5, 17.5] }]
     },
     {
@@ -93,7 +93,7 @@
         { "x": 15, "y": 6, "side": "North", "arena": true }, { "x": 12, "y": 3, "side": "West", "arena": true }, { "x": 18, "y": 3, "side": "East", "arena": true }, { "x": 15, "y": 0, "side": "South", "arena": true },
         { "x": 23, "y": 3, "side": "East" }, { "x": 15, "y": -4, "side": "South" }
       ],
-      "waves": [[{ "enemy": "RiotGuard", "count": 2 }, { "enemy": "SecurityDrone", "count": 2 }]]
+      "waves": [[{ "enemy": "RiotGuard", "count": 1, "elite": true }, { "enemy": "RiotGuard", "count": 1 }, { "enemy": "SecurityDrone", "count": 2 }]]
     },
     {
       "scene": "AD_PreBossNest", "role": "Plain", "rect": [24, 1, 5, 5],

@@ -68,7 +68,7 @@
         { "x": 12, "y": 15, "side": "West", "arena": true }, { "x": 18, "y": 15, "side": "East", "arena": true }, { "x": 15, "y": 12, "side": "South", "arena": true },
         { "x": 23, "y": 15, "side": "East" }, { "x": 15, "y": 7, "side": "South" }
       ],
-      "waves": [[{ "enemy": "Handler", "count": 2 }, { "enemy": "SecurityGuard", "count": 2 }]],
+      "waves": [[{ "enemy": "Handler", "count": 1, "elite": true }, { "enemy": "Handler", "count": 1 }, { "enemy": "SecurityGuard", "count": 2 }]],
       "place": [{ "type": "relay", "id": "A5", "at": [17.5, 17.5] }]
     },
     {
@@ -92,7 +92,7 @@
       "scene": "SH_A8", "role": "Arena", "rect": [12, 0, 7, 7],
       "halls": [[[19, 3], [23, 3]]],
       "doors": [{ "x": 15, "y": 6, "side": "North", "arena": true }, { "x": 12, "y": 3, "side": "West", "arena": true }, { "x": 18, "y": 3, "side": "East", "arena": true }, { "x": 23, "y": 3, "side": "East" }],
-      "waves": [[{ "enemy": "Handler", "count": 2 }, { "enemy": "SecurityGuard", "count": 3 }]],
+      "waves": [[{ "enemy": "Handler", "count": 1, "elite": true }, { "enemy": "Handler", "count": 1 }, { "enemy": "SecurityGuard", "count": 3 }]],
       "place": [{ "type": "pickup", "prefab": "CrusherMassPickup", "at": [13, 1], "yaw": 0 }]
     },
     {

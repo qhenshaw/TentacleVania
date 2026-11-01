@@ -68,7 +68,7 @@
         { "x": 15, "y": 18, "side": "North", "arena": true }, { "x": 12, "y": 15, "side": "West", "arena": true }, { "x": 18, "y": 15, "side": "East", "arena": true },
         { "x": 24, "y": 15, "side": "East" }
       ],
-      "waves": [[{ "enemy": "LabSecurity", "count": 2 }, { "enemy": "Hazmat", "count": 2 }], [{ "enemy": "MedDrone", "count": 2 }]],
+      "waves": [[{ "enemy": "LabSecurity", "count": 2 }, { "enemy": "Hazmat", "count": 2 }], [{ "enemy": "MedDrone", "count": 1, "elite": true }, { "enemy": "MedDrone", "count": 1 }]],
       "place": [
         { "type": "terminal", "log": "SiblingTermination", "at": [16.5, 17.7], "yaw": 180 },
         { "type": "terminal", "log": "SurgeonsBettingPool", "at": [17.7, 13.5], "yaw": 270 },
@@ -99,7 +99,7 @@
         { "x": 12, "y": 3, "side": "West", "arena": true }, { "x": 18, "y": 3, "side": "East", "arena": true }, { "x": 15, "y": 0, "side": "South", "arena": true },
         { "x": 23, "y": 3, "side": "East" }, { "x": 15, "y": -4, "side": "South" }
       ],
-      "waves": [[{ "enemy": "Hazmat", "count": 2 }, { "enemy": "Surgeon", "count": 2 }], [{ "enemy": "LabSecurity", "count": 2 }]]
+      "waves": [[{ "enemy": "Hazmat", "count": 2 }, { "enemy": "Surgeon", "count": 2 }], [{ "enemy": "LabSecurity", "count": 1, "elite": true }, { "enemy": "LabSecurity", "count": 1 }]]
     },
     {
       "scene": "BL_A9", "role": "Arena", "rect": [24, 0, 7, 7],

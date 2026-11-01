@@ -15,10 +15,16 @@ MonoBehaviour:
   _waves:
   - Enemies:
     - Prefab: {fileID: 655065767481773311, guid: 1d327b3c7fd32414ab9d4427fce78699, type: 3}
-      Count: 2
+      Count: 1
+      Elite: 1
+    - Prefab: {fileID: 655065767481773311, guid: 1d327b3c7fd32414ab9d4427fce78699, type: 3}
+      Count: 1
+      Elite: 0
     - Prefab: {fileID: 5110673907316712019, guid: d45bff2eab984f74d8e0dfd70e70d40c, type: 3}
       Count: 1
+      Elite: 0
     - Prefab: {fileID: 4572525252426624114, guid: 3540a68c4f5f9364fb69cbb6f01a2d51, type: 3}
       Count: 1
+      Elite: 0
   _delayBetweenWaves: 2
   _spawnInterval: 0.3

@@ -605,7 +605,12 @@
         [
           {
             "enemy": "Breacher",
-            "count": 2
+            "count": 1,
+            "elite": true
+          },
+          {
+            "enemy": "Breacher",
+            "count": 1
           },
           {
             "enemy": "Rifleman",
@@ -862,7 +867,8 @@
         [
           {
             "enemy": "HeavyTrooper",
-            "count": 1
+            "count": 1,
+            "elite": true
           },
           {
             "enemy": "Soldier",

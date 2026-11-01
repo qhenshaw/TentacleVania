@@ -529,7 +529,8 @@
         [
           {
             "enemy": "EscapedTestSubject",
-            "count": 1
+            "count": 1,
+            "elite": true
           },
           {
             "enemy": "SecurityDrone",
@@ -779,7 +780,12 @@
         [
           {
             "enemy": "TestDrone",
-            "count": 2
+            "count": 1,
+            "elite": true
+          },
+          {
+            "enemy": "TestDrone",
+            "count": 1
           }
         ]
       ],
