@@ -641,6 +641,16 @@
             11,
             3
           ]
+        ],
+        [
+          [
+            -1,
+            3
+          ],
+          [
+            -5,
+            3
+          ]
         ]
       ],
       "doors": [
@@ -660,6 +670,17 @@
           "x": 11,
           "y": 3,
           "side": "East"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "side": "West",
+          "arena": true
+        },
+        {
+          "x": -5,
+          "y": 3,
+          "side": "West"
         }
       ],
       "place": [
@@ -670,6 +691,24 @@
             1,
             1
           ]
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Overload/OverloadDoor.prefab",
+          "at": [
+            -3,
+            3
+          ],
+          "yaw": 90,
+          "name": "VaultDoor"
+        },
+        {
+          "type": "mapGate",
+          "at": [
+            -3,
+            3
+          ],
+          "yaw": 90
         }
       ],
       "waves": [
@@ -1085,6 +1124,96 @@
           "requiredAbility": "FireResistance",
           "name": "Transit_CC"
         }
+      ]
+    },
+    {
+      "scene": "AR_Vault",
+      "role": "Boss",
+      "rect": [
+        -18,
+        -2,
+        13,
+        11
+      ],
+      "doors": [
+        {
+          "x": -6,
+          "y": 3,
+          "side": "East",
+          "arena": true
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            -9.5,
+            1
+          ],
+          "yaw": 0,
+          "name": "Barricade0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            -9.5,
+            5.5
+          ],
+          "yaw": 0,
+          "name": "Barricade1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            -13,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "Barricade2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            -16,
+            0
+          ],
+          "yaw": 0,
+          "name": "Barricade3"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            -16,
+            7
+          ],
+          "yaw": 0,
+          "name": "Barricade4"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "HKSniper",
+            "count": 1
+          },
+          {
+            "enemy": "HKHeavy",
+            "count": 1
+          },
+          {
+            "enemy": "HKMedic",
+            "count": 1
+          },
+          {
+            "enemy": "HKTracker",
+            "count": 1
+          }
+        ]
       ]
     }
   ]

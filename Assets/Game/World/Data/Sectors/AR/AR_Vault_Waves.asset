@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ee2dbd15ca5b74298073e09d81d4ac, type: 3}
+  m_Name: AR_Vault_Waves
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Arenas.ArenaWaveSet
+  _waves:
+  - Enemies:
+    - Prefab: {fileID: 4180709023369785779, guid: e8370bd05cfb5e44a8226c1f344b31a7, type: 3}
+      Count: 1
+      Elite: 0
+    - Prefab: {fileID: 8026562551032016159, guid: 48b84141d94e42f429cc5b4e4ca4ad2f, type: 3}
+      Count: 1
+      Elite: 0
+    - Prefab: {fileID: 5186274661069857777, guid: 8fd807776ab5dce459f0033cdb62a3d5, type: 3}
+      Count: 1
+      Elite: 0
+    - Prefab: {fileID: 6028995601432718816, guid: 78beed28b04d25c4ca6e2ab32eea6e5e, type: 3}
+      Count: 1
+      Elite: 0
+  _delayBetweenWaves: 2
+  _spawnInterval: 0.3

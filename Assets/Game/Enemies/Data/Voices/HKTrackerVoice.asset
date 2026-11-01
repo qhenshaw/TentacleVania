@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: HKTrackerVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1997212688
+      Data2: 1103722098
+      Data3: 886554803
+      Data4: 752111929
+    Path: event:/Enemies/Voice/HKTracker/Alert
+  _pain:
+    Guid:
+      Data1: -1956148548
+      Data2: 1144629479
+      Data3: -1379137349
+      Data4: -1477042113
+    Path: event:/Enemies/Voice/HKTracker/Pain
+  _death:
+    Guid:
+      Data1: -1247761570
+      Data2: 1212411661
+      Data3: -1038286180
+      Data4: -1451412941
+    Path: event:/Enemies/Voice/HKTracker/Death
+  _grabbed:
+    Guid:
+      Data1: 1490102264
+      Data2: 1180343389
+      Data3: 2126360449
+      Data4: 1526532796
+    Path: event:/Enemies/Voice/HKTracker/Grabbed
+  _attack:
+    Guid:
+      Data1: -943318551
+      Data2: 1182622677
+      Data3: 66017925
+      Data4: -1096362784
+    Path: event:/Enemies/Voice/HKTracker/Attack
+  _stagger:
+    Guid:
+      Data1: -204259339
+      Data2: 1191714429
+      Data3: 917161869
+      Data4: 283012228
+    Path: event:/Enemies/Voice/HKTracker/Stagger
+  _painCooldown: 1.2
