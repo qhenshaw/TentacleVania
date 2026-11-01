@@ -1074,6 +1074,10 @@ MonoBehaviour:
     m_Localized: Excavator Rig
     m_Metadata:
       m_Items: []
+  - m_Id: 932871331921920
+    m_Localized: Distress Beacon
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
