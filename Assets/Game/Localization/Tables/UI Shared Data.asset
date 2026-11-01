@@ -1035,6 +1035,10 @@ MonoBehaviour:
     m_Key: boss.seeper
     m_Metadata:
       m_Items: []
+  - m_Id: 907459629432832
+    m_Key: boss.cryoLoader
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: CryoLoaderVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1799383579
+      Data2: 1320798527
+      Data3: 957837503
+      Data4: -224804980
+    Path: event:/Enemies/Voice/CryoLoader/Alert
+  _pain:
+    Guid:
+      Data1: 1816794232
+      Data2: 1256004677
+      Data3: 1678117023
+      Data4: 1784704207
+    Path: event:/Enemies/Voice/CryoLoader/Pain
+  _death:
+    Guid:
+      Data1: 1069731463
+      Data2: 1250026235
+      Data3: -8791405
+      Data4: -1830619893
+    Path: event:/Enemies/Voice/CryoLoader/Death
+  _grabbed:
+    Guid:
+      Data1: 1578351504
+      Data2: 1216006761
+      Data3: 2075395740
+      Data4: 1788731331
+    Path: event:/Enemies/Voice/CryoLoader/Grabbed
+  _attack:
+    Guid:
+      Data1: -1776110923
+      Data2: 1193874258
+      Data3: 364190131
+      Data4: -148307148
+    Path: event:/Enemies/Voice/CryoLoader/Attack
+  _stagger:
+    Guid:
+      Data1: 753741028
+      Data2: 1077247576
+      Data3: 2020476327
+      Data4: 1357605057
+    Path: event:/Enemies/Voice/CryoLoader/Stagger
+  _painCooldown: 1.2

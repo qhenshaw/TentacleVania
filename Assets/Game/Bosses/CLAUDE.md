@@ -57,6 +57,14 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - **Attacks (yellow, Acid + Corrode, only while exposed):** Acid Spray (70° cone at 5 m, 3 × 8), Engulf (160° at 2.5 m, 18).
 - **Phases:** 100% Outbreak Crawler adds (max 2, every 18 s); ≤50% multi-vent: a second eruption at the vent farthest from the first, which releases 2 Outbreak Crawlers (the split body; adds capped at 4), ×1.2 speed.
 
+## Cryo Loader Mech (`CryoLoader/`; design: Cryo Loader Mech page, TV-192; placeholder numbers)
+
+- **Assets:** `CryoLoader.prefab` (`CryoLoaderBoss : BossEnemy`; the test boss body ×1.4 in amber with a steel `HydraulicRam` cube), data `CryoLoader.asset`, boss data `CryoLoaderBoss.asset` (id `CS/CryoLoader`, key `boss.cryoLoader`, reward `Breach`), voice set `CryoLoaderVoice`; `Icefall.prefab` (an `Enemies/Traps/AcidBurst` without the pool, FMOD `event:/Bosses/CryoLoader/Icefall`).
+- **Numbers:** 3,000 HP, stagger 1,500 with a 3 s window, 3.8 m/s, machine.
+- **Ice maze (design core mechanic: maze shifting):** on spawn it raises `_mazeWalls` 5 pooled `Enemies/Traps/IceWall`s (5 m, no lifetime) in 8 slots around where it spawned (rotated with its yaw; never within 3 m of the creature or itself) and re-raises one in a free slot every 12 s; its walls shatter when it dies. Pooled walls carry a `Generation`, so a slot never claims a wall reused by a Frost Sentry.
+- **Attacks (yellow, Physical):** Ram Charge (1.0 s wind-up, used at 3.5–12 m; lunges 15 m/s while active and shatters any of its walls within 2.2 m ahead, `IceWall.Touches`), Hydraulic Slam (area 3.2 m at 1.5 m ahead, 26 + `Slow` 0.5 for 2 s: the floor freezes), Cryo Vent Blast (60° cone at 5 m, 3 × 6 + `Slow` 0.35).
+- **Phases:** 100% Cryo Technician adds (max 2, every 16 s); ≤50% Loader Bot adds (1 on start, max 2), ×1.15 speed, and Icefall: every 7 s three 1.6 m circles (one on the creature, two 3–6 m around it) drop ice after 1.1 s for 16 damage.
+
 ## Surgical Automaton (`Automaton/`; design: Surgical Automaton page and Changelog "Surgical Automaton fight")
 
 - **Assets:** `SurgicalAutomaton.prefab` (`SurgicalAutomaton : BossEnemy`; the test boss's Handler body ×1.6 in steel as placeholder), enemy data `SurgicalAutomaton.asset` and boss data `AutomatonBoss.asset` (id `BL/SurgicalAutomaton`, matching the PA script; the shared boss theme; reward `TentacleGrapple`, which unlocks Grapple without taking the slot).
