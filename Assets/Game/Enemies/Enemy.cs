@@ -361,7 +361,8 @@ namespace TentacleVania.Enemies
                     if (progress <= attack.TrackDuringWindUp && target != null)
                     {
                         _attackForward = Flat(target.transform.position - transform.position).normalized;
-                        UpdateAreaCenter();
+                        if (!AttackMath.PlacedAtTarget(attack))
+                            UpdateAreaCenter();
                     }
                     Face(_attackForward, dt);
                     if (_glow != null)

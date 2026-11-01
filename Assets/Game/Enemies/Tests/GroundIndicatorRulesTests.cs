@@ -40,6 +40,15 @@ namespace TentacleVania.Enemies.Tests
         }
 
         [Test]
+        public void TrapCirclesAreLockedFromTheStart()
+        {
+            var trap = new EnemyAttack { Kind = AttackKind.Trap, TrackDuringWindUp = 0.75f };
+            Assert.IsTrue(AttackMath.PlacedAtTarget(trap));
+            Assert.IsTrue(AttackMath.IsLocked(trap, 0f));
+            Assert.IsFalse(AttackMath.PlacedAtTarget(new EnemyAttack { Kind = AttackKind.Area }));
+        }
+
+        [Test]
         public void LockedAimKeepsTheLockedHeadingAndPitchesToTheAimHeight()
         {
             var aim = AttackMath.LockedAim(Vector3.forward, new Vector3(0f, 1f, 0f), new Vector3(3f, 0.5f, 4f));

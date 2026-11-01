@@ -41,7 +41,9 @@ namespace TentacleVania.Enemies.AI
             return offset.sqrMagnitude <= radius * radius;
         }
 
-        public static bool IsLocked(EnemyAttack attack, float windUpProgress) => windUpProgress > attack.TrackDuringWindUp;
+        public static bool PlacedAtTarget(EnemyAttack attack) => attack.Kind == AttackKind.Trap;
+
+        public static bool IsLocked(EnemyAttack attack, float windUpProgress) => PlacedAtTarget(attack) || windUpProgress > attack.TrackDuringWindUp;
 
         public static float LaneLength(float maxRange, float wallDistance, float targetDistance, float overshoot) =>
             Mathf.Max(0f, Mathf.Min(maxRange, Mathf.Min(wallDistance, targetDistance + overshoot)));
