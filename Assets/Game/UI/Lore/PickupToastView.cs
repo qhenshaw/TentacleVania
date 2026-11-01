@@ -31,6 +31,7 @@ namespace TentacleVania.UI.Lore
             root.Q("reader").parent.Add(_toast);
             Collectibles.Found += OnFound;
             LoreLogs.Collected += OnLogCollected;
+            FeatProgress.Progressed += OnFeatProgress;
             World.Arenas.ArenaEncounter.AnyCleared += OnArenaCleared;
         }
 
@@ -38,6 +39,7 @@ namespace TentacleVania.UI.Lore
         {
             Collectibles.Found -= OnFound;
             LoreLogs.Collected -= OnLogCollected;
+            FeatProgress.Progressed -= OnFeatProgress;
             World.Arenas.ArenaEncounter.AnyCleared -= OnArenaCleared;
             _toast?.RemoveFromHierarchy();
         }
@@ -63,6 +65,12 @@ namespace TentacleVania.UI.Lore
         }
 
         private void OnLogCollected(string id) => Show(T("pickup.log"));
+
+        private void OnFeatProgress(string titleKey, int count, int target)
+        {
+            if (count < target)
+                Show(string.Format(T("feat.progress"), T(titleKey), count, target));
+        }
 
         private void OnArenaCleared(World.Arenas.ArenaEncounter arena) => Show(T(arena.HadHumans ? "lockdown.humans" : "lockdown.machines"));
 

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bf0e5b886e0604881a196157227123, type: 3}
+  m_Name: EmbeddedBarbsFeat
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Feats.FeatDefinition
+  _mutationId: EmbeddedBarbs
+  _titleKey: feat.embeddedBarbs
+  _condition: 0
+  _count: 4
+  _window: 30
+  _targetStatus: 0
+  _creatureBelow: 0
+  _machinesOnly: 0
+  _abilityOnly: 1
+  _electricOnly: 0
+  _minTargets: 1
+  _streak: 1

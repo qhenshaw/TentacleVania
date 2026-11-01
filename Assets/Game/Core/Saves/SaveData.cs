@@ -29,6 +29,7 @@ namespace TentacleVania.Core.Saves
         public string ArenaScene = "";
         public Vector3 ArenaPosition;
         public bool Completed;
+        public List<string> Feats = new();
     }
 
     [Serializable]

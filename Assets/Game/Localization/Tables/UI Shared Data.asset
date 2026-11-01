@@ -1099,6 +1099,66 @@ MonoBehaviour:
     m_Key: credits.skip
     m_Metadata:
       m_Items: []
+  - m_Id: 945383402127360
+    m_Key: feat.progress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264704
+    m_Key: feat.embeddedBarbs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264705
+    m_Key: feat.galvanicOverload
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264706
+    m_Key: feat.retaliationPlating
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264707
+    m_Key: feat.openWounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264708
+    m_Key: feat.pyreFeast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264709
+    m_Key: feat.acidBlood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264710
+    m_Key: feat.feedbackLoop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264711
+    m_Key: mutation.embeddedBarbs.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264712
+    m_Key: mutation.galvanicOverload.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264713
+    m_Key: mutation.retaliationPlating.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264714
+    m_Key: mutation.openWounds.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264715
+    m_Key: mutation.pyreFeast.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264716
+    m_Key: mutation.acidBlood.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264717
+    m_Key: mutation.feedbackLoop.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

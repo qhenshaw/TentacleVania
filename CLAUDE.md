@@ -172,7 +172,7 @@ A small `Bootstrap` scene is the entry point: it holds the persistent managers (
 ## Code style
 
 - No comments in C# or shaders. Scripts in `Tools/` keep a header comment saying what they do and how to call them.
-- Never name a type after an area or folder namespace (`Bosses`, `Nests`): inside `TentacleVania.*` the name resolves to the namespace `TentacleVania.Bosses` and fails with CS0234 (hence `Core.Progression.BossProgress` and `World.BioNests`).
+- Never name a type after an area or folder namespace (`Bosses`, `Nests`): inside `TentacleVania.*` the name resolves to the namespace `TentacleVania.Bosses` and fails with CS0234 (hence `Core.Progression.BossProgress` and `World.BioNests`). The reverse bites too: a new folder namespace hides any type of that name inside it (`World.Finale` hid `Core.Finale`, so the folder is `World/Ending`; `Abilities.Feats` hid `Core.Progression.Feats`, now `FeatProgress`), so grep for the name before creating a folder.
 - Every `MonoBehaviour` and `ScriptableObject` class needs its own file named after it: with several in one file, Unity can only save assets for one of them (the rest come out missing, with no error).
 - `_camelCase` private fields, `[SerializeField] private` for inspector fields, `PascalCase` constants.
 - Use target-typed `new()` and expression-bodied members for one-liners.

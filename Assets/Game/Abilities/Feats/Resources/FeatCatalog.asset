@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3859e60b41f32804089b23d8229794c5, type: 3}
+  m_Name: FeatCatalog
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Feats.FeatCatalog
+  _feats:
+  - {fileID: 11400000, guid: 1ec205c9c782250459a968990eb52a93, type: 2}
+  - {fileID: 11400000, guid: 842826c692212104a8940ddbc8502f9e, type: 2}
+  - {fileID: 11400000, guid: 2859d60603bd8ff44b62b8ce2422b3d4, type: 2}
+  - {fileID: 11400000, guid: 89ac323c671fb674aa4db8bba38efc3e, type: 2}
+  - {fileID: 11400000, guid: a4ab638a69ece3a45b12f644c6dcb379, type: 2}
+  - {fileID: 11400000, guid: d930ff8b27793a749ad990e72baf4ce8, type: 2}
+  - {fileID: 11400000, guid: b5aafbddcd1da4842945f517cce594a6, type: 2}
