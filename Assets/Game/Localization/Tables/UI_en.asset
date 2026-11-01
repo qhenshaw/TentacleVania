@@ -1042,6 +1042,10 @@ MonoBehaviour:
     m_Localized: Cryo Loader Mech
     m_Metadata:
       m_Items: []
+  - m_Id: 909501425008640
+    m_Localized: Emergency Thermal Blanket
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
