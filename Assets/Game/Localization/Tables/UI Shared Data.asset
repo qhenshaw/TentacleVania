@@ -1639,6 +1639,26 @@ MonoBehaviour:
     m_Key: mutation.afterglow.effect
     m_Metadata:
       m_Items: []
+  - m_Id: 990106833666048
+    m_Key: trinket.EvacuationFloorPlan.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990106879803392
+    m_Key: trinket.NavigationShard.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990106879803393
+    m_Key: trinket.DeconOverrideCard.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990106879803394
+    m_Key: hoarder.kind.weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990106879803395
+    m_Key: hoarder.kind.ability
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

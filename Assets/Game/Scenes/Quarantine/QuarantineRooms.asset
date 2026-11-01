@@ -683,6 +683,11 @@ MonoBehaviour:
     Position: {x: 51, y: 0, z: 117}
     Yaw: 0
   - Kind: 5
+    Id: QU_R1/DeconOverrideCard
+    Room: QU_R1
+    Position: {x: 43.5, y: 0, z: 117}
+    Yaw: 0
+  - Kind: 5
     Id: QU_VentShaft/BiomassCache
     Room: QU_VentShaft
     Position: {x: 115.5, y: 0, z: 46.5}
@@ -691,6 +696,11 @@ MonoBehaviour:
     Id: QU_VentShaft/HostFeeding
     Room: QU_VentShaft
     Position: {x: 118.5, y: 0, z: 52.5}
+    Yaw: 0
+  - Kind: 7
+    Id: QU/Auto-QU_VentShaft
+    Room: QU_VentShaft
+    Position: {x: 109.5, y: 0, z: 40.5}
     Yaw: 0
   - Kind: 5
     Id: QU_Incinerator/BiomassCache

@@ -107,6 +107,10 @@ namespace TentacleVania.World.Editor
                 case "prefab":
                     c.Spawn(spec.Prefab, position, spec.Yaw, spec.Name);
                     break;
+                case "hoarder":
+                    var hoarder = c.Spawn("Assets/Game/World/Hoarder/Hoarder.prefab", position, spec.Yaw, spec.Name ?? "Hoarder");
+                    RoomContext.Set(hoarder.GetComponent<Hoarder.HoarderMerchant>(), "_floor", spec.Floor);
+                    break;
                 case "paZone":
                     var zone = c.AddByName(c.Empty("PaZone", position, 0f), "TentacleVania.Audio.PaZone");
                     RoomContext.Set(zone, "_sequence", spec.Sequence);

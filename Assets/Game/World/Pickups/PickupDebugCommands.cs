@@ -9,6 +9,11 @@ namespace TentacleVania.World.Pickups
     public static class PickupDebugCommands
     {
         private const string Tab = WorldDebugCommands.Tab;
+        private static readonly string[] AllTrinkets =
+        {
+            "PodReleaseKey", "EvacuationFloorPlan", "DeconOverrideCard", "NavigationShard", "TaggedLockerKey", "EmergencyThermalBlanket",
+            "UnsentLetter", "FlarePistol", "SurfaceLiftCode", "DistressBeacon", "AlphaSurvivorsBadge", "StarChartPlate",
+        };
 
         private static int _spawned;
 
@@ -36,10 +41,10 @@ namespace TentacleVania.World.Pickups
                 var forward = creature.transform.forward;
                 Object.Instantiate(set.Hoarder, creature.transform.position + forward * 2.5f, Quaternion.LookRotation(forward));
             });
-            DebugMenu.Button(Tab, "Give slice trinkets", () =>
+            DebugMenu.Button(Tab, "Give all trinkets", () =>
             {
-                Collectibles.Grant(PickupKind.Trinket, "PodReleaseKey", 1);
-                Collectibles.Grant(PickupKind.Trinket, "TaggedLockerKey", 1);
+                foreach (var trinket in AllTrinkets)
+                    Collectibles.Grant(PickupKind.Trinket, trinket, 1);
             });
             DebugMenu.Button(Tab, "Collect all lore logs", () =>
             {

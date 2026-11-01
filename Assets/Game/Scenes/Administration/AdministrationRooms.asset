@@ -703,6 +703,11 @@ MonoBehaviour:
     Room: AD_EntryNest
     Position: {x: 16.5, y: 0, z: 116.7}
     Yaw: 180
+  - Kind: 4
+    Id: Hoarder
+    Room: AD_EntryNest
+    Position: {x: 6.6000004, y: 0, z: 111.899994}
+    Yaw: 0
   - Kind: 1
     Id: AD/A3
     Room: AD_A3
@@ -744,6 +749,11 @@ MonoBehaviour:
     Position: {x: 46.5, y: 0, z: 115.5}
     Yaw: 0
   - Kind: 5
+    Id: AD_R1/EvacuationFloorPlan
+    Room: AD_R1
+    Position: {x: 51, y: 0, z: 117}
+    Yaw: 0
+  - Kind: 5
     Id: AD_R2/MutagenPickup
     Room: AD_R2
     Position: {x: 46.5, y: 0, z: -19.5}
@@ -771,7 +781,7 @@ MonoBehaviour:
   - Kind: 7
     Id: AD/Auto-AD_A3
     Room: AD_EntryNest
-    Position: {x: 4.5, y: 0, z: 109.5}
+    Position: {x: 4.5, y: 0, z: 121.5}
     Yaw: 0
   - Kind: 7
     Id: AD/Auto-AD_A6
@@ -781,7 +791,7 @@ MonoBehaviour:
   - Kind: 7
     Id: AD/Auto-AD_A6
     Room: AD_EntryNest
-    Position: {x: 4.5, y: 0, z: 121.5}
+    Position: {x: 19.5, y: 0, z: 109.5}
     Yaw: 0
   - Kind: 7
     Id: AD/Auto-AD_FreightStation
@@ -791,5 +801,5 @@ MonoBehaviour:
   - Kind: 7
     Id: AD/Auto-AD_FreightStation
     Room: AD_EntryNest
-    Position: {x: 19.5, y: 0, z: 109.5}
+    Position: {x: 19.5, y: 0, z: 121.5}
     Yaw: 0

@@ -13,7 +13,7 @@
       "doors": [{ "x": 3, "y": 31, "side": "South" }],
       "place": [
         { "type": "nest", "id": "BL/EntryNest", "at": [3.5, 39], "yaw": 180 },
-        { "type": "prefab", "prefab": "Assets/Game/World/Hoarder/Hoarder.prefab", "at": [6.3, 38], "yaw": 270, "name": "Hoarder" },
+        { "type": "hoarder", "at": [6.3, 38], "yaw": 270, "name": "Hoarder", "floor": 1 },
         { "type": "transit", "at": [1.6, 36.6], "yaw": 90, "destination": "ResearchDivision", "arrivalAt": [6.4, 38.5], "arrivalOffset": [-1.5, 0, 0], "arrivalYaw": 270, "requiredBoss": "", "name": "Transit_RD" },
         { "type": "elevator", "at": [1.6, 39.6], "yaw": 90, "destination": "Quarantine", "arrivalAt": [6.4, 38.5], "arrivalOffset": [-1.5, 0, 0], "arrivalYaw": 270, "requiredBoss": "", "requiredAbility": "ElectricResistance", "name": "Lift_QU" },
         { "type": "paZone", "sequence": "bl.entry", "at": [3.5, 38.5], "size": [16, 4, 13] },

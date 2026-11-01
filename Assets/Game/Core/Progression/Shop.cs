@@ -14,16 +14,30 @@ namespace TentacleVania.Core.Progression
 
         public static int MutationPrice(int notches) => MutationPriceByNotches[Mathf.Clamp(notches, 1, MutationPriceByNotches.Length) - 1];
 
-        public static bool InStock(string mutationId, string requiredTrinket) =>
-            !MutationLoadout.Owns(mutationId) && (string.IsNullOrEmpty(requiredTrinket) || Collectibles.Trinkets.Contains(requiredTrinket));
+        public static bool InStock(string mutationId, string requiredTrinket) => InStock(PickupKind.Mutation, mutationId, requiredTrinket);
 
-        public static bool TryBuyMutation(string mutationId, string requiredTrinket, int price)
+        public static bool InStock(PickupKind kind, string id, string requiredTrinket) =>
+            !Owns(kind, id) && (string.IsNullOrEmpty(requiredTrinket) || Collectibles.Trinkets.Contains(requiredTrinket));
+
+        public static bool Owns(PickupKind kind, string id) => kind switch
         {
-            if (string.IsNullOrEmpty(mutationId) || !InStock(mutationId, requiredTrinket) || !Biomass.Spend(price))
+            PickupKind.Weapon => Collectibles.OwnedWeapons.Contains(id),
+            PickupKind.Ability => BossProgress.IsAbilityUnlocked(id),
+            _ => MutationLoadout.Owns(id),
+        };
+
+        public static bool TryBuyMutation(string mutationId, string requiredTrinket, int price) => TryBuy(PickupKind.Mutation, mutationId, requiredTrinket, price);
+
+        public static bool TryBuy(PickupKind kind, string id, string requiredTrinket, int price)
+        {
+            if (string.IsNullOrEmpty(id) || !InStock(kind, id, requiredTrinket) || !Biomass.Spend(price))
                 return false;
             Saves.SaveSystem.Data.Build.BiomassSpent += price;
-            MutationLoadout.Grant(mutationId);
-            Purchased?.Invoke(mutationId);
+            if (kind == PickupKind.Mutation)
+                MutationLoadout.Grant(id);
+            else
+                Collectibles.Grant(kind, id, 1);
+            Purchased?.Invoke(id);
             Saves.Autosave.Request(Saves.AutosaveReason.Purchase);
             return true;
         }

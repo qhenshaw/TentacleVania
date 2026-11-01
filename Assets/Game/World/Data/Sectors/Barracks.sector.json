@@ -84,6 +84,16 @@
           ],
           "arrivalYaw": 90,
           "name": "Crate_Administration"
+        },
+        {
+          "type": "hoarder",
+          "at": [
+            6.3,
+            36.8
+          ],
+          "yaw": 270,
+          "name": "Hoarder",
+          "floor": 2
         }
       ]
     },

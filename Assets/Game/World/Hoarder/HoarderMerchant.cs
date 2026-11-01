@@ -10,6 +10,7 @@ namespace TentacleVania.World.Hoarder
         public const string PromptTradeKey = "prompt.hoarder.trade";
 
         [SerializeField] private HoarderStock _stock;
+        [SerializeField, Range(0, 3)] private int _floor;
         [SerializeField, Min(0.1f)] private float _radius = 2.2f;
         [Tooltip("Placeholder hands, bobbed and twitched while the creature is near.")]
         [SerializeField] private Transform[] _hands = Array.Empty<Transform>();
@@ -20,6 +21,9 @@ namespace TentacleVania.World.Hoarder
         public static event Action<HoarderMerchant> TradeRequested;
 
         public HoarderStock Stock => _stock;
+        public int Floor => _floor;
+
+        public bool Sells(StockEntry entry) => entry != null && entry.MinFloor <= _floor && Core.Progression.Shop.InStock(entry.Kind, entry.Mutation, entry.Trinket);
         public Vector3 Position => transform.position;
         public float Radius => _radius;
         public string PromptKey => PromptTradeKey;
