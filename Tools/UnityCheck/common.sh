@@ -17,6 +17,11 @@ json_number() { sed -n "s/^ *\"$1\": \([-0-9.a-z]*\),\?$/\1/p" | head -1; }
 eval_result() {
     local out
     out=$("${Unity[@]}" eval "$1" 2>&1)
+    # just after a domain reload an eval can compile against the old assemblies and miss new types, so retry once
+    if grep -q 'does not exist in the current context' <<<"$out"; then
+        sleep 3
+        out=$("${Unity[@]}" eval "$1" 2>&1)
+    fi
     if ! grep -q '"success": true' <<<"$out"; then echo "$out" >&2; return 1; fi
     if grep -q '"result": "' <<<"$out"; then json_string result <<<"$out"; else json_number result <<<"$out"; fi
 }
