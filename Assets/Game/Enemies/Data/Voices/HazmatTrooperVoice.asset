@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: HazmatTrooperVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1789461393
+      Data2: 1258973021
+      Data3: 2068562613
+      Data4: 752096549
+    Path: event:/Enemies/Voice/HazmatTrooper/Alert
+  _pain:
+    Guid:
+      Data1: 567691690
+      Data2: 1075195371
+      Data3: 2031788721
+      Data4: 383548113
+    Path: event:/Enemies/Voice/HazmatTrooper/Pain
+  _death:
+    Guid:
+      Data1: -1418297281
+      Data2: 1326480562
+      Data3: 1340131509
+      Data4: -1640904268
+    Path: event:/Enemies/Voice/HazmatTrooper/Death
+  _grabbed:
+    Guid:
+      Data1: 1615334106
+      Data2: 1269991324
+      Data3: -2006325616
+      Data4: -531163315
+    Path: event:/Enemies/Voice/HazmatTrooper/Grabbed
+  _attack:
+    Guid:
+      Data1: 1138580801
+      Data2: 1189196182
+      Data3: -1626135929
+      Data4: -342509648
+    Path: event:/Enemies/Voice/HazmatTrooper/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

@@ -17,6 +17,7 @@ namespace TentacleVania.Enemies
         private readonly List<Enemy> _enemies = new(64);
         private readonly Dictionary<EnemyProjectile, Stack<EnemyProjectile>> _projectilePools = new();
         private readonly Dictionary<ContainmentTrap, Stack<ContainmentTrap>> _trapPools = new();
+        private readonly Dictionary<AcidBurst, Stack<AcidBurst>> _burstPools = new();
 
         public static EnemyManager Instance
         {
@@ -129,6 +130,47 @@ namespace TentacleVania.Enemies
             if (!_instance._trapPools.TryGetValue(trap.Prefab, out var pool))
                 _instance._trapPools[trap.Prefab] = pool = new Stack<ContainmentTrap>(4);
             pool.Push(trap);
+        }
+
+        public static void PlaceBurst(AcidBurst prefab, Vector3 position, float radius, float fuse, in DamageInfo info)
+        {
+            var manager = Instance;
+            if (!manager._burstPools.TryGetValue(prefab, out var pool))
+                manager._burstPools[prefab] = pool = new Stack<AcidBurst>(4);
+            var burst = pool.Count > 0 ? pool.Pop() : null;
+            if (burst == null)
+            {
+                burst = Instantiate(prefab, manager.transform);
+                burst.Prefab = prefab;
+            }
+            burst.Arm(position, radius, fuse, info);
+        }
+
+        public static void PrewarmBursts(AcidBurst prefab, int count)
+        {
+            var manager = Instance;
+            if (!manager._burstPools.TryGetValue(prefab, out var pool))
+                manager._burstPools[prefab] = pool = new Stack<AcidBurst>(count);
+            while (pool.Count < count)
+            {
+                var burst = Instantiate(prefab, manager.transform);
+                burst.Prefab = prefab;
+                burst.gameObject.SetActive(false);
+                pool.Push(burst);
+            }
+        }
+
+        public static void ReturnBurst(AcidBurst burst)
+        {
+            burst.gameObject.SetActive(false);
+            if (_instance == null || burst.Prefab == null)
+            {
+                Destroy(burst.gameObject);
+                return;
+            }
+            if (!_instance._burstPools.TryGetValue(burst.Prefab, out var pool))
+                _instance._burstPools[burst.Prefab] = pool = new Stack<AcidBurst>(4);
+            pool.Push(burst);
         }
 
         private void OnDestroy()
