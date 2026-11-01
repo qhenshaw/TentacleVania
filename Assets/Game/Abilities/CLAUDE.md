@@ -30,6 +30,12 @@ Active abilities (`TentacleVania.Abilities`), on the ability input (RT / Q), pai
 - Tiers (700 / 1,400 biomass): 5 / 7 / 9 spines, 10 / 13 / 16 damage.
 - **Mutation hooks:** `PiercingSpines` equipped lets a spine pass through up to 4 enemies; `EmbeddedBarbs` makes hits apply Bleed; `SpineVolleyRuntime.SpineHit` (static event: target, point) is for Spine Cascade and the like. Ability-flagged hits also count for the Embedded Barbs feat.
 
+## Tendril Snare (`TendrilSnare/`, `TendrilSnare.asset`; TV-156; placeholder numbers)
+
+- A slot ability (35 charge): tentacles erupt 0.3 s later on the nearest enemy within 7 m and 45° of the facing (else 4 m ahead), hitting everything in the radius once for 8 Physical `HitFlags.Ability` damage plus `StatusKind.Root`. Tiers (700 / 1,400): radius 3 / 3.5 / 4 m, root 2.5 / 3 / 3.5 s. Placeholder `VFX/Abilities/TendrilSnare` burst, FMOD `event:/Abilities/TendrilSnare/Activate`, `Erupt`.
+- Enemies now honour Root and Slow: `Enemy.Tick` scales the agent speed by `StatusEffects.MoveScale` (0 while rooted).
+- Hidden in Cold Storage R3 as `World/Pickups/AbilityPickup.prefab` (a pickup of the new `PickupKind.Ability`, which unlocks the id through `BossProgress.Unlock`, toast `pickup.ability`).
+
 ## Tentacle Grapple (`Grapple/`, `TentacleGrapple.asset`; design: Tentacle Grapple page, Changelog Grilling sessions 3 and 5)
 
 - A traversal ability on its own input, the `Traverse` action (LT / F). It isn't in the ability slot: `GrappleDefinition.SlotAbility` is false, so `AbilityController` never equips it. It's unlocked like a boss reward, by the id `TentacleGrapple` in `Build.Abilities` (the Surgical Automaton's `RewardAbility`), and it's in the `ContentCatalog`.

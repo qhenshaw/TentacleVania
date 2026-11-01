@@ -30,7 +30,7 @@ namespace TentacleVania.Core.Progression
             Autosave.Request(AutosaveReason.BossDefeated);
         }
 
-        private static void Unlock(string ability)
+        public static void Unlock(string ability)
         {
             if (string.IsNullOrEmpty(ability) || IsAbilityUnlocked(ability))
                 return;

@@ -1035,13 +1035,14 @@
       "place": [
         {
           "type": "pickup",
-          "prefab": "BiomassCache",
+          "prefab": "AbilityPickup",
           "at": [
             15,
             -7
           ],
           "yaw": 0,
-          "name": "TendrilSnareSpot"
+          "name": "TendrilSnare",
+          "itemId": "TendrilSnare"
         }
       ]
     },

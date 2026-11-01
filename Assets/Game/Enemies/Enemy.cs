@@ -146,7 +146,7 @@ namespace TentacleVania.Enemies
 
         public void Tick(float now, float dt)
         {
-            _agent.speed = BaseSpeed * GameSettings.EnemySpeedScale;
+            _agent.speed = BaseSpeed * GameSettings.EnemySpeedScale * _status.MoveScale;
             var target = CombatTargets.Creature;
             switch (State)
             {
