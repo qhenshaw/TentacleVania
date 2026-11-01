@@ -25,6 +25,16 @@ namespace TentacleVania.Abilities
                     return shield.IsActive ? $"shield {shield.Remaining:F0} left, {shield.TimeLeft:F1} s" : $"ready (last burst hit {shield.LastBurstHits})";
                 return controller.IsActive ? "active" : "ready";
             });
+            DebugMenu.Value(tab, "Feats", () =>
+            {
+                var defs = Feats.FeatTracker.Definitions;
+                var text = new System.Text.StringBuilder();
+                for (var i = 0; i < defs.Count; i++)
+                    text.Append(defs[i].Id).Append(' ').Append(Feats.FeatTracker.Progress(i)).Append('/').Append(defs[i].Count).Append(i < defs.Count - 1 ? ", " : "");
+                return defs.Count == 0 ? "-" : text.ToString();
+            });
+            DebugMenu.Toggle(tab, "Feat tracking", () => Feats.FeatTracker.Enabled, v => Feats.FeatTracker.Enabled = v);
+            DebugMenu.Button(tab, "Reset feat progress", Feats.FeatTracker.ResetProgress);
             DebugMenu.Toggle(tab, "Free abilities (no charge)", () => AbilityController.FreeAbilities, v => AbilityController.FreeAbilities = v);
             DebugMenu.Button(tab, "Equip Bio-Shield", () =>
             {

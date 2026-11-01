@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bf0e5b886e0604881a196157227123, type: 3}
+  m_Name: PyreFeastFeat
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Feats.FeatDefinition
+  _mutationId: PyreFeast
+  _titleKey: feat.pyreFeast
+  _condition: 1
+  _count: 3
+  _window: 15
+  _targetStatus: 4
+  _creatureBelow: 0
+  _machinesOnly: 0
+  _abilityOnly: 0
+  _electricOnly: 0
+  _minTargets: 1
+  _streak: 0

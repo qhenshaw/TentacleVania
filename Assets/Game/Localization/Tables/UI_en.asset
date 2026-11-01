@@ -1097,55 +1097,115 @@ MonoBehaviour:
   - m_Id: 942856195555328
     m_Localized: 'TENTACLEVANIA
 
-      
 
-      
 
-      
+
+
+
 
       A game by
 
       Quin Henshaw
 
-      
 
-      
+
+
 
       Placeholder characters and input prompts
 
       Kenney (CC0)
 
-      
+
 
       Audio middleware
 
       FMOD Studio by Firelight Technologies
 
-      
+
 
       Made with
 
       Unity
 
-      
 
-      
 
-      
+
+
+
 
       The hive is awake.
 
       Site Beta is gone.
 
-      
 
-      
+
+
 
       Thank you for playing.'
     m_Metadata:
       m_Items: []
   - m_Id: 942856237498368
     m_Localized: Press to skip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383402127360
+    m_Localized: '{0}: {1}/{2}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264704
+    m_Localized: Spine squad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264705
+    m_Localized: Shock-break machines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264706
+    m_Localized: Feed under fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264707
+    m_Localized: Bleeding frenzy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264708
+    m_Localized: Burning feast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264709
+    m_Localized: Acid at death's door
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264710
+    m_Localized: Ability storm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264711
+    m_Localized: Embedded Barbs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264712
+    m_Localized: Galvanic Overload
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264713
+    m_Localized: Retaliation Plating
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264714
+    m_Localized: Open Wounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264715
+    m_Localized: Pyre Feast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264716
+    m_Localized: Acid Blood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945383448264717
+    m_Localized: Feedback Loop
     m_Metadata:
       m_Items: []
   references:
