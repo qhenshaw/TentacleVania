@@ -13,6 +13,7 @@
       "doors": [{ "x": 3, "y": 31, "side": "South" }],
       "place": [
         { "type": "nest", "id": "AD/EntryNest", "at": [5, 39], "yaw": 180 },
+        { "type": "paZone", "sequence": "ad.entry", "at": [4, 38.5], "size": [16, 4, 13] },
         { "type": "hoarder", "at": [1.7, 36.8], "yaw": 90, "name": "Hoarder", "floor": 0 },
         { "type": "transit", "at": [1.6, 38.5], "yaw": 90, "destination": "SpecimenHolding", "arrivalAt": [26.5, 5.4], "arrivalOffset": [0, 0, -1.5], "arrivalYaw": 180, "requiredBoss": "SH/WardenDrone", "name": "Transit_SH" },
         { "type": "transit", "at": [6.4, 38.5], "yaw": 270, "destination": "Quarantine", "arrivalAt": [3.5, 38.5], "arrivalYaw": 180, "requiredBoss": "", "requiredAbility": "TentacleGrapple", "name": "Transit_QU" }

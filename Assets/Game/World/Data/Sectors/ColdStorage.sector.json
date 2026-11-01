@@ -89,6 +89,19 @@
           ],
           "arrivalYaw": 90,
           "name": "Crate_Administration"
+        },
+        {
+          "type": "paZone",
+          "sequence": "cs.entry",
+          "at": [
+            4.0,
+            38.5
+          ],
+          "size": [
+            16,
+            4,
+            13
+          ]
         }
       ]
     },

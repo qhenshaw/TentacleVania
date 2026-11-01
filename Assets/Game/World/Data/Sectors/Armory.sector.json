@@ -96,6 +96,19 @@
           "requiredBoss": "",
           "requiredAbility": "Breach",
           "name": "Stairwell_CS"
+        },
+        {
+          "type": "paZone",
+          "sequence": "ar.entry",
+          "at": [
+            4.0,
+            38.5
+          ],
+          "size": [
+            16,
+            4,
+            13
+          ]
         }
       ]
     },

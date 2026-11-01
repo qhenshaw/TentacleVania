@@ -110,6 +110,19 @@
           "requiredBoss": "",
           "requiredAbility": "ElectricResistance",
           "name": "Shaft_BA"
+        },
+        {
+          "type": "paZone",
+          "sequence": "rd.entry",
+          "at": [
+            4.0,
+            38.5
+          ],
+          "size": [
+            16,
+            4,
+            13
+          ]
         }
       ]
     },

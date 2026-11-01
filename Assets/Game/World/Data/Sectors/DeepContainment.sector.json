@@ -84,6 +84,19 @@
           "yaw": 270,
           "name": "Hoarder",
           "floor": 3
+        },
+        {
+          "type": "paZone",
+          "sequence": "dc.entry",
+          "at": [
+            4.0,
+            38.5
+          ],
+          "size": [
+            16,
+            4,
+            13
+          ]
         }
       ]
     },

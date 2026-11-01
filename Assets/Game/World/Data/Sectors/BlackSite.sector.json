@@ -74,6 +74,19 @@
           "requiredBoss": "",
           "requiredAbility": "Burrow",
           "name": "Tunnel_DC"
+        },
+        {
+          "type": "paZone",
+          "sequence": "bs.entry",
+          "at": [
+            4.0,
+            38.5
+          ],
+          "size": [
+            16,
+            4,
+            13
+          ]
         }
       ]
     },

@@ -312,3 +312,500 @@ MonoBehaviour:
           Data3: 0
           Data4: 0
         Path: 
+  - Id: ad.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.26
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.27
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: ad.vance
+    Trigger: 1
+    TriggerKey: AD/SecurityChiefVance
+    PerSector: 0
+    Lines:
+    - Key: line.28
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.29
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: rd.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.30
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.31
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: rd.okafor
+    Trigger: 1
+    TriggerKey: RD/OkaforExoSuit
+    PerSector: 0
+    Lines:
+    - Key: line.32
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.33
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: qu.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.34
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.35
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: qu.seeper
+    Trigger: 1
+    TriggerKey: QU/Seeper
+    PerSector: 0
+    Lines:
+    - Key: line.36
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.37
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: cs.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.38
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.39
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: cs.loader
+    Trigger: 1
+    TriggerKey: CS/CryoLoader
+    PerSector: 0
+    Lines:
+    - Key: line.40
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.41
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: ba.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.42
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.43
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: ba.ross
+    Trigger: 1
+    TriggerKey: BA/MajorRoss
+    PerSector: 0
+    Lines:
+    - Key: line.44
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.45
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: ar.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.46
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.47
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: ar.reyes
+    Trigger: 1
+    TriggerKey: AR/Reyes
+    PerSector: 0
+    Lines:
+    - Key: line.48
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.49
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: cc.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.50
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.51
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: cc.overwatch
+    Trigger: 1
+    TriggerKey: CC/OverwatchCore
+    PerSector: 0
+    Lines:
+    - Key: line.52
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.53
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: dc.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.54
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.55
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: dc.excavator
+    Trigger: 1
+    TriggerKey: DC/ExcavatorRig
+    PerSector: 0
+    Lines:
+    - Key: line.56
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.57
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: bs.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.58
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.59
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: bs.reactor
+    Trigger: 1
+    TriggerKey: BS/ReactorAI
+    PerSector: 0
+    Lines:
+    - Key: line.60
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.61
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: mv.entry
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.62
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.63
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: cc.titan
+    Trigger: 1
+    TriggerKey: CC/SentryTitan
+    PerSector: 0
+    Lines:
+    - Key: line.64
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: qu.many
+    Trigger: 1
+    TriggerKey: QU/TheMany
+    PerSector: 0
+    Lines:
+    - Key: line.65
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.66
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: ar.hunterkiller
+    Trigger: 1
+    TriggerKey: AR/HunterKillerSquad
+    PerSector: 0
+    Lines:
+    - Key: line.67
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.68
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
