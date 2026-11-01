@@ -95,9 +95,19 @@ namespace TentacleVania.UI.Map
                 foreach (var shape in room.MapShapes)
                     Shape(color, shape.width * shape.height > 10f, shape.xMin, shape.yMax, shape.width, shape.height);
             }
-            foreach (var marker in _registry.Markers)
+            var markers = _registry.Markers;
+            for (var i = 0; i < markers.Count; i++)
             {
-                if (!MapProgress.IsExplored(marker.Room) || Collected(marker))
+                var tunnel = markers[i];
+                if (tunnel.Kind != MapMarkerKind.Tunnel || !ShortcutProgress.IsOpen(tunnel.Id))
+                    continue;
+                for (var j = i + 1; j < markers.Count; j++)
+                    if (markers[j].Kind == MapMarkerKind.Tunnel && markers[j].Id == tunnel.Id)
+                        Link(tunnel.Position, markers[j].Position);
+            }
+            foreach (var marker in markers)
+            {
+                if (marker.Kind == MapMarkerKind.Tunnel ? !ShortcutProgress.IsOpen(marker.Id) : !MapProgress.IsExplored(marker.Room) || Collected(marker))
                     continue;
                 var element = Next(MarkerClass(marker));
                 Place(element, marker.Position.x, marker.Position.z, 0f, 0f);
@@ -145,6 +155,7 @@ namespace TentacleVania.UI.Map
             MapMarkerKind.Gate => "map-marker--gate",
             MapMarkerKind.Pickup => "map-marker--pickup",
             MapMarkerKind.LoreLog => "map-marker--lore",
+            MapMarkerKind.Tunnel => "map-marker--tunnel",
             _ => "map-marker--hoarder",
         };
 
@@ -159,6 +170,16 @@ namespace TentacleVania.UI.Map
         {
             var slash = id.IndexOf('/');
             return slash > 0 && SecurityRelays.IsDestroyed(id.Substring(0, slash), id.Substring(slash + 1));
+        }
+
+        private void Link(Vector3 from, Vector3 to)
+        {
+            var dx = (to.x - from.x) * _scale;
+            var dy = (from.z - to.z) * _scale;
+            var element = Next("map-link");
+            Place(element, from.x, from.z, Mathf.Sqrt(dx * dx + dy * dy), 2f);
+            element.style.transformOrigin = new TransformOrigin(0f, Length.Percent(50f));
+            element.style.rotate = new Rotate(Angle.Degrees(Mathf.Atan2(dy, dx) * Mathf.Rad2Deg));
         }
 
         private void Place(VisualElement element, float worldX, float worldZ, float width, float height)
@@ -182,6 +203,8 @@ namespace TentacleVania.UI.Map
                 element.style.width = StyleKeyword.Null;
                 element.style.height = StyleKeyword.Null;
                 element.style.backgroundColor = StyleKeyword.Null;
+                element.style.rotate = StyleKeyword.Null;
+                element.style.transformOrigin = StyleKeyword.Null;
             }
             else
             {
@@ -190,7 +213,8 @@ namespace TentacleVania.UI.Map
                 _pool.Add(element);
                 _content.Add(element);
             }
-            element.AddToClassList(className.StartsWith("map-marker") ? "map-marker" : "map-room");
+            if (className != "map-link")
+                element.AddToClassList(className.StartsWith("map-marker") ? "map-marker" : "map-room");
             element.AddToClassList(className);
             element.style.display = DisplayStyle.Flex;
             _used++;

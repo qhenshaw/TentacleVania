@@ -711,15 +711,55 @@ MonoBehaviour:
     Room: BL_EntryNest
     Position: {x: 20.400002, y: 0, z: 115.5}
     Yaw: 0
+  - Kind: 7
+    Id: BL/T1
+    Room: BL_EntryNest
+    Position: {x: 19.5, y: 0, z: 121.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_A3
+    Room: BL_EntryNest
+    Position: {x: 4.5, y: 0, z: 121.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_A7
+    Room: BL_EntryNest
+    Position: {x: 19.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_R1
+    Room: BL_EntryNest
+    Position: {x: 4.5, y: 0, z: 115.5}
+    Yaw: 0
   - Kind: 1
     Id: BL/A3
     Room: BL_A3
     Position: {x: 90, y: 0, z: 76.5}
     Yaw: 0
+  - Kind: 7
+    Id: BL/T2
+    Room: BL_A3
+    Position: {x: 91.5, y: 0, z: 91.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_A3
+    Room: BL_A3
+    Position: {x: 73.5, y: 0, z: 73.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/T3
+    Room: BL_A4
+    Position: {x: 1.5, y: 0, z: 37.5}
+    Yaw: 0
   - Kind: 6
     Id: TissueSampleSource
     Room: BL_A4
     Position: {x: 28.5, y: 0, z: 47.550003}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/T1
+    Room: BL_A5
+    Position: {x: 40.5, y: 0, z: 55.5}
     Yaw: 0
   - Kind: 6
     Id: SiblingTermination
@@ -741,10 +781,20 @@ MonoBehaviour:
     Room: BL_A7
     Position: {x: 4.5, y: 0, z: 4.5}
     Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_A7
+    Room: BL_A7
+    Position: {x: 1.5, y: 0, z: 1.5}
+    Yaw: 0
   - Kind: 1
     Id: BL/A9
     Room: BL_A9
     Position: {x: 90, y: 0, z: 18}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/T2
+    Room: BL_A9
+    Position: {x: 91.5, y: 0, z: 1.5}
     Yaw: 0
   - Kind: 0
     Id: BL/PreBossNest
@@ -756,10 +806,20 @@ MonoBehaviour:
     Room: BL_PreBossNest
     Position: {x: 130.5, y: 0, z: 10.5}
     Yaw: 0
+  - Kind: 7
+    Id: BL/T3
+    Room: BL_PreBossNest
+    Position: {x: 121.5, y: 0, z: 16.5}
+    Yaw: 0
   - Kind: 5
     Id: BL_R1/TaggedLockerKey
     Room: BL_R1
     Position: {x: 46.5, y: 0, z: 115.5}
+    Yaw: 0
+  - Kind: 7
+    Id: BL/Auto-BL_R1
+    Room: BL_R1
+    Position: {x: 40.5, y: 0, z: 109.5}
     Yaw: 0
   - Kind: 5
     Id: BL_R2/BiomassCache
