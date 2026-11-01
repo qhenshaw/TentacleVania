@@ -115,7 +115,9 @@ namespace TentacleVania.World.Editor
                         RoomContext.Set(zone, "_delay", spec.Delay);
                     break;
                 case "elevator":
-                    var elevator = c.Spawn("Assets/Game/World/Transit/FreightElevator.prefab", position, spec.Yaw, spec.Name ?? "FreightElevator").GetComponent<Transit.SectorElevator>();
+                case "transit":
+                    var transitPrefab = spec.Type == "transit" ? "Assets/Game/World/Transit/TransitDoor.prefab" : "Assets/Game/World/Transit/FreightElevator.prefab";
+                    var elevator = c.Spawn(transitPrefab, position, spec.Yaw, spec.Name ?? (spec.Type == "transit" ? "TransitDoor" : "FreightElevator")).GetComponent<Transit.SectorElevator>();
                     var arrival = RoomContext.CellCenter(spec.ArrivalAt[0], spec.ArrivalAt[1]);
                     if (spec.ArrivalOffset != null)
                         arrival += new Vector3(spec.ArrivalOffset[0], spec.ArrivalOffset[1], spec.ArrivalOffset[2]);
@@ -123,6 +125,7 @@ namespace TentacleVania.World.Editor
                     RoomContext.Set(elevator, "_arrivalPosition", arrival);
                     RoomContext.Set(elevator, "_arrivalYaw", spec.ArrivalYaw);
                     RoomContext.Set(elevator, "_requiredBoss", spec.RequiredBoss ?? "");
+                    RoomContext.Set(elevator, "_requiredAbility", spec.RequiredAbility ?? "");
                     break;
                 case "freight":
                     var crate = c.Spawn("Assets/Game/World/Transit/FreightCrate.prefab", position, spec.Yaw, spec.Name ?? "FreightCrate").GetComponent<Transit.FreightCrate>();
@@ -130,6 +133,9 @@ namespace TentacleVania.World.Editor
                     if (spec.ArrivalOffset != null)
                         crateArrival += new Vector3(spec.ArrivalOffset[0], spec.ArrivalOffset[1], spec.ArrivalOffset[2]);
                     crate.Configure(spec.Destination, crateArrival, spec.ArrivalYaw);
+                    break;
+                case "mapGate":
+                    c.Empty(spec.Name ?? "MapGate", position, spec.Yaw).AddComponent<Map.MapGate>();
                     break;
                 case "hazard":
                     var kind = (Hazards.HazardKind)Enum.Parse(typeof(Hazards.HazardKind), spec.Kind);

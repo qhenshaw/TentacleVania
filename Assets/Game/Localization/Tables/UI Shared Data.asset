@@ -1007,6 +1007,22 @@ MonoBehaviour:
     m_Key: transit.freight
     m_Metadata:
       m_Items: []
+  - m_Id: 816425612361728
+    m_Key: prompt.transit.sealed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816425658499072
+    m_Key: prompt.transit.enter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816425658499073
+    m_Key: prompt.transit.locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816425658499074
+    m_Key: transit.corridor
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

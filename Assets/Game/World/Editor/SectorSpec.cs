@@ -68,5 +68,6 @@ namespace TentacleVania.World.Editor
         public string RequiredBoss;
         public string Hook;
         public string Kind;
+        public string RequiredAbility;
     }
 }

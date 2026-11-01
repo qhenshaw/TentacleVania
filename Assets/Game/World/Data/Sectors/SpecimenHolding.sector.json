@@ -102,7 +102,8 @@
       "place": [
         { "type": "nest", "id": "SH/PreBossNest", "at": [26, 4], "yaw": 180 },
         { "type": "crawl", "id": "SH/T1", "opensHere": true, "nest": "SH/PreBossNest", "at": [24, 1], "yaw": 0, "otherAt": [1, 40], "otherYaw": 180 },
-        { "type": "securityDoor", "at": [31, 3], "yaw": 90 }
+        { "type": "securityDoor", "at": [31, 3], "yaw": 90 },
+        { "type": "transit", "at": [26.5, 5.4], "yaw": 180, "destination": "Administration", "arrivalAt": [1.6, 38.5], "arrivalOffset": [1.5, 0, 0], "arrivalYaw": 90, "requiredBoss": "SH/WardenDrone", "name": "Transit_AD" }
       ]
     },
     {

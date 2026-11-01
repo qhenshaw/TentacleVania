@@ -156,6 +156,7 @@ A small `Bootstrap` scene is the entry point: it holds the persistent managers (
 | `SpecimenHolding` (+ `SH_*` rooms in `SpecimenHolding/`) | The first real sector: root scene plus 14 streamed room scenes generated from `World/Data/Sectors/SpecimenHolding.sector.json` (`World/CLAUDE.md`); builds play this (developer decision) |
 | `LayoutSandbox` | Level layout tool test room built from `SciFiTopDown` (`World/CLAUDE.md`); not in the build |
 | `StreamingTest` (+ `StreamingTest_Room1`–`5`) | Room streaming test chain: a root scene that streams five room scenes through Addressables (`World/CLAUDE.md`); not in the build |
+| `Administration` (+ `AD_*` rooms in `Administration/`) | L0 hub sector generated from `World/Data/Sectors/Administration.sector.json`; reached by the transit door in Specimen Holding's pre-boss nest after the Warden |
 | `BioLabs` (+ `BL_*` rooms in `BioLabs/`) | The second slice sector, generated from `World/Data/Sectors/BioLabs.sector.json`; reached by the freight elevator from the Warden arena (and back) |
 | `CombatArena` | Test-only greybox lock-in arena with four enemy waves (the creature starts in the south corridor and walking in starts it); the play-check tools open it. Development builds only (F5 Game: Load CombatArena); `unity-build.sh --release` unticks it for the build |
 

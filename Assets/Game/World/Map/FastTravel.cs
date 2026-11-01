@@ -23,6 +23,7 @@ namespace TentacleVania.World.Map
         Tunnel,
         Recover,
         Freight,
+        Corridor,
     }
 
     public static class FastTravel
