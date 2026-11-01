@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: BlackOpsSoldierVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 488800510
+      Data2: 1130393873
+      Data3: 1404408224
+      Data4: -1704218014
+    Path: event:/Enemies/Voice/BlackOpsSoldier/Alert
+  _pain:
+    Guid:
+      Data1: 2049136118
+      Data2: 1285268062
+      Data3: 1222493838
+      Data4: 2106502249
+    Path: event:/Enemies/Voice/BlackOpsSoldier/Pain
+  _death:
+    Guid:
+      Data1: 1907198345
+      Data2: 1304331551
+      Data3: 2041608349
+      Data4: -1636696375
+    Path: event:/Enemies/Voice/BlackOpsSoldier/Death
+  _grabbed:
+    Guid:
+      Data1: -1555395350
+      Data2: 1181896714
+      Data3: 1345797255
+      Data4: 1293578694
+    Path: event:/Enemies/Voice/BlackOpsSoldier/Grabbed
+  _attack:
+    Guid:
+      Data1: 605153044
+      Data2: 1270294458
+      Data3: 416879775
+      Data4: -129916541
+    Path: event:/Enemies/Voice/BlackOpsSoldier/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: HiveTissueSpawnVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 1325917730
+      Data2: 1200682697
+      Data3: 1488672437
+      Data4: 1736897188
+    Path: event:/Enemies/Voice/HiveTissueSpawn/Alert
+  _pain:
+    Guid:
+      Data1: 1404763075
+      Data2: 1151887007
+      Data3: -1430263647
+      Data4: 1284678726
+    Path: event:/Enemies/Voice/HiveTissueSpawn/Pain
+  _death:
+    Guid:
+      Data1: -640750509
+      Data2: 1315997057
+      Data3: 1857503369
+      Data4: -1166093565
+    Path: event:/Enemies/Voice/HiveTissueSpawn/Death
+  _grabbed:
+    Guid:
+      Data1: 2070654796
+      Data2: 1316130037
+      Data3: 1160236210
+      Data4: 1823356524
+    Path: event:/Enemies/Voice/HiveTissueSpawn/Grabbed
+  _attack:
+    Guid:
+      Data1: 383561420
+      Data2: 1104797551
+      Data3: 2134909330
+      Data4: 375195114
+    Path: event:/Enemies/Voice/HiveTissueSpawn/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

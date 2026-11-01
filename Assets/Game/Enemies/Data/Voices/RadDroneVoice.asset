@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: RadDroneVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 725935986
+      Data2: 1306858469
+      Data3: 1479350407
+      Data4: 1102262995
+    Path: event:/Enemies/Voice/RadDrone/Alert
+  _pain:
+    Guid:
+      Data1: -250233544
+      Data2: 1107093822
+      Data3: 2013561756
+      Data4: -123063949
+    Path: event:/Enemies/Voice/RadDrone/Pain
+  _death:
+    Guid:
+      Data1: -1711595256
+      Data2: 1330085837
+      Data3: 103518869
+      Data4: -1209502601
+    Path: event:/Enemies/Voice/RadDrone/Death
+  _grabbed:
+    Guid:
+      Data1: 1108173852
+      Data2: 1330970813
+      Data3: 2087563928
+      Data4: -1872772766
+    Path: event:/Enemies/Voice/RadDrone/Grabbed
+  _attack:
+    Guid:
+      Data1: -2039592326
+      Data2: 1304936380
+      Data3: 1386116510
+      Data4: -1038372699
+    Path: event:/Enemies/Voice/RadDrone/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30eac26dc7a577547b9a6a8bde088ab6, type: 3}
+  m_Name: HiveTissueSpawn
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyDefinition
+  _displayName: Hive Tissue Spawn
+  _maxHealth: 40
+  _maxArmor: 0
+  _maxStagger: 25
+  _staggerStun: 2
+  _staggerDamageTaken: 1.5
+  _feedableDamageTaken: 0.5
+  _moveSpeed: 6
+  _turnSpeed: 540
+  _spawnDelay: 0.5
+  _circleRange: {x: 2, y: 3.5}
+  _knockbackScale: 1.6
+  _attacks:
+  - Name: Hive Bite
+    Kind: 0
+    Telegraph: 0
+    Animation: 0
+    AnimationHitTime: 0.48
+    GroundIndicator: 0
+    WindUp: 0.45
+    Active: 0.12
+    Recovery: 0.4
+    Cooldown: 0.9
+    TrackDuringWindUp: 0.5
+    Hits: 1
+    MinRange: 0
+    MaxRange: 1.4
+    Damage: 5
+    Stagger: 0
+    Type: 0
+    StunDuration: 0
+    Status: 3
+    StatusMagnitude: 0
+    StatusDuration: 0
+    Reach: 1.3
+    Arc: 70
+    SweepRadius: 0.35
+    Height: 0.5
+    AreaRadius: 2.5
+    AreaForwardOffset: 0
+    Projectile: {fileID: 0}
+    ProjectileSpeed: 14
+    ProjectileLifetime: 3
+    LaneWidth: 0.4
+    TrapPrefab: {fileID: 0}
+    TrapLifetime: 6
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
+    WindUpSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    StrikeSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    HitSound:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+  _consumeHeal: 0.12
+  _biomass: 8
+  _spawnOnWall: 0
+  _despawnDelay: 2
+  _panicRange: 7
+  _fleeDistance: 6
+  _corneredDistance: 1.2
+  _preferredRange: {x: 5, y: 8}
+  _voice: {fileID: 11400000, guid: 25f9cb8fd2eb7e8478df1b8567be8aef, type: 2}
+  _machine: 0
+  _drop: {fileID: 0}
+  _dropChance: 0
+  _weakTo: 04000000i
+  _resists: 05000000i
+  _healPerSecond: 8
+  _healRange: 6
+  _keepAwayRange: 7
