@@ -13,6 +13,7 @@ namespace TentacleVania.Core.Progression
         Weapon,
         Mutation,
         Notch,
+        Ability,
     }
 
     public static class Collectibles
@@ -65,6 +66,9 @@ namespace TentacleVania.Core.Progression
                     break;
                 case PickupKind.Notch:
                     MutationLoadout.AddBonusNotch();
+                    break;
+                case PickupKind.Ability:
+                    BossProgress.Unlock(itemId);
                     break;
             }
             Found?.Invoke(kind, itemId, amount);

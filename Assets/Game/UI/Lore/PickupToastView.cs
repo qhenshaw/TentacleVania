@@ -57,6 +57,7 @@ namespace TentacleVania.UI.Lore
                 PickupKind.Biomass => string.Format(T("pickup.biomass"), amount),
                 PickupKind.Mutagen => string.Format(T("pickup.mutagen"), amount),
                 PickupKind.Notch => T("pickup.notch"),
+                PickupKind.Ability => string.Format(T("pickup.ability"), T("ability." + itemId + ".name")),
                 PickupKind.Weapon => string.Format(T("pickup.weapon"), T("weapon." + itemId + ".name")),
                 PickupKind.Mutation => string.Format(T("pickup.mutation"), T("mutation." + Camel(itemId) + ".name")),
                 _ => string.Format(T("pickup.trinket"), T("trinket." + itemId + ".name")),
