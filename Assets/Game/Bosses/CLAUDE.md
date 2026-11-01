@@ -125,6 +125,12 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - **Finish:** the shared finishing consume unlocks Grapple. The PA plays `bl.automaton` (lines 13–15, then Crane's second address).
 - **Debug:** `Automaton/Debug/Resources/AutomatonTheatreRig.prefab` (table plus 8 anchor posts, radius 9.5). F5 Bosses: Spawn Automaton theatre rig, Spawn boss.
 
+## Sentry Titan (`SentryTitan/`; design: Sentry Titan page, TV-199; optional; placeholder numbers)
+
+- **Assets:** `SentryTitan.prefab` (`SentryTitanBoss : BossEnemy`, scaffolded from the Cryo Loader and its subclass swapped), data `SentryTitan.asset` (3,200 HP, 2,400 armor; attacks Autocannon, the Defense Turret's projectile, and Stomp, the Cryo Loader's slam), boss data `SentryTitanBoss.asset` (id `CC/SentryTitan`, key `boss.sentryTitan`, reward `Shock` plus the `ConcussiveSlam` mutation), `TitanShell.prefab` (an `AcidBurst` without the pool) and `TitanMissile.prefab`. It's fought in `CC_TitanBay`, a Boss-role side arena off A4 with no security door.
+- **Friendly fire (design core mechanic):** every shell is an `EnemyManager.PlaceBurst` with `Team.Environment` and the Titan as `Attacker`, so it also hits the Titan; a `SelfFire` incoming modifier scales those hits ×5 armor and ×0.5 health (`SelfHits` counts them). Artillery Barrage (7 shells, 2 of them around the Titan itself, every 9 s), arcing rockets (4 around the creature, 6 s) and the grenade launcher (3 in a line toward the creature, 5 s) all run on timers, ×0.75 from phase 2, when 2 seeking missiles (pooled, steering 120°/s, exploding on contact or after 5 s) join every 8 s.
+- Swapping a scaffolded boss's subclass breaks its `DebugBossSpawnList` entry (it points at the removed component): repoint it after the swap, or F5 throws a NullReferenceException in `BossDebugCommands.Register`.
+
 ## Debug
 
 - **Test boss:** `Debug/Resources/DebugTestBoss.prefab` (the Handler scaled 1.4×, `Debug/TestBoss.asset` 400 HP / 150 stagger, `Debug/TestBossPhases.asset`). Phase 1 uses the poke only. Phase 2 starts at 50%: all attacks, ×1.3 speed, and up to 2 Scientist adds every 6 s. It rewards Bio-Shield.
