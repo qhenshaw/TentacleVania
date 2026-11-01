@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{6679d76b-3ad7-428a-a9ff-864fabc81f8b}">
+		<property name="assetPath">
+			<value>Placeholder/Music/ArenaAD_2_Pulse.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>19.199999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{10c33526-16cd-470d-8044-1734468966d9}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -19,6 +19,95 @@ MonoBehaviour:
       Data3: -940186745
       Data4: 1987396403
     Path: event:/Music/Arena
+  _sectorArenas:
+  - Sector: AD
+    Arena:
+      Guid:
+        Data1: 1628409317
+        Data2: 1190728868
+        Data3: 1594835385
+        Data4: 1217252866
+      Path: event:/Music/ArenaAD
+  - Sector: RD
+    Arena:
+      Guid:
+        Data1: 2091467628
+        Data2: 1256174123
+        Data3: -1610323046
+        Data4: -215379115
+      Path: event:/Music/ArenaRD
+  - Sector: BL
+    Arena:
+      Guid:
+        Data1: -261451319
+        Data2: 1317882609
+        Data3: -728221793
+        Data4: 581794573
+      Path: event:/Music/ArenaBL
+  - Sector: QU
+    Arena:
+      Guid:
+        Data1: 546132791
+        Data2: 1171733351
+        Data3: -495454036
+        Data4: 1139826897
+      Path: event:/Music/ArenaQU
+  - Sector: CS
+    Arena:
+      Guid:
+        Data1: 64056835
+        Data2: 1302516722
+        Data3: 1265863595
+        Data4: -925161613
+      Path: event:/Music/ArenaCS
+  - Sector: BA
+    Arena:
+      Guid:
+        Data1: -1770853715
+        Data2: 1262125477
+        Data3: 1007210371
+        Data4: -1419028055
+      Path: event:/Music/ArenaBA
+  - Sector: AR
+    Arena:
+      Guid:
+        Data1: 908681294
+        Data2: 1093673258
+        Data3: -1562758743
+        Data4: -697302765
+      Path: event:/Music/ArenaAR
+  - Sector: CC
+    Arena:
+      Guid:
+        Data1: -2119418918
+        Data2: 1247957322
+        Data3: -745052509
+        Data4: -267557323
+      Path: event:/Music/ArenaCC
+  - Sector: DC
+    Arena:
+      Guid:
+        Data1: 1064959371
+        Data2: 1297400136
+        Data3: 149512369
+        Data4: -1327489691
+      Path: event:/Music/ArenaDC
+  - Sector: BS
+    Arena:
+      Guid:
+        Data1: 1268488063
+        Data2: 1235951743
+        Data3: -230236778
+        Data4: 489916130
+      Path: event:/Music/ArenaBS
+  - Sector: MV
+    Arena:
+      Guid:
+        Data1: -2140622584
+        Data2: 1273627806
+        Data3: 1829082765
+        Data4: -90540784
+      Path: event:/Music/ArenaMV
   _bossTheme:
     Guid:
       Data1: 1854804662

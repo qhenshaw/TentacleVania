@@ -60,13 +60,15 @@ MonoBehaviour:
   _rewardAbility: {fileID: 11400000, guid: 63cfb4a3ba2d2314492d16f40b6df109, type: 2}
   _secondReward: {fileID: 0}
   _dropPrefab: {fileID: 0}
+  _rewardMutation: 
+  _arenaRequires: []
   _music:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 86190921
+      Data2: 1103166627
+      Data3: 1318993308
+      Data4: -89795169
+    Path: event:/Music/BossOverwatch
   _introSound:
     Guid:
       Data1: -260886296
