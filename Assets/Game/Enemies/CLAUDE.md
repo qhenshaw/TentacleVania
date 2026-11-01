@@ -29,7 +29,7 @@ Numbers are the developer-approved baselines (damage from the Balance Sheet; sta
 
 Each `EnemyAttack` has optional FMOD events: `WindUpSound` (attack start), `StrikeSound` (active start) and `HitSound` (when it damages something). When copying an enemy prefab whose root has an `Enemy` subclass (`ScientistEnemy`, `GuardEnemy`), add the replacement `Enemy` before removing the old one: `EnemyAnimator` requires an `Enemy`, so the removal fails silently otherwise, and reference the new component (not the old one) from the debug spawn list.
 
-New enemy prefabs are built from the TestBrute layout by an eval (replace the `Enemy` component with the subclass, give it its own CharacterMaster material and definition) and added to `Debug/Resources/DebugEnemySpawnList`.
+Create new enemy types with `Tools/content-new.sh enemy <Name> --from <closest existing enemy>` (boss types: `boss`), then tune the copied definition and give it its own subclass when it behaves differently.
 
 ## Voices
 

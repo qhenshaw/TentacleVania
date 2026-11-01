@@ -30,6 +30,8 @@ mkdir -p Temp
     echo 'UnityEditor.EditorApplication.CallbackFunction once = null;'
     echo 'once = () => {'
     echo '    UnityEditor.EditorApplication.update -= once;'
+    echo "    if (UnityEditor.EditorPrefs.HasKey(\"$Key.run\")) return;"
+    echo "    UnityEditor.EditorPrefs.SetString(\"$Key.run\", \"1\");"
     echo '    string outcome;'
     echo '    try { outcome = "ok\n" + work(); }'
     echo '    catch (System.Exception e) { outcome = "error\n" + e; }'
@@ -40,30 +42,38 @@ mkdir -p Temp
 } >"$Wrapper"
 
 # right after a domain reload eval_file can answer "File not found" for a file that exists, so wait and retry
-wait_idle 180 || exit 2
-for attempt in 1 2 3 4 5; do
-    scheduled=$("${Unity[@]}" eval_file --file "$Wrapper" 2>&1)
-    [[ "$(json_string result <<<"$scheduled")" == scheduled ]] && break
-    sleep 3
-done
-if [[ "$(json_string result <<<"$scheduled")" != scheduled ]]; then
+schedule() {
+    wait_idle 180 || exit 2
+    for attempt in 1 2 3 4 5; do
+        scheduled=$("${Unity[@]}" eval_file --file "$Wrapper" 2>&1)
+        [[ "$(json_string result <<<"$scheduled")" == scheduled ]] && return
+        sleep 3
+    done
     echo "Could not start $file:"
     sed 's/^/  /' <<<"$scheduled"
     exit 2
-fi
+}
 
-start=$SECONDS
+# a domain reload just after scheduling drops the update callback, so the work never starts: when neither its
+# started marker nor its result shows up within 20 s, schedule it again
+schedule
+start=$SECONDS scheduled_at=$SECONDS reschedules=0
 while true; do
     sleep 3
     # a busy main thread fails the poll; that only means "not done yet", so its error stays quiet
-    outcome=$(eval_result "return UnityEditor.EditorPrefs.GetString(\"$Key\", \"\");" 2>/dev/null)
-    [[ -n "$outcome" ]] && break
+    outcome=$(eval_result "var r = UnityEditor.EditorPrefs.GetString(\"$Key\", \"\"); return r != \"\" ? r : UnityEditor.EditorPrefs.HasKey(\"$Key.run\") ? \"#running\" : \"\";" 2>/dev/null)
+    [[ -n "$outcome" && "$outcome" != "#running" ]] && break
+    if [[ -z "$outcome" ]] && (( SECONDS - scheduled_at > 20 && reschedules < 3 )); then
+        reschedules=$((reschedules + 1))
+        schedule
+        scheduled_at=$SECONDS
+    fi
     if (( SECONDS - start > Timeout )); then
         echo "Timed out after ${Timeout}s. The work may still be running; its result will land in EditorPrefs \"$Key\"."
         exit 2
     fi
 done
 
-eval_result "UnityEditor.EditorPrefs.DeleteKey(\"$Key\"); return 0;" >/dev/null 2>&1
+eval_result "UnityEditor.EditorPrefs.DeleteKey(\"$Key\"); UnityEditor.EditorPrefs.DeleteKey(\"$Key.run\"); return 0;" >/dev/null 2>&1
 tail -n +2 <<<"$outcome"
 [[ "$(head -1 <<<"$outcome")" == ok ]]
