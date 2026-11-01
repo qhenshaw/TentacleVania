@@ -97,7 +97,7 @@ namespace TentacleVania.UI.Map
             }
             foreach (var marker in _registry.Markers)
             {
-                if (!MapProgress.IsExplored(marker.Room))
+                if (!MapProgress.IsExplored(marker.Room) || Collected(marker))
                     continue;
                 var element = Next(MarkerClass(marker));
                 Place(element, marker.Position.x, marker.Position.z, 0f, 0f);
@@ -143,7 +143,16 @@ namespace TentacleVania.UI.Map
             MapMarkerKind.Relay => RelayDestroyed(marker.Id) ? "map-marker--relay-off" : "map-marker--relay",
             MapMarkerKind.SecurityDoor => "map-marker--door",
             MapMarkerKind.Gate => "map-marker--gate",
+            MapMarkerKind.Pickup => "map-marker--pickup",
+            MapMarkerKind.LoreLog => "map-marker--lore",
             _ => "map-marker--hoarder",
+        };
+
+        private static bool Collected(MapMarker marker) => marker.Kind switch
+        {
+            MapMarkerKind.Pickup => Collectibles.IsCollected(marker.Id),
+            MapMarkerKind.LoreLog => LoreLogs.Has(marker.Id),
+            _ => false,
         };
 
         private static bool RelayDestroyed(string id)

@@ -113,6 +113,11 @@ namespace TentacleVania.World.Editor
                     markers.Add(new MapMarker { Kind = MapMarkerKind.Gate, Id = gate.Id, Room = room, Position = gate.transform.position });
                 foreach (var hoarder in root.GetComponentsInChildren<HoarderMerchant>(true))
                     markers.Add(new MapMarker { Kind = MapMarkerKind.Hoarder, Id = "Hoarder", Room = room, Position = hoarder.transform.position });
+                foreach (var pickup in root.GetComponentsInChildren<Pickups.Pickup>(true))
+                    markers.Add(new MapMarker { Kind = MapMarkerKind.Pickup, Id = pickup.SaveId, Room = room, Position = pickup.transform.position });
+                foreach (var terminal in root.GetComponentsInChildren<Lore.LoreTerminal>(true))
+                    if (terminal.Log != null)
+                        markers.Add(new MapMarker { Kind = MapMarkerKind.LoreLog, Id = terminal.Log.Id, Room = room, Position = terminal.transform.position });
             }
         }
 

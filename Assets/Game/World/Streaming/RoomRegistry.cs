@@ -23,6 +23,8 @@ namespace TentacleVania.World.Streaming
         SecurityDoor,
         Gate,
         Hoarder,
+        Pickup,
+        LoreLog,
     }
 
     [Serializable]
