@@ -1708,6 +1708,10 @@ MonoBehaviour:
     m_Localized: Ability. Equip it at a bio-nest.
     m_Metadata:
       m_Items: []
+  - m_Id: 993434573488128
+    m_Localized: Sentry Titan
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

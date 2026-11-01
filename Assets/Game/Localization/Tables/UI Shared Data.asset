@@ -1659,6 +1659,10 @@ MonoBehaviour:
     m_Key: hoarder.kind.ability
     m_Metadata:
       m_Items: []
+  - m_Id: 993434573488128
+    m_Key: boss.sentryTitan
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

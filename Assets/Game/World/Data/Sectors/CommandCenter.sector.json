@@ -910,18 +910,19 @@
     },
     {
       "scene": "CC_TitanBay",
-      "role": "Plain",
+      "role": "Boss",
       "rect": [
-        -10,
+        -18,
+        10,
         13,
-        5,
-        5
+        11
       ],
       "doors": [
         {
           "x": -6,
           "y": 15,
-          "side": "East"
+          "side": "East",
+          "arena": true
         }
       ],
       "place": [
@@ -929,11 +930,19 @@
           "type": "pickup",
           "prefab": "BiomassCache",
           "at": [
-            -8,
-            15
+            -16.5,
+            19
           ],
           "yaw": 0
         }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "SentryTitan",
+            "count": 1
+          }
+        ]
       ]
     }
   ]

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: SentryTitanVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1366424512
+      Data2: 1074118743
+      Data3: -1277853304
+      Data4: -341631486
+    Path: event:/Enemies/Voice/SentryTitan/Alert
+  _pain:
+    Guid:
+      Data1: -775281768
+      Data2: 1119502328
+      Data3: 1054188991
+      Data4: 433305630
+    Path: event:/Enemies/Voice/SentryTitan/Pain
+  _death:
+    Guid:
+      Data1: 1496459116
+      Data2: 1106733769
+      Data3: -1850876277
+      Data4: 1984608867
+    Path: event:/Enemies/Voice/SentryTitan/Death
+  _grabbed:
+    Guid:
+      Data1: -1074778500
+      Data2: 1117110494
+      Data3: -542548316
+      Data4: -1863380819
+    Path: event:/Enemies/Voice/SentryTitan/Grabbed
+  _attack:
+    Guid:
+      Data1: -1930990046
+      Data2: 1155017717
+      Data3: 812429756
+      Data4: -1897803701
+    Path: event:/Enemies/Voice/SentryTitan/Attack
+  _stagger:
+    Guid:
+      Data1: 161774117
+      Data2: 1168119085
+      Data3: 1906819253
+      Data4: 465504915
+    Path: event:/Enemies/Voice/SentryTitan/Stagger
+  _painCooldown: 1.2
