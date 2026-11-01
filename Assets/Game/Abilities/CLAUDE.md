@@ -36,6 +36,10 @@ Active abilities (`TentacleVania.Abilities`), on the ability input (RT / Q), pai
 - Enemies now honour Root and Slow: `Enemy.Tick` scales the agent speed by `StatusEffects.MoveScale` (0 while rooted).
 - Hidden in Cold Storage R3 as `World/Pickups/AbilityPickup.prefab` (a pickup of the new `PickupKind.Ability`, which unlocks the id through `BossProgress.Unlock`, toast `pickup.ability`).
 
+## Spawn Brood (`SpawnBrood/`, `SpawnBrood.asset`; TV-157; placeholder numbers)
+
+- A slot ability (45 charge), reward of the optional boss The Many: releases creature-team minions from the shared parasite-minion pool (`Combat/Status/ParasiteSwarm.Spawn`, so their speed, bite damage, lifetime and look come from `StatusEffectSettings`, the same as parasite bursts) with the swarm burst VFX. Tiers (800 / 1,600): 3 / 4 / 6 minions.
+
 ## Tentacle Grapple (`Grapple/`, `TentacleGrapple.asset`; design: Tentacle Grapple page, Changelog Grilling sessions 3 and 5)
 
 - A traversal ability on its own input, the `Traverse` action (LT / F). It isn't in the ability slot: `GrappleDefinition.SlotAbility` is false, so `AbilityController` never equips it. It's unlocked like a boss reward, by the id `TentacleGrapple` in `Build.Abilities` (the Surgical Automaton's `RewardAbility`), and it's in the `ContentCatalog`.

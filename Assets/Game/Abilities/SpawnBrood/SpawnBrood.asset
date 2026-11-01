@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452a3c3ef25c61e42b7449f9e74cdde3, type: 3}
+  m_Name: SpawnBrood
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.SpawnBrood.SpawnBroodDefinition
+  _displayName: Spawn Brood
+  _cost: 45
+  _tierCosts: 2003000040060000i
+  _minions: 030000000400000006000000i
+  _activeTime: 0.4
+  _activateSound:
+    Guid:
+      Data1: -935657320
+      Data2: 1087494554
+      Data3: 537175209
+      Data4: 1893280856
+    Path: event:/Abilities/SpawnBrood/Activate

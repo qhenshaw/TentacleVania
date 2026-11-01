@@ -1175,6 +1175,10 @@ MonoBehaviour:
     m_Key: pickup.ability
     m_Metadata:
       m_Items: []
+  - m_Id: 954421292580864
+    m_Key: ability.SpawnBrood.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
