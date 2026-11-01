@@ -98,6 +98,9 @@ namespace TentacleVania.Enemies.Data
         [Header("Trap (thrown at the target's position; snaps when the creature is inside AreaRadius)")]
         public ContainmentTrap TrapPrefab;
         [Min(0.1f)] public float TrapLifetime = 6f;
+        [Tooltip("Thrown explosive (grenade): a pooled burst landing on the target's position; its circle fills over BurstFuse, then it deals this attack's damage in AreaRadius.")]
+        public AcidBurst BurstPrefab;
+        [Min(0.4f)] public float BurstFuse = 0.8f;
 
         [Header("Sounds (optional)")]
         public EventReference WindUpSound;

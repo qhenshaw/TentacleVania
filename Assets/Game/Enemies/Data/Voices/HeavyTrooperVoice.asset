@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: HeavyTrooperVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -544234049
+      Data2: 1318042052
+      Data3: -118888048
+      Data4: 1018995706
+    Path: event:/Enemies/Voice/HeavyTrooper/Alert
+  _pain:
+    Guid:
+      Data1: -1299270776
+      Data2: 1296836912
+      Data3: -1182551114
+      Data4: -1182806248
+    Path: event:/Enemies/Voice/HeavyTrooper/Pain
+  _death:
+    Guid:
+      Data1: -1900618589
+      Data2: 1242035887
+      Data3: -1424011594
+      Data4: 430867101
+    Path: event:/Enemies/Voice/HeavyTrooper/Death
+  _grabbed:
+    Guid:
+      Data1: -1032986211
+      Data2: 1281634597
+      Data3: 592194474
+      Data4: -976072628
+    Path: event:/Enemies/Voice/HeavyTrooper/Grabbed
+  _attack:
+    Guid:
+      Data1: 1545740784
+      Data2: 1259565309
+      Data3: 893878703
+      Data4: -191086457
+    Path: event:/Enemies/Voice/HeavyTrooper/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2
