@@ -30,6 +30,11 @@ Numbers are the developer-approved baselines (damage from the Balance Sheet; sta
 | Security Drone (`GuardEnemy` on the Med-Drone body, Administration; placeholder values) | 60, stagger 40, machine | Guard behaviour (holds range, faces the creature); `Model` hovers at 1.3 m | Shock (the baton as Electric) and the pistol shot |
 | Ceiling Turret (`TurretEnemy`, Administration; placeholder values) | 60, stagger 50, machine | Dropped by alarm panels onto the floor (not wall-mounted) | The Turret's bolt |
 
+| Pylon Guard (`PylonGuardEnemy : GuardEnemy`, Research Division; placeholder values) | 90, stagger 70 | Guard behaviour; while alive it powers every `World/Hazards/ArenaPylon` within 20 m (design: kill it first to shut the pylons down) | Baton and pistol as the guard. Placeholder: guard body tinted yellow |
+| Researcher (`ScientistEnemy`, Research Division; placeholder values) | 40, stagger 40 | Scientist behaviour | Stun prod; Arc Pistol: yellow Electric projectile, 6 dmg, 2.5–7 m |
+| Test Drone (`GuardEnemy` on the drone body, Research Division; placeholder values) | 50, stagger 35, machine | Security Drone behaviour (recharging at pylons not built) | Arc and Arc Bolt (Electric) |
+| Escaped Test Subject (`Enemy`, Research Division specimen; placeholder values) | 110, stagger 80, speed 5.2 | Walks the creature down | Electric Lunge (red melee, 16 dmg, 2.8 m), Claw. Placeholder: Handler body tinted green |
+
 `AttackKind.Trap` attacks aim `_areaCenter` at the creature (clamped to `MaxRange`), show it as a ground circle like area attacks, and at the active start call `EnemyManager.PlaceTrap` (pooled per trap prefab like projectiles; `ReturnTrap` puts one back); the trap applies the attack's status through the creature's `StatusEffects` when `ContainmentTrap.Contains` (the creature's centre within the radius on the ground plane, unit tested).
 
 Each `EnemyAttack` has optional FMOD events: `WindUpSound` (attack start), `StrikeSound` (active start) and `HitSound` (when it damages something). When copying an enemy prefab whose root has an `Enemy` subclass (`ScientistEnemy`, `GuardEnemy`), add the replacement `Enemy` before removing the old one: `EnemyAnimator` requires an `Enemy`, so the removal fails silently otherwise, and reference the new component (not the old one) from the debug spawn list.
