@@ -68,6 +68,20 @@ namespace TentacleVania.Combat
                 if (target != null)
                     target.ReleaseStatic(Team.Creature);
             });
+            DebugMenu.Button(DebugMenu.Combat, "Corrode nearest enemy", () => ApplyToNearest(StatusKind.Corrode));
+            DebugMenu.Button(DebugMenu.Combat, "Acid pool under nearest enemy", () =>
+            {
+                var target = NearestEnemyStatus();
+                if (target != null)
+                    AcidPools.Spawn(target.transform.position, Team.Creature);
+            });
+            DebugMenu.Button(DebugMenu.Combat, "Hostile acid pool under creature", () =>
+            {
+                if (CombatTargets.Creature != null)
+                    AcidPools.Spawn(CombatTargets.Creature.transform.position, Team.Site);
+            });
+            DebugMenu.Value(DebugMenu.Combat, "Acid pools active", () => AcidPools.Active.ToString());
+            DebugMenu.Button(DebugMenu.Combat, "Corrode creature", () => ApplyToCreature(StatusKind.Corrode));
             DebugMenu.Value(DebugMenu.Combat, "Chain lightning discharges", () => StatusEffects.Discharges.ToString());
             DebugMenu.Value(DebugMenu.Combat, "Nearest enemy status", FormatNearestStatus);
             DebugMenu.Button(DebugMenu.Combat, "Bleed creature (+1 stack)", () => ApplyToCreature(StatusKind.Bleed));
@@ -130,7 +144,7 @@ namespace TentacleVania.Combat
             var target = NearestEnemyStatus();
             if (target == null)
                 return "-";
-            return $"{target.name}: bleed {target.BleedStacks} ({target.BleedDamagePerSecond:F1}/s, {target.Remaining(StatusKind.Bleed):F1} s) burn {target.BurnDamagePerSecond:F1}/s ({target.Remaining(StatusKind.Burn):F1} s) static {target.StaticNormalized:P0}";
+            return $"{target.name}: bleed {target.BleedStacks} ({target.BleedDamagePerSecond:F1}/s, {target.Remaining(StatusKind.Bleed):F1} s) burn {target.BurnDamagePerSecond:F1}/s ({target.Remaining(StatusKind.Burn):F1} s) static {target.StaticNormalized:P0} corrode {target.Remaining(StatusKind.Corrode):F1} s";
         }
 
         private static string FormatLastHit()

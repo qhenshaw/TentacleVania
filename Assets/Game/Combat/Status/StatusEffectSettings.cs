@@ -39,6 +39,22 @@ namespace TentacleVania.Combat.Status
         [SerializeField, Min(0f)] private float _chainJitter = 0.35f;
         [SerializeField] private EventReference _chainSound;
 
+        [Header("Corrode: +20% health damage taken, bonus armor damage (TBD), 4 s, refreshes")]
+        [SerializeField, Min(1f)] private float _corrodeDamageTaken = 1.2f;
+        [SerializeField, Min(1f)] private float _corrodeArmorDamage = 1.5f;
+        [SerializeField, Min(0.01f)] private float _corrodeDuration = 4f;
+        [SerializeField] private VisualEffect _corrodeEffect;
+        [SerializeField] private EventReference _corrodeSound;
+
+        [Header("Acid pools: last 4 s (damage per second and radius are placeholders)")]
+        [SerializeField, Min(1)] private int _acidPoolCount = 12;
+        [SerializeField, Min(0.1f)] private float _acidPoolRadius = 1.5f;
+        [SerializeField, Min(0.1f)] private float _acidPoolDuration = 4f;
+        [SerializeField, Min(0f)] private float _acidPoolDamagePerSecond = 6f;
+        [SerializeField, Min(0f)] private float _acidPoolFade = 0.4f;
+        [SerializeField] private Material _acidPoolMaterial;
+        [SerializeField] private EventReference _acidPoolSound;
+
         private static StatusEffectSettings _loaded;
         private static bool _tried;
 
@@ -64,6 +80,18 @@ namespace TentacleVania.Combat.Status
         public float ChainDuration => _chainDuration;
         public float ChainJitter => _chainJitter;
         public EventReference ChainSound => _chainSound;
+        public float CorrodeDamageTaken => _corrodeDamageTaken;
+        public float CorrodeArmorDamage => _corrodeArmorDamage;
+        public float CorrodeDuration => _corrodeDuration;
+        public VisualEffect CorrodeEffect => _corrodeEffect;
+        public EventReference CorrodeSound => _corrodeSound;
+        public int AcidPoolCount => _acidPoolCount;
+        public float AcidPoolRadius => _acidPoolRadius;
+        public float AcidPoolDuration => _acidPoolDuration;
+        public float AcidPoolDamagePerSecond => _acidPoolDamagePerSecond;
+        public float AcidPoolFade => _acidPoolFade;
+        public Material AcidPoolMaterial => _acidPoolMaterial;
+        public EventReference AcidPoolSound => _acidPoolSound;
 
         public static StatusEffectSettings Instance
         {

@@ -237,6 +237,8 @@ namespace TentacleVania.UI.Hud
                 BleedPips = StatusPips.Build(Bleed);
                 statusRow.Add(Bleed);
                 statusRow.Add(Burn);
+                Corrode = Element("enemy-bar__corrode");
+                statusRow.Add(Corrode);
                 Static = Element("enemy-bar__static");
                 StaticFill = Element("enemy-bar__static-fill");
                 Static.Add(StaticFill);
@@ -257,6 +259,8 @@ namespace TentacleVania.UI.Hud
             public VisualElement[] BleedPips { get; }
             public int BleedStacks { get; private set; }
             public bool Burning { get; private set; }
+            public VisualElement Corrode { get; }
+            public bool Corroded { get; private set; }
             public VisualElement Static { get; }
             public VisualElement StaticFill { get; }
             public float StaticShown { get; private set; }
@@ -282,6 +286,7 @@ namespace TentacleVania.UI.Hud
                 Trail.Snap(LastHealth);
                 BleedStacks = -1;
                 Burning = true;
+                Corroded = true;
                 StaticShown = -1f;
                 SetStatus(enemy.Status);
             }
@@ -300,6 +305,12 @@ namespace TentacleVania.UI.Hud
                 {
                     Burning = burning;
                     Burn.style.display = burning ? DisplayStyle.Flex : DisplayStyle.None;
+                }
+                var corroded = status != null && status.IsActive(StatusKind.Corrode);
+                if (corroded != Corroded)
+                {
+                    Corroded = corroded;
+                    Corrode.style.display = corroded ? DisplayStyle.Flex : DisplayStyle.None;
                 }
                 var charge = status != null ? status.StaticNormalized : 0f;
                 if (!Mathf.Approximately(charge, StaticShown))

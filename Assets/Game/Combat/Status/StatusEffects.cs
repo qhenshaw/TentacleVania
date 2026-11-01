@@ -12,7 +12,7 @@ namespace TentacleVania.Combat.Status
     [RequireComponent(typeof(Health))]
     public sealed class StatusEffects : MonoBehaviour
     {
-        private const int KindCount = 6;
+        private const int KindCount = 7;
         private const int MaxCascade = 8;
 
         private static readonly List<StatusEffects> Registry = new();
@@ -34,6 +34,7 @@ namespace TentacleVania.Combat.Status
         [SerializeField] private Visual _root = new() { Color = new Color(1.4f, 1.1f, 0.2f), Pulse = 3f };
         [SerializeField] private Visual _bleed = new() { Color = new Color(1.6f, 0.08f, 0.1f), Amount = 0.6f, Pulse = 2f };
         [SerializeField] private Visual _burn = new() { Color = new Color(2f, 0.7f, 0.1f), Amount = 0.7f, Pulse = 4f };
+        [SerializeField] private Visual _corrode = new() { Color = new Color(0.5f, 1.8f, 0.2f), Amount = 0.6f, Pulse = 1f };
         [SerializeField, Min(0f)] private float _effectHeight = 1f;
 
         private readonly StatusTimers _timers = new();
@@ -46,6 +47,8 @@ namespace TentacleVania.Combat.Status
         private StatusEffectSettings _settings;
         private VisualEffect _bleedEffect;
         private VisualEffect _burnEffect;
+        private VisualEffect _corrodeEffect;
+        private ScaleModifier _corrodeModifier;
         private Team _bleedSource = Team.Environment;
         private Team _burnSource = Team.Environment;
         private StaticMeter _static;
@@ -117,6 +120,9 @@ namespace TentacleVania.Combat.Status
             _settings = StatusEffectSettings.Instance;
             _bleedEffect = SpawnEffect(_settings.Bleed.Effect);
             _burnEffect = SpawnEffect(_settings.Burn.Effect);
+            _corrodeEffect = SpawnEffect(_settings.CorrodeEffect);
+            _corrodeModifier = new() { HealthScale = _settings.CorrodeDamageTaken, ArmorScale = _settings.CorrodeArmorDamage };
+            AcidPools.Prewarm(_settings);
             _static = new(_settings.StaticCapacity);
             ChainLightningLines.Prewarm(_settings);
             Registry.Add(this);
@@ -159,6 +165,11 @@ namespace TentacleVania.Combat.Status
                 case StatusKind.Burn:
                     ApplyDot(_burnDot, _settings.Burn, magnitude, duration, potency);
                     _burnSource = source;
+                    break;
+                case StatusKind.Corrode:
+                    _timers.Apply(kind, 1f, duration > 0f ? duration : _settings.CorrodeDuration, Time.time);
+                    if (!_settings.CorrodeSound.IsNull && !_shown[(int)StatusKind.Corrode])
+                        RuntimeManager.PlayOneShot(_settings.CorrodeSound, transform.position);
                     break;
                 case StatusKind.Static:
                     AddStatic((magnitude > 0f ? magnitude : _settings.StaticPerHit) * Mathf.Max(0f, potency), source);
@@ -280,6 +291,7 @@ namespace TentacleVania.Combat.Status
         {
             _timers.Clear(StatusKind.Slow);
             _timers.Clear(StatusKind.Root);
+            _timers.Clear(StatusKind.Corrode);
             _bleedDot.Clear();
             _burnDot.Clear();
             _static.Clear();
@@ -341,6 +353,14 @@ namespace TentacleVania.Combat.Status
                     Toggle(_bleedEffect, active);
                 else if (kind == StatusKind.Burn)
                     Toggle(_burnEffect, active);
+                else if (kind == StatusKind.Corrode)
+                {
+                    Toggle(_corrodeEffect, active);
+                    if (active)
+                        _health.Incoming.Add(_corrodeModifier);
+                    else
+                        _health.Incoming.Remove(_corrodeModifier);
+                }
                 if (active)
                     Started?.Invoke(this, kind);
                 else
@@ -368,6 +388,7 @@ namespace TentacleVania.Combat.Status
             var visual = _shown[(int)StatusKind.Root] ? _root
                 : _shown[(int)StatusKind.Slow] ? _slow
                 : _shown[(int)StatusKind.Burn] ? _burn
+                : _shown[(int)StatusKind.Corrode] ? _corrode
                 : _shown[(int)StatusKind.Bleed] ? _bleed
                 : null;
             if (visual != null)
