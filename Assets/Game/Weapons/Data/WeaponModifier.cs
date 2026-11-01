@@ -10,6 +10,8 @@ namespace TentacleVania.Weapons.Data
         BoneBreaker,
         Bloodletter,
         FrenzyEdge,
+        ChainHook,
+        FeedingLine,
     }
 
     [CreateAssetMenu(menuName = "TentacleVania/Weapons/Weapon Modifier")]

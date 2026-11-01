@@ -4,7 +4,8 @@
     "references": [
         "TentacleVania.Core",
         "TentacleVania.Combat",
-        "TentacleVania.Creature"
+        "TentacleVania.Creature",
+        "FMODUnity"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

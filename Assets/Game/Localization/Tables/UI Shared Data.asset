@@ -1199,6 +1199,26 @@ MonoBehaviour:
     m_Key: modifier.frenzyEdge.effect
     m_Metadata:
       m_Items: []
+  - m_Id: 956977888641024
+    m_Key: weapon.HookBarbs.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 957219535077376
+    m_Key: modifier.chainHook.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 957219535077377
+    m_Key: modifier.chainHook.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 957219535077378
+    m_Key: modifier.feedingLine.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 957219535077379
+    m_Key: modifier.feedingLine.effect
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
