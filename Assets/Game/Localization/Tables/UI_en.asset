@@ -1588,6 +1588,106 @@ MonoBehaviour:
     m_Localized: While below 30% health, you leak an acid trail that corrodes enemies who cross it.
     m_Metadata:
       m_Items: []
+  - m_Id: 982869297872896
+    m_Localized: Brood Implant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 982869339815936
+    m_Localized: Attacks implant parasites. Infected enemies burst on death, damaging and infecting those nearby.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983102849302528
+    m_Localized: Puppet Spores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983102857691136
+    m_Localized: Infected enemies below 30% health are briefly taken over and lash out at their allies.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983333041094656
+    m_Localized: Hatchery Gut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983333049483264
+    m_Localized: Consuming an enemy hatches 2 parasite minions that fight for you briefly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983564570869760
+    m_Localized: Host Feeding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983564579258368
+    m_Localized: Consuming an infected enemy refunds charge and spreads its parasites to enemies within 5 m.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983796650098688
+    m_Localized: Spine Cascade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983796658487296
+    m_Localized: Spine Volley fires 2 extra spines in a wider spread.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984027135492096
+    m_Localized: Piercing Spines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984027143880704
+    m_Localized: Spine Volley pierces through enemies.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984259428630528
+    m_Localized: Spined Charge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984259437019136
+    m_Localized: Charged heavies also fire a fan of 5 spines. Works without Spine Volley.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984492082479104
+    m_Localized: Death Throes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984492086673408
+    m_Localized: Deal 50% more damage while below 30% health.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984728968380416
+    m_Localized: Last Gasp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984728972574720
+    m_Localized: Once per rest, a lethal hit leaves you at 1 health and triggers a short frenzy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984965296439296
+    m_Localized: Adrenal Surge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984965304827904
+    m_Localized: Dropping below 30% health instantly fills the charge meter. 10 s cooldown.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 985200563339264
+    m_Localized: Overcharge Sac
+    m_Metadata:
+      m_Items: []
+  - m_Id: 985200575922176
+    m_Localized: The charge meter holds 50% more.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 985435511472128
+    m_Localized: Abilities that hit 3 or more enemies refund 30% of their charge.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 985670581239808
+    m_Localized: Afterglow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 985670593822720
+    m_Localized: 'Using an ability empowers your next combo finisher: 50% more damage and stagger.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

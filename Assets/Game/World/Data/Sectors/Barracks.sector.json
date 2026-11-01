@@ -1121,6 +1121,17 @@
           ],
           "yaw": 0,
           "name": "ArcTendrils"
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            -6.5,
+            16.5
+          ],
+          "yaw": 0,
+          "name": "SpinedCharge",
+          "itemId": "SpinedCharge"
         }
       ]
     }

@@ -1030,6 +1030,17 @@
             16.5
           ],
           "yaw": 0
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            39,
+            17
+          ],
+          "yaw": 0,
+          "name": "HostFeeding",
+          "itemId": "HostFeeding"
         }
       ]
     },

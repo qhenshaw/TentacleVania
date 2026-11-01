@@ -21,6 +21,9 @@ namespace TentacleVania.Abilities.SpineVolley
         [SerializeField] private Transform _spinePrefab;
         [Tooltip("Mutation hooks (design): ids checked with MutationLoadout.IsEquipped.")]
         [SerializeField] private string _piercingMutation = "PiercingSpines";
+        [SerializeField] private string _cascadeMutation = "SpineCascade";
+        [SerializeField, Min(0)] private int _cascadeExtra = 2;
+        [SerializeField, Min(1f)] private float _cascadeSpread = 1.5f;
         [SerializeField] private string _bleedMutation = "EmbeddedBarbs";
         [SerializeField] private EventReference _activateSound;
         [SerializeField] private EventReference _hitSound;
@@ -49,6 +52,9 @@ namespace TentacleVania.Abilities.SpineVolley
         public LayerMask WallLayers => _wallLayers;
         public Transform SpinePrefab => _spinePrefab;
         public string PiercingMutation => _piercingMutation;
+        public string CascadeMutation => _cascadeMutation;
+        public int CascadeExtra => _cascadeExtra;
+        public float CascadeSpread => _cascadeSpread;
         public string BleedMutation => _bleedMutation;
         public EventReference ActivateSound => _activateSound;
         public EventReference HitSound => _hitSound;

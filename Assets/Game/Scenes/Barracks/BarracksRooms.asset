@@ -702,6 +702,11 @@ MonoBehaviour:
     Room: BA_Stockroom
     Position: {x: -22.5, y: 0, z: 46.5}
     Yaw: 0
+  - Kind: 5
+    Id: BA_Stockroom/SpinedCharge
+    Room: BA_Stockroom
+    Position: {x: -18, y: 0, z: 51}
+    Yaw: 0
   - Kind: 7
     Id: BA/Auto-BA_A3
     Room: BA_A3

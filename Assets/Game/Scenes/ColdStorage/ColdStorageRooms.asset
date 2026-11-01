@@ -766,10 +766,20 @@ MonoBehaviour:
     Room: CS_R1
     Position: {x: 51, y: 0, z: 117}
     Yaw: 0
+  - Kind: 7
+    Id: CS/Auto-CS_R1
+    Room: CS_R1
+    Position: {x: 40.5, y: 0, z: 109.5}
+    Yaw: 0
   - Kind: 5
     Id: CS_R2/MutagenPickup
     Room: CS_R2
     Position: {x: -19.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 5
+    Id: CS_R2/SpineCascade
+    Room: CS_R2
+    Position: {x: -15, y: 0, z: 51}
     Yaw: 0
   - Kind: 5
     Id: CS_R3/TendrilSnare

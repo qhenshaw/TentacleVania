@@ -970,6 +970,17 @@
             16.5
           ],
           "yaw": 0
+        },
+        {
+          "type": "pickup",
+          "prefab": "MutationPickup",
+          "at": [
+            -6.5,
+            16.5
+          ],
+          "yaw": 0,
+          "name": "AdrenalSurge",
+          "itemId": "AdrenalSurge"
         }
       ]
     }

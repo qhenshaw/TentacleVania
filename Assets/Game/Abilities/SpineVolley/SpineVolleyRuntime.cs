@@ -70,10 +70,27 @@ namespace TentacleVania.Abilities.SpineVolley
             var origin = _context.Owner.position + Vector3.up * Height;
             var forward = Aim(origin);
             var count = _definition.SpinesAt(_tier);
+            var spread = _definition.Spread;
+            if (MutationLoadout.IsEquipped(_definition.CascadeMutation))
+            {
+                count += _definition.CascadeExtra;
+                spread *= _definition.CascadeSpread;
+            }
             if (!_definition.ActivateSound.IsNull)
                 RuntimeManager.PlayOneShot(_definition.ActivateSound, origin);
+            Fan(origin, forward, spread, count);
+        }
+
+        public void FireFan(Vector3 forward, float spread, int count, int tier = 1)
+        {
+            _tier = Mathf.Max(1, tier);
+            Fan(_context.Owner.position + Vector3.up * Height, forward, spread, count);
+        }
+
+        private void Fan(Vector3 origin, Vector3 forward, float spread, int count)
+        {
             for (var i = 0; i < count; i++)
-                Launch(origin, SpineVolleyDefinition.FanDirection(forward, _definition.Spread, i, count));
+                Launch(origin, SpineVolleyDefinition.FanDirection(forward, spread, i, count));
         }
 
         private Vector3 Aim(Vector3 origin)

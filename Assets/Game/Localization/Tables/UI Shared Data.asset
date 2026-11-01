@@ -1539,6 +1539,106 @@ MonoBehaviour:
     m_Key: mutation.acidBlood.effect
     m_Metadata:
       m_Items: []
+  - m_Id: 982869297872896
+    m_Key: mutation.broodImplant.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 982869339815936
+    m_Key: mutation.broodImplant.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983102849302528
+    m_Key: mutation.puppetSpores.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983102857691136
+    m_Key: mutation.puppetSpores.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983333041094656
+    m_Key: mutation.hatcheryGut.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983333049483264
+    m_Key: mutation.hatcheryGut.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983564570869760
+    m_Key: mutation.hostFeeding.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983564579258368
+    m_Key: mutation.hostFeeding.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983796650098688
+    m_Key: mutation.spineCascade.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983796658487296
+    m_Key: mutation.spineCascade.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984027135492096
+    m_Key: mutation.piercingSpines.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984027143880704
+    m_Key: mutation.piercingSpines.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984259428630528
+    m_Key: mutation.spinedCharge.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984259437019136
+    m_Key: mutation.spinedCharge.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984492082479104
+    m_Key: mutation.deathThroes.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984492086673408
+    m_Key: mutation.deathThroes.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984728968380416
+    m_Key: mutation.lastGasp.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984728972574720
+    m_Key: mutation.lastGasp.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984965296439296
+    m_Key: mutation.adrenalSurge.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 984965304827904
+    m_Key: mutation.adrenalSurge.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 985200563339264
+    m_Key: mutation.overchargeSac.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 985200575922176
+    m_Key: mutation.overchargeSac.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 985435511472128
+    m_Key: mutation.feedbackLoop.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 985670581239808
+    m_Key: mutation.afterglow.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 985670593822720
+    m_Key: mutation.afterglow.effect
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

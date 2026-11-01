@@ -49,6 +49,16 @@ namespace TentacleVania.Creature
                 status.Ended -= OnStatusEnded;
         }
 
+        public float CapacityBonus
+        {
+            get => Meter.Max / Mathf.Max(1f, _settings.Max);
+            set
+            {
+                Meter.Resize(_settings.Max * Mathf.Max(0.1f, value));
+                Refresh();
+            }
+        }
+
         public float GainBonus
         {
             get => _gainBonus;
