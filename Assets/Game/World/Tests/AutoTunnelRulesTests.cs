@@ -58,5 +58,14 @@ namespace TentacleVania.World.Tests
             Assert.That(pairs.Count, Is.EqualTo(2));
             Assert.That(pairs[1].Far, Is.EqualTo("R6"));
         }
+
+        [Test]
+        public void KeepsOnlyTheFarthestRoomsWhenCapped()
+        {
+            var pairs = AutoTunnelRules.Pairs(Chain(8), new[] { "R0" }, 3, null, 2);
+            Assert.That(pairs.Count, Is.EqualTo(2));
+            Assert.That(pairs[0].Far, Is.EqualTo("R6"));
+            Assert.That(pairs[1].Far, Is.EqualTo("R7"));
+        }
     }
 }
