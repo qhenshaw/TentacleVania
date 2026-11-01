@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: EscapedTestSubjectVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 2064648944
+      Data2: 1183457337
+      Data3: -72502887
+      Data4: -1055805202
+    Path: event:/Enemies/Voice/EscapedTestSubject/Alert
+  _pain:
+    Guid:
+      Data1: 986193883
+      Data2: 1132555045
+      Data3: 763171262
+      Data4: 1120847165
+    Path: event:/Enemies/Voice/EscapedTestSubject/Pain
+  _death:
+    Guid:
+      Data1: 91115138
+      Data2: 1246302630
+      Data3: -1866082643
+      Data4: -19752276
+    Path: event:/Enemies/Voice/EscapedTestSubject/Death
+  _grabbed:
+    Guid:
+      Data1: 1930489946
+      Data2: 1082092635
+      Data3: -1867534155
+      Data4: 148711048
+    Path: event:/Enemies/Voice/EscapedTestSubject/Grabbed
+  _attack:
+    Guid:
+      Data1: -1979712297
+      Data2: 1204766540
+      Data3: -488736627
+      Data4: 80087283
+    Path: event:/Enemies/Voice/EscapedTestSubject/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

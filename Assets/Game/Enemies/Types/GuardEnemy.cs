@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TentacleVania.Enemies.Types
 {
-    public sealed class GuardEnemy : Enemy
+    public class GuardEnemy : Enemy
     {
 
         protected override Vector3 ChaseDestination(Vector3 targetPosition)

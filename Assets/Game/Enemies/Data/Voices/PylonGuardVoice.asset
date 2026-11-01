@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: PylonGuardVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: -1937051085
+      Data2: 1339474295
+      Data3: -132472145
+      Data4: 214929118
+    Path: event:/Enemies/Voice/PylonGuard/Alert
+  _pain:
+    Guid:
+      Data1: 975489534
+      Data2: 1129651090
+      Data3: 575063453
+      Data4: -87436828
+    Path: event:/Enemies/Voice/PylonGuard/Pain
+  _death:
+    Guid:
+      Data1: -1862237967
+      Data2: 1234675766
+      Data3: -1578233471
+      Data4: -159290232
+    Path: event:/Enemies/Voice/PylonGuard/Death
+  _grabbed:
+    Guid:
+      Data1: -2069893926
+      Data2: 1320277015
+      Data3: -2033227373
+      Data4: 748858134
+    Path: event:/Enemies/Voice/PylonGuard/Grabbed
+  _attack:
+    Guid:
+      Data1: -1012759363
+      Data2: 1129454580
+      Data3: 210474901
+      Data4: -453447803
+    Path: event:/Enemies/Voice/PylonGuard/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2
