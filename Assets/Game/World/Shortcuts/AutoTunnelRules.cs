@@ -20,7 +20,7 @@ namespace TentacleVania.World.Shortcuts
 
     public static class AutoTunnelRules
     {
-        public static List<AutoTunnelPair> Pairs(IReadOnlyList<RoomEntry> rooms, IEnumerable<string> nestRooms, int minDistance, Func<string, bool> eligible = null)
+        public static List<AutoTunnelPair> Pairs(IReadOnlyList<RoomEntry> rooms, IEnumerable<string> nestRooms, int minDistance, Func<string, bool> eligible = null, int maxPairs = int.MaxValue)
         {
             var distance = new Dictionary<string, int>();
             var source = new Dictionary<string, string>();
@@ -57,6 +57,14 @@ namespace TentacleVania.World.Shortcuts
                     continue;
                 pairs.Add(new AutoTunnelPair(room.Scene, source[room.Scene], steps));
             }
+            if (pairs.Count <= maxPairs)
+                return pairs;
+            var order = new List<AutoTunnelPair>(pairs);
+            order.Sort((a, b) => b.Distance.CompareTo(a.Distance));
+            var kept = new HashSet<string>();
+            for (var i = 0; i < maxPairs; i++)
+                kept.Add(order[i].Far);
+            pairs.RemoveAll(pair => !kept.Contains(pair.Far));
             return pairs;
         }
 

@@ -12,7 +12,8 @@ namespace TentacleVania.World.Editor
 {
     public static class AutoTunnels
     {
-        public const int MinRoomsFromNest = 4;
+        public const int MinRoomsFromNest = 3;
+        public const int MaxPerSector = 3;
         private const string Prefix = "AutoTunnel_";
         private const string CrawlspacePath = "Assets/Game/World/Shortcuts/Crawlspace.prefab";
         private const float Clearance = 3.5f;
@@ -29,7 +30,7 @@ namespace TentacleVania.World.Editor
             var nests = registry.Markers.Where(m => m.Kind == MapMarkerKind.Nest && !string.IsNullOrEmpty(m.Room)).Select(m => m.Room).Distinct().ToList();
             var plans = plan.Rooms.ToDictionary(r => r.Scene);
             var pairs = AutoTunnelRules.Pairs(registry.Rooms, nests, MinRoomsFromNest,
-                scene => plans.TryGetValue(scene, out var room) && room.Rect.HasValue && room.Role != PlanRole.Boss);
+                scene => plans.TryGetValue(scene, out var room) && room.Rect.HasValue && room.Role != PlanRole.Boss, MaxPerSector);
 
             var scenes = new Dictionary<string, Scene>();
             var used = new Dictionary<string, List<Vector3>>();
