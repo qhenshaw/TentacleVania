@@ -59,7 +59,10 @@ namespace TentacleVania.Bosses
         {
             base.Awake();
             if (TryGetComponent<Combat.Consumable>(out var consumable))
+            {
                 consumable.CoreBleeds = true;
+                consumable.Configure(1f, consumable.Biomass);
+            }
             if (_essence != null)
             {
                 _essenceHome = _essence.localPosition;
