@@ -10,8 +10,9 @@ namespace TentacleVania.Enemies.Tests
         [TestCase(AttackKind.Area, Telegraph.Dodgeable, true)]
         [TestCase(AttackKind.Projectile, Telegraph.Dodgeable, true)]
         [TestCase(AttackKind.Melee, Telegraph.Undodgeable, true)]
-        [TestCase(AttackKind.Melee, Telegraph.Dodgeable, false)]
-        public void AutoShowsAreaProjectileAndRedAttacks(AttackKind kind, Telegraph telegraph, bool expected) =>
+        [TestCase(AttackKind.Melee, Telegraph.Dodgeable, true)]
+        [TestCase(AttackKind.Trap, Telegraph.Dodgeable, true)]
+        public void AutoShowsEveryAttack(AttackKind kind, Telegraph telegraph, bool expected) =>
             Assert.AreEqual(expected, new EnemyAttack { Kind = kind, Telegraph = telegraph }.ShowsGroundIndicator(false));
 
         [Test]
