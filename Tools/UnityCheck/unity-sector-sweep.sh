@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Sweeps every sector in MapAtlas (or the given sector ids): opens its root scene, plays it (bypassing the main menu)
-# and runs evals/sector-doors.cs (every plan doorway raycast clear, plans from World.Editor.SectorPlans) and then
+# and runs evals/sector-doors.cs (every plan doorway raycast clear, plans from the World/Data/Sectors specs) and then
 # evals/sector-walk.cs (the creature moved through every room; each must load, become current and not fall), polling
 # each result rather than timing frames. Prints PASS or FAIL per sector with the evals' findings. A sector added to
-# MapAtlas also needs its plan in SectorPlans for the door check ("no plan" passes without it).
+# MapAtlas also needs a sector spec for the door check ("no plan" passes without it).
 #
 # Usage: Tools/UnityCheck/unity-sector-sweep.sh [sector id]...   (e.g. SH BL; default every sector)
 # Exits 0 when every sector passed, 1 when any failed, 2 when Unity can't be reached or a run didn't finish.

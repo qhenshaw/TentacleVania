@@ -147,6 +147,9 @@ namespace TentacleVania.World.Streaming
         {
             if (FocusOverride.HasValue)
                 return FocusOverride.Value;
+            var creature = Combat.CombatTargets.Creature;
+            if (creature != null)
+                return creature.transform.position;
             var target = CameraFocus.Target;
             if (target != null)
                 return target.position;
