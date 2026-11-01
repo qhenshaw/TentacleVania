@@ -40,6 +40,15 @@ Boss framework (`TentacleVania.Bosses`), built on the enemy state machine (`Enem
 - **Attacks:** Baton Combo (Electric, 2 hits of 12, 0.55 s), Shield Bash (10, 0.7 s), Shield Charge (red, 0.9 s wind-up, lunges at 16 m/s while active, used at 4–10 m), Shock Slam (Electric area 3.2 m, 22, 1.0 s; last phase).
 - **Phases:** 100% baton + bash with up to 2 Security Guard adds every 15 s; ≤60% adds the charge and Riot Guard adds (1 on start, max 2); ≤30% shield off, baton/charge/slam, ×1.2 speed, Security Guard adds (2 on start, max 3). Adds are consumable heal sources (design).
 
+## Dr. Okafor's Exo-Suit (`OkaforExoSuit/`; design: Enemies & Bosses row, TV-190; placeholder numbers)
+
+- **Assets:** `OkaforExoSuit.prefab` (`OkaforBoss : BossEnemy`, the test boss body tinted cyan with a steel `SuitCockpit` that hides while staggered), data `OkaforExoSuit.asset`, boss data `OkaforExoSuitBoss.asset` (id `RD/OkaforExoSuit`, key `boss.okaforExoSuit`, reward `ElectricResistance`), voice set `OkaforExoSuitVoice`.
+- **Numbers:** 2,800 HP, stagger 1,400 with a 3.5 s window, 4 m/s.
+- **Suit plating (design: stagger breaks expose the pilot):** health damage ×0.5 while the suit is closed and ×2 while staggered (on top of the ×1.5 window).
+- **Attacks (Electric):** Arc Blast (projectile, 14, 3–10 m), Arc Sweep (180° melee 2.8 m, 18), Discharge (red area 4.5 m, 26, from ≤60%).
+- **Phases:** 100% blast + sweep, Researcher adds (max 2, every 16 s); ≤60% + Discharge, Test Drone adds (1 on start, max 2); ≤25% ×1.25 speed, Test Drone adds (2 on start, max 3).
+- **Arena:** the test chamber's electrified floor is a `World/Hazards/FloorPattern` (placed by the Research Division spec's test chamber hook).
+
 ## Surgical Automaton (`Automaton/`; design: Surgical Automaton page and Changelog "Surgical Automaton fight")
 
 - **Assets:** `SurgicalAutomaton.prefab` (`SurgicalAutomaton : BossEnemy`; the test boss's Handler body ×1.6 in steel as placeholder), enemy data `SurgicalAutomaton.asset` and boss data `AutomatonBoss.asset` (id `BL/SurgicalAutomaton`, matching the PA script; the shared boss theme; reward `TentacleGrapple`, which unlocks Grapple without taking the slot).

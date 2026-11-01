@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: OkaforExoSuitVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 1180916373
+      Data2: 1312250931
+      Data3: -570543724
+      Data4: 687809829
+    Path: event:/Enemies/Voice/OkaforExoSuit/Alert
+  _pain:
+    Guid:
+      Data1: -2097918295
+      Data2: 1299172566
+      Data3: -1836566902
+      Data4: 1716054053
+    Path: event:/Enemies/Voice/OkaforExoSuit/Pain
+  _death:
+    Guid:
+      Data1: 1050939798
+      Data2: 1249524375
+      Data3: 1355901339
+      Data4: 112979067
+    Path: event:/Enemies/Voice/OkaforExoSuit/Death
+  _grabbed:
+    Guid:
+      Data1: 1322955297
+      Data2: 1335358847
+      Data3: -124063334
+      Data4: 305664037
+    Path: event:/Enemies/Voice/OkaforExoSuit/Grabbed
+  _attack:
+    Guid:
+      Data1: 1932006921
+      Data2: 1176952000
+      Data3: -1424879705
+      Data4: -443457422
+    Path: event:/Enemies/Voice/OkaforExoSuit/Attack
+  _stagger:
+    Guid:
+      Data1: 344474174
+      Data2: 1175567600
+      Data3: 1860542617
+      Data4: -1752822627
+    Path: event:/Enemies/Voice/OkaforExoSuit/Stagger
+  _painCooldown: 1.2
