@@ -1002,6 +1002,17 @@
             15
           ],
           "yaw": 0
+        },
+        {
+          "type": "rare",
+          "id": "CS/Rare/HungryGrasp",
+          "kind": "Mutation",
+          "itemId": "HungryGrasp",
+          "at": [
+            -7.5,
+            16.5
+          ],
+          "yaw": 0
         }
       ]
     },

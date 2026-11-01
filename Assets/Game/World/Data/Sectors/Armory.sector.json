@@ -975,6 +975,17 @@
             15
           ],
           "yaw": 0
+        },
+        {
+          "type": "rare",
+          "id": "AR/Rare/KindlingBile",
+          "kind": "Mutation",
+          "itemId": "KindlingBile",
+          "at": [
+            -7.5,
+            16.5
+          ],
+          "yaw": 0
         }
       ]
     },

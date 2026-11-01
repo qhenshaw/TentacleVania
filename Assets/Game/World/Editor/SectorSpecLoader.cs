@@ -134,6 +134,12 @@ namespace TentacleVania.World.Editor
                         crateArrival += new Vector3(spec.ArrivalOffset[0], spec.ArrivalOffset[1], spec.ArrivalOffset[2]);
                     crate.Configure(spec.Destination, crateArrival, spec.ArrivalYaw);
                     break;
+                case "rare":
+                    var rare = c.Spawn("Assets/Game/World/Rare/RareSpecimenSpawn.prefab", position, spec.Yaw, spec.Name ?? "RareSpecimen_" + spec.ItemId).GetComponent<Rare.RareSpecimenSpawn>();
+                    RoomContext.Set(rare, "_saveId", spec.Id);
+                    RoomContext.Set(rare, "_itemId", spec.ItemId);
+                    RoomContext.Set(rare, "_kind", (int)(Core.Progression.PickupKind)Enum.Parse(typeof(Core.Progression.PickupKind), spec.Kind ?? "Mutation"));
+                    break;
                 case "mapGate":
                     c.Empty(spec.Name ?? "MapGate", position, spec.Yaw).AddComponent<Map.MapGate>();
                     break;

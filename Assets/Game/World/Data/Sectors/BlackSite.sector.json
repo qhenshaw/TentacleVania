@@ -948,6 +948,17 @@
             15
           ],
           "yaw": 0
+        },
+        {
+          "type": "rare",
+          "id": "BS/Rare/LeechTendrils",
+          "kind": "Mutation",
+          "itemId": "LeechTendrils",
+          "at": [
+            -8.5,
+            16.5
+          ],
+          "yaw": 0
         }
       ]
     }
