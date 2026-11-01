@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: SoldierVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 985915328
+      Data2: 1306024837
+      Data3: -449628781
+      Data4: -1740380504
+    Path: event:/Enemies/Voice/Soldier/Alert
+  _pain:
+    Guid:
+      Data1: 755064750
+      Data2: 1211191257
+      Data3: 2143615617
+      Data4: 141901565
+    Path: event:/Enemies/Voice/Soldier/Pain
+  _death:
+    Guid:
+      Data1: -323304901
+      Data2: 1342059909
+      Data3: -609611364
+      Data4: 1321499839
+    Path: event:/Enemies/Voice/Soldier/Death
+  _grabbed:
+    Guid:
+      Data1: -604117088
+      Data2: 1261854022
+      Data3: -2092046200
+      Data4: -26831301
+    Path: event:/Enemies/Voice/Soldier/Grabbed
+  _attack:
+    Guid:
+      Data1: -1215586637
+      Data2: 1233431035
+      Data3: 426569916
+      Data4: 667821630
+    Path: event:/Enemies/Voice/Soldier/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

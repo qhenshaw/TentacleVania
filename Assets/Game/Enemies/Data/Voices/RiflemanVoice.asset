@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a42a0851cbb742b8bf815c226f798, type: 3}
+  m_Name: RiflemanVoice
+  m_EditorClassIdentifier: TentacleVania.Enemies::TentacleVania.Enemies.Data.EnemyVoice
+  _alert:
+    Guid:
+      Data1: 2124378637
+      Data2: 1152790411
+      Data3: 1657834114
+      Data4: 1721018050
+    Path: event:/Enemies/Voice/Rifleman/Alert
+  _pain:
+    Guid:
+      Data1: -520756910
+      Data2: 1206274485
+      Data3: -137134404
+      Data4: -251180370
+    Path: event:/Enemies/Voice/Rifleman/Pain
+  _death:
+    Guid:
+      Data1: -1700096549
+      Data2: 1186216869
+      Data3: 1967828920
+      Data4: -2003754788
+    Path: event:/Enemies/Voice/Rifleman/Death
+  _grabbed:
+    Guid:
+      Data1: -1242917568
+      Data2: 1207509160
+      Data3: -975477861
+      Data4: -1746010320
+    Path: event:/Enemies/Voice/Rifleman/Grabbed
+  _attack:
+    Guid:
+      Data1: -1254018401
+      Data2: 1244766340
+      Data3: -1170354270
+      Data4: -1589433378
+    Path: event:/Enemies/Voice/Rifleman/Attack
+  _stagger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _painCooldown: 1.2

@@ -423,6 +423,8 @@ namespace TentacleVania.Enemies
                 case AttackKind.Trap:
                     if (attack.TrapPrefab != null)
                         EnemyManager.PlaceTrap(attack.TrapPrefab, _areaCenter, attack.AreaRadius, attack.Status, attack.StatusMagnitude, attack.StatusDuration, attack.TrapLifetime);
+                    if (attack.BurstPrefab != null)
+                        EnemyManager.PlaceBurst(attack.BurstPrefab, _areaCenter, attack.AreaRadius, attack.BurstFuse, Damage(attack, _areaCenter, _attackForward));
                     break;
             }
         }
