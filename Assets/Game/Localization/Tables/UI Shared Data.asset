@@ -1087,6 +1087,10 @@ MonoBehaviour:
     m_Key: boss.crane
     m_Metadata:
       m_Items: []
+  - m_Id: 940614352650240
+    m_Key: trinket.StarChartPlate.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
