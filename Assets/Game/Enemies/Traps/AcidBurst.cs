@@ -15,6 +15,7 @@ namespace TentacleVania.Enemies.Traps
         private static readonly Health[] Struck = new Health[16];
 
         [SerializeField] private GroundIndicator _indicator;
+        [SerializeField] private Telegraph _telegraph = Telegraph.Dodgeable;
         [SerializeField] private EventReference _burstSound;
         [SerializeField, Min(0f)] private float _poolDuration = 5f;
         [SerializeField, Min(0f)] private float _poolDamagePerSecond = 6f;
@@ -44,7 +45,7 @@ namespace TentacleVania.Enemies.Traps
             if (progress < 1f)
             {
                 if (_indicator != null)
-                    _indicator.ShowCircle(transform.position, _radius, Telegraph.Dodgeable, progress, true);
+                    _indicator.ShowCircle(transform.position, _radius, _telegraph, progress, true);
                 return;
             }
             Detonate();

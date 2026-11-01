@@ -1057,18 +1057,19 @@
     },
     {
       "scene": "QU_Incinerator",
-      "role": "Plain",
+      "role": "Boss",
       "rect": [
-        -10,
+        -18,
+        10,
         13,
-        5,
-        5
+        11
       ],
       "doors": [
         {
           "x": -6,
           "y": 15,
-          "side": "East"
+          "side": "East",
+          "arena": true
         }
       ],
       "place": [
@@ -1076,8 +1077,8 @@
           "type": "pickup",
           "prefab": "BiomassCache",
           "at": [
-            -8,
-            15
+            -16.5,
+            19
           ],
           "yaw": 0
         },
@@ -1085,13 +1086,49 @@
           "type": "pickup",
           "prefab": "MutationPickup",
           "at": [
-            -6.5,
-            16.5
+            -16.5,
+            11.5
           ],
           "yaw": 0,
           "name": "CausticGlands",
           "itemId": "CausticGlands"
+        },
+        {
+          "type": "hazard",
+          "kind": "Fire",
+          "at": [
+            -15,
+            16.5
+          ],
+          "size": [
+            3,
+            2,
+            3
+          ],
+          "yaw": 0
+        },
+        {
+          "type": "hazard",
+          "kind": "Fire",
+          "at": [
+            -11,
+            12.5
+          ],
+          "size": [
+            3,
+            2,
+            3
+          ],
+          "yaw": 0
         }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "TheMany",
+            "count": 1
+          }
+        ]
       ]
     }
   ]

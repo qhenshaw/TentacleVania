@@ -598,16 +598,16 @@ MonoBehaviour:
       width: 15
       height: 15
   - Scene: QU_Incinerator
-    Center: {x: -22.400478, y: 1.4155036, z: 46.5}
-    Size: {x: 15.959656, y: 3.6310077, z: 16.158707}
+    Center: {x: -34.599525, y: 1.4155036, z: 46.5}
+    Size: {x: 39.959656, y: 3.6310077, z: 34.158707}
     Neighbours:
     - QU_A4
     MapShapes:
     - serializedVersion: 2
-      x: -30
-      y: 39
-      width: 15
-      height: 15
+      x: -54
+      y: 30
+      width: 39
+      height: 33
   _sector: QU
   _rootScene: Quarantine
   _color: {r: 0.6, g: 0.9, b: 0.25, a: 1}
@@ -617,30 +617,10 @@ MonoBehaviour:
     Room: QU_EntryNest
     Position: {x: 13.5, y: 0, z: 119.7}
     Yaw: 180
-  - Kind: 7
-    Id: QU/Auto-QU_A3
-    Room: QU_EntryNest
-    Position: {x: 4.5, y: 0, z: 109.5}
-    Yaw: 0
-  - Kind: 7
-    Id: QU/Auto-QU_A6
-    Room: QU_EntryNest
-    Position: {x: 4.5, y: 0, z: 121.5}
-    Yaw: 0
-  - Kind: 7
-    Id: QU/Auto-QU_VentShaft
-    Room: QU_EntryNest
-    Position: {x: 19.5, y: 0, z: 109.5}
-    Yaw: 0
   - Kind: 1
     Id: QU/A3
     Room: QU_A3
     Position: {x: 90, y: 0, z: 90}
-    Yaw: 0
-  - Kind: 7
-    Id: QU/Auto-QU_A3
-    Room: QU_A3
-    Position: {x: 73.5, y: 0, z: 73.5}
     Yaw: 0
   - Kind: 3
     Id: MapGate
@@ -651,11 +631,6 @@ MonoBehaviour:
     Id: QU/A5
     Room: QU_A5
     Position: {x: 54, y: 0, z: 54}
-    Yaw: 0
-  - Kind: 7
-    Id: QU/Auto-QU_A6
-    Room: QU_A6
-    Position: {x: 73.5, y: 0, z: 37.5}
     Yaw: 0
   - Kind: 1
     Id: QU/A7
@@ -697,20 +672,15 @@ MonoBehaviour:
     Room: QU_VentShaft
     Position: {x: 118.5, y: 0, z: 52.5}
     Yaw: 0
-  - Kind: 7
-    Id: QU/Auto-QU_VentShaft
-    Room: QU_VentShaft
-    Position: {x: 109.5, y: 0, z: 40.5}
-    Yaw: 0
   - Kind: 5
     Id: QU_Incinerator/BiomassCache
     Room: QU_Incinerator
-    Position: {x: -22.5, y: 0, z: 46.5}
+    Position: {x: -48, y: 0, z: 58.5}
     Yaw: 0
   - Kind: 5
     Id: QU_Incinerator/CausticGlands
     Room: QU_Incinerator
-    Position: {x: -18, y: 0, z: 51}
+    Position: {x: -48, y: 0, z: 36}
     Yaw: 0
   - Kind: 7
     Id: QU/Auto-QU_A3
