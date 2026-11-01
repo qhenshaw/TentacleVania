@@ -1008,13 +1008,13 @@
       "place": [
         {
           "type": "pickup",
-          "prefab": "BiomassCache",
+          "prefab": "FlameGlandPickup",
           "at": [
             15,
             -7
           ],
           "yaw": 0,
-          "name": "FlameGlandSpot"
+          "name": "FlameGland"
         }
       ]
     },

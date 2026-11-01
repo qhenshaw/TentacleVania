@@ -1308,6 +1308,26 @@ MonoBehaviour:
     m_Localized: Storm field also locks machines in place.
     m_Metadata:
       m_Items: []
+  - m_Id: 961148855533568
+    m_Localized: Flame Gland
+    m_Metadata:
+      m_Items: []
+  - m_Id: 961409678327808
+    m_Localized: Scorched Earth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 961409678327809
+    m_Localized: Flame bursts leave burning ground.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 961409678327810
+    m_Localized: Cauterize
+    m_Metadata:
+      m_Items: []
+  - m_Id: 961409678327811
+    m_Localized: Burning enemies take extra stagger damage.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

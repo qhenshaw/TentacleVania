@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 3294564128731436930}
   - component: {fileID: 3836339207244102522}
   - component: {fileID: 5580451618102455880}
+  - component: {fileID: 5764039901454299323}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -1163,6 +1164,39 @@ MonoBehaviour:
   _trailSpacing: 0.1
   _trailRadius: 1
   _chainStatic: 25
+--- !u!114 &5764039901454299323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf9029b8810ff549bd236b67c08360e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.Behaviours.FlameGland
+  _weapons: {fileID: 615621536349149212}
+  _weaponId: FlameGland
+  _hitLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  _igniteDamage: 30
+  _igniteRadius: 2
+  _dashBurstDamage: 14
+  _dashBurstRadius: 2.5
+  _groundPrefab: {fileID: 2706748166421712694, guid: 69bc044b5623e594dadd540e9f2008d3, type: 3}
+  _groundDuration: 4
+  _groundRadius: 1.5
+  _groundTick: 0.4
+  _groundDamage: 3
+  _igniteSound:
+    Guid:
+      Data1: -284078156
+      Data2: 1140598597
+      Data3: 268444071
+      Data4: 374685016
+    Path: event:/Weapons/FlameGland/Ignite
 --- !u!1 &4860062330439387882
 GameObject:
   m_ObjectHideFlags: 0
