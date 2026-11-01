@@ -382,6 +382,7 @@ GameObject:
   - component: {fileID: 6527555119604667887}
   - component: {fileID: 6194143945484626594}
   - component: {fileID: 5501406323500830954}
+  - component: {fileID: 3294564128731436930}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -1056,6 +1057,35 @@ MonoBehaviour:
       Data3: -1571720257
       Data4: 548801033
     Path: event:/Creature/Grow
+--- !u!114 &3294564128731436930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea777d35395d98a448a1d2564b7437ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.Behaviours.HookBarbs
+  _weapons: {fileID: 615621536349149212}
+  _motor: {fileID: 8252016009454080188}
+  _consume: {fileID: 4734989538036461837}
+  _charge: {fileID: 7113805647117262672}
+  _weaponId: HookBarbs
+  _barbLife: 6
+  _pullTime: 0.25
+  _pullStop: 1.3
+  _maxPullHealth: 800
+  _zipTime: 0.2
+  _pullSound:
+    Guid:
+      Data1: 126871039
+      Data2: 1260147077
+      Data3: -994203748
+      Data4: -471050697
+    Path: event:/Weapons/HookBarbs/Pull
 --- !u!1 &4860062330439387882
 GameObject:
   m_ObjectHideFlags: 0
