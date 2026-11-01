@@ -16,6 +16,8 @@ namespace TentacleVania.Weapons.Data
         AcidBath,
         OverloadChain,
         ConductiveField,
+        ScorchedEarth,
+        Cauterize,
     }
 
     [CreateAssetMenu(menuName = "TentacleVania/Weapons/Weapon Modifier")]

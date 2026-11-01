@@ -393,6 +393,8 @@ namespace TentacleVania.Weapons
             var hadArmor = target.Armor > 0f;
             var staggered = target.IsStaggered;
             var maxBleed = target.TryGetComponent(out StatusEffects status) && status.BleedStacks >= status.BleedMaxStacks;
+            if (modifier != null && modifier.Kind == ModifierKind.Cauterize && status != null && status.IsActive(StatusKind.Burn))
+                info.Stagger *= modifier.Value;
             var result = target.TakeDamage(info);
             if (result.Outcome == DamageOutcome.Ignored)
                 return;

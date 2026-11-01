@@ -1259,6 +1259,26 @@ MonoBehaviour:
     m_Key: modifier.conductiveField.effect
     m_Metadata:
       m_Items: []
+  - m_Id: 961148855533568
+    m_Key: weapon.FlameGland.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 961409678327808
+    m_Key: modifier.scorchedEarth.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 961409678327809
+    m_Key: modifier.scorchedEarth.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 961409678327810
+    m_Key: modifier.cauterize.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 961409678327811
+    m_Key: modifier.cauterize.effect
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
