@@ -708,6 +708,11 @@ MonoBehaviour:
     Room: AD_EntryNest
     Position: {x: 6.6000004, y: 0, z: 111.899994}
     Yaw: 0
+  - Kind: 6
+    Id: EmployeeOfTheMonth
+    Room: AD_A1
+    Position: {x: 2.1, y: 0, z: 78.75}
+    Yaw: 0
   - Kind: 1
     Id: AD/A3
     Room: AD_A3
@@ -753,6 +758,16 @@ MonoBehaviour:
     Room: AD_R1
     Position: {x: 51, y: 0, z: 117}
     Yaw: 0
+  - Kind: 6
+    Id: AlphaIncidentOfficial
+    Room: AD_R1
+    Position: {x: 41.1, y: 0, z: 112.5}
+    Yaw: 0
+  - Kind: 6
+    Id: RecoveryReport
+    Room: AD_FreightStation
+    Position: {x: 110.100006, y: 0, z: 44.25}
+    Yaw: 0
   - Kind: 5
     Id: AD_R2/MutagenPickup
     Room: AD_R2
@@ -763,6 +778,11 @@ MonoBehaviour:
     Room: AD_R2
     Position: {x: 51, y: 0, z: -15}
     Yaw: 0
+  - Kind: 6
+    Id: SurvivorRoster
+    Room: AD_R2
+    Position: {x: 41.1, y: 0, z: -21.75}
+    Yaw: 0
   - Kind: 5
     Id: AD_ArchiveVault/BiomassCache
     Room: AD_ArchiveVault
@@ -772,6 +792,11 @@ MonoBehaviour:
     Id: AD_ArchiveVault/BoneScythesPickup
     Room: AD_ArchiveVault
     Position: {x: -19.5, y: 0, z: 51}
+    Yaw: 0
+  - Kind: 6
+    Id: PersonnelFileCrane
+    Room: AD_ArchiveVault
+    Position: {x: -27.900002, y: 0, z: 44.25}
     Yaw: 0
   - Kind: 7
     Id: AD/Auto-AD_A3

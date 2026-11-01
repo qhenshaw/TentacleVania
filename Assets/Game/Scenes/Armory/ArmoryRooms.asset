@@ -798,6 +798,11 @@ MonoBehaviour:
     Room: AR_R1
     Position: {x: 51, y: 0, z: 117}
     Yaw: 0
+  - Kind: 6
+    Id: RangeLog
+    Room: AR_R1
+    Position: {x: 41.1, y: 0, z: 112.5}
+    Yaw: 0
   - Kind: 5
     Id: AR_R2/MutagenPickup
     Room: AR_R2
@@ -817,6 +822,11 @@ MonoBehaviour:
     Id: AR_R3/Afterglow
     Room: AR_R3
     Position: {x: 51, y: 0, z: -15}
+    Yaw: 0
+  - Kind: 6
+    Id: AlphaCountermeasures
+    Room: AR_BlastDoor
+    Position: {x: 107.100006, y: 0, z: 44.25}
     Yaw: 0
   - Kind: 7
     Id: AR/Auto-AR_A3
@@ -841,7 +851,7 @@ MonoBehaviour:
   - Kind: 7
     Id: AR/Auto-AR_R1
     Room: AR_R1
-    Position: {x: 40.5, y: 0, z: 109.5}
+    Position: {x: 40.5, y: 0, z: 118.5}
     Yaw: 0
   - Kind: 7
     Id: AR/Auto-AR_R1

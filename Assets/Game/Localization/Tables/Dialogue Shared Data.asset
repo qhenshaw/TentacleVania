@@ -303,6 +303,390 @@ MonoBehaviour:
     m_Key: line.25
     m_Metadata:
       m_Items: []
+  - m_Id: 584484791271424
+    m_Key: lore.ObedienceTrials.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631552
+    m_Key: lore.ObedienceTrials.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631553
+    m_Key: lore.ObedienceTrials.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631554
+    m_Key: lore.VitalSigns.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631555
+    m_Key: lore.VitalSigns.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631556
+    m_Key: lore.VitalSigns.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631557
+    m_Key: lore.BonusMemo.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631558
+    m_Key: lore.BonusMemo.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631559
+    m_Key: lore.BonusMemo.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631560
+    m_Key: lore.FailedSubject.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631561
+    m_Key: lore.FailedSubject.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631562
+    m_Key: lore.FailedSubject.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631563
+    m_Key: lore.CryoRequestDenied.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631564
+    m_Key: lore.CryoRequestDenied.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631565
+    m_Key: lore.CryoRequestDenied.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631566
+    m_Key: lore.AlphaSpecimenTransfer.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631567
+    m_Key: lore.AlphaSpecimenTransfer.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484820631568
+    m_Key: lore.AlphaSpecimenTransfer.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020160
+    m_Key: lore.FrozenBrood.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020161
+    m_Key: lore.FrozenBrood.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020162
+    m_Key: lore.FrozenBrood.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020163
+    m_Key: lore.MedicalExemption.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020164
+    m_Key: lore.MedicalExemption.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020165
+    m_Key: lore.MedicalExemption.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020166
+    m_Key: lore.ClassifiedDirectiveAlpha.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020167
+    m_Key: lore.ClassifiedDirectiveAlpha.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020168
+    m_Key: lore.ClassifiedDirectiveAlpha.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020169
+    m_Key: lore.CommendationList.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020170
+    m_Key: lore.CommendationList.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020171
+    m_Key: lore.CommendationList.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020172
+    m_Key: lore.ProgramStatistics.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020173
+    m_Key: lore.ProgramStatistics.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020174
+    m_Key: lore.ProgramStatistics.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020175
+    m_Key: lore.PersonnelFileCrane.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020176
+    m_Key: lore.PersonnelFileCrane.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020177
+    m_Key: lore.PersonnelFileCrane.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020178
+    m_Key: lore.RecoveryReport.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020179
+    m_Key: lore.RecoveryReport.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020180
+    m_Key: lore.RecoveryReport.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020181
+    m_Key: lore.AlphaIncidentOfficial.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020182
+    m_Key: lore.AlphaIncidentOfficial.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020183
+    m_Key: lore.AlphaIncidentOfficial.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020184
+    m_Key: lore.SurvivorRoster.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020185
+    m_Key: lore.SurvivorRoster.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020186
+    m_Key: lore.SurvivorRoster.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020187
+    m_Key: lore.EmployeeOfTheMonth.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020188
+    m_Key: lore.EmployeeOfTheMonth.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020189
+    m_Key: lore.EmployeeOfTheMonth.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020190
+    m_Key: lore.ItListensToMe.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020191
+    m_Key: lore.ItListensToMe.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020192
+    m_Key: lore.ItListensToMe.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020193
+    m_Key: lore.TransferToVault.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020194
+    m_Key: lore.TransferToVault.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020195
+    m_Key: lore.TransferToVault.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020196
+    m_Key: lore.SealedTunnel.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020197
+    m_Key: lore.SealedTunnel.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020198
+    m_Key: lore.SealedTunnel.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020199
+    m_Key: lore.SelfTrialLog.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020200
+    m_Key: lore.SelfTrialLog.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020201
+    m_Key: lore.SelfTrialLog.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020202
+    m_Key: lore.CranesPrivateAccount.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020203
+    m_Key: lore.CranesPrivateAccount.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020204
+    m_Key: lore.CranesPrivateAccount.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020205
+    m_Key: lore.CloneProgram.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020206
+    m_Key: lore.CloneProgram.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020207
+    m_Key: lore.CloneProgram.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020208
+    m_Key: lore.FieldMedicNotes.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020209
+    m_Key: lore.FieldMedicNotes.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020210
+    m_Key: lore.FieldMedicNotes.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020211
+    m_Key: lore.QuarantineRationale.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020212
+    m_Key: lore.QuarantineRationale.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020213
+    m_Key: lore.QuarantineRationale.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020214
+    m_Key: lore.HazmatComplaint.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020215
+    m_Key: lore.HazmatComplaint.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020216
+    m_Key: lore.HazmatComplaint.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020217
+    m_Key: lore.AlphaCountermeasures.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020218
+    m_Key: lore.AlphaCountermeasures.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020219
+    m_Key: lore.AlphaCountermeasures.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020220
+    m_Key: lore.RangeLog.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020221
+    m_Key: lore.RangeLog.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020222
+    m_Key: lore.RangeLog.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020223
+    m_Key: lore.RequisitionCranePriority.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020224
+    m_Key: lore.RequisitionCranePriority.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020225
+    m_Key: lore.RequisitionCranePriority.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020226
+    m_Key: lore.SoldiersLetter.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020227
+    m_Key: lore.SoldiersLetter.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020228
+    m_Key: lore.SoldiersLetter.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020229
+    m_Key: lore.LiveFireRequisition.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020230
+    m_Key: lore.LiveFireRequisition.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020231
+    m_Key: lore.LiveFireRequisition.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020232
+    m_Key: lore.FinalVitals.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020233
+    m_Key: lore.FinalVitals.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020234
+    m_Key: lore.FinalVitals.body
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020235
+    m_Key: lore.SubjectRegistry.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020236
+    m_Key: lore.SubjectRegistry.from
+    m_Metadata:
+      m_Items: []
+  - m_Id: 584484829020237
+    m_Key: lore.SubjectRegistry.body
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

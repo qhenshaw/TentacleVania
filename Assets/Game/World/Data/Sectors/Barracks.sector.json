@@ -1063,6 +1063,15 @@
           "yaw": 0,
           "name": "GroundingSpike",
           "itemId": "GroundingSpike"
+        },
+        {
+          "type": "terminal",
+          "log": "SoldiersLetter",
+          "at": [
+            13.2,
+            37.0
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -1102,6 +1111,15 @@
           "yaw": 0,
           "name": "Shatterpoint",
           "itemId": "Shatterpoint"
+        },
+        {
+          "type": "terminal",
+          "log": "RequisitionCranePriority",
+          "at": [
+            36.2,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     },
@@ -1142,6 +1160,15 @@
           "yaw": 0,
           "name": "SpinedCharge",
           "itemId": "SpinedCharge"
+        },
+        {
+          "type": "terminal",
+          "log": "LiveFireRequisition",
+          "at": [
+            -9.8,
+            14.25
+          ],
+          "yaw": 90
         }
       ]
     }

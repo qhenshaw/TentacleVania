@@ -741,6 +741,11 @@ MonoBehaviour:
     Room: DC_R1
     Position: {x: 46.5, y: 0, z: 115.5}
     Yaw: 0
+  - Kind: 6
+    Id: TransferToVault
+    Room: DC_R1
+    Position: {x: 41.1, y: 0, z: 112.5}
+    Yaw: 0
   - Kind: 5
     Id: DC_R2/MutagenPickup
     Room: DC_R2
@@ -751,6 +756,11 @@ MonoBehaviour:
     Room: DC_R2
     Position: {x: -15, y: 0, z: 51}
     Yaw: 0
+  - Kind: 6
+    Id: SealedTunnel
+    Room: DC_R2
+    Position: {x: -24.900002, y: 0, z: 44.25}
+    Yaw: 0
   - Kind: 5
     Id: DC_R3/BiomassCache
     Room: DC_R3
@@ -760,6 +770,11 @@ MonoBehaviour:
     Id: DC_R3/PuppetSpores
     Room: DC_R3
     Position: {x: 51, y: 0, z: -15}
+    Yaw: 0
+  - Kind: 6
+    Id: ItListensToMe
+    Room: DC_BurrowTunnel
+    Position: {x: 107.100006, y: 0, z: 44.25}
     Yaw: 0
   - Kind: 7
     Id: DC/Auto-DC_A3
@@ -784,7 +799,7 @@ MonoBehaviour:
   - Kind: 7
     Id: DC/Auto-DC_R1
     Room: DC_R1
-    Position: {x: 40.5, y: 0, z: 109.5}
+    Position: {x: 40.5, y: 0, z: 118.5}
     Yaw: 0
   - Kind: 7
     Id: DC/Auto-DC_R1

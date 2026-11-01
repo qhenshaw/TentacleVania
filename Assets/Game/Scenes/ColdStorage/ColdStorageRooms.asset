@@ -706,40 +706,15 @@ MonoBehaviour:
     Room: CS_EntryNest
     Position: {x: 12, y: 0, z: 118.2}
     Yaw: 180
-  - Kind: 7
-    Id: CS/Auto-CS_A3
-    Room: CS_EntryNest
-    Position: {x: 4.5, y: 0, z: 109.5}
-    Yaw: 0
-  - Kind: 7
-    Id: CS/Auto-CS_A7
-    Room: CS_EntryNest
-    Position: {x: 4.5, y: 0, z: 121.5}
-    Yaw: 0
-  - Kind: 7
-    Id: CS/Auto-CS_R1
-    Room: CS_EntryNest
-    Position: {x: 19.5, y: 0, z: 109.5}
-    Yaw: 0
   - Kind: 1
     Id: CS/A3
     Room: CS_A3
     Position: {x: 90, y: 0, z: 76.5}
     Yaw: 0
-  - Kind: 7
-    Id: CS/Auto-CS_A3
-    Room: CS_A3
-    Position: {x: 73.5, y: 0, z: 73.5}
-    Yaw: 0
   - Kind: 1
     Id: CS/A7
     Room: CS_A7
     Position: {x: 4.5, y: 0, z: 4.5}
-    Yaw: 0
-  - Kind: 7
-    Id: CS/Auto-CS_A7
-    Room: CS_A7
-    Position: {x: 1.5, y: 0, z: 1.5}
     Yaw: 0
   - Kind: 1
     Id: CS/A9
@@ -766,10 +741,10 @@ MonoBehaviour:
     Room: CS_R1
     Position: {x: 51, y: 0, z: 117}
     Yaw: 0
-  - Kind: 7
-    Id: CS/Auto-CS_R1
+  - Kind: 6
+    Id: CryoRequestDenied
     Room: CS_R1
-    Position: {x: 40.5, y: 0, z: 109.5}
+    Position: {x: 41.1, y: 0, z: 112.5}
     Yaw: 0
   - Kind: 5
     Id: CS_R2/MutagenPickup
@@ -781,10 +756,20 @@ MonoBehaviour:
     Room: CS_R2
     Position: {x: -15, y: 0, z: 51}
     Yaw: 0
+  - Kind: 6
+    Id: AlphaSpecimenTransfer
+    Room: CS_R2
+    Position: {x: -24.900002, y: 0, z: 44.25}
+    Yaw: 0
   - Kind: 5
     Id: CS_R3/TendrilSnare
     Room: CS_R3
     Position: {x: 46.5, y: 0, z: -19.5}
+    Yaw: 0
+  - Kind: 6
+    Id: FrozenBrood
+    Room: CS_R3
+    Position: {x: 41.1, y: 0, z: -21.75}
     Yaw: 0
   - Kind: 7
     Id: CS/Auto-CS_A3
@@ -809,7 +794,7 @@ MonoBehaviour:
   - Kind: 7
     Id: CS/Auto-CS_R1
     Room: CS_R1
-    Position: {x: 40.5, y: 0, z: 109.5}
+    Position: {x: 40.5, y: 0, z: 118.5}
     Yaw: 0
   - Kind: 7
     Id: CS/Auto-CS_R1
