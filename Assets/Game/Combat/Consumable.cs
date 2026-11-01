@@ -1,4 +1,6 @@
 using System;
+using TentacleVania.Combat.Damage;
+using TentacleVania.Combat.Status;
 using UnityEngine;
 
 namespace TentacleVania.Combat
@@ -12,6 +14,7 @@ namespace TentacleVania.Combat
         [SerializeField, Min(0)] private int _biomass = 5;
 
         private Health _health;
+        private StatusEffects _status;
         private float _bonusThreshold;
         private float _bonusUntil;
 
@@ -19,6 +22,9 @@ namespace TentacleVania.Combat
         public event Action<Consumable> Consumed;
 
         public static float GrabThreshold { get; set; } = DefaultGrabThreshold;
+        public static float ThresholdBonus { get; set; }
+        public static float EliteThreshold { get; set; }
+        public static float CorrodedThreshold { get; set; }
 
         public Health Health => _health;
         public float HealFraction => _healFraction;
@@ -26,12 +32,23 @@ namespace TentacleVania.Combat
         public bool IsBeingConsumed { get; private set; }
         public bool Locked { get; set; }
         public bool CoreBleeds { get; set; }
+        public bool Elite { get; set; }
         public bool IsGrabbable => CanBeGrabbed(GrabThreshold);
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetThreshold() => GrabThreshold = DefaultGrabThreshold;
+        private static void ResetThreshold()
+        {
+            GrabThreshold = DefaultGrabThreshold;
+            ThresholdBonus = 0f;
+            EliteThreshold = 0f;
+            CorrodedThreshold = 0f;
+        }
 
-        private void Awake() => _health = GetComponent<Health>();
+        private void Awake()
+        {
+            _health = GetComponent<Health>();
+            _status = GetComponent<StatusEffects>();
+        }
 
         public void Configure(float healFraction, int biomass)
         {
@@ -40,7 +57,17 @@ namespace TentacleVania.Combat
         }
 
         public bool CanBeGrabbed(float threshold) =>
-            !Locked && !IsBeingConsumed && _health.IsAlive && _health.Normalized < Mathf.Max(threshold, BonusThreshold);
+            !Locked && !IsBeingConsumed && _health.IsAlive && _health.Normalized < EffectiveThreshold(threshold);
+
+        public float EffectiveThreshold(float threshold)
+        {
+            var result = Mathf.Max(threshold + ThresholdBonus, BonusThreshold);
+            if (EliteThreshold > 0f && (Elite || _health.MaxArmor > 0f))
+                result = Mathf.Max(result, EliteThreshold);
+            if (CorrodedThreshold > 0f && _status != null && _status.IsActive(StatusKind.Corrode))
+                result = Mathf.Max(result, CorrodedThreshold);
+            return result;
+        }
 
         public float BonusThreshold => Time.time < _bonusUntil ? _bonusThreshold : 0f;
 

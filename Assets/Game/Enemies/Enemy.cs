@@ -600,6 +600,8 @@ namespace TentacleVania.Enemies
             if (IsElite || settings == null)
                 return;
             IsElite = true;
+            if (_consumable != null)
+                _consumable.Elite = true;
             _health.Configure(Team.Site, _definition.MaxHealth * settings.HealthScale, _definition.MaxArmor + settings.ArmorBonus);
             _stagger = new(_definition.MaxStagger * settings.StaggerScale);
             _health.Outgoing.Add(new ScaleModifier(400) { HealthScale = settings.DamageScale, StaggerScale = settings.DamageScale });

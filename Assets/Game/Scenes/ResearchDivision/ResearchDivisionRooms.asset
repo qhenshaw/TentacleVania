@@ -737,7 +737,7 @@ MonoBehaviour:
     Position: {x: 130.5, y: 0, z: 10.5}
     Yaw: 0
   - Kind: 5
-    Id: RD_R1/BiomassCache
+    Id: RD_R1/RailSpine
     Room: RD_R1
     Position: {x: 46.5, y: 0, z: 115.5}
     Yaw: 0
@@ -747,9 +747,19 @@ MonoBehaviour:
     Position: {x: -19.5, y: 0, z: 46.5}
     Yaw: 0
   - Kind: 5
+    Id: RD_R2/LongReach
+    Room: RD_R2
+    Position: {x: -15, y: 0, z: 51}
+    Yaw: 0
+  - Kind: 5
     Id: RD_R3/BiomassCache
     Room: RD_R3
     Position: {x: 46.5, y: 0, z: -19.5}
+    Yaw: 0
+  - Kind: 5
+    Id: RD_R3/MarrowStore
+    Room: RD_R3
+    Position: {x: 51, y: 0, z: -15}
     Yaw: 0
   - Kind: 5
     Id: RD_SealedLab/MutagenPickup

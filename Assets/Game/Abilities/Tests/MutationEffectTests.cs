@@ -124,5 +124,66 @@ namespace TentacleVania.Abilities.Tests
                 Object.DestroyImmediate(attacker.gameObject);
             }
         }
+
+        [Test]
+        public void LongReachAndRavenousMawScaleTheConsume()
+        {
+            var reach = Make<LongReachMutation>().CreateEffect();
+            var maw = Make<RavenousMawMutation>().CreateEffect();
+            reach.Enable(_host);
+            maw.Enable(_host);
+            Assert.That(_host.Consume.ReachScale, Is.EqualTo(1.5f).Within(1e-4f));
+            Assert.That(_host.Consume.HealScale, Is.EqualTo(1.25f).Within(1e-4f));
+            Assert.That(_host.Consume.HealScale * _host.Consume.LowHealthHealScale, Is.EqualTo(1.5f).Within(1e-4f));
+            reach.Disable(_host);
+            maw.Disable(_host);
+            Assert.That(_host.Consume.ReachScale, Is.EqualTo(1f).Within(1e-4f));
+            Assert.That(_host.Consume.HealScale, Is.EqualTo(1f).Within(1e-4f));
+            Assert.That(_host.Consume.LowHealthHealScale, Is.EqualTo(1f).Within(1e-4f));
+        }
+
+        [Test]
+        public void OpenWoundsRaisesTheBleedCapAndRate()
+        {
+            var effect = Make<OpenWoundsMutation>().CreateEffect();
+            effect.Enable(_host);
+            Assert.That(Combat.Status.StatusEffects.BleedExtraStacks, Is.EqualTo(2));
+            Assert.That(Combat.Status.StatusEffects.BleedRateScale, Is.EqualTo(1.3f).Within(1e-4f));
+            effect.Disable(_host);
+            Assert.That(Combat.Status.StatusEffects.BleedExtraStacks, Is.EqualTo(0));
+            Assert.That(Combat.Status.StatusEffects.BleedRateScale, Is.EqualTo(1f).Within(1e-4f));
+        }
+
+        [Test]
+        public void GrabRulesRaiseTheThresholdForEliteAndLowHealth()
+        {
+            var prey = new GameObject("GrabPrey");
+            try
+            {
+                var health = prey.AddComponent<Combat.Health>();
+                health.Configure(Combat.Damage.Team.Site, 100f);
+                var consumable = prey.AddComponent<Combat.Consumable>();
+                Assert.That(consumable.EffectiveThreshold(0.25f), Is.EqualTo(0.25f).Within(1e-4f));
+                var grasp = Make<HungryGraspMutation>();
+                var effect = grasp.CreateEffect();
+                effect.Enable(_host);
+                consumable.Elite = true;
+                Assert.That(consumable.EffectiveThreshold(0.25f), Is.EqualTo(grasp.ThresholdAt(Core.Progression.Stats.SizeStage)).Within(1e-4f));
+                effect.Disable(_host);
+                consumable.Elite = false;
+                _host.Health.Configure(Combat.Damage.Team.Creature, 100f);
+                _host.Health.SetFraction(0.2f);
+                var hunger = Make<DesperateHungerMutation>().CreateEffect();
+                hunger.Enable(_host);
+                hunger.Tick(_host, 0f);
+                Assert.That(consumable.EffectiveThreshold(0.25f), Is.EqualTo(0.35f).Within(1e-4f));
+                hunger.Disable(_host);
+                Assert.That(Combat.Consumable.ThresholdBonus, Is.EqualTo(0f).Within(1e-4f));
+            }
+            finally
+            {
+                Object.DestroyImmediate(prey);
+            }
+        }
     }
 }

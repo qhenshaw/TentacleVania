@@ -42,6 +42,7 @@ namespace TentacleVania.Creature
         private bool _armorApplied;
 
         public event Action<CreatureConsume, Consumable> Consuming;
+        public event Action<CreatureConsume, float> Overhealed;
 
         public int Biomass { get; private set; }
         public bool IsRooted => _victim != null;
@@ -54,6 +55,10 @@ namespace TentacleVania.Creature
         public float HealDurationScale { get; set; } = 1f;
         public float NextConsumeSpeed { get; set; } = 1f;
         public float NextHealScale { get; set; } = 1f;
+        public float HealScale { get; set; } = 1f;
+        public float LowHealthHealScale { get; set; } = 1f;
+        public float LowHealthBelow { get; set; } = 0.3f;
+        public float BleedStackHeal { get; set; }
 
         private void Awake()
         {
@@ -98,7 +103,9 @@ namespace TentacleVania.Creature
             {
                 var amount = Mathf.Min(_healRemaining, _healRate * Time.deltaTime);
                 _healRemaining -= amount;
-                _health.Heal(amount);
+                var overflow = amount - _health.Heal(amount);
+                if (overflow > 1e-4f)
+                    Overhealed?.Invoke(this, overflow);
             }
             SetArmored(now < _armoredUntil && _health.IsAlive);
         }
@@ -164,7 +171,9 @@ namespace TentacleVania.Creature
             var machine = !target.Health.Bleeds && !target.CoreBleeds;
             if (!machine)
             {
-                var heal = _health.Max * target.HealFraction * NextHealScale;
+                var heal = _health.Max * target.HealFraction * NextHealScale * HealScale * (_health.Normalized < LowHealthBelow ? LowHealthHealScale : 1f);
+                if (BleedStackHeal > 0f && target.TryGetComponent<Combat.Status.StatusEffects>(out var bleeding))
+                    heal += _health.Max * BleedStackHeal * bleeding.BleedStacks;
                 _healRate = heal / healDuration;
                 _healRemaining += heal;
             }

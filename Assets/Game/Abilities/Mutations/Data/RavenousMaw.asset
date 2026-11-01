@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58b5b85960d8d642a309371cf9fed20, type: 3}
+  m_Name: RavenousMaw
+  m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.RavenousMawMutation
+  _textKey: mutation.ravenousMaw
+  _notches: 2
+  _healScale: 1.25

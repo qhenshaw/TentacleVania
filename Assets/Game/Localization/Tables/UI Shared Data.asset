@@ -1375,6 +1375,94 @@ MonoBehaviour:
     m_Key: mutation.jaggedRecoil.effect
     m_Metadata:
       m_Items: []
+  - m_Id: 970431999524864
+    m_Key: mutation.rendingEdges.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 970432045662208
+    m_Key: mutation.rendingEdges.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 970668348555264
+    m_Key: mutation.openWounds.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 970911647547392
+    m_Key: mutation.embeddedBarbs.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971146608263168
+    m_Key: mutation.sanguineFeast.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971146612457472
+    m_Key: mutation.sanguineFeast.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971389533962240
+    m_Key: mutation.hungryGrasp.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971389542350848
+    m_Key: mutation.hungryGrasp.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971631717269504
+    m_Key: mutation.longReach.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971631725658112
+    m_Key: mutation.longReach.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971864958320640
+    m_Key: mutation.desperateHunger.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971864970903552
+    m_Key: mutation.desperateHunger.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972100820811776
+    m_Key: mutation.falteringPrey.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972100829200384
+    m_Key: mutation.falteringPrey.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972337350197248
+    m_Key: mutation.dissolvingGrip.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972337362780160
+    m_Key: mutation.dissolvingGrip.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972575326617600
+    m_Key: mutation.ravenousMaw.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972575339200512
+    m_Key: mutation.ravenousMaw.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972811931500544
+    m_Key: mutation.leechTendrils.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 972811948277760
+    m_Key: mutation.leechTendrils.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 973948617244672
+    m_Key: mutation.marrowStore.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 973948625633280
+    m_Key: mutation.marrowStore.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
