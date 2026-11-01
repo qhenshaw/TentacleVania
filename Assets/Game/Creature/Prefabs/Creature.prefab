@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 2567351535055926216}
   - component: {fileID: 6527555119604667887}
   - component: {fileID: 6194143945484626594}
+  - component: {fileID: 5501406323500830954}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -1014,6 +1015,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551e113389ac6e4498c2394cb34effe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.CreatureTraversal
+--- !u!114 &5501406323500830954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2518bdf48537fb64084c6f56068bd4b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Creature::TentacleVania.Creature.CreatureSizeStage
+  _rigs:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: ac1484b6d11540c4c8de7dff46349d2a, type: 2}
+  - {fileID: 11400000, guid: 54657f8ed8536684395f7d4d9e8de8e2, type: 2}
+  - {fileID: 11400000, guid: 9fb60e3173be58444813c5a6632b7e42, type: 2}
+  _reachScale:
+  - 1
+  - 1.1
+  - 1.2
+  - 1.35
+  _bodyScale:
+  - 1
+  - 1.15
+  - 1.3
+  - 1.5
+  _cameraScale:
+  - 1
+  - 1.08
+  - 1.18
+  - 1.32
+  _growDuration: 3.5
+  _rebuildAt: 1.2
+  _growSound:
+    Guid:
+      Data1: -766492611
+      Data2: 1333533163
+      Data3: -1571720257
+      Data4: 548801033
+    Path: event:/Creature/Grow
 --- !u!1 &4860062330439387882
 GameObject:
   m_ObjectHideFlags: 0
