@@ -34,6 +34,24 @@ namespace TentacleVania.World
                 if (controller != null)
                     controller.enabled = true;
             });
+            DebugMenu.Button(Tab, "Flare nearest nest tentacles", () =>
+            {
+                var creature = CombatTargets.Creature;
+                BioNest best = null;
+                var bestDistance = float.MaxValue;
+                foreach (var nest in Object.FindObjectsByType<BioNest>())
+                {
+                    var distance = creature != null ? (nest.transform.position - creature.transform.position).sqrMagnitude : 0f;
+                    if (distance < bestDistance)
+                    {
+                        bestDistance = distance;
+                        best = nest;
+                    }
+                }
+                var tentacles = best != null ? best.GetComponentInChildren<Core.Characters.INestTentacles>(true) : null;
+                if (tentacles != null)
+                    tentacles.Flare();
+            });
             DebugMenu.Button(Tab, "Replay opening", () =>
             {
                 if (Opening.OpeningSequence.Current != null)

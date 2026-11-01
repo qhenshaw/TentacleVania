@@ -11,6 +11,8 @@ namespace TentacleVania.World.BioNests
         public const string GrowPromptKey = "prompt.nest.grow";
         public const string RestPromptKey = "prompt.nest.rest";
         public const float RestHoldDuration = 0.6f;
+        private const float SitePulseSpeed = 2.2f;
+        private const float SitePulseScale = 0.06f;
 
         [Tooltip("Unique save id; when empty, the scene name and object name are used.")]
         [SerializeField] private string _id;
@@ -24,6 +26,8 @@ namespace TentacleVania.World.BioNests
         [SerializeField] private EventReference _restSound;
 
         private string _saveId;
+        private Core.Characters.INestTentacles _tentacles;
+        private Vector3 _siteScale;
 
         public string SaveId => _saveId ??= string.IsNullOrEmpty(_id) ? gameObject.scene.name + "/" + name : _id;
         public bool IsGrown => Nests.IsGrown(SaveId);
@@ -38,7 +42,22 @@ namespace TentacleVania.World.BioNests
 
         private void OnDisable() => Interactions.Unregister(this);
 
-        private void Start() => RefreshVisuals();
+        private void Awake()
+        {
+            _tentacles = GetComponentInChildren<Core.Characters.INestTentacles>(true);
+            if (_siteVisual != null)
+                _siteScale = _siteVisual.transform.localScale;
+        }
+
+        private void Start() => RefreshVisuals(false);
+
+        private void Update()
+        {
+            if (_siteVisual == null || !_siteVisual.activeSelf)
+                return;
+            var pulse = 1f + Mathf.Sin(Time.time * SitePulseSpeed) * SitePulseScale;
+            _siteVisual.transform.localScale = new Vector3(_siteScale.x * pulse, _siteScale.y, _siteScale.z * pulse);
+        }
 
         public void Interact()
         {
@@ -63,13 +82,15 @@ namespace TentacleVania.World.BioNests
                 return;
             Core.Saves.Autosave.Request(Core.Saves.AutosaveReason.NestRest);
             Play(_restBurst, default);
+            if (_tentacles != null)
+                _tentacles.Flare();
         }
 
         public void Grow()
         {
             if (!Nests.Grow(SaveId))
                 return;
-            RefreshVisuals();
+            RefreshVisuals(true);
             Play(_growBurst, _growSound);
         }
 
@@ -80,11 +101,20 @@ namespace TentacleVania.World.BioNests
             var respawn = RespawnPoint;
             Nests.Rest(SaveId, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, respawn.position, respawn.eulerAngles.y);
             Play(_restBurst, _restSound);
+            if (_tentacles != null)
+                _tentacles.Flare();
         }
 
-        private void RefreshVisuals()
+        private void RefreshVisuals(bool emerge)
         {
             var grown = IsGrown;
+            if (_tentacles != null)
+            {
+                if (grown)
+                    _tentacles.Show(emerge);
+                else
+                    _tentacles.Hide();
+            }
             if (_siteVisual != null)
                 _siteVisual.SetActive(!grown);
             if (_grownVisual != null)
