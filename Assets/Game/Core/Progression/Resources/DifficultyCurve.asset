@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27a42fcadfdfc448a12935766fb3b63, type: 3}
+  m_Name: DifficultyCurve
+  m_EditorClassIdentifier: TentacleVania.Core::TentacleVania.Core.Progression.DifficultyCurve
+  _sectors:
+  - Sector: SH
+    Health: 1
+    Damage: 1
+    Biomass: 2.2
+    Cache: 250
+    Target: 2500
+  - Sector: AD
+    Health: 1.15
+    Damage: 1.1
+    Biomass: 2.8
+    Cache: 400
+    Target: 4700
+  - Sector: RD
+    Health: 1.15
+    Damage: 1.1
+    Biomass: 3.6
+    Cache: 400
+    Target: 4700
+  - Sector: BL
+    Health: 1.15
+    Damage: 1.1
+    Biomass: 4.2
+    Cache: 400
+    Target: 4700
+  - Sector: QU
+    Health: 1.35
+    Damage: 1.2
+    Biomass: 5.2
+    Cache: 800
+    Target: 10000
+  - Sector: CS
+    Health: 1.35
+    Damage: 1.2
+    Biomass: 5.8
+    Cache: 800
+    Target: 10000
+  - Sector: BA
+    Health: 1.35
+    Damage: 1.2
+    Biomass: 8.6
+    Cache: 800
+    Target: 10000
+  - Sector: AR
+    Health: 1.35
+    Damage: 1.2
+    Biomass: 3.8
+    Cache: 800
+    Target: 10000
+  - Sector: CC
+    Health: 1.7
+    Damage: 1.4
+    Biomass: 8.5
+    Cache: 1500
+    Target: 18000
+  - Sector: DC
+    Health: 1.7
+    Damage: 1.4
+    Biomass: 14.4
+    Cache: 1500
+    Target: 22000
+  - Sector: BS
+    Health: 1.7
+    Damage: 1.4
+    Biomass: 19.2
+    Cache: 1500
+    Target: 26000
+  - Sector: MV
+    Health: 2
+    Damage: 1.6
+    Biomass: 9.9
+    Cache: 1500
+    Target: 8000

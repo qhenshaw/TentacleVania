@@ -250,7 +250,7 @@ MonoBehaviour:
         Data4: 0
       Path: 
   _consumeHeal: 0.5
-  _biomass: 300
+  _biomass: 0
   _spawnOnWall: 0
   _despawnDelay: 4
   _panicRange: 7

@@ -68,6 +68,7 @@ namespace TentacleVania.World.Streaming
                 _onUnloaded[i] = _ => Unloaded(index);
             }
             Active = this;
+            Core.Progression.DifficultyCurve.CurrentSector = _registry.Sector;
             CurrentScene = null;
             _holding = true;
             LoadGate.Hold(this);

@@ -26,7 +26,7 @@ MonoBehaviour:
   _knockbackScale: 0
   _attacks: []
   _consumeHeal: 0.5
-  _biomass: 300
+  _biomass: 3500
   _spawnOnWall: 0
   _despawnDelay: 4
   _panicRange: 7

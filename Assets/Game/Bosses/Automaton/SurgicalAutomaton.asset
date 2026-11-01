@@ -58,6 +58,8 @@ MonoBehaviour:
     LaneWidth: 0
     TrapPrefab: {fileID: 0}
     TrapLifetime: 0
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: 1603963829
@@ -112,6 +114,8 @@ MonoBehaviour:
     LaneWidth: 0
     TrapPrefab: {fileID: 0}
     TrapLifetime: 0
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: -2009367395
@@ -166,6 +170,8 @@ MonoBehaviour:
     LaneWidth: 0
     TrapPrefab: {fileID: 0}
     TrapLifetime: 0
+    BurstPrefab: {fileID: 0}
+    BurstFuse: 0.8
     WindUpSound:
       Guid:
         Data1: 670057761
@@ -188,7 +194,7 @@ MonoBehaviour:
         Data4: -463508119
       Path: event:/Bosses/Automaton/Hit
   _consumeHeal: 0.5
-  _biomass: 300
+  _biomass: 800
   _spawnOnWall: 0
   _despawnDelay: 6
   _panicRange: 7
@@ -197,6 +203,8 @@ MonoBehaviour:
   _preferredRange: {x: 5, y: 8}
   _voice: {fileID: 11400000, guid: 00b17d5fc895d934abd194bc108e64f4, type: 2}
   _machine: 1
+  _drop: {fileID: 0}
+  _dropChance: 0
   _weakTo: 05000000i
   _resists: 03000000i
   _healPerSecond: 8

@@ -12,6 +12,8 @@ namespace TentacleVania.World.Pickups
         [SerializeField] private PickupKind _kind;
         [Tooltip("Weapon, mutation or trinket id (asset name).")]
         [SerializeField] private string _itemId;
+        private const int DefaultCacheAmount = 250;
+
         [SerializeField, Min(0)] private int _amount = 1;
         [SerializeField, Min(0.1f)] private float _radius = 1.2f;
         [SerializeField] private Transform _visual;
@@ -53,7 +55,8 @@ namespace TentacleVania.World.Pickups
 
         public void Collect()
         {
-            if (!Collectibles.Collect(SaveId, _kind, _itemId, _amount))
+            var amount = _kind == PickupKind.Biomass && _amount == DefaultCacheAmount ? Core.Progression.DifficultyCurve.Current.Cache : _amount;
+            if (!Collectibles.Collect(SaveId, _kind, _itemId, amount))
                 return;
             if (!_collectSound.IsNull)
                 RuntimeManager.PlayOneShot(_collectSound, transform.position);
