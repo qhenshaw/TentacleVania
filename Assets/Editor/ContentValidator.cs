@@ -83,6 +83,13 @@ public static class ContentValidator
         var atlas = Resources.Load<MapAtlas>("MapAtlas");
         if (atlas == null)
             report.Error("MapAtlas resource not found");
+        var graph = Resources.Load<WorldGraph>(WorldGraph.ResourcePath);
+        if (graph == null)
+            report.Error("WorldGraph resource not found");
+        else if (atlas != null)
+            foreach (var sector in atlas.Sectors)
+                if (sector != null && sector.Sector != "Debug" && graph.Find(sector.Sector) == null)
+                    report.Error($"{AssetDatabase.GetAssetPath(sector)}: sector {sector.Sector} is missing from the WorldGraph");
         var buildScenes = new HashSet<string>(EditorBuildSettings.scenes.Where(s => s.enabled)
             .Select(s => Path.GetFileNameWithoutExtension(s.path)));
         var settings = AddressableAssetSettingsDefaultObject.Settings;

@@ -20,6 +20,7 @@ namespace TentacleVania.UI.Map
         private const string SectorTable = "Dialogue";
 
         private VisualElement _full;
+        private SiteMapView _site;
         private VisualElement _overlayFrame;
         private Label _title;
         private Label _info;
@@ -44,6 +45,8 @@ namespace TentacleVania.UI.Map
             _title = root.Q<Label>("title");
             _info = root.Q<Label>("info");
             BuildLegend(root.Q<Label>("legend"));
+            _site = new SiteMapView();
+            _full.Add(_site);
             _fullView = new MapView(false);
             root.Q("frame").Add(_fullView);
             _fullView.style.flexGrow = 1f;
@@ -95,6 +98,7 @@ namespace TentacleVania.UI.Map
             var registry = CurrentRegistry();
             FillHeader(_title, _info, registry);
             _fullView.SetRegistry(registry);
+            _site.Refresh(registry);
         }
 
         public void CloseFull()

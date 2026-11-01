@@ -200,3 +200,73 @@
     margin-right: 8px;
     flex-shrink: 0;
 }
+
+.site {
+    position: absolute;
+    top: 60px;
+    right: 120px;
+    width: 380px;
+    padding: 12px;
+    background-color: rgba(8, 16, 13, 0.85);
+    border-width: 1px;
+    border-color: rgb(60, 90, 75);
+}
+
+.site__title {
+    font-size: 20px;
+    -unity-font-style: bold;
+    color: rgb(170, 210, 180);
+    margin-bottom: 6px;
+}
+
+.site__floor {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.site__level {
+    width: 28px;
+    font-size: 14px;
+    color: rgb(120, 150, 130);
+}
+
+.site__sector {
+    flex-grow: 1;
+    flex-basis: 0;
+    height: 40px;
+    margin-left: 4px;
+    justify-content: center;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0);
+}
+
+.site__sector--here {
+    border-color: rgb(255, 255, 255);
+}
+
+.site__name {
+    font-size: 12px;
+    white-space: normal;
+    -unity-text-align: middle-center;
+    color: rgb(230, 240, 235);
+}
+
+.site__routes {
+    margin-top: 8px;
+}
+
+.site__heading {
+    font-size: 14px;
+    color: rgb(120, 150, 130);
+}
+
+.site__route {
+    font-size: 13px;
+    white-space: normal;
+    color: rgb(150, 230, 170);
+}
+
+.site__route--locked {
+    color: rgb(240, 160, 90);
+}

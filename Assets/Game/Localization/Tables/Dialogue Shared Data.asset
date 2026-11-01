@@ -247,6 +247,46 @@ MonoBehaviour:
     m_Key: hoarder.empty
     m_Metadata:
       m_Items: []
+  - m_Id: 389866183213056
+    m_Key: sector.AD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990272
+    m_Key: sector.QU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990273
+    m_Key: sector.RD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990274
+    m_Key: sector.CS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990275
+    m_Key: sector.BA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990276
+    m_Key: sector.AR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990277
+    m_Key: sector.CC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990278
+    m_Key: sector.DC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990279
+    m_Key: sector.BS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990280
+    m_Key: sector.MV
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

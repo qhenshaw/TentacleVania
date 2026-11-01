@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a43051f72181047ad843e61733eda2, type: 3}
+  m_Name: WorldGraph
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Map.WorldGraph
+  _sectors:
+  - Id: SH
+    Floor: 0
+    Column: 0
+  - Id: AD
+    Floor: 0
+    Column: 1
+  - Id: QU
+    Floor: 0
+    Column: 2
+  - Id: RD
+    Floor: 1
+    Column: 0
+  - Id: BL
+    Floor: 1
+    Column: 1
+  - Id: CS
+    Floor: 1
+    Column: 2
+  - Id: BA
+    Floor: 2
+    Column: 0
+  - Id: AR
+    Floor: 2
+    Column: 1
+  - Id: CC
+    Floor: 2
+    Column: 2
+  - Id: DC
+    Floor: 3
+    Column: 0
+  - Id: BS
+    Floor: 3
+    Column: 1
+  - Id: MV
+    Floor: 3
+    Column: 2
+  _connections:
+  - From: SH
+    To: AD
+    Route: 0
+    Requires:
+    - boss:SH/WardenDrone
+    GateKey: map.gate.afterWarden
+  - From: SH
+    To: RD
+    Route: 1
+    Requires:
+    - boss:SH/WardenDrone
+    GateKey: map.gate.afterWarden
+  - From: RD
+    To: BL
+    Route: 0
+    Requires: []
+    GateKey: map.gate.open
+  - From: AD
+    To: QU
+    Route: 0
+    Requires:
+    - TentacleGrapple
+    GateKey: map.gate.grapple
+  - From: BL
+    To: QU
+    Route: 2
+    Requires:
+    - ElectricResistance
+    GateKey: map.gate.electric
+  - From: AD
+    To: CS
+    Route: 4
+    Requires:
+    - FreightClearance
+    GateKey: map.gate.freight
+  - From: BL
+    To: CS
+    Route: 0
+    Requires:
+    - TentacleGrapple
+    GateKey: map.gate.grapple
+  - From: AD
+    To: BA
+    Route: 4
+    Requires:
+    - FreightClearance
+    GateKey: map.gate.freight
+  - From: RD
+    To: BA
+    Route: 3
+    Requires:
+    - ElectricResistance
+    GateKey: map.gate.electric
+  - From: QU
+    To: AR
+    Route: 5
+    Requires:
+    - VentSqueeze
+    GateKey: map.gate.vent
+  - From: CS
+    To: AR
+    Route: 6
+    Requires:
+    - Breach
+    GateKey: map.gate.breach
+  - From: AR
+    To: CC
+    Route: 0
+    Requires:
+    - FireResistance
+    - Breach
+    GateKey: map.gate.fireBreach
+  - From: CC
+    To: DC
+    Route: 7
+    Requires:
+    - Overload
+    GateKey: map.gate.overload
+  - From: DC
+    To: BS
+    Route: 0
+    Requires:
+    - Burrow
+    GateKey: map.gate.burrow
+  - From: BS
+    To: MV
+    Route: 0
+    Requires:
+    - RadiationResistance
+    GateKey: map.gate.radiation

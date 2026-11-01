@@ -250,6 +250,46 @@ MonoBehaviour:
     m_Localized: '*click* Nothing for you yet. Bring me keys. Things that open.'
     m_Metadata:
       m_Items: []
+  - m_Id: 389866183213056
+    m_Localized: Administration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990272
+    m_Localized: Quarantine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990273
+    m_Localized: Research Division
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990274
+    m_Localized: Cold Storage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990275
+    m_Localized: Barracks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990276
+    m_Localized: Armory & Weapons Testing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990277
+    m_Localized: Command Center
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990278
+    m_Localized: Deep Containment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990279
+    m_Localized: Black Site
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389866199990280
+    m_Localized: Mother's Vault
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

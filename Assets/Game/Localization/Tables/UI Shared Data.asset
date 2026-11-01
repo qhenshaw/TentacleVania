@@ -883,6 +883,98 @@ MonoBehaviour:
     m_Key: map.legend.you
     m_Metadata:
       m_Items: []
+  - m_Id: 808462025768960
+    m_Key: map.site.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906304
+    m_Key: map.site.unknown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906305
+    m_Key: map.site.routes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906306
+    m_Key: map.site.open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906307
+    m_Key: map.route.corridor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906308
+    m_Key: map.route.elevator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906309
+    m_Key: map.route.lift
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906310
+    m_Key: map.route.shaft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906311
+    m_Key: map.route.freightcrate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906312
+    m_Key: map.route.vent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906313
+    m_Key: map.route.stairwell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906314
+    m_Key: map.route.freightelevator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906315
+    m_Key: map.gate.afterWarden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906316
+    m_Key: map.gate.open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906317
+    m_Key: map.gate.grapple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906318
+    m_Key: map.gate.electric
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906319
+    m_Key: map.gate.freight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906320
+    m_Key: map.gate.vent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906321
+    m_Key: map.gate.breach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906322
+    m_Key: map.gate.fireBreach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906323
+    m_Key: map.gate.overload
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906324
+    m_Key: map.gate.burrow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 808462071906325
+    m_Key: map.gate.radiation
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
