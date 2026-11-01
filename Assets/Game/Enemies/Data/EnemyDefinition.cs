@@ -57,6 +57,9 @@ namespace TentacleVania.Enemies.Data
         [Header("Kind")]
         [Tooltip("Machines are never healed by Med-Drones.")]
         [SerializeField] private bool _machine;
+        [Tooltip("Optional pickup prefab dropped on death with DropChance (Elite Guard: Mutagen).")]
+        [SerializeField] private GameObject _drop;
+        [SerializeField, Range(0f, 1f)] private float _dropChance;
 
         [Header("Status weaknesses (Balance Sheet: weak +25%, resist -25% build-up and status damage)")]
         [SerializeField] private StatusKind[] _weakTo = System.Array.Empty<StatusKind>();
@@ -89,6 +92,8 @@ namespace TentacleVania.Enemies.Data
         public float CorneredDistance => _corneredDistance;
         public Vector2 PreferredRange => _preferredRange;
         public bool Machine => _machine;
+        public GameObject Drop => _drop;
+        public float DropChance => _dropChance;
         public IReadOnlyList<StatusKind> WeakTo => _weakTo;
         public IReadOnlyList<StatusKind> Resists => _resists;
         public EnemyVoice Voice => _voice;
