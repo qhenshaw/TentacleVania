@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f097080f3a46f4897cdb81d042c6f8, type: 3}
+  m_Name: AcidSpitter
+  m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.Data.WeaponDefinition
+  _displayName: Acid Spitter
+  _damage: 11
+  _stagger: 6
+  _armorDamageScale: 1
+  _damageType: 3
+  _steps:
+  - Name: Glob
+    Shape: 0
+    WindUp: 0.12
+    Strike: 0.08
+    Recovery: 0.25
+    DamageScale: 1
+    StaggerScale: 1
+    ArmorDamageScale: 1
+    Flags: 0
+    Status: 0
+    StatusStacks: 1
+    StatusDuration: 0
+    Reach: 0.1
+    StartAngle: 0
+    EndAngle: 0
+    Radius: 0.05
+    AreaOffset: 0
+    SectorAngle: 360
+    Height: 0.5
+    LungeDistance: 0
+    Vfx: {fileID: 0}
+    VfxScale: 1
+  - Name: Glob
+    Shape: 0
+    WindUp: 0.12
+    Strike: 0.08
+    Recovery: 0.25
+    DamageScale: 1
+    StaggerScale: 1
+    ArmorDamageScale: 1
+    Flags: 0
+    Status: 0
+    StatusStacks: 1
+    StatusDuration: 0
+    Reach: 0.1
+    StartAngle: 0
+    EndAngle: 0
+    Radius: 0.05
+    AreaOffset: 0
+    SectorAngle: 360
+    Height: 0.5
+    LungeDistance: 0
+    Vfx: {fileID: 0}
+    VfxScale: 1
+  - Name: Acid pool
+    Shape: 0
+    WindUp: 0.18
+    Strike: 0.1
+    Recovery: 0.35
+    DamageScale: 1.5
+    StaggerScale: 1.5
+    ArmorDamageScale: 1
+    Flags: 0
+    Status: 0
+    StatusStacks: 1
+    StatusDuration: 0
+    Reach: 0.1
+    StartAngle: 0
+    EndAngle: 0
+    Radius: 0.05
+    AreaOffset: 0
+    SectorAngle: 360
+    Height: 0.5
+    LungeDistance: 0
+    Vfx: {fileID: 0}
+    VfxScale: 1
+  _heavy:
+    Name: Acid cloud
+    Shape: 0
+    WindUp: 0
+    Strike: 0.2
+    Recovery: 0.4
+    DamageScale: 2.5
+    StaggerScale: 3
+    ArmorDamageScale: 1
+    Flags: 0
+    Status: 0
+    StatusStacks: 1
+    StatusDuration: 0
+    Reach: 0.1
+    StartAngle: 0
+    EndAngle: 0
+    Radius: 0.05
+    AreaOffset: 0
+    SectorAngle: 100
+    Height: 0.5
+    LungeDistance: 0
+    Vfx: {fileID: 0}
+    VfxScale: 1
+  _dashAttack:
+    Name: Acid trail
+    Shape: 2
+    WindUp: 0.03
+    Strike: 0.25
+    Recovery: 0.2
+    DamageScale: 1.2
+    StaggerScale: 1.2
+    ArmorDamageScale: 1
+    Flags: 0
+    Status: 0
+    StatusStacks: 1
+    StatusDuration: 0
+    Reach: 0.1
+    StartAngle: 0
+    EndAngle: 0
+    Radius: 0.05
+    AreaOffset: 0
+    SectorAngle: 360
+    Height: 0.5
+    LungeDistance: 3.2
+    Vfx: {fileID: 0}
+    VfxScale: 1
+  _modifiers:
+  - {fileID: 11400000, guid: 8f18e50a8921df04293c531be1ae3322, type: 2}
+  - {fileID: 11400000, guid: e10b8591748080d43bace8b978b4af80, type: 2}
+  _tipMesh: {fileID: 4125249595161415065, guid: 1a872e41093d54544b22a8b3ea6f9de9, type: 3}
+  _tipScale: 1
+  _tipOverlap: 0.5

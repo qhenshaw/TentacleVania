@@ -383,6 +383,7 @@ GameObject:
   - component: {fileID: 6194143945484626594}
   - component: {fileID: 5501406323500830954}
   - component: {fileID: 3294564128731436930}
+  - component: {fileID: 3836339207244102522}
   m_Layer: 8
   m_Name: Creature
   m_TagString: Untagged
@@ -1086,6 +1087,54 @@ MonoBehaviour:
       Data3: -994203748
       Data4: -471050697
     Path: event:/Weapons/HookBarbs/Pull
+--- !u!114 &3836339207244102522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487977787520540977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f383912e9b6c342a6ffa86452b4ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TentacleVania.Weapons::TentacleVania.Weapons.Behaviours.AcidSpitter
+  _weapons: {fileID: 615621536349149212}
+  _weaponId: AcidSpitter
+  _hitLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  _globPrefab: {fileID: 1098495667360147466, guid: 67d8d17ae5f4ac440b05822c520c1fa6, type: 3}
+  _cloudPrefab: {fileID: 8796615707635387008, guid: 820784f289a71964b88350e7b53f5e8c, type: 3}
+  _flightTime: 0.45
+  _arcHeight: 2
+  _range: 8
+  _aimCone: 40
+  _globRadius: 1.2
+  _bigRadius: 2.2
+  _poolDuration: 5
+  _poolDamagePerSecond: 8
+  _cloudDuration: 4
+  _cloudRadius: 2.5
+  _cloudTick: 0.4
+  _cloudDamagePerTick: 4
+  _trailSpacing: 0.12
+  _trailRadius: 1
+  _meltingArmorScale: 3
+  _spitSound:
+    Guid:
+      Data1: -1552752059
+      Data2: 1195646653
+      Data3: 1820744350
+      Data4: 1603678093
+    Path: event:/Weapons/AcidSpitter/Spit
+  _splashSound:
+    Guid:
+      Data1: -264672016
+      Data2: 1169139492
+      Data3: 2138416520
+      Data4: 712641677
+    Path: event:/Weapons/AcidSpitter/Splash
 --- !u!1 &4860062330439387882
 GameObject:
   m_ObjectHideFlags: 0

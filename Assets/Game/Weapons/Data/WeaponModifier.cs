@@ -12,6 +12,8 @@ namespace TentacleVania.Weapons.Data
         FrenzyEdge,
         ChainHook,
         FeedingLine,
+        MeltingArmor,
+        AcidBath,
     }
 
     [CreateAssetMenu(menuName = "TentacleVania/Weapons/Weapon Modifier")]

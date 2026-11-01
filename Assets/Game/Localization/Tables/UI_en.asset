@@ -1268,6 +1268,26 @@ MonoBehaviour:
     m_Localized: Dragging an enemy in restores ability charge.
     m_Metadata:
       m_Items: []
+  - m_Id: 958398340022272
+    m_Localized: Acid Spitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 958669547913216
+    m_Localized: Melting Armor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 958669547913217
+    m_Localized: Your acid strips enemy armor three times as fast.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 958669547913218
+    m_Localized: Acid Bath
+    m_Metadata:
+      m_Items: []
+  - m_Id: 958669547913219
+    m_Localized: Standing in your own acid pool boosts attack speed.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
