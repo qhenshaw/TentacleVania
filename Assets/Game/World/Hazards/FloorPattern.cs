@@ -21,6 +21,8 @@ namespace TentacleVania.World.Hazards
         [SerializeField, Min(0.1f)] private float _warningTime = 1.2f;
         [SerializeField, Min(0.1f)] private float _onTime = 2.5f;
         [SerializeField, Min(1f)] private float _blinkRate = 8f;
+        [Tooltip("A boss this close runs the pattern (bosses spawn into the sector root scene, not the room scene).")]
+        [SerializeField, Min(1f)] private float _bossRange = 40f;
 
         private Transform[] _surfaces;
         private float _phaseEnds;
@@ -109,7 +111,7 @@ namespace TentacleVania.World.Hazards
             {
                 var enemy = enemies[i];
                 if (enemy.IsBoss && enemy.Health.IsAlive && enemy.State != EnemyState.Spawning && enemy.State != EnemyState.Dead
-                    && enemy.gameObject.scene == gameObject.scene)
+                    && (enemy.transform.position - transform.position).sqrMagnitude <= _bossRange * _bossRange)
                     return true;
             }
             return false;
