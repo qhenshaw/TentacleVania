@@ -1047,6 +1047,10 @@ MonoBehaviour:
     m_Key: boss.majorRoss
     m_Metadata:
       m_Items: []
+  - m_Id: 916272264790016
+    m_Key: trinket.UnsentLetter.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
