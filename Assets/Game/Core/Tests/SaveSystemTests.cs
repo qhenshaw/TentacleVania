@@ -164,5 +164,48 @@ namespace TentacleVania.Core.Tests
                 SaveSystem.Unregister(participant);
             }
         }
+        [Test]
+        public void VersionOneSavesMigrateToTheCurrentFormat()
+        {
+            var json = SaveSerializer.ToJson(new SaveData()).Replace($"\"Version\": {SaveSerializer.CurrentVersion}", "\"Version\": 1");
+            var loaded = SaveSerializer.FromJson(json);
+            Assert.That(loaded.Version, Is.EqualTo(SaveSerializer.CurrentVersion));
+            Assert.That(loaded.Progress.ArenaInProgress, Is.EqualTo(""));
+        }
+
+        [Test]
+        public void QuittingMidArenaCountsAsADeathOnLoad()
+        {
+            var data = new SaveData();
+            data.Biomass.Carried = 300;
+            data.Progress.ArenaInProgress = "SH/SH_A1";
+            data.Progress.ArenaScene = "SH_A1";
+            data.Progress.ArenaPosition = new UnityEngine.Vector3(4f, 0f, 9f);
+            Assert.That(SaveSystem.ApplyMidArenaQuit(data), Is.True);
+            Assert.That(data.Biomass.Carried, Is.EqualTo(0));
+            Assert.That(data.Biomass.Dropped, Is.True);
+            Assert.That(data.Biomass.DroppedAmount, Is.EqualTo(300));
+            Assert.That(data.Biomass.DroppedScene, Is.EqualTo("SH_A1"));
+            Assert.That(data.Progress.ArenaInProgress, Is.EqualTo(""));
+            Assert.That(SaveSystem.ApplyMidArenaQuit(data), Is.False);
+        }
+
+        [Test]
+        public void AFullWorldSaveStaysSmallAndRoundTrips()
+        {
+            var data = new SaveData();
+            string[] sectors = { "SH", "AD", "QU", "RD", "BL", "CS", "BA", "AR", "CC", "DC", "BS", "MV" };
+            foreach (WorldFlag flag in System.Enum.GetValues(typeof(WorldFlag)))
+                foreach (var sector in sectors)
+                    for (var i = 0; i < 30; i++)
+                        data.World.Set(flag, $"{sector}/{sector}_Room{i:00}/SomeObjectName{i}");
+            var json = SaveSerializer.ToJson(data);
+            Assert.That(json.Length, Is.LessThan(SaveBudgetBytes), $"{json.Length} characters");
+            var loaded = SaveSerializer.FromJson(json);
+            foreach (WorldFlag flag in System.Enum.GetValues(typeof(WorldFlag)))
+                Assert.That(loaded.World.List(flag).Count, Is.EqualTo(data.World.List(flag).Count), flag.ToString());
+        }
+
+        private const int SaveBudgetBytes = 1024 * 1024;
     }
 }

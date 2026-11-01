@@ -153,6 +153,11 @@ namespace TentacleVania.World.Arenas
             HadHumans = false;
             foreach (var door in _doors)
                 door.Seal();
+            var progress = SaveSystem.Data.Progress;
+            progress.ArenaInProgress = SaveId;
+            progress.ArenaScene = gameObject.scene.name;
+            progress.ArenaPosition = transform.position;
+            Autosave.Request(AutosaveReason.ArenaStarted);
             StartWave(Mathf.Clamp(wave, 0, _waves.Waves.Count - 1), now);
         }
 
@@ -245,6 +250,8 @@ namespace TentacleVania.World.Arenas
                 if (Nests.StaysCleared(_bossArena || _oneTime))
                     SaveSystem.Data.World.Set(WorldFlag.ClearedArena, SaveId);
                 ArenaSession.MarkCleared(SaveId);
+                if (SaveSystem.Data.Progress.ArenaInProgress == SaveId)
+                    SaveSystem.Data.Progress.ArenaInProgress = "";
                 foreach (var door in _doors)
                     door.Open();
                 SetState(ArenaState.Cleared);

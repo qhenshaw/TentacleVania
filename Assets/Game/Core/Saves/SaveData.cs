@@ -25,6 +25,9 @@ namespace TentacleVania.Core.Saves
         public string LastNestScene = "";
         public Vector3 RespawnPosition;
         public float RespawnYaw;
+        public string ArenaInProgress = "";
+        public string ArenaScene = "";
+        public Vector3 ArenaPosition;
     }
 
     [Serializable]

@@ -124,12 +124,23 @@ namespace TentacleVania.Core.Saves
             if (!Storage.TryRead(slot, out var json))
                 return false;
             Data = SaveSerializer.FromJson(json);
+            ApplyMidArenaQuit(Data);
             Slot = slot;
             Active = true;
             _playtimeAnchor = Time.realtimeSinceStartupAsDouble;
             foreach (var participant in Participants)
                 participant.Restore(Data);
             Loaded?.Invoke(Data);
+            return true;
+        }
+
+        public static bool ApplyMidArenaQuit(SaveData data)
+        {
+            var progress = data.Progress;
+            if (string.IsNullOrEmpty(progress.ArenaInProgress))
+                return false;
+            Progression.BiomassRules.Die(data.Biomass, GameSettings.KeepBiomassOnDeath, progress.ArenaScene, progress.ArenaPosition);
+            progress.ArenaInProgress = "";
             return true;
         }
 
