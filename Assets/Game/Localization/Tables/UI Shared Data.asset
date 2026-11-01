@@ -1239,6 +1239,26 @@ MonoBehaviour:
     m_Key: modifier.acidBath.effect
     m_Metadata:
       m_Items: []
+  - m_Id: 959780384161792
+    m_Key: weapon.ArcTendrils.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 960177463115776
+    m_Key: modifier.overloadChain.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 960177471504384
+    m_Key: modifier.overloadChain.effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 960177471504385
+    m_Key: modifier.conductiveField.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 960177471504386
+    m_Key: modifier.conductiveField.effect
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

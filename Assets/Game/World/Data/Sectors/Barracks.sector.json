@@ -481,6 +481,29 @@
           ],
           "yaw": 0,
           "name": "Barricade1"
+        },
+        {
+          "type": "hazard",
+          "kind": "Electric",
+          "at": [
+            -2.5,
+            15
+          ],
+          "size": [
+            15,
+            2,
+            3
+          ],
+          "yaw": 0,
+          "name": "StockroomCurrent"
+        },
+        {
+          "type": "mapGate",
+          "at": [
+            -2.5,
+            15
+          ],
+          "yaw": 90
         }
       ],
       "waves": [
@@ -1069,13 +1092,13 @@
       "place": [
         {
           "type": "pickup",
-          "prefab": "BiomassCache",
+          "prefab": "ArcTendrilsPickup",
           "at": [
             -8,
             15
           ],
           "yaw": 0,
-          "name": "ArcTendrilsSpot"
+          "name": "ArcTendrils"
         }
       ]
     }
