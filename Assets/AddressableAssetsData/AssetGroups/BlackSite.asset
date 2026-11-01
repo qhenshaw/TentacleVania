@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: BlackSite
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: BlackSite
+  m_GUID: 395ce9e5563d1074db0e4f6d8c69f5d6
+  m_SerializeEntries:
+  - m_GUID: 0382a60972abc774db40ce0f0906eb40
+    m_Address: BS_A3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 24572fb0c1377af4cb4270bf7836bc22
+    m_Address: BS_A6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b53cda3a6ed2dc47b929ccfe862c81a
+    m_Address: BS_A5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4451df8f9f358db4a87d2cc8c5d8947f
+    m_Address: BS_A1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 527daa4b1c7b7534286420c39b054b94
+    m_Address: BS_R1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68ddcd797a58e0a49b6234a9f035c55b
+    m_Address: BS_ReactorHall
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8acc9948560a75e4ea5a20e606f06371
+    m_Address: BS_CraneOffice
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91b4f9e84abba21428c3f57ee59529f3
+    m_Address: BS_PreBossNest
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: babbbc5b0a2d58542a49becfc6d7d542
+    m_Address: BS_EntryNest
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2f2f3ad2c527194e86a422600a9f7ba
+    m_Address: BS_A8
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c973651b31469424dafbd7e74e4cb5ed
+    m_Address: BS_A7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d502548a590580c459bffdcc295bc9c1
+    m_Address: BS_IsolationWard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9783cbb1665705458592eb069f8c9e4
+    m_Address: BS_A4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fed851b9b4e713040a79cbc7f69b5e99
+    m_Address: BS_A2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4d6b5f8d559a1c24f8fe26a96bc15c60, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 1abbdb62bd146d048aa533c365103c95, type: 2}
+    - {fileID: 11400000, guid: c615428481958654f9d8aa369e1856fc, type: 2}

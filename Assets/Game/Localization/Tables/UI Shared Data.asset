@@ -1079,6 +1079,10 @@ MonoBehaviour:
     m_Key: boss.reactorAI
     m_Metadata:
       m_Items: []
+  - m_Id: 936774828048384
+    m_Key: trinket.AlphaSurvivorsBadge.name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
