@@ -116,7 +116,7 @@ namespace TentacleVania.Audio
             Intensity = Mathf.MoveTowards(Intensity, targetIntensity, _settings.IntensitySpeed * dt);
 
             var bossMusic = boss != null && !boss.Boss.Music.IsNull ? boss.Boss.Music : _settings.BossTheme;
-            Drive(_arena, _settings.Arena, State == MusicState.Arena, dt);
+            Drive(_arena, _settings.ArenaFor(Core.Progression.DifficultyCurve.CurrentSector), State == MusicState.Arena, dt);
             Drive(_boss, State == MusicState.Boss ? bossMusic : default, State == MusicState.Boss, dt);
             Drive(_rest, _settings.NestRest, State == MusicState.NestRest, dt);
             Drive(_menu, _settings.Menu, State == MusicState.Menu, dt);

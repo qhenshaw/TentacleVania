@@ -58,13 +58,17 @@ MonoBehaviour:
         Data4: -849588612
       Path: event:/Bosses/PhaseChange
   _rewardAbility: {fileID: 11400000, guid: d7f72426d8b662f46b5f71b295172ab5, type: 2}
+  _secondReward: {fileID: 0}
+  _dropPrefab: {fileID: 0}
+  _rewardMutation: 
+  _arenaRequires: []
   _music:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1021473263
+      Data2: 1253923252
+      Data3: 446810292
+      Data4: -1425418734
+    Path: event:/Music/BossVance
   _introSound:
     Guid:
       Data1: -260886296

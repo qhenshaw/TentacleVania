@@ -60,13 +60,15 @@ MonoBehaviour:
   _rewardAbility: {fileID: 0}
   _secondReward: {fileID: 0}
   _dropPrefab: {fileID: 0}
+  _rewardMutation: 
+  _arenaRequires: []
   _music:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1715909948
+      Data2: 1290574227
+      Data3: -1643126908
+      Data4: -776166845
+    Path: event:/Music/BossCrane
   _introSound:
     Guid:
       Data1: -260886296
