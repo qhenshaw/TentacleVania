@@ -74,6 +74,19 @@
           "requiredBoss": "",
           "requiredAbility": "RadiationResistance",
           "name": "Transit_BS"
+        },
+        {
+          "type": "paZone",
+          "sequence": "mv.entry",
+          "at": [
+            4.0,
+            38.5
+          ],
+          "size": [
+            16,
+            4,
+            13
+          ]
         }
       ]
     },

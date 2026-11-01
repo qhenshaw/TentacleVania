@@ -74,6 +74,19 @@
           "requiredBoss": "",
           "requiredAbility": "FireResistance",
           "name": "Transit_AR"
+        },
+        {
+          "type": "paZone",
+          "sequence": "cc.entry",
+          "at": [
+            4.0,
+            38.5
+          ],
+          "size": [
+            16,
+            4,
+            13
+          ]
         }
       ]
     },

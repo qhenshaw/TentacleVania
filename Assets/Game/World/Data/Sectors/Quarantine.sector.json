@@ -95,6 +95,19 @@
           "requiredBoss": "",
           "requiredAbility": "ElectricResistance",
           "name": "Lift_BL"
+        },
+        {
+          "type": "paZone",
+          "sequence": "qu.entry",
+          "at": [
+            4.0,
+            38.5
+          ],
+          "size": [
+            16,
+            4,
+            13
+          ]
         }
       ]
     },
