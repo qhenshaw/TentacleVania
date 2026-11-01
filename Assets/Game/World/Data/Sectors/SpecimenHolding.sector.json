@@ -112,7 +112,7 @@
       "waves": [[{ "enemy": "WardenDrone", "count": 1 }]],
       "place": [
         { "type": "hook", "hook": "SH.WardenHall" },
-        { "type": "elevator", "at": [41.5, 4], "yaw": 270, "destination": "BioLabs", "arrivalAt": [1.6, 36.6], "arrivalOffset": [1.5, 0, 0], "arrivalYaw": 90, "requiredBoss": "SH/WardenDrone" }
+        { "type": "elevator", "at": [41.5, 4], "yaw": 270, "destination": "ResearchDivision", "arrivalAt": [1.6, 36.6], "arrivalOffset": [1.5, 0, 0], "arrivalYaw": 90, "requiredBoss": "SH/WardenDrone" }
       ]
     },
     {

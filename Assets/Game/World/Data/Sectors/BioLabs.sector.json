@@ -14,7 +14,7 @@
       "place": [
         { "type": "nest", "id": "BL/EntryNest", "at": [3.5, 39], "yaw": 180 },
         { "type": "prefab", "prefab": "Assets/Game/World/Hoarder/Hoarder.prefab", "at": [6.3, 38], "yaw": 270, "name": "Hoarder" },
-        { "type": "elevator", "at": [1.6, 36.6], "yaw": 90, "destination": "SpecimenHolding", "arrivalAt": [41.5, 4], "arrivalOffset": [-1.5, 0, 0], "arrivalYaw": 270, "requiredBoss": "" },
+        { "type": "transit", "at": [1.6, 36.6], "yaw": 90, "destination": "ResearchDivision", "arrivalAt": [6.4, 38.5], "arrivalOffset": [-1.5, 0, 0], "arrivalYaw": 270, "requiredBoss": "", "name": "Transit_RD" },
         { "type": "paZone", "sequence": "bl.entry", "at": [3.5, 38.5], "size": [16, 4, 13] },
         { "type": "crawl", "id": "BL/T1", "opensHere": false, "at": [6, 40], "yaw": 180, "otherAt": [13, 18], "otherYaw": 180 }
       ]

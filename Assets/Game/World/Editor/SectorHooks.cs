@@ -13,6 +13,7 @@ namespace TentacleVania.World.Editor
             ["SH.WardenHall"] = WardenHall,
             ["SH.GrappleGate"] = GrappleGate,
             ["BL.AutomatonTheatre"] = AutomatonTheatre,
+            ["RD.TestChamber"] = TestChamber,
         };
 
         public static bool TryGet(string name, out Action<RoomContext> hook) => Hooks.TryGetValue(name ?? "", out hook);
@@ -44,6 +45,22 @@ namespace TentacleVania.World.Editor
             c.Spawn("Assets/Game/Abilities/Grapple/GrappleAnchor.prefab", new Vector3(-12.5f, 0f, z), 90f, "AnchorFar");
             c.Spawn("Assets/Game/Abilities/Grapple/GrappleAnchor.prefab", new Vector3(-2.5f, 0f, z), 270f, "AnchorNear");
             c.Empty("MapGate", new Vector3(-4.5f, 0f, z), 90f).AddComponent<Map.MapGate>();
+        }
+
+        private static void TestChamber(RoomContext c)
+        {
+            var host = c.Empty("FloorPattern", RoomContext.Cell(51f, 3f), 0f);
+            var zones = new Hazards.HazardZone[6];
+            for (var i = 0; i < zones.Length; i++)
+            {
+                var stripe = c.Spawn("Assets/Game/World/Hazards/Hazard_Electric.prefab", RoomContext.Cell(47f, 3f) + new Vector3(2f + i * 4f, 0f, 0f), 0f, $"Stripe{i}");
+                stripe.transform.SetParent(host.transform, true);
+                zones[i] = stripe.GetComponent<Hazards.HazardZone>();
+                zones[i].Configure(Hazards.HazardKind.Electric, new Vector3(4f, 2f, 24f));
+            }
+            var pattern = host.AddComponent<Hazards.FloorPattern>();
+            pattern.Configure(zones, null);
+            RoomContext.Set(pattern, "_zones", zones);
         }
 
         private static void AutomatonTheatre(RoomContext c)
