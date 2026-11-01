@@ -25,6 +25,7 @@ namespace TentacleVania.World.Streaming
         Hoarder,
         Pickup,
         LoreLog,
+        Tunnel,
     }
 
     [Serializable]

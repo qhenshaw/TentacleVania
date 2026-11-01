@@ -617,6 +617,26 @@ MonoBehaviour:
     Room: SH_PodChamber
     Position: {x: 16.5, y: 0, z: 116.7}
     Yaw: 180
+  - Kind: 7
+    Id: SH/T1
+    Room: SH_PodChamber
+    Position: {x: 4.5, y: 0, z: 121.5}
+    Yaw: 0
+  - Kind: 7
+    Id: SH/Auto-SH_A3
+    Room: SH_PodChamber
+    Position: {x: 19.5, y: 0, z: 109.5}
+    Yaw: 0
+  - Kind: 7
+    Id: SH/Auto-SH_A6
+    Room: SH_PodChamber
+    Position: {x: 19.5, y: 0, z: 121.5}
+    Yaw: 0
+  - Kind: 7
+    Id: SH/Auto-SH_R2
+    Room: SH_PodChamber
+    Position: {x: 19.5, y: 0, z: 115.5}
+    Yaw: 0
   - Kind: 6
     Id: PodHistory
     Room: SH_PodChamber
@@ -626,6 +646,11 @@ MonoBehaviour:
     Id: PodLabel
     Room: SH_PodChamber
     Position: {x: 5.1000004, y: 0, z: 112.5}
+    Yaw: 0
+  - Kind: 7
+    Id: SH/T2
+    Room: SH_A1
+    Position: {x: 19.5, y: 0, z: 73.5}
     Yaw: 0
   - Kind: 6
     Id: NightShiftChat
@@ -637,6 +662,11 @@ MonoBehaviour:
     Room: SH_A3
     Position: {x: 90, y: 0, z: 90}
     Yaw: 0
+  - Kind: 7
+    Id: SH/Auto-SH_A3
+    Room: SH_A3
+    Position: {x: 73.5, y: 0, z: 73.5}
+    Yaw: 0
   - Kind: 3
     Id: MapGate
     Room: SH_A4
@@ -646,6 +676,16 @@ MonoBehaviour:
     Id: SH/A5
     Room: SH_A5
     Position: {x: 54, y: 0, z: 54}
+    Yaw: 0
+  - Kind: 7
+    Id: SH/T2
+    Room: SH_A6
+    Position: {x: 76.5, y: 0, z: 55.5}
+    Yaw: 0
+  - Kind: 7
+    Id: SH/Auto-SH_A6
+    Room: SH_A6
+    Position: {x: 73.5, y: 0, z: 37.5}
     Yaw: 0
   - Kind: 1
     Id: SH/A7
@@ -667,6 +707,11 @@ MonoBehaviour:
     Room: SH_PreBossNest
     Position: {x: 94.5, y: 0, z: 10.5}
     Yaw: 0
+  - Kind: 7
+    Id: SH/T1
+    Room: SH_PreBossNest
+    Position: {x: 73.5, y: 0, z: 4.5}
+    Yaw: 0
   - Kind: 5
     Id: SH_R1/PodReleaseKey
     Room: SH_R1
@@ -676,6 +721,11 @@ MonoBehaviour:
     Id: SH_R2/BiomassCache
     Room: SH_R2
     Position: {x: 115.5, y: 0, z: 46.5}
+    Yaw: 0
+  - Kind: 7
+    Id: SH/Auto-SH_R2
+    Room: SH_R2
+    Position: {x: 109.5, y: 0, z: 40.5}
     Yaw: 0
   - Kind: 6
     Id: IntakeMemo

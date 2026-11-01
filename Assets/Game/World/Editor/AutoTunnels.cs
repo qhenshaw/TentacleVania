@@ -69,9 +69,12 @@ namespace TentacleVania.World.Editor
                 var id = $"{plan.Sector}/Auto-{pair.Far}";
                 Spawn(prefab, scenes[pair.Far], id, true, far, near);
                 Spawn(prefab, scenes[pair.Nest], id, false, near, far);
+                registry.Markers.Add(new MapMarker { Kind = MapMarkerKind.Tunnel, Id = id, Room = pair.Far, Position = far.Position });
+                registry.Markers.Add(new MapMarker { Kind = MapMarkerKind.Tunnel, Id = id, Room = pair.Nest, Position = near.Position });
                 report.AppendLine($"auto tunnel {id}: {pair.Far} ({pair.Distance} rooms from a nest) -> {pair.Nest}");
             }
 
+            EditorUtility.SetDirty(registry);
             foreach (var scene in scenes.Values)
             {
                 EditorSceneManager.SaveScene(scene);
