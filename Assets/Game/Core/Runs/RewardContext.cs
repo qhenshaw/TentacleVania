@@ -6,5 +6,6 @@ namespace TentacleVania.Core.Runs
         public int Step;
         public int EvolutionsOpen;
         public int StepsSinceMutation;
+        public int StepsSinceEvolution;
     }
 }

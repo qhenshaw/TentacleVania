@@ -100,6 +100,23 @@ namespace TentacleVania.Core.Tests
         }
 
         [Test]
+        public void EvolutionPityForcesAnEvolutionDoor()
+        {
+            var rng = new System.Random(13);
+            var context = new RewardContext { EvolutionsOpen = 1, StepsSinceEvolution = RunGenerator.EvolutionPity };
+            for (var i = 0; i < 100; i++)
+            {
+                var found = false;
+                foreach (var offer in RunGenerator.Offers(rng, RoomRole.Combat, context, 6, null))
+                    found |= offer.Reward == RunReward.Evolution;
+                Assert.That(found, Is.True);
+            }
+        }
+
+        [Test]
+        public void EssenceWeighsMoreOnDeeperFloors() => Assert.That(RunGenerator.Weight(RunReward.Essence, 3), Is.GreaterThan(RunGenerator.Weight(RunReward.Essence, 0)));
+
+        [Test]
         public void UsedRoomsAreAvoidedWhileOthersRemain()
         {
             var rng = new System.Random(9);

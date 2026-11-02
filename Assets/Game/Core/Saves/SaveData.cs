@@ -54,6 +54,7 @@ namespace TentacleVania.Core.Saves
         public int Essence;
         public int SizeStage;
         public int StepsSinceMutation;
+        public int StepsSinceEvolution;
         public int EvolutionsOpen = 2;
         public int Role;
         public int Reward;

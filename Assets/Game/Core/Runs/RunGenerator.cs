@@ -10,9 +10,23 @@ namespace TentacleVania.Core.Runs
         public const int Shops = 1;
         public const int MaxDoors = 3;
         public const int MutationPity = 3;
+        public const int EvolutionPity = 5;
 
         private static readonly RunReward[] CombatRewards = { RunReward.Mutation, RunReward.Evolution, RunReward.Biomass, RunReward.Essence };
-        private static readonly int[] CombatWeights = { 40, 20, 25, 15 };
+        private static readonly int[][] FloorWeights =
+        {
+            new[] { 40, 20, 25, 15 },
+            new[] { 38, 22, 22, 18 },
+            new[] { 35, 22, 20, 23 },
+            new[] { 32, 20, 18, 30 },
+        };
+
+        public static int Weight(RunReward reward, int floor)
+        {
+            var row = FloorWeights[Math.Clamp(floor, 0, FloorWeights.Length - 1)];
+            var index = Array.IndexOf(CombatRewards, reward);
+            return index < 0 ? 0 : row[index];
+        }
 
         public static int FloorSeed(int runSeed, int floor) => unchecked(runSeed * 397 ^ (floor + 1) * 7919);
 
@@ -62,7 +76,11 @@ namespace TentacleVania.Core.Runs
             var doors = rng.Next(2, MaxDoors + 1);
             for (var i = 0; i < doors; i++)
             {
-                var reward = i == 0 && context.StepsSinceMutation >= MutationPity ? RunReward.Mutation : PickReward(rng, context, into);
+                var reward = i == 0 && context.StepsSinceMutation >= MutationPity ? RunReward.Mutation
+                    : i == 1 && context.EvolutionsOpen > 0 && context.StepsSinceEvolution >= EvolutionPity ? RunReward.Evolution
+                    : PickReward(rng, context, into);
+                if (reward != RunReward.None && !Allowed(reward, context, into))
+                    reward = PickReward(rng, context, into);
                 if (reward == RunReward.None)
                     break;
                 into.Add(new DoorOffer(next, reward, PickRoom(rng, roomsForRole, usedRooms, into, roomWeights)));
@@ -75,7 +93,7 @@ namespace TentacleVania.Core.Runs
             var total = 0;
             for (var i = 0; i < CombatRewards.Length; i++)
                 if (Allowed(CombatRewards[i], context, taken))
-                    total += CombatWeights[i];
+                    total += Weight(CombatRewards[i], context.Floor);
             if (total <= 0)
                 return RunReward.None;
             var roll = rng.Next(total);
@@ -83,7 +101,7 @@ namespace TentacleVania.Core.Runs
             {
                 if (!Allowed(CombatRewards[i], context, taken))
                     continue;
-                roll -= CombatWeights[i];
+                roll -= Weight(CombatRewards[i], context.Floor);
                 if (roll < 0)
                     return CombatRewards[i];
             }

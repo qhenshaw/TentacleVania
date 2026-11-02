@@ -26,6 +26,7 @@ namespace TentacleVania.UI.Hoarder
         private readonly List<MutationDefinition> _runOffers = new(8);
         private readonly List<MutationDefinition> _pool = new(64);
         private readonly List<MutationBuild> _poolBuilds = new(64);
+        private readonly List<int> _poolNotches = new(64);
         private readonly List<MutationBuild> _pickedBuilds = new(16);
         private readonly List<int> _picks = new(8);
         private int _runVisit = int.MinValue;
@@ -200,11 +201,13 @@ namespace TentacleVania.UI.Hoarder
                 return;
             _pool.Clear();
             _poolBuilds.Clear();
+            _poolNotches.Clear();
             foreach (var entry in controller.Catalog.Entries)
                 if (entry is MutationDefinition definition && !MutationLoadout.IsEquipped(entry.name))
                 {
                     _pool.Add(definition);
                     _poolBuilds.Add(definition.Builds);
+                    _poolNotches.Add(definition.Notches);
                 }
             _pickedBuilds.Clear();
             foreach (var id in MutationLoadout.Equipped)
@@ -213,7 +216,7 @@ namespace TentacleVania.UI.Hoarder
                 if (equipped != null)
                     _pickedBuilds.Add(equipped.Builds);
             }
-            MutationOffers.Pick(RunShop.StockRng(), _poolBuilds, _pickedBuilds, RunShop.Offers(SaveSystem.Data.Meta), _picks);
+            MutationOffers.Pick(RunShop.StockRng(), _poolBuilds, _poolNotches, false, _pickedBuilds, RunShop.Offers(SaveSystem.Data.Meta), _picks);
             foreach (var index in _picks)
                 _runOffers.Add(_pool[index]);
         }
