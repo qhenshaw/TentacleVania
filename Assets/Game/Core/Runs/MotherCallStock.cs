@@ -10,6 +10,7 @@ namespace TentacleVania.Core.Runs
         Ability,
         StartingNotch,
         DeathDefiance,
+        HoarderTier,
     }
 
     [CreateAssetMenu(menuName = "TentacleVania/Runs/Mother's Call Stock")]

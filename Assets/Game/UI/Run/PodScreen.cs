@@ -316,6 +316,8 @@ namespace TentacleVania.UI.Run
                     return ability != null ? ability.DisplayName : entry.Item;
                 case UnlockKind.StartingNotch:
                     return string.Format(Text("run.call.notch"), entry.Item);
+                case UnlockKind.HoarderTier:
+                    return string.Format(Text("run.call.hoarder"), entry.Item);
                 default:
                     return Text("run.call.defiance");
             }

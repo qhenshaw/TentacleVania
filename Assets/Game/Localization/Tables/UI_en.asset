@@ -2136,6 +2136,22 @@ MonoBehaviour:
     m_Localized: Main menu
     m_Metadata:
       m_Items: []
+  - m_Id: 1067492178673664
+    m_Localized: Raw meat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1067492220616704
+    m_Localized: Restores half your health.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1067492220616705
+    m_Localized: Hoarder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1067492220616706
+    m_Localized: 'Hoarder stock tier {0}: one more mutation for sale'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

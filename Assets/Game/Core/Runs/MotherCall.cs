@@ -20,6 +20,7 @@ namespace TentacleVania.Core.Runs
             UnlockKind.Weapon => "weapon:" + item,
             UnlockKind.Ability => "ability:" + item,
             UnlockKind.StartingNotch => "notch:" + item,
+            UnlockKind.HoarderTier => "hoarder:" + item,
             _ => "defiance:" + item,
         };
 

@@ -2087,6 +2087,22 @@ MonoBehaviour:
     m_Key: run.summary.menu
     m_Metadata:
       m_Items: []
+  - m_Id: 1067492178673664
+    m_Key: hoarder.run.heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1067492220616704
+    m_Key: hoarder.run.healEffect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1067492220616705
+    m_Key: run.call.kind.hoardertier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1067492220616706
+    m_Key: run.call.hoarder
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
