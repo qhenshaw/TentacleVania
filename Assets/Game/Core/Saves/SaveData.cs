@@ -14,6 +14,50 @@ namespace TentacleVania.Core.Saves
         public BuildState Build = new();
         public WorldState World = new();
         public BiomassState Biomass = new();
+        public MetaState Meta = new();
+        public RunState Run = new();
+    }
+
+    [Serializable]
+    public sealed class MetaState
+    {
+        public int Essence;
+        public int Brutality;
+        public int Ferocity;
+        public int Tenacity;
+        public int Cunning;
+        public int RunsStarted;
+        public List<string> Unlocks = new();
+        public List<RunRecord> Runs = new();
+    }
+
+    [Serializable]
+    public sealed class RunRecord
+    {
+        public int Seed;
+        public int Floor;
+        public int Step;
+        public int Essence;
+        public bool Won;
+        public string EndedAtUtc = "";
+    }
+
+    [Serializable]
+    public sealed class RunState
+    {
+        public bool Active;
+        public int Seed;
+        public int Floor;
+        public int Step;
+        public int Essence;
+        public int SizeStage;
+        public int StepsSinceMutation;
+        public int EvolutionsOpen = 2;
+        public int Role;
+        public int Reward;
+        public int Room;
+        public bool Cleared;
+        public List<string> UsedRooms = new();
     }
 
     [Serializable]

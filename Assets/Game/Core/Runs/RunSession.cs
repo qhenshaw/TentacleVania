@@ -1,11 +1,15 @@
 using System;
+using System.Globalization;
 using TentacleVania.Core.Progression;
+using TentacleVania.Core.Saves;
 using UnityEngine;
 
 namespace TentacleVania.Core.Runs
 {
     public static class RunSession
     {
+        public const int MaxSizeStage = 3;
+
         public static bool Active { get; private set; }
         public static int Seed { get; private set; }
         public static int Floor { get; set; }
@@ -13,16 +17,19 @@ namespace TentacleVania.Core.Runs
         public static int Essence { get; private set; }
         public static int StepsSinceMutation { get; set; }
         public static int EvolutionsOpen { get; set; } = 2;
+        public static int SizeStage { get; private set; }
         public static int BiomassReward { get; set; } = 150;
         public static int EssenceReward { get; set; } = 20;
         public static int FloorEssence { get; set; } = 50;
-        public static int SizeStage { get; private set; }
-        public const int MaxSizeStage = 3;
+        public static string RespawnScene { get; set; }
 
         public static event Action<RunReward> RewardGranted;
         public static event Action Started;
+        public static event Action Resumed;
         public static event Action<int> FloorCleared;
-        public static event Action Ended;
+        public static event Action<bool> Ended;
+
+        public static RewardContext Context => new() { Floor = Floor, Step = Step, EvolutionsOpen = EvolutionsOpen, StepsSinceMutation = StepsSinceMutation };
 
         public static void Begin(int seed)
         {
@@ -34,12 +41,43 @@ namespace TentacleVania.Core.Runs
             StepsSinceMutation = 0;
             EvolutionsOpen = 2;
             SizeStage = 0;
+            SaveSystem.Data.Meta.RunsStarted++;
             MutationLoadout.ResetBonusNotches();
+            Biomass.Reset();
             Started?.Invoke();
             Stats.NotifyChanged();
         }
 
-        public static RewardContext Context => new() { Floor = Floor, Step = Step, EvolutionsOpen = EvolutionsOpen, StepsSinceMutation = StepsSinceMutation };
+        public static void Resume(RunState state)
+        {
+            Restore(state);
+            Active = true;
+            Resumed?.Invoke();
+            Stats.NotifyChanged();
+        }
+
+        public static void Capture(RunState into)
+        {
+            into.Active = Active;
+            into.Seed = Seed;
+            into.Floor = Floor;
+            into.Step = Step;
+            into.Essence = Essence;
+            into.SizeStage = SizeStage;
+            into.StepsSinceMutation = StepsSinceMutation;
+            into.EvolutionsOpen = EvolutionsOpen;
+        }
+
+        public static void Restore(RunState from)
+        {
+            Seed = from.Seed;
+            Floor = from.Floor;
+            Step = from.Step;
+            Essence = from.Essence;
+            SizeStage = Mathf.Clamp(from.SizeStage, 0, MaxSizeStage);
+            StepsSinceMutation = from.StepsSinceMutation;
+            EvolutionsOpen = from.EvolutionsOpen;
+        }
 
         public static void Grant(RunReward reward)
         {
@@ -59,7 +97,12 @@ namespace TentacleVania.Core.Runs
             RewardGranted?.Invoke(reward);
         }
 
-        public static void AddEssence(int amount) => Essence += Mathf.Max(0, amount);
+        public static void AddEssence(int amount)
+        {
+            amount = Mathf.Max(0, amount);
+            Essence += amount;
+            SaveSystem.Data.Meta.Essence += amount;
+        }
 
         public static void ClearFloor(int floor)
         {
@@ -70,13 +113,28 @@ namespace TentacleVania.Core.Runs
             FloorCleared?.Invoke(floor);
         }
 
-        public static void End()
+        public static RunRecord Record(bool won) => new()
+        {
+            Seed = Seed,
+            Floor = Floor,
+            Step = Step,
+            Essence = Essence,
+            Won = won,
+            EndedAtUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
+        };
+
+        public static void End(bool won)
         {
             if (!Active)
                 return;
+            SaveSystem.Data.Meta.Runs.Add(Record(won));
+            SaveSystem.Data.Run = new();
             Active = false;
-            Ended?.Invoke();
+            Ended?.Invoke(won);
+            Autosave.Request(AutosaveReason.RunEnded);
         }
+
+        public static void Suspend() => Active = false;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
@@ -84,8 +142,10 @@ namespace TentacleVania.Core.Runs
             Active = false;
             EvolutionsOpen = 2;
             SizeStage = 0;
+            RespawnScene = null;
             RewardGranted = null;
             Started = null;
+            Resumed = null;
             FloorCleared = null;
             Ended = null;
         }

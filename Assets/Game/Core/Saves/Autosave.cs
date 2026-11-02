@@ -20,6 +20,8 @@ namespace TentacleVania.Core.Saves
         WallBreached,
         NodeOverloaded,
         ArenaStarted,
+        RunRoom,
+        RunEnded,
     }
 
     public static class Autosave

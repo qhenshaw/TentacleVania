@@ -32,6 +32,14 @@ namespace TentacleVania.Core.Progression
                 Changed?.Invoke(State.Carried);
         }
 
+        public static void Reset()
+        {
+            State.Carried = 0;
+            State.Dropped = false;
+            State.DroppedAmount = 0;
+            Changed?.Invoke(0);
+        }
+
         public static bool Spend(int cost)
         {
             if (!BiomassRules.Spend(State, cost))

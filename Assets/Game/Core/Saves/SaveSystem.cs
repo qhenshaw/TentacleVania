@@ -11,6 +11,7 @@ namespace TentacleVania.Core.Saves
     public static class SaveSystem
     {
         public const int SlotCount = 5;
+        public const string RunScene = "Run";
 
         private const string BootstrapScene = SceneFlow.Bootstrap;
 
@@ -162,6 +163,8 @@ namespace TentacleVania.Core.Saves
 
         public static string ContinueScene(string fallback)
         {
+            if (Data.Run.Active)
+                return RunScene;
             var progress = Data.Progress;
             if (!string.IsNullOrEmpty(progress.LastNestScene))
                 return progress.LastNestScene;
