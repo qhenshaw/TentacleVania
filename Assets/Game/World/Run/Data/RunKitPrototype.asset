@@ -55,18 +55,91 @@ MonoBehaviour:
   - Scene: KT_Shop
     Role: 3
     Floor: -1
-  - Scene: KT_Boss
+  - Scene: SH_WardenArena
     Role: 4
-    Floor: -1
+    Floor: 0
+  - Scene: AD_CommandPost
+    Role: 4
+    Floor: 0
+  - Scene: QU_SeeperPit
+    Role: 4
+    Floor: 0
+  - Scene: BL_AutomatonTheatre
+    Role: 4
+    Floor: 1
+  - Scene: RD_TestChamber
+    Role: 4
+    Floor: 1
+  - Scene: CS_LoaderBay
+    Role: 4
+    Floor: 1
+  - Scene: BA_Courtyard
+    Role: 4
+    Floor: 2
+  - Scene: AR_LiveFireRange
+    Role: 4
+    Floor: 2
+  - Scene: CC_CoreChamber
+    Role: 4
+    Floor: 2
+  - Scene: DC_DigSite
+    Role: 4
+    Floor: 3
+  - Scene: BS_ReactorHall
+    Role: 4
+    Floor: 3
+  - Scene: MV_CraneLab
+    Role: 5
+    Floor: 3
   _floors:
   - Floor: 0
-    Sector: SH
+    Sector: AD
     Enemies:
     - {fileID: 7721236903334716932, guid: 5e28ae5b821ff244d9faeb1c1cdecdf1, type: 3}
     - {fileID: 6623094156008369111, guid: 4c87ed81ce0179f4dab7dac0d339f0fb, type: 3}
-    - {fileID: 9103680660835376707, guid: 8b97e1d6304feba409ea3bd500e454ad, type: 3}
-    - {fileID: 7721236903334716932, guid: 289adc48d63b082429c2103744a71065, type: 3}
-    - {fileID: 867884946904866048, guid: a30ee9b6b949ac348a6b5f3661ed3089, type: 3}
+    - {fileID: 7658896402719967232, guid: f807ed8794e91a54cb26607225f1d958, type: 3}
+    - {fileID: 751870016659381464, guid: e3d03d4f7cb8d3644a8fac95268ee64f, type: 3}
+    - {fileID: 7721236903334716932, guid: 55903ee7497357546a0cc5fa813d0b8c, type: 3}
+    - {fileID: 6623094156008369111, guid: ac9a12588b0990640b0426f2f9ba454f, type: 3}
     Prey:
     - {fileID: 867884946904866048, guid: a30ee9b6b949ac348a6b5f3661ed3089, type: 3}
+    - {fileID: 7784302897269667003, guid: 130128c3c7f23fd4db87f6b831662c98, type: 3}
+  - Floor: 1
+    Sector: BL
+    Enemies:
+    - {fileID: 9103680660835376707, guid: 8b97e1d6304feba409ea3bd500e454ad, type: 3}
+    - {fileID: 7721236903334716932, guid: 289adc48d63b082429c2103744a71065, type: 3}
+    - {fileID: 2371010903058386765, guid: 6276a82158b7b4441b5978cfc701ac9d, type: 3}
+    - {fileID: 751870016659381464, guid: cc0113721d876254092511445aed7422, type: 3}
+    - {fileID: 6623094156008369111, guid: 98c54be319fd8b94595daab91e2d5279, type: 3}
+    - {fileID: 5747895058501451157, guid: 640bea218b001eb4689d63f4ab7e81b0, type: 3}
+    - {fileID: 867884946904866048, guid: 2bd0ef75ea5ae584f9901beb8b4fd84e, type: 3}
+    Prey:
+    - {fileID: 867884946904866048, guid: 617465294ebea1b4c96fd6497f304fac, type: 3}
+    - {fileID: 867884946904866048, guid: a30ee9b6b949ac348a6b5f3661ed3089, type: 3}
+  - Floor: 2
+    Sector: AR
+    Enemies:
+    - {fileID: 7721236903334716932, guid: de826de135aef30478d838915b296018, type: 3}
+    - {fileID: 9068943198442520805, guid: afc00ff9644d0b84db6af84d4568dcfb, type: 3}
+    - {fileID: 6623094156008369111, guid: caace0668a4c6fa4ca59ff6b6f27cdf3, type: 3}
+    - {fileID: 7721236903334716932, guid: dd2e438cfdec6454c87a2871ae4044b7, type: 3}
+    - {fileID: 7658896402719967232, guid: c0fd1b402810c9648b41d69d1df2a816, type: 3}
+    - {fileID: 7721236903334716932, guid: 0c8b86047749efd4eb2520df44d6d8a6, type: 3}
+    - {fileID: 7721236903334716932, guid: 13591f46dd253a848ba0023bdf5a30da, type: 3}
+    Prey:
+    - {fileID: 551146595240972142, guid: 3272c9ffd91e36249960b9a3bc4c8885, type: 3}
+    - {fileID: 7721236903334716932, guid: 7cc06314c9632d14185002c34a872760, type: 3}
+  - Floor: 3
+    Sector: BS
+    Enemies:
+    - {fileID: 6623094156008369111, guid: f5f00a5b29d0d6a4bbfcbcdb1b8b4000, type: 3}
+    - {fileID: 6623094156008369111, guid: 518d550899dc93340bd3c96781a679f0, type: 3}
+    - {fileID: 6623094156008369111, guid: 355a71a4e1d1ba548b04950a91096794, type: 3}
+    - {fileID: 6623094156008369111, guid: 32f16bc45eecb5b4d8e203e971767e11, type: 3}
+    - {fileID: 5110673907316712019, guid: d45bff2eab984f74d8e0dfd70e70d40c, type: 3}
+    - {fileID: 7721236903334716932, guid: 99d4a509e8d3991418aed2fc29e58c80, type: 3}
+    - {fileID: 655065767481773311, guid: 1d327b3c7fd32414ab9d4427fce78699, type: 3}
+    Prey:
+    - {fileID: 7721236903334716932, guid: 2c8611eb1c22835458de9a661c2529fd, type: 3}
   _floorCount: 4

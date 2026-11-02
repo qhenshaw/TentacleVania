@@ -18,6 +18,11 @@ namespace TentacleVania.World.Run
                 if (RunDirector.Active != null)
                     RunDirector.Active.Skip();
             });
+            DebugMenu.Button(Tab, "Jump to floor boss", () =>
+            {
+                if (RunDirector.Active != null)
+                    RunDirector.Active.JumpToBoss();
+            });
             DebugMenu.Button(Tab, "Grant mutation reward", () => RunSession.Grant(RunReward.Mutation));
             DebugMenu.Button(Tab, "Grant evolution reward", () => RunSession.Grant(RunReward.Evolution));
             DebugMenu.Value(Tab, "Run", () => RunSession.Active ? $"seed {RunSession.Seed}, floor {RunSession.Floor + 1}, step {RunSession.Step}, essence {RunSession.Essence}" : "not in a run");

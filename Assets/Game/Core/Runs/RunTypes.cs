@@ -7,6 +7,7 @@ namespace TentacleVania.Core.Runs
         Elite,
         Shop,
         Boss,
+        Finale,
     }
 
     public enum RunReward

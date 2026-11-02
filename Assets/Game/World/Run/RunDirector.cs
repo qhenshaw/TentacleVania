@@ -28,6 +28,8 @@ namespace TentacleVania.World.Run
         [Tooltip("Health fraction the death defiance leaves after a lethal hit (placeholder).")]
         [SerializeField, Range(0.05f, 1f)] private float _defianceHealth = 0.3f;
 
+        private const float DoorEntryDistance = 3f;
+
         private readonly List<DoorOffer> _offers = new(RunGenerator.MaxDoors);
         private readonly Dictionary<RoomRole, HashSet<int>> _used = new();
         private readonly List<RunExit> _exits = new(4);
@@ -162,6 +164,17 @@ namespace TentacleVania.World.Run
                 }
         }
 
+        public void JumpToBoss()
+        {
+            if (_loading || _plan == null || _current.Role is RoomRole.Boss or RoomRole.Finale)
+                return;
+            if (RunPod.Open)
+                RunPod.BreakOut();
+            RunSession.Step = _plan.Count - 1;
+            var offers = RunGenerator.Offers(StepRng(), RoomRole.Boss, RunSession.Context, _kit.Count(RunSession.Floor, RoomRole.Boss), Used(RoomRole.Boss), _offers);
+            Go(offers[0]);
+        }
+
         private void Go(DoorOffer offer)
         {
             _current = offer;
@@ -225,6 +238,8 @@ namespace TentacleVania.World.Run
             }
             if (entry != null)
                 Place(CombatTargets.Creature.transform, entry.transform);
+            else
+                PlaceAtDoor(scene);
             ArmDefiance();
             _rng = StepRng();
             var last = RunSession.Step >= _plan.Count - 1;
@@ -242,7 +257,7 @@ namespace TentacleVania.World.Run
                 else
                     _exits[i].Clear();
             }
-            var fights = _current.Role is RoomRole.Combat or RoomRole.Elite or RoomRole.Boss;
+            var fights = _current.Role is RoomRole.Combat or RoomRole.Elite or RoomRole.Boss or RoomRole.Finale;
             if (_resumeCleared)
             {
                 _resumeCleared = false;
@@ -252,6 +267,8 @@ namespace TentacleVania.World.Run
                 Store();
                 if (_current.Role == RoomRole.Boss)
                     StartCoroutine(FinishFloor());
+                else if (_current.Role == RoomRole.Finale)
+                    StartCoroutine(FinishRun());
                 else
                     foreach (var exit in _exits)
                         exit.Open();
@@ -259,8 +276,8 @@ namespace TentacleVania.World.Run
             }
             if (_arena != null && fights)
             {
-                DifficultyCurve.RoomDepth = _current.Role == RoomRole.Boss ? 0 : RunSession.Step;
-                if (_current.Role != RoomRole.Boss)
+                DifficultyCurve.RoomDepth = _current.Role is RoomRole.Boss or RoomRole.Finale ? 0 : RunSession.Step;
+                if (_current.Role is RoomRole.Combat or RoomRole.Elite)
                     _arena.SetWaves(RunWaveComposer.Compose(_rng, _kit.Pool(RunSession.Floor), _current.Role, RunSession.Step));
                 _arena.StateChanged += OnArenaChanged;
                 Store();
@@ -292,6 +309,11 @@ namespace TentacleVania.World.Run
                 StartCoroutine(FinishFloor());
                 return;
             }
+            if (_current.Role == RoomRole.Finale)
+            {
+                StartCoroutine(FinishRun());
+                return;
+            }
             foreach (var exit in _exits)
                 exit.Open();
         }
@@ -307,12 +329,59 @@ namespace TentacleVania.World.Run
                 yield return null;
             yield return new WaitForSeconds(_afterGrowthWait);
             _loading = false;
-            if (floor + 1 >= _kit.FloorCount)
+            if (floor + 1 < _kit.FloorCount)
             {
-                RunSession.End(true);
+                StartFloor(floor + 1);
                 yield break;
             }
-            StartFloor(floor + 1);
+            if (_kit.Count(floor, RoomRole.Finale) > 0)
+            {
+                RunSession.Step++;
+                Go(new DoorOffer(RoomRole.Finale, RunReward.None, 0));
+                yield break;
+            }
+            RunSession.End(true);
+        }
+
+        private IEnumerator FinishRun()
+        {
+            _loading = true;
+            yield return new WaitForSeconds(_absorbWait);
+            _loading = false;
+            RunSession.End(true);
+        }
+
+        private static void PlaceAtDoor(Scene scene)
+        {
+            ArenaDoor door = null;
+            var bounds = new Bounds();
+            var hasBounds = false;
+            foreach (var root in scene.GetRootGameObjects())
+            {
+                if (door == null)
+                    door = root.GetComponentInChildren<ArenaDoor>(true);
+                foreach (var renderer in root.GetComponentsInChildren<Renderer>())
+                {
+                    if (hasBounds)
+                        bounds.Encapsulate(renderer.bounds);
+                    else
+                        bounds = renderer.bounds;
+                    hasBounds = true;
+                }
+            }
+            if (door == null || !hasBounds)
+                return;
+            var inward = bounds.center - door.transform.position;
+            inward.y = 0f;
+            if (inward.sqrMagnitude < 0.01f)
+                return;
+            inward.Normalize();
+            var marker = new GameObject("RunDoorEntry").transform;
+            marker.SetPositionAndRotation(door.transform.position + inward * DoorEntryDistance, Quaternion.LookRotation(inward));
+            if (UnityEngine.AI.NavMesh.SamplePosition(marker.position, out var hit, 3f, UnityEngine.AI.NavMesh.AllAreas))
+                marker.position = hit.position;
+            Place(CombatTargets.Creature.transform, marker);
+            Destroy(marker.gameObject);
         }
 
         private void Store()
