@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b65e2e6534cdb24a8636dc27ebb5a11, type: 3}
+  m_Name: RunRooms
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Streaming.RoomRegistry
+  _loadRadius: 18
+  _unloadRadius: 28
+  _rooms:
+  - Scene: KT_Entry
+    Center: {x: 7.7978234, y: 1.4155036, z: 7.7978234}
+    Size: {x: 16.75435, y: 3.6310077, z: 16.75435}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 15
+      height: 15
+  - Scene: KT_C1
+    Center: {x: 39.297825, y: 1.4155036, z: 9.297824}
+    Size: {x: 19.754356, y: 3.6310077, z: 19.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 30
+      y: 0
+      width: 18
+      height: 18
+  - Scene: KT_C2
+    Center: {x: 76.89735, y: 1.4155036, z: 7.897346}
+    Size: {x: 22.555313, y: 3.6310077, z: 16.555307}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 66
+      y: 0
+      width: 21
+      height: 15
+  - Scene: KT_C3
+    Center: {x: 109.79782, y: 1.5655037, z: 10.897346}
+    Size: {x: 16.754333, y: 3.3310075, z: 22.555305}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 102
+      y: 0
+      width: 15
+      height: 21
+  - Scene: KT_C4
+    Center: {x: 147.39734, y: 1.4655038, z: 9.297824}
+    Size: {x: 19.555298, y: 3.5310075, z: 19.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 138
+      y: 0
+      width: 18
+      height: 18
+  - Scene: KT_C5
+    Center: {x: 186.39734, y: 1.4155036, z: 9.297824}
+    Size: {x: 25.555298, y: 3.6310077, z: 19.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 174
+      y: 0
+      width: 24
+      height: 18
+  - Scene: KT_C6
+    Center: {x: 219.39734, y: 1.4155036, z: 12.297824}
+    Size: {x: 19.555298, y: 3.6310077, z: 25.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 210
+      y: 0
+      width: 18
+      height: 24
+  - Scene: KT_Shop
+    Center: {x: 7.7978234, y: 1.5655037, z: 49.897346}
+    Size: {x: 16.75435, y: 3.3310075, z: 16.555313}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 42
+      width: 15
+      height: 15
+  - Scene: KT_Boss
+    Center: {x: 47.900475, y: 1.4155036, z: 52.897346}
+    Size: {x: 24.959656, y: 3.6310077, z: 22.555313}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 36
+      y: 42
+      width: 24
+      height: 21
+  _sector: KT
+  _rootScene: Run
+  _color: {r: 0.7, g: 0.7, b: 0.75, a: 1}
+  _markers:
+  - Kind: 4
+    Id: Hoarder
+    Room: KT_Shop
+    Position: {x: 3.6000001, y: 0, z: 52.5}
+    Yaw: 0

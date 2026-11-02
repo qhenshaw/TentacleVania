@@ -87,6 +87,7 @@ namespace TentacleVania.World.Editor
         public Color Color;
         public Vector3 Spawn;
         public float SpawnYaw;
+        public bool RunKit;
         public readonly List<RoomPlan> Rooms = new();
     }
 }

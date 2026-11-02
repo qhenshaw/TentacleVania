@@ -145,6 +145,12 @@ namespace TentacleVania.World.Arenas
             }
         }
 
+        public void SetWaves(ArenaWaveSet waves)
+        {
+            if (waves != null)
+                _waves = waves;
+        }
+
         public void Begin(float now) => BeginAt(0, now);
 
         public void BeginAt(int wave, float now)

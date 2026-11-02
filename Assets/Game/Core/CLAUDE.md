@@ -34,6 +34,10 @@ Shared code every area may reference (`TentacleVania.Core`). Keep it free of gam
   - `Save()` writes via a temp file and stores the current binding overrides. No toggle-vs-hold option (developer decision).
 - `Scenes/SceneFlow` keeps `Bootstrap` loaded and swaps every other scene: `Load(name)` unloads the rest, loads the scene additively and makes it active (so lighting and runtime spawns land in it), `Reload()` reloads the active scene, `Loaded` fires after. `GameBootstrap` (prefab in the `Bootstrap` scene) calls `Load(MainMenu)` on start. `Scenes/LoadGate` (`Hold(owner)` / `Release(owner)`, `IsOpen`) lets loaders (the room streamer) hold back `CreatureSpawner` until the ground has loaded.
 
+## Runs
+
+- `Runs/` is the pure, unit-tested run logic: `RunGenerator.PlanFloor(seed, floor)` (entry, 8 combat, 2 non-adjacent elites, a shop in the second half, boss last) and `Offers(...)` (door rewards by next room role; combat doors 2–3 distinct rewards weighted Mutation 40 / Evolution 20 / Biomass 25 / Essence 15, evolution only while `EvolutionsOpen`, a forced mutation after `MutationPity` steps). `RunSession` holds the live run (seed, floor, step, Essence; placeholder rewards 150 biomass and 20 Essence) and raises `Started`, `RewardGranted`, `FloorCleared` and `Ended`; Essence isn't saved yet (Run Loop).
+
 ## Saves
 
 - `Saves/SaveSystem` (static): `SlotCount` 5, `NewGame(slot)`, `Save()`, `Load(slot)`, `Delete(slot)`, `Summary(slot)` (for slot menus), `Data` (the live `SaveData`) and `Active` (false until a game is started or loaded, so editor play sessions keep prefab defaults). `Save()` asks every registered `ISaveParticipant` to `Capture` into `Data`, adds playtime and the active scene, and writes JSON through `Storage`; `Load` parses (running migrations) and calls `Restore` on every participant. A participant registered while a save is active is restored immediately, so components register in `OnEnable` and unregister in `OnDisable` (`WeaponController` and `AbilityController` save the equipped weapons and ability).

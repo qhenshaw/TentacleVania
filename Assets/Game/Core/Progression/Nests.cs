@@ -59,6 +59,6 @@ namespace TentacleVania.Core.Progression
             return !string.IsNullOrEmpty(progress.LastNest) && progress.LastNestScene == scene;
         }
 
-        public static bool StaysCleared(bool bossArena) => bossArena;
+        public static bool StaysCleared(bool bossArena) => bossArena && !Runs.RunSession.Active;
     }
 }

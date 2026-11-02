@@ -1892,6 +1892,34 @@ MonoBehaviour:
     m_Localized: Speedrun timer
     m_Metadata:
       m_Items: []
+  - m_Id: 1049422181711872
+    m_Localized: Mutation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237824
+    m_Localized: Evolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237825
+    m_Localized: Biomass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237826
+    m_Localized: Essence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237827
+    m_Localized: The Hoarder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237828
+    m_Localized: Challenge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237829
+    m_Localized: Go on
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

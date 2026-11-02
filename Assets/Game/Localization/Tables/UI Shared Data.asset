@@ -1843,6 +1843,34 @@ MonoBehaviour:
     m_Key: settings.speedrunTimer
     m_Metadata:
       m_Items: []
+  - m_Id: 1049422181711872
+    m_Key: run.door.mutation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237824
+    m_Key: run.door.evolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237825
+    m_Key: run.door.biomass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237826
+    m_Key: run.door.essence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237827
+    m_Key: run.door.shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237828
+    m_Key: run.door.challenge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1049422236237829
+    m_Key: run.door.none
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

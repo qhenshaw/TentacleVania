@@ -78,6 +78,12 @@ namespace TentacleVania.Core.Progression
             return true;
         }
 
+        public static void ClearEquippedModifiers()
+        {
+            Build.EquippedModifiers.Clear();
+            Changed?.Invoke();
+        }
+
         public static string EquippedModifier(string weaponId) => Find(Build.EquippedModifiers, weaponId) ?? "";
 
         public static bool EquipModifier(string weaponId, string modifierId)

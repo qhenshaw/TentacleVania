@@ -32,6 +32,7 @@ namespace TentacleVania.World.Editor
                 Color = new Color(spec.Color[0], spec.Color[1], spec.Color[2], spec.Color.Length > 3 ? spec.Color[3] : 1f),
                 Spawn = RoomContext.CellCenter(spec.Spawn[0], spec.Spawn[1]),
                 SpawnYaw = spec.SpawnYaw,
+                RunKit = spec.RunKit,
             };
             foreach (var room in spec.Rooms)
                 plan.Rooms.Add(Room(spec, room));
