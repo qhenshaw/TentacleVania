@@ -1813,7 +1813,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047888
-    m_Localized: Reach Mother.
+    m_Localized: 'Escape Site Beta: consume Dr. Crane at the bottom of a run.'
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047889
@@ -1821,7 +1821,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047890
-    m_Localized: Reach Mother within 6 hours of play.
+    m_Localized: Win a run in under 35 minutes.
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047891
@@ -1829,7 +1829,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047892
-    m_Localized: Grow to the Apex size stage.
+    m_Localized: Grow to the Apex stage in a run.
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047893
@@ -1837,7 +1837,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047894
-    m_Localized: Own 30 mutations.
+    m_Localized: Carry 8 mutations at once in a single run.
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047895
@@ -1845,7 +1845,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047896
-    m_Localized: Find all 3 hidden mutation notches.
+    m_Localized: Reach 5 bonus notches in a single run.
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047897
@@ -1853,7 +1853,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047898
-    m_Localized: Bring the Hoarder all 12 trinkets.
+    m_Localized: Buy 12 things from the Hoarder.
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047899
@@ -1869,7 +1869,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047902
-    m_Localized: Own every weapon.
+    m_Localized: Unlock all 8 weapons in Mother's Call.
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047903
@@ -1877,7 +1877,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047904
-    m_Localized: Spend 100,000 biomass.
+    m_Localized: Spend 10,000 biomass at the Hoarder.
     m_Metadata:
       m_Items: []
   - m_Id: 1025775220047905

@@ -201,6 +201,7 @@ namespace TentacleVania.Bosses
                         }
                 return;
             }
+            Core.Runs.RunSession.RecordBoss(_boss.Id);
             if (!Core.Runs.RunSession.Active)
             {
                 if (!string.IsNullOrEmpty(_boss.RewardMutation))

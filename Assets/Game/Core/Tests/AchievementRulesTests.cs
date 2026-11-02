@@ -23,6 +23,26 @@ namespace TentacleVania.Core.Tests
         }
 
         [Test]
+        public void RunsCountFromTheMetaSave()
+        {
+            var data = new SaveData();
+            Assert.That(AchievementRules.Met(Entry(AchievementCondition.GameCompleted), data, 0), Is.False);
+            data.Meta.Runs.Add(new RunRecord { Won = false, Seconds = 100f });
+            data.Meta.Runs.Add(new RunRecord { Won = true, Seconds = 1900f });
+            Assert.That(AchievementRules.Met(Entry(AchievementCondition.GameCompleted), data, 0), Is.True);
+            Assert.That(AchievementRules.Met(Entry(AchievementCondition.CompletedWithin, value: 2100f), data, 99999), Is.True);
+            Assert.That(AchievementRules.Met(Entry(AchievementCondition.CompletedWithin, value: 1800f), data, 0), Is.False);
+            data.Meta.Bosses.Add("QU/TheMany");
+            Assert.That(AchievementRules.Met(Entry(AchievementCondition.BossDefeated, "QU/TheMany"), data, 0), Is.True);
+            data.Meta.MaxSizeStage = 3;
+            data.Meta.HoarderBuys = 12;
+            data.Meta.BiomassSpent = 10000;
+            Assert.That(AchievementRules.Met(Entry(AchievementCondition.SizeStage, value: 3f), data, 0), Is.True);
+            Assert.That(AchievementRules.Met(Entry(AchievementCondition.Trinkets, value: 12f), data, 0), Is.True);
+            Assert.That(AchievementRules.Met(Entry(AchievementCondition.BiomassSpent, value: 10000f), data, 0), Is.True);
+        }
+
+        [Test]
         public void CountsAndListsUseThresholds()
         {
             var data = new SaveData();
