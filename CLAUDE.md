@@ -1,6 +1,6 @@
 # TentacleVania
 
-A top-down Soulslike Metroidvania rendered in 3D with a 3/4 camera. The player is a writhing alien mass, offspring of a crash-landed alien queen, breaking out of Site Beta, an underground military research base, devouring scientists, soldiers, machines and other specimens on the way down to the deepest vault where its Mother is held. Grotesque body-horror power fantasy; single player, PC (Steam) first with a 60 FPS Steam Deck Verified target, consoles later. Large scope (20+ hours, 12 sectors, 15 bosses) for a team of 2–5, currently in pre-production.
+A top-down room-to-room action roguelike rendered in 3D with a 3/4 camera. The player is a writhing alien mass, offspring of a crash-landed alien queen; each run another offspring breaks out of Site Beta, an underground military research base, and devours its way down four floors (scientists, soldiers, machines and other specimens) to the vault where its Mother is held, with meta-progression shared between runs. Grotesque body-horror power fantasy; single player, PC (Steam) first with a 60 FPS Steam Deck Verified target, consoles later. Team of 2–5. It was a Soulslike Metroidvania through Alpha; since 2026-11-01 the design is the roguelike on the wiki's Run Structure page, and the metroidvania world systems (sector specs, world graph, maps, nests, traversal gates) are legacy until retired.
 
 ## Working autonomously
 
@@ -63,6 +63,8 @@ The game is in pre-production, so design pages still change; read the relevant p
 | [UI / UX](https://app.notion.com/p/407c27b4a69a816eaca1f8b5cdbc5709) | HUD, menus, map |
 | [Technical Design](https://app.notion.com/p/407c27b4a69a811f8a42d9693bb658f9) | Tech stack, procedural creature animation, combat architecture, streaming, saves |
 | [Production Plan](https://app.notion.com/p/407c27b4a69a81f3bb98d57c11b0d7d4) | Milestones, their scope and exit criteria |
+| [Run Structure (Roguelike)](https://app.notion.com/p/40bc27b4a69a81d29542ec42407a71c5) | Runs, floors, rooms, door rewards, meta-progression (Mother's Call) |
+| [Weapon Evolutions](https://app.notion.com/p/40bc27b4a69a815a881fefe6f485ee1f) | The 16 modifiers as one-per-weapon run picks |
 | [Changelog & Decisions](https://app.notion.com/p/407c27b4a69a81ababf3f9cd3086cc7f) | Major design decisions |
 | [Room Dressing Tool](https://app.notion.com/p/408c27b4a69a8168af0be786ab56ce66) | Room dressing tool spec |
 
@@ -73,7 +75,7 @@ Content databases in the wiki: Abilities, Weapons, Mutations, Lore Logs, Areas &
 `collection://b96f6c4c-16b4-41d9-b275-c32a4821b25a` ([open in Notion](https://app.notion.com/p/7e22bd9a10654b7f9c8c220d21168107))
 
 - Status flow: `Backlog` → `Ready` → `In Progress` → `Done`. `In Review` means blocked, waiting on the developer; `Notes` says what's needed.
-- Fields: `Design Page`, `Milestone` (Combat Prototype, Vertical Slice, Demo: Next Fest, Content Complete, Beta, Launch), `Area`, `Discipline`, `Priority` (P0–P3), `Estimate (days)`, `Assignee`, `Notes`, and `ID` (`TV-<n>`).
+- Fields: `Design Page`, `Milestone` (Combat Prototype, Vertical Slice, Demo: Next Fest, Alpha, then the roguelike milestones Run Prototype, Run Loop, Room Kit, Content Mapping, Polish, and Beta, Launch), `Area`, `Discipline`, `Priority` (P0–P3), `Estimate (days)`, `Assignee`, `Notes`, and `ID` (`TV-<n>`).
 - The team is 2–5 people: skip tasks with an `Assignee` other than you.
 - The Notion connection limits SQL and rows-mode queries per hour; when one fails with `usage_limit_reached`, fetch known task pages by URL (fetch still works) instead of retrying the query.
 
