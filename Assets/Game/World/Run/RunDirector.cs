@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TentacleVania.Combat;
+using TentacleVania.Core;
 using TentacleVania.Core.Progression;
 using TentacleVania.Core.Runs;
 using TentacleVania.Core.Scenes;
@@ -18,6 +19,10 @@ namespace TentacleVania.World.Run
         [SerializeField] private RunKit _kit;
         [Tooltip("0 picks a random seed.")]
         [SerializeField] private int _seed;
+        [Tooltip("Seconds after the boss room clears before the floor-end growth (the boss absorb plays first).")]
+        [SerializeField, Min(0f)] private float _absorbWait = 4f;
+        [Tooltip("Seconds after the growth before the next floor loads.")]
+        [SerializeField, Min(0f)] private float _afterGrowthWait = 1f;
 
         private readonly List<DoorOffer> _offers = new(RunGenerator.MaxDoors);
         private readonly Dictionary<RoomRole, HashSet<int>> _used = new();
@@ -213,21 +218,28 @@ namespace TentacleVania.World.Run
             RunSession.Grant(_current.Reward == RunReward.Challenge ? RunReward.Mutation : _current.Reward);
             if (_current.Role == RoomRole.Boss)
             {
-                FinishFloor();
+                StartCoroutine(FinishFloor());
                 return;
             }
             foreach (var exit in _exits)
                 exit.Open();
         }
 
-        private void FinishFloor()
+        private IEnumerator FinishFloor()
         {
+            _loading = true;
             var floor = RunSession.Floor;
+            yield return new WaitForSeconds(_absorbWait);
             RunSession.ClearFloor(floor);
+            yield return null;
+            while (Cutscene.Active)
+                yield return null;
+            yield return new WaitForSeconds(_afterGrowthWait);
+            _loading = false;
             if (floor + 1 >= _kit.FloorCount)
             {
                 RunSession.End();
-                return;
+                yield break;
             }
             StartFloor(floor + 1);
         }

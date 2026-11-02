@@ -1,4 +1,5 @@
 UnityEditor.SessionState.SetString("runLog", "");
+TentacleVania.Creature.CreatureVitals.GodMode = true;
 var last = 0f;
 var lastScene = "";
 UnityEditor.EditorApplication.CallbackFunction tick = null;

@@ -16,7 +16,7 @@ namespace TentacleVania.Core.Progression
         public static int Level => StatRules.DisplayLevel(TotalLevel);
         public static int NextLevelCost => StatRules.LevelCost(Level);
         public static int BiomassSpent => Build.BiomassSpent;
-        public static int SizeStage => StatRules.SizeStage(Build.BiomassSpent);
+        public static int SizeStage => Runs.RunSession.Active ? Runs.RunSession.SizeStage : StatRules.SizeStage(Build.BiomassSpent);
 
         public static float WeaponDamage => StatRules.WeaponDamage(Brutality);
         public static float WeaponStagger => StatRules.WeaponStagger(Brutality);
@@ -69,6 +69,8 @@ namespace TentacleVania.Core.Progression
             Autosave.Request(AutosaveReason.Purchase);
             return true;
         }
+
+        public static void NotifyChanged() => Changed?.Invoke();
 
         public static void SetBiomassSpent(int value)
         {

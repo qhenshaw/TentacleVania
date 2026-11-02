@@ -58,6 +58,12 @@ namespace TentacleVania.Core.Progression
             Changed?.Invoke();
         }
 
+        public static void ResetBonusNotches()
+        {
+            SaveSystem.Data.Build.BonusNotches = 0;
+            Changed?.Invoke();
+        }
+
         public static void Clear()
         {
             Owned.Clear();
