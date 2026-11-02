@@ -172,6 +172,33 @@ MonoBehaviour:
   - Scene: K2_Range
     Role: 1
     Floor: 2
+  - Scene: K3_Antechamber
+    Role: 1
+    Floor: 3
+  - Scene: K3_BlackLab
+    Role: 1
+    Floor: 3
+  - Scene: K3_Entry
+    Role: 0
+    Floor: 3
+  - Scene: K3_Excavation
+    Role: 1
+    Floor: 3
+  - Scene: K3_Hive
+    Role: 1
+    Floor: 3
+  - Scene: K3_Reactor
+    Role: 1
+    Floor: 3
+  - Scene: K3_Shaft
+    Role: 1
+    Floor: 3
+  - Scene: K3_Tunnels
+    Role: 1
+    Floor: 3
+  - Scene: K3_Vats
+    Role: 1
+    Floor: 3
   _floors:
   - Floor: 0
     Sector: AD

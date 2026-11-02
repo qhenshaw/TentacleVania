@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b65e2e6534cdb24a8636dc27ebb5a11, type: 3}
+  m_Name: RunRooms
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Streaming.RoomRegistry
+  _loadRadius: 18
+  _unloadRadius: 28
+  _rooms:
+  - Scene: K3_Entry
+    Center: {x: 9.297824, y: 1.4155036, z: 7.897346}
+    Size: {x: 19.754353, y: 3.6310077, z: 16.555307}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 18
+      height: 15
+  - Scene: K3_Excavation
+    Center: {x: 42.297825, y: 1.4155036, z: 12.397347}
+    Size: {x: 31.754356, y: 3.6310077, z: 25.55531}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 27
+      y: 0
+      width: 30
+      height: 24
+  - Scene: K3_Reactor
+    Center: {x: 79.89735, y: 1.4155036, z: 13.835324}
+    Size: {x: 28.555313, y: 3.6310077, z: 28.829353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 66
+      y: 0
+      width: 27
+      height: 27
+  - Scene: K3_Hive
+    Center: {x: 114.29782, y: 1.4655038, z: 12.297824}
+    Size: {x: 25.754333, y: 3.5310075, z: 25.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 102
+      y: 0
+      width: 24
+      height: 24
+  - Scene: K3_Vats
+    Center: {x: 148.89734, y: 1.4655038, z: 10.797824}
+    Size: {x: 28.555298, y: 3.5310075, z: 22.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 135
+      y: 0
+      width: 27
+      height: 21
+  - Scene: K3_Shaft
+    Center: {x: 181.7978, y: 1.4155036, z: 13.797824}
+    Size: {x: 22.754364, y: 3.6310077, z: 28.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 171
+      y: 0
+      width: 21
+      height: 27
+  - Scene: K3_BlackLab
+    Center: {x: 213.39734, y: 1.4155036, z: 10.797824}
+    Size: {x: 25.555298, y: 3.6310077, z: 22.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 201
+      y: 0
+      width: 24
+      height: 21
+  - Scene: K3_Tunnels
+    Center: {x: 250.89734, y: 1.4155036, z: 9.397346}
+    Size: {x: 34.555298, y: 3.6310077, z: 19.555305}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 234
+      y: 0
+      width: 33
+      height: 18
+  - Scene: K3_Antechamber
+    Center: {x: 289.89734, y: 2.3, z: 12.397347}
+    Size: {x: 28.555298, y: 5.4000006, z: 25.55531}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 276
+      y: 0
+      width: 27
+      height: 24
+  _sector: K3
+  _rootScene: Run
+  _color: {r: 0.7, g: 0.7, b: 0.75, a: 1}
+  _markers: []
