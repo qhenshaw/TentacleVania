@@ -30,8 +30,12 @@ namespace TentacleVania.World.Run
         [SerializeField, Range(0.05f, 1f)] private float _defianceHealth = 0.3f;
         [Tooltip("Spawned in combat rooms by chance (Core.Runs.RunLore) with an uncollected log.")]
         [SerializeField] private LoreTerminal _loreTerminal;
+        [Tooltip("Spawned inside the arena door of rooms that have no RunExits (legacy arenas used as rare elites).")]
+        [SerializeField] private RunExit _exitPrefab;
 
         private const float DoorEntryDistance = 3f;
+        private const float SpawnedExitSpacing = 3.2f;
+        private const float SpawnedExitDepth = 1.2f;
 
         private readonly List<DoorOffer> _offers = new(RunGenerator.MaxDoors);
         private readonly Dictionary<RoomRole, HashSet<int>> _used = new();
@@ -269,6 +273,8 @@ namespace TentacleVania.World.Run
                 var next = _plan.Steps[RunSession.Step + 1];
                 RunGenerator.Offers(_rng, next, RunSession.Context, _kit.Count(RunSession.Floor, next), Used(next), _offers);
             }
+            if (_exits.Count == 0 && !last && _current.Role is RoomRole.Combat or RoomRole.Elite)
+                SpawnExits(scene);
             Shuffle(_exits, _rng);
             AssignExits();
             _rerollsHere = 0;
@@ -297,7 +303,7 @@ namespace TentacleVania.World.Run
                 DifficultyCurve.RoomDepth = _current.Role is RoomRole.Boss or RoomRole.Finale ? 0 : RunSession.Step;
                 if (_current.Role == RoomRole.Combat)
                     SpawnLore(scene);
-                if (_current.Role is RoomRole.Combat or RoomRole.Elite)
+                if (_current.Role is RoomRole.Combat or RoomRole.Elite && !_kit.KeepsWaves(RunSession.Floor, _current.Role, _current.Room))
                     _arena.SetWaves(RunWaveComposer.Compose(_rng, _kit.Pool(RunSession.Floor), _current.Role, RunSession.Step));
                 _arena.StateChanged += OnArenaChanged;
                 Store();
@@ -397,8 +403,37 @@ namespace TentacleVania.World.Run
             terminal.SetLog(library.Logs[pick]);
         }
 
+        private void SpawnExits(Scene scene)
+        {
+            if (_exitPrefab == null || !DoorFrame(scene, out var door, out var inward))
+                return;
+            var right = Vector3.Cross(Vector3.up, inward);
+            var outward = Quaternion.LookRotation(-inward);
+            for (var i = 0; i < _offers.Count; i++)
+            {
+                var offset = (i - (_offers.Count - 1) * 0.5f) * SpawnedExitSpacing;
+                var exit = Instantiate(_exitPrefab, door + inward * SpawnedExitDepth + right * offset, outward);
+                exit.name = "SpawnedExit" + i;
+                SceneManager.MoveGameObjectToScene(exit.gameObject, scene);
+                _exits.Add(exit);
+            }
+        }
+
         private static void PlaceAtDoor(Scene scene)
         {
+            if (!DoorFrame(scene, out var door, out var inward))
+                return;
+            var marker = new GameObject("RunDoorEntry").transform;
+            marker.SetPositionAndRotation(door + inward * DoorEntryDistance, Quaternion.LookRotation(inward));
+            if (UnityEngine.AI.NavMesh.SamplePosition(marker.position, out var hit, 3f, UnityEngine.AI.NavMesh.AllAreas))
+                marker.position = hit.position;
+            Place(CombatTargets.Creature.transform, marker);
+            Destroy(marker.gameObject);
+        }
+
+        private static bool DoorFrame(Scene scene, out Vector3 doorPosition, out Vector3 inward)
+        {
+            doorPosition = inward = Vector3.zero;
             ArenaDoor door = null;
             var bounds = new Bounds();
             var hasBounds = false;
@@ -416,18 +451,14 @@ namespace TentacleVania.World.Run
                 }
             }
             if (door == null || !hasBounds)
-                return;
-            var inward = bounds.center - door.transform.position;
+                return false;
+            inward = bounds.center - door.transform.position;
             inward.y = 0f;
             if (inward.sqrMagnitude < 0.01f)
-                return;
+                return false;
             inward.Normalize();
-            var marker = new GameObject("RunDoorEntry").transform;
-            marker.SetPositionAndRotation(door.transform.position + inward * DoorEntryDistance, Quaternion.LookRotation(inward));
-            if (UnityEngine.AI.NavMesh.SamplePosition(marker.position, out var hit, 3f, UnityEngine.AI.NavMesh.AllAreas))
-                marker.position = hit.position;
-            Place(CombatTargets.Creature.transform, marker);
-            Destroy(marker.gameObject);
+            doorPosition = door.transform.position;
+            return true;
         }
 
         private void Store()

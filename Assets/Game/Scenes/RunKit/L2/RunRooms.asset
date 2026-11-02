@@ -105,7 +105,42 @@ MonoBehaviour:
       y: 0
       width: 21
       height: 18
+  - Scene: K2_EliteKillhouse
+    Center: {x: 324.29782, y: 1.4155036, z: 15.297824}
+    Size: {x: 37.754333, y: 3.6310077, z: 31.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 306
+      y: 0
+      width: 36
+      height: 30
+  - Scene: K2_EliteHangar
+    Center: {x: 370.89734, y: 1.4155036, z: 13.797824}
+    Size: {x: 40.555298, y: 3.6310077, z: 28.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 351
+      y: 0
+      width: 39
+      height: 27
+  - Scene: K2_Shop
+    Center: {x: 408.39734, y: 1.5655037, z: 7.7978234}
+    Size: {x: 19.555298, y: 3.3310075, z: 16.75435}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 399
+      y: 0
+      width: 18
+      height: 15
   _sector: K2
   _rootScene: Run
   _color: {r: 0.7, g: 0.7, b: 0.75, a: 1}
-  _markers: []
+  _markers:
+  - Kind: 4
+    Id: Hoarder
+    Room: K2_Shop
+    Position: {x: 402.66, y: 0, z: 12}
+    Yaw: 0
