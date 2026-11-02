@@ -27,6 +27,12 @@ namespace TentacleVania.Core.Saves
         public int Tenacity;
         public int Cunning;
         public int RunsStarted;
+        public int MaxSizeStage;
+        public int MostMutations;
+        public int MaxBonusNotches;
+        public int HoarderBuys;
+        public int BiomassSpent;
+        public List<string> Bosses = new();
         public List<string> Unlocks = new();
         public List<RunRecord> Runs = new();
     }

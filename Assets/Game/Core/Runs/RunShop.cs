@@ -36,11 +36,25 @@ namespace TentacleVania.Core.Runs
             if (Sold.Contains(offer) || !Biomass.Spend(price))
                 return false;
             Sold.Add(offer);
+            Bought(price);
             Autosave.Request(AutosaveReason.Purchase);
             return true;
         }
 
-        public static bool TryBuyHeal() => Biomass.Spend(HealPrice);
+        public static bool TryBuyHeal()
+        {
+            if (!Biomass.Spend(HealPrice))
+                return false;
+            Bought(HealPrice);
+            return true;
+        }
+
+        private static void Bought(int price)
+        {
+            var meta = SaveSystem.Data.Meta;
+            meta.HoarderBuys++;
+            meta.BiomassSpent += price;
+        }
 
         private static void Refresh()
         {

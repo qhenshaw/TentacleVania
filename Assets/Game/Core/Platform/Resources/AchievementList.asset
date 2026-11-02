@@ -61,7 +61,7 @@ MonoBehaviour:
   - Id: EscapeVelocity
     Condition: 2
     Key: 
-    Value: 21600
+    Value: 2100
     Hidden: 1
   - Id: ApexPredator
     Condition: 3
@@ -71,12 +71,12 @@ MonoBehaviour:
   - Id: Mutant
     Condition: 4
     Key: 
-    Value: 30
+    Value: 8
     Hidden: 0
   - Id: FullSpine
     Condition: 5
     Key: 
-    Value: 3
+    Value: 5
     Hidden: 0
   - Id: HoardersFriend
     Condition: 6
@@ -96,7 +96,7 @@ MonoBehaviour:
   - Id: BiomassBaron
     Condition: 9
     Key: 
-    Value: 100000
+    Value: 10000
     Hidden: 0
   - Id: FeatOfStrength
     Condition: 10

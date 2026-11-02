@@ -138,6 +138,9 @@ namespace TentacleVania.Core.Runs
             SizeStage = Math.Min(MaxSizeStage, SizeStage + 1);
             AddEssence(FloorEssence);
             MutationLoadout.AddBonusNotch();
+            var meta = SaveSystem.Data.Meta;
+            meta.MaxSizeStage = Math.Max(meta.MaxSizeStage, SizeStage);
+            meta.MaxBonusNotches = Math.Max(meta.MaxBonusNotches, SaveSystem.Data.Build.BonusNotches);
             Stats.NotifyChanged();
             FloorCleared?.Invoke(floor);
         }
@@ -167,6 +170,24 @@ namespace TentacleVania.Core.Runs
         }
 
         public static void Suspend() => Active = false;
+
+        public static void RecordBoss(string id)
+        {
+            var bosses = SaveSystem.Data.Meta.Bosses;
+            if (Active && !string.IsNullOrEmpty(id) && !bosses.Contains(id))
+                bosses.Add(id);
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void Hook() => MutationLoadout.Changed += OnLoadoutChanged;
+
+        private static void OnLoadoutChanged()
+        {
+            if (!Active)
+                return;
+            var meta = SaveSystem.Data.Meta;
+            meta.MostMutations = Math.Max(meta.MostMutations, MutationLoadout.Equipped.Count);
+        }
 
         public static void Defied() => DefianceTriggered?.Invoke();
 
