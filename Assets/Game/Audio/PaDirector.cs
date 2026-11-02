@@ -36,6 +36,12 @@ namespace TentacleVania.Audio
         private PaChannel _lastChannel = PaChannel.Radio;
         private float _lastEnded = -100f;
 
+        private const string RunFloorPrefix = "run.floor";
+        private const string RunEscape = "run.escape";
+        private const string RunDeath = "run.death";
+
+        private readonly HashSet<string> _runPlayed = new();
+
         public static PaDirector Instance { get; private set; }
         public static event Action<string, PaChannel> LineStarted;
         public static event Action LineEnded;
@@ -74,6 +80,10 @@ namespace TentacleVania.Audio
             BossProgress.Defeated += OnBossDefeated;
             SecurityRelays.RelayDestroyed += OnRelayDestroyed;
             World.Opening.OpeningSequence.Skipped += OnOpeningSkipped;
+            Core.Runs.RunSession.Started += OnRunStarted;
+            Core.Runs.RunSession.FloorStarted += OnFloorStarted;
+            Core.Runs.RunSession.BossKilled += OnRunBossKilled;
+            Core.Runs.RunSession.Ended += OnRunEnded;
         }
 
         private void OnDisable()
@@ -81,6 +91,10 @@ namespace TentacleVania.Audio
             BossProgress.Defeated -= OnBossDefeated;
             SecurityRelays.RelayDestroyed -= OnRelayDestroyed;
             World.Opening.OpeningSequence.Skipped -= OnOpeningSkipped;
+            Core.Runs.RunSession.Started -= OnRunStarted;
+            Core.Runs.RunSession.FloorStarted -= OnFloorStarted;
+            Core.Runs.RunSession.BossKilled -= OnRunBossKilled;
+            Core.Runs.RunSession.Ended -= OnRunEnded;
             StopVoice();
             AudioMix.SetDuck(AudioMix.Music, 1f);
             AudioMix.SetDuck(AudioMix.Sfx, 1f);
@@ -102,6 +116,29 @@ namespace TentacleVania.Audio
             foreach (var line in sequence.Lines)
                 _queue.Enqueue(new Queued { Line = line, Sector = sector });
             return true;
+        }
+
+        public bool PlayInRun(string sequenceId)
+        {
+            var sequence = _script != null ? _script.Find(sequenceId) : null;
+            if (sequence == null || !_runPlayed.Add(sequence.Id))
+                return false;
+            foreach (var line in sequence.Lines)
+                _queue.Enqueue(new Queued { Line = line });
+            return true;
+        }
+
+        private void OnRunStarted() => _runPlayed.Clear();
+
+        private void OnFloorStarted(int floor) => PlayInRun(RunFloorPrefix + floor);
+
+        private void OnRunEnded(bool won) => PlayInRun(won ? RunEscape : RunDeath);
+
+        private void OnRunBossKilled(string id)
+        {
+            var sequence = _script != null ? _script.Find(PaTrigger.BossDefeated, id) : null;
+            if (sequence != null)
+                PlayInRun(sequence.Id);
         }
 
         private void OnOpeningSkipped(string sequenceId)

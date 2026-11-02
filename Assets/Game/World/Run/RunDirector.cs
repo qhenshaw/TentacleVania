@@ -125,6 +125,7 @@ namespace TentacleVania.World.Run
             RunSession.Floor = floor;
             RunSession.Step = 0;
             PrepareFloor(floor);
+            RunSession.StartFloor(floor);
             var entry = RunGenerator.Offers(StepRng(), RoomRole.Entry, RunSession.Context, _kit.Count(floor, RoomRole.Entry), Used(RoomRole.Entry), _offers, _kit.Weights(floor, RoomRole.Entry, _weights));
             Go(entry[0]);
         }

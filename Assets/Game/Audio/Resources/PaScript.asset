@@ -809,3 +809,132 @@ MonoBehaviour:
           Data3: 0
           Data4: 0
         Path: 
+  - Id: run.floor0
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.69
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.70
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: run.floor1
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.71
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.72
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: run.floor2
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.73
+      Channel: 1
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.74
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: run.floor3
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.75
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.76
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: run.death
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.77
+      Channel: 2
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Id: run.escape
+    Trigger: 0
+    TriggerKey: 
+    PerSector: 0
+    Lines:
+    - Key: line.78
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+    - Key: line.79
+      Channel: 0
+      Voice:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
