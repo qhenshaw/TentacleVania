@@ -80,6 +80,26 @@ namespace TentacleVania.Core.Tests
         }
 
         [Test]
+        public void RoomWeightsMakeRareRoomsRare()
+        {
+            var rng = new System.Random(21);
+            var weights = new[] { 10, 10, 2 };
+            var rare = 0;
+            for (var i = 0; i < 3000; i++)
+                if (RunGenerator.Offers(rng, RoomRole.Shop, new RewardContext(), 3, null, null, weights)[0].Room == 2)
+                    rare++;
+            Assert.That(rare / 3000f, Is.EqualTo(2f / 22f).Within(0.025f));
+        }
+
+        [Test]
+        public void ZeroWeightRoomsAreNeverPicked()
+        {
+            var rng = new System.Random(22);
+            for (var i = 0; i < 300; i++)
+                Assert.That(RunGenerator.Offers(rng, RoomRole.Shop, new RewardContext(), 3, null, null, new[] { 0, 5, 5 })[0].Room, Is.Not.EqualTo(0));
+        }
+
+        [Test]
         public void UsedRoomsAreAvoidedWhileOthersRemain()
         {
             var rng = new System.Random(9);

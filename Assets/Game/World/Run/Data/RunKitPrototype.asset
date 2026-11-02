@@ -17,310 +17,387 @@ MonoBehaviour:
     Role: 0
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C1
     Role: 1
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C2
     Role: 1
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C3
     Role: 1
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C4
     Role: 1
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C5
     Role: 1
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C6
     Role: 1
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C1
     Role: 2
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C2
     Role: 2
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C3
     Role: 2
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C4
     Role: 2
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C5
     Role: 2
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_C6
     Role: 2
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: KT_Shop
     Role: 3
     Floor: -1
     KeepWaves: 0
+    Weight: 10
   - Scene: SH_WardenArena
     Role: 4
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: AD_CommandPost
     Role: 4
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: QU_SeeperPit
     Role: 4
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: BL_AutomatonTheatre
     Role: 4
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: RD_TestChamber
     Role: 4
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: CS_LoaderBay
     Role: 4
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: BA_Courtyard
     Role: 4
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: AR_LiveFireRange
     Role: 4
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: CC_CoreChamber
     Role: 4
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: DC_DigSite
     Role: 4
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: BS_ReactorHall
     Role: 4
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: MV_CraneLab
     Role: 5
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_Admin
     Role: 1
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_Cells
     Role: 1
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_Checkpoint
     Role: 1
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_Decon
     Role: 1
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_EliteSecurity
     Role: 2
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_EliteWard
     Role: 2
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_Entry
     Role: 0
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_Holding
     Role: 1
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_Isolation
     Role: 1
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_Lobby
     Role: 1
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_Records
     Role: 1
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K0_Shop
     Role: 3
     Floor: 0
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_Atrium
     Role: 1
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_ColdRoom
     Role: 1
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_EliteCryovault
     Role: 2
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_EliteSurgery
     Role: 2
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_Entry
     Role: 0
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_Freezer
     Role: 1
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_Lab
     Role: 1
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_Server
     Role: 1
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_Shop
     Role: 3
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_Specimens
     Role: 1
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_TestChamber
     Role: 1
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K1_Theatre
     Role: 1
     Floor: 1
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_Armory
     Role: 1
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_Barracks
     Role: 1
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_Bunker
     Role: 1
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_Checkpoint
     Role: 1
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_Command
     Role: 1
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_Drill
     Role: 1
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_EliteHangar
     Role: 2
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_EliteKillhouse
     Role: 2
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_Entry
     Role: 0
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_Motorpool
     Role: 1
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_Range
     Role: 1
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K2_Shop
     Role: 3
     Floor: 2
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_Antechamber
     Role: 1
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_BlackLab
     Role: 1
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_EliteCore
     Role: 2
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_EliteNest
     Role: 2
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_Entry
     Role: 0
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_Excavation
     Role: 1
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_Hive
     Role: 1
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_Reactor
     Role: 1
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_Shaft
     Role: 1
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_Shop
     Role: 3
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_Tunnels
     Role: 1
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: K3_Vats
     Role: 1
     Floor: 3
     KeepWaves: 0
+    Weight: 10
   - Scene: QU_Incinerator
     Role: 2
     Floor: 0
     KeepWaves: 1
+    Weight: 3
   - Scene: AR_Vault
     Role: 2
     Floor: 2
     KeepWaves: 1
+    Weight: 3
   - Scene: CC_TitanBay
     Role: 2
     Floor: 3
     KeepWaves: 1
+    Weight: 3
   _floors:
   - Floor: 0
     Sector: AD

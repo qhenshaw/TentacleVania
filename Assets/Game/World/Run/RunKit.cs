@@ -21,6 +21,8 @@ namespace TentacleVania.World.Run
             public int Floor = -1;
             [Tooltip("Keep the scene's own waves instead of composing them (rare elite rooms with optional bosses).")]
             public bool KeepWaves;
+            [Tooltip("Relative chance among the floor's rooms of this role (10 = normal; rare elites lower).")]
+            [Range(0, 100)] public int Weight = 10;
         }
 
         [Serializable]
@@ -51,6 +53,16 @@ namespace TentacleVania.World.Run
         }
 
         public string Scene(int floor, RoomRole role, int index) => Find(floor, role, index)?.Scene;
+
+        public List<int> Weights(int floor, RoomRole role, List<int> into)
+        {
+            into.Clear();
+            var own = HasOwn(floor, role);
+            foreach (var room in _rooms)
+                if (Matches(room, floor, role, own))
+                    into.Add(room.Weight);
+            return into;
+        }
 
         public bool KeepsWaves(int floor, RoomRole role, int index) => Find(floor, role, index)?.KeepWaves ?? false;
 
