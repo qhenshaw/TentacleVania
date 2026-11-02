@@ -1,7 +1,11 @@
+using System.Collections.Generic;
 using TentacleVania.Abilities.Mutations;
 using TentacleVania.Core.Progression;
+using TentacleVania.Core.Runs;
+using TentacleVania.Core.Saves;
 using TentacleVania.Creature;
 using TentacleVania.Creature.Movement;
+using TentacleVania.UI.Run;
 using TentacleVania.World.Hoarder;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -16,6 +20,15 @@ namespace TentacleVania.UI.Hoarder
         private const string LineTable = "Dialogue";
         private const string OpenClass = "hoarder--open";
         private const int GreetingCount = 3;
+        private const string HealId = "run-heal";
+        private const string OfferPrefix = "run-offer-";
+
+        private readonly List<MutationDefinition> _runOffers = new(8);
+        private readonly List<MutationDefinition> _pool = new(64);
+        private readonly List<MutationBuild> _poolBuilds = new(64);
+        private readonly List<MutationBuild> _pickedBuilds = new(16);
+        private readonly List<int> _picks = new(8);
+        private int _runVisit = int.MinValue;
 
         private VisualElement _hoarder;
         private Label _line;
@@ -90,6 +103,11 @@ namespace TentacleVania.UI.Hoarder
 
         public void Buy(string id)
         {
+            if (RunSession.Active)
+            {
+                BuyRun(id);
+                return;
+            }
             var entry = Find(id);
             if (entry == null || !Describe(entry, out _, out _, out _, out var price))
                 return;
@@ -111,6 +129,11 @@ namespace TentacleVania.UI.Hoarder
         {
             _biomass.text = string.Format(T(Table, "hoarder.biomass"), Biomass.Carried.ToString("N0"));
             _rows.Clear();
+            if (RunSession.Active)
+            {
+                RefreshRun();
+                return;
+            }
             var shown = 0;
             if (_merchant != null && _merchant.Stock != null)
             {
@@ -153,8 +176,109 @@ namespace TentacleVania.UI.Hoarder
             return row;
         }
 
+        private void RefreshRun()
+        {
+            _rows.Add(Row(HealId, T(Table, "hoarder.run.heal"), T(Table, "hoarder.run.healEffect"), "", RunShop.HealPrice));
+            StockRun();
+            for (var i = 0; i < _runOffers.Count; i++)
+            {
+                if (RunShop.IsSold(i))
+                    continue;
+                var mutation = _runOffers[i];
+                _rows.Add(Row(OfferPrefix + i, T(Table, mutation.TextKey + ".name"), T(Table, mutation.TextKey + ".effect"), new string('\u25CF', mutation.Notches), RunShop.MutationPrice(mutation.Notches)));
+            }
+        }
+
+        private void StockRun()
+        {
+            if (_runVisit == RunShop.Visit)
+                return;
+            _runVisit = RunShop.Visit;
+            _runOffers.Clear();
+            var controller = Controller();
+            if (controller == null || controller.Catalog == null)
+                return;
+            _pool.Clear();
+            _poolBuilds.Clear();
+            foreach (var entry in controller.Catalog.Entries)
+                if (entry is MutationDefinition definition && !MutationLoadout.IsEquipped(entry.name))
+                {
+                    _pool.Add(definition);
+                    _poolBuilds.Add(definition.Builds);
+                }
+            _pickedBuilds.Clear();
+            foreach (var id in MutationLoadout.Equipped)
+            {
+                var equipped = controller.Find(id);
+                if (equipped != null)
+                    _pickedBuilds.Add(equipped.Builds);
+            }
+            MutationOffers.Pick(RunShop.StockRng(), _poolBuilds, _pickedBuilds, RunShop.Offers(SaveSystem.Data.Meta), _picks);
+            foreach (var index in _picks)
+                _runOffers.Add(_pool[index]);
+        }
+
+        private void BuyRun(string id)
+        {
+            if (id == HealId)
+            {
+                var creature = Combat.CombatTargets.Creature;
+                if (creature != null && creature.Normalized < 1f && RunShop.TryBuyHeal())
+                {
+                    creature.Heal(creature.Max * RunShop.HealFraction);
+                    Chitter(true);
+                }
+                else
+                {
+                    Chitter(false);
+                }
+                Refresh();
+                FocusFirst();
+                return;
+            }
+            if (!id.StartsWith(OfferPrefix) || !int.TryParse(id.Substring(OfferPrefix.Length), out var offer) || offer < 0 || offer >= _runOffers.Count)
+                return;
+            var mutation = _runOffers[offer];
+            var controller = Controller();
+            if (controller == null || !RunShop.TryBuy(offer, RunShop.MutationPrice(mutation.Notches)))
+            {
+                Chitter(false);
+                Refresh();
+                FocusFirst();
+                return;
+            }
+            Chitter(true);
+            Close();
+            var pick = MutationPickScreen.Instance;
+            if (pick != null)
+            {
+                pick.Open(controller, new[] { mutation });
+                pick.Choose(0);
+            }
+            else
+            {
+                MutationLoadout.Grant(mutation.name);
+                controller.Equip(mutation.name);
+            }
+        }
+
+        private void Chitter(bool bought)
+        {
+            _line.text = T(LineTable, bought ? "hoarder.buy" : "hoarder.poor");
+            if (bought && _merchant != null)
+                _merchant.Chitter();
+        }
+
+        private static MutationController Controller()
+        {
+            var spawned = CreatureSpawner.Spawned;
+            return spawned != null ? spawned.GetComponent<MutationController>() : null;
+        }
+
         private bool AnyStock()
         {
+            if (RunSession.Active)
+                return true;
             if (_merchant == null || _merchant.Stock == null)
                 return false;
             foreach (var entry in _merchant.Stock.Entries)
