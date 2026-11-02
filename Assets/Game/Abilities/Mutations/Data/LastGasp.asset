@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.LastGaspMutation
   _textKey: mutation.lastGasp
   _notches: 3
+  _builds: 64
   _frenzySeconds: 5
   _frenzyDamage: 1.5
   _frenzySpeed: 1.3

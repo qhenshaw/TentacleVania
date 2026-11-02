@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.ArcConductorMutation
   _textKey: mutation.arcConductor
   _notches: 2
+  _builds: 2048
   _buildScale: 1.5
   _extraTargets: 2

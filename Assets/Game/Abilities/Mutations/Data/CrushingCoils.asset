@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.CrushingCoilsMutation
   _textKey: mutation.crushingCoils
   _notches: 2
+  _builds: 1
   _staggerScale: 1.4

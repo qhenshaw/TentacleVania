@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.ConcussiveSlamMutation
   _textKey: mutation.concussiveSlam
   _notches: 3
+  _builds: 1
   _radius: 4
   _damage: 5
   _stagger: 40

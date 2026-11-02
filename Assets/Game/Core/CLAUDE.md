@@ -36,7 +36,7 @@ Shared code every area may reference (`TentacleVania.Core`). Keep it free of gam
 
 ## Runs
 
-- `Runs/` is the pure, unit-tested run logic: `RunGenerator.PlanFloor(seed, floor)` (entry, 8 combat, 2 non-adjacent elites, a shop in the second half, boss last) and `Offers(...)` (door rewards by next room role; combat doors 2–3 distinct rewards weighted Mutation 40 / Evolution 20 / Biomass 25 / Essence 15, evolution only while `EvolutionsOpen`, a forced mutation after `MutationPity` steps). `RunSession` holds the live run (seed, floor, step, Essence; placeholder rewards 150 biomass and 20 Essence) and raises `Started`, `RewardGranted`, `FloorCleared` and `Ended`; Essence isn't saved yet (Run Loop).
+- `Runs/` is the pure, unit-tested run logic: `RunGenerator.PlanFloor(seed, floor)` (entry, 8 combat, 2 non-adjacent elites, a shop in the second half, boss last) and `Offers(...)` (door rewards by next room role; combat doors 2–3 distinct rewards weighted Mutation 40 / Evolution 20 / Biomass 25 / Essence 15, evolution only while `EvolutionsOpen`, a forced mutation after `MutationPity` steps). `RunSession` holds the live run (seed, floor, step, Essence; placeholder rewards 150 biomass and 20 Essence) and raises `Started`, `RewardGranted`, `FloorCleared` and `Ended`; Essence isn't saved yet (Run Loop). `MutationOffers.Pick` draws distinct mutation offers weighted by `Progression.MutationBuild` tags (base 2, +3 per equipped mutation sharing a build; placeholder numbers); the tags come from the wiki Mutations database's `Build` column.
 
 ## Saves
 

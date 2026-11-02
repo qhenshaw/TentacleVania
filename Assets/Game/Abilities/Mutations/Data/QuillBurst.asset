@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.QuillBurstMutation
   _textKey: mutation.quillBurst
   _notches: 2
+  _builds: 136
   _radius: 3.5
   _damage: 8
   _cooldown: 1.5

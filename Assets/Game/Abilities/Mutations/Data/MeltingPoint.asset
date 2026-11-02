@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.MeltingPointMutation
   _textKey: mutation.meltingPoint
   _notches: 2
+  _builds: 33
   _corrodedStagger: 1.5
   _splashRadius: 3
   _splashDamage: 10

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.PyreFeastMutation
   _textKey: mutation.pyreFeast
   _notches: 2
+  _builds: 1280
   _radius: 3.5
   _damage: 8
   _sound:

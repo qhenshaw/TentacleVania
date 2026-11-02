@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.KindlingBileMutation
   _textKey: mutation.kindlingBile
   _notches: 2
+  _builds: 256

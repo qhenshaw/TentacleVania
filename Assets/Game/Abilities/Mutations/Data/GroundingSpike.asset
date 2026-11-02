@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.GroundingSpikeMutation
   _textKey: mutation.groundingSpike
   _notches: 2
+  _builds: 2048

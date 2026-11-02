@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.PuppetSporesMutation
   _textKey: mutation.puppetSpores
   _notches: 3
+  _builds: 4
   _below: 0.3
   _duration: 4
   _strikeInterval: 0.8

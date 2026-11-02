@@ -1,4 +1,5 @@
 using TentacleVania.Abilities.Grapple;
+using TentacleVania.Core.Progression;
 using TentacleVania.Creature;
 using TentacleVania.Creature.Movement;
 using UnityEngine;
@@ -34,9 +35,11 @@ namespace TentacleVania.Abilities.Mutations
         [Tooltip("UI table key prefix: <key>.name and <key>.effect.")]
         [SerializeField] private string _textKey = "mutation.gluttony";
         [SerializeField, Range(1, 3)] private int _notches = 1;
+        [SerializeField] private MutationBuild _builds;
 
         public string TextKey => _textKey;
         public int Notches => _notches;
+        public MutationBuild Builds => _builds;
 
         public abstract MutationEffect CreateEffect();
     }

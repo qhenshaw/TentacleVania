@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="MutationPick.uss" />
+    <ui:VisualElement name="pick" class="pick">
+        <ui:VisualElement class="pick__panel">
+            <ui:Label name="title" class="pick__title" />
+            <ui:Label name="notches" class="pick__notches" />
+            <ui:Label name="hint" class="pick__hint" />
+            <ui:VisualElement name="cards" class="pick__cards" />
+            <ui:VisualElement class="pick__footer">
+                <ui:Button name="confirm" class="pick__button" />
+                <ui:Button name="back" class="pick__button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.HatcheryGutMutation
   _textKey: mutation.hatcheryGut
   _notches: 3
+  _builds: 1028
   _minions: 2

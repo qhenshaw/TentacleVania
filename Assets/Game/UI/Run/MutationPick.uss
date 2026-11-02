@@ -1,0 +1,135 @@
+.pick {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: none;
+}
+
+.pick--open {
+    display: flex;
+}
+
+.pick__panel {
+    min-width: 1200px;
+    padding: 28px 34px;
+    background-color: rgba(18, 6, 10, 0.95);
+    border-width: 2px;
+    border-color: rgb(200, 60, 90);
+}
+
+.pick__title {
+    font-size: 30px;
+    letter-spacing: 4px;
+    color: rgb(240, 110, 140);
+    -unity-text-align: middle-center;
+}
+
+.pick__notches {
+    font-size: 20px;
+    color: rgb(240, 200, 120);
+    -unity-text-align: middle-center;
+    margin-bottom: 6px;
+}
+
+.pick__hint {
+    font-size: 20px;
+    color: rgb(220, 170, 185);
+    white-space: normal;
+    -unity-text-align: middle-center;
+    margin-bottom: 16px;
+}
+
+.pick__cards {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pick__card {
+    width: 360px;
+    min-height: 300px;
+    margin: 8px;
+    padding: 18px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    background-color: rgb(34, 10, 18);
+    border-width: 2px;
+    border-color: rgb(110, 40, 60);
+}
+
+.pick__card:hover,
+.pick__card:focus {
+    background-color: rgb(60, 16, 30);
+    border-color: rgb(240, 110, 140);
+}
+
+.pick__card--marked {
+    border-color: rgb(240, 200, 120);
+    background-color: rgb(70, 40, 20);
+}
+
+.pick__card:disabled {
+    opacity: 0.35;
+}
+
+.pick__name {
+    font-size: 26px;
+    color: rgb(255, 210, 220);
+    white-space: normal;
+    -unity-text-align: upper-left;
+}
+
+.pick__cost {
+    font-size: 20px;
+    color: rgb(240, 110, 140);
+    -unity-text-align: upper-left;
+    margin-bottom: 4px;
+}
+
+.pick__builds {
+    font-size: 16px;
+    color: rgb(200, 140, 160);
+    white-space: normal;
+    -unity-text-align: upper-left;
+    margin-bottom: 10px;
+}
+
+.pick__effect {
+    font-size: 18px;
+    color: rgb(230, 190, 200);
+    white-space: normal;
+    -unity-text-align: upper-left;
+}
+
+.pick__footer {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.pick__button {
+    min-width: 220px;
+    height: 48px;
+    margin: 0 10px;
+    font-size: 20px;
+    color: rgb(255, 210, 220);
+    background-color: rgb(34, 10, 18);
+    border-width: 2px;
+    border-color: rgb(110, 40, 60);
+}
+
+.pick__button:hover,
+.pick__button:focus {
+    background-color: rgb(60, 16, 30);
+    border-color: rgb(240, 110, 140);
+}
+
+.pick__button:disabled {
+    opacity: 0.35;
+}

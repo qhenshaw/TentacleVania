@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.AdrenalSurgeMutation
   _textKey: mutation.adrenalSurge
   _notches: 2
+  _builds: 576
   _below: 0.3
   _cooldown: 10

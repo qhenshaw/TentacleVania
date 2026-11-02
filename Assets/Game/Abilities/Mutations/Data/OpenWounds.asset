@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.OpenWoundsMutation
   _textKey: mutation.openWounds
   _notches: 2
+  _builds: 2
   _extraStacks: 2
   _rate: 1.3

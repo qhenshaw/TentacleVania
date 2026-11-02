@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.FlashpointMutation
   _textKey: mutation.flashpoint
   _notches: 3
+  _builds: 2304
   _burnScale: 1.5
   _machineStagger: 25
   _sound:

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.OverchargeSacMutation
   _textKey: mutation.overchargeSac
   _notches: 3
+  _builds: 512
   _capacity: 1.5

@@ -11,7 +11,11 @@ namespace TentacleVania.UI.Run
 {
     public static class RunRewardHandler
     {
-        private static readonly List<string> Candidates = new(64);
+        private static readonly List<MutationDefinition> Pool = new(64);
+        private static readonly List<MutationBuild> PoolBuilds = new(64);
+        private static readonly List<MutationBuild> PickedBuilds = new(16);
+        private static readonly List<int> Picks = new(4);
+        private static readonly List<MutationDefinition> Offered = new(4);
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Hook()
@@ -49,16 +53,42 @@ namespace TentacleVania.UI.Run
             var controller = CreatureSpawner.Spawned.GetComponent<MutationController>();
             if (controller == null || controller.Catalog == null)
                 return;
-            Candidates.Clear();
-            var used = controller.UsedNotches();
+            Pool.Clear();
+            PoolBuilds.Clear();
             foreach (var entry in controller.Catalog.Entries)
-                if (entry is MutationDefinition definition && !MutationLoadout.Equipped.Contains(entry.name) && MutationLoadout.Fits(used, definition.Notches, MutationLoadout.NotchPool))
-                    Candidates.Add(entry.name);
-            if (Candidates.Count == 0)
+                if (entry is MutationDefinition definition && !MutationLoadout.Equipped.Contains(entry.name))
+                {
+                    Pool.Add(definition);
+                    PoolBuilds.Add(definition.Builds);
+                }
+            if (Pool.Count == 0)
                 return;
-            var id = Candidates[Random.Range(0, Candidates.Count)];
-            Collectibles.Grant(PickupKind.Mutation, id, 1);
-            controller.Equip(id);
+            PickedBuilds.Clear();
+            foreach (var id in MutationLoadout.Equipped)
+            {
+                var equipped = controller.Find(id);
+                if (equipped != null)
+                    PickedBuilds.Add(equipped.Builds);
+            }
+            var rng = new System.Random(unchecked(RunSession.Seed * 31 + RunSession.Floor * 1009 + RunSession.Step));
+            MutationOffers.Pick(rng, PoolBuilds, PickedBuilds, MutationOffers.Count, Picks);
+            Offered.Clear();
+            foreach (var index in Picks)
+                Offered.Add(Pool[index]);
+            var screen = MutationPickScreen.Instance;
+            if (screen != null)
+            {
+                screen.Open(controller, Offered);
+                return;
+            }
+            var used = controller.UsedNotches();
+            foreach (var offer in Offered)
+                if (MutationLoadout.Fits(used, offer.Notches, MutationLoadout.NotchPool))
+                {
+                    MutationLoadout.Grant(offer.name);
+                    controller.Equip(offer.name);
+                    return;
+                }
         }
 
         private static void GrantEvolution()

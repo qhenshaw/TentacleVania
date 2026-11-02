@@ -1871,6 +1871,82 @@ MonoBehaviour:
     m_Key: run.door.none
     m_Metadata:
       m_Items: []
+  - m_Id: 1052286690017280
+    m_Key: run.pick.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154624
+    m_Key: run.pick.hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154625
+    m_Key: run.pick.notches
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154626
+    m_Key: run.pick.swap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154627
+    m_Key: run.pick.replace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154628
+    m_Key: run.pick.back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154629
+    m_Key: run.pick.skip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154630
+    m_Key: mutation.build.stagger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154631
+    m_Key: mutation.build.bleed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154632
+    m_Key: mutation.build.parasites
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154633
+    m_Key: mutation.build.thorns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154634
+    m_Key: mutation.build.healing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154635
+    m_Key: mutation.build.acid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154636
+    m_Key: mutation.build.lowhealth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154637
+    m_Key: mutation.build.spines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154638
+    m_Key: mutation.build.fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154639
+    m_Key: mutation.build.abilityspam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154640
+    m_Key: mutation.build.consuming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154641
+    m_Key: mutation.build.bioelectric
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
