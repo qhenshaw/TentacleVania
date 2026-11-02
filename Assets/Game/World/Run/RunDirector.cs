@@ -8,6 +8,7 @@ using TentacleVania.Core.Runs;
 using TentacleVania.Core.Saves;
 using TentacleVania.Core.Scenes;
 using TentacleVania.World.Arenas;
+using TentacleVania.World.Lore;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -27,6 +28,8 @@ namespace TentacleVania.World.Run
         [SerializeField, Min(0f)] private float _afterGrowthWait = 1f;
         [Tooltip("Health fraction the death defiance leaves after a lethal hit (placeholder).")]
         [SerializeField, Range(0.05f, 1f)] private float _defianceHealth = 0.3f;
+        [Tooltip("Spawned in combat rooms by chance (Core.Runs.RunLore) with an uncollected log.")]
+        [SerializeField] private LoreTerminal _loreTerminal;
 
         private const float DoorEntryDistance = 3f;
 
@@ -44,6 +47,7 @@ namespace TentacleVania.World.Run
         private bool _resumeCleared;
         private bool _podPending;
         private Health _defiant;
+        private readonly List<bool> _collected = new(64);
 
         public static RunDirector Active { get; private set; }
 
@@ -277,6 +281,8 @@ namespace TentacleVania.World.Run
             if (_arena != null && fights)
             {
                 DifficultyCurve.RoomDepth = _current.Role is RoomRole.Boss or RoomRole.Finale ? 0 : RunSession.Step;
+                if (_current.Role == RoomRole.Combat)
+                    SpawnLore(scene);
                 if (_current.Role is RoomRole.Combat or RoomRole.Elite)
                     _arena.SetWaves(RunWaveComposer.Compose(_rng, _kit.Pool(RunSession.Floor), _current.Role, RunSession.Step));
                 _arena.StateChanged += OnArenaChanged;
@@ -349,6 +355,32 @@ namespace TentacleVania.World.Run
             yield return new WaitForSeconds(_absorbWait);
             _loading = false;
             RunSession.End(true);
+        }
+
+        private void SpawnLore(Scene scene)
+        {
+            var library = LoreLibrary.Instance;
+            if (_loreTerminal == null || library == null)
+                return;
+            _collected.Clear();
+            foreach (var log in library.Logs)
+                _collected.Add(log == null || LoreLogs.Has(log.Id));
+            var pick = RunLore.Pick(new System.Random(unchecked(RunGenerator.FloorSeed(RunSession.Seed, RunSession.Floor) * 13 + RunSession.Step)), _collected);
+            if (pick < 0)
+                return;
+            var center = Vector3.zero;
+            var count = 0;
+            foreach (var root in scene.GetRootGameObjects())
+                foreach (var renderer in root.GetComponentsInChildren<Renderer>())
+                {
+                    center += renderer.bounds.center;
+                    count++;
+                }
+            if (count == 0 || !UnityEngine.AI.NavMesh.SamplePosition(center / count + new Vector3(2.5f, 0f, 2.5f), out var hit, 6f, UnityEngine.AI.NavMesh.AllAreas))
+                return;
+            var terminal = Instantiate(_loreTerminal, hit.position, Quaternion.identity);
+            SceneManager.MoveGameObjectToScene(terminal.gameObject, scene);
+            terminal.SetLog(library.Logs[pick]);
         }
 
         private static void PlaceAtDoor(Scene scene)

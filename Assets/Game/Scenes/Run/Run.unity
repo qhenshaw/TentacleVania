@@ -150,6 +150,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Run.RunDirector
   _kit: {fileID: 11400000, guid: 89c42f9f0b5a62242a8fb015684c00f3, type: 2}
   _seed: 0
+  _absorbWait: 4
+  _afterGrowthWait: 1
+  _defianceHealth: 0.3
+  _loreTerminal: {fileID: 4423408979904499266, guid: 2821417ecd2ad0a4b809be1824cc8267, type: 3}
 --- !u!4 &179672847
 Transform:
   m_ObjectHideFlags: 0
