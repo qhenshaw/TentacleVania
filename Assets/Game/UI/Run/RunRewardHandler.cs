@@ -16,6 +16,9 @@ namespace TentacleVania.UI.Run
         private static readonly List<MutationBuild> PickedBuilds = new(16);
         private static readonly List<int> Picks = new(4);
         private static readonly List<MutationDefinition> Offered = new(4);
+        private static readonly List<int> Options = new(2);
+        private static readonly List<EvolutionOffer> Evolutions = new(4);
+        private static int _draws;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Hook()
@@ -28,6 +31,7 @@ namespace TentacleVania.UI.Run
         {
             if (!Application.isPlaying)
                 return;
+            _draws = 0;
             MutationLoadout.Clear();
             Upgrades.ClearEquippedModifiers();
         }
@@ -39,11 +43,15 @@ namespace TentacleVania.UI.Run
             switch (reward)
             {
                 case RunReward.Mutation:
-                case RunReward.Challenge:
                     GrantMutation();
                     break;
+                case RunReward.Challenge:
+                    if (Rng().Next(2) != 0 || !GrantEvolution())
+                        GrantMutation();
+                    break;
                 case RunReward.Evolution:
-                    GrantEvolution();
+                    if (!GrantEvolution())
+                        GrantMutation();
                     break;
             }
         }
@@ -70,7 +78,7 @@ namespace TentacleVania.UI.Run
                 if (equipped != null)
                     PickedBuilds.Add(equipped.Builds);
             }
-            var rng = new System.Random(unchecked(RunSession.Seed * 31 + RunSession.Floor * 1009 + RunSession.Step));
+            var rng = Rng();
             MutationOffers.Pick(rng, PoolBuilds, PickedBuilds, MutationOffers.Count, Picks);
             Offered.Clear();
             foreach (var index in Picks)
@@ -91,32 +99,46 @@ namespace TentacleVania.UI.Run
                 }
         }
 
-        private static void GrantEvolution()
+        private static bool GrantEvolution()
         {
             var weapons = CreatureSpawner.Spawned.GetComponent<WeaponController>();
             if (weapons == null)
+                return false;
+            OpenOptions(weapons);
+            EvolutionOffers.Pick(Rng(), Options, Evolutions);
+            if (Evolutions.Count == 0)
+                return false;
+            var screen = EvolutionPickScreen.Instance;
+            if (screen != null)
+                screen.Open(weapons, Evolutions);
+            else
+                ApplyEvolution(weapons, Evolutions[0]);
+            return true;
+        }
+
+        public static void ApplyEvolution(WeaponController weapons, EvolutionOffer offer)
+        {
+            var weapon = weapons.Weapon(offer.Slot);
+            if (weapon == null || offer.Option < 0 || offer.Option >= weapon.Modifiers.Length)
                 return;
-            var open = 0;
-            var pick = -1;
+            var modifier = weapon.Modifiers[offer.Option];
+            Upgrades.GrantModifier(modifier.name);
+            Upgrades.EquipModifier(ContentCatalog.IdOf(weapon), modifier.name);
+            OpenOptions(weapons);
+            RunSession.EvolutionsOpen = EvolutionOffers.OpenSlots(Options);
+        }
+
+        private static void OpenOptions(WeaponController weapons)
+        {
+            Options.Clear();
             for (var slot = 0; slot < WeaponController.Slots; slot++)
             {
                 var weapon = weapons.Weapon(slot);
-                if (weapon == null || weapon.Modifiers.Length == 0 || !string.IsNullOrEmpty(Upgrades.EquippedModifier(ContentCatalog.IdOf(weapon))))
-                    continue;
-                open++;
-                if (pick < 0 || Random.value < 0.5f)
-                    pick = slot;
+                var open = weapon != null && string.IsNullOrEmpty(Upgrades.EquippedModifier(ContentCatalog.IdOf(weapon)));
+                Options.Add(open ? weapon.Modifiers.Length : 0);
             }
-            if (pick >= 0)
-            {
-                var weapon = weapons.Weapon(pick);
-                var modifier = weapon.Modifiers[Random.Range(0, weapon.Modifiers.Length)];
-                Upgrades.GrantModifier(modifier.name);
-                Upgrades.EquipModifier(ContentCatalog.IdOf(weapon), modifier.name);
-                UnityEngine.Debug.Log($"Run evolution: {weapon.name} gains {modifier.name}");
-                open--;
-            }
-            RunSession.EvolutionsOpen = Mathf.Max(0, open);
         }
+
+        private static System.Random Rng() => new(unchecked(RunSession.Seed * 31 + RunSession.Floor * 1009 + RunSession.Step * 7 + _draws++));
     }
 }

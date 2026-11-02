@@ -1996,6 +1996,14 @@ MonoBehaviour:
     m_Localized: Bio-electric
     m_Metadata:
       m_Items: []
+  - m_Id: 1053590728491008
+    m_Localized: EVOLUTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1053590774628352
+    m_Localized: Each weapon evolves once per run. Choose one.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
