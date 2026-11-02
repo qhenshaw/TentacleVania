@@ -2152,6 +2152,30 @@ MonoBehaviour:
     m_Localized: 'Hoarder stock tier {0}: one more mutation for sale'
     m_Metadata:
       m_Items: []
+  - m_Id: 1070835613581312
+    m_Localized: Mutation (hold to reroll the doors)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1070835659718656
+    m_Localized: Evolution (hold to reroll the doors)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1070835659718657
+    m_Localized: Biomass (hold to reroll the doors)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1070835659718658
+    m_Localized: Essence (hold to reroll the doors)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1070835659718659
+    m_Localized: Run aid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1070835659718660
+    m_Localized: 'Reroll token {0}: reroll one room''s doors per run'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

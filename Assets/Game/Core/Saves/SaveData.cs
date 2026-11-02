@@ -60,6 +60,8 @@ namespace TentacleVania.Core.Saves
         public int Room;
         public bool Cleared;
         public bool DefianceUsed;
+        public int Rerolls;
+        public int RerollsHere;
         public int Rooms;
         public float Seconds;
         public List<string> UsedRooms = new();

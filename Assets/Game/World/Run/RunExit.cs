@@ -5,12 +5,13 @@ using UnityEngine;
 
 namespace TentacleVania.World.Run
 {
-    public sealed class RunExit : MonoBehaviour, IInteractable
+    public sealed class RunExit : MonoBehaviour, IHoldInteractable
     {
         [SerializeField] private Collider _blocker;
         [SerializeField] private Transform _barrier;
         [SerializeField] private Renderer _orb;
         [SerializeField, Min(0.5f)] private float _radius = 2f;
+        [SerializeField, Min(0.1f)] private float _rerollHold = 0.9f;
         [SerializeField] private Color _mutation = new(0.8f, 0.3f, 1f);
         [SerializeField] private Color _evolution = new(1f, 0.55f, 0.1f);
         [SerializeField] private Color _biomass = new(0.9f, 0.15f, 0.2f);
@@ -22,13 +23,16 @@ namespace TentacleVania.World.Run
         private Material _orbMaterial;
 
         public static event Action<RunExit> Chosen;
+        public static event Action<RunExit> RerollRequested;
 
         public DoorOffer Offer { get; private set; }
         public bool HasOffer { get; private set; }
         public bool IsOpen { get; private set; }
         public Vector3 Position => transform.position;
         public float Radius => _radius;
-        public string PromptKey => "run.door." + Offer.Reward.ToString().ToLowerInvariant();
+        public string PromptKey => (CanReroll ? "run.doorReroll." : "run.door.") + Offer.Reward.ToString().ToLowerInvariant();
+        public float HoldDuration => CanReroll ? _rerollHold : float.MaxValue;
+        public bool CanReroll => CanInteract && Offer.Role == RoomRole.Combat && RunSession.Rerolls > 0;
         public bool CanInteract => IsOpen && HasOffer;
 
         private void Awake()
@@ -84,6 +88,12 @@ namespace TentacleVania.World.Run
         {
             if (CanInteract)
                 Chosen?.Invoke(this);
+        }
+
+        public void InteractHold()
+        {
+            if (CanReroll)
+                RerollRequested?.Invoke(this);
         }
 
         private void Show(bool open)
