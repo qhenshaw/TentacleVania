@@ -46,6 +46,8 @@ namespace TentacleVania.World.Run
         private bool _cleared;
         private bool _resumeCleared;
         private bool _podPending;
+        private int _rerollsHere;
+        private int _resumeRerolls;
         private Health _defiant;
         private readonly List<bool> _collected = new(64);
 
@@ -62,6 +64,7 @@ namespace TentacleVania.World.Run
             Active = this;
             LoadGate.Hold(this);
             RunExit.Chosen += OnChosen;
+            RunExit.RerollRequested += OnRerollRequested;
             CombatEvents.Died += OnDied;
             RunPod.BrokeOut += ArmDefiance;
             RunSession.RespawnScene = gameObject.scene.name;
@@ -70,6 +73,7 @@ namespace TentacleVania.World.Run
         private void OnDestroy()
         {
             RunExit.Chosen -= OnChosen;
+            RunExit.RerollRequested -= OnRerollRequested;
             CombatEvents.Died -= OnDied;
             RunPod.BrokeOut -= ArmDefiance;
             Disarm();
@@ -107,6 +111,7 @@ namespace TentacleVania.World.Run
                     Used((RoomRole)role).Add(room);
             }
             _resumeCleared = saved.Cleared;
+            _resumeRerolls = saved.RerollsHere;
             Go(new DoorOffer((RoomRole)saved.Role, (RunReward)saved.Reward, saved.Room));
         }
 
@@ -264,14 +269,12 @@ namespace TentacleVania.World.Run
                 var next = _plan.Steps[RunSession.Step + 1];
                 RunGenerator.Offers(_rng, next, RunSession.Context, _kit.Count(RunSession.Floor, next), Used(next), _offers);
             }
-            Shuffle(_exits);
-            for (var i = 0; i < _exits.Count; i++)
-            {
-                if (i < _offers.Count)
-                    _exits[i].Assign(_offers[i]);
-                else
-                    _exits[i].Clear();
-            }
+            Shuffle(_exits, _rng);
+            AssignExits();
+            _rerollsHere = 0;
+            for (var i = 0; i < _resumeRerolls; i++)
+                Redraw();
+            _resumeRerolls = 0;
             var fights = _current.Role is RoomRole.Combat or RoomRole.Elite or RoomRole.Boss or RoomRole.Finale;
             if (_resumeCleared)
             {
@@ -437,6 +440,7 @@ namespace TentacleVania.World.Run
             state.Reward = (int)_current.Reward;
             state.Room = _current.Room;
             state.Cleared = _cleared;
+            state.RerollsHere = _rerollsHere;
             state.UsedRooms.Clear();
             foreach (var pair in _used)
                 foreach (var room in pair.Value)
@@ -490,11 +494,46 @@ namespace TentacleVania.World.Run
                 RunSession.End(false);
         }
 
-        private void Shuffle(List<RunExit> exits)
+        public bool Reroll()
+        {
+            if (_loading || !_cleared || RunSession.Rerolls <= 0 || RunSession.Step >= _plan.Count - 1 || _plan.Steps[RunSession.Step + 1] != RoomRole.Combat)
+                return false;
+            RunSession.Rerolls--;
+            Redraw();
+            foreach (var exit in _exits)
+                exit.Open();
+            Store();
+            return true;
+        }
+
+        private void OnRerollRequested(RunExit exit) => Reroll();
+
+        private void Redraw()
+        {
+            _rerollsHere++;
+            var next = _plan.Steps[RunSession.Step + 1];
+            var rng = new System.Random(unchecked(RunGenerator.FloorSeed(RunSession.Seed, RunSession.Floor) * 31 + RunSession.Step * 7919 + _rerollsHere * 104729));
+            RunGenerator.Offers(rng, next, RunSession.Context, _kit.Count(RunSession.Floor, next), Used(next), _offers);
+            Shuffle(_exits, rng);
+            AssignExits();
+        }
+
+        private void AssignExits()
+        {
+            for (var i = 0; i < _exits.Count; i++)
+            {
+                if (i < _offers.Count)
+                    _exits[i].Assign(_offers[i]);
+                else
+                    _exits[i].Clear();
+            }
+        }
+
+        private static void Shuffle(List<RunExit> exits, System.Random rng)
         {
             for (var i = exits.Count - 1; i > 0; i--)
             {
-                var j = _rng.Next(i + 1);
+                var j = rng.Next(i + 1);
                 (exits[i], exits[j]) = (exits[j], exits[i]);
             }
         }

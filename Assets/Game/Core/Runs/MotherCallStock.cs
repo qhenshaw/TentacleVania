@@ -11,6 +11,7 @@ namespace TentacleVania.Core.Runs
         StartingNotch,
         DeathDefiance,
         HoarderTier,
+        RerollToken,
     }
 
     [CreateAssetMenu(menuName = "TentacleVania/Runs/Mother's Call Stock")]

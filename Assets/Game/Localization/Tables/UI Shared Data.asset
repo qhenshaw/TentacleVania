@@ -2103,6 +2103,30 @@ MonoBehaviour:
     m_Key: run.call.hoarder
     m_Metadata:
       m_Items: []
+  - m_Id: 1070835613581312
+    m_Key: run.doorReroll.mutation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1070835659718656
+    m_Key: run.doorReroll.evolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1070835659718657
+    m_Key: run.doorReroll.biomass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1070835659718658
+    m_Key: run.doorReroll.essence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1070835659718659
+    m_Key: run.call.kind.rerolltoken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1070835659718660
+    m_Key: run.call.reroll
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

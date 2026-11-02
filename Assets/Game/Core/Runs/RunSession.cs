@@ -24,6 +24,7 @@ namespace TentacleVania.Core.Runs
         public static string RespawnScene { get; set; }
         public static bool DefianceUsed { get; set; }
         public static int Rooms { get; set; }
+        public static int Rerolls { get; set; }
         public static float Seconds { get; set; }
         public static RunRecord Last { get; private set; }
         public static bool DefianceReady => Active && !DefianceUsed && MotherCall.Count(SaveSystem.Data.Meta, UnlockKind.DeathDefiance) > 0;
@@ -50,6 +51,7 @@ namespace TentacleVania.Core.Runs
             DefianceUsed = false;
             Rooms = 0;
             Seconds = 0f;
+            Rerolls = MotherCall.Count(SaveSystem.Data.Meta, UnlockKind.RerollToken);
             SaveSystem.Data.Meta.RunsStarted++;
             MutationLoadout.ResetBonusNotches();
             for (var i = MotherCall.Count(SaveSystem.Data.Meta, UnlockKind.StartingNotch); i > 0; i--)
@@ -79,6 +81,7 @@ namespace TentacleVania.Core.Runs
             into.EvolutionsOpen = EvolutionsOpen;
             into.DefianceUsed = DefianceUsed;
             into.Rooms = Rooms;
+            into.Rerolls = Rerolls;
             into.Seconds = Seconds;
         }
 
@@ -93,6 +96,7 @@ namespace TentacleVania.Core.Runs
             EvolutionsOpen = from.EvolutionsOpen;
             DefianceUsed = from.DefianceUsed;
             Rooms = from.Rooms;
+            Rerolls = from.Rerolls;
             Seconds = from.Seconds;
         }
 

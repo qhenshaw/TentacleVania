@@ -76,3 +76,12 @@ MonoBehaviour:
   - Kind: 4
     Item: 2
     Cost: 300
+  - Kind: 5
+    Item: 1
+    Cost: 100
+  - Kind: 5
+    Item: 2
+    Cost: 200
+  - Kind: 5
+    Item: 3
+    Cost: 350

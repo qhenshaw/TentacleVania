@@ -318,6 +318,8 @@ namespace TentacleVania.UI.Run
                     return string.Format(Text("run.call.notch"), entry.Item);
                 case UnlockKind.HoarderTier:
                     return string.Format(Text("run.call.hoarder"), entry.Item);
+                case UnlockKind.RerollToken:
+                    return string.Format(Text("run.call.reroll"), entry.Item);
                 default:
                     return Text("run.call.defiance");
             }

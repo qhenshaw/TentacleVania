@@ -28,6 +28,12 @@ namespace TentacleVania.World.Run
                 if (RunDirector.Active != null)
                     RunDirector.Active.JumpToBoss();
             });
+            DebugMenu.Button(Tab, "Add reroll token", () => RunSession.Rerolls++);
+            DebugMenu.Button(Tab, "Reroll doors", () =>
+            {
+                if (RunDirector.Active != null)
+                    RunDirector.Active.Reroll();
+            });
             DebugMenu.Button(Tab, "Grant mutation reward", () => RunSession.Grant(RunReward.Mutation));
             DebugMenu.Button(Tab, "Grant evolution reward", () => RunSession.Grant(RunReward.Evolution));
             DebugMenu.Value(Tab, "Run", () => RunSession.Active ? $"seed {RunSession.Seed}, floor {RunSession.Floor + 1}, step {RunSession.Step}, essence {RunSession.Essence}" : "not in a run");
