@@ -253,6 +253,8 @@ namespace TentacleVania.World.Arenas
             if (prefab.Definition != null && !prefab.Definition.Machine)
                 HadHumans = true;
             var enemy = Instantiate(prefab, position, point.rotation);
+            if (enemy.gameObject.scene != gameObject.scene)
+                UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(enemy.gameObject, gameObject.scene);
             if (elite)
                 enemy.MakeElite();
             if (anyHealth && enemy.TryGetComponent(out Consumable consumable))

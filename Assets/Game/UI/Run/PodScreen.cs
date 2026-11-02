@@ -67,11 +67,13 @@ namespace TentacleVania.UI.Run
                     ToggleCall();
             });
             RunPod.Requested += Open;
+            RunPod.BrokeOut += OnBrokeOut;
         }
 
         private void OnDisable()
         {
             RunPod.Requested -= Open;
+            RunPod.BrokeOut -= OnBrokeOut;
             if (IsOpen)
                 Close();
             if (Instance == this)
@@ -173,6 +175,18 @@ namespace TentacleVania.UI.Run
         {
             if (!IsOpen)
                 return;
+            Apply();
+            RunPod.BreakOut();
+        }
+
+        private void OnBrokeOut()
+        {
+            if (IsOpen)
+                Apply();
+        }
+
+        private void Apply()
+        {
             var spawned = CreatureSpawner.Spawned;
             if (spawned != null)
             {
@@ -185,7 +199,6 @@ namespace TentacleVania.UI.Run
                     abilities.Equip(Ability);
             }
             Close();
-            RunPod.BreakOut();
         }
 
         private void Close()
