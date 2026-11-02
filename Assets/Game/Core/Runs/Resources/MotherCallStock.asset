@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb369cbc1d28dfc46baa5e64af5f4516, type: 3}
+  m_Name: MotherCallStock
+  m_EditorClassIdentifier: TentacleVania.Core::TentacleVania.Core.Runs.MotherCallStock
+  _entries:
+  - Kind: 0
+    Item: LashWhips
+    Cost: 0
+  - Kind: 0
+    Item: CrusherMass
+    Cost: 0
+  - Kind: 0
+    Item: BoneScythes
+    Cost: 60
+  - Kind: 0
+    Item: HookBarbs
+    Cost: 80
+  - Kind: 0
+    Item: AcidSpitter
+    Cost: 80
+  - Kind: 0
+    Item: FlameGland
+    Cost: 100
+  - Kind: 0
+    Item: ArcTendrils
+    Cost: 100
+  - Kind: 0
+    Item: RailSpine
+    Cost: 120
+  - Kind: 1
+    Item: BioShield
+    Cost: 0
+  - Kind: 1
+    Item: SpineVolley
+    Cost: 60
+  - Kind: 1
+    Item: TendrilSnare
+    Cost: 60
+  - Kind: 1
+    Item: RegenerativeCocoon
+    Cost: 80
+  - Kind: 1
+    Item: MimicShell
+    Cost: 100
+  - Kind: 1
+    Item: SpawnBrood
+    Cost: 100
+  - Kind: 1
+    Item: Shock
+    Cost: 120
+  - Kind: 2
+    Item: 1
+    Cost: 100
+  - Kind: 2
+    Item: 2
+    Cost: 200
+  - Kind: 2
+    Item: 3
+    Cost: 400
+  - Kind: 3
+    Item: 1
+    Cost: 250

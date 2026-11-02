@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TentacleVania.Combat;
+using TentacleVania.Combat.Damage;
 using TentacleVania.Core;
 using TentacleVania.Core.Progression;
 using TentacleVania.Core.Runs;
@@ -24,6 +25,8 @@ namespace TentacleVania.World.Run
         [SerializeField, Min(0f)] private float _absorbWait = 4f;
         [Tooltip("Seconds after the growth before the next floor loads.")]
         [SerializeField, Min(0f)] private float _afterGrowthWait = 1f;
+        [Tooltip("Health fraction the death defiance leaves after a lethal hit (placeholder).")]
+        [SerializeField, Range(0.05f, 1f)] private float _defianceHealth = 0.3f;
 
         private readonly List<DoorOffer> _offers = new(RunGenerator.MaxDoors);
         private readonly Dictionary<RoomRole, HashSet<int>> _used = new();
@@ -38,6 +41,7 @@ namespace TentacleVania.World.Run
         private bool _cleared;
         private bool _resumeCleared;
         private bool _podPending;
+        private Health _defiant;
 
         public static RunDirector Active { get; private set; }
 
@@ -53,6 +57,7 @@ namespace TentacleVania.World.Run
             LoadGate.Hold(this);
             RunExit.Chosen += OnChosen;
             CombatEvents.Died += OnDied;
+            RunPod.BrokeOut += ArmDefiance;
             RunSession.RespawnScene = gameObject.scene.name;
         }
 
@@ -60,6 +65,8 @@ namespace TentacleVania.World.Run
         {
             RunExit.Chosen -= OnChosen;
             CombatEvents.Died -= OnDied;
+            RunPod.BrokeOut -= ArmDefiance;
+            Disarm();
             LoadGate.Release(this);
             DifficultyCurve.RoomDepth = 0;
             RunSession.RespawnScene = null;
@@ -218,6 +225,7 @@ namespace TentacleVania.World.Run
             }
             if (entry != null)
                 Place(CombatTargets.Creature.transform, entry.transform);
+            ArmDefiance();
             _rng = StepRng();
             var last = RunSession.Step >= _plan.Count - 1;
             _offers.Clear();
@@ -321,6 +329,40 @@ namespace TentacleVania.World.Run
                 foreach (var room in pair.Value)
                     state.UsedRooms.Add((int)pair.Key + ":" + room);
             Autosave.Request(AutosaveReason.RunRoom);
+        }
+
+        private void ArmDefiance()
+        {
+            var creature = CombatTargets.Creature;
+            if (!RunSession.DefianceReady || creature == null)
+                return;
+            if (_defiant != creature)
+            {
+                Disarm();
+                _defiant = creature;
+                _defiant.Damaged += OnCreatureDamaged;
+            }
+            _defiant.Floor = Mathf.Max(_defiant.Floor, 1f);
+        }
+
+        private void Disarm()
+        {
+            if (_defiant == null)
+                return;
+            _defiant.Damaged -= OnCreatureDamaged;
+            _defiant = null;
+        }
+
+        private void OnCreatureDamaged(Health target, in DamageInfo info, in DamageResult result)
+        {
+            if (!RunSession.DefianceReady || !target.AtFloor)
+                return;
+            RunSession.DefianceUsed = true;
+            target.Floor = 0f;
+            target.SetFraction(_defianceHealth);
+            Disarm();
+            RunSession.Defied();
+            Store();
         }
 
         private void OnDied(Health health)

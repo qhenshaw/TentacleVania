@@ -41,3 +41,27 @@
     background-color: rgb(60, 16, 30);
     border-color: rgb(240, 110, 140);
 }
+
+.pod__scroll {
+    max-height: 560px;
+}
+
+.pod__buy {
+    min-width: 200px;
+    height: 44px;
+    font-size: 20px;
+    color: rgb(255, 210, 220);
+    background-color: rgb(34, 10, 18);
+    border-width: 2px;
+    border-color: rgb(110, 40, 60);
+}
+
+.pod__buy:hover,
+.pod__buy:focus {
+    background-color: rgb(60, 16, 30);
+    border-color: rgb(240, 110, 140);
+}
+
+.pod__buy:disabled {
+    opacity: 0.35;
+}

@@ -1983,6 +1983,58 @@ MonoBehaviour:
     m_Key: run.pod.breakout
     m_Metadata:
       m_Items: []
+  - m_Id: 1062013029335040
+    m_Key: run.call.open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472384
+    m_Key: run.call.back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472385
+    m_Key: run.call.essence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472386
+    m_Key: run.call.rank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472387
+    m_Key: run.call.buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472388
+    m_Key: run.call.max
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472389
+    m_Key: run.call.owned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472390
+    m_Key: run.call.kind.weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472391
+    m_Key: run.call.kind.ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472392
+    m_Key: run.call.kind.startingnotch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472393
+    m_Key: run.call.kind.deathdefiance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472394
+    m_Key: run.call.notch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472395
+    m_Key: run.call.defiance
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
