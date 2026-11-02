@@ -22,12 +22,15 @@ namespace TentacleVania.Core.Runs
         public static int EssenceReward { get; set; } = 20;
         public static int FloorEssence { get; set; } = 50;
         public static string RespawnScene { get; set; }
+        public static bool DefianceUsed { get; set; }
+        public static bool DefianceReady => Active && !DefianceUsed && MotherCall.Count(SaveSystem.Data.Meta, UnlockKind.DeathDefiance) > 0;
 
         public static event Action<RunReward> RewardGranted;
         public static event Action Started;
         public static event Action Resumed;
         public static event Action<int> FloorCleared;
         public static event Action<bool> Ended;
+        public static event Action DefianceTriggered;
 
         public static RewardContext Context => new() { Floor = Floor, Step = Step, EvolutionsOpen = EvolutionsOpen, StepsSinceMutation = StepsSinceMutation };
 
@@ -41,8 +44,11 @@ namespace TentacleVania.Core.Runs
             StepsSinceMutation = 0;
             EvolutionsOpen = 2;
             SizeStage = 0;
+            DefianceUsed = false;
             SaveSystem.Data.Meta.RunsStarted++;
             MutationLoadout.ResetBonusNotches();
+            for (var i = MotherCall.Count(SaveSystem.Data.Meta, UnlockKind.StartingNotch); i > 0; i--)
+                MutationLoadout.AddBonusNotch();
             Biomass.Reset();
             Started?.Invoke();
             Stats.NotifyChanged();
@@ -66,6 +72,7 @@ namespace TentacleVania.Core.Runs
             into.SizeStage = SizeStage;
             into.StepsSinceMutation = StepsSinceMutation;
             into.EvolutionsOpen = EvolutionsOpen;
+            into.DefianceUsed = DefianceUsed;
         }
 
         public static void Restore(RunState from)
@@ -77,6 +84,7 @@ namespace TentacleVania.Core.Runs
             SizeStage = Mathf.Clamp(from.SizeStage, 0, MaxSizeStage);
             StepsSinceMutation = from.StepsSinceMutation;
             EvolutionsOpen = from.EvolutionsOpen;
+            DefianceUsed = from.DefianceUsed;
         }
 
         public static void Grant(RunReward reward)
@@ -136,6 +144,8 @@ namespace TentacleVania.Core.Runs
 
         public static void Suspend() => Active = false;
 
+        public static void Defied() => DefianceTriggered?.Invoke();
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
         {
@@ -148,6 +158,7 @@ namespace TentacleVania.Core.Runs
             Resumed = null;
             FloorCleared = null;
             Ended = null;
+            DefianceTriggered = null;
         }
     }
 }

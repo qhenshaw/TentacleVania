@@ -2032,6 +2032,58 @@ MonoBehaviour:
     m_Localized: Break out
     m_Metadata:
       m_Items: []
+  - m_Id: 1062013029335040
+    m_Localized: Mother's Call
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472384
+    m_Localized: Back to the pod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472385
+    m_Localized: 'Mother''s Call. Essence: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472386
+    m_Localized: Rank {0} / {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472387
+    m_Localized: '{0} Essence'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472388
+    m_Localized: Full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472389
+    m_Localized: Owned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472390
+    m_Localized: Weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472391
+    m_Localized: Ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472392
+    m_Localized: Notch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472393
+    m_Localized: Run aid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472394
+    m_Localized: Starting notch {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1062013075472395
+    m_Localized: 'Death defiance: survive one lethal hit per run'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

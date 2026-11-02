@@ -8,10 +8,10 @@ namespace TentacleVania.Core.Progression
     {
         public static event Action Changed;
 
-        public static int Brutality => Mathf.Max(StatRules.StartValue, Build.Brutality);
-        public static int Ferocity => Mathf.Max(StatRules.StartValue, Build.Ferocity);
-        public static int Tenacity => Mathf.Max(StatRules.StartValue, Build.Tenacity);
-        public static int Cunning => Mathf.Max(StatRules.StartValue, Build.Cunning);
+        public static int Brutality => InRun ? StatRules.StartValue + Meta.Brutality : Mathf.Max(StatRules.StartValue, Build.Brutality);
+        public static int Ferocity => InRun ? StatRules.StartValue + Meta.Ferocity : Mathf.Max(StatRules.StartValue, Build.Ferocity);
+        public static int Tenacity => InRun ? StatRules.StartValue + Meta.Tenacity : Mathf.Max(StatRules.StartValue, Build.Tenacity);
+        public static int Cunning => InRun ? StatRules.StartValue + Meta.Cunning : Mathf.Max(StatRules.StartValue, Build.Cunning);
         public static int TotalLevel => Brutality + Ferocity + Tenacity + Cunning;
         public static int Level => StatRules.DisplayLevel(TotalLevel);
         public static int NextLevelCost => StatRules.LevelCost(Level);
@@ -29,6 +29,8 @@ namespace TentacleVania.Core.Progression
         public static float StatusPotency => StatRules.StatusPotency(Cunning);
 
         private static BuildState Build => SaveSystem.Data.Build;
+        private static MetaState Meta => SaveSystem.Data.Meta;
+        private static bool InRun => Runs.RunSession.Active;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics() => Changed = null;

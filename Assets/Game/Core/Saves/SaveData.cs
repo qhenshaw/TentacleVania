@@ -57,6 +57,7 @@ namespace TentacleVania.Core.Saves
         public int Reward;
         public int Room;
         public bool Cleared;
+        public bool DefianceUsed;
         public List<string> UsedRooms = new();
     }
 
