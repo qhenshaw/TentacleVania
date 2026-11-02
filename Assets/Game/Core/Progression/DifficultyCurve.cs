@@ -30,18 +30,30 @@ namespace TentacleVania.Core.Progression
         private static DifficultyCurve _loaded;
 
         [SerializeField] private List<SectorScale> _sectors = new();
+        [Header("Run room depth (placeholder)")]
+        [Tooltip("Extra enemy health and stagger per room deeper into a run floor.")]
+        [SerializeField, Min(0f)] private float _healthPerRoom = 0.04f;
+        [Tooltip("Extra enemy outgoing damage per room deeper into a run floor.")]
+        [SerializeField, Min(0f)] private float _damagePerRoom = 0.02f;
 
         public IReadOnlyList<SectorScale> Sectors => _sectors;
 
         public static string CurrentSector { get; set; }
+        public static int RoomDepth { get; set; }
 
         public static SectorScale Current => For(CurrentSector);
+        public static float DepthHealth => RoomScale(RoomDepth, Loaded() != null ? _loaded._healthPerRoom : 0f);
+        public static float DepthDamage => RoomScale(RoomDepth, Loaded() != null ? _loaded._damagePerRoom : 0f);
 
-        public static SectorScale For(string sector)
+        public static float RoomScale(int depth, float perRoom) => 1f + Mathf.Max(0, depth) * perRoom;
+
+        public static SectorScale For(string sector) => Loaded() != null ? _loaded.Find(sector) : Neutral;
+
+        private static DifficultyCurve Loaded()
         {
             if (_loaded == null)
                 _loaded = Resources.Load<DifficultyCurve>(ResourcePath);
-            return _loaded != null ? _loaded.Find(sector) : Neutral;
+            return _loaded;
         }
 
         public SectorScale Find(string sector)
@@ -54,6 +66,10 @@ namespace TentacleVania.Core.Progression
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetStatics() => CurrentSector = null;
+        private static void ResetStatics()
+        {
+            CurrentSector = null;
+            RoomDepth = 0;
+        }
     }
 }

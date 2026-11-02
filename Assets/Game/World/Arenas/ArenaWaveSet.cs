@@ -15,6 +15,8 @@ namespace TentacleVania.World.Arenas
             [Min(1)] public int Count = 1;
             [Tooltip("Spawn these as elites (Enemies/Data/Resources/EliteSettings).")]
             public bool Elite;
+            [Tooltip("Grabbable at any health (the wave's guaranteed consume heal).")]
+            public bool AnyHealth;
         }
 
         [Serializable]

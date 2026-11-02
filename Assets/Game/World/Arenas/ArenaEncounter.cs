@@ -231,11 +231,11 @@ namespace TentacleVania.World.Arenas
             }
             var next = _queue[^1];
             _queue.RemoveAt(_queue.Count - 1);
-            Spawn(next.Prefab, next.Elite);
+            Spawn(next.Prefab, next.Elite, next.AnyHealth);
             _nextAction = now + _waves.SpawnInterval;
         }
 
-        private void Spawn(Enemy prefab, bool elite)
+        private void Spawn(Enemy prefab, bool elite, bool anyHealth)
         {
             var onWall = prefab.Definition != null && prefab.Definition.SpawnOnWall && _wallMounts.Length > 0;
             var point = onWall ? _wallMounts[_wallCursor++ % _wallMounts.Length] : _spawnPoints[_spawnCursor++ % _spawnPoints.Length];
@@ -247,6 +247,8 @@ namespace TentacleVania.World.Arenas
             var enemy = Instantiate(prefab, position, point.rotation);
             if (elite)
                 enemy.MakeElite();
+            if (anyHealth && enemy.TryGetComponent(out Consumable consumable))
+                consumable.AnyHealth = true;
             _alive.Add(enemy);
         }
 

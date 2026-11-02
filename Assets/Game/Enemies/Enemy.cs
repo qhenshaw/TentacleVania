@@ -109,10 +109,11 @@ namespace TentacleVania.Enemies
                 if (attack.StrikeVfx != null)
                     EnemyManager.PrewarmStrike(attack.StrikeVfx);
             var curve = Core.Progression.DifficultyCurve.Current;
-            _depthHealth = IsBoss ? 1f : curve.Health;
+            _depthHealth = IsBoss ? 1f : curve.Health * Core.Progression.DifficultyCurve.DepthHealth;
             _health.Configure(Team.Site, _definition.MaxHealth * _depthHealth, _definition.MaxArmor);
-            if (!Mathf.Approximately(curve.Damage, 1f))
-                _health.Outgoing.Add(new ScaleModifier(410) { HealthScale = curve.Damage });
+            var damageScale = curve.Damage * (IsBoss ? 1f : Core.Progression.DifficultyCurve.DepthDamage);
+            if (!Mathf.Approximately(damageScale, 1f))
+                _health.Outgoing.Add(new ScaleModifier(410) { HealthScale = damageScale });
             _health.Bleeds = !_definition.Machine;
             _health.BurstsOnDeath = !IsBoss;
             BaseSpeed = _definition.MoveSpeed;

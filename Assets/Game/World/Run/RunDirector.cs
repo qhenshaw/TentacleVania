@@ -50,6 +50,7 @@ namespace TentacleVania.World.Run
         {
             RunExit.Chosen -= OnChosen;
             LoadGate.Release(this);
+            DifficultyCurve.RoomDepth = 0;
             if (Active == this)
                 Active = null;
             if (_hasRoom && _handle.IsValid())
@@ -185,6 +186,7 @@ namespace TentacleVania.World.Run
             var fights = _current.Role is RoomRole.Combat or RoomRole.Elite or RoomRole.Boss;
             if (_arena != null && fights)
             {
+                DifficultyCurve.RoomDepth = _current.Role == RoomRole.Boss ? 0 : RunSession.Step;
                 if (_current.Role != RoomRole.Boss)
                     _arena.SetWaves(RunWaveComposer.Compose(_rng, _kit.Pool(RunSession.Floor), _current.Role, RunSession.Step));
                 _arena.StateChanged += OnArenaChanged;
