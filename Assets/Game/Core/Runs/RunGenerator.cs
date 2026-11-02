@@ -40,23 +40,23 @@ namespace TentacleVania.Core.Runs
             return new FloorPlan(floor, steps);
         }
 
-        public static List<DoorOffer> Offers(Random rng, RoomRole next, in RewardContext context, int roomsForRole, ICollection<int> usedRooms, List<DoorOffer> into = null)
+        public static List<DoorOffer> Offers(Random rng, RoomRole next, in RewardContext context, int roomsForRole, ICollection<int> usedRooms, List<DoorOffer> into = null, IReadOnlyList<int> roomWeights = null)
         {
             into ??= new List<DoorOffer>(MaxDoors);
             into.Clear();
             switch (next)
             {
                 case RoomRole.Shop:
-                    into.Add(new DoorOffer(next, RunReward.Shop, PickRoom(rng, roomsForRole, usedRooms, into)));
+                    into.Add(new DoorOffer(next, RunReward.Shop, PickRoom(rng, roomsForRole, usedRooms, into, roomWeights)));
                     return into;
                 case RoomRole.Boss:
                 case RoomRole.Entry:
-                    into.Add(new DoorOffer(next, RunReward.None, PickRoom(rng, roomsForRole, usedRooms, into)));
+                    into.Add(new DoorOffer(next, RunReward.None, PickRoom(rng, roomsForRole, usedRooms, into, roomWeights)));
                     return into;
                 case RoomRole.Elite:
                     var elites = rng.Next(1, 3);
                     for (var i = 0; i < elites; i++)
-                        into.Add(new DoorOffer(next, RunReward.Challenge, PickRoom(rng, roomsForRole, usedRooms, into)));
+                        into.Add(new DoorOffer(next, RunReward.Challenge, PickRoom(rng, roomsForRole, usedRooms, into, roomWeights)));
                     return into;
             }
             var doors = rng.Next(2, MaxDoors + 1);
@@ -65,7 +65,7 @@ namespace TentacleVania.Core.Runs
                 var reward = i == 0 && context.StepsSinceMutation >= MutationPity ? RunReward.Mutation : PickReward(rng, context, into);
                 if (reward == RunReward.None)
                     break;
-                into.Add(new DoorOffer(next, reward, PickRoom(rng, roomsForRole, usedRooms, into)));
+                into.Add(new DoorOffer(next, reward, PickRoom(rng, roomsForRole, usedRooms, into, roomWeights)));
             }
             return into;
         }
@@ -100,24 +100,43 @@ namespace TentacleVania.Core.Runs
             return true;
         }
 
-        private static int PickRoom(Random rng, int count, ICollection<int> used, List<DoorOffer> taken)
+        public static int RoomWeight(IReadOnlyList<int> weights, int room) => weights == null || room >= weights.Count ? 1 : Math.Max(0, weights[room]);
+
+        private static int PickRoom(Random rng, int count, ICollection<int> used, List<DoorOffer> taken, IReadOnlyList<int> weights)
         {
             if (count <= 0)
                 return -1;
-            var start = rng.Next(count);
             for (var pass = 0; pass < 2; pass++)
-                for (var i = 0; i < count; i++)
+            {
+                var total = 0;
+                for (var room = 0; room < count; room++)
+                    if (Available(room, pass, count, used, taken))
+                        total += RoomWeight(weights, room);
+                if (total <= 0)
+                    continue;
+                var roll = rng.Next(total);
+                for (var room = 0; room < count; room++)
                 {
-                    var room = (start + i) % count;
-                    if (pass == 0 && used != null && used.Contains(room))
+                    if (!Available(room, pass, count, used, taken))
                         continue;
-                    var clash = false;
-                    foreach (var offer in taken)
-                        clash |= offer.Room == room;
-                    if (!clash || count <= taken.Count)
+                    roll -= RoomWeight(weights, room);
+                    if (roll < 0)
                         return room;
                 }
-            return start;
+            }
+            return rng.Next(count);
+        }
+
+        private static bool Available(int room, int pass, int count, ICollection<int> used, List<DoorOffer> taken)
+        {
+            if (pass == 0 && used != null && used.Contains(room))
+                return false;
+            if (count <= taken.Count)
+                return true;
+            foreach (var offer in taken)
+                if (offer.Room == room)
+                    return false;
+            return true;
         }
     }
 }

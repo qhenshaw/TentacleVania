@@ -37,6 +37,7 @@ namespace TentacleVania.World.Run
         private const float SpawnedExitSpacing = 3.2f;
         private const float SpawnedExitDepth = 1.2f;
 
+        private readonly List<int> _weights = new(16);
         private readonly List<DoorOffer> _offers = new(RunGenerator.MaxDoors);
         private readonly Dictionary<RoomRole, HashSet<int>> _used = new();
         private readonly List<RunExit> _exits = new(4);
@@ -124,7 +125,7 @@ namespace TentacleVania.World.Run
             RunSession.Floor = floor;
             RunSession.Step = 0;
             PrepareFloor(floor);
-            var entry = RunGenerator.Offers(StepRng(), RoomRole.Entry, RunSession.Context, _kit.Count(floor, RoomRole.Entry), Used(RoomRole.Entry), _offers);
+            var entry = RunGenerator.Offers(StepRng(), RoomRole.Entry, RunSession.Context, _kit.Count(floor, RoomRole.Entry), Used(RoomRole.Entry), _offers, _kit.Weights(floor, RoomRole.Entry, _weights));
             Go(entry[0]);
         }
 
@@ -195,7 +196,7 @@ namespace TentacleVania.World.Run
             if (RunPod.Open)
                 RunPod.BreakOut();
             RunSession.Step = _plan.Count - 1;
-            var offers = RunGenerator.Offers(StepRng(), RoomRole.Boss, RunSession.Context, _kit.Count(RunSession.Floor, RoomRole.Boss), Used(RoomRole.Boss), _offers);
+            var offers = RunGenerator.Offers(StepRng(), RoomRole.Boss, RunSession.Context, _kit.Count(RunSession.Floor, RoomRole.Boss), Used(RoomRole.Boss), _offers, _kit.Weights(RunSession.Floor, RoomRole.Boss, _weights));
             Go(offers[0]);
         }
 
@@ -271,7 +272,7 @@ namespace TentacleVania.World.Run
             if (!last)
             {
                 var next = _plan.Steps[RunSession.Step + 1];
-                RunGenerator.Offers(_rng, next, RunSession.Context, _kit.Count(RunSession.Floor, next), Used(next), _offers);
+                RunGenerator.Offers(_rng, next, RunSession.Context, _kit.Count(RunSession.Floor, next), Used(next), _offers, _kit.Weights(RunSession.Floor, next, _weights));
             }
             if (_exits.Count == 0 && !last && _current.Role is RoomRole.Combat or RoomRole.Elite)
                 SpawnExits(scene);
@@ -544,7 +545,7 @@ namespace TentacleVania.World.Run
             _rerollsHere++;
             var next = _plan.Steps[RunSession.Step + 1];
             var rng = new System.Random(unchecked(RunGenerator.FloorSeed(RunSession.Seed, RunSession.Floor) * 31 + RunSession.Step * 7919 + _rerollsHere * 104729));
-            RunGenerator.Offers(rng, next, RunSession.Context, _kit.Count(RunSession.Floor, next), Used(next), _offers);
+            RunGenerator.Offers(rng, next, RunSession.Context, _kit.Count(RunSession.Floor, next), Used(next), _offers, _kit.Weights(RunSession.Floor, next, _weights));
             Shuffle(_exits, rng);
             AssignExits();
         }
