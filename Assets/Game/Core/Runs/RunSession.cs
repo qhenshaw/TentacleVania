@@ -20,8 +20,11 @@ namespace TentacleVania.Core.Runs
         public static int EvolutionsOpen { get; set; } = 2;
         public static int SizeStage { get; private set; }
         public static int BiomassReward { get; set; } = 150;
-        public static int EssenceReward { get; set; } = 20;
-        public static int FloorEssence { get; set; } = 50;
+        public static int EssenceReward { get; set; } = 30;
+        public static int FloorEssence { get; set; } = 60;
+        public static int EliteEssence { get; set; } = 10;
+        public static int BossEssence { get; set; } = 40;
+        public static float EnemyBiomassScale { get; set; } = 0.15f;
         public static string RespawnScene { get; set; }
         public static bool DefianceUsed { get; set; }
         public static int Rooms { get; set; }

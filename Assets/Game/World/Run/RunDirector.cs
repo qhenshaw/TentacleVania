@@ -522,6 +522,13 @@ namespace TentacleVania.World.Run
 
         private void OnDied(Health health)
         {
+            if (RunSession.Active && health != null && health.TryGetComponent(out Enemies.Enemy enemy))
+            {
+                if (enemy.IsBoss)
+                    RunSession.AddEssence(RunSession.BossEssence);
+                else if (enemy.IsElite)
+                    RunSession.AddEssence(RunSession.EliteEssence);
+            }
             if (health != null && health == CombatTargets.Creature)
                 RunSession.End(false);
         }
