@@ -2127,6 +2127,58 @@ MonoBehaviour:
     m_Key: run.call.reroll
     m_Metadata:
       m_Items: []
+  - m_Id: 1090465740636160
+    m_Key: run.heat.button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773504
+    m_Key: run.heat.buttonOn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773505
+    m_Key: run.heat.hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773506
+    m_Key: run.heat.hardened
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773507
+    m_Key: run.heat.hardened.rank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773508
+    m_Key: run.heat.vicious
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773509
+    m_Key: run.heat.vicious.rank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773510
+    m_Key: run.heat.swarm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773511
+    m_Key: run.heat.swarm.rank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773512
+    m_Key: run.heat.starved
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773513
+    m_Key: run.heat.starved.rank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773514
+    m_Key: run.heat.gouged
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773515
+    m_Key: run.heat.gouged.rank
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

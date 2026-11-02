@@ -33,6 +33,7 @@ namespace TentacleVania.UI.Run
         private Label _hint;
         private Button _breakout;
         private Button _call;
+        private Button _heat;
         private ContentCatalog _catalog;
         private CreatureMotor _lockedMotor;
 
@@ -40,6 +41,7 @@ namespace TentacleVania.UI.Run
 
         public bool IsOpen { get; private set; }
         public bool Calling { get; private set; }
+        public bool Heating { get; private set; }
         public WeaponDefinition Weapon1 => Pick(_weapons, _picks[0]);
         public WeaponDefinition Weapon2 => Pick(_weapons, _picks[1]);
         public AbilityDefinition Ability => Pick(_abilities, _picks[2]);
@@ -57,6 +59,8 @@ namespace TentacleVania.UI.Run
             _hint = root.Q<Label>("hint");
             _breakout = root.Q<Button>("breakout");
             _call = root.Q<Button>("call");
+            _heat = root.Q<Button>("heat");
+            _heat.clicked += ToggleHeat;
             UiText.Bind(root.Q<Label>("title"), "run.pod.title");
             UiText.Bind(_breakout, "run.pod.breakout");
             _breakout.clicked += BreakOut;
@@ -65,6 +69,8 @@ namespace TentacleVania.UI.Run
             {
                 if (Calling)
                     ToggleCall();
+                else if (Heating)
+                    ToggleHeat();
             });
             RunPod.Requested += Open;
             RunPod.BrokeOut += OnBrokeOut;
@@ -133,9 +139,53 @@ namespace TentacleVania.UI.Run
             RefreshLoadout();
         }
 
+        public void ToggleHeat()
+        {
+            if (!IsOpen || Calling || !Heat.Unlocked(SaveSystem.Data.Meta))
+                return;
+            if (Heating)
+                ShowLoadout();
+            else
+                ShowHeat();
+        }
+
+        public void CycleHeat(HeatKind kind, int direction)
+        {
+            if (!Heating)
+                return;
+            var meta = SaveSystem.Data.Meta;
+            var rank = Heat.Rank(meta, kind) + direction;
+            var max = Heat.MaxRank(kind);
+            Heat.SetRank(meta, kind, rank > max ? 0 : rank < 0 ? max : rank);
+            ShowHeat();
+        }
+
+        private void ShowHeat()
+        {
+            Heating = true;
+            var meta = SaveSystem.Data.Meta;
+            _hint.text = string.Format(Text("run.heat.hint"), Heat.Total(meta), Mathf.RoundToInt((Heat.EssenceScale(meta) - 1f) * 100f));
+            _heat.text = Text("run.call.back");
+            _call.style.display = DisplayStyle.None;
+            _breakout.style.display = DisplayStyle.None;
+            _rows.Clear();
+            for (var i = 0; i < Heat.Kinds; i++)
+            {
+                var kind = (HeatKind)i;
+                var key = "run.heat." + kind.ToString().ToLowerInvariant();
+                var line = Row();
+                line.Add(Label(Text(key), "pod__label"));
+                line.Add(Arrow("<", "heat-prev-" + i, () => CycleHeat(kind, -1)));
+                line.Add(Label(string.Format(Text(key + ".rank"), Heat.Rank(meta, kind), Heat.MaxRank(kind)), "pod__value"));
+                line.Add(Arrow(">", "heat-next-" + i, () => CycleHeat(kind, 1)));
+                _rows.Add(line);
+            }
+            _heat.schedule.Execute(() => _heat.Focus());
+        }
+
         public void ToggleCall()
         {
-            if (!IsOpen)
+            if (!IsOpen || Heating)
                 return;
             if (Calling)
             {
@@ -205,6 +255,7 @@ namespace TentacleVania.UI.Run
         {
             IsOpen = false;
             Calling = false;
+            Heating = false;
             _pick.RemoveFromClassList(OpenClass);
             if (_lockedMotor != null)
                 _lockedMotor.UnlockControl();
@@ -231,6 +282,11 @@ namespace TentacleVania.UI.Run
         private void ShowLoadout()
         {
             Calling = false;
+            Heating = false;
+            var meta = SaveSystem.Data.Meta;
+            _heat.style.display = Heat.Unlocked(meta) ? DisplayStyle.Flex : DisplayStyle.None;
+            _heat.text = Heat.Total(meta) > 0 ? string.Format(Text("run.heat.buttonOn"), Heat.Total(meta)) : Text("run.heat.button");
+            _call.style.display = DisplayStyle.Flex;
             _hint.text = Text("run.pod.hint");
             _call.text = Text("run.call.open");
             _breakout.style.display = DisplayStyle.Flex;
@@ -266,6 +322,7 @@ namespace TentacleVania.UI.Run
             var meta = SaveSystem.Data.Meta;
             _hint.text = string.Format(Text("run.call.essence"), meta.Essence.ToString("N0"));
             _call.text = Text("run.call.back");
+            _heat.style.display = DisplayStyle.None;
             _breakout.style.display = DisplayStyle.None;
             _rows.Clear();
             var scroll = new ScrollView();

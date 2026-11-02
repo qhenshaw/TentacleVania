@@ -9,14 +9,18 @@ namespace TentacleVania.Core.Runs
     public static class RunShop
     {
         public const int BaseOffers = 3;
-        public const int HealPrice = 150;
+        public const int BaseHealPrice = 150;
         public const float HealFraction = 0.5f;
 
         private static readonly int[] MutationPriceByNotches = { 120, 250, 400 };
         private static readonly List<int> Sold = new(8);
         private static int _visit = -1;
 
-        public static int MutationPrice(int notches) => MutationPriceByNotches[Mathf.Clamp(notches, 1, MutationPriceByNotches.Length) - 1];
+        public static int HealPrice => Price(BaseHealPrice);
+
+        public static int MutationPrice(int notches) => Price(MutationPriceByNotches[Mathf.Clamp(notches, 1, MutationPriceByNotches.Length) - 1]);
+
+        public static int Price(int price) => Mathf.RoundToInt(price * Heat.Scale(Heat.Live, HeatKind.Gouged));
 
         public static int Offers(MetaState meta) => BaseOffers + MotherCall.Count(meta, UnlockKind.HoarderTier);
 

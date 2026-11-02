@@ -2176,6 +2176,58 @@ MonoBehaviour:
     m_Localized: 'Reroll token {0}: reroll one room''s doors per run'
     m_Metadata:
       m_Items: []
+  - m_Id: 1090465740636160
+    m_Localized: Heat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773504
+    m_Localized: Heat {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773505
+    m_Localized: 'Heat {0}: Essence earned +{1}%. Make Site Beta fight harder.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773506
+    m_Localized: Hardened
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773507
+    m_Localized: '{0} / {1}: enemies have more health'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773508
+    m_Localized: Vicious
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773509
+    m_Localized: '{0} / {1}: enemies hit harder'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773510
+    m_Localized: Swarm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773511
+    m_Localized: '{0} / {1}: more enemies in every wave'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773512
+    m_Localized: Starved
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773513
+    m_Localized: '{0} / {1}: consuming heals less'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773514
+    m_Localized: Gouged
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090465786773515
+    m_Localized: '{0} / {1}: the Hoarder charges more'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

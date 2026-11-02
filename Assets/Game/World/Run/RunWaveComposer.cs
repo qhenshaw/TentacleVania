@@ -14,7 +14,7 @@ namespace TentacleVania.World.Run
             var waves = new List<ArenaWaveSet.Wave>();
             if (pool == null)
                 return ArenaWaveSet.Create(waves);
-            RunWaves.Plan(rng, pool.Enemies.Count, pool.Prey.Count, role, step, Slots);
+            RunWaves.Plan(rng, pool.Enemies.Count, pool.Prey.Count, role, step, Slots, Heat.ExtraEnemies(Heat.Live));
             foreach (var slot in Slots)
             {
                 while (waves.Count <= slot.Wave)

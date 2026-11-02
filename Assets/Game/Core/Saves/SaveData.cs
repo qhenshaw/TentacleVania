@@ -33,6 +33,7 @@ namespace TentacleVania.Core.Saves
         public int HoarderBuys;
         public int BiomassSpent;
         public List<string> Bosses = new();
+        public List<int> Heat = new();
         public List<string> Unlocks = new();
         public List<RunRecord> Runs = new();
     }

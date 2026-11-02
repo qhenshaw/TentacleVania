@@ -130,7 +130,7 @@ namespace TentacleVania.Core.Runs
 
         public static void AddEssence(int amount)
         {
-            amount = Mathf.Max(0, amount);
+            amount = Mathf.RoundToInt(Mathf.Max(0, amount) * Heat.EssenceScale(Heat.Live));
             Essence += amount;
             SaveSystem.Data.Meta.Essence += amount;
         }
