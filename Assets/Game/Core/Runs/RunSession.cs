@@ -39,6 +39,8 @@ namespace TentacleVania.Core.Runs
         public static event Action<int> FloorCleared;
         public static event Action<bool> Ended;
         public static event Action DefianceTriggered;
+        public static event Action<int> FloorStarted;
+        public static event Action<string> BossKilled;
 
         public static RewardContext Context => new() { Floor = Floor, Step = Step, EvolutionsOpen = EvolutionsOpen, StepsSinceMutation = StepsSinceMutation, StepsSinceEvolution = StepsSinceEvolution };
 
@@ -171,8 +173,12 @@ namespace TentacleVania.Core.Runs
 
         public static void Suspend() => Active = false;
 
+        public static void StartFloor(int floor) => FloorStarted?.Invoke(floor);
+
         public static void RecordBoss(string id)
         {
+            if (Active)
+                BossKilled?.Invoke(id);
             var bosses = SaveSystem.Data.Meta.Bosses;
             if (Active && !string.IsNullOrEmpty(id) && !bosses.Contains(id))
                 bosses.Add(id);
@@ -204,6 +210,8 @@ namespace TentacleVania.Core.Runs
             FloorCleared = null;
             Ended = null;
             DefianceTriggered = null;
+            FloorStarted = null;
+            BossKilled = null;
         }
     }
 }

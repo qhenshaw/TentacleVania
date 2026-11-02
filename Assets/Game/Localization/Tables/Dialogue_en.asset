@@ -878,6 +878,50 @@ MonoBehaviour:
     m_Localized: Command's best. I told them to send more.
     m_Metadata:
       m_Items: []
+  - m_Id: 670669588938752
+    m_Localized: Containment breach on the holding level. Specimen loose in the pod bay. All staff to secure rooms.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 670669626687488
+    m_Localized: Another one. She keeps sending them. Fine. Let it come to me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 670669626687489
+    m_Localized: Breach alarm, Research. Labs, seal your doors. Cold storage, vent the corridors.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 670669626687490
+    m_Localized: It moves like the last one. It remembers how the last one died.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 670669626687491
+    m_Localized: Command, specimen on the military level. All squads, weapons free.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 670669626687492
+    m_Localized: Soldiers. As if bullets ever stopped her children.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 670669626687493
+    m_Localized: Warning. Deep containment breach. Reactor shielding at risk.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 670669626687494
+    m_Localized: You won't reach her. None of you ever reach her.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 670669626687495
+    m_Localized: And another one dies in my halls. Clean it up. The next will hatch soon enough.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 670669626687496
+    m_Localized: Vault breach. Vault breach. All personnel, evacuate Site Beta.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 670669626687497
+    m_Localized: 'Containment of Subject Zero has failed. Repeat: containment has failed.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
