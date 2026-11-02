@@ -105,7 +105,42 @@ MonoBehaviour:
       y: 0
       width: 27
       height: 24
+  - Scene: K3_EliteCore
+    Center: {x: 330.29782, y: 1.4155036, z: 15.297824}
+    Size: {x: 37.754333, y: 3.6310077, z: 31.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 312
+      y: 0
+      width: 36
+      height: 30
+  - Scene: K3_EliteNest
+    Center: {x: 373.89734, y: 1.4155036, z: 15.297824}
+    Size: {x: 34.555298, y: 3.6310077, z: 31.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 357
+      y: 0
+      width: 33
+      height: 30
+  - Scene: K3_Shop
+    Center: {x: 408.70984, y: 1.5655037, z: 7.7978234}
+    Size: {x: 20.180328, y: 3.3310075, z: 16.75435}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 399
+      y: 0
+      width: 18
+      height: 15
   _sector: K3
   _rootScene: Run
   _color: {r: 0.7, g: 0.7, b: 0.75, a: 1}
-  _markers: []
+  _markers:
+  - Kind: 4
+    Id: Hoarder
+    Room: K3_Shop
+    Position: {x: 402.66, y: 0, z: 12}
+    Yaw: 0

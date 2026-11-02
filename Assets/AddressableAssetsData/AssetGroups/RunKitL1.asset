@@ -40,8 +40,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6bf5d30c58c72b843bd51a51e9098114
+    m_Address: K1_EliteSurgery
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 716ad58125fb37b45b6dae9c13d10a51
+    m_Address: K1_EliteCryovault
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 77ee8ac6104e3564b8a179d19649dd11
     m_Address: K1_ColdRoom
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6a0e068b800e6247a296a38242c02c2
+    m_Address: K1_Shop
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

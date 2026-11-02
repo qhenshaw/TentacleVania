@@ -105,7 +105,42 @@ MonoBehaviour:
       y: 0
       width: 33
       height: 24
+  - Scene: K1_EliteSurgery
+    Center: {x: 321.39734, y: 1.4155036, z: 13.897347}
+    Size: {x: 37.555298, y: 3.6310077, z: 28.55531}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 303
+      y: 0
+      width: 36
+      height: 27
+  - Scene: K1_EliteCryovault
+    Center: {x: 364.89734, y: 1.4155036, z: 15.397347}
+    Size: {x: 34.555298, y: 3.6310077, z: 31.55531}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 348
+      y: 0
+      width: 33
+      height: 30
+  - Scene: K1_Shop
+    Center: {x: 399.29785, y: 1.5655037, z: 7.7978234}
+    Size: {x: 19.754395, y: 3.3310075, z: 16.75435}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 390
+      y: 0
+      width: 18
+      height: 15
   _sector: K1
   _rootScene: Run
   _color: {r: 0.7, g: 0.7, b: 0.75, a: 1}
-  _markers: []
+  _markers:
+  - Kind: 4
+    Id: Hoarder
+    Room: K1_Shop
+    Position: {x: 393.66, y: 0, z: 12}
+    Yaw: 0

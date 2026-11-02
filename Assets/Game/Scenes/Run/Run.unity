@@ -154,6 +154,7 @@ MonoBehaviour:
   _afterGrowthWait: 1
   _defianceHealth: 0.3
   _loreTerminal: {fileID: 4423408979904499266, guid: 2821417ecd2ad0a4b809be1824cc8267, type: 3}
+  _exitPrefab: {fileID: 7817245067674923469, guid: f886d05c2da88904ba957be4a8a3e341, type: 3}
 --- !u!4 &179672847
 Transform:
   m_ObjectHideFlags: 0

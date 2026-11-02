@@ -1030,6 +1030,349 @@
           }
         ]
       ]
+    },
+    {
+      "scene": "K0_EliteWard",
+      "role": "Arena",
+      "rect": [
+        99,
+        0,
+        12,
+        9
+      ],
+      "doors": [
+        {
+          "x": 105,
+          "y": 8,
+          "side": "North"
+        },
+        {
+          "x": 110,
+          "y": 4,
+          "side": "East"
+        },
+        {
+          "x": 99,
+          "y": 4,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            105.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            105.5,
+            8.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            110.85,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            99.15,
+            4.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/SpecimenPod.prefab",
+          "at": [
+            100.2,
+            7.65
+          ],
+          "yaw": 180,
+          "name": "Pod0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/SpecimenPod.prefab",
+          "at": [
+            109.8,
+            7.65
+          ],
+          "yaw": 180,
+          "name": "Pod1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Acid.prefab",
+          "at": [
+            102.6,
+            4.05
+          ],
+          "yaw": 0,
+          "name": "Acid2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Acid.prefab",
+          "at": [
+            107.4,
+            4.05
+          ],
+          "yaw": 0,
+          "name": "Acid3"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            105.0,
+            6.3
+          ],
+          "yaw": 0,
+          "name": "Cover4"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K0_EliteSecurity",
+      "role": "Arena",
+      "rect": [
+        114,
+        0,
+        11,
+        10
+      ],
+      "doors": [
+        {
+          "x": 119,
+          "y": 9,
+          "side": "North"
+        },
+        {
+          "x": 124,
+          "y": 5,
+          "side": "East"
+        },
+        {
+          "x": 114,
+          "y": 5,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            119.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            119.5,
+            9.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            124.85,
+            5.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            114.15,
+            5.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            116.75,
+            3.0
+          ],
+          "yaw": 0,
+          "name": "Cover0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            122.25,
+            3.0
+          ],
+          "yaw": 0,
+          "name": "Cover1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            116.75,
+            7.0
+          ],
+          "yaw": 90,
+          "name": "Cover2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            122.25,
+            7.0
+          ],
+          "yaw": 90,
+          "name": "Cover3"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            119.5,
+            8.5
+          ],
+          "yaw": 180,
+          "name": "Console4"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K0_Shop",
+      "role": "Plain",
+      "rect": [
+        128,
+        0,
+        6,
+        5
+      ],
+      "doors": [
+        {
+          "x": 131,
+          "y": 4,
+          "side": "North"
+        },
+        {
+          "x": 133,
+          "y": 2,
+          "side": "East"
+        },
+        {
+          "x": 128,
+          "y": 2,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            131.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            131.5,
+            4.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            133.85,
+            2.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            128.15,
+            2.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "hoarder",
+          "at": [
+            128.72,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "Hoarder",
+          "floor": 0
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/SpecimenPod.prefab",
+          "at": [
+            133.1,
+            3.75
+          ],
+          "yaw": 180,
+          "name": "Pod1"
+        }
+      ]
     }
   ]
 }

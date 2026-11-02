@@ -990,6 +990,349 @@
           }
         ]
       ]
+    },
+    {
+      "scene": "K2_EliteKillhouse",
+      "role": "Arena",
+      "rect": [
+        102,
+        0,
+        12,
+        10
+      ],
+      "doors": [
+        {
+          "x": 108,
+          "y": 9,
+          "side": "North"
+        },
+        {
+          "x": 113,
+          "y": 5,
+          "side": "East"
+        },
+        {
+          "x": 102,
+          "y": 5,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            108.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            108.5,
+            9.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            113.85,
+            5.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            102.15,
+            5.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            104.4,
+            3.0
+          ],
+          "yaw": 0,
+          "name": "Cover0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            108.0,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "Cover1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            111.6,
+            3.0
+          ],
+          "yaw": 0,
+          "name": "Cover2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            105.6,
+            7.5
+          ],
+          "yaw": 0,
+          "name": "Cover3"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            110.4,
+            7.5
+          ],
+          "yaw": 0,
+          "name": "Cover4"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Fire.prefab",
+          "at": [
+            108.0,
+            2.0
+          ],
+          "yaw": 0,
+          "name": "Fire5"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K2_EliteHangar",
+      "role": "Arena",
+      "rect": [
+        117,
+        0,
+        13,
+        9
+      ],
+      "doors": [
+        {
+          "x": 123,
+          "y": 8,
+          "side": "North"
+        },
+        {
+          "x": 129,
+          "y": 4,
+          "side": "East"
+        },
+        {
+          "x": 117,
+          "y": 4,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            123.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            123.5,
+            8.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            129.85,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            117.15,
+            4.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            119.6,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "Cover0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            127.4,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "Cover1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Electric.prefab",
+          "at": [
+            123.5,
+            3.15
+          ],
+          "yaw": 0,
+          "name": "Electric2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Fire.prefab",
+          "at": [
+            123.5,
+            6.75
+          ],
+          "yaw": 0,
+          "name": "Fire3"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K2_Shop",
+      "role": "Plain",
+      "rect": [
+        133,
+        0,
+        6,
+        5
+      ],
+      "doors": [
+        {
+          "x": 136,
+          "y": 4,
+          "side": "North"
+        },
+        {
+          "x": 138,
+          "y": 2,
+          "side": "East"
+        },
+        {
+          "x": 133,
+          "y": 2,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            136.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            136.5,
+            4.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            138.85,
+            2.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            133.15,
+            2.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "hoarder",
+          "at": [
+            133.72,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "Hoarder",
+          "floor": 2
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            137.8,
+            3.5
+          ],
+          "yaw": 0,
+          "name": "Cover1"
+        }
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Writes the room kit sector spec for one run floor (Assets/Game/World/Data/Sectors/RunKitL<n>.sector.json) from the
 # room tables below: each room is a rectangle with the entry on its south edge, RunExits on the listed sides (centred,
-# like the KT greybox kit) and theme props placed at fractions of the room. Build the scenes afterwards with
+# like the KT greybox kit) and theme props placed at fractions of the room ('hoarder' places the shop's Hoarder). Build the scenes afterwards with
 # SectorPlans.Build("K<n>") from an editor eval, then list the rooms in the RunKit asset.
 #
 # Usage: python -I Tools/runkit-spec.py <floor 0-3>
@@ -38,6 +38,9 @@ FLOORS = {
         ('Isolation', 'Arena', 8, 8, ALL, [('pod', 0.2, 0.2, 0), ('pod', 0.8, 0.2, 0), ('pod', 0.2, 0.8, 180), ('pod', 0.8, 0.8, 180), ('acid', 0.35, 0.5, 0)]),
         ('Records', 'Arena', 8, 6, ALL, [('console', 0.2, 0.75, 180), ('console', 0.8, 0.75, 180), ('cover', 0.3, 0.35, 0), ('cover', 0.7, 0.35, 0)]),
         ('Holding', 'Arena', 11, 7, ALL, [('pod', 0.12, 0.8, 180), ('pod', 0.25, 0.8, 180), ('pod', 0.75, 0.8, 180), ('pod', 0.88, 0.8, 180), ('cover', 0.35, 0.35, 0), ('cover', 0.65, 0.35, 0)]),
+        ('EliteWard', 'Arena', 12, 9, ALL, [('pod', 0.1, 0.85, 180), ('pod', 0.9, 0.85, 180), ('acid', 0.3, 0.45, 0), ('acid', 0.7, 0.45, 0), ('cover', 0.5, 0.7, 0)]),
+        ('EliteSecurity', 'Arena', 11, 10, ALL, [('cover', 0.25, 0.3, 0), ('cover', 0.75, 0.3, 0), ('cover', 0.25, 0.7, 90), ('cover', 0.75, 0.7, 90), ('console', 0.5, 0.85, 180)]),
+        ('Shop', 'Plain', 6, 5, ALL, [('hoarder', 0.12, 0.7, 90), ('pod', 0.85, 0.75, 180)]),
     ]),
     1: ('Research', [
         ('Entry', 'Plain', 6, 5, ALL, [('console', 0.2, 0.7, 180), ('console', 0.8, 0.7, 180)]),
@@ -49,6 +52,9 @@ FLOORS = {
         ('Server', 'Arena', 8, 6, ALL, [('console', 0.25, 0.35, 90), ('console', 0.75, 0.35, 270), ('console', 0.25, 0.7, 90), ('console', 0.75, 0.7, 270)]),
         ('Freezer', 'Arena', 7, 8, ALL, [('cryo', 0.3, 0.3, 0), ('cryo', 0.7, 0.7, 0), ('cover', 0.7, 0.3, 0), ('cover', 0.3, 0.7, 0)]),
         ('Atrium', 'Arena', 11, 8, ALL, [('pylon', 0.25, 0.3, 0), ('pylon', 0.75, 0.3, 0), ('pylon', 0.25, 0.75, 0), ('pylon', 0.75, 0.75, 0), ('electric', 0.5, 0.5, 0)]),
+        ('EliteSurgery', 'Arena', 12, 9, ALL, [('pylon', 0.25, 0.5, 0), ('pylon', 0.75, 0.5, 0), ('electric', 0.5, 0.3, 0), ('console', 0.5, 0.85, 180)]),
+        ('EliteCryovault', 'Arena', 11, 10, ALL, [('cryo', 0.3, 0.3, 0), ('cryo', 0.7, 0.3, 0), ('cryo', 0.5, 0.7, 0), ('pod', 0.1, 0.85, 180), ('pod', 0.9, 0.85, 180)]),
+        ('Shop', 'Plain', 6, 5, ALL, [('hoarder', 0.12, 0.7, 90), ('console', 0.85, 0.75, 180)]),
     ]),
     2: ('Military', [
         ('Entry', 'Plain', 6, 5, ALL, [('cover', 0.25, 0.7, 0), ('cover', 0.75, 0.7, 0)]),
@@ -60,6 +66,9 @@ FLOORS = {
         ('Bunker', 'Arena', 7, 7, ALL, [('cover', 0.25, 0.5, 90), ('cover', 0.75, 0.5, 90), ('electric', 0.5, 0.25, 0)]),
         ('Drill', 'Arena', 9, 9, ALL, [('cover', 0.3, 0.3, 0), ('cover', 0.7, 0.3, 0), ('cover', 0.3, 0.7, 0), ('cover', 0.7, 0.7, 0)]),
         ('Checkpoint', 'Arena', 7, 6, ALL, [('cover', 0.25, 0.55, 0), ('cover', 0.75, 0.55, 0), ('electric', 0.5, 0.75, 0)]),
+        ('EliteKillhouse', 'Arena', 12, 10, ALL, [('cover', 0.2, 0.3, 0), ('cover', 0.5, 0.45, 90), ('cover', 0.8, 0.3, 0), ('cover', 0.3, 0.75, 0), ('cover', 0.7, 0.75, 0), ('fire', 0.5, 0.2, 0)]),
+        ('EliteHangar', 'Arena', 13, 9, ALL, [('cover', 0.2, 0.5, 90), ('cover', 0.8, 0.5, 90), ('electric', 0.5, 0.35, 0), ('fire', 0.5, 0.75, 0)]),
+        ('Shop', 'Plain', 6, 5, ALL, [('hoarder', 0.12, 0.7, 90), ('cover', 0.8, 0.7, 0)]),
     ]),
     3: ('The Deep', [
         ('Entry', 'Plain', 6, 5, ALL, [('radiation', 0.2, 0.7, 0)]),
@@ -71,6 +80,9 @@ FLOORS = {
         ('BlackLab', 'Arena', 8, 7, ALL, [('console', 0.2, 0.75, 180), ('console', 0.8, 0.75, 180), ('electric', 0.5, 0.4, 0)]),
         ('Tunnels', 'Arena', 11, 6, ALL, [('radiation', 0.25, 0.5, 0), ('radiation', 0.75, 0.5, 0), ('cover', 0.5, 0.65, 90)]),
         ('Antechamber', 'Arena', 9, 8, ALL, [('tank', 0.22, 0.72, 180), ('acid', 0.7, 0.35, 0)]),
+        ('EliteCore', 'Arena', 12, 10, ALL, [('radiation', 0.5, 0.5, 0), ('pylon', 0.2, 0.25, 0), ('pylon', 0.8, 0.25, 0), ('pylon', 0.2, 0.75, 0), ('pylon', 0.8, 0.75, 0)]),
+        ('EliteNest', 'Arena', 11, 10, ALL, [('acid', 0.3, 0.35, 0), ('acid', 0.7, 0.35, 0), ('pod', 0.15, 0.8, 180), ('pod', 0.85, 0.8, 180), ('radiation', 0.5, 0.7, 0)]),
+        ('Shop', 'Plain', 6, 5, ALL, [('hoarder', 0.12, 0.7, 90), ('radiation', 0.85, 0.75, 0)]),
     ]),
 }
 
@@ -107,7 +119,11 @@ def build(floor):
                 doors.append({'x': x, 'y': cy, 'side': side})
                 place.append({'type': 'prefab', 'prefab': EXIT, 'at': [x + 0.15, cy + 0.5], 'yaw': 270, 'name': 'ExitW'})
         for i, (prop, fx, fy, yaw) in enumerate(props):
-            place.append({'type': 'prefab', 'prefab': PROPS[prop], 'at': [round(x + fx * w, 2), round(fy * h, 2)], 'yaw': yaw, 'name': f'{prop.capitalize()}{i}'})
+            at = [round(x + fx * w, 2), round(fy * h, 2)]
+            if prop == 'hoarder':
+                place.append({'type': 'hoarder', 'at': at, 'yaw': yaw, 'name': 'Hoarder', 'floor': floor})
+            else:
+                place.append({'type': 'prefab', 'prefab': PROPS[prop], 'at': at, 'yaw': yaw, 'name': f'{prop.capitalize()}{i}'})
         room = {'scene': f'{sector}_{suffix}', 'role': role, 'rect': [x, 0, w, h], 'doors': doors, 'place': place}
         if role == 'Arena':
             room['waves'] = [[{'enemy': 'Scientist', 'count': 1}]]
