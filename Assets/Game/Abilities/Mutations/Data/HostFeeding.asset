@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.HostFeedingMutation
   _textKey: mutation.hostFeeding
   _notches: 2
+  _builds: 516
   _chargeRefund: 0.15
   _spreadRadius: 5

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.StaticSkinMutation
   _textKey: mutation.staticSkin
   _notches: 1
+  _builds: 2048
   _radius: 1.3
   _damage: 3

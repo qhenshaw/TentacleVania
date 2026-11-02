@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.SanguineFeastMutation
   _textKey: mutation.sanguineFeast
   _notches: 2
+  _builds: 18
   _healPerStack: 0.02

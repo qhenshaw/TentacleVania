@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.DissolvingGripMutation
   _textKey: mutation.dissolvingGrip
   _notches: 2
+  _builds: 1056
   _threshold: 0.4

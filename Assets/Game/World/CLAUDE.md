@@ -8,7 +8,7 @@ Rooms and encounters (`TentacleVania.World`).
 - `Run/Data/RunKitPrototype.asset` (`RunKit`) lists room scenes by role and floor (-1 = any) and per-floor enemy pools (`Enemies`, `Prey` for consumable fodder); `_floorCount` is 1 for the prototype. A scene may be listed under several roles (the KT combat rooms double as elites).
 - Kit rooms are single-room sector specs with `"runKit": true` (`Data/Sectors/RunKit.sector.json`, sector `KT`, scenes in `Scenes/RunKit/`, group `RunKit`, registry `RunRooms` with root scene `Run`): `SectorBuilder` builds the rooms and registry (it registers their Addressables) but skips the root scene, tunnels, build list and `MapAtlas`; the validator exempts that registry from the atlas rule. Each room needs a `RunEntry` placement and its doors carry `RunExit` prefabs (`Run/RunExit.prefab`: barrier, blocker, reward orb coloured per reward; Grab prompt `run.door.<reward>`).
 - Run mode bypasses the metroidvania flags while `RunSession.Active`: boss arenas don't stay cleared, `BossEnemy` skips `BossProgress.Defeat`, its reward mutation and the defeated-boss destroy. `RunSession.Started` clears equipped mutations and weapon modifiers.
-- F5 Run: Start run, Skip room (clears it, or takes the first open exit), run, room and plan readouts.
+- F5 Run: Start run, Skip room (clears it, or takes the first open exit), Grant mutation / evolution reward, run, room and plan readouts.
 
 ## CombatArena (Combat Prototype)
 

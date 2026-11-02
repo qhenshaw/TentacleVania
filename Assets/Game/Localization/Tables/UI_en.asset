@@ -1920,6 +1920,82 @@ MonoBehaviour:
     m_Localized: Go on
     m_Metadata:
       m_Items: []
+  - m_Id: 1052286690017280
+    m_Localized: MUTATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154624
+    m_Localized: Choose one. It takes root at once.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154625
+    m_Localized: Notches {0} / {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154626
+    m_Localized: No room for {0}. Choose mutations to shed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154627
+    m_Localized: Shed and take
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154628
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154629
+    m_Localized: Take nothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154630
+    m_Localized: Stagger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154631
+    m_Localized: Bleed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154632
+    m_Localized: Parasites
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154633
+    m_Localized: Thorns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154634
+    m_Localized: Healing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154635
+    m_Localized: Acid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154636
+    m_Localized: Low health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154637
+    m_Localized: Spines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154638
+    m_Localized: Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154639
+    m_Localized: Ability spam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154640
+    m_Localized: Consuming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052286736154641
+    m_Localized: Bio-electric
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

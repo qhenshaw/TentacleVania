@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.ShatterpointMutation
   _textKey: mutation.shatterpoint
   _notches: 2
+  _builds: 1
   _extraStun: 1
   _damageScale: 1.3

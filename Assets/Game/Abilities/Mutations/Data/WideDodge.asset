@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.WideDodgeMutation
   _textKey: mutation.wideDodge
   _notches: 1
+  _builds: 0
   _dashInvulnerability: 0.3

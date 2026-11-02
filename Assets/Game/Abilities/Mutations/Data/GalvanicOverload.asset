@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.GalvanicOverloadMutation
   _textKey: mutation.galvanicOverload
   _notches: 3
+  _builds: 2049
   _machineStagger: 2

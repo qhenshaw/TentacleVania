@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.HemorrhageMutation
   _textKey: mutation.hemorrhage
   _notches: 2
+  _builds: 3
   _burstScale: 1

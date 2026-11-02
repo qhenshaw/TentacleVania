@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.FeedbackLoopMutation
   _textKey: mutation.feedbackLoop
   _notches: 2
+  _builds: 512
   _targets: 3
   _refund: 0.3
   _window: 1.5

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.CapacitorOrganMutation
   _textKey: mutation.capacitorOrgan
   _notches: 2
+  _builds: 2560
   _gainScale: 1.3
   _perElectricHit: 2

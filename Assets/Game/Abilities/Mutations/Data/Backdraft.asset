@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.BackdraftMutation
   _textKey: mutation.backdraft
   _notches: 2
+  _builds: 256
   _radius: 3
   _damage: 10
   _sound:

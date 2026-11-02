@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.DesperateHungerMutation
   _textKey: mutation.desperateHunger
   _notches: 2
+  _builds: 1088
   _below: 0.3
   _bonus: 0.1

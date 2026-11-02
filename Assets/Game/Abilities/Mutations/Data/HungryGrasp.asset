@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.HungryGraspMutation
   _textKey: mutation.hungryGrasp
   _notches: 3
+  _builds: 1024
   _threshold: 0.35
   _perStage: 0.05

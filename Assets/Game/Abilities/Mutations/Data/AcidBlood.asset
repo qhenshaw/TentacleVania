@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.AcidBloodMutation
   _textKey: mutation.acidBlood
   _notches: 1
+  _builds: 96
   _below: 0.3
   _interval: 0.5
   _radius: 1

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.MarrowStoreMutation
   _textKey: mutation.marrowStore
   _notches: 2
+  _builds: 16
   _maxShield: 0.3
   _decaySeconds: 4

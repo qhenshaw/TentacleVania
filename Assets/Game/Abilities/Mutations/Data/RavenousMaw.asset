@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.RavenousMawMutation
   _textKey: mutation.ravenousMaw
   _notches: 2
+  _builds: 80
   _healScale: 1.25

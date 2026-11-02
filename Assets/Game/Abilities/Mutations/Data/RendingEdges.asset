@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.RendingEdgesMutation
   _textKey: mutation.rendingEdges
   _notches: 1
+  _builds: 2

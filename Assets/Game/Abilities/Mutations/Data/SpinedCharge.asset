@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: TentacleVania.Abilities::TentacleVania.Abilities.Mutations.SpinedChargeMutation
   _textKey: mutation.spinedCharge
   _notches: 2
+  _builds: 128
   _volley: {fileID: 11400000, guid: 624976c296cc5ca4aa76c555f6611b72, type: 2}
   _spines: 5
   _spread: 50
