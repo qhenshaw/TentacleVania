@@ -11,7 +11,7 @@ Rooms and encounters (`TentacleVania.World`).
 - Run mode bypasses the metroidvania flags while `RunSession.Active`: boss arenas don't stay cleared, `BossEnemy` skips `BossProgress.Defeat`, its reward mutation and the defeated-boss destroy. `RunSession.Started` clears equipped mutations and weapon modifiers.
 - Lore (TV-250): each Combat room rolls `Core.Runs.RunLore.Pick` (placeholder 25%, seeded by run seed, floor and step) over the `LoreLibrary` logs not yet collected and spawns the director's `_loreTerminal` (`Lore/LoreTerminal.prefab`) with that log on the NavMesh near the room's renderer centre, moved into the room scene. Reading it collects the log for good (`WorldFlag.CollectedLog`, per slot).
 - `ArenaEncounter` moves each spawned enemy into its own scene, so a room's enemies (and run-mode boss corpses, which aren't destroyed) unload with the room.
-- F5 Run: Start run, Jump to floor boss, Skip room (clears it, or takes the first open exit), Grant mutation / evolution reward, run, room and plan readouts.
+- F5 Run: Start run, Restart run (new seed; `RunDirector.Restart(seed)`), Jump to floor boss, Skip room (clears it, or takes the first open exit), Grant mutation / evolution reward, run, room and plan readouts.
 
 ## CombatArena (Combat Prototype)
 

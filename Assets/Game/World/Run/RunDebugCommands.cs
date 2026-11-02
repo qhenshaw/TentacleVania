@@ -18,6 +18,11 @@ namespace TentacleVania.World.Run
                 if (RunDirector.Active != null)
                     RunDirector.Active.Skip();
             });
+            DebugMenu.Button(Tab, "Restart run (new seed)", () =>
+            {
+                if (RunDirector.Active != null)
+                    RunDirector.Active.Restart(System.Environment.TickCount);
+            });
             DebugMenu.Button(Tab, "Jump to floor boss", () =>
             {
                 if (RunDirector.Active != null)
