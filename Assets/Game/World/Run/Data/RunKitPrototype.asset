@@ -118,6 +118,33 @@ MonoBehaviour:
   - Scene: K0_Records
     Role: 1
     Floor: 0
+  - Scene: K1_Atrium
+    Role: 1
+    Floor: 1
+  - Scene: K1_ColdRoom
+    Role: 1
+    Floor: 1
+  - Scene: K1_Entry
+    Role: 0
+    Floor: 1
+  - Scene: K1_Freezer
+    Role: 1
+    Floor: 1
+  - Scene: K1_Lab
+    Role: 1
+    Floor: 1
+  - Scene: K1_Server
+    Role: 1
+    Floor: 1
+  - Scene: K1_Specimens
+    Role: 1
+    Floor: 1
+  - Scene: K1_TestChamber
+    Role: 1
+    Floor: 1
+  - Scene: K1_Theatre
+    Role: 1
+    Floor: 1
   _floors:
   - Floor: 0
     Sector: AD

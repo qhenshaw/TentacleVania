@@ -1,0 +1,1045 @@
+{
+  "sector": "K1",
+  "rootScene": "Run",
+  "folder": "Assets/Game/Scenes/RunKit/L1",
+  "addressablesGroup": "RunKitL1",
+  "color": [
+    0.7,
+    0.7,
+    0.75,
+    1
+  ],
+  "spawn": [
+    2,
+    2
+  ],
+  "spawnYaw": 0,
+  "runKit": true,
+  "rooms": [
+    {
+      "scene": "K1_Entry",
+      "role": "Plain",
+      "rect": [
+        0,
+        0,
+        6,
+        5
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 4,
+          "side": "North"
+        },
+        {
+          "x": 5,
+          "y": 2,
+          "side": "East"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            3.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            3.5,
+            4.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            5.85,
+            2.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            0.15,
+            2.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            1.2,
+            3.5
+          ],
+          "yaw": 180,
+          "name": "Console0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            4.8,
+            3.5
+          ],
+          "yaw": 180,
+          "name": "Console1"
+        }
+      ]
+    },
+    {
+      "scene": "K1_Lab",
+      "role": "Arena",
+      "rect": [
+        9,
+        0,
+        8,
+        7
+      ],
+      "doors": [
+        {
+          "x": 13,
+          "y": 6,
+          "side": "North"
+        },
+        {
+          "x": 16,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 9,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            13.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            13.5,
+            6.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            16.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            9.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            10.6,
+            5.25
+          ],
+          "yaw": 180,
+          "name": "Console0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            15.4,
+            5.25
+          ],
+          "yaw": 180,
+          "name": "Console1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/SpecimenPod.prefab",
+          "at": [
+            11.4,
+            2.45
+          ],
+          "yaw": 0,
+          "name": "Pod2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/SpecimenPod.prefab",
+          "at": [
+            14.6,
+            2.45
+          ],
+          "yaw": 0,
+          "name": "Pod3"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K1_Theatre",
+      "role": "Arena",
+      "rect": [
+        20,
+        0,
+        8,
+        8
+      ],
+      "doors": [
+        {
+          "x": 24,
+          "y": 7,
+          "side": "North"
+        },
+        {
+          "x": 27,
+          "y": 4,
+          "side": "East"
+        },
+        {
+          "x": 20,
+          "y": 4,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            24.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            24.5,
+            7.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            27.85,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            20.15,
+            4.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/ArenaPylon.prefab",
+          "at": [
+            22.4,
+            4.0
+          ],
+          "yaw": 0,
+          "name": "Pylon0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/ArenaPylon.prefab",
+          "at": [
+            25.6,
+            4.0
+          ],
+          "yaw": 0,
+          "name": "Pylon1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            24.0,
+            6.4
+          ],
+          "yaw": 180,
+          "name": "Console2"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K1_ColdRoom",
+      "role": "Arena",
+      "rect": [
+        31,
+        0,
+        9,
+        6
+      ],
+      "doors": [
+        {
+          "x": 35,
+          "y": 5,
+          "side": "North"
+        },
+        {
+          "x": 39,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 31,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            35.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            35.5,
+            5.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            39.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            31.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Cryo.prefab",
+          "at": [
+            33.25,
+            3.0
+          ],
+          "yaw": 0,
+          "name": "Cryo0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Cryo.prefab",
+          "at": [
+            37.75,
+            3.0
+          ],
+          "yaw": 0,
+          "name": "Cryo1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/SpecimenPod.prefab",
+          "at": [
+            32.08,
+            4.8
+          ],
+          "yaw": 180,
+          "name": "Pod2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/SpecimenPod.prefab",
+          "at": [
+            38.92,
+            4.8
+          ],
+          "yaw": 180,
+          "name": "Pod3"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K1_TestChamber",
+      "role": "Arena",
+      "rect": [
+        43,
+        0,
+        7,
+        7
+      ],
+      "doors": [
+        {
+          "x": 46,
+          "y": 6,
+          "side": "North"
+        },
+        {
+          "x": 49,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 43,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            46.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            46.5,
+            6.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            49.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            43.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Electric.prefab",
+          "at": [
+            45.1,
+            3.5
+          ],
+          "yaw": 0,
+          "name": "Electric0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Electric.prefab",
+          "at": [
+            47.9,
+            3.5
+          ],
+          "yaw": 0,
+          "name": "Electric1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/ArenaPylon.prefab",
+          "at": [
+            46.5,
+            5.25
+          ],
+          "yaw": 0,
+          "name": "Pylon2"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K1_Specimens",
+      "role": "Arena",
+      "rect": [
+        53,
+        0,
+        10,
+        7
+      ],
+      "doors": [
+        {
+          "x": 58,
+          "y": 6,
+          "side": "North"
+        },
+        {
+          "x": 62,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 53,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            58.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            58.5,
+            6.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            62.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            53.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/SpecimenPod.prefab",
+          "at": [
+            54.2,
+            5.6
+          ],
+          "yaw": 180,
+          "name": "Pod0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/SpecimenPod.prefab",
+          "at": [
+            56.0,
+            5.6
+          ],
+          "yaw": 180,
+          "name": "Pod1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/SpecimenPod.prefab",
+          "at": [
+            60.0,
+            5.6
+          ],
+          "yaw": 180,
+          "name": "Pod2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/SpecimenPod.prefab",
+          "at": [
+            61.8,
+            5.6
+          ],
+          "yaw": 180,
+          "name": "Pod3"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Cryo.prefab",
+          "at": [
+            58.0,
+            2.8
+          ],
+          "yaw": 0,
+          "name": "Cryo4"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K1_Server",
+      "role": "Arena",
+      "rect": [
+        66,
+        0,
+        8,
+        6
+      ],
+      "doors": [
+        {
+          "x": 70,
+          "y": 5,
+          "side": "North"
+        },
+        {
+          "x": 73,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 66,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            70.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            70.5,
+            5.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            73.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            66.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            68.0,
+            2.1
+          ],
+          "yaw": 90,
+          "name": "Console0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            72.0,
+            2.1
+          ],
+          "yaw": 270,
+          "name": "Console1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            68.0,
+            4.2
+          ],
+          "yaw": 90,
+          "name": "Console2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            72.0,
+            4.2
+          ],
+          "yaw": 270,
+          "name": "Console3"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K1_Freezer",
+      "role": "Arena",
+      "rect": [
+        77,
+        0,
+        7,
+        8
+      ],
+      "doors": [
+        {
+          "x": 80,
+          "y": 7,
+          "side": "North"
+        },
+        {
+          "x": 83,
+          "y": 4,
+          "side": "East"
+        },
+        {
+          "x": 77,
+          "y": 4,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            80.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            80.5,
+            7.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            83.85,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            77.15,
+            4.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Cryo.prefab",
+          "at": [
+            79.1,
+            2.4
+          ],
+          "yaw": 0,
+          "name": "Cryo0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Cryo.prefab",
+          "at": [
+            81.9,
+            5.6
+          ],
+          "yaw": 0,
+          "name": "Cryo1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            81.9,
+            2.4
+          ],
+          "yaw": 0,
+          "name": "Cover2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            79.1,
+            5.6
+          ],
+          "yaw": 0,
+          "name": "Cover3"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K1_Atrium",
+      "role": "Arena",
+      "rect": [
+        87,
+        0,
+        11,
+        8
+      ],
+      "doors": [
+        {
+          "x": 92,
+          "y": 7,
+          "side": "North"
+        },
+        {
+          "x": 97,
+          "y": 4,
+          "side": "East"
+        },
+        {
+          "x": 87,
+          "y": 4,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            92.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            92.5,
+            7.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            97.85,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            87.15,
+            4.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/ArenaPylon.prefab",
+          "at": [
+            89.75,
+            2.4
+          ],
+          "yaw": 0,
+          "name": "Pylon0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/ArenaPylon.prefab",
+          "at": [
+            95.25,
+            2.4
+          ],
+          "yaw": 0,
+          "name": "Pylon1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/ArenaPylon.prefab",
+          "at": [
+            89.75,
+            6.0
+          ],
+          "yaw": 0,
+          "name": "Pylon2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/ArenaPylon.prefab",
+          "at": [
+            95.25,
+            6.0
+          ],
+          "yaw": 0,
+          "name": "Pylon3"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Electric.prefab",
+          "at": [
+            92.5,
+            4.0
+          ],
+          "yaw": 0,
+          "name": "Electric4"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    }
+  ]
+}
