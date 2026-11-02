@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b65e2e6534cdb24a8636dc27ebb5a11, type: 3}
+  m_Name: RunRooms
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Streaming.RoomRegistry
+  _loadRadius: 18
+  _unloadRadius: 28
+  _rooms:
+  - Scene: K2_Entry
+    Center: {x: 9.297824, y: 1.4155036, z: 7.897346}
+    Size: {x: 19.754353, y: 3.6310077, z: 16.555307}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 18
+      height: 15
+  - Scene: K2_Barracks
+    Center: {x: 40.797825, y: 1.4155036, z: 10.897346}
+    Size: {x: 28.754356, y: 3.6310077, z: 22.555305}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 27
+      y: 0
+      width: 27
+      height: 21
+  - Scene: K2_Range
+    Center: {x: 79.89734, y: 1.4155036, z: 9.397346}
+    Size: {x: 34.555313, y: 3.6310077, z: 19.555305}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 63
+      y: 0
+      width: 33
+      height: 18
+  - Scene: K2_Armory
+    Center: {x: 117.29781, y: 1.4655038, z: 12.397347}
+    Size: {x: 25.754349, y: 3.5310075, z: 25.55531}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 105
+      y: 0
+      width: 24
+      height: 24
+  - Scene: K2_Motorpool
+    Center: {x: 153.39734, y: 1.4655038, z: 12.397347}
+    Size: {x: 31.555298, y: 3.5310075, z: 25.55531}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 138
+      y: 0
+      width: 30
+      height: 24
+  - Scene: K2_Command
+    Center: {x: 189.2978, y: 1.4155036, z: 10.897346}
+    Size: {x: 25.754364, y: 3.6310077, z: 22.555305}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 177
+      y: 0
+      width: 24
+      height: 21
+  - Scene: K2_Bunker
+    Center: {x: 220.89734, y: 1.4155036, z: 10.897346}
+    Size: {x: 22.555298, y: 3.6310077, z: 22.555305}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 210
+      y: 0
+      width: 21
+      height: 21
+  - Scene: K2_Drill
+    Center: {x: 253.89734, y: 1.4155036, z: 13.897347}
+    Size: {x: 28.555298, y: 3.6310077, z: 28.55531}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 240
+      y: 0
+      width: 27
+      height: 27
+  - Scene: K2_Checkpoint
+    Center: {x: 286.89734, y: 1.4155036, z: 9.397346}
+    Size: {x: 22.555298, y: 3.6310077, z: 19.555305}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 276
+      y: 0
+      width: 21
+      height: 18
+  _sector: K2
+  _rootScene: Run
+  _color: {r: 0.7, g: 0.7, b: 0.75, a: 1}
+  _markers: []

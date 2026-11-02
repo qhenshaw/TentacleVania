@@ -145,6 +145,33 @@ MonoBehaviour:
   - Scene: K1_Theatre
     Role: 1
     Floor: 1
+  - Scene: K2_Armory
+    Role: 1
+    Floor: 2
+  - Scene: K2_Barracks
+    Role: 1
+    Floor: 2
+  - Scene: K2_Bunker
+    Role: 1
+    Floor: 2
+  - Scene: K2_Checkpoint
+    Role: 1
+    Floor: 2
+  - Scene: K2_Command
+    Role: 1
+    Floor: 2
+  - Scene: K2_Drill
+    Role: 1
+    Floor: 2
+  - Scene: K2_Entry
+    Role: 0
+    Floor: 2
+  - Scene: K2_Motorpool
+    Role: 1
+    Floor: 2
+  - Scene: K2_Range
+    Role: 1
+    Floor: 2
   _floors:
   - Floor: 0
     Sector: AD

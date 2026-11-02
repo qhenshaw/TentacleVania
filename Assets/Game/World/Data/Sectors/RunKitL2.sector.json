@@ -1,0 +1,995 @@
+{
+  "sector": "K2",
+  "rootScene": "Run",
+  "folder": "Assets/Game/Scenes/RunKit/L2",
+  "addressablesGroup": "RunKitL2",
+  "color": [
+    0.7,
+    0.7,
+    0.75,
+    1
+  ],
+  "spawn": [
+    2,
+    2
+  ],
+  "spawnYaw": 0,
+  "runKit": true,
+  "rooms": [
+    {
+      "scene": "K2_Entry",
+      "role": "Plain",
+      "rect": [
+        0,
+        0,
+        6,
+        5
+      ],
+      "doors": [
+        {
+          "x": 3,
+          "y": 4,
+          "side": "North"
+        },
+        {
+          "x": 5,
+          "y": 2,
+          "side": "East"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            3.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            3.5,
+            4.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            5.85,
+            2.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            0.15,
+            2.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            1.5,
+            3.5
+          ],
+          "yaw": 0,
+          "name": "Cover0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            4.5,
+            3.5
+          ],
+          "yaw": 0,
+          "name": "Cover1"
+        }
+      ]
+    },
+    {
+      "scene": "K2_Barracks",
+      "role": "Arena",
+      "rect": [
+        9,
+        0,
+        9,
+        7
+      ],
+      "doors": [
+        {
+          "x": 13,
+          "y": 6,
+          "side": "North"
+        },
+        {
+          "x": 17,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 9,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            13.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            13.5,
+            6.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            17.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            9.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            10.8,
+            2.45
+          ],
+          "yaw": 0,
+          "name": "Cover0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            16.2,
+            2.45
+          ],
+          "yaw": 0,
+          "name": "Cover1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            10.8,
+            5.25
+          ],
+          "yaw": 0,
+          "name": "Cover2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            16.2,
+            5.25
+          ],
+          "yaw": 0,
+          "name": "Cover3"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K2_Range",
+      "role": "Arena",
+      "rect": [
+        21,
+        0,
+        11,
+        6
+      ],
+      "doors": [
+        {
+          "x": 26,
+          "y": 5,
+          "side": "North"
+        },
+        {
+          "x": 31,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 21,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            26.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            26.5,
+            5.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            31.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            21.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            23.75,
+            3.0
+          ],
+          "yaw": 90,
+          "name": "Cover0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            26.5,
+            3.9
+          ],
+          "yaw": 90,
+          "name": "Cover1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            29.25,
+            3.0
+          ],
+          "yaw": 90,
+          "name": "Cover2"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K2_Armory",
+      "role": "Arena",
+      "rect": [
+        35,
+        0,
+        8,
+        8
+      ],
+      "doors": [
+        {
+          "x": 39,
+          "y": 7,
+          "side": "North"
+        },
+        {
+          "x": 42,
+          "y": 4,
+          "side": "East"
+        },
+        {
+          "x": 35,
+          "y": 4,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            39.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            39.5,
+            7.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            42.85,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            35.15,
+            4.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            37.4,
+            2.4
+          ],
+          "yaw": 0,
+          "name": "Cover0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            40.6,
+            2.4
+          ],
+          "yaw": 0,
+          "name": "Cover1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Fire.prefab",
+          "at": [
+            39.0,
+            5.2
+          ],
+          "yaw": 0,
+          "name": "Fire2"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K2_Motorpool",
+      "role": "Arena",
+      "rect": [
+        46,
+        0,
+        10,
+        8
+      ],
+      "doors": [
+        {
+          "x": 51,
+          "y": 7,
+          "side": "North"
+        },
+        {
+          "x": 55,
+          "y": 4,
+          "side": "East"
+        },
+        {
+          "x": 46,
+          "y": 4,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            51.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            51.5,
+            7.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            55.85,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            46.15,
+            4.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            48.0,
+            4.0
+          ],
+          "yaw": 90,
+          "name": "Cover0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            54.0,
+            4.0
+          ],
+          "yaw": 90,
+          "name": "Cover1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Fire.prefab",
+          "at": [
+            50.0,
+            2.4
+          ],
+          "yaw": 0,
+          "name": "Fire2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Fire.prefab",
+          "at": [
+            52.0,
+            6.0
+          ],
+          "yaw": 0,
+          "name": "Fire3"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K2_Command",
+      "role": "Arena",
+      "rect": [
+        59,
+        0,
+        8,
+        7
+      ],
+      "doors": [
+        {
+          "x": 63,
+          "y": 6,
+          "side": "North"
+        },
+        {
+          "x": 66,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 59,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            63.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            63.5,
+            6.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            66.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            59.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            61.0,
+            5.25
+          ],
+          "yaw": 180,
+          "name": "Console0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Opening/LabConsole.prefab",
+          "at": [
+            65.0,
+            5.25
+          ],
+          "yaw": 180,
+          "name": "Console1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            63.0,
+            2.8
+          ],
+          "yaw": 0,
+          "name": "Cover2"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K2_Bunker",
+      "role": "Arena",
+      "rect": [
+        70,
+        0,
+        7,
+        7
+      ],
+      "doors": [
+        {
+          "x": 73,
+          "y": 6,
+          "side": "North"
+        },
+        {
+          "x": 76,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 70,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            73.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            73.5,
+            6.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            76.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            70.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            71.75,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "Cover0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            75.25,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "Cover1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Electric.prefab",
+          "at": [
+            73.5,
+            1.75
+          ],
+          "yaw": 0,
+          "name": "Electric2"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K2_Drill",
+      "role": "Arena",
+      "rect": [
+        80,
+        0,
+        9,
+        9
+      ],
+      "doors": [
+        {
+          "x": 84,
+          "y": 8,
+          "side": "North"
+        },
+        {
+          "x": 88,
+          "y": 4,
+          "side": "East"
+        },
+        {
+          "x": 80,
+          "y": 4,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            84.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            84.5,
+            8.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            88.85,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            80.15,
+            4.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            82.7,
+            2.7
+          ],
+          "yaw": 0,
+          "name": "Cover0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            86.3,
+            2.7
+          ],
+          "yaw": 0,
+          "name": "Cover1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            82.7,
+            6.3
+          ],
+          "yaw": 0,
+          "name": "Cover2"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            86.3,
+            6.3
+          ],
+          "yaw": 0,
+          "name": "Cover3"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "K2_Checkpoint",
+      "role": "Arena",
+      "rect": [
+        92,
+        0,
+        7,
+        6
+      ],
+      "doors": [
+        {
+          "x": 95,
+          "y": 5,
+          "side": "North"
+        },
+        {
+          "x": 98,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 92,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            95.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            95.5,
+            5.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            98.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            92.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            93.75,
+            3.3
+          ],
+          "yaw": 0,
+          "name": "Cover0"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Cover/Barricade.prefab",
+          "at": [
+            97.25,
+            3.3
+          ],
+          "yaw": 0,
+          "name": "Cover1"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Hazards/Hazard_Electric.prefab",
+          "at": [
+            95.5,
+            4.5
+          ],
+          "yaw": 0,
+          "name": "Electric2"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    }
+  ]
+}
