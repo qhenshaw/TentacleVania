@@ -168,6 +168,17 @@ namespace TentacleVania.World.Run
                 }
         }
 
+        public void Restart(int seed)
+        {
+            if (_loading)
+                return;
+            if (RunPod.Open)
+                RunPod.BreakOut();
+            RunSession.Begin(seed);
+            _podPending = true;
+            StartFloor(0);
+        }
+
         public void JumpToBoss()
         {
             if (_loading || _plan == null || _current.Role is RoomRole.Boss or RoomRole.Finale)
