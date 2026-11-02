@@ -15,6 +15,9 @@ namespace TentacleVania.Core.Runs
         public static int EvolutionsOpen { get; set; } = 2;
         public static int BiomassReward { get; set; } = 150;
         public static int EssenceReward { get; set; } = 20;
+        public static int FloorEssence { get; set; } = 50;
+        public static int SizeStage { get; private set; }
+        public const int MaxSizeStage = 3;
 
         public static event Action<RunReward> RewardGranted;
         public static event Action Started;
@@ -30,7 +33,10 @@ namespace TentacleVania.Core.Runs
             Essence = 0;
             StepsSinceMutation = 0;
             EvolutionsOpen = 2;
+            SizeStage = 0;
+            MutationLoadout.ResetBonusNotches();
             Started?.Invoke();
+            Stats.NotifyChanged();
         }
 
         public static RewardContext Context => new() { Floor = Floor, Step = Step, EvolutionsOpen = EvolutionsOpen, StepsSinceMutation = StepsSinceMutation };
@@ -55,7 +61,14 @@ namespace TentacleVania.Core.Runs
 
         public static void AddEssence(int amount) => Essence += Mathf.Max(0, amount);
 
-        public static void ClearFloor(int floor) => FloorCleared?.Invoke(floor);
+        public static void ClearFloor(int floor)
+        {
+            SizeStage = Math.Min(MaxSizeStage, SizeStage + 1);
+            AddEssence(FloorEssence);
+            MutationLoadout.AddBonusNotch();
+            Stats.NotifyChanged();
+            FloorCleared?.Invoke(floor);
+        }
 
         public static void End()
         {
@@ -70,6 +83,7 @@ namespace TentacleVania.Core.Runs
         {
             Active = false;
             EvolutionsOpen = 2;
+            SizeStage = 0;
             RewardGranted = null;
             Started = null;
             FloorCleared = null;
