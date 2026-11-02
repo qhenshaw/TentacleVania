@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="MutationPick.uss" />
+    <Style src="Pod.uss" />
+    <ui:VisualElement name="pick" class="pick">
+        <ui:VisualElement class="pick__panel pod__panel">
+            <ui:Label name="title" class="pick__title" />
+            <ui:Label name="hint" class="pick__hint" />
+            <ui:VisualElement name="rows" class="pod__rows" />
+            <ui:VisualElement class="pick__footer">
+                <ui:Button name="breakout" class="pick__button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

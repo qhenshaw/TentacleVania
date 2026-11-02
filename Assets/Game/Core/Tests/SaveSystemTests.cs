@@ -130,18 +130,6 @@ namespace TentacleVania.Core.Tests
         }
 
         [Test]
-        public void ContinueGoesToTheLastNestScene()
-        {
-            SaveSystem.NewGame(0);
-            SaveSystem.Data.Progress.Scene = "SH_A3";
-            Assert.That(SaveSystem.ContinueScene("Fallback"), Is.EqualTo("SH_A3"));
-            SaveSystem.Data.Progress.LastNestScene = "SH_PodChamber";
-            Assert.That(SaveSystem.ContinueScene("Fallback"), Is.EqualTo("SH_PodChamber"));
-            SaveSystem.NewGame(0);
-            Assert.That(SaveSystem.ContinueScene("Fallback"), Is.EqualTo("Fallback"));
-        }
-
-        [Test]
         public void SaveAndLoadGoThroughParticipants()
         {
             var participant = new FakeParticipant();

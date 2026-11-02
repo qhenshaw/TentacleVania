@@ -161,16 +161,6 @@ namespace TentacleVania.Core.Saves
             return Storage.Exists(ClampSlot(slot));
         }
 
-        public static string ContinueScene(string fallback)
-        {
-            if (Data.Run.Active)
-                return RunScene;
-            var progress = Data.Progress;
-            if (!string.IsNullOrEmpty(progress.LastNestScene))
-                return progress.LastNestScene;
-            return string.IsNullOrEmpty(progress.Scene) ? fallback : progress.Scene;
-        }
-
         public static SaveSummary Summary(int slot)
         {
             slot = ClampSlot(slot);
