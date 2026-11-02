@@ -30,7 +30,7 @@ namespace TentacleVania.Core.Runs
 
         public static int EnemiesIn(int wave, int step) => Math.Min(MaxCount, BaseCount + Math.Max(0, step) / StepsPerExtra + wave);
 
-        public static List<WaveSlot> Plan(Random rng, int enemyKinds, int preyKinds, RoomRole role, int step, List<WaveSlot> into = null)
+        public static List<WaveSlot> Plan(Random rng, int enemyKinds, int preyKinds, RoomRole role, int step, List<WaveSlot> into = null, int extra = 0)
         {
             into ??= new List<WaveSlot>(32);
             into.Clear();
@@ -41,7 +41,7 @@ namespace TentacleVania.Core.Runs
             {
                 if (preyKinds > 0)
                     into.Add(new WaveSlot(wave, rng.Next(preyKinds), true, false));
-                var count = EnemiesIn(wave, step);
+                var count = EnemiesIn(wave, step) + Math.Max(0, extra);
                 for (var i = 0; i < count; i++)
                     into.Add(new WaveSlot(wave, rng.Next(enemyKinds), false, role == RoomRole.Elite && i == 0));
             }

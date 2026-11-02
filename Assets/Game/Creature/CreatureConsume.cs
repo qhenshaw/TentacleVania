@@ -171,7 +171,7 @@ namespace TentacleVania.Creature
             var machine = !target.Health.Bleeds && !target.CoreBleeds;
             if (!machine)
             {
-                var heal = _health.Max * target.HealFraction * NextHealScale * HealScale * (_health.Normalized < LowHealthBelow ? LowHealthHealScale : 1f);
+                var heal = _health.Max * target.HealFraction * NextHealScale * HealScale * Core.Runs.Heat.HealScale(Core.Runs.Heat.Live) * (_health.Normalized < LowHealthBelow ? LowHealthHealScale : 1f);
                 if (BleedStackHeal > 0f && target.TryGetComponent<Combat.Status.StatusEffects>(out var bleeding))
                     heal += _health.Max * BleedStackHeal * bleeding.BleedStacks;
                 _healRate = heal / healDuration;

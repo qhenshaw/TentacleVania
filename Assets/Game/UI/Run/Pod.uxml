@@ -8,6 +8,7 @@
             <ui:VisualElement name="rows" class="pod__rows" />
             <ui:VisualElement class="pick__footer">
                 <ui:Button name="call" class="pick__button" />
+                <ui:Button name="heat" class="pick__button" />
                 <ui:Button name="breakout" class="pick__button" />
             </ui:VisualElement>
         </ui:VisualElement>
