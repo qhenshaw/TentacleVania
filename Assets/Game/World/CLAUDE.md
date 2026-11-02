@@ -2,6 +2,14 @@
 
 Rooms and encounters (`TentacleVania.World`).
 
+## Runs (roguelike, Run Prototype)
+
+- `Run/RunDirector` (in the `Run` scene, F5 Run: Start run) drives one run on `Core.Runs` (`RunSession`, `RunGenerator`): `Start` plans floor 0 from a seed and sets `DifficultyCurve.CurrentSector` to the floor pool's `Sector`; each room loads alone through Addressables (the previous one unloads, `LoadGate` held), the creature is moved to the room's `RunEntry`, its `RunExit`s get the next step's door offers (one per exit, shuffled; spare exits stay barred), and the room's `ArenaEncounter` gets waves from `RunWaveComposer` (Combat and Elite; Boss rooms keep their spec's boss wave). Clearing grants the room's reward (`RunSession.Grant`; mutations and evolutions are applied by `UI/Run/RunRewardHandler`, the only assembly that sees Abilities and Weapons) and opens the exits; the boss room ends the floor (`FinishFloor`), the last floor ends the run.
+- `Run/Data/RunKitPrototype.asset` (`RunKit`) lists room scenes by role and floor (-1 = any) and per-floor enemy pools (`Enemies`, `Prey` for consumable fodder); `_floorCount` is 1 for the prototype. A scene may be listed under several roles (the KT combat rooms double as elites).
+- Kit rooms are single-room sector specs with `"runKit": true` (`Data/Sectors/RunKit.sector.json`, sector `KT`, scenes in `Scenes/RunKit/`, group `RunKit`, registry `RunRooms` with root scene `Run`): `SectorBuilder` builds the rooms and registry (it registers their Addressables) but skips the root scene, tunnels, build list and `MapAtlas`; the validator exempts that registry from the atlas rule. Each room needs a `RunEntry` placement and its doors carry `RunExit` prefabs (`Run/RunExit.prefab`: barrier, blocker, reward orb coloured per reward; Grab prompt `run.door.<reward>`).
+- Run mode bypasses the metroidvania flags while `RunSession.Active`: boss arenas don't stay cleared, `BossEnemy` skips `BossProgress.Defeat`, its reward mutation and the defeated-boss destroy. `RunSession.Started` clears equipped mutations and weapon modifiers.
+- F5 Run: Start run, Skip room (clears it, or takes the first open exit), run, room and plan readouts.
+
 ## CombatArena (Combat Prototype)
 
 - `Prefabs/CombatArena_Room.prefab` is the greybox room (developer decisions): a 20×20 m floor centred on the origin, full-height back wall, 3 m side walls, low (1 m) front wall facing the camera, four 2×2×3 m pillars at (±5, ±4), a 4×8 m entry corridor to the south (the creature spawns at z = −15) and a 4×4 m exit stub to the north. Greybox materials (`EnvironmentMaster`, so they dither-fade when they hide the creature) are in `Materials/`; characters never use them. A URP Lit material given `_EMISSION` from an eval loses the keyword the next time the editor validates it, so glowing props (warning lights) use the URP Particles/Unlit shader with an HDR `_BaseColor` instead.

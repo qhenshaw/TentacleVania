@@ -11,6 +11,7 @@ namespace TentacleVania.World.Editor
         public float[] Color;
         public float[] Spawn;
         public float SpawnYaw;
+        public bool RunKit;
         public List<RoomSpec> Rooms = new();
     }
 

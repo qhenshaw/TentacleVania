@@ -18,6 +18,8 @@ namespace TentacleVania.Core.Saves
             return null;
         }
 
+        public System.Collections.Generic.IReadOnlyList<ScriptableObject> Entries => _entries;
+
         public static string IdOf(Object asset) => asset != null ? asset.name : "";
     }
 }

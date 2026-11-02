@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using TentacleVania.Core.Runs;
+using TentacleVania.Enemies;
+using UnityEngine;
+
+namespace TentacleVania.World.Run
+{
+    [CreateAssetMenu(menuName = "TentacleVania/World/Run Kit")]
+    public sealed class RunKit : ScriptableObject
+    {
+        public const string RootScene = "Run";
+
+        [Serializable]
+        public sealed class Room
+        {
+            [Tooltip("Room scene (its Addressables address).")]
+            public string Scene;
+            public RoomRole Role;
+            [Tooltip("Floor 0 (L0) to 3 (L3); -1 = any floor.")]
+            public int Floor = -1;
+        }
+
+        [Serializable]
+        public sealed class FloorPool
+        {
+            [Range(0, 3)] public int Floor;
+            [Tooltip("DifficultyCurve row used on this floor.")]
+            public string Sector = "SH";
+            public List<Enemy> Enemies = new();
+            [Tooltip("At least one of these per wave: grabbable at any HP (consume healing).")]
+            public List<Enemy> Prey = new();
+        }
+
+        [SerializeField] private List<Room> _rooms = new();
+        [SerializeField] private List<FloorPool> _floors = new();
+        [SerializeField, Range(1, 4)] private int _floorCount = 4;
+
+        public int FloorCount => _floorCount;
+
+        public int Count(int floor, RoomRole role)
+        {
+            var count = 0;
+            foreach (var room in _rooms)
+                if (room.Role == role && (room.Floor < 0 || room.Floor == floor))
+                    count++;
+            return count;
+        }
+
+        public string Scene(int floor, RoomRole role, int index)
+        {
+            var count = 0;
+            foreach (var room in _rooms)
+            {
+                if (room.Role != role || (room.Floor >= 0 && room.Floor != floor))
+                    continue;
+                if (count++ == index)
+                    return room.Scene;
+            }
+            return null;
+        }
+
+        public FloorPool Pool(int floor)
+        {
+            FloorPool fallback = null;
+            foreach (var pool in _floors)
+            {
+                if (pool.Floor == floor)
+                    return pool;
+                fallback ??= pool;
+            }
+            return fallback;
+        }
+    }
+}

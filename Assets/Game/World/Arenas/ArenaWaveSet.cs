@@ -41,5 +41,15 @@ namespace TentacleVania.World.Arenas
         public IReadOnlyList<Wave> Waves => _waves;
         public float DelayBetweenWaves => _delayBetweenWaves;
         public float SpawnInterval => _spawnInterval;
+
+        public static ArenaWaveSet Create(List<Wave> waves, float delayBetweenWaves = 2f, float spawnInterval = 0.3f)
+        {
+            var set = CreateInstance<ArenaWaveSet>();
+            set.name = "RuntimeWaves";
+            set._waves = waves ?? new List<Wave>();
+            set._delayBetweenWaves = delayBetweenWaves;
+            set._spawnInterval = spawnInterval;
+            return set;
+        }
     }
 }

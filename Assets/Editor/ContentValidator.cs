@@ -100,7 +100,7 @@ public static class ContentValidator
         {
             var label = AssetDatabase.GetAssetPath(registry);
             var shipped = buildScenes.Contains(registry.RootScene);
-            if (shipped && atlas != null && !atlas.Sectors.Contains(registry))
+            if (shipped && atlas != null && !atlas.Sectors.Contains(registry) && registry.RootScene != TentacleVania.World.Run.RunKit.RootScene)
                 report.Error($"{label}: root scene {registry.RootScene} is in the build but the registry is missing from MapAtlas");
             if (string.IsNullOrEmpty(registry.RootScene) || ScenePath(registry.RootScene) == null)
                 report.Error($"{label}: root scene '{registry.RootScene}' not found");

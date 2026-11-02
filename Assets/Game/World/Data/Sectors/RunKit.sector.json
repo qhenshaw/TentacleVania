@@ -1,0 +1,647 @@
+{
+  "sector": "KT",
+  "rootScene": "Run",
+  "folder": "Assets/Game/Scenes/RunKit",
+  "addressablesGroup": "RunKit",
+  "color": [
+    0.7,
+    0.7,
+    0.75,
+    1
+  ],
+  "spawn": [
+    2,
+    2
+  ],
+  "spawnYaw": 0,
+  "runKit": true,
+  "rooms": [
+    {
+      "scene": "KT_Entry",
+      "role": "Plain",
+      "rect": [
+        0,
+        0,
+        5,
+        5
+      ],
+      "doors": [
+        {
+          "x": 2,
+          "y": 4,
+          "side": "North"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            2.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            2.5,
+            4.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            4.85,
+            2.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        }
+      ]
+    },
+    {
+      "scene": "KT_C1",
+      "role": "Arena",
+      "rect": [
+        10,
+        0,
+        6,
+        6
+      ],
+      "doors": [
+        {
+          "x": 13,
+          "y": 5,
+          "side": "North"
+        },
+        {
+          "x": 15,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 10,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            13.0,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            13.5,
+            5.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            15.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            10.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "KT_C2",
+      "role": "Arena",
+      "rect": [
+        22,
+        0,
+        7,
+        5
+      ],
+      "doors": [
+        {
+          "x": 25,
+          "y": 4,
+          "side": "North"
+        },
+        {
+          "x": 28,
+          "y": 2,
+          "side": "East"
+        },
+        {
+          "x": 22,
+          "y": 2,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            25.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            25.5,
+            4.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            28.85,
+            2.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            22.15,
+            2.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "KT_C3",
+      "role": "Arena",
+      "rect": [
+        34,
+        0,
+        5,
+        7
+      ],
+      "doors": [
+        {
+          "x": 36,
+          "y": 6,
+          "side": "North"
+        },
+        {
+          "x": 38,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 34,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            36.5,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            36.5,
+            6.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            38.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            34.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "KT_C4",
+      "role": "Arena",
+      "rect": [
+        46,
+        0,
+        6,
+        6
+      ],
+      "doors": [
+        {
+          "x": 49,
+          "y": 5,
+          "side": "North"
+        },
+        {
+          "x": 51,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 46,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            49.0,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            49.5,
+            5.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            51.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            46.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "KT_C5",
+      "role": "Arena",
+      "rect": [
+        58,
+        0,
+        8,
+        6
+      ],
+      "doors": [
+        {
+          "x": 62,
+          "y": 5,
+          "side": "North"
+        },
+        {
+          "x": 65,
+          "y": 3,
+          "side": "East"
+        },
+        {
+          "x": 58,
+          "y": 3,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            62.0,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            62.5,
+            5.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            65.85,
+            3.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            58.15,
+            3.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "KT_C6",
+      "role": "Arena",
+      "rect": [
+        70,
+        0,
+        6,
+        8
+      ],
+      "doors": [
+        {
+          "x": 73,
+          "y": 7,
+          "side": "North"
+        },
+        {
+          "x": 75,
+          "y": 4,
+          "side": "East"
+        },
+        {
+          "x": 70,
+          "y": 4,
+          "side": "West"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            73.0,
+            0.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            73.5,
+            7.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            75.85,
+            4.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            70.15,
+            4.5
+          ],
+          "yaw": 270,
+          "name": "ExitW"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "Scientist",
+            "count": 1
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "KT_Shop",
+      "role": "Plain",
+      "rect": [
+        0,
+        14,
+        5,
+        5
+      ],
+      "doors": [
+        {
+          "x": 2,
+          "y": 18,
+          "side": "North"
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "side": "East"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            2.5,
+            14.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "hoarder",
+          "at": [
+            0.7,
+            17
+          ],
+          "yaw": 90,
+          "name": "Hoarder",
+          "floor": 0
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            2.5,
+            18.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            4.85,
+            16.5
+          ],
+          "yaw": 90,
+          "name": "ExitE"
+        }
+      ]
+    },
+    {
+      "scene": "KT_Boss",
+      "role": "Boss",
+      "rect": [
+        12,
+        14,
+        8,
+        7
+      ],
+      "doors": [
+        {
+          "x": 16,
+          "y": 20,
+          "side": "North"
+        }
+      ],
+      "place": [
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunEntry.prefab",
+          "at": [
+            16.0,
+            14.8
+          ],
+          "yaw": 0,
+          "name": "Entry"
+        },
+        {
+          "type": "prefab",
+          "prefab": "Assets/Game/World/Run/RunExit.prefab",
+          "at": [
+            16.5,
+            20.85
+          ],
+          "yaw": 0,
+          "name": "ExitN"
+        }
+      ],
+      "waves": [
+        [
+          {
+            "enemy": "WardenDrone",
+            "count": 1
+          }
+        ]
+      ]
+    }
+  ]
+}

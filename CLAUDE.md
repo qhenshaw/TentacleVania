@@ -157,6 +157,7 @@ A small `Bootstrap` scene is the entry point: it holds the persistent managers (
 | `MainMenu` | Title screen (`UI/Menu`): Continue, New Game and Load Game over the 5 save slots, Settings, Quit; New Game loads `SceneFlow.FirstGameplay` (`SpecimenHolding`) |
 | `SpecimenHolding` (+ `SH_*` rooms in `SpecimenHolding/`) | The first real sector: root scene plus 14 streamed room scenes generated from `World/Data/Sectors/SpecimenHolding.sector.json` (`World/CLAUDE.md`); builds play this (developer decision) |
 | `LayoutSandbox` | Level layout tool test room built from `SciFiTopDown` (`World/CLAUDE.md`); not in the build |
+| `Run` (+ `KT_*` rooms in `RunKit/`) | Roguelike run root: `World.Run.RunDirector` loads one kit room at a time (`World/CLAUDE.md`); F5 Run: Start run |
 | `StreamingTest` (+ `StreamingTest_Room1`–`5`) | Room streaming test chain: a root scene that streams five room scenes through Addressables (`World/CLAUDE.md`); not in the build |
 | `Administration` (+ `AD_*` rooms in `Administration/`) | L0 hub sector generated from `World/Data/Sectors/Administration.sector.json`; reached by the transit door in Specimen Holding's pre-boss nest after the Warden |
 | `MothersVault` (+ `MV_*` rooms in `MothersVault/`) | Finale sector from `World/Data/Sectors/MothersVault.sector.json`; reached by the transit in the Black Site's Reactor Hall (Radiation Resistance); three relay systems gate its parts and Crane's door |

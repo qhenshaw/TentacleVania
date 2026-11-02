@@ -109,7 +109,7 @@ namespace TentacleVania.Bosses
         protected override void OnEnable()
         {
             base.OnEnable();
-            if (BossProgress.IsDefeated(_boss.Id))
+            if (!Core.Runs.RunSession.Active && BossProgress.IsDefeated(_boss.Id))
             {
                 Destroy(gameObject);
                 return;
@@ -201,9 +201,12 @@ namespace TentacleVania.Bosses
                         }
                 return;
             }
-            if (!string.IsNullOrEmpty(_boss.RewardMutation))
-                Collectibles.Grant(PickupKind.Mutation, _boss.RewardMutation, 1);
-            BossProgress.Defeat(_boss.Id, ContentCatalog.IdOf(_boss.RewardAbility), ContentCatalog.IdOf(_boss.SecondReward));
+            if (!Core.Runs.RunSession.Active)
+            {
+                if (!string.IsNullOrEmpty(_boss.RewardMutation))
+                    Collectibles.Grant(PickupKind.Mutation, _boss.RewardMutation, 1);
+                BossProgress.Defeat(_boss.Id, ContentCatalog.IdOf(_boss.RewardAbility), ContentCatalog.IdOf(_boss.SecondReward));
+            }
             if (_boss.DropPrefab != null)
                 Instantiate(_boss.DropPrefab, transform.position, Quaternion.identity).name = _boss.DropPrefab.name;
             if (!_finishing)

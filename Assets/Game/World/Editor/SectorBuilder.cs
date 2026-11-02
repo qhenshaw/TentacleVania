@@ -156,10 +156,13 @@ namespace TentacleVania.World.Editor
             }
             var registry = BuildRegistry(plan);
             report.Append(RoomRegistryTools.Update(registry, plan.AddressablesGroup, true));
-            report.Append(AutoTunnels.Place(plan, registry));
-            BuildRoot(plan, registry);
-            AddToBuild($"{plan.Folder}/{plan.RootScene}.unity");
-            AddToAtlas(registry);
+            if (!plan.RunKit)
+            {
+                report.Append(AutoTunnels.Place(plan, registry));
+                BuildRoot(plan, registry);
+                AddToBuild($"{plan.Folder}/{plan.RootScene}.unity");
+                AddToAtlas(registry);
+            }
             AssetDatabase.SaveAssets();
             return report.ToString();
         }
