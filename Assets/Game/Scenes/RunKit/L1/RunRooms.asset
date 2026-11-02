@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b65e2e6534cdb24a8636dc27ebb5a11, type: 3}
+  m_Name: RunRooms
+  m_EditorClassIdentifier: TentacleVania.World::TentacleVania.World.Streaming.RoomRegistry
+  _loadRadius: 18
+  _unloadRadius: 28
+  _rooms:
+  - Scene: K1_Entry
+    Center: {x: 9.297824, y: 1.4155036, z: 7.897346}
+    Size: {x: 19.754353, y: 3.6310077, z: 16.555307}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 18
+      height: 15
+  - Scene: K1_Lab
+    Center: {x: 39.297825, y: 1.4088382, z: 10.797824}
+    Size: {x: 25.754356, y: 3.6176767, z: 22.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 27
+      y: 0
+      width: 24
+      height: 21
+  - Scene: K1_Theatre
+    Center: {x: 72.29783, y: 1.3832532, z: 12.297824}
+    Size: {x: 25.754349, y: 3.5665069, z: 25.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 60
+      y: 0
+      width: 24
+      height: 24
+  - Scene: K1_ColdRoom
+    Center: {x: 106.79782, y: 1.5655037, z: 9.297824}
+    Size: {x: 28.754333, y: 3.3310075, z: 19.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 93
+      y: 0
+      width: 27
+      height: 18
+  - Scene: K1_TestChamber
+    Center: {x: 139.89734, y: 1.4655038, z: 11.585324}
+    Size: {x: 22.555298, y: 3.5310075, z: 24.329353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 129
+      y: 0
+      width: 21
+      height: 21
+  - Scene: K1_Specimens
+    Center: {x: 174.29782, y: 1.4155036, z: 10.897346}
+    Size: {x: 31.754333, y: 3.6310077, z: 22.555305}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 159
+      y: 0
+      width: 30
+      height: 21
+  - Scene: K1_Server
+    Center: {x: 210.39734, y: 1.4155036, z: 9.397346}
+    Size: {x: 25.555298, y: 3.6310077, z: 19.555305}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 198
+      y: 0
+      width: 24
+      height: 18
+  - Scene: K1_Freezer
+    Center: {x: 241.89734, y: 1.4155036, z: 12.297824}
+    Size: {x: 22.555298, y: 3.6310077, z: 25.754353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 231
+      y: 0
+      width: 21
+      height: 24
+  - Scene: K1_Atrium
+    Center: {x: 277.79782, y: 1.4155036, z: 12.710324}
+    Size: {x: 34.754333, y: 3.6310077, z: 26.579353}
+    Neighbours: []
+    MapShapes:
+    - serializedVersion: 2
+      x: 261
+      y: 0
+      width: 33
+      height: 24
+  _sector: K1
+  _rootScene: Run
+  _color: {r: 0.7, g: 0.7, b: 0.75, a: 1}
+  _markers: []
