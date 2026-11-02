@@ -103,7 +103,7 @@ namespace TentacleVania.Audio
             if (_restActive && (creature == null || (creature.transform.position - _restPosition).sqrMagnitude > _settings.RestLeaveDistance * _settings.RestLeaveDistance))
                 _restActive = false;
             var inMenu = _menuScene && !Muted;
-            State = inMenu ? MusicState.Menu : alive ? MusicRules.Pick(bossFighting, arenaFighting, _restActive) : MusicState.Silent;
+            State = inMenu ? MusicState.Menu : alive ? MusicRules.Pick(bossFighting, arenaFighting, _restActive || Core.Runs.RunPod.Open) : MusicState.Silent;
 
             var targetIntensity = State switch
             {
