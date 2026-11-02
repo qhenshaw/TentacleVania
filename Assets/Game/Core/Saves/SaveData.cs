@@ -38,6 +38,8 @@ namespace TentacleVania.Core.Saves
         public int Floor;
         public int Step;
         public int Essence;
+        public int Rooms;
+        public float Seconds;
         public bool Won;
         public string EndedAtUtc = "";
     }
@@ -58,6 +60,8 @@ namespace TentacleVania.Core.Saves
         public int Room;
         public bool Cleared;
         public bool DefianceUsed;
+        public int Rooms;
+        public float Seconds;
         public List<string> UsedRooms = new();
     }
 

@@ -2084,6 +2084,58 @@ MonoBehaviour:
     m_Localized: 'Death defiance: survive one lethal hit per run'
     m_Metadata:
       m_Items: []
+  - m_Id: 1063303968997376
+    m_Localized: THIS ONE DIED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746112
+    m_Localized: Its flesh feeds the next. Mother keeps what it learned.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746113
+    m_Localized: THIS ONE ESCAPED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746114
+    m_Localized: It reached the bottom of Site Beta. Mother stirs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746115
+    m_Localized: Floor reached
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746116
+    m_Localized: Rooms cleared
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746117
+    m_Localized: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746118
+    m_Localized: Essence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746119
+    m_Localized: '+{0} (banked: {1})'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746120
+    m_Localized: Mutations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746121
+    m_Localized: Evolutions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746122
+    m_Localized: Next creature
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746123
+    m_Localized: Main menu
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
