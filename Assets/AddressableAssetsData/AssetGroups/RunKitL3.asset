@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: RunKitL3
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: RunKitL3
+  m_GUID: e0987596074ab434dad9fe65c5881a99
+  m_SerializeEntries:
+  - m_GUID: 2c396a8c834399f4ea5cc5d1ae25e728
+    m_Address: K3_Entry
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 497e87c4efcbcad4fba0d94bbc70a359
+    m_Address: K3_Shaft
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75eafb1bfd0b43041965347b535b3491
+    m_Address: K3_Antechamber
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96da622fc85a6694c83910125c715d1a
+    m_Address: K3_Excavation
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a78cc75605919e4fb48211be13f54de
+    m_Address: K3_BlackLab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e40fc00fcaf80c43812ee70631e9361
+    m_Address: K3_Vats
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf69ea044bd35bf4b8b68457ea8a8385
+    m_Address: K3_Reactor
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da400e69cffd3cc4d814e71a7f2756db
+    m_Address: K3_Hive
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e732b92ce2f785d4cacd62d5892745a6
+    m_Address: K3_Tunnels
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4d6b5f8d559a1c24f8fe26a96bc15c60, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: cf18cb5f36422f041a4bfa3ea1a65840, type: 2}
+    - {fileID: 11400000, guid: 1dc40b999dbc0fa48908737ab096a4ce, type: 2}

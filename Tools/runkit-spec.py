@@ -70,7 +70,7 @@ FLOORS = {
         ('Shaft', 'Arena', 7, 9, ALL, [('radiation', 0.5, 0.35, 0), ('cover', 0.3, 0.7, 0), ('cover', 0.7, 0.7, 0)]),
         ('BlackLab', 'Arena', 8, 7, ALL, [('console', 0.2, 0.75, 180), ('console', 0.8, 0.75, 180), ('electric', 0.5, 0.4, 0)]),
         ('Tunnels', 'Arena', 11, 6, ALL, [('radiation', 0.25, 0.5, 0), ('radiation', 0.75, 0.5, 0), ('cover', 0.5, 0.65, 90)]),
-        ('Antechamber', 'Arena', 9, 8, ALL, [('tank', 0.5, 0.75, 180), ('acid', 0.25, 0.4, 0), ('acid', 0.75, 0.4, 0)]),
+        ('Antechamber', 'Arena', 9, 8, ALL, [('tank', 0.22, 0.72, 180), ('acid', 0.7, 0.35, 0)]),
     ]),
 }
 
