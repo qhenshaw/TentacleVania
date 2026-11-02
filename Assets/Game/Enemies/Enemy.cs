@@ -122,7 +122,8 @@ namespace TentacleVania.Enemies
             _stagger = new(_definition.MaxStagger * _depthHealth);
             _staggerVulnerability = new() { HealthScale = _definition.StaggerDamageTaken };
             if (TryGetComponent(out _consumable))
-                _consumable.Configure(_definition.ConsumeHeal, IsBoss ? _definition.Biomass : Mathf.RoundToInt(_definition.Biomass * curve.Biomass));
+                _consumable.Configure(_definition.ConsumeHeal, Core.Runs.RunSession.Active ? Mathf.RoundToInt(_definition.Biomass * Core.Runs.RunSession.EnemyBiomassScale)
+                    : IsBoss ? _definition.Biomass : Mathf.RoundToInt(_definition.Biomass * curve.Biomass));
             TryGetComponent(out _animator);
             if (!TryGetComponent(out _status))
                 _status = gameObject.AddComponent<StatusEffects>();

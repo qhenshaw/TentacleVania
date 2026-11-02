@@ -7,7 +7,7 @@ namespace TentacleVania.Core.Runs
 {
     public static class MotherCall
     {
-        public const int MaxRank = 20;
+        public const int MaxRank = 10;
         public const int RankBaseCost = 25;
         public const int RankStepCost = 15;
 
