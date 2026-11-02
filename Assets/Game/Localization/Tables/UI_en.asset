@@ -2004,6 +2004,34 @@ MonoBehaviour:
     m_Localized: Each weapon evolves once per run. Choose one.
     m_Metadata:
       m_Items: []
+  - m_Id: 1060365338951680
+    m_Localized: THE POD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1060365376700416
+    m_Localized: Another of Mother's young stirs in the pod. Choose what grows from it, then break out.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1060365376700417
+    m_Localized: Weapon 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1060365376700418
+    m_Localized: Weapon 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1060365376700419
+    m_Localized: Ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1060365376700420
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1060365376700421
+    m_Localized: Break out
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

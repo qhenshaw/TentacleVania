@@ -209,7 +209,7 @@ namespace TentacleVania.UI.Menu
             if (_starting || !SaveSystem.Load(slot))
                 return;
             _starting = true;
-            SceneFlow.Load(SaveSystem.ContinueScene(SceneFlow.FirstGameplay));
+            SceneFlow.Load(SaveSystem.RunScene);
         }
 
         private void StartNew(int slot)
@@ -219,7 +219,7 @@ namespace TentacleVania.UI.Menu
             _starting = true;
             SaveSystem.NewGame(slot);
             SaveSystem.Save();
-            SceneFlow.Load(SceneFlow.FirstGameplay);
+            SceneFlow.Load(SaveSystem.RunScene);
         }
 
         private VisualElement SlotRow(SaveSummary summary)

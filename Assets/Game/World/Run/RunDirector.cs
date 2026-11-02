@@ -37,6 +37,7 @@ namespace TentacleVania.World.Run
         private ArenaEncounter _arena;
         private bool _cleared;
         private bool _resumeCleared;
+        private bool _podPending;
 
         public static RunDirector Active { get; private set; }
 
@@ -78,6 +79,7 @@ namespace TentacleVania.World.Run
                 return;
             }
             RunSession.Begin(_seed != 0 ? _seed : System.Environment.TickCount);
+            _podPending = true;
             StartFloor(0);
         }
 
@@ -135,6 +137,11 @@ namespace TentacleVania.World.Run
         {
             if (_loading)
                 return;
+            if (RunPod.Open)
+            {
+                RunPod.BreakOut();
+                return;
+            }
             if (!_cleared)
             {
                 OnCleared();
@@ -190,6 +197,11 @@ namespace TentacleVania.World.Run
                 yield return null;
             Setup(_handle.Result.Scene);
             _loading = false;
+            if (_podPending)
+            {
+                _podPending = false;
+                RunPod.Request();
+            }
         }
 
         private void Setup(Scene scene)

@@ -1,0 +1,43 @@
+.pod__panel {
+    min-width: 900px;
+}
+
+.pod__rows {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.pod__row {
+    flex-direction: row;
+    align-items: center;
+    margin: 6px 0;
+}
+
+.pod__label {
+    min-width: 200px;
+    font-size: 22px;
+    color: rgb(200, 140, 160);
+}
+
+.pod__value {
+    flex-grow: 1;
+    font-size: 26px;
+    color: rgb(255, 210, 220);
+    -unity-text-align: middle-center;
+}
+
+.pod__arrow {
+    min-width: 60px;
+    height: 48px;
+    font-size: 24px;
+    color: rgb(255, 210, 220);
+    background-color: rgb(34, 10, 18);
+    border-width: 2px;
+    border-color: rgb(110, 40, 60);
+}
+
+.pod__arrow:hover,
+.pod__arrow:focus {
+    background-color: rgb(60, 16, 30);
+    border-color: rgb(240, 110, 140);
+}
