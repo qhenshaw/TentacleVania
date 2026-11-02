@@ -110,7 +110,8 @@ namespace TentacleVania.Creature
         {
             EndStun();
             _motor.LockControl();
-            StartCoroutine(RestartArena());
+            if (string.IsNullOrEmpty(Core.Runs.RunSession.RespawnScene))
+                StartCoroutine(RestartArena());
         }
 
         private void ConfigureHealth()
@@ -133,8 +134,7 @@ namespace TentacleVania.Creature
         private IEnumerator RestartArena()
         {
             yield return new WaitForSeconds(_settings.RestartDelay);
-            var scene = !string.IsNullOrEmpty(Core.Runs.RunSession.RespawnScene) ? Core.Runs.RunSession.RespawnScene
-                : string.IsNullOrEmpty(Nests.RespawnScene) ? gameObject.scene.name : Nests.RespawnScene;
+            var scene = string.IsNullOrEmpty(Nests.RespawnScene) ? gameObject.scene.name : Nests.RespawnScene;
             SceneFlow.Load(scene);
         }
 

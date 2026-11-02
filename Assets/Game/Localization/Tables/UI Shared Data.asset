@@ -2035,6 +2035,58 @@ MonoBehaviour:
     m_Key: run.call.defiance
     m_Metadata:
       m_Items: []
+  - m_Id: 1063303968997376
+    m_Key: run.summary.died
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746112
+    m_Key: run.summary.diedHint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746113
+    m_Key: run.summary.won
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746114
+    m_Key: run.summary.wonHint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746115
+    m_Key: run.summary.floor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746116
+    m_Key: run.summary.rooms
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746117
+    m_Key: run.summary.time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746118
+    m_Key: run.summary.essence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746119
+    m_Key: run.summary.essenceValue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746120
+    m_Key: run.summary.mutations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746121
+    m_Key: run.summary.evolutions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746122
+    m_Key: run.summary.next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1063304006746123
+    m_Key: run.summary.menu
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

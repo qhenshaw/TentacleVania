@@ -23,6 +23,9 @@ namespace TentacleVania.Core.Runs
         public static int FloorEssence { get; set; } = 50;
         public static string RespawnScene { get; set; }
         public static bool DefianceUsed { get; set; }
+        public static int Rooms { get; set; }
+        public static float Seconds { get; set; }
+        public static RunRecord Last { get; private set; }
         public static bool DefianceReady => Active && !DefianceUsed && MotherCall.Count(SaveSystem.Data.Meta, UnlockKind.DeathDefiance) > 0;
 
         public static event Action<RunReward> RewardGranted;
@@ -45,6 +48,8 @@ namespace TentacleVania.Core.Runs
             EvolutionsOpen = 2;
             SizeStage = 0;
             DefianceUsed = false;
+            Rooms = 0;
+            Seconds = 0f;
             SaveSystem.Data.Meta.RunsStarted++;
             MutationLoadout.ResetBonusNotches();
             for (var i = MotherCall.Count(SaveSystem.Data.Meta, UnlockKind.StartingNotch); i > 0; i--)
@@ -73,6 +78,8 @@ namespace TentacleVania.Core.Runs
             into.StepsSinceMutation = StepsSinceMutation;
             into.EvolutionsOpen = EvolutionsOpen;
             into.DefianceUsed = DefianceUsed;
+            into.Rooms = Rooms;
+            into.Seconds = Seconds;
         }
 
         public static void Restore(RunState from)
@@ -85,6 +92,8 @@ namespace TentacleVania.Core.Runs
             StepsSinceMutation = from.StepsSinceMutation;
             EvolutionsOpen = from.EvolutionsOpen;
             DefianceUsed = from.DefianceUsed;
+            Rooms = from.Rooms;
+            Seconds = from.Seconds;
         }
 
         public static void Grant(RunReward reward)
@@ -127,6 +136,8 @@ namespace TentacleVania.Core.Runs
             Floor = Floor,
             Step = Step,
             Essence = Essence,
+            Rooms = Rooms,
+            Seconds = Seconds,
             Won = won,
             EndedAtUtc = DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture),
         };
@@ -135,7 +146,8 @@ namespace TentacleVania.Core.Runs
         {
             if (!Active)
                 return;
-            SaveSystem.Data.Meta.Runs.Add(Record(won));
+            Last = Record(won);
+            SaveSystem.Data.Meta.Runs.Add(Last);
             SaveSystem.Data.Run = new();
             Active = false;
             Ended?.Invoke(won);

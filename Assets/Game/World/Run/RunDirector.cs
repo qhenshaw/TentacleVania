@@ -284,6 +284,7 @@ namespace TentacleVania.World.Run
             _cleared = true;
             if (_arena != null)
                 _arena.StateChanged -= OnArenaChanged;
+            RunSession.Rooms++;
             RunSession.Grant(_current.Reward);
             Store();
             if (_current.Role == RoomRole.Boss)
@@ -329,6 +330,12 @@ namespace TentacleVania.World.Run
                 foreach (var room in pair.Value)
                     state.UsedRooms.Add((int)pair.Key + ":" + room);
             Autosave.Request(AutosaveReason.RunRoom);
+        }
+
+        private void Update()
+        {
+            if (RunSession.Active && !RunPod.Open)
+                RunSession.Seconds += Time.deltaTime;
         }
 
         private void ArmDefiance()
