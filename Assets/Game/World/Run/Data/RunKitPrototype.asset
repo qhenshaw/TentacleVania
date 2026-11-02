@@ -91,6 +91,33 @@ MonoBehaviour:
   - Scene: MV_CraneLab
     Role: 5
     Floor: 3
+  - Scene: K0_Admin
+    Role: 1
+    Floor: 0
+  - Scene: K0_Cells
+    Role: 1
+    Floor: 0
+  - Scene: K0_Checkpoint
+    Role: 1
+    Floor: 0
+  - Scene: K0_Decon
+    Role: 1
+    Floor: 0
+  - Scene: K0_Entry
+    Role: 0
+    Floor: 0
+  - Scene: K0_Holding
+    Role: 1
+    Floor: 0
+  - Scene: K0_Isolation
+    Role: 1
+    Floor: 0
+  - Scene: K0_Lobby
+    Role: 1
+    Floor: 0
+  - Scene: K0_Records
+    Role: 1
+    Floor: 0
   _floors:
   - Floor: 0
     Sector: AD

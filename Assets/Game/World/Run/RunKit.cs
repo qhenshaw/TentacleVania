@@ -40,25 +40,37 @@ namespace TentacleVania.World.Run
 
         public int Count(int floor, RoomRole role)
         {
+            var own = HasOwn(floor, role);
             var count = 0;
             foreach (var room in _rooms)
-                if (room.Role == role && (room.Floor < 0 || room.Floor == floor))
+                if (Matches(room, floor, role, own))
                     count++;
             return count;
         }
 
         public string Scene(int floor, RoomRole role, int index)
         {
+            var own = HasOwn(floor, role);
             var count = 0;
             foreach (var room in _rooms)
             {
-                if (room.Role != role || (room.Floor >= 0 && room.Floor != floor))
+                if (!Matches(room, floor, role, own))
                     continue;
                 if (count++ == index)
                     return room.Scene;
             }
             return null;
         }
+
+        private bool HasOwn(int floor, RoomRole role)
+        {
+            foreach (var room in _rooms)
+                if (room.Role == role && room.Floor == floor)
+                    return true;
+            return false;
+        }
+
+        private static bool Matches(Room room, int floor, RoomRole role, bool own) => room.Role == role && (own ? room.Floor == floor : room.Floor < 0);
 
         public FloorPool Pool(int floor)
         {
