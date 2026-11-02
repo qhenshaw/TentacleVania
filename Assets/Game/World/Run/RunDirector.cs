@@ -4,6 +4,7 @@ using TentacleVania.Combat;
 using TentacleVania.Core;
 using TentacleVania.Core.Progression;
 using TentacleVania.Core.Runs;
+using TentacleVania.Core.Saves;
 using TentacleVania.Core.Scenes;
 using TentacleVania.World.Arenas;
 using UnityEngine;
@@ -35,6 +36,7 @@ namespace TentacleVania.World.Run
         private DoorOffer _current;
         private ArenaEncounter _arena;
         private bool _cleared;
+        private bool _resumeCleared;
 
         public static RunDirector Active { get; private set; }
 
@@ -49,40 +51,70 @@ namespace TentacleVania.World.Run
             Active = this;
             LoadGate.Hold(this);
             RunExit.Chosen += OnChosen;
+            CombatEvents.Died += OnDied;
+            RunSession.RespawnScene = gameObject.scene.name;
         }
 
         private void OnDestroy()
         {
             RunExit.Chosen -= OnChosen;
+            CombatEvents.Died -= OnDied;
             LoadGate.Release(this);
             DifficultyCurve.RoomDepth = 0;
+            RunSession.RespawnScene = null;
             if (Active == this)
                 Active = null;
             if (_hasRoom && _handle.IsValid())
                 Addressables.UnloadSceneAsync(_handle);
-            RunSession.End();
+            RunSession.Suspend();
         }
 
         private void Start()
         {
+            var saved = SaveSystem.Data.Run;
+            if (SaveSystem.Active && saved.Active)
+            {
+                Resume(saved);
+                return;
+            }
             RunSession.Begin(_seed != 0 ? _seed : System.Environment.TickCount);
             StartFloor(0);
+        }
+
+        private void Resume(RunState saved)
+        {
+            RunSession.Resume(saved);
+            PrepareFloor(RunSession.Floor);
+            foreach (var entry in saved.UsedRooms)
+            {
+                var split = entry.IndexOf(':');
+                if (split > 0 && int.TryParse(entry.Substring(0, split), out var role) && int.TryParse(entry.Substring(split + 1), out var room))
+                    Used((RoomRole)role).Add(room);
+            }
+            _resumeCleared = saved.Cleared;
+            Go(new DoorOffer((RoomRole)saved.Role, (RunReward)saved.Reward, saved.Room));
         }
 
         private void StartFloor(int floor)
         {
             RunSession.Floor = floor;
             RunSession.Step = 0;
+            PrepareFloor(floor);
+            var entry = RunGenerator.Offers(StepRng(), RoomRole.Entry, RunSession.Context, _kit.Count(floor, RoomRole.Entry), Used(RoomRole.Entry), _offers);
+            Go(entry[0]);
+        }
+
+        private void PrepareFloor(int floor)
+        {
             var pool = _kit != null ? _kit.Pool(floor) : null;
             if (pool != null)
                 DifficultyCurve.CurrentSector = pool.Sector;
             _plan = RunGenerator.PlanFloor(RunSession.Seed, floor);
-            _rng = new System.Random(RunGenerator.FloorSeed(RunSession.Seed, floor) + 1);
             foreach (var used in _used.Values)
                 used.Clear();
-            var entry = RunGenerator.Offers(_rng, RoomRole.Entry, RunSession.Context, _kit.Count(floor, RoomRole.Entry), Used(RoomRole.Entry), _offers);
-            Go(entry[0]);
         }
+
+        private System.Random StepRng() => new(unchecked(RunGenerator.FloorSeed(RunSession.Seed, RunSession.Floor) + 1 + RunSession.Step * 7919));
 
         private HashSet<int> Used(RoomRole role)
         {
@@ -130,6 +162,7 @@ namespace TentacleVania.World.Run
             if (_arena != null)
                 _arena.StateChanged -= OnArenaChanged;
             _arena = null;
+            ArenaSession.Forget();
             if (_hasRoom)
             {
                 var unload = Addressables.UnloadSceneAsync(_handle);
@@ -173,6 +206,7 @@ namespace TentacleVania.World.Run
             }
             if (entry != null)
                 Place(CombatTargets.Creature.transform, entry.transform);
+            _rng = StepRng();
             var last = RunSession.Step >= _plan.Count - 1;
             _offers.Clear();
             if (!last)
@@ -189,12 +223,27 @@ namespace TentacleVania.World.Run
                     _exits[i].Clear();
             }
             var fights = _current.Role is RoomRole.Combat or RoomRole.Elite or RoomRole.Boss;
+            if (_resumeCleared)
+            {
+                _resumeCleared = false;
+                _cleared = true;
+                if (_arena != null)
+                    _arena.MarkCleared();
+                Store();
+                if (_current.Role == RoomRole.Boss)
+                    StartCoroutine(FinishFloor());
+                else
+                    foreach (var exit in _exits)
+                        exit.Open();
+                return;
+            }
             if (_arena != null && fights)
             {
                 DifficultyCurve.RoomDepth = _current.Role == RoomRole.Boss ? 0 : RunSession.Step;
                 if (_current.Role != RoomRole.Boss)
                     _arena.SetWaves(RunWaveComposer.Compose(_rng, _kit.Pool(RunSession.Floor), _current.Role, RunSession.Step));
                 _arena.StateChanged += OnArenaChanged;
+                Store();
             }
             else
             {
@@ -215,7 +264,8 @@ namespace TentacleVania.World.Run
             _cleared = true;
             if (_arena != null)
                 _arena.StateChanged -= OnArenaChanged;
-            RunSession.Grant(_current.Reward == RunReward.Challenge ? RunReward.Mutation : _current.Reward);
+            RunSession.Grant(_current.Reward);
+            Store();
             if (_current.Role == RoomRole.Boss)
             {
                 StartCoroutine(FinishFloor());
@@ -238,10 +288,33 @@ namespace TentacleVania.World.Run
             _loading = false;
             if (floor + 1 >= _kit.FloorCount)
             {
-                RunSession.End();
+                RunSession.End(true);
                 yield break;
             }
             StartFloor(floor + 1);
+        }
+
+        private void Store()
+        {
+            if (!RunSession.Active)
+                return;
+            var state = SaveSystem.Data.Run;
+            RunSession.Capture(state);
+            state.Role = (int)_current.Role;
+            state.Reward = (int)_current.Reward;
+            state.Room = _current.Room;
+            state.Cleared = _cleared;
+            state.UsedRooms.Clear();
+            foreach (var pair in _used)
+                foreach (var room in pair.Value)
+                    state.UsedRooms.Add((int)pair.Key + ":" + room);
+            Autosave.Request(AutosaveReason.RunRoom);
+        }
+
+        private void OnDied(Health health)
+        {
+            if (health != null && health == CombatTargets.Creature)
+                RunSession.End(false);
         }
 
         private void Shuffle(List<RunExit> exits)

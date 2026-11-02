@@ -187,6 +187,14 @@ namespace TentacleVania.World.Arenas
             SetState(ArenaState.Fighting);
         }
 
+        public void MarkCleared()
+        {
+            _queue.Clear();
+            foreach (var door in _doors)
+                door.Open();
+            SetState(ArenaState.Cleared);
+        }
+
         public void SkipWave()
         {
             foreach (var enemy in _alive)

@@ -6,11 +6,16 @@ namespace TentacleVania.Core.Saves
 {
     public static class SaveSerializer
     {
-        public const int CurrentVersion = 2;
+        public const int CurrentVersion = 3;
 
         private static readonly Dictionary<int, Action<SaveData>> BuiltIn = new()
         {
             [1] = data => data.Progress.ArenaInProgress ??= "",
+            [2] = data =>
+            {
+                data.Meta ??= new();
+                data.Run = new();
+            },
         };
 
         private static readonly Dictionary<int, Action<SaveData>> Migrations = new();
