@@ -12,7 +12,7 @@ Music and PA/radio voice (`TentacleVania.Audio`). Design: Audio Direction (ambie
 - **Sting:** `event:/Music/Stings/RoomClear` plays when an arena clears.
 - **Placeholder events:** stems made with `placeholder_music.py` and built with `fmod-music-event.sh`.
   - `event:/Music/Arena`: 110 bpm, layers fading in at 0.15–0.35, 0.4–0.6 and 0.7–0.9.
-  - `event:/Music/Arena<sector>` (AD, RD, BL, QU, CS, BA, AR, CC, DC, BS, MV; TV-205): one per sector, 72–124 bpm, the same fades; `MusicSettings._sectorArenas` maps them and `ArenaFor(DifficultyCurve.CurrentSector)` falls back to `event:/Music/Arena` (Specimen Holding).
+  - `event:/Music/Arena<sector>` (AD, RD, BL, QU, CS, BA, AR, CC, DC, BS, MV; TV-205): one per sector, 72–124 bpm, the same fades; `MusicSettings._sectorArenas` maps them and `ArenaFor(DifficultyCurve.CurrentSector)` falls back to `event:/Music/Arena` (Specimen Holding). In runs each floor's pool row sets the sector (L0 AD, L1 BL, L2 AR, L3 BS), which picks that floor's arena music; the pod (`RunPod.Open`) plays the nest rest theme (TV-262).
   - `event:/Music/BossWarden`: for the Warden Drone, TV-63; `BossVance`, `BossOverwatch` and `BossCrane` (TV-205) are the other three unique boss tracks on their `BossDefinition.Music`. Crane's stems fade in at 0.3–0.45, 0.6–0.7 and 0.85–0.95, so each of his three phases (intensity 0.5, 0.75, 1) adds a layer.
   - `event:/Music/BossTheme`.
   - `event:/Music/NestRest`: a loop.
