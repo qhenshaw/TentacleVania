@@ -52,6 +52,23 @@ namespace TentacleVania.Core.Tests
         }
 
         [Test]
+        public void ChallengeOffersFavourRareMutations()
+        {
+            var builds = new[] { MutationBuild.Fire, MutationBuild.Acid };
+            var notches = new[] { 1, 3 };
+            int RareShare(bool rare)
+            {
+                var rng = new System.Random(5);
+                var hits = 0;
+                for (var i = 0; i < 2000; i++)
+                    if (MutationOffers.Pick(rng, builds, notches, rare, null, 1)[0] == 1)
+                        hits++;
+                return hits;
+            }
+            Assert.That(RareShare(true), Is.GreaterThan(RareShare(false) * 3));
+        }
+
+        [Test]
         public void WeightCountsEachSharedPick()
         {
             var picked = new[] { MutationBuild.Fire, MutationBuild.Bleed, MutationBuild.Fire };

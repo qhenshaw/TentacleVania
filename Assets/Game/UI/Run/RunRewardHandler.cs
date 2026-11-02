@@ -13,6 +13,7 @@ namespace TentacleVania.UI.Run
     {
         private static readonly List<MutationDefinition> Pool = new(64);
         private static readonly List<MutationBuild> PoolBuilds = new(64);
+        private static readonly List<int> PoolNotches = new(64);
         private static readonly List<MutationBuild> PickedBuilds = new(16);
         private static readonly List<int> Picks = new(4);
         private static readonly List<MutationDefinition> Offered = new(4);
@@ -47,7 +48,7 @@ namespace TentacleVania.UI.Run
                     break;
                 case RunReward.Challenge:
                     if (Rng().Next(2) != 0 || !GrantEvolution())
-                        GrantMutation();
+                        GrantMutation(true);
                     break;
                 case RunReward.Evolution:
                     if (!GrantEvolution())
@@ -56,18 +57,20 @@ namespace TentacleVania.UI.Run
             }
         }
 
-        private static void GrantMutation()
+        private static void GrantMutation(bool rare = false)
         {
             var controller = CreatureSpawner.Spawned.GetComponent<MutationController>();
             if (controller == null || controller.Catalog == null)
                 return;
             Pool.Clear();
             PoolBuilds.Clear();
+            PoolNotches.Clear();
             foreach (var entry in controller.Catalog.Entries)
                 if (entry is MutationDefinition definition && !MutationLoadout.Equipped.Contains(entry.name))
                 {
                     Pool.Add(definition);
                     PoolBuilds.Add(definition.Builds);
+                    PoolNotches.Add(definition.Notches);
                 }
             if (Pool.Count == 0)
                 return;
@@ -79,7 +82,7 @@ namespace TentacleVania.UI.Run
                     PickedBuilds.Add(equipped.Builds);
             }
             var rng = Rng();
-            MutationOffers.Pick(rng, PoolBuilds, PickedBuilds, MutationOffers.Count, Picks);
+            MutationOffers.Pick(rng, PoolBuilds, PoolNotches, rare, PickedBuilds, MutationOffers.Count, Picks);
             Offered.Clear();
             foreach (var index in Picks)
                 Offered.Add(Pool[index]);

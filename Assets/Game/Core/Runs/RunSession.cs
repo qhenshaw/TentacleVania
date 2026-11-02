@@ -16,6 +16,7 @@ namespace TentacleVania.Core.Runs
         public static int Step { get; set; }
         public static int Essence { get; private set; }
         public static int StepsSinceMutation { get; set; }
+        public static int StepsSinceEvolution { get; set; }
         public static int EvolutionsOpen { get; set; } = 2;
         public static int SizeStage { get; private set; }
         public static int BiomassReward { get; set; } = 150;
@@ -36,7 +37,7 @@ namespace TentacleVania.Core.Runs
         public static event Action<bool> Ended;
         public static event Action DefianceTriggered;
 
-        public static RewardContext Context => new() { Floor = Floor, Step = Step, EvolutionsOpen = EvolutionsOpen, StepsSinceMutation = StepsSinceMutation };
+        public static RewardContext Context => new() { Floor = Floor, Step = Step, EvolutionsOpen = EvolutionsOpen, StepsSinceMutation = StepsSinceMutation, StepsSinceEvolution = StepsSinceEvolution };
 
         public static void Begin(int seed)
         {
@@ -46,6 +47,7 @@ namespace TentacleVania.Core.Runs
             Step = 0;
             Essence = 0;
             StepsSinceMutation = 0;
+            StepsSinceEvolution = 0;
             EvolutionsOpen = 2;
             SizeStage = 0;
             DefianceUsed = false;
@@ -78,6 +80,7 @@ namespace TentacleVania.Core.Runs
             into.Essence = Essence;
             into.SizeStage = SizeStage;
             into.StepsSinceMutation = StepsSinceMutation;
+            into.StepsSinceEvolution = StepsSinceEvolution;
             into.EvolutionsOpen = EvolutionsOpen;
             into.DefianceUsed = DefianceUsed;
             into.Rooms = Rooms;
@@ -93,6 +96,7 @@ namespace TentacleVania.Core.Runs
             Essence = from.Essence;
             SizeStage = Mathf.Clamp(from.SizeStage, 0, MaxSizeStage);
             StepsSinceMutation = from.StepsSinceMutation;
+            StepsSinceEvolution = from.StepsSinceEvolution;
             EvolutionsOpen = from.EvolutionsOpen;
             DefianceUsed = from.DefianceUsed;
             Rooms = from.Rooms;
@@ -115,6 +119,7 @@ namespace TentacleVania.Core.Runs
                     break;
             }
             StepsSinceMutation = reward == RunReward.Mutation || reward == RunReward.Challenge ? 0 : StepsSinceMutation + 1;
+            StepsSinceEvolution = reward == RunReward.Evolution ? 0 : StepsSinceEvolution + 1;
             RewardGranted?.Invoke(reward);
         }
 
